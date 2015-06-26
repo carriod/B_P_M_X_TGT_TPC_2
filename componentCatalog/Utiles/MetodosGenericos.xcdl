@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="5.7 GA SP3" application="albpmstudio"?>
+<component name="MetodosGenericos" description=" " versionID="Version 5.0 Beta" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="legacy" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="MetodosGenericos" flags="static" language="Fuego">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.MetodosGenericos"/>
+		</method>
+		<method name="abrirNavegador" flags="clientavailable public" language="Fuego1">
+			<arg name="url" description="http://....." flags="in" type="String"/>
+			<arg name="parametros" description="puede ver los parametros en la definición del método" flags="in" type="Java.Lang.Object[Java.Lang.Object]"/>
+/* argumentos :
+		url : direccion de la pagina que abre (opcional)
+			default : &quot;http://www.hotmail.com&quot;
+		width : pixels del ancho de la pantalla (opcional)
+			default : &quot;window.screen.width/2&quot;
+		height : pixels del alto de la pantalla (opcional)
+			default : &quot;window.screen.height-100&quot;
+		top : pixels desde el borde de arriba (opcional)
+			default : &quot;0&quot;
+		left : pixels desde el borde de la izquierda (opcional)
+			default : &quot;0&quot;
+		toolbar : barra de navegacion (opcional)
+			default : &quot;no&quot;
+		location : direccion (opcional)
+			default : &quot;no&quot;
+		status : estado al pie de l apagina (opcional)
+			default : &quot;yes&quot;
+		resizable :  permite que el usuario cambie el tamaño (opcional)
+			default : &quot;yes&quot;
+		menubar : menu del explorer (opcional)
+			default : &quot;no&quot;
+		scrollbars : menu del explorer (opcional)
+			default : &quot;yes&quot;
+*/  
+arg.parametros[&quot;url&quot;]=arg.url
+show JSP using 
+	page = &quot;verPagina.jsp&quot;, 
+	attributes = arg.parametros
+		</method>
+		<method name="burbuja" description="ordena un array alfabeticamente" flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="" flags="in out" type="String[]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="j" type="Int"/>
+				<variable name="tmp" type="String"/>
+			</variables>
+i = 0
+while i&lt;array.length
+do
+	j = 0
+    while j&lt;(array.length-1)
+	do
+		if(array[j]&gt;array[j+1]) then
+			tmp = array[j]
+			array[j] = array[j+1]
+			array[j+1] = tmp
+		end
+		j = j + 1
+	end
+	i = i + 1
+end
+		</method>
+		<method name="burbuja2" description="Ordena array concada array en darray[]" flags="clientavailable public" language="Fuego2">
+			<arg name="array" description="" flags="in out" type="String[]"/>
+			<arg name="darray" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="j" type="Int"/>
+				<variable name="tmp" type="String"/>
+				<variable name="tmpint" type="Any"/>
+			</variables>
+i = 0
+
+while i &lt; arg.array.length do
+    j = 0
+
+    while j &lt; arg.array.length - 1 do
+        if arg.array[j] &gt; arg.array[j + 1] then
+            tmp = arg.array[j]
+            arg.array[j] = arg.array[j + 1]
+            arg.array[j + 1] = tmp
+
+            for each m in arg.darray do
+                tmpint = m[j]
+                m[j] = m[j + 1]
+                m[j + 1] = tmpint
+            end
+        end
+
+        j = j + 1
+    end
+
+    i = i + 1
+end
+		</method>
+		<method name="burbuja3" description="Ordena un array de Int" flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="array a ordenar" flags="in out" type="Int[]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="j" type="Int"/>
+				<variable name="tmp" type="Int"/>
+			</variables>
+i = 0
+while i&lt;array.length
+do  
+	j = 0
+    while j&lt;(array.length-1)
+	do
+		if(array[j]&gt;array[j+1]) then
+			tmp = array[j]
+			array[j] = array[j+1]
+			array[j+1] = tmp
+		end
+		j = j + 1
+	end
+	i = i + 1
+end
+		</method>
+		<method name="burbuja4" flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="" flags="in out" type="Int[]"/>
+			<arg name="darray" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="j" type="Int"/>
+				<variable name="tmp" type="Int"/>
+				<variable name="tmpint" type="Any"/>
+			</variables>
+i = 0
+while i&lt;arg.array.length  
+do
+	j = 0 
+    while j&lt;(arg.array.length-1)
+	do
+		if(arg.array[j]&gt;arg.array[j+1]) then
+			tmp = arg.array[j]
+			arg.array[j] = arg.array[j+1]
+			arg.array[j+1] = tmp
+			for each m in arg.darray
+			do
+				tmpint = m[j] 
+				m[j] = m[j+1]
+				m[j+1] = tmpint
+			end
+		end
+		j = j + 1
+	end
+	i = i + 1
+end
+		</method>
+		<method name="burbujaArrays" description="" flags="clientavailable public" language="Fuego2">
+			<arg name="array" description="" flags="in out" type="Any[]"/>
+			<arg name="darray" description="" flags="in out" type="Any[][]"/>
+			<arg name="ascendente" description="" flags="in" type="Bool"/>
+			<variables>
+				<variable name="classname" type="String"/>
+				<variable name="mayor" type="Bool"/>
+				<variable name="tmp" type="Any"/>
+				<variable name="tmpint" type="Any"/>
+			</variables>
+if arg.array.length &lt; 2 then
+    exit : burbujaArrays
+end
+
+classname = getClass(arg.array[0]).name
+
+for i in arg.array do
+    for j in 0..arg.array.length - 2 do
+        if classname = &quot;java.lang.Long&quot; then
+            mayor = Int(arg.array[j]) &gt; Int(arg.array[j + 1])
+        elseif classname = &quot;java.math.BigDecimal&quot; then
+            mayor = Decimal(arg.array[j]) &gt; Decimal(arg.array[j + 1])
+        elseif classname = &quot;fuego.lang.Real&quot; then
+            mayor = Real(arg.array[j]) &gt; Real(arg.array[j + 1])
+        elseif classname = &quot;fuego.lang.Time&quot; then
+            mayor = compararFechas(OperacionesConTiempo, fecha1 : Time(arg.array[j]), 
+            fecha2 : Time(arg.array[j + 1])) = 1
+        elseif classname = &quot;java.lang.String&quot; then
+            mayor = String(arg.array[j]) &gt; String(arg.array[j + 1])
+        elseif classname = &quot;java.lang.Boolean&quot; then
+            if Bool(arg.array[j]) and not Bool(arg.array[j + 1]) then
+                mayor = true
+            else
+                mayor = false
+            end
+        end
+
+        if not arg.ascendente then
+            mayor = not mayor
+        end
+
+        if mayor then
+            tmp = arg.array[j]
+            arg.array[j] = arg.array[j + 1]
+            arg.array[j + 1] = tmp
+
+            for k in arg.darray do
+                tmpint = arg.darray[k][j]
+                arg.darray[k][j] = arg.darray[k][j + 1]
+                arg.darray[k][j + 1] = tmpint
+            end
+        end
+    end
+end
+		</method>
+		<method name="burbujaArrays2" description="" flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="" flags="in out" type="Any[][]"/>
+			<arg name="darray" description="" flags="in out" type="Any[][]"/>
+			<arg name="ascendente" description="" flags="in" type="Bool"/>
+			<variables>
+				<variable name="classname" type="String"/>
+				<variable name="igual" type="Bool"/>
+				<variable name="mayor" type="Bool"/>
+				<variable name="tmp" type="Any"/>
+				<variable name="tmpint" type="Any"/>
+			</variables>
+if arg.array.length&lt;1 then
+	exit
+end
+if  arg.array[0].length&lt;2 then
+	exit
+end
+
+for i in arg.array[0] do
+    for j in 0 .. (arg.array[0].length-2) do
+		for k in arg.array do
+			classname = arg.array[k][0].getClass().name
+			if (classname == &quot;java.lang.Long&quot;)then
+				igual = Int(arg.array[k][j])==Int(arg.array[k][j+1])
+				mayor = Int(arg.array[k][j])&gt;Int(arg.array[k][j+1])
+			elseif (classname == &quot;java.math.BigDecimal&quot;)then
+				igual = Decimal(arg.array[k][j])==Decimal(arg.array[k][j+1])
+				mayor = Decimal(arg.array[k][j])&gt;Decimal(arg.array[k][j+1])
+			elseif (classname == &quot;fuego.lang.Real&quot;)then
+				igual = Real(arg.array[k][j])==Real(arg.array[k][j+1])
+				mayor = Real(arg.array[k][j])&gt;Real(arg.array[k][j+1])
+			elseif (classname == &quot;fuego.lang.Time&quot;)then
+				igual = OperacionesConTiempo.compararFechas(Time(arg.array[k][j]), Time(arg.array[k][j+1])
+)==0
+				mayor = OperacionesConTiempo.compararFechas(Time(arg.array[k][j]), Time(arg.array[k][j+1])
+)==1
+			elseif (classname == &quot;java.lang.String&quot;)then
+				igual = String(arg.array[k][j])==String(arg.array[k][j+1])
+				mayor = String(arg.array[k][j])&gt;String(arg.array[k][j+1])
+			elseif (classname == &quot;java.lang.Boolean&quot;)then
+				if Bool(arg.array[k][j])and not Bool(arg.array[k][j+1]) then
+					igual = Bool(arg.array[k][j])&amp;&amp;Bool(arg.array[k][j+1])
+					mayor = true
+				else 
+					mayor = false
+				end
+			end
+
+			if !igual then
+				exit
+			end
+		end
+
+		if !arg.ascendente then
+			mayor= !mayor
+		end	
+
+		if mayor then
+			for k in arg.array do
+				tmp = arg.array[k][j]
+				arg.array[k][j] = arg.array[k][j+1]
+				arg.array[k][j+1] = tmp
+			end
+
+			for k in arg.darray do
+				tmpint = arg.darray[k][j]
+				arg.darray[k][j] = arg.darray[k][j+1]
+				arg.darray[k][j+1] = tmpint
+			end
+		end
+	end
+end
+		</method>
+		<method name="buscarValorEnArray" description="Devuelve la posicion, -1 si no esta" flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="" flags="in" type="Any[]"/>
+			<arg name="valor" description="" flags="in" type="Any"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" primitive="true" type="Int"/>
+if valor in array then
+	i = 0
+	for each val in array
+	do
+		if val==valor then return i end
+		i = i + 1
+	end
+end
+return -1
+		</method>
+		<method name="buscarValorEnArrayConOffset" description="-1 si no esta y -2 si hay error de offset" flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="" flags="in" type="Any[]"/>
+			<arg name="valor" description="" flags="in" type="Any"/>
+			<arg name="offset" description="" flags="in" primitive="true" type="Int"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" primitive="true" type="Int"/>
+if arg.offset&gt;=arg.array.length then return -2 end
+if arg.valor in arg.array then
+	i = arg.offset
+	while i&lt;arg.array.length
+	do
+		if arg.array[i]==arg.valor then return i end
+		i = i + 1
+	end
+end
+return -1
+		</method>
+		<method name="chequearDuplicados" description="Devuelve los datos que estan duplicados" flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="" flags="in" type="String[]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="ret" type="String[]"/>
+				<variable name="tmp" type="String[]"/>
+				<variable name="tmpSt" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+tmp = clone(array)
+burbuja(tmp)
+tmpSt = &quot;&quot;
+i = 0
+for each m in tmp
+do
+	if(tmpSt==m) then
+		if(i==0)or((i&gt;0)and(tmp[i-1]!=m)) then
+			ret[i] = m
+			i = i + 1
+		end 
+	end
+	tmpSt = m
+end
+return ret
+		</method>
+		<method name="concatenarArrays" flags="clientavailable public" language="Fuego1">
+			<arg name="array1" description="" flags="in" type="Any[]"/>
+			<arg name="array2" description="" flags="in" type="Any[]"/>
+			<variables>
+				<variable name="res" type="Any[]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Any[]"/>
+for each a in arg.array1
+do
+	res[] = a
+end
+for each b in arg.array2
+do
+	res[] = b
+end
+return res
+		</method>
+		<method name="cuantasVecesEnArray" flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="" flags="in" type="Any[]"/>
+			<arg name="valor" description="" flags="in" type="Any"/>
+			<variables>
+				<variable name="n" type="Int"/>
+				<variable name="veces" type="Int"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" primitive="true" type="Int"/>
+veces = -1
+n = 0
+while(n&gt;=0)
+do
+	if n==0 then
+		n = buscarValorEnArrayConOffset(arg.array,arg.valor,n)
+	else
+		n = buscarValorEnArrayConOffset(arg.array,arg.valor,n+1)
+	end
+	veces = veces + 1
+end
+return veces
+		</method>
+		<method name="decimales" flags="clientavailable public" language="Fuego1">
+			<arg name="num" description="" flags="in" type="Decimal"/>
+			<arg name="decimales" description="" flags="in" primitive="true" type="Int"/>
+			<variables>
+				<variable name="numero" type="String"/>
+				<variable name="pos" type="Int"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+numero = String(arg.num)
+if arg.decimales==0 then return field(numero,&quot;.&quot;,0) end
+if arg.decimales&gt;0 then
+	pos = indexOf(numero,&quot;.&quot;)
+	if pos&lt;0 then return numero end
+	pos = pos + arg.decimales + 1
+	return substring(numero,0,(pos&lt;numero.length? pos : numero.length))
+end 
+return numero
+		</method>
+		<method name="eliminarCamposVaciosEnArray" flags="clientavailable public" language="Fuego1">
+			<arg name="arrayOut" description="" flags="out" type="String[]"/>
+			<arg name="arrayIn" description="" flags="in" type="String[]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+i = 0
+for each elemento in arg.arrayIn
+do
+ 	if ((elemento is not null)&amp;&amp;(elemento!=&quot;&quot;)) then 
+    	arg.arrayOut[i]=elemento
+		i = i + 1
+	end  
+end
+		</method>
+		<method name="eliminarCamposVaciosEnVariosArray" flags="clientavailable public" language="Fuego1">
+			<arg name="arrayIn" description="" flags="in out" type="String[]"/>
+			<arg name="arrayRelacionados" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="arrayOut" type="String[]"/>
+				<variable name="darrayOut" type="Any[][]"/>
+			</variables>
+for i in arg.arrayIn
+do
+ 	if (arg.arrayIn[i] is not null and arg.arrayIn[i]!=&quot;&quot;) then 
+    	arrayOut[] = arg.arrayIn[i]
+		for k in arg.arrayRelacionados
+		do
+			darrayOut[k][] = arg.arrayRelacionados[k][i]
+		end
+	end  
+end   
+arg.arrayIn = arrayOut
+arg.arrayRelacionados = darrayOut
+		</method>
+		<method name="eliminarDuplicados" description="este metodo descarta los duplicados que existan en un array " flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="" flags="in" type="String[]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="k" type="Int"/>
+				<variable name="ret" type="String[]"/>
+				<variable name="tmp" type="String[]"/>
+				<variable name="tmpSt" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+tmp = clone(array)  
+burbuja(tmp)
+tmpSt = &quot;&quot;
+i = 0
+k = 0
+for each m in tmp
+do
+		if(i==0)or((i&gt;0)and(tmp[i-1]!=m)) then
+		
+			ret[k] = m
+
+			k = k + 1
+		end
+		i = i + 1
+	tmpSt = m
+end
+return ret
+		</method>
+		<method name="eliminarDuplicados2" flags="clientavailable public" language="Fuego1">
+			<arg name="arrayPatron" description="Este es el array donde busca los duplicados" flags="in out" type="Any[]"/>
+			<arg name="array" description="Este es un array secundario sin importancia" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="array1" type="Any[][]"/>
+				<variable name="arrayPatron1" type="Any[]"/>
+				<variable name="i" type="Int"/>
+				<variable name="j" type="Int"/>
+				<variable name="k" type="Int"/>
+				<variable name="l" type="Int"/>
+				<variable name="paso" type="Bool"/>
+			</variables>
+i=0
+l=0
+for each m in arg.arrayPatron
+do
+	k=0
+	paso=true
+	while k&lt;i 
+	do
+		if arg.arrayPatron[i]==arg.arrayPatron[k] then
+			paso=false
+		end
+		k=k+1		
+	end
+	if paso then
+		j=0
+		while j&lt;arg.array.length
+		do 
+			array1[j][l]=arg.array[j][i]
+			j=j+1
+		end
+		arrayPatron1[l]=arg.arrayPatron[i]
+		l=l+1
+	end
+	i=i+1
+end
+
+arg.array=array1
+arg.arrayPatron=arrayPatron1
+		</method>
+		<method name="eliminarDuplicados3" flags="clientavailable public" language="Fuego2">
+			<arg name="array" description="Este es el array donde busca los duplicados" flags="in out" type="Any[][]"/>
+			<arg name="otroArray" description="Este es un array secundario sin importancia" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="array1" type="Any[][]"/>
+				<variable name="otroArray1" type="Any[][]"/>
+				<variable name="paso" type="Bool"/>
+				<variable name="paso1" type="Bool"/>
+			</variables>
+if arg.array.length &lt; 0 or arg.array[0].length &lt; 0 then
+    exit : eliminarDuplicados3
+end
+
+for i in arg.array[0] do
+    paso = true
+
+    for k in 0..i - 1 do
+        paso1 = false
+
+        for j in arg.array do
+            paso1 = paso1 or arg.array[j][i] != arg.array[j][k]
+        end
+
+        paso = paso and paso1
+    end
+
+    if paso then
+        for j in arg.array do
+            array1[j][] = arg.array[j][i]
+        end
+
+        for j in arg.otroArray do
+            otroArray1[j][] = arg.otroArray[j][i]
+        end
+    end
+end
+
+array = array1
+otroArray = otroArray1
+		</method>
+		<method name="eliminarElementoEnArray" flags="clientavailable public" language="Fuego1">
+			<arg name="arrayIn" description="" flags="in" type="String[]"/>
+			<arg name="posicion" description="" flags="in" primitive="true" type="Int"/>
+			<variables>
+				<variable name="arrayOut" type="String[]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+if arg.posicion&gt;=0 and arg.posicion&lt;arg.arrayIn.length then
+	for i in arg.arrayIn
+	do
+		if i!=posicion then
+			arrayOut[] = arg.arrayIn[i]
+		end
+	end
+end 
+return arrayOut
+		</method>
+		<method name="envioMailAListaDestinatarios" description="" flags="clientavailable public" language="Fuego2">
+			<arg name="paraArrayParticipantes" description="" flags="in" type="Fuego.Lib.Participant[]"/>
+			<arg name="de" description="" flags="in" type="String"/>
+			<arg name="titulo" description="" flags="in" type="String"/>
+			<arg name="mensaje" description="" flags="in" type="String"/>
+for each i in paraArrayParticipantes do
+     Mail.from = de
+    Mail.recipients = [i.email]
+    Mail.subject = titulo
+    Mail.message = mensaje
+
+    send Mail
+end
+		</method>
+		<method name="envioMailUnSoloDestinatario" flags="clientavailable public" language="Fuego1">
+			<arg name="de" description="" flags="in" type="String"/>
+			<arg name="para" description="" flags="in" type="String"/>
+			<arg name="titulo" description="" flags="in" type="String"/>
+			<arg name="mensaje" description="" flags="in" type="String"/>
+Mail.from = de
+	Mail.to = [para]
+	Mail.subject = titulo
+	Mail.message = mensaje
+	send Mail
+		</method>
+		<method name="interseccionArrays2" flags="clientavailable public" language="Fuego1">
+			<arg name="array" description="este es el primer array" flags="in out" type="Any[][]"/>
+			<arg name="array1" description="este es el segundo array" flags="in" type="Any[][]"/>
+			<arg name="otroArray" description="este array está asociado al primer array" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="arrayAux" type="Any[][]"/>
+				<variable name="otroArrayAux" type="Any[][]"/>
+				<variable name="paso" type="Bool"/>
+			</variables>
+if arg.array.length&lt;0 || arg.array[0].length&lt;0 ||
+   arg.array1.length&lt;0 || arg.array1[0].length&lt;0 ||
+   arg.array.length!=arg.array1.length then
+	exit
+end
+
+for i in arg.array[0]
+do
+	paso=false
+	for j in arg.array1[0]
+	do
+		if arg.array[0][i]==arg.array1[0][j] then
+			paso=true
+				
+			for k in arg.array
+			do
+				if arg.array[k][i]!=arg.array1[k][j] then
+					paso=false
+					exit
+				end
+			end
+			
+			if paso then
+				exit
+			end			
+		end
+	end
+
+	if paso then
+		for j in arg.array
+		do 
+			arrayAux[j][]=arg.array[j][i]
+		end
+		for j in arg.otroArray
+		do 
+			otroArrayAux[j][]=arg.otroArray[j][i]
+		end
+	end
+end
+
+arg.array=arrayAux
+arg.otroArray=otroArrayAux
+		</method>
+		<method name="iterseccionArrays" flags="clientavailable public" language="Fuego1">
+			<arg name="arrayPatron" description="" flags="out" type="Any[]"/>
+			<arg name="arrayPatron1" description="" flags="in" type="Any[]"/>
+			<arg name="arrayPatron2" description="" flags="in" type="Any[]"/>
+			<arg name="array" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="array1" type="Any[][]"/>
+				<variable name="paso" type="Bool"/>
+				<variable name="l" type="Int"/>
+			</variables>
+l=0
+for i in arg.arrayPatron1
+do
+	paso=false
+	for k in arg.arrayPatron2
+	do
+		if arg.arrayPatron1[i]==arg.arrayPatron2[k] then
+			paso=true
+			exit
+		end
+	end
+
+	if paso then
+		for j in arg.array
+		do 
+			array1[j][l]=arg.array[j][i]
+		end
+		arg.arrayPatron[l]=arg.arrayPatron1[i]
+		l=l+1
+	end
+end
+
+arg.array=array1
+		</method>
+		<method name="javaDoc" flags="clientavailable public" language="Fuego1">
+			<variables>
+				<variable name="cargar" type="Bool"/>
+				<variable name="clase" type="String"/>
+				<variable name="par" type="String[String]"/>
+			</variables>
+clase = null
+cargar = true
+while(cargar)
+do
+	show JSP using page = &quot;BibliotecaMetodos/examinarClase.jsp&quot;,
+		attributes = [&quot;clase&quot; : clase]
+		returning par = parameters
+	if par[&quot;boton&quot;]==&quot;terminar&quot; then
+		cargar = false
+	elseif par[&quot;boton&quot;]==&quot;examinarClase&quot; then
+		clase = par[&quot;clase&quot;]
+	else
+		clase = null
+	end
+end
+		</method>
+		<method name="join" description="" flags="clientavailable public" language="Java1">
+			<arg name="a" description="" flags="in" type="String[]"/>
+			<arg name="separator" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+String res = &quot;&quot;;
+foreach(it in a)
+{
+    if(it!=a.last) 
+        res = res + it + separator;
+    else 
+        res = res + it;
+}
+return res;
+		</method>
+		<method name="meses_de_Int_a_String" flags="clientavailable public" language="Fuego1">
+			<arg name="mesString" description="" flags="out" type="String"/>
+			<arg name="mesInt" description="" flags="in" primitive="true" type="Int"/>
+			<variables>
+				<variable name="meses" type="String[]"/>
+			</variables>
+meses[0]=&quot;&quot;
+meses[1]=&quot;Enero&quot;
+meses[2]=&quot;Febrero&quot;
+meses[3]=&quot;Marzo&quot;
+meses[4]=&quot;Abril&quot;
+meses[5]=&quot;Mayo&quot;
+meses[6]=&quot;Junio&quot;
+meses[7]=&quot;Julio&quot;
+meses[8]=&quot;Agosto&quot;
+meses[9]=&quot;Septiembre&quot;
+meses[10]=&quot;Octubre&quot;
+meses[11]=&quot;Noviembre&quot;
+meses[12]=&quot;Diciembre&quot;
+
+arg.mesString = meses[arg.mesInt]
+		</method>
+		<method name="obtenerValorRolParametrico" flags="clientavailable public" language="Fuego2">
+			<arg name="valoresParametroRol" description="" flags="out" type="String[]"/>
+			<arg name="nombreRolParametricoEnLDAP" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="participantRoleParametricValue" type="String[]"/>
+				<variable name="participante" type="Fuego.Lib.Participant"/>
+			</variables>
+// en base al nombre de un rol parametrico busca todos los valores   
+// que esten asignados al participante que lo esta ejecutando
+for each i in participante.roles do
+    if i.parametricValue is not null then
+        if i.name = arg.nombreRolParametricoEnLDAP + &quot;:&quot; + i.parametricValue then
+            participantRoleParametricValue[] = i.parametricValue
+        end
+    end
+end
+
+valoresParametroRol = participantRoleParametricValue
+		</method>
+	</methods>
+</component>

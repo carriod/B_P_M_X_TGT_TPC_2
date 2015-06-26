@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<enumeration name="TipoError" versionID="Version 6.5 " type="enumeration" description="">
+	<item label="SinError" value="0"/>
+	<item label="ErrorGeneral" value="1"/>
+	<item label="ErrorGrabarArchivo" value="2"/>
+</enumeration>

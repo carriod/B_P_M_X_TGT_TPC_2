@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="FormABMParametro" description="" versionID="Version 6.5 " flags="cloneable presentable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Lang.Presentable" flags="public"/>
+	<inherit class="Fuego.Internal.PresentableDelegate" flags="public delegated hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="defaultPresentation" value="Detalle"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<objectProperty name="presentationNames" value="Lista,Detalle"/>
+	<attributes>
+		<array type="Formulario.ABM.FormABMParametro.Botones" name="botones" flags="hasgetter public" position="6" javaType="fuego.xobject.GroupArray"/>
+		<String name="etapa" flags="hassetter hasgetter public" position="5"/>
+		<array type="Formulario.ABM.FormABMParametro.Listado" name="listado" flags="hasgetter public" position="4" javaType="fuego.xobject.GroupArray"/>
+		<String validValues="N|T|B" name="listadoTipoDato" flags="hassetter hasgetter public virtual includeincheck" position="7">
+			<read language="Java1">return objeto.tipoDato;</read>
+			<write language="Java1">objeto.tipoDato = value;</write>
+			<property name="validValuesDescriptionList" value="Numérico,Texto,Booleano"/>
+		</String>
+		<object type="Negocio.NParametro" name="objeto" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<String name="rol" flags="hassetter hasgetter public" position="2"/>
+		<String defaultValue="titulo" name="titulo" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FormABMParametro" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.ABM.FormABMParametro"/>
+			<sourceCode language="Java1"/>
+		</method>
+		<method name="init" flags="clientavailable public">
+			<sourceCode language="Java1">this.setText(componentId : &quot;titulo&quot;, text : this.titulo);
+this.setVisible(componentId : &quot;buttonSubmit&quot;, visible : false, collapsed : true);
+this.setVisible(componentId : &quot;buttonCancel&quot;, visible : false, collapsed : true);
+
+for (int i = 0; i &lt; 6; i++) {
+   this.setVisible(componentId : &quot;button&quot;+i, visible : false, collapsed : false);
+}
+
+for (int i = 0; i &lt; botones.length; i++) {
+    if(botones[i].labelBoton != null){
+    	this.setVisible(componentId : &quot;button&quot;+i, visible : true, collapsed : false);
+    	this.setText(componentId : &quot;button&quot;+i, text : botones[i].labelBoton);            
+	}else{
+		this.setVisible(componentId : &quot;button&quot;+i, visible : false, collapsed : false);
+	}
+}
+</sourceCode>
+		</method>
+		<method name="listadoTipoDatoValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return [&quot;N&quot; : &quot;Numérico&quot;,&quot;T&quot; : &quot;Texto&quot;,&quot;B&quot; : &quot;Booleano&quot;]
+</sourceCode>
+		</method>
+		<method name="submit_Btn_00" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button0&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if (this.botones[0].validar) {
+	this.validar();
+}
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="submit_Btn_01" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button1&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if (this.botones[1].validar) {
+	this.validar();
+}
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="submit_Btn_02" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button2&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if (this.botones[2].validar) {
+	this.validar();
+}
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="submit_Btn_03" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button3&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if (this.botones[3].validar) {
+	this.validar();
+}
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="submit_Btn_04" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button4&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if (this.botones[4].validar) {
+	this.validar();
+}
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="submit_Btn_05" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button5&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if (this.botones[5].validar) {
+	this.validar();
+}
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="submit_Btn_06" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button6&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if (this.botones[6].validar) {
+	this.validar();
+}
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="submit_Btn_07" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button7&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if (this.botones[7].validar) {
+	this.validar();
+}
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="validar" flags="clientavailable public">
+			<sourceCode language="Java1">if(this.objeto.codigo == null || this.objeto.codigo == &quot;&quot;){
+	this.showError(error : &quot;\&quot;Codigo\&quot; es requerido&quot;);
+}
+if(this.objeto.descripcion == null || this.objeto.descripcion == &quot;&quot;){
+	this.showError(error : &quot;\&quot;Descripcion\&quot; es requerido&quot;);
+}
+if(this.objeto.vigencia == null){
+	this.showError(error : &quot;\&quot;Vigencia\&quot; es requerido&quot;);
+}
+if (this.objeto.valor == null || this.objeto.valor == &quot;&quot;) {
+	this.showError(error : &quot;\&quot;Valor\&quot; es requerido&quot;);
+}
+if (this.listadoTipoDato == &quot;N&quot;){
+	boolean isInteger = Java.Util.Regex.Pattern.matches(&quot;^\\d*$&quot;, this.objeto.valor);
+	if (!isInteger){
+    	this.showError(error : &quot;El \&quot;Valor\&quot; debe ser numérico.&quot;);
+    }  
+}
+if (this.listadoTipoDato == &quot;B&quot;){
+	if(this.objeto.valor != &quot;N&quot; &amp;&amp; this.objeto.valor != &quot;S&quot;){
+    	this.showError(error : &quot;El \&quot;Valor\&quot; debe ser &apos;N&apos; o &apos;S&apos;&quot;);
+    }  
+}
+if(this.objeto.codigo == &quot;DIA_PROXCOMITE&quot; || this.objeto.codigo == &quot;DIA_PROXPRECOMITE&quot; || this.objeto.codigo == &quot;DIA_FECHACORTE&quot;){
+	if(this.objeto.valor != &quot;1&quot; &amp;&amp;
+	   this.objeto.valor != &quot;2&quot; &amp;&amp;
+	   this.objeto.valor != &quot;3&quot; &amp;&amp;
+	   this.objeto.valor != &quot;4&quot; &amp;&amp;
+	   this.objeto.valor != &quot;5&quot; &amp;&amp;
+	   this.objeto.valor != &quot;6&quot; &amp;&amp;
+	   this.objeto.valor != &quot;7&quot;){
+    	this.showError(error : &quot;El \&quot;Valor\&quot; debe ser 1,2,3,4,5,6 o 7&quot;);
+	}
+}
+
+
+
+</sourceCode>
+		</method>
+	</methods>
+	<presentation bgcolor="#ffffff" checked="false" clienterroraspopup="true" cssfilename="webRoot/webResources/css/tpcstyle.css" errorcssclass="fo_presentation_error" errorfontface="PLAIN" errorfontsize="12" errorfonttype="Times New Roman, Times, serif" height="0" id="Lista" initializationmethod="Minit()V" iscssenabled="true" isuxo="false" reference="FormABMParametro" width="0" cssclass="fo_presentation" ismixedcss="false" tabindex="0">
+		<background imageattachment="fixed" imagelayout="no-repeat" imagexposition="left" imageyposition="top">
+			<image alignment="center" bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" required="false" cssclass="fo_image" ismixedcss="false" tabindex="0"/>
+		</background>
+		<table alignment="center" border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="900" cssclass="fo_presentation_table" ismixedcss="false" tabindex="0">
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Verdana" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table18" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title_cell" ismixedcss="false" tabindex="0">
+								<label fgcolor="#000000" fontface="BOLD" fontsize="13" fonttype="Verdana" fullbrowser="false" id="titulo" cssclass="fo_title_label" ismixedcss="false" tabindex="0">
+									<value>CONSULTA DE OPERACION LISTADO</value>
+								</label>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table11" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<array headersortedbgcolor="#0A2F6F" headersortedfgcolor="#FFFFFF" sorted="true" alignment="center" automaticadd="false" bordercolor="#D0D2D4" borderwidth="1" cellpadding="3" cellspacing="1" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" headerbordercolor="#D0D2D4" headerborderwidth="1" headercssclass="fo_group_header_color" headerenabled="true" headerfontface="PLAIN" headerfontsize="12" headerfonttype="Times New Roman, Times, serif" headers="[,Id,Codigo,Descripcion,Tipo Dato,Valor,Usuario Alta,Fecha Alta,Usuario Modificacion,Fecha Modificacion,Vigencia,Editar]" headerswidth="[,20,80,350,50,80,100,80,100,80,50,0]" id="array1" indexbordercolor="#D0D2D4" indexborderwidth="1" indexcssclass="fo_group_index" indexenabled="false" indexfontface="PLAIN" indexfontsize="10" indexfonttype="Times New Roman, Times, serif" indextabenabled="false" pagingbgcolor="#ffffff" pagingbordercolor="#D0D2D4" pagingborderwidth="1" pagingcssclass="fo_group_paging" pagingfgcolor="#515559" pagingfontface="PLAIN" pagingfontsize="12" pagingfonttype="Arial" pagingshowall="false" reference="listado" rowevencssclass="fo_group_even_tr" rowoddcssclass="fo_group_odd_tr" rows="15" cssclass="fo_group_color" ismixedcss="true" tabindex="0">
+									<addbutton cssclass="fo_group_add" ismixedcss="false" tabindex="0"/>
+									<removebutton cssclass="fo_group_minus" ismixedcss="false" tabindex="0"/>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="10" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text1" outputmasktype="0" passwordfield="false" reference="listado[].objeto.id" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="15" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text2" outputmasktype="0" passwordfield="false" reference="listado[].objeto.codigo" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="30" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text3" outputmasktype="0" passwordfield="false" reference="listado[].objeto.descripcion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="30" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text7" outputmasktype="0" passwordfield="false" reference="listado[].objeto.tipoDato" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="30" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text8" outputmasktype="0" passwordfield="false" reference="listado[].objeto.valor" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text4" outputmasktype="0" passwordfield="false" reference="listado[].objeto.usuarioAlta" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="true" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="datetimepiker1" reference="listado[].objeto.fechaAlta" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text6" outputmasktype="0" passwordfield="false" reference="listado[].objeto.usuarioModificacion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="datetimepiker2" reference="listado[].objeto.fechaModificacion" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="check1" reference="listado[].objeto.vigencia" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action2" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="detalle" methodinvocation="listado[].:MsubmitDetalle()V" transparent="true" cssclass="fo_button_editar" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</array>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bgcolor="#FFFFFF" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Verdana" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_footer_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="7" cellspacing="0" columnwidth="[,10%,10%,10%,10%,10%,10%,10%,10%]" id="table5" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_footer_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Verdana" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button0" methodinvocation="Msubmit_Btn_00()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button1" methodinvocation="Msubmit_Btn_01()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button2" methodinvocation="Msubmit_Btn_02()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button3" methodinvocation="Msubmit_Btn_03()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button4" methodinvocation="Msubmit_Btn_04()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button5" methodinvocation="Msubmit_Btn_05()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Verdana" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button6" methodinvocation="Msubmit_Btn_06()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button7" methodinvocation="Msubmit_Btn_07()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table14" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="submit" bordercolor="#D0D2D4" borderwidth="1" display="submit" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonSubmit" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="cancel" bordercolor="#D0D2D4" borderwidth="1" display="cancel" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonCancel" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+		</table>
+	</presentation>
+	<presentation bgcolor="#ffffff" checked="false" clienterroraspopup="true" cssfilename="webRoot/webResources/css/tpcstyle.css" errorcssclass="fo_presentation_error" errorfontface="PLAIN" errorfontsize="12" errorfonttype="Times New Roman, Times, serif" height="0" id="Detalle" initializationmethod="Minit()V" iscssenabled="true" isuxo="false" reference="FormABMParametro" width="0" cssclass="fo_presentation" ismixedcss="false" tabindex="0">
+		<background imageattachment="fixed" imagelayout="no-repeat" imagexposition="left" imageyposition="top">
+			<image alignment="center" bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" required="false" cssclass="fo_image" ismixedcss="false" tabindex="0"/>
+		</background>
+		<table alignment="center" border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="800" cssclass="fo_presentation_table" ismixedcss="false" tabindex="0">
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Verdana" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table18" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title_cell" ismixedcss="false" tabindex="0">
+								<label fgcolor="#000000" fontface="BOLD" fontsize="13" fonttype="Verdana" fullbrowser="false" id="titulo" cssclass="fo_title_label" ismixedcss="false" tabindex="0">
+									<value>CARGAR OPERACION</value>
+								</label>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table11" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,15%,35%,15%,35%]" id="table10" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Verdana" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="BOLD" fontsize="10" fonttype="Verdana" fullbrowser="false" id="label27" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Id</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text1" outputmasktype="0" passwordfield="false" reference="objeto.id" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="BOLD" fontsize="10" fonttype="Verdana" fullbrowser="false" id="label28" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Codigo</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text3" outputmasktype="0" passwordfield="false" reference="objeto.codigo" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label33" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Descripcion</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="3" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text2" outputmasktype="0" passwordfield="false" reference="objeto.descripcion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label55" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Tipo Dato</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="listaTipoDato" reference="listadoTipoDato" required="false" transparent="true" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label57" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Valor</value>
+											</label>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text7" outputmasktype="0" passwordfield="false" reference="objeto.valor" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="BOLD" fontsize="10" fonttype="Verdana" fullbrowser="false" id="label51" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Usuario Alta</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text4" outputmasktype="0" passwordfield="false" reference="objeto.usuarioAlta" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="BOLD" fontsize="10" fonttype="Verdana" fullbrowser="false" id="label52" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Fecha Alta</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="datetimepiker1" reference="objeto.fechaAlta" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="BOLD" fontsize="10" fonttype="Verdana" fullbrowser="false" id="label50" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Usuario Modificacion</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text5" outputmasktype="0" passwordfield="false" reference="objeto.usuarioModificacion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="BOLD" fontsize="10" fonttype="Verdana" fullbrowser="false" id="label53" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Fecha Modificacion</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="datetimepiker2" reference="objeto.fechaModificacion" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="BOLD" fontsize="10" fonttype="Verdana" fullbrowser="false" id="label54" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Vigencia</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="check1" reference="objeto.vigencia" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+								</table>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bgcolor="#FFFFFF" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Verdana" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_footer_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="7" cellspacing="0" columnwidth="[,10%,10%,10%,10%,10%,10%,10%,10%]" id="table5" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_footer_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Verdana" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button0" methodinvocation="Msubmit_Btn_00()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button1" methodinvocation="Msubmit_Btn_01()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button2" methodinvocation="Msubmit_Btn_02()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button3" methodinvocation="Msubmit_Btn_03()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button4" methodinvocation="Msubmit_Btn_04()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button5" methodinvocation="Msubmit_Btn_05()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Verdana" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button6" methodinvocation="Msubmit_Btn_06()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button7" methodinvocation="Msubmit_Btn_07()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table14" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="submit" bordercolor="#D0D2D4" borderwidth="1" display="submit" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonSubmit" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="cancel" bordercolor="#D0D2D4" borderwidth="1" display="cancel" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonCancel" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+		</table>
+	</presentation>
+	<resources>
+		<resource default="CARGAR OPERACION" type="1">
+			<label language="es">CARGAR OPERACION</label>
+		</resource>
+		<resource default="Canal / Agente" type="1">
+			<label language="es">Canal / Agente</label>
+		</resource>
+		<resource default="Codigo">
+			<label language="es">Codigo</label>
+		</resource>
+		<resource default="Descripcion">
+			<label language="es">Descripcion</label>
+		</resource>
+		<resource default="Editar">
+			<label language="es">Editar</label>
+		</resource>
+		<resource default="Fecha Alta">
+			<label language="es">Fecha Alta</label>
+		</resource>
+		<resource default="Fecha Modificacion">
+			<label language="es">Fecha Modificacion</label>
+		</resource>
+		<resource default="Id">
+			<label language="es">Id</label>
+		</resource>
+		<resource default="Tipo Dato">
+			<label language="es">Tipo Dato</label>
+		</resource>
+		<resource default="Usuario Alta">
+			<label language="es">Usuario Alta</label>
+		</resource>
+		<resource default="Usuario Modificacion">
+			<label language="es">Usuario Modificacion</label>
+		</resource>
+		<resource default="Valor">
+			<label language="es">Valor</label>
+		</resource>
+		<resource default="Vigencia">
+			<label language="es">Vigencia</label>
+		</resource>
+		<resource default="action">
+			<label language="es">action</label>
+		</resource>
+		<resource default="action2">
+			<label language="es">.     .</label>
+		</resource>
+	</resources>
+</component>

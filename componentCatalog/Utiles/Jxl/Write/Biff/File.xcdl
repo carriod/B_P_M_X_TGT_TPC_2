@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="File" description="File" versionID="Version 6.5 " flags="" signature="jxl.write.biff.File" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.File"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.File"/>
+	<attributes>
+		<object type="Java.Io.OutputStream" name="outputFile" flags="hassetter external" position="1" javaType="java.io.OutputStream" writeSignature="MsetOutputFile(Ljava.io.OutputStream;)V"/>
+	</attributes>
+	<methods>
+		<method name="setOutputFile" description="setOutputFile" flags="external hidden" signature="MsetOutputFile(Ljava.io.OutputStream;)V">
+			<arg name="os" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite(Ljxl.biff.ByteData;)V">
+			<arg name="record" description="" flags="in external" type="Utiles.Jxl.Biff.ByteData" javaType="jxl.biff.ByteData"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+	</methods>
+</component>

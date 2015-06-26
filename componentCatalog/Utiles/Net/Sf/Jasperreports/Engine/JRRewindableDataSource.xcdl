@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRRewindableDataSource" description="JRRewindableDataSource" versionID="Version 6.5 " flags="abstract interface" signature="net.sf.jasperreports.engine.JRRewindableDataSource" type="java">
+	<inherit class="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" flags=""/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.JRRewindableDataSource"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.JRRewindableDataSource"/>
+	<attributes/>
+	<methods>
+		<method name="moveFirst" description="moveFirst" flags="abstract external" signature="MmoveFirst()V">
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+	</methods>
+</component>

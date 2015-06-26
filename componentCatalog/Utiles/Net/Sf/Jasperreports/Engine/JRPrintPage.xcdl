@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRPrintPage" description="JRPrintPage" versionID="Version 6.5 " flags="abstract interface" signature="net.sf.jasperreports.engine.JRPrintPage" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.JRPrintPage"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.JRPrintPage"/>
+	<attributes>
+		<array type="Any" name="elements" flags="hassetter hasgetter external" position="1" javaType="java.util.List" writeSignature="MsetElements(Ljava.util.List;)V" readSignature="MgetElements()Ljava.util.List;"/>
+	</attributes>
+	<methods>
+		<method name="addElement" description="addElement" flags="abstract external" signature="MaddElement(Lnet.sf.jasperreports.engine.JRPrintElement;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRPrintElement,Net.Sf.Jasperreports.Engine.JRPrintElement}" javaType="net.sf.jasperreports.engine.JRPrintElement"/>
+		</method>
+		<method name="getElements" description="getElements" flags="abstract external hidden" signature="MgetElements()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="setElements" description="setElements" flags="abstract external hidden" signature="MsetElements(Ljava.util.List;)V">
+			<arg name="arg1" description="" flags="in external" type="Any[]" javaType="java.util.List"/>
+		</method>
+	</methods>
+</component>

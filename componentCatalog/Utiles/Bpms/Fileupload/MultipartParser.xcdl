@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="MultipartParser" description="MultipartParser" versionID="Version 6.5 " flags="" signature="bpms.fileupload.MultipartParser" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.fileupload.MultipartParser"/>
+	<objectProperty name="package" value="bpms.fileupload"/>
+	<objectProperty name="typeId" value="bpms.fileupload.MultipartParser"/>
+	<attributes>
+		<String name="ATTACHMENT" flags="hasgetter attribute static external final" position="4" javaType="java.lang.String" writeSignature="AATTACHMENT;Ljava.lang.String;" readSignature="AATTACHMENT;Ljava.lang.String;"/>
+		<String name="CONTENT_DISPOSITION" flags="hasgetter attribute static external final" position="2" javaType="java.lang.String" writeSignature="ACONTENT_DISPOSITION;Ljava.lang.String;" readSignature="ACONTENT_DISPOSITION;Ljava.lang.String;"/>
+		<String name="CONTENT_TYPE" flags="hasgetter attribute static external final" position="1" javaType="java.lang.String" writeSignature="ACONTENT_TYPE;Ljava.lang.String;" readSignature="ACONTENT_TYPE;Ljava.lang.String;"/>
+		<String name="FORM_DATA" flags="hasgetter attribute static external final" position="3" javaType="java.lang.String" writeSignature="AFORM_DATA;Ljava.lang.String;" readSignature="AFORM_DATA;Ljava.lang.String;"/>
+		<Int length="32" name="MAX_HEADER_SIZE" flags="hasgetter attribute static external final" primitive="true" position="8" javaType="int" writeSignature="AMAX_HEADER_SIZE;I" readSignature="AMAX_HEADER_SIZE;I"/>
+		<String name="MULTIPART" flags="hasgetter attribute static external final" position="5" javaType="java.lang.String" writeSignature="AMULTIPART;Ljava.lang.String;" readSignature="AMULTIPART;Ljava.lang.String;"/>
+		<String name="MULTIPART_FORM_DATA" flags="hasgetter attribute static external final" position="6" javaType="java.lang.String" writeSignature="AMULTIPART_FORM_DATA;Ljava.lang.String;" readSignature="AMULTIPART_FORM_DATA;Ljava.lang.String;"/>
+		<String name="MULTIPART_MIXED" flags="hasgetter attribute static external final" position="7" javaType="java.lang.String" writeSignature="AMULTIPART_MIXED;Ljava.lang.String;" readSignature="AMULTIPART_MIXED;Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="MultipartParser" flags="static hidden" signature="Kbpms.fileupload.MultipartParser()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Fileupload.MultipartParser"/>
+		</method>
+		<method name="parseRequest" description="parseRequest" flags="static external" signature="MparseRequest(Ljavax.servlet.http.HttpServletRequest;)Ljava.util.List;">
+			<arg name="arg1" description="" flags="in external" type="{java,javax.servlet.http.HttpServletRequest,Javax.Servlet.Http.HttpServletRequest}" javaType="javax.servlet.http.HttpServletRequest"/>
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+			<exception type="Java.Lang.Exception"/>
+		</method>
+		<method name="parseRequest" description="parseRequest" flags="static external" signature="MparseRequest(Ljavax.servlet.http.HttpServletRequest;J)Ljava.util.List;">
+			<arg name="arg1" description="" flags="in external" type="{java,javax.servlet.http.HttpServletRequest,Javax.Servlet.Http.HttpServletRequest}" javaType="javax.servlet.http.HttpServletRequest"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int(64)" javaType="long"/>
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+			<exception type="Java.Lang.Exception"/>
+		</method>
+	</methods>
+</component>

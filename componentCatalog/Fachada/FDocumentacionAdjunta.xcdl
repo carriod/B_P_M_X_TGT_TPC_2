@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FDocumentacionAdjunta" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="FDocumentacionAdjunta" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FDocumentacionAdjunta"/>
+		</method>
+		<method name="verificarErrores" flags="clientavailable public">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="rol" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">String[] errores = {};                                                                                                                                                                                                                                                           
+
+if(!arg.solicitud.pedidoCesta.id in {3,5}){
+	if(arg.rol == &quot;TPC - Solicitante SAGI&quot;){
+		Java.Lang.Boolean doc5Cargado = false;
+		ciclo:for (int index = 0; index &lt; arg.solicitud.documentos.length; index++) {
+		    if(arg.solicitud.documentos[index].documento.idTipoDocumento == 5 &amp;&amp; arg.solicitud.documentos[index].documento.cargado){ 
+		    	doc5Cargado = true;
+		    	break ciclo;
+		    }
+		}
+		if(arg.solicitud.comentariosDocumentos.archivoPQ != null &amp;&amp; arg.solicitud.comentariosDocumentos.archivoPQ != &quot;&quot;){
+			doc5Cargado = true;
+		}
+		if(!doc5Cargado){
+			errores[] = &quot;&apos;Documento Archivo P*Q o Comentario Archivo P*Q&apos; es obligatorio&quot;;	
+		}
+		Java.Lang.Boolean doc6Cargado = false;
+		ciclo:for (int index = 0; index &lt; arg.solicitud.documentos.length; index++) {
+		    if(arg.solicitud.documentos[index].documento.idTipoDocumento == 6 &amp;&amp; arg.solicitud.documentos[index].documento.cargado){
+		    	doc6Cargado = true;
+		    	break ciclo;
+		    }
+		}
+		if((arg.solicitud.tipoCompra.id != 4)&amp;&amp;(arg.solicitud.tipoCompra.id != 5)){
+			if(!doc6Cargado){
+				errores[] = &quot;&apos;Documento Especificación Técnica&apos; es obligatorio&quot;;
+			}
+		}
+		
+	}
+	else if(arg.rol == &quot;TPC - Gestor Enlace&quot;){
+		Java.Lang.Boolean doc5Cargado = false;
+		ciclo:for (int index = 0; index &lt; arg.solicitud.documentos.length; index++) {
+		    if(arg.solicitud.documentos[index].documento.idTipoDocumento == 5 &amp;&amp; arg.solicitud.documentos[index].documento.cargado){ 
+		    	doc5Cargado = true;
+		    	break ciclo;
+		    }
+		}
+		if(arg.solicitud.comentariosDocumentos.archivoPQ != null &amp;&amp; arg.solicitud.comentariosDocumentos.archivoPQ != &quot;&quot;){
+			doc5Cargado = true;
+		}
+		if(!doc5Cargado){
+			errores[] = &quot;&apos;Documento Archivo P*Q o Comentario Archivo P*Q&apos; es obligatorio&quot;;	
+		}
+		Java.Lang.Boolean doc6Cargado = false;
+		ciclo:for (int index = 0; index &lt; arg.solicitud.documentos.length; index++) {
+		    if(arg.solicitud.documentos[index].documento.idTipoDocumento == 6 &amp;&amp; arg.solicitud.documentos[index].documento.cargado){
+		    	doc6Cargado = true;
+		    	break ciclo;
+		    }
+		}
+		if((arg.solicitud.tipoCompra.id != 4)&amp;&amp;(arg.solicitud.tipoCompra.id != 5)){
+			if(!doc6Cargado){
+				errores[] = &quot;&apos;Documento Especificación Técnica&apos; es obligatorio&quot;;	
+			}
+		}
+		Java.Lang.Boolean doc8Cargado = false;
+		ciclo:for (int index = 0; index &lt; arg.solicitud.documentos.length; index++) {
+		    if(arg.solicitud.documentos[index].documento.idTipoDocumento == 8 &amp;&amp; arg.solicitud.documentos[index].documento.cargado){
+		    	doc8Cargado = true;
+		    	break ciclo;
+		    }
+		}
+		if(arg.solicitud.tipoCompra.id == 1){
+			if(!doc8Cargado){
+				errores[] = &quot;&apos;Documento Planilla de Catálogo&apos; es obligatorio&quot;;	
+			}
+		}
+	}
+}
+return errores;</sourceCode>
+		</method>
+	</methods>
+</component>

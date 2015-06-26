@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="SSolicitud" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="3"/>
+		<String name="prefijo" flags="hassetter hasgetter public" position="2"/>
+		<String name="tabla" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="SSolicitud" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SSolicitud"/>
+			<sourceCode language="Java1">this.prefijo = &quot;SOL_&quot;;
+this.tabla = &quot;TPC_SOLICITUD&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+/*
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;ID = ?&quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.id;
+		
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}*/
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+     				  &quot;WHERE &quot; + this.prefijo + &quot;ID = ( SELECT MAX(&quot; + this.prefijo + &quot;ID) FROM &quot; + this.tabla  + &quot; )&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;CCE_ID&quot;] = (Integer)row[this.prefijo + &quot;CCE_ID&quot;];
+		value[&quot;PCE_ID&quot;] = (Integer)row[this.prefijo + &quot;PCE_ID&quot;];
+		value[&quot;NROCESTA&quot;] = (Integer)row[this.prefijo + &quot;NROCESTA&quot;];
+		value[&quot;NROPEDIDO&quot;] = (Integer)row[this.prefijo + &quot;NROPEDIDO&quot;];
+		value[&quot;NROCESTAASOCPEDIDO&quot;] = (Integer)row[this.prefijo + &quot;NROCESTAASOCPEDIDO&quot;];
+		value[&quot;NROCESTAANULADA&quot;] = (Integer)row[this.prefijo + &quot;NROCESTAANULADA&quot;];
+		value[&quot;MOTIVOREEMPLAZO&quot;] = (String)row[this.prefijo + &quot;MOTIVOREEMPLAZO&quot;];
+		value[&quot;PERIODOFECHAINICIO&quot;] = (Time)row[this.prefijo + &quot;PERIODOFECHAINICIO&quot;];
+		value[&quot;PERIODOFECHAFIN&quot;] = (Time)row[this.prefijo + &quot;PERIODOFECHAFIN&quot;];
+		value[&quot;MONTOTOTALPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALPESOS&quot;];
+		value[&quot;MONTOTOTALDOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALDOLARES&quot;];
+		value[&quot;MONTOTOTALEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALEUROS&quot;];
+		value[&quot;MON_ID_MONTOTOTAL&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOTOTAL&quot;];
+    	value[&quot;MONTOTOTALOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALOTRO&quot;];
+		value[&quot;GESTORSOLICITANTE&quot;] = (String)row[this.prefijo + &quot;GESTORSOLICITANTE&quot;];
+		value[&quot;AREASOLICITANTE&quot;] = (String)row[this.prefijo + &quot;AREASOLICITANTE&quot;];
+		value[&quot;EMAILSOLICITANTE&quot;] = (String)row[this.prefijo + &quot;EMAILSOLICITANTE&quot;];
+		value[&quot;CENTROCOSTOS&quot;] = (Integer)row[this.prefijo + &quot;CENTROCOSTOS&quot;];
+		value[&quot;GESTORENLACE&quot;] = (String)row[this.prefijo + &quot;GESTORENLACE&quot;];
+		value[&quot;EMAILENLACE&quot;] = (String)row[this.prefijo + &quot;EMAILENLACE&quot;];
+		value[&quot;TCO_ID&quot;] = (Integer)row[this.prefijo + &quot;TCO_ID&quot;];
+		value[&quot;DCO_ID&quot;] = (Integer)row[this.prefijo + &quot;DCO_ID&quot;];
+		value[&quot;CPR_ID&quot;] = (Integer)row[this.prefijo + &quot;CPR_ID&quot;];
+		value[&quot;LPR_ID&quot;] = (Integer)row[this.prefijo + &quot;LPR_ID&quot;];
+		value[&quot;SPR_ID&quot;] = (Integer)row[this.prefijo + &quot;SPR_ID&quot;];
+		value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		value[&quot;CENTROCOSTOSIMPCONTABLE&quot;] = (Integer)row[this.prefijo + &quot;CENTROCOSTOSIMPCONTABLE&quot;];
+		value[&quot;CUENTAIMPCONTABLE&quot;] = (Long)row[this.prefijo + &quot;CUENTAIMPCONTABLE&quot;];
+		value[&quot;ACTIVIDADIMPCONTABLE&quot;] = (Integer)row[this.prefijo + &quot;ACTIVIDADIMPCONTABLE&quot;];
+		value[&quot;PEP&quot;] = (String)row[this.prefijo + &quot;PEP&quot;];
+		value[&quot;ANULADA&quot;] = ((String)row[this.prefijo + &quot;ANULADA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ANULADA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;DUPLICADA&quot;] = ((String)row[this.prefijo + &quot;DUPLICADA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;DUPLICADA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;REACTIVADA&quot;] = ((String)row[this.prefijo + &quot;REACTIVADA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REACTIVADA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;FECHAENVIOENLACE&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOENLACE&quot;];
+		value[&quot;FECHAENVIOANALISIS&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOANALISIS&quot;];
+		value[&quot;FECHAPLANPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANPRECOMITE&quot;];
+		value[&quot;FECHAPLANCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANCOMITE&quot;];
+		value[&quot;FECHAREALPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAREALPRECOMITE&quot;];
+		value[&quot;FECHAREALCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAREALCOMITE&quot;];
+		value[&quot;FECHAPROXPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXPRECOMITE&quot;];
+		value[&quot;FECHAPROXCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXCOMITE&quot;];
+		value[&quot;REQUIERECOMPRAS&quot;] = ((String)row[this.prefijo + &quot;REQUIERECOMPRAS&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REQUIERECOMPRAS&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;REQUIEREINTERVENCION&quot;] = ((String)row[this.prefijo + &quot;REQUIEREINTERVENCION&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REQUIEREINTERVENCION&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;USUARIOALTA&quot;] = (String)row[this.prefijo + &quot;USUARIOALTA&quot;];
+		value[&quot;FECHAALTA&quot;] = (Time)row[this.prefijo + &quot;FECHAALTA&quot;];
+		value[&quot;USUARIOMODIFICACION&quot;] = (String)row[this.prefijo + &quot;USUARIOMODIFICACION&quot;];
+		value[&quot;FECHAMODIFICACION&quot;] = (Time)row[this.prefijo + &quot;FECHAMODIFICACION&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<arg name="vigencia" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  (arg.vigencia? &quot;WHERE &quot; + this.prefijo + &quot;VIGENCIA = &apos;A&apos; &quot; : &quot;&quot;) +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;ID&quot;;
+    				  
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value = {};
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;CCE_ID&quot;] = (Integer)row[this.prefijo + &quot;CCE_ID&quot;];
+		value[&quot;PCE_ID&quot;] = (Integer)row[this.prefijo + &quot;PCE_ID&quot;];
+		value[&quot;NROCESTA&quot;] = (Integer)row[this.prefijo + &quot;NROCESTA&quot;];
+		value[&quot;NROPEDIDO&quot;] = (Integer)row[this.prefijo + &quot;NROPEDIDO&quot;];
+		value[&quot;NROCESTAASOCPEDIDO&quot;] = (Integer)row[this.prefijo + &quot;NROCESTAASOCPEDIDO&quot;];
+		value[&quot;NROCESTAANULADA&quot;] = (Integer)row[this.prefijo + &quot;NROCESTAANULADA&quot;];
+		value[&quot;MOTIVOREEMPLAZO&quot;] = (String)row[this.prefijo + &quot;MOTIVOREEMPLAZO&quot;];
+		value[&quot;PERIODOFECHAINICIO&quot;] = (Time)row[this.prefijo + &quot;PERIODOFECHAINICIO&quot;];
+		value[&quot;PERIODOFECHAFIN&quot;] = (Time)row[this.prefijo + &quot;PERIODOFECHAFIN&quot;];
+		value[&quot;MONTOTOTALPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALPESOS&quot;];
+		value[&quot;MONTOTOTALDOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALDOLARES&quot;];
+		value[&quot;MONTOTOTALEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALEUROS&quot;];
+		value[&quot;MON_ID_MONTOTOTAL&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOTOTAL&quot;];
+    	value[&quot;MONTOTOTALOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALOTRO&quot;];
+		value[&quot;GESTORSOLICITANTE&quot;] = (String)row[this.prefijo + &quot;GESTORSOLICITANTE&quot;];
+		value[&quot;AREASOLICITANTE&quot;] = (String)row[this.prefijo + &quot;AREASOLICITANTE&quot;];
+		value[&quot;EMAILSOLICITANTE&quot;] = (String)row[this.prefijo + &quot;EMAILSOLICITANTE&quot;];
+		value[&quot;CENTROCOSTOS&quot;] = (Integer)row[this.prefijo + &quot;CENTROCOSTOS&quot;];
+		value[&quot;GESTORENLACE&quot;] = (String)row[this.prefijo + &quot;GESTORENLACE&quot;];
+		value[&quot;EMAILENLACE&quot;] = (String)row[this.prefijo + &quot;EMAILENLACE&quot;];
+		value[&quot;TCO_ID&quot;] = (Integer)row[this.prefijo + &quot;TCO_ID&quot;];
+		value[&quot;DCO_ID&quot;] = (Integer)row[this.prefijo + &quot;DCO_ID&quot;];
+		value[&quot;CPR_ID&quot;] = (Integer)row[this.prefijo + &quot;CPR_ID&quot;];
+		value[&quot;LPR_ID&quot;] = (Integer)row[this.prefijo + &quot;LPR_ID&quot;];
+		value[&quot;SPR_ID&quot;] = (Integer)row[this.prefijo + &quot;SPR_ID&quot;];
+		value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		value[&quot;CENTROCOSTOSIMPCONTABLE&quot;] = (Integer)row[this.prefijo + &quot;CENTROCOSTOSIMPCONTABLE&quot;];
+		value[&quot;CUENTAIMPCONTABLE&quot;] = (Long)row[this.prefijo + &quot;CUENTAIMPCONTABLE&quot;];
+		value[&quot;ACTIVIDADIMPCONTABLE&quot;] = (Integer)row[this.prefijo + &quot;ACTIVIDADIMPCONTABLE&quot;];
+		value[&quot;PEP&quot;] = (String)row[this.prefijo + &quot;PEP&quot;];
+		value[&quot;ANULADA&quot;] = ((String)row[this.prefijo + &quot;ANULADA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ANULADA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;DUPLICADA&quot;] = ((String)row[this.prefijo + &quot;DUPLICADA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;DUPLICADA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;REACTIVADA&quot;] = ((String)row[this.prefijo + &quot;REACTIVADA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REACTIVADA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;FECHAENVIOENLACE&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOENLACE&quot;];
+		value[&quot;FECHAENVIOANALISIS&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOANALISIS&quot;];
+		value[&quot;FECHAPLANPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANPRECOMITE&quot;];
+		value[&quot;FECHAPLANCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANCOMITE&quot;];
+		value[&quot;FECHAREALPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAREALPRECOMITE&quot;];
+		value[&quot;FECHAREALCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAREALCOMITE&quot;];
+		value[&quot;FECHAPROXPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXPRECOMITE&quot;];
+		value[&quot;FECHAPROXCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXCOMITE&quot;];
+		value[&quot;REQUIERECOMPRAS&quot;] = ((String)row[this.prefijo + &quot;REQUIERECOMPRAS&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REQUIERECOMPRAS&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;REQUIEREINTERVENCION&quot;] = ((String)row[this.prefijo + &quot;REQUIEREINTERVENCION&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REQUIEREINTERVENCION&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;USUARIOALTA&quot;] = (String)row[this.prefijo + &quot;USUARIOALTA&quot;];
+		value[&quot;FECHAALTA&quot;] = (String)row[this.prefijo + &quot;FECHAALTA&quot;];
+		value[&quot;USUARIOMODIFICACION&quot;] = (String)row[this.prefijo + &quot;USUARIOMODIFICACION&quot;];
+		value[&quot;FECHAMODIFICACION&quot;] = (Integer)row[this.prefijo + &quot;FECHAMODIFICACION&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;ID = ?&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { arg.id }))
+    {
+  		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;CCE_ID&quot;] = (Integer)row[this.prefijo + &quot;CCE_ID&quot;];
+		value[&quot;PCE_ID&quot;] = (Integer)row[this.prefijo + &quot;PCE_ID&quot;];
+		value[&quot;NROCESTA&quot;] = (Integer)row[this.prefijo + &quot;NROCESTA&quot;];
+		value[&quot;NROPEDIDO&quot;] = (Long)row[this.prefijo + &quot;NROPEDIDO&quot;];
+		value[&quot;NROCESTAASOCPEDIDO&quot;] = (Integer)row[this.prefijo + &quot;NROCESTAASOCPEDIDO&quot;];
+		value[&quot;NROCESTAANULADA&quot;] = (Integer)row[this.prefijo + &quot;NROCESTAANULADA&quot;];
+		value[&quot;MOTIVOREEMPLAZO&quot;] = (String)row[this.prefijo + &quot;MOTIVOREEMPLAZO&quot;];
+		value[&quot;PERIODOFECHAINICIO&quot;] = (Time)row[this.prefijo + &quot;PERIODOFECHAINICIO&quot;];
+		value[&quot;PERIODOFECHAFIN&quot;] = (Time)row[this.prefijo + &quot;PERIODOFECHAFIN&quot;];
+		value[&quot;MONTOTOTALPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALPESOS&quot;];
+		value[&quot;MONTOTOTALDOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALDOLARES&quot;];
+		value[&quot;MONTOTOTALEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALEUROS&quot;];
+		value[&quot;MON_ID_MONTOTOTAL&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOTOTAL&quot;];
+    	value[&quot;MONTOTOTALOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOTOTALOTRO&quot;];
+		value[&quot;GESTORSOLICITANTE&quot;] = (String)row[this.prefijo + &quot;GESTORSOLICITANTE&quot;];
+		value[&quot;AREASOLICITANTE&quot;] = (String)row[this.prefijo + &quot;AREASOLICITANTE&quot;];
+		value[&quot;EMAILSOLICITANTE&quot;] = (String)row[this.prefijo + &quot;EMAILSOLICITANTE&quot;];
+		value[&quot;CENTROCOSTOS&quot;] = (Integer)row[this.prefijo + &quot;CENTROCOSTOS&quot;];
+		value[&quot;GESTORENLACE&quot;] = (String)row[this.prefijo + &quot;GESTORENLACE&quot;];
+		value[&quot;EMAILENLACE&quot;] = (String)row[this.prefijo + &quot;EMAILENLACE&quot;];
+		value[&quot;TCO_ID&quot;] = (Integer)row[this.prefijo + &quot;TCO_ID&quot;];
+		value[&quot;DCO_ID&quot;] = (Integer)row[this.prefijo + &quot;DCO_ID&quot;];
+		value[&quot;CPR_ID&quot;] = (Integer)row[this.prefijo + &quot;CPR_ID&quot;];
+		value[&quot;LPR_ID&quot;] = (Integer)row[this.prefijo + &quot;LPR_ID&quot;];
+		value[&quot;SPR_ID&quot;] = (Integer)row[this.prefijo + &quot;SPR_ID&quot;];
+		value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		value[&quot;CENTROCOSTOSIMPCONTABLE&quot;] = (Integer)row[this.prefijo + &quot;CENTROCOSTOSIMPCONTABLE&quot;];
+		value[&quot;CUENTAIMPCONTABLE&quot;] = (Long)row[this.prefijo + &quot;CUENTAIMPCONTABLE&quot;];
+		value[&quot;ACTIVIDADIMPCONTABLE&quot;] = (Integer)row[this.prefijo + &quot;ACTIVIDADIMPCONTABLE&quot;];
+		value[&quot;PEP&quot;] = (String)row[this.prefijo + &quot;PEP&quot;];
+		value[&quot;ANULADA&quot;] = ((String)row[this.prefijo + &quot;ANULADA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ANULADA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;DUPLICADA&quot;] = ((String)row[this.prefijo + &quot;DUPLICADA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;DUPLICADA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;REACTIVADA&quot;] = ((String)row[this.prefijo + &quot;REACTIVADA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REACTIVADA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;FECHAENVIOENLACE&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOENLACE&quot;];
+		value[&quot;FECHAENVIOANALISIS&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOANALISIS&quot;];
+		value[&quot;FECHAPLANPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANPRECOMITE&quot;];
+		value[&quot;FECHAPLANCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANCOMITE&quot;];
+		value[&quot;FECHAREALPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAREALPRECOMITE&quot;];
+		value[&quot;FECHAREALCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAREALCOMITE&quot;];
+		value[&quot;FECHAPROXPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXPRECOMITE&quot;];
+		value[&quot;FECHAPROXCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXCOMITE&quot;];
+		value[&quot;REQUIERECOMPRAS&quot;] = ((String)row[this.prefijo + &quot;REQUIERECOMPRAS&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REQUIERECOMPRAS&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;REQUIEREINTERVENCION&quot;] = ((String)row[this.prefijo + &quot;REQUIEREINTERVENCION&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REQUIEREINTERVENCION&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;USUARIOALTA&quot;] = (String)row[this.prefijo + &quot;USUARIOALTA&quot;];
+		value[&quot;FECHAALTA&quot;] = (Time)row[this.prefijo + &quot;FECHAALTA&quot;];
+		value[&quot;USUARIOMODIFICACION&quot;] = (String)row[this.prefijo + &quot;USUARIOMODIFICACION&quot;];
+		value[&quot;FECHAMODIFICACION&quot;] = (Time)row[this.prefijo + &quot;FECHAMODIFICACION&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    } else {
+        respuesta.resultado = DATAERROR;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.id + &quot;\&quot; no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="idCce" description="" flags="in" type="Int"/>
+			<arg name="idPce" description="" flags="in" type="Int"/>
+			<arg name="nroCesta" description="" flags="in" type="Int"/>
+			<arg name="nroPedido" description="" flags="in" type="Int(64)"/>
+			<arg name="nroCestaAsocPedido" description="" flags="in" type="Int"/>
+			<arg name="nroCestaAnulada" description="" flags="in" type="Int"/>
+			<arg name="motivoReemplazo" description="" flags="in" type="String"/>
+			<arg name="periodoFechaInicio" description="" flags="in" type="Time"/>
+			<arg name="periodoFechaFin" description="" flags="in" type="Time"/>
+			<arg name="montoTotalPesos" description="" flags="in" type="Decimal"/>
+			<arg name="montoTotalDolares" description="" flags="in" type="Decimal"/>
+			<arg name="montoTotalEuros" description="" flags="in" type="Decimal"/>
+			<arg name="areaSolicitante" description="" flags="in" type="String"/>
+			<arg name="emailEnlace" description="" flags="in" type="String"/>
+			<arg name="idTco" description="" flags="in" type="Int"/>
+			<arg name="idDco" description="" flags="in" type="Int"/>
+			<arg name="idCpr" description="" flags="in" type="Int"/>
+			<arg name="idSpr" description="" flags="in" type="Int"/>
+			<arg name="descripcionNecesidad" description="" flags="in" type="String"/>
+			<arg name="centroCostosImpContable" description="" flags="in" type="Int"/>
+			<arg name="actividadImpContable" description="" flags="in" type="Int"/>
+			<arg name="pep" description="" flags="in" type="String"/>
+			<arg name="anulada" description="" flags="in" type="Bool"/>
+			<arg name="usuarioModificacion" description="" flags="in" type="String"/>
+			<arg name="usuarioAlta" description="" flags="in" type="String"/>
+			<arg name="emailSolicitante" description="" flags="in" type="String"/>
+			<arg name="centroCostos" description="" flags="in" type="Int"/>
+			<arg name="gestorEnlace" description="" flags="in" type="String"/>
+			<arg name="gestorSolicitante" description="" flags="in" type="String"/>
+			<arg name="fechaEnvioAnalisis" description="" flags="in" type="Time"/>
+			<arg name="montoTotalOM" description="" flags="in" type="Int"/>
+			<arg name="montoTotalOtro" description="" flags="in" type="Decimal"/>
+			<arg name="duplicada" description="" flags="in" type="Bool"/>
+			<arg name="reactivada" description="" flags="in" type="Bool"/>
+			<arg name="requiereCompras" description="" flags="in" type="Bool"/>
+			<arg name="requiereIntervencion" description="" flags="in" type="Bool"/>
+			<arg name="fechaPlanPreComite" description="" flags="in" type="Time"/>
+			<arg name="fechaPlanComite" description="" flags="in" type="Time"/>
+			<arg name="fechaRealPreComite" description="" flags="in" type="Time"/>
+			<arg name="fechaRealComite" description="" flags="in" type="Time"/>
+			<arg name="fechaEnvioEnlace" description="" flags="in" type="Time"/>
+			<arg name="idLpr" description="" flags="in" type="Int"/>
+			<arg name="cuentaImpContable" description="" flags="in" type="Int(64)"/>
+			<arg name="fechaProxPreComite" description="" flags="in" type="Time"/>
+			<arg name="fechaProxComite" description="" flags="in" type="Time"/>
+			<variables>
+				<variable name="resultId" type="Iterator(Any[Any])"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+int idSolicitud;
+
+try {
+	String sentence = &quot;&quot;;
+	String sentenceId = &quot;&quot;;
+	
+	if(arg.id&gt;0){
+		sentence = &quot;UPDATE &quot; + this.tabla + &quot; SET &quot; +
+					this.prefijo + &quot;CCE_ID = ?, &quot; +
+					this.prefijo + &quot;PCE_ID = ?, &quot; +
+					this.prefijo + &quot;NROCESTA = ?, &quot; +
+					this.prefijo + &quot;NROPEDIDO = ?, &quot; +
+					this.prefijo + &quot;NROCESTAASOCPEDIDO = ?, &quot; +
+					this.prefijo + &quot;NROCESTAANULADA = ?, &quot; +
+					this.prefijo + &quot;MOTIVOREEMPLAZO = ?, &quot; +
+					this.prefijo + &quot;PERIODOFECHAINICIO = ?, &quot; +
+					this.prefijo + &quot;PERIODOFECHAFIN = ?, &quot; +
+					this.prefijo + &quot;MONTOTOTALPESOS = ?, &quot; +
+					this.prefijo + &quot;MONTOTOTALDOLARES = ?, &quot; +
+					this.prefijo + &quot;MONTOTOTALEUROS = ?, &quot; +
+					this.prefijo + &quot;MON_ID_MONTOTOTAL = ?, &quot; + 
+    				this.prefijo + &quot;MONTOTOTALOTRO = ?, &quot; +
+					this.prefijo + &quot;GESTORSOLICITANTE = ?, &quot; +
+					this.prefijo + &quot;AREASOLICITANTE  = ?, &quot; +
+					this.prefijo + &quot;EMAILSOLICITANTE = ?, &quot; +
+					this.prefijo + &quot;CENTROCOSTOS = ?, &quot; +
+					this.prefijo + &quot;GESTORENLACE = ?, &quot; +
+					this.prefijo + &quot;EMAILENLACE = ?, &quot; +
+					this.prefijo + &quot;TCO_ID = ?, &quot; +
+					this.prefijo + &quot;DCO_ID = ?, &quot; +
+					this.prefijo + &quot;CPR_ID = ?, &quot; +
+					this.prefijo + &quot;LPR_ID = ?, &quot; +
+					this.prefijo + &quot;SPR_ID = ?, &quot; +
+					this.prefijo + &quot;DESCRIPCIONNECESIDAD = ?, &quot; +
+					this.prefijo + &quot;CENTROCOSTOSIMPCONTABLE = ?, &quot; +
+					this.prefijo + &quot;CUENTAIMPCONTABLE = ?, &quot; +
+					this.prefijo + &quot;ACTIVIDADIMPCONTABLE = ?, &quot; +
+					this.prefijo + &quot;PEP = ?, &quot; +
+					this.prefijo + &quot;ANULADA = ?, &quot; +
+					this.prefijo + &quot;DUPLICADA = ?, &quot; + 
+					this.prefijo + &quot;REACTIVADA = ?, &quot; +
+					this.prefijo + &quot;FECHAENVIOENLACE = ?, &quot; +
+					this.prefijo + &quot;FECHAENVIOANALISIS = ?, &quot; +
+					this.prefijo + &quot;FECHAPLANPRECOMITE = ?, &quot; +
+					this.prefijo + &quot;FECHAPLANCOMITE = ?, &quot; +
+					this.prefijo + &quot;FECHAREALPRECOMITE = ?, &quot; +
+					this.prefijo + &quot;FECHAREALCOMITE = ?, &quot; +
+					this.prefijo + &quot;FECHAPROXPRECOMITE = ?, &quot; +
+					this.prefijo + &quot;FECHAPROXCOMITE = ?, &quot; +
+					this.prefijo + &quot;REQUIERECOMPRAS = ?, &quot; +
+					this.prefijo + &quot;REQUIEREINTERVENCION = ?, &quot; +
+					this.prefijo + &quot;FECHAMODIFICACION = ?, &quot; +
+					this.prefijo + &quot;USUARIOMODIFICACION = ? &quot; +
+					&quot;WHERE &quot; + this.prefijo + &quot;ID = ?&quot;;	
+	
+	} else {
+		sentence = &quot;INSERT INTO &quot; + this.tabla + &quot; (&quot; +
+						this.prefijo + &quot;CCE_ID, &quot; +
+						this.prefijo + &quot;PCE_ID, &quot; +
+						this.prefijo + &quot;NROCESTA, &quot; +
+						this.prefijo + &quot;NROPEDIDO, &quot; +
+						this.prefijo + &quot;NROCESTAASOCPEDIDO, &quot; +
+						this.prefijo + &quot;NROCESTAANULADA, &quot; +
+						this.prefijo + &quot;MOTIVOREEMPLAZO, &quot; +
+						this.prefijo + &quot;PERIODOFECHAINICIO, &quot; +
+						this.prefijo + &quot;PERIODOFECHAFIN, &quot; +
+						this.prefijo + &quot;MONTOTOTALPESOS, &quot; +
+						this.prefijo + &quot;MONTOTOTALDOLARES, &quot; +
+						this.prefijo + &quot;MONTOTOTALEUROS, &quot; +
+						this.prefijo + &quot;MON_ID_MONTOTOTAL, &quot; +
+    					this.prefijo + &quot;MONTOTOTALOTRO, &quot; + 
+						this.prefijo + &quot;GESTORSOLICITANTE, &quot; +
+						this.prefijo + &quot;AREASOLICITANTE, &quot; +
+						this.prefijo + &quot;EMAILSOLICITANTE, &quot; +
+						this.prefijo + &quot;CENTROCOSTOS, &quot; +
+						this.prefijo + &quot;GESTORENLACE, &quot; +
+						this.prefijo + &quot;EMAILENLACE, &quot; +
+						this.prefijo + &quot;TCO_ID, &quot; +
+						this.prefijo + &quot;DCO_ID, &quot; +
+						this.prefijo + &quot;CPR_ID, &quot; +
+						this.prefijo + &quot;LPR_ID, &quot; +
+						this.prefijo + &quot;SPR_ID, &quot; +
+						this.prefijo + &quot;DESCRIPCIONNECESIDAD, &quot; +
+						this.prefijo + &quot;CENTROCOSTOSIMPCONTABLE, &quot; +
+						this.prefijo + &quot;CUENTAIMPCONTABLE, &quot; +
+						this.prefijo + &quot;ACTIVIDADIMPCONTABLE, &quot; +
+						this.prefijo + &quot;PEP, &quot; +
+						this.prefijo + &quot;ANULADA, &quot; +
+						this.prefijo + &quot;DUPLICADA, &quot; + 
+						this.prefijo + &quot;REACTIVADA, &quot; +
+						this.prefijo + &quot;FECHAENVIOENLACE, &quot; +
+						this.prefijo + &quot;FECHAENVIOANALISIS, &quot; +
+						this.prefijo + &quot;FECHAPLANPRECOMITE, &quot; +
+						this.prefijo + &quot;FECHAPLANCOMITE, &quot; +
+						this.prefijo + &quot;FECHAREALPRECOMITE, &quot; +
+						this.prefijo + &quot;FECHAREALCOMITE, &quot; +
+						this.prefijo + &quot;FECHAPROXPRECOMITE, &quot; +
+						this.prefijo + &quot;FECHAPROXCOMITE, &quot; +
+						this.prefijo + &quot;REQUIERECOMPRAS, &quot; +
+						this.prefijo + &quot;REQUIEREINTERVENCION, &quot; +
+						this.prefijo + &quot;FECHAALTA, &quot; +
+						this.prefijo + &quot;USUARIOALTA, &quot; +
+						this.prefijo + &quot;ID) &quot; +														
+					&quot;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)&quot;;
+	}
+	
+	Any[] inParameters = {};
+	inParameters[] = arg.idCce;
+	inParameters[] = arg.idPce;
+	inParameters[] = arg.nroCesta;
+	inParameters[] = arg.nroPedido;
+	inParameters[] = arg.nroCestaAsocPedido;
+	inParameters[] = arg.nroCestaAnulada;
+	inParameters[] = arg.motivoReemplazo;
+	inParameters[] = arg.periodoFechaInicio;
+	inParameters[] = arg.periodoFechaFin;
+	inParameters[] = arg.montoTotalPesos;
+	inParameters[] = arg.montoTotalDolares;
+	inParameters[] = arg.montoTotalEuros;
+	inParameters[] = arg.montoTotalOM;
+	inParameters[] = arg.montoTotalOtro;
+	inParameters[] = arg.gestorSolicitante;
+	inParameters[] = arg.areaSolicitante;
+	inParameters[] = arg.emailSolicitante;
+	inParameters[] = arg.centroCostos;
+	inParameters[] = arg.gestorEnlace;
+	inParameters[] = arg.emailEnlace;
+	inParameters[] = arg.idTco;
+	inParameters[] = arg.idDco;
+	inParameters[] = arg.idCpr;
+	inParameters[] = arg.idLpr;
+	inParameters[] = arg.idSpr;
+	inParameters[] = arg.descripcionNecesidad;
+	inParameters[] = arg.centroCostosImpContable;
+	inParameters[] = arg.cuentaImpContable;
+	inParameters[] = arg.actividadImpContable;
+	inParameters[] = arg.pep;
+	inParameters[] = arg.anulada==null?null:arg.anulada?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.duplicada==null?null:arg.duplicada?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.reactivada==null?null:arg.reactivada?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.fechaEnvioEnlace;
+	inParameters[] = arg.fechaEnvioAnalisis;
+	inParameters[] = arg.fechaPlanPreComite;
+	inParameters[] = arg.fechaPlanComite;
+	inParameters[] = arg.fechaRealPreComite;
+	inParameters[] = arg.fechaRealComite;
+	inParameters[] = arg.fechaProxPreComite;
+	inParameters[] = arg.fechaProxComite;
+	inParameters[] = arg.requiereCompras==null?null:arg.requiereCompras?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.requiereIntervencion==null?null:arg.requiereIntervencion?&apos;S&apos;:&apos;N&apos;;	
+	if(arg.id&gt;0){
+		inParameters[] = Time(&apos;now&apos;.format(&quot;yyyyMMdd&quot;));
+		inParameters[] = arg.usuarioModificacion;	
+	}else{
+		inParameters[] = Time(&apos;now&apos;.format(&quot;yyyyMMdd&quot;));
+		inParameters[] = arg.usuarioAlta;
+	}
+	if(arg.id&gt;0){
+		inParameters[] = arg.id;
+		idSolicitud = arg.id;
+	}else{
+		sentenceId = &quot;SELECT SEQ_TPC_SOLICITUD_SOL_ID.NEXTVAL FROM DUAL&quot;; 
+		resultId = (DynamicSQL).executeQuery(sentence : sentenceId, implname : implname);
+		foreach (element in resultId) {
+			inParameters[] = (Long)element[1];
+		    idSolicitud = (Long)element[1];
+
+		}
+	}
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = idSolicitud;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

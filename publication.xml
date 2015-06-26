@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101276"?>
+<publication viewsGenerationType="UNIFIED_INBOX" inboxPresentation="default_instances">
+	<deploy name="ProcesoDeTableroDePedidosYCompras" variation="Default" ou=""/>
+	<deploy name="ProcesoDeRecomendacionGestionDeCompras" variation="Default" ou=""/>
+</publication>

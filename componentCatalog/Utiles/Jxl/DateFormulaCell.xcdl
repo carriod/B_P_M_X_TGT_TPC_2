@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DateFormulaCell" description="DateFormulaCell" versionID="Version 6.5 " flags="abstract interface" signature="jxl.DateFormulaCell" type="java">
+	<inherit class="Utiles.Jxl.DateCell" flags=""/>
+	<inherit class="Utiles.Jxl.FormulaCell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.DateFormulaCell"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.DateFormulaCell"/>
+	<attributes/>
+	<methods/>
+</component>

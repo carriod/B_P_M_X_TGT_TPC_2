@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Boolean" description="Boolean" versionID="Version 6.5 " flags="" signature="jxl.write.Boolean" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.BooleanRecord" flags="public"/>
+	<inherit class="Utiles.Jxl.Write.WritableCell" flags=""/>
+	<inherit class="Utiles.Jxl.BooleanCell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.Boolean"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.Boolean"/>
+	<attributes/>
+	<methods>
+		<method name="Boolean" flags="static" signature="Kjxl.write.Boolean(Ljxl.BooleanCell;)">
+			<arg name="nc" description="" flags="in external" type="Utiles.Jxl.BooleanCell" javaType="jxl.BooleanCell"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Boolean"/>
+		</method>
+		<method name="Boolean" flags="static" signature="Kjxl.write.Boolean(IIZ)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="val" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Boolean"/>
+		</method>
+		<method name="Boolean" flags="static" signature="Kjxl.write.Boolean(IIZLjxl.format.CellFormat;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="val" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="st" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Boolean"/>
+		</method>
+		<method name="copyTo" description="copyTo" flags="external" signature="McopyTo(II)Ljxl.write.WritableCell;">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+		</method>
+		<method name="setValue" description="setValue" flags="external hidden" signature="MsetValue(Z)V">
+			<arg name="val" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

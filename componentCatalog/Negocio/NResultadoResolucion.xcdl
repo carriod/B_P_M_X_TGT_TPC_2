@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="NResultadoResolucion" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="codigo" flags="hassetter hasgetter public" position="6"/>
+		<String name="descripcion" flags="hassetter hasgetter public" position="5"/>
+		<Time scale="2" precision="2" name="fechaAlta" flags="hassetter hasgetter public" position="4"/>
+		<Time scale="2" precision="2" name="fechaModificacion" flags="hassetter hasgetter public" position="3"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="2"/>
+		<String name="nombre" flags="hassetter hasgetter public" position="1"/>
+		<String name="usuarioAlta" flags="hassetter hasgetter public"/>
+		<String name="usuarioModificacion" flags="hassetter hasgetter public"/>
+		<Bool name="vigencia" flags="hassetter hasgetter public includeincheck"/>
+	</attributes>
+	<methods>
+		<method name="NResultadoResolucion" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NResultadoResolucion"/>
+			<sourceCode language="Java1"/>
+		</method>
+	</methods>
+</component>

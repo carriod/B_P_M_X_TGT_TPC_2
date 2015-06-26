@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<component name="Documentos" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Binary name="binario" flags="hassetter hasgetter public" position="3"/>
+		<String name="extension" flags="hassetter hasgetter public" position="4"/>
+		<String name="labelDocumento" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="Documentos" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormArchivos.Documentos"/>
+		</method>
+	</methods>
+</component>

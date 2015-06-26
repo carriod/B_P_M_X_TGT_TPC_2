@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRDataSource" description="JRDataSource" versionID="Version 6.5 " flags="abstract interface" signature="net.sf.jasperreports.engine.JRDataSource" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.JRDataSource"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.JRDataSource"/>
+	<attributes/>
+	<methods>
+		<method name="getFieldValue" description="getFieldValue" flags="abstract external" signature="MgetFieldValue(Lnet.sf.jasperreports.engine.JRField;)Ljava.lang.Object;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}" javaType="net.sf.jasperreports.engine.JRField"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="next" description="next" flags="abstract external" signature="Mnext()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+	</methods>
+</component>

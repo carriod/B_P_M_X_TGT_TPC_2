@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="CountryCode" description="CountryCode" versionID="Version 6.5 " flags="" signature="jxl.biff.CountryCode" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.CountryCode"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.CountryCode"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="BELGIUM" flags="hasgetter attribute static external final" position="7" javaType="jxl.biff.CountryCode" writeSignature="ABELGIUM;Ljxl.biff.CountryCode;" readSignature="ABELGIUM;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="CANADA" flags="hasgetter attribute static external final" position="4" javaType="jxl.biff.CountryCode" writeSignature="ACANADA;Ljxl.biff.CountryCode;" readSignature="ACANADA;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="CHINA" flags="hasgetter attribute static external final" position="18" javaType="jxl.biff.CountryCode" writeSignature="ACHINA;Ljxl.biff.CountryCode;" readSignature="ACHINA;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="DENMARK" flags="hasgetter attribute static external final" position="13" javaType="jxl.biff.CountryCode" writeSignature="ADENMARK;Ljxl.biff.CountryCode;" readSignature="ADENMARK;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="FRANCE" flags="hasgetter attribute static external final" position="8" javaType="jxl.biff.CountryCode" writeSignature="AFRANCE;Ljxl.biff.CountryCode;" readSignature="AFRANCE;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="GERMANY" flags="hasgetter attribute static external final" position="16" javaType="jxl.biff.CountryCode" writeSignature="AGERMANY;Ljxl.biff.CountryCode;" readSignature="AGERMANY;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="GREECE" flags="hasgetter attribute static external final" position="5" javaType="jxl.biff.CountryCode" writeSignature="AGREECE;Ljxl.biff.CountryCode;" readSignature="AGREECE;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="INDIA" flags="hasgetter attribute static external final" position="19" javaType="jxl.biff.CountryCode" writeSignature="AINDIA;Ljxl.biff.CountryCode;" readSignature="AINDIA;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="ITALY" flags="hasgetter attribute static external final" position="10" javaType="jxl.biff.CountryCode" writeSignature="AITALY;Ljxl.biff.CountryCode;" readSignature="AITALY;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="NETHERLANDS" flags="hasgetter attribute static external final" position="6" javaType="jxl.biff.CountryCode" writeSignature="ANETHERLANDS;Ljxl.biff.CountryCode;" readSignature="ANETHERLANDS;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="NORWAY" flags="hasgetter attribute static external final" position="15" javaType="jxl.biff.CountryCode" writeSignature="ANORWAY;Ljxl.biff.CountryCode;" readSignature="ANORWAY;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="PHILIPPINES" flags="hasgetter attribute static external final" position="17" javaType="jxl.biff.CountryCode" writeSignature="APHILIPPINES;Ljxl.biff.CountryCode;" readSignature="APHILIPPINES;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="SPAIN" flags="hasgetter attribute static external final" position="9" javaType="jxl.biff.CountryCode" writeSignature="ASPAIN;Ljxl.biff.CountryCode;" readSignature="ASPAIN;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="SWEDEN" flags="hasgetter attribute static external final" position="14" javaType="jxl.biff.CountryCode" writeSignature="ASWEDEN;Ljxl.biff.CountryCode;" readSignature="ASWEDEN;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="SWITZERLAND" flags="hasgetter attribute static external final" position="11" javaType="jxl.biff.CountryCode" writeSignature="ASWITZERLAND;Ljxl.biff.CountryCode;" readSignature="ASWITZERLAND;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="UK" flags="hasgetter attribute static external final" position="12" javaType="jxl.biff.CountryCode" writeSignature="AUK;Ljxl.biff.CountryCode;" readSignature="AUK;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="UNKNOWN" flags="hasgetter attribute static external final" position="20" javaType="jxl.biff.CountryCode" writeSignature="AUNKNOWN;Ljxl.biff.CountryCode;" readSignature="AUNKNOWN;Ljxl.biff.CountryCode;"/>
+		<object type="Utiles.Jxl.Biff.CountryCode" name="USA" flags="hasgetter attribute static external final" position="3" javaType="jxl.biff.CountryCode" writeSignature="AUSA;Ljxl.biff.CountryCode;" readSignature="AUSA;Ljxl.biff.CountryCode;"/>
+		<String name="code" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetCode()Ljava.lang.String;"/>
+		<Int length="32" name="value" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetValue()I"/>
+	</attributes>
+	<methods>
+		<method name="createArbitraryCode" description="createArbitraryCode" flags="static external" signature="McreateArbitraryCode(I)Ljxl.biff.CountryCode;">
+			<arg name="i" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.CountryCode" javaType="jxl.biff.CountryCode"/>
+		</method>
+		<method name="getCode" description="getCode" flags="external hidden" signature="MgetCode()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getCountryCode" description="getCountryCode" flags="static external" signature="MgetCountryCode(Ljava.lang.String;)Ljxl.biff.CountryCode;">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.CountryCode" javaType="jxl.biff.CountryCode"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

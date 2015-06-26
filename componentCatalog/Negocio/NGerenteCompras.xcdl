@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NGerenteCompras" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Time scale="2" precision="2" name="fechaAlta" flags="hassetter hasgetter public" position="6"/>
+		<Time scale="2" precision="2" name="fechaModificacion" flags="hassetter hasgetter public includeincheck" position="7"/>
+		<String name="gerenteCompras" flags="hassetter hasgetter public" position="2"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="1"/>
+		<Int length="32" name="idLineaProducto" flags="hassetter hasgetter public" position="8"/>
+		<object type="Negocio.NLineaProducto" name="lineaProducto" flags="hassetter hasgetter public" position="3"/>
+		<String length="50" name="usuarioAlta" flags="hassetter hasgetter public includeincheck" position="4"/>
+		<String length="50" name="usuarioModificacion" flags="hassetter hasgetter public" position="5"/>
+	</attributes>
+	<methods>
+		<method name="NGerenteCompras" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NGerenteCompras"/>
+			<sourceCode language="Java1"/>
+		</method>
+	</methods>
+</component>

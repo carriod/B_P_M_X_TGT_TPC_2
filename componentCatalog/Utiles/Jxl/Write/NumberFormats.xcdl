@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="NumberFormats" description="NumberFormats" versionID="Version 6.5 " flags="" signature="jxl.write.NumberFormats" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.NumberFormats"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.NumberFormats"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="ACCOUNTING_FLOAT" flags="hasgetter attribute static external final" position="8" javaType="jxl.biff.DisplayFormat" writeSignature="AACCOUNTING_FLOAT;Ljxl.biff.DisplayFormat;" readSignature="AACCOUNTING_FLOAT;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="ACCOUNTING_INTEGER" flags="hasgetter attribute static external final" position="6" javaType="jxl.biff.DisplayFormat" writeSignature="AACCOUNTING_INTEGER;Ljxl.biff.DisplayFormat;" readSignature="AACCOUNTING_INTEGER;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="ACCOUNTING_RED_FLOAT" flags="hasgetter attribute static external final" position="9" javaType="jxl.biff.DisplayFormat" writeSignature="AACCOUNTING_RED_FLOAT;Ljxl.biff.DisplayFormat;" readSignature="AACCOUNTING_RED_FLOAT;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="ACCOUNTING_RED_INTEGER" flags="hasgetter attribute static external final" position="7" javaType="jxl.biff.DisplayFormat" writeSignature="AACCOUNTING_RED_INTEGER;Ljxl.biff.DisplayFormat;" readSignature="AACCOUNTING_RED_INTEGER;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="DEFAULT" flags="hasgetter attribute static external final" position="1" javaType="jxl.biff.DisplayFormat" writeSignature="ADEFAULT;Ljxl.biff.DisplayFormat;" readSignature="ADEFAULT;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="EXPONENTIAL" flags="hasgetter attribute static external final" position="12" javaType="jxl.biff.DisplayFormat" writeSignature="AEXPONENTIAL;Ljxl.biff.DisplayFormat;" readSignature="AEXPONENTIAL;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FLOAT" flags="hasgetter attribute static external final" position="3" javaType="jxl.biff.DisplayFormat" writeSignature="AFLOAT;Ljxl.biff.DisplayFormat;" readSignature="AFLOAT;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT1" flags="hasgetter attribute static external final" position="13" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT1;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT1;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT10" flags="hasgetter attribute static external final" position="22" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT10;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT10;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT2" flags="hasgetter attribute static external final" position="14" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT2;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT2;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT3" flags="hasgetter attribute static external final" position="15" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT3;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT3;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT4" flags="hasgetter attribute static external final" position="16" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT4;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT4;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT5" flags="hasgetter attribute static external final" position="17" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT5;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT5;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT6" flags="hasgetter attribute static external final" position="18" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT6;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT6;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT7" flags="hasgetter attribute static external final" position="19" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT7;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT7;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT8" flags="hasgetter attribute static external final" position="20" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT8;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT8;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT9" flags="hasgetter attribute static external final" position="21" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT9;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT9;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="INTEGER" flags="hasgetter attribute static external final" position="2" javaType="jxl.biff.DisplayFormat" writeSignature="AINTEGER;Ljxl.biff.DisplayFormat;" readSignature="AINTEGER;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="PERCENT_FLOAT" flags="hasgetter attribute static external final" position="11" javaType="jxl.biff.DisplayFormat" writeSignature="APERCENT_FLOAT;Ljxl.biff.DisplayFormat;" readSignature="APERCENT_FLOAT;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="PERCENT_INTEGER" flags="hasgetter attribute static external final" position="10" javaType="jxl.biff.DisplayFormat" writeSignature="APERCENT_INTEGER;Ljxl.biff.DisplayFormat;" readSignature="APERCENT_INTEGER;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="TEXT" flags="hasgetter attribute static external final" position="23" javaType="jxl.biff.DisplayFormat" writeSignature="ATEXT;Ljxl.biff.DisplayFormat;" readSignature="ATEXT;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="THOUSANDS_FLOAT" flags="hasgetter attribute static external final" position="5" javaType="jxl.biff.DisplayFormat" writeSignature="ATHOUSANDS_FLOAT;Ljxl.biff.DisplayFormat;" readSignature="ATHOUSANDS_FLOAT;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="THOUSANDS_INTEGER" flags="hasgetter attribute static external final" position="4" javaType="jxl.biff.DisplayFormat" writeSignature="ATHOUSANDS_INTEGER;Ljxl.biff.DisplayFormat;" readSignature="ATHOUSANDS_INTEGER;Ljxl.biff.DisplayFormat;"/>
+	</attributes>
+	<methods>
+		<method name="NumberFormats" flags="static hidden" signature="Kjxl.write.NumberFormats()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.NumberFormats"/>
+		</method>
+	</methods>
+</component>

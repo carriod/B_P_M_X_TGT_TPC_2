@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Assert" description="Assert" versionID="Version 6.5 " flags="" signature="jxl.common.Assert" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.common.Assert"/>
+	<objectProperty name="package" value="jxl.common"/>
+	<objectProperty name="typeId" value="jxl.common.Assert"/>
+	<attributes/>
+	<methods>
+		<method name="Assert" flags="static hidden" signature="Kjxl.common.Assert()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Common.Assert"/>
+		</method>
+		<method name="verify" description="verify" flags="static external" signature="Mverify(Z)V">
+			<arg name="condition" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="verify" description="verify" flags="static external" signature="Mverify(ZLjava.lang.String;)V">
+			<arg name="condition" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="message" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

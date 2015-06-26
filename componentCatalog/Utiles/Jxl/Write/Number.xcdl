@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Number" description="Number" versionID="Version 6.5 " flags="" signature="jxl.write.Number" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.NumberRecord" flags="public"/>
+	<inherit class="Utiles.Jxl.Write.WritableCell" flags=""/>
+	<inherit class="Utiles.Jxl.NumberCell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.Number"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.Number"/>
+	<attributes/>
+	<methods>
+		<method name="Number" flags="static" signature="Kjxl.write.Number(Ljxl.NumberCell;)">
+			<arg name="nc" description="" flags="in external" type="Utiles.Jxl.NumberCell" javaType="jxl.NumberCell"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Number"/>
+		</method>
+		<method name="Number" flags="static" signature="Kjxl.write.Number(IID)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="val" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Number"/>
+		</method>
+		<method name="Number" flags="static" signature="Kjxl.write.Number(IIDLjxl.format.CellFormat;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="val" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="st" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Number"/>
+		</method>
+		<method name="copyTo" description="copyTo" flags="external" signature="McopyTo(II)Ljxl.write.WritableCell;">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+		</method>
+		<method name="setValue" description="setValue" flags="external hidden" signature="MsetValue(D)V">
+			<arg name="val" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+	</methods>
+</component>

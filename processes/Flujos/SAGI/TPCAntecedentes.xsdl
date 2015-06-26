@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<xpdl:Package Name="ALBPMPackage-TPCAntecedentes" Id="TPCAntecedentes" xmlns:albpm="http://www.albpm.com/2007/albpm.XPDL2"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:xpdl="http://www.wfmc.org/2004/XPDL2.0alpha" >
+    <xpdl:PackageHeader>
+        <xpdl:XPDLVersion>
+            2.0</xpdl:XPDLVersion>
+        <xpdl:Vendor>
+            BEA Aqualogic BPM</xpdl:Vendor>
+        <xpdl:Created>
+            Jan 14, 2014 4:15:43 PM</xpdl:Created>
+        <xpdl:VendorExtensions>
+            <xpdl:VendorExtension ToolId="ALBPM" schemaLocation="http://www.albpm.com/2007/albpm.XPDL2 file:ALBPM_XPDL.xsd"/>
+        </xpdl:VendorExtensions>
+    </xpdl:PackageHeader>
+    <xpdl:ConformanceClass GraphConformance="NON_BLOCKED"/>
+    <xpdl:Pools>
+        <xpdl:Pool Id="ALBPMPool" BoundaryVisible="false" Orientation="VERTICAL">
+            <xpdl:Lanes>
+                <xpdl:Lane Name="AutomaticHandler" Id="AutomaticHandler">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" Width="200.0" IsVisible="false">
+                            <xpdl:Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:BooleanFeature name="virtual" value="true"/>
+                            <albpm:StringFeature name="paramVar" value=""/>
+                            <albpm:BooleanFeature name="parametric" value="false"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationLabels>
+                                <albpm:LocalizedLabel language="es" label="AutomaticHandler"/>
+                            </albpm:LocalizationLabels>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="en">
+                                    AutomaticHandler</albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Lane>
+            </xpdl:Lanes>
+        </xpdl:Pool>
+    </xpdl:Pools>
+    <xpdl:WorkflowProcesses>
+        <xpdl:WorkflowProcess Id="TPCAntecedentes" Name="TPCAntecedentes" DefaultStartActivityId="Begin">
+            <xpdl:ProcessHeader/>
+            <xpdl:RedefinableHeader>
+                <xpdl:Author>
+                    BPMX</xpdl:Author>
+                <xpdl:Version>
+                    0</xpdl:Version>
+            </xpdl:RedefinableHeader>
+            <xpdl:Participants>
+                <xpdl:Participant Id="Papi" Name="Papi">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAdministradorSAGI" Name="TPC - Administrador SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAnalistaCdG" Name="TPC - Analista CdG">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAnalistaComite" Name="TPC - Analista Comite">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCCompradorGC" Name="TPC - Comprador GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCConsultasSAGI" Name="TPC - Consultas SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCControllerGC" Name="TPC - Controller GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGerenteCompras" Name="TPC - Gerente Compras">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGestionErrores" Name="TPC - Gestion Errores">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGestorEnlace" Name="TPC - Gestor Enlace">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCIntervencionGC" Name="TPC - Intervencion GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCJefeCompras" Name="TPC - Jefe Compras">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCSolicitanteSAGI" Name="TPC - Solicitante SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCSupervisorCdG" Name="TPC - Supervisor CdG">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="solicitante" Name="solicitante">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        solicitante</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="papiuser" Name="papiuser">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        papiuser</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gestion" Name="gestion">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gestion</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="analistaCDG" Name="analistaCDG">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        analistaCDG</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="intervencion" Name="intervencion">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        intervencion</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="jefe" Name="jefe">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        jefe</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="supervisor" Name="supervisor">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        supervisor</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="controller" Name="controller">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        controller</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gestor" Name="gestor">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gestor</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="consultas" Name="consultas">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        consultas</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="comprador" Name="comprador">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        comprador</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="analistaComite" Name="analistaComite">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        analistaComite</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gerente" Name="gerente">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gerente</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="admin" Name="admin">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        admin</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="test" Name="test">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        test</xpdl:Description>
+                </xpdl:Participant>
+            </xpdl:Participants>
+            <xpdl:Applications>
+                <xpdl:Application Id="init" Name="init">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+                <xpdl:Application Id="salida" Name="salida">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+            </xpdl:Applications>
+            <xpdl:ActivitySets/>
+            <xpdl:Activities>
+                <xpdl:Activity Name="Begin" Id="Begin">
+                    <xpdl:Event>
+                        <xpdl:StartEvent Trigger="None"/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="100.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="BEGIN"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:StringFeature name="targetForNonCreatedInstances" value="DO_NOT_CREATE"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="BeginIn" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Inicio"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="salida" Id="salida">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="salida"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="550.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="AUTOMATIC"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="enableLoop" value="false"/>
+                                <albpm:BooleanFeature name="before" value="true"/>
+                                <albpm:StringFeature name="condition" value=""/>
+                                <albpm:StringFeature name="codeLanguage" value="Fuego"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="salida" type="METHOD">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="true"/>
+                                        <albpm:StringFeature name="method" value="salida"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="salida"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="salida"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Antecedentes" Id="Antecedentes">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="400.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="INTERACTIVE_COMPONENT_CALL"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="userSelectsTransition" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="Antecedentes" type="COMPONENT">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="method" value="antecedentes"/>
+                                        <albpm:StringFeature name="component" value="Formulario.FormAntecedentes"/>
+                                        <albpm:StringFeature name="selectedPresentation" value="Antecedentes"/>
+                                        <albpm:StringFeature name="instanceVariable" value="form"/>
+                                        <albpm:BooleanFeature name="presentationDisplay" value="false"/>
+                                        <albpm:StringFeature name="timeout" value="&apos;5m&apos;"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="AntecedentesIn" type="OUT" language="Fuego">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="titulo" type="String"/>
+                                                <albpm:Argument name="fechaFin" type="Time"/>
+                                                <albpm:Argument name="solicitud" type="Negocio.NSolicitud"/>
+                                                <albpm:Argument name="listaTipoCesta" type="Int"/>
+                                                <albpm:Argument name="cargaOK" type="Bool"/>
+                                                <albpm:Argument name="tieneAntecedentes" type="Bool"/>
+                                                <albpm:Argument name="errores" type="String[]"/>
+                                                <albpm:Argument name="fechaInicio" type="Time"/>
+                                                <albpm:Argument name="editable" type="Bool"/>
+                                                <albpm:Argument name="listaAntecedentes" type="Negocio.NListaAntecedentes"/>
+                                                <albpm:Argument name="scMonedaOtro" type="Int"/>
+                                                <albpm:Argument name="maMonedaOtro" type="Int"/>
+                                            </albpm:Arguments>
+                                        </albpm:ArgumentMapping>
+                                        <albpm:ArgumentMapping name="AntecedentesOut" type="IN" language="Fuego"/>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Antecedentes"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Antecedentes"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="init" Id="init">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="init"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="250.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="AUTOMATIC"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="enableLoop" value="false"/>
+                                <albpm:BooleanFeature name="before" value="true"/>
+                                <albpm:StringFeature name="condition" value=""/>
+                                <albpm:StringFeature name="codeLanguage" value="Fuego"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="init" type="METHOD">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="true"/>
+                                        <albpm:StringFeature name="method" value="init"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="init"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="init"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="End" Id="End">
+                    <xpdl:Event>
+                        <xpdl:EndEvent/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="700.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="END"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="EndOut" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Finalización"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+            </xpdl:Activities>
+            <xpdl:Transitions>
+                <xpdl:Transition Id="BeginToinit" Name="BeginToinit" From="Begin" To="init">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="100.0"/>
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="250.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="initToAntecedentes" Name="initToAntecedentes" From="init" To="Antecedentes">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="250.0"/>
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="400.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="salidaToEnd" Name="salidaToEnd" From="salida" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="550.0"/>
+                            <xpdl:Coordinates XCoordinate="106.0" YCoordinate="585.0"/>
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="700.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="106,585"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="AntecedentesTosalida" Name="AntecedentesTosalida" From="Antecedentes" To="salida">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="400.0"/>
+                            <xpdl:Coordinates XCoordinate="100.0" YCoordinate="550.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+            </xpdl:Transitions>
+            <xpdl:Extensions>
+                <albpm:ALBPMExtensions>
+                    <albpm:Component>
+                        &lt;component name=&quot;TPCAntecedentes&quot;
+	description=&quot;&quot;
+	versionID=&quot;Version 6.5 &quot;
+	flags=&quot;cloneable&quot;
+	type=&quot;xobject&quot;&gt;
+	&lt;inherit
+		class=&quot;Fuego.Internal.ScreenFlow&quot;
+		flags=&quot;&quot;/&gt;
+	&lt;objectProperty name=&quot;initAllFields&quot;
+		value=&quot;true&quot;/&gt;
+	&lt;objectProperty name=&quot;javaClassName&quot;
+		value=&quot;xobject.Fuego__AutoGen__Screenflows__.__TPCAntecedentes&quot;/&gt;
+	&lt;objectProperty name=&quot;javaSerialId&quot;
+		value=&quot;4278124286&quot;/&gt;
+	&lt;objectProperty name=&quot;methodPrefix&quot;
+		value=&quot;&quot;/&gt;
+	&lt;objectProperty name=&quot;package&quot;
+		value=&quot;xobject.Fuego__AutoGen__Screenflows__&quot;/&gt;
+	&lt;attributes&gt;
+		&lt;object
+			type=&quot;Negocio.NConfiguracion&quot;
+			name=&quot;configuracion&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;1&quot;/&gt;
+		&lt;object
+			type=&quot;Formulario.FormAntecedentes&quot;
+			name=&quot;form&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;2&quot;/&gt;
+		&lt;object
+			type=&quot;Negocio.NSolicitud&quot;
+			name=&quot;solicitud&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;3&quot;/&gt;
+	&lt;/attributes&gt;
+	&lt;methods&gt;
+		&lt;method name=&quot;TPCAntecedentes&quot;
+			flags=&quot;static&quot;&gt;
+			&lt;outputArgument name=&quot;return&quot;
+				description=&quot;&quot;
+				flags=&quot;retval&quot;
+				type=&quot;TPCAntecedentes&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;init&quot;
+			flags=&quot;server&quot;&gt;
+			&lt;variables&gt;
+				&lt;variable name=&quot;botonesAccion&quot;
+					type=&quot;String[]&quot;/&gt;
+				&lt;variable name=&quot;botonesSolapa&quot;
+					type=&quot;String[]&quot;/&gt;
+			&lt;/variables&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;if (this.form == null) {
+	this.form = FormAntecedentes();
+}
+
+this.form.solicitud = this.solicitud;
+this.form.titulo = &amp;quot;Antecedentes&amp;quot;;
+
+this.form.botonesAccion.clear();
+this.form.botonesSolapa.clear();
+FConfiguracion.setBotones(configuracion : this.configuracion, solicitud : this.form.solicitud, out botonesAccion : botonesAccion, 
+                          out botonesSolapa : botonesSolapa);
+
+for (int index = 0; index &amp;lt; botonesAccion.length; index++) {
+    this.form.botonesAccion.extend(labelBoton : botonesAccion[index]);
+}
+for (int index = 0; index &amp;lt; botonesSolapa.length; index++) {
+    this.form.botonesSolapa.extend(labelBoton : botonesSolapa[index]);
+}
+//EDITABLE
+this.form.editable = this.configuracion.pantallaEditable[&amp;quot;ANTECEDENTES&amp;quot;];
+
+//DATOS DE PANTALLA
+this.form.listaDeAntecedentes.clear();
+for (int index = 0; index &amp;lt; this.form.solicitud.listaAntecedentes.length; index++) {
+    this.form.listaDeAntecedentes.extend(listaAntecedentes : this.form.solicitud.listaAntecedentes[index].antecedente, seleccionado : false);
+}
+
+if(this.configuracion.actividad != &amp;quot;CSAListadoDeSolicitudesSAGI&amp;quot;){
+	//ERRORES
+	this.form.cargaOK = this.configuracion.cargaOK;
+	if(configuracion.errores[&amp;quot;ANTECEDENTES&amp;quot;].length() &amp;gt; 0){
+		for (int index = 0; index &amp;lt; configuracion.errores[&amp;quot;ANTECEDENTES&amp;quot;].length; index++) {
+			this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;ANTECEDENTES&amp;quot;])[index]);
+		}
+	}
+	if(configuracion.errores[&amp;quot;DATOSGENERALES&amp;quot;].length() &amp;gt; 0){
+	    this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;DATOSGENERALES&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;VALORACIONNECESIDAD&amp;quot;].length() &amp;gt; 0){
+		this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;VALORACIONNECESIDAD&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;PROYECTOSASOCIADOS&amp;quot;].length() &amp;gt; 0){
+			this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;PROYECTOSASOCIADOS&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;PROVEEDOR&amp;quot;].length() &amp;gt; 0){
+			this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;PROVEEDOR&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;SITUACIONPRESUPUESTARIA&amp;quot;].length() &amp;gt; 0){
+		this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;SITUACIONPRESUPUESTARIA&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;COMPRASPARTICULARES&amp;quot;].length() &amp;gt; 0){
+		this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;COMPRASPARTICULARES&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;DOCUMENTACIONADJUNTA&amp;quot;].length() &amp;gt; 0){
+		this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;DOCUMENTACIONADJUNTA&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;HISTORIALCOMENTARIOS&amp;quot;].length() &amp;gt; 0){
+		this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;HISTORIALCOMENTARIOS&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;ASIGNARPARTICIPANTE&amp;quot;].length() &amp;gt; 0){
+		this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;ASIGNARPARTICIPANTE&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;CONTROLGESTION&amp;quot;].length() &amp;gt; 0){
+		this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;CONTROLGESTION&amp;quot;])[0]);
+	}
+	if(configuracion.errores[&amp;quot;RECOMENDARSAGI&amp;quot;].length() &amp;gt; 0){
+		this.form.errores.extend(arg1 : (configuracion.errores[&amp;quot;RECOMENDARSAGI&amp;quot;])[0]);
+	}
+}&lt;/sourceCode&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;salida&quot;
+			flags=&quot;server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;FConfiguracion.setSalidaPantalla(configuracion : this.configuracion, result : result, out configuracion : this.configuracion);
+
+this.form.solicitud.listaAntecedentes.clear();
+for (int index = 0; index &amp;lt; this.form.listaDeAntecedentes.length; index++) {
+    this.form.solicitud.listaAntecedentes.extend(antecedente : this.form.listaDeAntecedentes[index].listaAntecedentes);
+}
+&lt;/sourceCode&gt;
+		&lt;/method&gt;
+	&lt;/methods&gt;
+&lt;/component&gt;</albpm:Component>
+                    <albpm:CorrelationSets/>
+                    <albpm:Localization>
+                        <albpm:LocalizationLabels>
+                            <albpm:LocalizedLabel language="es" label="TPC - Antecedentes"/>
+                        </albpm:LocalizationLabels>
+                        <albpm:LocalizationDescriptions>
+                            <albpm:LocalizationDescription language="es">
+                            </albpm:LocalizationDescription>
+                        </albpm:LocalizationDescriptions>
+                    </albpm:Localization>
+                    <albpm:FeatureSet>
+                        <albpm:StringFeature name="GreedyExecutionMode" value="default"/>
+                        <albpm:BooleanFeature name="atomic" value="false"/>
+                        <albpm:StringFeature name="generatesEvents" value="GENERATE_INTERACTIVE_EVENTS"/>
+                        <albpm:BooleanFeature name="horizontal" value="true"/>
+                        <albpm:BooleanFeature name="instanceScreenflow" value="false"/>
+                        <albpm:StringFeature name="scale" value="1.0"/>
+                        <albpm:BooleanFeature name="sharePredefineVariables" value="true"/>
+                        <albpm:BooleanFeature name="useExceptionOrder" value="true"/>
+                        <albpm:StringFeature name="variation" value="Default"/>
+                    </albpm:FeatureSet>
+                </albpm:ALBPMExtensions>
+            </xpdl:Extensions>
+        </xpdl:WorkflowProcess>
+    </xpdl:WorkflowProcesses>
+</xpdl:Package>

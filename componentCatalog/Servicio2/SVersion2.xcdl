@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="SVersion2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="2"/>
+		<String name="tablaCesta" flags="hassetter hasgetter public" position="1"/>
+		<String name="tablaPedido" flags="hassetter hasgetter public" position="4"/>
+		<String name="tablaProceso" flags="hassetter hasgetter public" position="3"/>
+	</attributes>
+	<methods>
+		<method name="SVersion2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio2.SVersion2"/>
+			<sourceCode language="Java1">this.tablaCesta = &quot;TPC2_CESTA&quot;;
+this.tablaProceso = &quot;TPC2_PROCESO&quot;;
+this.tablaPedido = &quot;TPC2_PEDIDO&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="getLastImportacionCestas" flags="public server disableclient">
+			<arg name="ces_id" description="" flags="in" type="String"/>
+			<arg name="lineaCesta_id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT CES_FECHAALTA,CES_FECHAMODIFICACION FROM &quot; + this.tablaCesta + &quot; &quot; +
+     				  &quot;WHERE CES_ID = ? AND &quot; +
+     				  &quot;CES_LINEACESTA = ?&quot;;
+     				   
+
+	Any[] inParameters = {};
+	inParameters[] = arg.ces_id;
+	inParameters[] = arg.lineaCesta_id;    
+    
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : inParameters))
+    {
+		value[&quot;FechaAlta&quot;] = (Time)row[&quot;CES_FECHAALTA&quot;];
+		value[&quot;FechaModificacion&quot;] = (Time)row[&quot;CES_FECHAMODIFICACION&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastImportacion(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastImportacionPedidos" flags="public server disableclient">
+			<arg name="pro_edicion" description="" flags="in" type="Int"/>
+			<arg name="pro_id" description="" flags="in" type="Int"/>
+			<arg name="prv_codigo" description="" flags="in" type="String"/>
+			<arg name="mon_id" description="" flags="in" type="Int"/>
+			<arg name="soc_id" description="" flags="in" type="Int"/>
+			<arg name="fpa_codigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT PED_FECHAALTA,PED_FECHAMODIFICACION FROM &quot; + this.tablaPedido + &quot; WHERE&quot; + 
+    				  &quot; 	  PED_PRO_EDICION = ? AND &quot; +
+					  &quot;		  PED_PRO_ID = ? AND&quot; +
+					  &quot;		  PED_PRV_CODIGO = ? AND&quot; +
+					  &quot;       PED_MON_ID = ? AND &quot; +
+					  &quot;       PED_SOC_ID = ? AND &quot; +
+					  &quot;		  PED_FPA_CODIGO = ?&quot;;
+
+	Any[] inParameters = {};
+	inParameters[] = arg.pro_edicion;
+	inParameters[] = arg.pro_id;
+	inParameters[] = arg.prv_codigo;
+	inParameters[] = arg.mon_id;
+	inParameters[] = arg.soc_id;
+	inParameters[] = arg.fpa_codigo;
+	
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : inParameters))
+    {
+		value[&quot;FechaAlta&quot;] = (Time)row[&quot;PED_FECHAMODIFICACION&quot;];
+		value[&quot;FechaModificacion&quot;] = (Time)row[&quot;PED_FECHAALTA&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastImportacionPedidos(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastImportacionProcesos" flags="public server disableclient">
+			<arg name="pro_id" description="" flags="in" type="Int"/>
+			<arg name="pro_edicion" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT PRO_FECHAALTA, PRO_FECHAMODIFICACION FROM &quot; + this.tablaProceso + &quot; &quot; +
+     				  &quot;WHERE  PRO_ID = ? AND &quot; +
+     				  &quot;		  PRO_EDICION = ?&quot;;
+     				   
+
+	Any[] inParameters = {};
+	inParameters[] = arg.pro_id;
+	inParameters[] = arg.pro_edicion;   
+    
+    logMessage(&quot;Sentence :&quot;+sentence, severity : FATAL);
+    logMessage(&quot;inParameters :&quot;+inParameters, severity : FATAL);
+
+    
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : inParameters))
+    {
+		value[&quot;FechaAlta&quot;] = (Time)row[&quot;PRO_FECHAALTA&quot;];
+		value[&quot;FechaModificacion&quot;] = (Time)row[&quot;PRO_FECHAMODIFICACION&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastImportacion(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

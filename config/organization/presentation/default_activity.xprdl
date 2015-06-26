@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<FDIObject>
+	<DirPresentation>
+		<id>default_activity</id>
+		<type>2</type>
+		<properties><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<presentation id="default_activity" owner="custom" type="INSTANCES" version="1">
+	<readonly>false</readonly>
+	<columns>
+		<column size="25">PREDEFINE_DESCRIPTION</column>
+		<column format_type="DEFAULT" size="12">PREDEFINE_RECEIVED TIME</column>
+		<column format_type="DEFAULT" size="12">PREDEFINE_DEADLINE</column>
+		<column size="10">PREDEFINE_PARTICIPANT</column>
+	</columns>
+	<ordering>
+		<entry ascending="false">PREDEFINE_RECEIVED TIME</entry>
+	</ordering>
+</presentation>
+]]></properties>
+	</DirPresentation>
+</FDIObject>

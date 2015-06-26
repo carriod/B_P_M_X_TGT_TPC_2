@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="SCesta2" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="1"/>
+		<String name="prefijo" flags="hassetter hasgetter public" position="2"/>
+		<String name="tabla" flags="hassetter hasgetter public" position="3"/>
+	</attributes>
+	<methods>
+		<method name="SCesta2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio2.SCesta2"/>
+			<sourceCode language="Java1">this.prefijo = &quot;CES_&quot;;
+this.tabla = &quot;TPC2_CESTA&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="String"/>
+			<arg name="lineaCesta" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;ID = ? AND &quot; + this.prefijo + &quot; LINEACESTA = ? &quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.id;
+	inParameters[] = arg.lineaCesta;	
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="existCesta" flags="public server disableclient">
+			<arg name="cestaId" description="" flags="in" type="String"/>
+			<arg name="lineaCesta" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+respuesta.contenido = false;
+
+try{
+	String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; WHERE &quot; + this.prefijo + &quot;ID = ? AND &quot; + this.prefijo + &quot;LINEACESTA = ? &quot;;
+	foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: {arg.cestaId, arg.lineaCesta})){
+		respuesta.contenido = true;
+	    respuesta.resultado = OK;
+	}
+
+logMessage(&quot;Servicio.Respuesta.Resultado&quot; + respuesta.resultado,Severity.INFO);
+logMessage(&quot;Servicio.Respuesta.contenido&quot; + respuesta.contenido,Severity.INFO);
+}catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    value[&quot;EXISTE&quot;] = false;
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;LEFT OUTER JOIN TPC_SOLICITUD ON TPC_SOLICITUD.SOL_NROCESTA = &quot; + this.tabla + &quot;.CES_ID &quot; +
+     				  &quot;WHERE &quot; + this.prefijo + &quot;ID = ( SELECT MAX(&quot; + this.prefijo + &quot;ID) FROM &quot; + this.tabla  + &quot; ) &quot;;
+ display(sentence);
+
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: {})){
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PRO_EDICION&quot;];
+		value[&quot;LINEACESTA&quot;] = (Integer)row[this.prefijo + &quot;LINEACESTA&quot;];
+		value[&quot;TCE_ID&quot;] = (Integer)row[this.prefijo + &quot;TCE_ID&quot;];
+		value[&quot;FECHACESTA&quot;] = (Time)row[this.prefijo + &quot;FECHACESTA&quot;];
+		value[&quot;CPR_CODIGO&quot;] = (String)row[this.prefijo + &quot;CPR_CODIGO&quot;];
+		value[&quot;DETALLE&quot;] = (String)row[this.prefijo + &quot;DETALLE&quot;];
+		value[&quot;MON_ID&quot;] = (Integer)row[this.prefijo + &quot;MON_ID&quot;];
+		value[&quot;MONTO&quot;] = (Decimal)row[this.prefijo + &quot;MONTO&quot;];
+		value[&quot;SOC_ID&quot;] = (Integer)row[this.prefijo + &quot;SOC_ID&quot;];
+		value[&quot;CANTIDAD&quot;] = (Decimal)row[this.prefijo + &quot;CANTIDAD&quot;];
+		value[&quot;UNIDAD&quot;] = (String)row[this.prefijo + &quot;UNIDAD&quot;];
+		value[&quot;CODIGOPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;CODIGOPLANIFICACION&quot;];
+		value[&quot;FECHAPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;FECHAPLANIFICACION&quot;];
+		value[&quot;DSO_ID&quot;] = (Integer)row[this.prefijo + &quot;DSO_ID&quot;];
+		value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;MRC_ID&quot;] = (Integer)row[this.prefijo + &quot;MRC_ID&quot;];
+		value[&quot;FECHARECHAZO&quot;] = (Time)row[this.prefijo + &quot;FECHARECHAZO&quot;];
+		if(((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == &quot;&quot; || ((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == null){
+			value[&quot;DESCRIPCIONNECESIDADSAGI&quot;] = (String)row[&quot;SOL_DESCRIPCIONNECESIDAD&quot;];
+		}else{
+			value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		}
+		value[&quot;HISTORICOPROCESO&quot;] = (Integer)row[this.prefijo + &quot;HISTORICOPROCESO&quot;];
+		value[&quot;VARIOS1&quot;] = (String)row[this.prefijo + &quot;VARIOS1&quot;];
+		value[&quot;VARIOS2&quot;] = (String)row[this.prefijo + &quot;VARIOS2&quot;];
+		value[&quot;VARIOS3&quot;] = (String)row[this.prefijo + &quot;VARIOS3&quot;];		
+		value[&quot;VARIOS4&quot;] = (String)row[this.prefijo + &quot;VARIOS4&quot;];
+		value[&quot;VARIOS5&quot;] = (String)row[this.prefijo + &quot;VARIOS5&quot;];
+		value[&quot;VARIOS6&quot;] = (String)row[this.prefijo + &quot;VARIOS6&quot;];
+		value[&quot;IDSAGI&quot;] = (Integer)row[&quot;SOL_ID&quot;];
+		value[&quot;DIRECCIONSAGI&quot;] = (String)row[&quot;SOL_AREASOLICITANTE&quot;];
+		value[&quot;SOLICITANTESAGI&quot;] = (String)row[&quot;SOL_GESTORSOLICITANTE&quot;];
+		value[&quot;FECHAALTA&quot;] = (Time)row[this.prefijo + &quot;FECHAALTA&quot;];
+		value[&quot;USUARIOALTA&quot;] = (String)row[this.prefijo + &quot;USUARIOALTA&quot;];
+		value[&quot;FECHAMODIFICACION&quot;] = (Time)row[this.prefijo + &quot;FECHAMODIFICACION&quot;];
+		value[&quot;USUARIOMODIFICACION&quot;] = (String)row[this.prefijo + &quot;USUARIOMODIFICACION&quot;];
+    	value[&quot;EXISTE&quot;] = true;
+    }
+
+    if(value.length()&gt;0){
+        respuesta.contenido = value;
+    }
+    else{
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; + 
+    				  &quot;LEFT OUTER JOIN TPC_SOLICITUD ON TO_CHAR(TPC_SOLICITUD.SOL_NROCESTA) = &quot; + this.tabla + &quot;.CES_ID &quot; +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;ID &quot;;
+
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: {})){
+		value = {};
+		value[&quot;ID&quot;] = (String)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PRO_EDICION&quot;];
+		value[&quot;LINEACESTA&quot;] = (Integer)row[this.prefijo + &quot;LINEACESTA&quot;];
+		value[&quot;TCE_ID&quot;] = (Integer)row[this.prefijo + &quot;TCE_ID&quot;];
+		value[&quot;FECHACESTA&quot;] = (Time)row[this.prefijo + &quot;FECHACESTA&quot;];
+		value[&quot;CPR_CODIGO&quot;] = (String)row[this.prefijo + &quot;CPR_CODIGO&quot;];
+		value[&quot;DETALLE&quot;] = (String)row[this.prefijo + &quot;DETALLE&quot;];
+		value[&quot;MON_ID&quot;] = (Integer)row[this.prefijo + &quot;MON_ID&quot;];
+		value[&quot;MONTO&quot;] = (Decimal)row[this.prefijo + &quot;MONTO&quot;];
+		value[&quot;SOC_ID&quot;] = (Integer)row[this.prefijo + &quot;SOC_ID&quot;];
+		value[&quot;CANTIDAD&quot;] = (Decimal)row[this.prefijo + &quot;CANTIDAD&quot;];
+		value[&quot;UNIDAD&quot;] = (String)row[this.prefijo + &quot;UNIDAD&quot;];
+		value[&quot;CODIGOPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;CODIGOPLANIFICACION&quot;];
+		value[&quot;FECHAPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;FECHAPLANIFICACION&quot;];
+		value[&quot;DSO_ID&quot;] = (Integer)row[this.prefijo + &quot;DSO_ID&quot;];
+		value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;MRC_ID&quot;] = (Integer)row[this.prefijo + &quot;MRC_ID&quot;];
+		value[&quot;FECHARECHAZO&quot;] = (Time)row[this.prefijo + &quot;FECHARECHAZO&quot;];
+		if(((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == &quot;&quot; || ((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == null){
+			value[&quot;DESCRIPCIONNECESIDADSAGI&quot;] = (String)row[&quot;SOL_DESCRIPCIONNECESIDAD&quot;];
+		}else{
+			value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		}
+		value[&quot;HISTORICOPROCESO&quot;] = (Integer)row[this.prefijo + &quot;HISTORICOPROCESO&quot;];
+		value[&quot;VARIOS1&quot;] = (String)row[this.prefijo + &quot;VARIOS1&quot;];
+		value[&quot;VARIOS2&quot;] = (String)row[this.prefijo + &quot;VARIOS2&quot;];
+		value[&quot;VARIOS3&quot;] = (String)row[this.prefijo + &quot;VARIOS3&quot;];		
+		value[&quot;VARIOS4&quot;] = (String)row[this.prefijo + &quot;VARIOS4&quot;];
+		value[&quot;VARIOS5&quot;] = (String)row[this.prefijo + &quot;VARIOS5&quot;];
+		value[&quot;VARIOS6&quot;] = (String)row[this.prefijo + &quot;VARIOS6&quot;];
+		value[&quot;IDSAGI&quot;] = (Integer)row[&quot;SOL_ID&quot;];
+		value[&quot;DIRECCIONSAGI&quot;] = (String)row[&quot;SOL_AREASOLICITANTE&quot;];
+		value[&quot;SOLICITANTESAGI&quot;] = (String)row[&quot;SOL_GESTORSOLICITANTE&quot;];
+		value[&quot;FECHAALTA&quot;] = (Time)row[this.prefijo + &quot;FECHAALTA&quot;];
+		value[&quot;USUARIOALTA&quot;] = (String)row[this.prefijo + &quot;USUARIOALTA&quot;];
+		value[&quot;FECHAMODIFICACION&quot;] = (Time)row[this.prefijo + &quot;FECHAMODIFICACION&quot;];
+		value[&quot;USUARIOMODIFICACION&quot;] = (String)row[this.prefijo + &quot;USUARIOMODIFICACION&quot;];
+    	value[&quot;EXISTE&quot;] = true;
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;    
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesForIdProceso" flags="public server disableclient">
+			<arg name="procesoId" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; + 
+    				  &quot;LEFT OUTER JOIN TPC_SOLICITUD ON TO_CHAR(TPC_SOLICITUD.SOL_NROCESTA) = &quot; + this.tabla + &quot;.CES_ID &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;PRO_ID = ? &quot; +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;ID &quot;;				  
+ 
+ 	foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: {arg.procesoId})){
+		value = {};
+		value[&quot;ID&quot;] = (String)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PRO_EDICION&quot;];
+		value[&quot;LINEACESTA&quot;] = (Integer)row[this.prefijo + &quot;LINEACESTA&quot;];
+		value[&quot;TCE_ID&quot;] = (Integer)row[this.prefijo + &quot;TCE_ID&quot;];
+		value[&quot;FECHACESTA&quot;] = (Time)row[this.prefijo + &quot;FECHACESTA&quot;];
+		value[&quot;CPR_CODIGO&quot;] = (String)row[this.prefijo + &quot;CPR_CODIGO&quot;];
+		value[&quot;DETALLE&quot;] = (String)row[this.prefijo + &quot;DETALLE&quot;];
+		value[&quot;MON_ID&quot;] = (Integer)row[this.prefijo + &quot;MON_ID&quot;];
+		value[&quot;MONTO&quot;] = (Decimal)row[this.prefijo + &quot;MONTO&quot;];
+		value[&quot;SOC_ID&quot;] = (Integer)row[this.prefijo + &quot;SOC_ID&quot;];
+		value[&quot;CANTIDAD&quot;] = (Decimal)row[this.prefijo + &quot;CANTIDAD&quot;];
+		value[&quot;UNIDAD&quot;] = (String)row[this.prefijo + &quot;UNIDAD&quot;];
+		value[&quot;CODIGOPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;CODIGOPLANIFICACION&quot;];
+		value[&quot;FECHAPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;FECHAPLANIFICACION&quot;];
+		value[&quot;DSO_ID&quot;] = (Integer)row[this.prefijo + &quot;DSO_ID&quot;];
+		value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;MRC_ID&quot;] = (Integer)row[this.prefijo + &quot;MRC_ID&quot;];
+		value[&quot;FECHARECHAZO&quot;] = (Time)row[this.prefijo + &quot;FECHARECHAZO&quot;];
+		if(((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == &quot;&quot; || ((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == null){
+			value[&quot;DESCRIPCIONNECESIDADSAGI&quot;] = (String)row[&quot;SOL_DESCRIPCIONNECESIDAD&quot;];
+		}else{
+			value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		}
+		value[&quot;HISTORICOPROCESO&quot;] = (Integer)row[this.prefijo + &quot;HISTORICOPROCESO&quot;];
+		value[&quot;VARIOS1&quot;] = (String)row[this.prefijo + &quot;VARIOS1&quot;];
+		value[&quot;VARIOS2&quot;] = (String)row[this.prefijo + &quot;VARIOS2&quot;];
+		value[&quot;VARIOS3&quot;] = (String)row[this.prefijo + &quot;VARIOS3&quot;];		
+		value[&quot;VARIOS4&quot;] = (String)row[this.prefijo + &quot;VARIOS4&quot;];
+		value[&quot;VARIOS5&quot;] = (String)row[this.prefijo + &quot;VARIOS5&quot;];
+		value[&quot;VARIOS6&quot;] = (String)row[this.prefijo + &quot;VARIOS6&quot;];
+		value[&quot;IDSAGI&quot;] = (Integer)row[&quot;SOL_ID&quot;];
+		value[&quot;DIRECCIONSAGI&quot;] = (String)row[&quot;SOL_AREASOLICITANTE&quot;];
+		value[&quot;SOLICITANTESAGI&quot;] = (String)row[&quot;SOL_GESTORSOLICITANTE&quot;];
+		value[&quot;FECHAALTA&quot;] = (Time)row[this.prefijo + &quot;FECHAALTA&quot;];
+		value[&quot;USUARIOALTA&quot;] = (String)row[this.prefijo + &quot;USUARIOALTA&quot;];
+		value[&quot;FECHAMODIFICACION&quot;] = (Time)row[this.prefijo + &quot;FECHAMODIFICACION&quot;];
+		value[&quot;USUARIOMODIFICACION&quot;] = (String)row[this.prefijo + &quot;USUARIOMODIFICACION&quot;];
+    	value[&quot;EXISTE&quot;] = true;
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValuesForIdProceso(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForCodigo" flags="public server disableclient">
+			<arg name="codigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    value[&quot;EXISTE&quot;] = false;
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; 
+    				  &quot;LEFT OUTER JOIN TPC_SOLICITUD ON TO_CHAR(TPC_SOLICITUD.SOL_NROCESTA) = &quot; + this.tabla + &quot;.CES_ID &quot; +
+ 					  &quot;WHERE &quot; + this.prefijo + &quot;CODIGO = ? &quot;;
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: {arg.codigo})){
+		value[&quot;ID&quot;] = (String)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PRO_EDICION&quot;];
+		value[&quot;LINEACESTA&quot;] = (Integer)row[this.prefijo + &quot;LINEACESTA&quot;];
+		value[&quot;TCE_ID&quot;] = (Integer)row[this.prefijo + &quot;TCE_ID&quot;];
+		value[&quot;FECHACESTA&quot;] = (Time)row[this.prefijo + &quot;FECHACESTA&quot;];
+		value[&quot;CPR_CODIGO&quot;] = (String)row[this.prefijo + &quot;CPR_CODIGO&quot;];
+		value[&quot;DETALLE&quot;] = (String)row[this.prefijo + &quot;DETALLE&quot;];
+		value[&quot;MON_ID&quot;] = (Integer)row[this.prefijo + &quot;MON_ID&quot;];
+		value[&quot;MONTO&quot;] = (Decimal)row[this.prefijo + &quot;MONTO&quot;];
+		value[&quot;SOC_ID&quot;] = (Integer)row[this.prefijo + &quot;SOC_ID&quot;];
+		value[&quot;CANTIDAD&quot;] = (Decimal)row[this.prefijo + &quot;CANTIDAD&quot;];
+		value[&quot;UNIDAD&quot;] = (String)row[this.prefijo + &quot;CANTIDAD&quot;];
+		value[&quot;CODIGOPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;CODIGOPLANIFICACION&quot;];
+		value[&quot;FECHAPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;FECHAPLANIFICACION&quot;];
+		value[&quot;DSO_ID&quot;] = (Integer)row[this.prefijo + &quot;DSO_ID&quot;];
+		value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;MRC_ID&quot;] = (Integer)row[this.prefijo + &quot;MRC_ID&quot;];
+		value[&quot;FECHARECHAZO&quot;] = (Time)row[this.prefijo + &quot;FECHARECHAZO&quot;];
+		if(((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == &quot;&quot; || ((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == null){
+			value[&quot;DESCRIPCIONNECESIDADSAGI&quot;] = (String)row[&quot;SOL_DESCRIPCIONNECESIDAD&quot;];
+		}else{
+			value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		}
+		value[&quot;HISTORICOPROCESO&quot;] = (Integer)row[this.prefijo + &quot;HISTORICOPROCESO&quot;];
+		value[&quot;VARIOS1&quot;] = (String)row[this.prefijo + &quot;VARIOS1&quot;];
+		value[&quot;VARIOS2&quot;] = (String)row[this.prefijo + &quot;VARIOS2&quot;];
+		value[&quot;VARIOS3&quot;] = (String)row[this.prefijo + &quot;VARIOS3&quot;];		
+		value[&quot;VARIOS4&quot;] = (String)row[this.prefijo + &quot;VARIOS4&quot;];
+		value[&quot;VARIOS5&quot;] = (String)row[this.prefijo + &quot;VARIOS5&quot;];
+		value[&quot;VARIOS6&quot;] = (String)row[this.prefijo + &quot;VARIOS6&quot;];
+		value[&quot;IDSAGI&quot;] = (Integer)row[&quot;SOL_ID&quot;];
+		value[&quot;DIRECCIONSAGI&quot;] = (String)row[&quot;SOL_AREASOLICITANTE&quot;];
+		value[&quot;SOLICITANTESAGI&quot;] = (String)row[&quot;SOL_GESTORSOLICITANTE&quot;];
+		value[&quot;FECHAALTA&quot;] = (Time)row[this.prefijo + &quot;FECHAALTA&quot;];
+		value[&quot;USUARIOALTA&quot;] = (String)row[this.prefijo + &quot;USUARIOALTA&quot;];
+		value[&quot;FECHAMODIFICACION&quot;] = (Time)row[this.prefijo + &quot;FECHAMODIFICACION&quot;];
+		value[&quot;USUARIOMODIFICACION&quot;] = (String)row[this.prefijo + &quot;USUARIOMODIFICACION&quot;];
+    	value[&quot;EXISTE&quot;] = true;
+	}
+
+    if(value.length()&gt;0){
+        respuesta.contenido = value;
+    }else{
+        respuesta.resultado = DATAERROR;
+        respuesta.idTipoError = 16;
+        respuesta.codigoInvalido = arg.codigo;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.codigo + &quot;\&quot; no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForCodigo(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="String"/>
+			<arg name="lineaCesta" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try{
+    Any[String] value = {};
+    value[&quot;EXISTE&quot;] = false;
+    String sentence = &quot;SELECT cesta.*, procesoestado.*, estados.*, solicitud.* FROM &quot; + this.tabla + &quot; cesta &quot; +
+    				  &quot;LEFT OUTER JOIN TPC_SOLICITUD solicitud ON TO_CHAR(solicitud.SOL_NROCESTA) = cesta.CES_ID &quot; + 
+    				  &quot;LEFT OUTER JOIN TPC2_PROCESO_ESTADO procesoestado ON procesoestado.PES_PRO_ID = cesta.CES_PRO_ID AND procesoestado.PES_PRO_EDICION = cesta.CES_PRO_EDICION &quot; +
+					  &quot;LEFT OUTER JOIN TPC2_ESTADOS_PROCESO estados ON  estados.EPR_ID = procesoestado.PES_EPR_ID &quot; +
+					  &quot;WHERE &quot; + &quot;cesta.CES_ID = ? AND cesta.CES_LINEACESTA = ? &quot;;
+	logMessage(&quot;sentence: &quot; + sentence,Severity.INFO);
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: {arg.id, arg.lineaCesta})){
+		value[&quot;ID&quot;] = (String)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PRO_EDICION&quot;];
+		value[&quot;LINEACESTA&quot;] = (Integer)row[this.prefijo + &quot;LINEACESTA&quot;];
+		value[&quot;TCE_ID&quot;] = (Integer)row[this.prefijo + &quot;TCE_ID&quot;];
+		value[&quot;FECHACESTA&quot;] = (Time)row[this.prefijo + &quot;FECHACESTA&quot;];
+		value[&quot;CPR_CODIGO&quot;] = (String)row[this.prefijo + &quot;CPR_CODIGO&quot;];
+		value[&quot;DETALLE&quot;] = (String)row[this.prefijo + &quot;DETALLE&quot;];
+		value[&quot;MON_ID&quot;] = (Integer)row[this.prefijo + &quot;MON_ID&quot;];
+		value[&quot;MONTO&quot;] = (Decimal)row[this.prefijo + &quot;MONTO&quot;];
+		value[&quot;SOC_ID&quot;] = (Integer)row[this.prefijo + &quot;SOC_ID&quot;];
+		value[&quot;CANTIDAD&quot;] = (Decimal)row[this.prefijo + &quot;CANTIDAD&quot;];
+		value[&quot;UNIDAD&quot;] = (String)row[this.prefijo + &quot;UNIDAD&quot;];
+		value[&quot;CODIGOPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;CODIGOPLANIFICACION&quot;];
+		value[&quot;FECHAPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;FECHAPLANIFICACION&quot;];
+		value[&quot;DSO_ID&quot;] = (Integer)row[this.prefijo + &quot;DSO_ID&quot;];
+		value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;MRC_ID&quot;] = (Integer)row[this.prefijo + &quot;MRC_ID&quot;];
+		value[&quot;FECHARECHAZO&quot;] = (Time)row[this.prefijo + &quot;FECHARECHAZO&quot;];
+		if(((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == &quot;&quot; || ((String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;]) == null){
+			value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[&quot;SOL_DESCRIPCIONNECESIDAD&quot;];
+		}else{
+			value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[this.prefijo + &quot;DESCRIPCIONNECESIDAD&quot;];
+		}		
+		value[&quot;HISTORICOPROCESO&quot;] = (Integer)row[this.prefijo + &quot;HISTORICOPROCESO&quot;];
+		value[&quot;VARIOS1&quot;] = (String)row[this.prefijo + &quot;VARIOS1&quot;];
+		value[&quot;VARIOS2&quot;] = (String)row[this.prefijo + &quot;VARIOS2&quot;];
+		value[&quot;VARIOS3&quot;] = (String)row[this.prefijo + &quot;VARIOS3&quot;];		
+		value[&quot;VARIOS4&quot;] = (String)row[this.prefijo + &quot;VARIOS4&quot;];
+		value[&quot;VARIOS5&quot;] = (String)row[this.prefijo + &quot;VARIOS5&quot;];
+		value[&quot;VARIOS6&quot;] = (String)row[this.prefijo + &quot;VARIOS6&quot;];
+		value[&quot;IDSAGI&quot;] = (Integer)row[&quot;SOL_ID&quot;];
+		value[&quot;DIRECCIONSAGI&quot;] = (String)row[&quot;SOL_AREASOLICITANTE&quot;];
+		value[&quot;SOLICITANTESAGI&quot;] = (String)row[&quot;SOL_GESTORSOLICITANTE&quot;];
+		value[&quot;FECHAALTA&quot;] = (Time)row[this.prefijo + &quot;FECHAALTA&quot;];
+		value[&quot;USUARIOALTA&quot;] = (String)row[this.prefijo + &quot;USUARIOALTA&quot;];
+		value[&quot;FECHAMODIFICACION&quot;] = (Time)row[this.prefijo + &quot;FECHAMODIFICACION&quot;];
+		value[&quot;USUARIOMODIFICACION&quot;] = (String)row[this.prefijo + &quot;USUARIOMODIFICACION&quot;];	
+		value[&quot;ESTADO&quot;] = (String)row[&quot;EPR_DESCRIPCION&quot;];
+		value[&quot;ESTADOID&quot;] = (Integer)row[&quot;EPR_ID&quot;];	
+		value[&quot;EXISTE&quot;] = true;
+    }
+
+    if(value.length()&gt;0){
+        respuesta.contenido = value;
+    }else{
+        respuesta.resultado = DATAERROR;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.id + &quot;\&quot; no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValuesForFiltros" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="String"/>
+			<arg name="solicitante" description="" flags="in" type="String"/>
+			<arg name="lineaId" description="" flags="in" type="Int"/>
+			<arg name="tipoCestaId" description="" flags="in" type="Int"/>
+			<arg name="varios1" description="" flags="in" type="String"/>
+			<arg name="varios2" description="" flags="in" type="String"/>
+			<arg name="varios3" description="" flags="in" type="String"/>
+			<arg name="varios4" description="" flags="in" type="String"/>
+			<arg name="varios5" description="" flags="in" type="String"/>
+			<arg name="varios6" description="" flags="in" type="String"/>
+			<arg name="montoDesde" description="" flags="in" type="Decimal"/>
+			<arg name="montoHasta" description="" flags="in" type="Decimal"/>
+			<arg name="compradorId" description="" flags="in" type="Int"/>
+			<arg name="jefeId" description="" flags="in" type="Int"/>
+			<arg name="gerenteId" description="" flags="in" type="Int"/>
+			<arg name="areaSolicitanteId" description="" flags="in" type="Int"/>
+			<arg name="enlace" description="" flags="in" type="String"/>
+			<arg name="cta" description="" flags="in" type="Bool"/>
+			<arg name="djai" description="" flags="in" type="Bool"/>
+			<arg name="sociedadId" description="" flags="in" type="Int"/>
+			<arg name="categoriaProductoCodigo" description="" flags="in" type="String"/>
+			<arg name="rechazada" description="" flags="in" type="Bool"/>
+			<arg name="diasCompra" description="" flags="in" type="Int"/>
+			<arg name="monedaId" description="" flags="in" type="Int"/>
+			<arg name="estadoProcesoId" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+    Any[String] value = {};
+    Any[] values = {};
+    Any[] inParameters = {}; 
+    String sentence = &quot; SELECT DISTINCT cesta.*, proceso.PRO_TITULO, sociedad.SOC_DESCRIPCIONCORTA, sociedad.SOC_DESCRIPCIONLARGA, solicitante.DSO_DESCRIPCION,&quot; +
+					  &quot; categoria.CPR_CODIGO, categoria.CPR_DESCRIPCION, proceso.PRO_CTA, proceso.PRO_DJAI, proceso.PRO_TCO_ID, moneda.MON_DESCRIPCION,&quot; +
+					  &quot; proceso.PRO_FECHAINGRESO, proceso.PRO_FECHAOBJETIVO, proceso.PRO_FECHAREPROGRAMADA, proceso.PRO_FECHAESTIMADAFIN,&quot; +
+					  &quot; comprador.CMP_COMPRADOR, gerencia.GER_DESCRIPCION, jefatura.JEF_DESCRIPCION, estados.EPR_DESCRIPCION, estados.EPR_ID, compra.TCO_DESCRIPCION,&quot; +
+					  &quot; solicitud.SOL_GESTORENLACE, solicitud.SOL_GESTORSOLICITANTE, cesta.CES_TCE_ID, tipocesta.TCE_DESCRIPCION, cesta.CES_FECHAALTA, motivorechazo.MRC_DESCRIPCION &quot; +
+					  &quot; FROM TPC2_CESTA cesta&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_PROCESO proceso ON proceso.PRO_ID = cesta.CES_PRO_ID AND proceso.PRO_EDICION = cesta.CES_PRO_EDICION&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_SOCIEDAD sociedad ON sociedad.SOC_ID = cesta.CES_SOC_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_DIRECCION_SOLICITANTE solicitante ON solicitante.DSO_ID = cesta.CES_DSO_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_CATEGORIA_PRODUCTO categoria ON categoria.CPR_CODIGO = cesta.CES_CPR_CODIGO&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_TIPO_COMPRA compra ON compra.TCO_ID = Proceso.PRO_TCO_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_MONEDA moneda ON moneda.MON_ID = cesta.CES_MON_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_COMPRADOR comprador ON comprador.CMP_ID = proceso.PRO_CMP_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_GERENCIA gerencia ON gerencia.GER_ID = proceso.PRO_GER_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_JEFATURA jefatura ON jefatura.JEF_ID = proceso.PRO_JEF_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_PROCESO_ESTADO procesoestado ON procesoestado.PES_PRO_ID = proceso.PRO_ID AND procesoestado.PES_PRO_EDICION = proceso.PRO_EDICION&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_ESTADOS_PROCESO estados ON  estados.EPR_ID = procesoestado.PES_EPR_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC_SOLICITUD solicitud ON TO_CHAR(solicitud.SOL_NROCESTA) = cesta.CES_ID &quot; +
+					  &quot; LEFT OUTER JOIN TPC2_TIPO_CESTA tipocesta ON tipocesta.TCE_ID = cesta.CES_TCE_ID &quot; +
+					  &quot; LEFT OUTER JOIN TPC2_MOTIVO_RECHAZO motivorechazo ON motivorechazo.MRC_ID = cesta.CES_MRC_ID &quot; +
+					  &quot;WHERE&quot;;
+    
+    if(arg.id != null){
+    	sentence = sentence + &quot; &quot; + this.prefijo + &quot;ID = ? AND &quot;;
+    	inParameters[] = arg.id;
+    }	
+ 	if(arg.tipoCestaId != null){
+    	sentence = sentence + &quot; &quot; + this.prefijo + &quot;TCE_ID = ? AND &quot;;
+    	inParameters[] = arg.tipoCestaId;
+    }
+
+    if(arg.rechazada == true){
+    	sentence = sentence + &quot; &quot; + this.prefijo + &quot;MRC_ID is not null AND &quot; + this.prefijo + &quot;FECHARECHAZO is not null AND &quot;;
+    }else if (arg.rechazada == false){
+    	sentence = sentence + &quot; &quot; + this.prefijo + &quot;MRC_ID is null AND &quot; + this.prefijo + &quot;FECHARECHAZO is null AND &quot;;
+    }
+    	
+ 	if(arg.categoriaProductoCodigo != null){
+    	sentence = sentence + &quot; &quot; + this.prefijo + &quot;CPR_CODIGO = ? AND &quot;;
+    	inParameters[] = arg.categoriaProductoCodigo;
+    }
+ 	if(arg.monedaId != null){
+    	sentence = sentence + &quot; &quot; + this.prefijo + &quot;MON_ID = ? AND &quot;;
+    	inParameters[] = arg.monedaId;
+    }
+	if(arg.montoDesde != null &amp;&amp; arg.montoHasta != null){
+		sentence = sentence + &quot; &quot; + this.prefijo + &quot;MONTO &gt;= ? AND &quot;;
+		sentence = sentence + &quot; &quot; + this.prefijo + &quot;MONTO &lt;= ? AND &quot;;
+		inParameters[] = arg.montoDesde;
+		inParameters[] = arg.montoHasta;
+	}else if(arg.montoDesde != null){
+		sentence = sentence + &quot; &quot; + this.prefijo + &quot;MONTO &gt;= ? AND &quot;; 
+		inParameters[] = arg.montoDesde;	 
+    }else if(arg.montoHasta != null){
+		sentence = sentence + &quot; &quot; + this.prefijo + &quot;MONTO &lt;= ? AND &quot;;
+		inParameters[] = montoHasta;
+	}
+ 	if(arg.sociedadId != null){
+    	sentence = sentence + &quot; &quot; + this.prefijo + &quot;SOC_ID = ? AND &quot;;
+    	inParameters[] = arg.sociedadId;
+    }
+ 	if(arg.varios1 != null &amp;&amp; arg.varios1.length() != 0){
+    	sentence = sentence + &quot; UPPER(&quot; + this.prefijo + &quot;VARIOS1) LIKE ? AND &quot;;
+    	inParameters[] = &quot;%&quot;+arg.varios1.toUpperCase()+&quot;%&quot;;
+    }    
+ 	if(arg.varios2 != null &amp;&amp; arg.varios2.length() != 0){
+    	sentence = sentence + &quot; UPPER(&quot; + this.prefijo + &quot;VARIOS2) LIKE ? AND &quot;;
+    	inParameters[] = &quot;%&quot;+arg.varios2.toUpperCase()+&quot;%&quot;;
+    } 
+ 	if(arg.varios3 != null &amp;&amp; arg.varios3.length() != 0){
+    	sentence = sentence + &quot; UPPER(&quot; + this.prefijo + &quot;VARIOS3) LIKE ? AND &quot;;
+    	inParameters[] = &quot;%&quot;+arg.varios3.toUpperCase()+&quot;%&quot;;
+    }   
+ 	if(arg.varios4 != null &amp;&amp; arg.varios4.length() != 0){
+    	sentence = sentence + &quot; UPPER(&quot; + this.prefijo + &quot;VARIOS4) LIKE ? AND &quot;;
+    	inParameters[] = &quot;%&quot;+arg.varios4.toUpperCase()+&quot;%&quot;;
+    }   
+ 	if(arg.varios5 != null &amp;&amp; arg.varios5.length() != 0){
+    	sentence = sentence + &quot; UPPER(&quot; + this.prefijo + &quot;VARIOS5) LIKE ? AND &quot;;
+    	inParameters[] = &quot;%&quot;+arg.varios5.toUpperCase()+&quot;%&quot;;
+    }   
+ 	if(arg.varios6 != null &amp;&amp; arg.varios6.length() != 0){
+    	sentence = sentence + &quot; UPPER(&quot; + this.prefijo + &quot;VARIOS6) LIKE ? AND &quot;;
+    	inParameters[] = &quot;%&quot;+arg.varios6.toUpperCase()+&quot;%&quot;;
+    }
+	if(arg.compradorId != null){
+    	sentence = sentence + &quot; &quot; + &quot;PRO_CMP_ID = ? AND &quot;;
+    	inParameters[] = arg.compradorId;
+    }
+    if(arg.jefeId != null){
+    	sentence = sentence + &quot; &quot; + &quot;PRO_JEF_ID = ? AND &quot;;
+    	inParameters[] = arg.jefeId;
+    }
+    if(arg.gerenteId != null){
+    	sentence = sentence + &quot; &quot; + &quot;PRO_GER_ID = ? AND &quot;;
+    	inParameters[] = arg.gerenteId;
+    } 	
+ 	if(arg.solicitante != null &amp;&amp; arg.solicitante.length() != 0){
+    	sentence = sentence + &quot; &quot; + &quot;SOL_GESTORSOLICITANTE = ? AND &quot;;
+    	inParameters[] = arg.solicitante;
+    }
+    if(arg.enlace != null &amp;&amp; arg.enlace.length() != 0){
+    	sentence = sentence + &quot; &quot; + &quot;SOL_GESTORENLACE = ? AND &quot;;
+    	inParameters[] = arg.enlace;
+    }
+    if(arg.areaSolicitanteId != null){
+    	sentence = sentence + &quot; &quot; + this.prefijo + &quot;DSO_ID = ? AND &quot;;
+    	inParameters[] = arg.areaSolicitanteId;
+    }
+    if(arg.estadoProcesoId != null){
+    	if(arg.estadoProcesoId == 19){
+    		sentence = sentence + &quot; &quot; + &quot;PES_EPR_ID in (8,9,10,11,12,13,14,15,16,17) AND &quot;;
+    	}
+    	else if(arg.estadoProcesoId == 20){
+    		sentence = sentence + &quot; &quot; + &quot;PES_EPR_ID not in (2,18) AND &quot;;
+    	}
+    	else{
+    		sentence = sentence + &quot; &quot; + &quot;PES_EPR_ID = ? AND &quot;;
+    		inParameters[] = arg.estadoProcesoId;
+    	}
+    }
+    if(arg.diasCompra != null &amp;&amp; arg.diasCompra &gt;= 0){
+    	Time dif = &apos;now&apos;.addDays(i : -arg.diasCompra);
+    	dif = Time(dif.format(&quot;yyyyMMdd&quot;));
+    	sentence = sentence + &quot; TRUNC(&quot; + this.prefijo + &quot;FECHALIBERACION) &lt;= TRUNC(?) AND &quot;;
+    	inParameters[] = dif;
+    }
+    
+    if(arg.cta == true){
+    	sentence = sentence + &quot; &quot; + &quot;PRO_CTA = &apos;S&apos; AND &quot;;
+    }else if (arg.cta == false){
+    	sentence = sentence + &quot; &quot; + &quot;PRO_CTA = &apos;N&apos; AND &quot;;
+    }
+    
+    if(arg.djai == true){
+    	sentence = sentence + &quot; &quot; + &quot;PRO_DJAI = &apos;S&apos; AND &quot;;
+    }else if (arg.djai == false){
+    	sentence = sentence + &quot; &quot; + &quot;PRO_DJAI = &apos;N&apos; AND &quot;;
+    }	
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 	sentence = sentence.substring(first : 0, last : sentence.length()-5);
+ 	sentence = sentence + &quot;ORDER BY &quot; + this.prefijo + &quot;ID &quot;;
+ 	logMessage(&quot;sentence: &quot; + sentence, Severity.INFO);
+ 	logMessage(&quot;inParameters: &quot; + inParameters);
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: inParameters)){
+		value = {};
+		value[&quot;ID&quot;] = (String)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;LINEACESTA&quot;] = (Integer)row[this.prefijo + &quot;LINEACESTA&quot;];
+		value[&quot;PRO_ID&quot;] = (String)row[this.prefijo + &quot;PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PRO_EDICION&quot;];
+		value[&quot;TITULO&quot;] = (String)row[&quot;PRO_TITULO&quot;];
+		value[&quot;TCE_ID&quot;] = (Integer)row[this.prefijo + &quot;TCE_ID&quot;];
+		value[&quot;TCE_DESCRIPCION&quot;] = (String)row[&quot;TCE_DESCRIPCION&quot;];
+		value[&quot;SOC_DESCRIPCIONCORTA&quot;] = (String)row[&quot;SOC_DESCRIPCIONCORTA&quot;];
+		value[&quot;SOC_DESCRIPCIONLARGA&quot;] = (String)row[&quot;SOC_DESCRIPCIONLARGA&quot;];
+		value[&quot;DSO_DESCRIPCION&quot;] = (String)row[&quot;DSO_DESCRIPCION&quot;];
+		value[&quot;CPR_CODIGO&quot;] = (String)row[&quot;CPR_CODIGO&quot;];
+		value[&quot;CPR_DESCRIPCION&quot;] = (String)row[&quot;CPR_DESCRIPCION&quot;];
+		value[&quot;CTA&quot;] = ((String)row[&quot;PRO_CTA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[&quot;PRO_CTA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;DJAI&quot;] = ((String)row[&quot;PRO_DJAI&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[&quot;PRO_DJAI&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;TCO_DESCRIPCION&quot;] = (String)row[&quot;TCO_DESCRIPCION&quot;];
+		value[&quot;MON_DESCRIPCION&quot;] = (String)row[&quot;MON_DESCRIPCION&quot;];
+		value[&quot;MONTO&quot;] = (Decimal)row[this.prefijo + &quot;MONTO&quot;];
+		value[&quot;SOLICITANTE&quot;] = (String)row[&quot;SOL_GESTORSOLICITANTE&quot;];
+		value[&quot;ENLACE&quot;] = (String)row[&quot;SOL_GESTORENLACE&quot;];
+		value[&quot;FECHAINGRESO&quot;] = (Time)row[&quot;PRO_FECHAINGRESO&quot;];
+		value[&quot;FECHAOBJETIVO&quot;] = (Time)row[&quot;PRO_FECHAOBJETIVO&quot;];
+		value[&quot;FECHAREPROGRAMADA&quot;] = (Time)row[&quot;PRO_FECHAREPROGRAMADA&quot;];
+		value[&quot;FECHAESTIMADAFIN&quot;] = (Time)row[&quot;PRO_FECHAESTIMADAFIN&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;COMPRADOR&quot;] = (String)row[&quot;CMP_COMPRADOR&quot;];
+		value[&quot;GERENTE&quot;] = (String)row[&quot;GER_DESCRIPCION&quot;];
+		value[&quot;JEFE&quot;] = (String)row[&quot;JEF_DESCRIPCION&quot;];
+		value[&quot;CODIGOPLANIFICACION&quot;] = (String)row[this.prefijo + &quot;CODIGOPLANIFICACION&quot;];
+		value[&quot;ESTADO&quot;] = (String)row[&quot;EPR_DESCRIPCION&quot;];
+		value[&quot;ESTADOID&quot;] = (Integer)row[&quot;EPR_ID&quot;];
+		value[&quot;MRC_ID&quot;] = (Integer)row[&quot;CES_MRC_ID&quot;];
+		value[&quot;MRC_DESCRIPCION&quot;] = (String)row[&quot;MRC_DESCRIPCION&quot;];
+		value[&quot;FECHARECHAZO&quot;] = (Time)row[&quot;CES_FECHARECHAZO&quot;];
+		value[&quot;FECHACESTA&quot;] = (Time)row[&quot;CES_FECHACESTA&quot;];
+  		value[&quot;MON_ID&quot;] = (Integer)row[&quot;CES_MON_ID&quot;];
+		value[&quot;SOCID&quot;] = (Integer)row[&quot;CES_SOC_ID&quot;];
+		value[&quot;CES_CANTIDAD&quot;] = (Integer)row[&quot;CES_CANTIDAD&quot;];
+		value[&quot;CES_UNIDAD&quot;] = (String)row[&quot;CES_UNIDAD&quot;];
+		value[&quot;FECHAPLANIFICACION&quot;] = (Time)row[&quot;CES_FECHAPLANIFICACION&quot;];
+		value[&quot;FECHAALTA&quot;] = (Time)row[&quot;CES_FECHAALTA&quot;];
+		value[&quot;CES_DSO_ID&quot;] = (Integer)row[&quot;CES_DSO_ID&quot;];
+		value[&quot;CES_DESCRIPCION_NECESIDAD&quot;] = (String)row[&quot;CES_DESCRIPCIONNECESIDAD&quot;];
+		value[&quot;CES_HISTORICO_PROCESO&quot;] = (Integer)row[&quot;CES_HISTORICOPROCESO&quot;];
+		value[&quot;CES_VARIOS1&quot;] = (String)row[&quot;CES_VARIOS1&quot;];
+		value[&quot;CES_VARIOS2&quot;] = (String)row[&quot;CES_VARIOS2&quot;];
+		value[&quot;CES_VARIOS3&quot;] = (String)row[&quot;CES_VARIOS3&quot;];
+		value[&quot;CES_VARIOS4&quot;] = (String)row[&quot;CES_VARIOS4&quot;];
+		value[&quot;CES_VARIOS5&quot;] = (String)row[&quot;CES_VARIOS5&quot;];
+		value[&quot;CES_VARIOS6&quot;] = (String)row[&quot;CES_VARIOS6&quot;];
+    	values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="String"/>
+			<arg name="proId" description="" flags="in" type="Int"/>
+			<arg name="proEdicion" description="" flags="in" type="Int"/>
+			<arg name="tceId" description="" flags="in" type="Int"/>
+			<arg name="fechaCesta" description="" flags="in" type="Time"/>
+			<arg name="detalle" description="" flags="in" type="String"/>
+			<arg name="monId" description="" flags="in" type="Int"/>
+			<arg name="cantidad" description="" flags="in" type="Decimal"/>
+			<arg name="unidad" description="" flags="in" type="String"/>
+			<arg name="codigoPlanificacion" description="" flags="in" type="String"/>
+			<arg name="fechaPlanificacion" description="" flags="in" type="Time"/>
+			<arg name="varios1" description="" flags="in" type="String"/>
+			<arg name="varios2" description="" flags="in" type="String"/>
+			<arg name="varios3" description="" flags="in" type="String"/>
+			<arg name="varios4" description="" flags="in" type="String"/>
+			<arg name="varios5" description="" flags="in" type="String"/>
+			<arg name="varios6" description="" flags="in" type="String"/>
+			<arg name="usuarioAlta" description="" flags="in" type="String"/>
+			<arg name="usuarioModificacion" description="" flags="in" type="String"/>
+			<arg name="monto" description="" flags="in" type="Decimal"/>
+			<arg name="dsoId" description="" flags="in" type="Int"/>
+			<arg name="mrcId" description="" flags="in" type="Int"/>
+			<arg name="descripcionNecesidad" description="" flags="in" type="String"/>
+			<arg name="fechaLiberacion" description="" flags="in" type="Time"/>
+			<arg name="cprCodigo" description="" flags="in" type="String"/>
+			<arg name="socId" description="" flags="in" type="Int"/>
+			<arg name="lineaCesta" description="" flags="in" type="Int"/>
+			<arg name="mrcFecha" description="" flags="in" type="Time"/>
+			<arg name="existe" description="" flags="in" type="Bool"/>
+			<arg name="historicoProceso" description="" flags="in" type="Int"/>
+			<arg name="importacion" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+Integer cont = 0;
+
+try{
+	String sentence = &quot;&quot;;
+	if(arg.existe){
+		sentence = &quot;UPDATE &quot; + 	this.tabla + &quot; SET &quot; +
+		this.prefijo + &quot;TCE_ID = ?, &quot; +			
+		this.prefijo + &quot;FECHACESTA = ?, &quot; +			
+		this.prefijo + &quot;CPR_CODIGO = ?, &quot; +		
+		this.prefijo + &quot;MON_ID = ?, &quot; +			
+		this.prefijo + &quot;MONTO = ?, &quot; +			
+		this.prefijo + &quot;SOC_ID = ?, &quot; +			
+		this.prefijo + &quot;CANTIDAD = ?, &quot; +			
+		this.prefijo + &quot;UNIDAD = ?, &quot; +			
+		this.prefijo + &quot;CODIGOPLANIFICACION = ?, &quot; +			
+		this.prefijo + &quot;FECHAPLANIFICACION = ?, &quot; +		
+		this.prefijo + &quot;DSO_ID = ?, &quot; +		
+		this.prefijo + &quot;FECHALIBERACION = ?, &quot; +		
+//		this.prefijo + &quot;MRC_ID = ?, &quot; +			
+//		this.prefijo + &quot;FECHARECHAZO = ?, &quot; +
+		this.prefijo + &quot;VARIOS1 = ?, &quot; +				
+		this.prefijo + &quot;VARIOS2 = ?, &quot; +				
+		this.prefijo + &quot;VARIOS3 = ?, &quot;;
+		if (!importacion){					
+			sentence = sentence + 
+			this.prefijo + &quot;VARIOS4 = ?, &quot; +				
+			this.prefijo + &quot;VARIOS5 = ?, &quot; +				
+			this.prefijo + &quot;VARIOS6 = ?, &quot; ;
+		}
+		sentence = sentence + 
+		this.prefijo + &quot;FECHAMODIFICACION = ?, &quot; +
+		this.prefijo + &quot;USUARIOMODIFICACION = ? &quot;;
+		if(arg.proId != -1){
+			sentence = sentence + &quot;, &quot; + this.prefijo + &quot;PRO_ID = ? &quot;;
+		}
+		if(arg.proEdicion != -1){
+			sentence = sentence + &quot;, &quot; + this.prefijo + &quot;PRO_EDICION = ? &quot;;
+		}
+		if(arg.descripcionNecesidad != null &amp;&amp; arg.descripcionNecesidad != &quot;&quot;){
+			sentence = sentence + &quot;, &quot; + this.prefijo + &quot;DESCRIPCIONNECESIDAD = ? &quot;;
+		}
+		if((!arg.importacion) || (arg.importacion &amp;&amp; arg.mrcFecha != null)){
+			sentence = sentence + &quot;, &quot; + this.prefijo + &quot;FECHARECHAZO = ? &quot;;
+		}
+		if((!arg.importacion) || (arg.importacion &amp;&amp; arg.mrcId != null)){
+			sentence = sentence + &quot;, &quot; + this.prefijo + &quot;MRC_ID = ? &quot;;
+		}
+		if((!arg.importacion) || (arg.importacion &amp;&amp; arg.historicoProceso != null)){
+			sentence = sentence + &quot;, &quot; + this.prefijo + &quot;HISTORICOPROCESO = ? &quot;;
+		}
+		
+		sentence = sentence + &quot; WHERE &quot; + 	this.prefijo + &quot;ID = ? AND &quot; + this.prefijo + &quot;LINEACESTA = ?&quot;;	
+	}else{
+		sentence = &quot;INSERT INTO &quot; + this.tabla + &quot; (&quot; +		
+		this.prefijo + &quot;TCE_ID, &quot; +			
+		this.prefijo + &quot;FECHACESTA, &quot; +			
+		this.prefijo + &quot;CPR_CODIGO, &quot; +		
+		this.prefijo + &quot;MON_ID, &quot; +			
+		this.prefijo + &quot;MONTO, &quot; +			
+		this.prefijo + &quot;SOC_ID, &quot; +			
+		this.prefijo + &quot;CANTIDAD, &quot; +			
+		this.prefijo + &quot;UNIDAD, &quot; +			
+		this.prefijo + &quot;CODIGOPLANIFICACION, &quot; +			
+		this.prefijo + &quot;FECHAPLANIFICACION, &quot; +	
+		this.prefijo + &quot;DSO_ID, &quot; +		
+		this.prefijo + &quot;FECHALIBERACION, &quot; +					
+//		this.prefijo + &quot;MRC_ID, &quot; +			
+//		this.prefijo + &quot;FECHARECHAZO, &quot; +
+		this.prefijo + &quot;VARIOS1, &quot; +				
+		this.prefijo + &quot;VARIOS2, &quot; +				
+		this.prefijo + &quot;VARIOS3, &quot;;
+		if (!importacion){					
+			sentence = sentence + 
+			this.prefijo + &quot;VARIOS4, &quot; +				
+			this.prefijo + &quot;VARIOS5, &quot; +				
+			this.prefijo + &quot;VARIOS6, &quot; ;
+		}
+		sentence = sentence + 	
+		this.prefijo + &quot;FECHAALTA, &quot; +
+		this.prefijo + &quot;USUARIOALTA, &quot;;
+		if(arg.proId != -1){
+			sentence = sentence + this.prefijo + &quot;PRO_ID, &quot;;
+			cont = cont + 1;
+		}
+		if(arg.proEdicion != -1){
+			sentence = sentence + this.prefijo + &quot;PRO_EDICION, &quot;;
+			cont = cont + 1;
+		}
+		if(arg.descripcionNecesidad != null &amp;&amp; arg.descripcionNecesidad != &quot;&quot;){
+			sentence = sentence + this.prefijo + &quot;DESCRIPCIONNECESIDAD, &quot;;
+			cont = cont + 1;
+		}
+		if((!arg.importacion) || (arg.importacion &amp;&amp; arg.mrcFecha != null)){
+			sentence = sentence + this.prefijo + &quot;FECHARECHAZO, &quot;;
+			cont = cont + 1;
+		}
+		if((!arg.importacion) || (arg.importacion &amp;&amp; arg.mrcId != null)){
+			sentence = sentence + this.prefijo + &quot;MRC_ID, &quot;;
+			cont = cont + 1;
+		}
+		if((!arg.importacion) || (arg.importacion &amp;&amp; arg.historicoProceso != null)){
+			sentence = sentence + this.prefijo + &quot;HISTORICOPROCESO, &quot;;
+			cont = cont + 1;
+		}
+		if(!importacion){
+			cont = cont + 3;
+		}
+		sentence = sentence + this.prefijo + &quot;ID, &quot; +
+		this.prefijo + &quot;LINEACESTA) &quot;;
+		sentence = sentence + &quot;VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?&quot;;
+		for (int i = 0; i &lt; cont; i++) {
+		    sentence = sentence + &quot;,?&quot;;
+		}
+		sentence = sentence + &quot;)&quot;;
+
+	}
+	Any[] inParameters = {};
+
+	inParameters[] = arg.tceId;
+	inParameters[] = arg.fechaCesta;
+	inParameters[] = arg.cprCodigo;
+	inParameters[] = arg.monId;
+	inParameters[] = arg.monto;
+	inParameters[] = arg.socId;
+	inParameters[] = arg.cantidad;
+	inParameters[] = arg.unidad;
+	inParameters[] = arg.codigoPlanificacion;
+	inParameters[] = arg.fechaPlanificacion;
+	inParameters[] = arg.dsoId;
+	inParameters[] = arg.fechaLiberacion;
+//	inParameters[] = arg.mrcId;
+//	inParameters[] = arg.mrcFecha;
+	inParameters[] = arg.varios1;
+	inParameters[] = arg.varios2;
+	inParameters[] = arg.varios3;
+	if (!importacion){
+		inParameters[] = arg.varios4;
+		inParameters[] = arg.varios5;
+		inParameters[] = arg.varios6;
+	}
+	if(arg.existe){
+		inParameters[] = &apos;now&apos;;	
+		inParameters[] = arg.usuarioModificacion;
+	}else{
+		inParameters[] = &apos;now&apos;;
+		inParameters[] = arg.usuarioAlta;
+	}
+	if(arg.proId != -1){
+		inParameters[] = arg.proId;
+	}
+	if(arg.proEdicion != -1){
+		inParameters[] = arg.proEdicion;
+	}
+	if(arg.descripcionNecesidad != null &amp;&amp; arg.descripcionNecesidad != &quot;&quot;){
+		inParameters[] = arg.descripcionNecesidad;
+	}
+	if((!arg.importacion) || (arg.importacion &amp;&amp; arg.mrcFecha != null)){
+		inParameters[] = arg.mrcFecha;
+	}
+	if((!arg.importacion) || (arg.importacion &amp;&amp; arg.mrcId != null)){
+		inParameters[] = arg.mrcId;
+	}	
+	if((!arg.importacion) || (arg.importacion &amp;&amp; arg.historicoProceso != null)){
+		inParameters[] = arg.historicoProceso;
+	}
+	inParameters[] = arg.id;
+	inParameters[] = arg.lineaCesta;
+
+	logMessage(&quot;Sentence: &quot; + sentence, Severity.INFO);
+	logMessage(&quot;Parameters: &quot; + inParameters, Severity.INFO);	
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

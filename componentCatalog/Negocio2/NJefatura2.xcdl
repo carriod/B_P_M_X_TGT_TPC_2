@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="NJefatura2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String length="50" name="descripcion" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<String length="50" name="descripcionCorta" flags="hassetter hasgetter public includeincheck" position="5"/>
+		<Time scale="0" precision="0" name="fechaAlta" flags="hassetter hasgetter public includeincheck" position="1"/>
+		<Time scale="0" precision="0" name="fechaModificacion" flags="hassetter hasgetter public includeincheck" position="2"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="9"/>
+		<String length="50" name="jefe" flags="hassetter hasgetter public includeincheck" position="4"/>
+		<String length="50" name="usuarioAlta" flags="hassetter hasgetter public includeincheck" position="6"/>
+		<String length="50" name="usuarioJefe" flags="hassetter hasgetter public includeincheck" position="10"/>
+		<String length="50" name="usuarioModificacion" flags="hassetter hasgetter public includeincheck" position="7"/>
+		<Bool name="vigencia" flags="hassetter hasgetter public includeincheck" position="8"/>
+	</attributes>
+	<methods>
+		<method name="NJefatura2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NJefatura2"/>
+		</method>
+	</methods>
+</component>

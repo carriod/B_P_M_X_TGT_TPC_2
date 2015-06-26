@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="OtrosDocumentos" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="comentario" flags="hassetter hasgetter public" position="4"/>
+		<Int length="32" name="idTipoDocumento" flags="hassetter hasgetter public" position="2"/>
+		<String name="nombre" flags="hassetter hasgetter public" position="3"/>
+		<Bool name="seleccionado" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="OtrosDocumentos" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormDocumentacionAdjunta.OtrosDocumentos"/>
+		</method>
+		<method name="cargaDocumento" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta = FSolicitudDocumentos.getListValuesOtrosDocumentos(idSolicitud : this.solicitud.id);
+if(respuesta.resultado == OK){
+	NSolicitudDocumentos[] docuemtos = (NSolicitudDocumentos[])respuesta.contenido;	
+	Integer idDocLibre = 0;
+	ciclo:for (int index = 0; index &lt; docuemtos.length; index++) {
+	    if(docuemtos[index].idTipoDocumento != (index+101)){
+	    	idDocLibre = index+101;
+	    	break ciclo;
+	    }
+	}
+	Integer indiceCarga = this.otrosDocumentos.indexOf(element : this);
+	
+	if(this.solicitud.id != null &amp;&amp; this.solicitud.id != 0){
+		if(docuemtos.length() == 0){
+			this.submit(text : &quot;cargar_&quot; + this.solicitud.id + &quot;_101&quot; + &quot;_&quot; + indiceCarga);
+		}
+		else if(idDocLibre == 0){
+			this.submit(text : &quot;cargar_&quot; + this.solicitud.id + &quot;_&quot; + ((String)(101+docuemtos.length()))+ &quot;_&quot; + indiceCarga);
+		}
+		else{
+			this.submit(text : &quot;cargar_&quot; + this.solicitud.id + &quot;_&quot; + ((String)(idDocLibre))+ &quot;_&quot; + indiceCarga);
+		}
+	}
+	else{
+		idDocLibre = indiceCarga + 101;
+		this.submit(text : &quot;cargar_&quot; + this.solicitud.id + &quot;_&quot; + ((String)(idDocLibre))+ &quot;_&quot; + indiceCarga);
+	}
+}
+else{	
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}</sourceCode>
+		</method>
+		<method name="verDocumento" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_&quot;+this.solicitud.id + &quot;_&quot; + this.idTipoDocumento);</sourceCode>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FormValoracionNecesidad" description="" versionID="Version 5.7 GA" flags="cloneable presentable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Lang.Presentable" flags="public"/>
+	<inherit class="Fuego.Internal.PresentableDelegate" flags="public delegated hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="defaultPresentation" value="ValoracionNecesidad"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<objectProperty name="presentationNames" value="ValoracionNecesidad"/>
+	<attributes>
+		<array type="Formulario.FormValoracionNecesidad.BotonesAccion" name="botonesAccion" flags="hasgetter public" position="5" javaType="fuego.xobject.GroupArray"/>
+		<array type="Formulario.FormValoracionNecesidad.BotonesSolapa" name="botonesSolapa" flags="hasgetter public" position="4" javaType="fuego.xobject.GroupArray"/>
+		<Bool name="cargaOK" flags="hassetter hasgetter public" position="9"/>
+		<Bool name="editable" flags="hassetter hasgetter public" position="8"/>
+		<array type="String" name="errores" flags="hassetter hasgetter public" position="3"/>
+		<String name="nombreDocCompraMargenModelo" flags="hassetter hasgetter public" position="6"/>
+		<String name="nombreDocRegularAdmin" flags="hassetter hasgetter public" position="7"/>
+		<object type="Negocio.NSolicitud" name="solicitud" flags="hassetter hasgetter public" position="2"/>
+		<String name="titulo" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FormValoracionNecesidad" description="" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormValoracionNecesidad"/>
+			<sourceCode language="Java1">
+
+</sourceCode>
+		</method>
+		<method name="actionButton0" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton0&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton1" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton1&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton2" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton2&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton3" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton3&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton4" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton4&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton5" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton5&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton6" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton6&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton7" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton7&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="cargaCompraMargenModel" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;cargar_&quot; + this.solicitud.id + &quot;_2&quot;);</sourceCode>
+		</method>
+		<method name="cargaRegularizacionAdmin" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;cargar_&quot; + this.solicitud.id + &quot;_1&quot;);</sourceCode>
+		</method>
+		<method name="initPres" description="" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+
+
+this.setText(componentId : &quot;titulo&quot;, text : this.titulo);
+this.setVisible(componentId : &quot;buttonSubmit&quot;, visible : false, collapsed : true);
+this.setVisible(componentId : &quot;buttonCancel&quot;, visible : false, collapsed : true);
+
+for (int i = 0; i &lt; 7; i++) {
+   this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+}
+ 
+for (int i = 0; i &lt; botonesAccion.length; i++) {
+    if(botonesAccion[i].labelBoton != null){
+    	this.setVisible(componentId : &quot;actionButton&quot;+i, visible : true, collapsed : false);
+    	this.setText(componentId : &quot;actionButton&quot;+i, text : botonesAccion[i].labelBoton);          
+	}else{
+		this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+	}
+}
+
+for (int i = 0; i &lt; 11; i++) {
+   this.setVisible(componentId : &quot;tabButton&quot;+i, visible : false, collapsed : false);
+}
+
+for (int i = 0; i &lt; botonesSolapa.length; i++) {
+    if(botonesSolapa[i].labelBoton != null){
+    	this.setVisible(componentId : &quot;tabButton&quot;+i, visible : true, collapsed : false);
+    	this.setText(componentId : &quot;tabButton&quot;+i, text : botonesSolapa[i].labelBoton);            
+	}else{
+		this.setVisible(componentId : &quot;tabButton&quot;+i, visible : false, collapsed : false);
+	}
+}
+
+this.setearEditable();
+this.visualRecurrencia();
+this.visualRegularizacion();
+this.visualCompraMargenModel();
+this.visualGastosAsociadosPedido();
+
+this.setVisible(componentId : &quot;buttonVerR&quot;, visible : false, collapsed : true);
+this.setVisible(componentId : &quot;buttonVerC&quot;, visible : false, collapsed : true);
+
+for (int i = 0; i &lt; this.solicitud.documentos.length; i++) {
+	    if(this.solicitud.documentos[i].documento.idTipoDocumento == 1 &amp;&amp; this.solicitud.documentos[i].documento.cargado){
+			this.setVisible(componentId : &quot;buttonVerR&quot;, visible : true, collapsed : false);
+	    	nombreDocRegularAdmin = this.solicitud.documentos[i].documento.nombreArchivo + &quot;.&quot; + this.solicitud.documentos[i].documento.extensionArchivo;
+	    }else if(this.solicitud.documentos[i].documento.idTipoDocumento == 2 &amp;&amp; this.solicitud.documentos[i].documento.cargado){
+			this.setVisible(componentId : &quot;buttonVerC&quot;, visible : true, collapsed : false);
+    		nombreDocCompraMargenModelo = this.solicitud.documentos[i].documento.nombreArchivo + &quot;.&quot; + this.solicitud.documentos[i].documento.extensionArchivo;
+	    }
+}
+
+if(errores != null &amp;&amp; errores.length() &gt; 0){
+	foreach (error in errores) {
+		this.showError(error : error);
+	}
+}
+if(this.cargaOK){
+	this.showWarning(warning : &quot;Solicitud cargada sin errores.&quot;);
+}</sourceCode>
+		</method>
+		<method name="onChangeCompraMargenModelo" flags="clientavailable public">
+			<sourceCode language="Java1">if(!this.solicitud.valoracionNecesidad.compraMargMod){
+	this.nombreDocCompraMargenModelo = null;
+	this.solicitud.valoracionNecesidad.motivoCompraMargMod = null;
+}
+
+this.visualCompraMargenModel();</sourceCode>
+		</method>
+		<method name="onChangeGastosAsociadosPedido" flags="clientavailable public">
+			<sourceCode language="Java1">if(!this.solicitud.valoracionNecesidad.gastosPedido){
+	this.solicitud.valoracionNecesidad.infoGastosPedido = null;
+}
+
+this.visualGastosAsociadosPedido();</sourceCode>
+		</method>
+		<method name="onChangeRecurrencia" flags="clientavailable public">
+			<sourceCode language="Java1">if(this.solicitud.valoracionNecesidad.recurrencia){
+	this.solicitud.valoracionNecesidad.periodicidadCompra = null;
+}
+
+this.visualRecurrencia();
+</sourceCode>
+		</method>
+		<method name="onChangeRegularizacion" flags="clientavailable public">
+			<sourceCode language="Java1">if(this.solicitud.valoracionNecesidad.regularizacion){
+	this.solicitud.valoracionNecesidad.motivoRegularizacion = null;
+	this.solicitud.valoracionNecesidad.comentarioRegAdm = null;
+}
+
+this.visualRegularizacion();
+</sourceCode>
+		</method>
+		<method name="setearEditable" flags="clientavailable public">
+			<sourceCode language="Java1">this.setEditable(componentId : &quot;tabButton1&quot;, editable : false);
+this.setCssClassName(componentId : &quot;tabButton1&quot;, cssClass : &quot;fo_selected_tab_button&quot;);
+
+this.setEditable(componentId : &quot;beneficioCompra&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;recurrencia&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;periodicidadCompra&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;regularizacion&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;motivoRegularizacion&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;comentarioRegularizacionAdmin&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;compraMargenModelo&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;motivoCompraMargenModelo&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;gastosAsociadosPedido&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;infoGastosAsociados&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;alcanceFijo&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;alcanceMovil&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;cargaCompraMargenModelo&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;cargaRegularizacionAdmin&quot;, editable : this.editable);
+this.setEditable(componentId : &quot;descFijoMovil&quot;, editable : this.editable);
+
+this.setVisible(componentId : &quot;cargaRegularizacionAdmin&quot;, visible : this.editable, collapsed : !this.editable);
+this.setVisible(componentId : &quot;cargaCompraMargenModelo&quot;, visible : this.editable, collapsed : !this.editable);
+</sourceCode>
+		</method>
+		<method name="tabButton0" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton0&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton1" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton1&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton10" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton10&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton11" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton11&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton2" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton2&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton3" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton3&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton4" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton4&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton5" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton5&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton6" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton6&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton7" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton7&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton8" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton8&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton9" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton9&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="verCompraMargenModelo" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_&quot;+this.solicitud.id + &quot;_2&quot;);</sourceCode>
+		</method>
+		<method name="verRegularizacionAdmin" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_&quot; + this.solicitud.id + &quot;_1&quot;);</sourceCode>
+		</method>
+		<method name="visualCompraMargenModel" flags="clientavailable public">
+			<sourceCode language="Java1">boolean mostrar1 = false;
+
+if(solicitud.valoracionNecesidad.compraMargMod){
+	mostrar1 = true;
+	this.setCssClassName(componentId : &quot;datosCompraT4[0][3]&quot;, cssClass : &quot;fo_border_cell&quot;);
+}
+else{
+	this.setCssClassName(componentId : &quot;datosCompraT4[0][3]&quot;, cssClass : &quot;fo_ocultar_cell&quot;);
+}
+
+this.setVisible(componentId : &quot;documentoNotaCompraMargenModelo&quot;, visible : mostrar1, collapsed : !mostrar1);
+this.setVisible(componentId : &quot;motivoCompraMargenModeloL&quot;, visible : mostrar1, collapsed : !mostrar1);
+this.setVisible(componentId : &quot;motivoCompraMargenModelo&quot;, visible : mostrar1, collapsed : !mostrar1);
+this.setVisible(componentId : &quot;documentoNotaCompraMargenModelo&quot;, visible : mostrar1, collapsed : !mostrar1);
+
+</sourceCode>
+		</method>
+		<method name="visualGastosAsociadosPedido" flags="clientavailable public">
+			<sourceCode language="Java1">boolean mostrar1 = false;
+
+if(solicitud.valoracionNecesidad.gastosPedido){
+	mostrar1 = true;
+}
+
+this.setVisible(componentId : &quot;infoGastosAsociadosL&quot;, visible : mostrar1, collapsed : !mostrar1);
+this.setVisible(componentId : &quot;infoGastosAsociados&quot;, visible : mostrar1, collapsed : !mostrar1);</sourceCode>
+		</method>
+		<method name="visualRecurrencia" flags="clientavailable public">
+			<sourceCode language="Java1">boolean mostrar1 = false;
+
+if(solicitud.valoracionNecesidad.recurrencia){
+	mostrar1 = true;
+}
+
+this.setVisible(componentId : &quot;periodicidadCompraL&quot;, visible : mostrar1, collapsed : mostrar1);
+this.setVisible(componentId : &quot;periodicidadCompra&quot;, visible : mostrar1, collapsed : mostrar1);</sourceCode>
+		</method>
+		<method name="visualRegularizacion" flags="clientavailable public">
+			<sourceCode language="Java1">boolean mostrar1 = false;
+
+if(solicitud.valoracionNecesidad.regularizacion){
+	mostrar1 = true;
+	this.setCssClassName(componentId : &quot;datosCompraT3[0][3]&quot;, cssClass : &quot;fo_border_cell&quot;);
+}
+else{
+	this.setCssClassName(componentId : &quot;datosCompraT3[0][3]&quot;, cssClass : &quot;fo_ocultar_cell&quot;);
+}
+
+this.setVisible(componentId : &quot;documentoRegularizacionAdmin&quot;, visible : mostrar1, collapsed : !mostrar1);
+this.setVisible(componentId : &quot;motivoRegularizacionL&quot;, visible : mostrar1, collapsed : !mostrar1);
+this.setVisible(componentId : &quot;motivoRegularizacion&quot;, visible : mostrar1, collapsed : !mostrar1);
+this.setVisible(componentId : &quot;comentarioRegularizacionAdminL&quot;, visible : mostrar1, collapsed : !mostrar1);
+this.setVisible(componentId : &quot;comentarioRegularizacionAdmin&quot;, visible : mostrar1, collapsed : !mostrar1);
+this.setVisible(componentId : &quot;documentoRegularizacionAdmin&quot;, visible : mostrar1, collapsed : !mostrar1);
+
+</sourceCode>
+		</method>
+	</methods>
+	<presentation bgcolor="#FFFFFF" checked="true" clienterroraspopup="true" cssfilename="webRoot/webResources/css/tpcstyle.css" errorcssclass="fo_presentation_error" errorfontface="PLAIN" errorfontsize="12" errorfonttype="Default" height="315" id="ValoracionNecesidad" initializationmethod="MinitPres()V" iscssenabled="true" isuxo="true" reference="FormValoracionNecesidad" width="473" cssclass="fo_presentation" ismixedcss="false" tabindex="0">
+		<background imageattachment="fixed" imagelayout="no-repeat" imagexposition="center" imageyposition="center">
+			<image alignment="center" bordercolor="#000000" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Default" fullbrowser="false" required="false" cssclass="fo_image" ismixedcss="false" tabindex="0"/>
+		</background>
+		<table border="true" bottombordercolor="#000000" bottomborderstyle="SOLID" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,100%]" id="valoracionNecesidadT" leftbordercolor="#000000" leftborderstyle="SOLID" leftborderwidth="1" rightbordercolor="#000000" rightborderstyle="SOLID" rightborderwidth="1" topbordercolor="#000000" topborderstyle="SOLID" topborderwidth="1" width="1200" cssclass="fo_presentation_table" ismixedcss="false" tabindex="0">
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,]" id="tabButtonT1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" cssclass="fo_header_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton0" methodinvocation="MtabButton0()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton1" methodinvocation="MtabButton1()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton2" methodinvocation="MtabButton2()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton3" methodinvocation="MtabButton3()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton4" methodinvocation="MtabButton4()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton5" methodinvocation="MtabButton5()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,]" id="tabButtonT2" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" cssclass="fo_header_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton6" methodinvocation="MtabButton6()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton7" methodinvocation="MtabButton7()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton8" methodinvocation="MtabButton8()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton9" methodinvocation="MtabButton9()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton10" methodinvocation="MtabButton10()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton11" methodinvocation="MtabButton11()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title_cell" ismixedcss="false" tabindex="0">
+								<label fgcolor="#000000" fontface="BOLD" fontsize="26" fonttype="Verdana" fullbrowser="false" id="titulo" cssclass="fo_title_label" ismixedcss="false" tabindex="0">
+									<value>Titulo</value>
+								</label>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,]" id="table13" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title2_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="datosCompraL" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Datos de la Compra</value>
+								</label>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,13%,20%,13%,20%,13%,20%]" id="datosCompraT1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="beneficioCompraL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Beneficio de la Compra</value>
+											</label>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<multilinetext bordercolor="#D0D2D4" borderwidth="1" colqty="220" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="beneficioCompra" lineqty="5" reference="solicitud.valoracionNecesidad.beneficioCompra" required="false" cssclass="fo_multiline" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,20%,13%,13%,20%,20%,13%]" id="datosCompraT2" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="recurrenciaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Recurrencia</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="recurrencia" onchange="MonChangeRecurrencia()V" reference="solicitud.valoracionNecesidad.recurrencia" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="periodicidadCompraL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Periodicidad de la Compra</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="periodicidadCompra" outputmasktype="0" passwordfield="false" reference="solicitud.valoracionNecesidad.periodicidadCompra" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,20%,13%,13%,20%,20%,13%]" id="datosCompraT3" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="regularizacionL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Regularización</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="regularizacion" onchange="MonChangeRegularizacion()V" reference="solicitud.valoracionNecesidad.regularizacion" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="3" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_border_cell" ismixedcss="false" tabindex="0">
+											<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="documentoRegularizacionAdmin" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+												<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,40%,10%,40%,10%]" id="table14" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_title_table" ismixedcss="false" tabindex="0">
+															<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label15" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Documento</value>
+																	</label>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label16" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Carga</value>
+																	</label>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label17" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Nombre Archivo</value>
+																	</label>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label18" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Ver</value>
+																	</label>
+																</cell>
+															</row>
+														</table>
+													</cell>
+												</row>
+												<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,40%,10%,40%,10%]" id="table15" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+															<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label19" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Nota Regularización Administrativa</value>
+																	</label>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<button action="action" bordercolor="#D0D2D4" borderwidth="1" display=".     ." fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="cargaRegularizacionAdmin" methodinvocation="McargaRegularizacionAdmin()V" transparent="true" cssclass="fo_button_cargar" ismixedcss="false" tabindex="0"/>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text2" outputmasktype="0" passwordfield="false" reference="nombreDocRegularAdmin" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<button action="action" bordercolor="#D0D2D4" borderwidth="1" display=".     ." fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonVerR" methodinvocation="MverRegularizacionAdmin()V" transparent="true" cssclass="fo_button_ver" ismixedcss="false" tabindex="0"/>
+																</cell>
+															</row>
+														</table>
+													</cell>
+												</row>
+											</table>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="2" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="motivoRegularizacionL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Motivo Regularización</value>
+											</label>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<multilinetext bordercolor="#D0D2D4" borderwidth="1" colqty="220" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="motivoRegularizacion" lineqty="5" reference="solicitud.valoracionNecesidad.motivoRegularizacion" required="false" cssclass="fo_multiline" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="2" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="comentarioRegularizacionAdminL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Comentario Regularización Administrativo</value>
+											</label>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<multilinetext bordercolor="#D0D2D4" borderwidth="1" colqty="220" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="comentarioRegularizacionAdmin" lineqty="5" reference="solicitud.valoracionNecesidad.comentarioRegAdm" required="false" cssclass="fo_multiline" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,20%,13%,13%,20%,20%,13%]" id="datosCompraT4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="compraMargenModeloL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Compra al Margen del Modelo</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="compraMargenModelo" onchange="MonChangeCompraMargenModelo()V" reference="solicitud.valoracionNecesidad.compraMargMod" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="3" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_border_cell" ismixedcss="false" tabindex="0">
+											<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="documentoNotaCompraMargenModelo" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+												<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,40%,10%,40%,10%]" id="table16" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_title_table" ismixedcss="false" tabindex="0">
+															<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label25" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Documento</value>
+																	</label>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label26" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Carga</value>
+																	</label>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label27" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Nombre Archivo</value>
+																	</label>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label28" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Ver</value>
+																	</label>
+																</cell>
+															</row>
+														</table>
+													</cell>
+												</row>
+												<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,40%,10%,40%,10%]" id="table17" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+															<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label29" cssclass="fo_label" ismixedcss="false" tabindex="0">
+																		<value>Nota Compra al Margen del Modelo</value>
+																	</label>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<button action="action" bordercolor="#D0D2D4" borderwidth="1" display=".     ." fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="cargaCompraMargenModelo" methodinvocation="McargaCompraMargenModel()V" transparent="true" cssclass="fo_button_cargar" ismixedcss="false" tabindex="0"/>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text4" outputmasktype="0" passwordfield="false" reference="nombreDocCompraMargenModelo" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+																</cell>
+																<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+																	<button action="action" bordercolor="#D0D2D4" borderwidth="1" display=".     ." fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonVerC" methodinvocation="MverCompraMargenModelo()V" transparent="true" cssclass="fo_button_ver" ismixedcss="false" tabindex="0"/>
+																</cell>
+															</row>
+														</table>
+													</cell>
+												</row>
+											</table>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="2" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="motivoCompraMargenModeloL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Motivo Compra al Margen del Modelo</value>
+											</label>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<multilinetext bordercolor="#D0D2D4" borderwidth="1" colqty="220" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="motivoCompraMargenModelo" lineqty="5" reference="solicitud.valoracionNecesidad.motivoCompraMargMod" required="false" cssclass="fo_multiline" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,20%,13%,13%,20%,20%,13%]" id="datosCompraT5" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="gastosAsociadosPedidoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Gastos Asociados al Pedido</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="gastosAsociadosPedido" onchange="MonChangeGastosAsociadosPedido()V" reference="solicitud.valoracionNecesidad.gastosPedido" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="2" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="infoGastosAsociadosL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Información Gastos Asociados</value>
+											</label>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<multilinetext bordercolor="#D0D2D4" borderwidth="1" colqty="220" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="infoGastosAsociados" lineqty="5" reference="solicitud.valoracionNecesidad.infoGastosPedido" required="false" cssclass="fo_multiline" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,20%,13%,13%,20%,20%,13%]" id="datosCompraT6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="alcanceFijoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Alcance Fijo</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="alcanceFijo" reference="solicitud.valoracionNecesidad.alcanceFijo" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="alcanceMovilL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Alcance Móvil</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="alcanceMovil" reference="solicitud.valoracionNecesidad.alcanceMovil" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="descFijoMovilL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Descripción Fijo / Móvil</value>
+											</label>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<multilinetext bordercolor="#D0D2D4" borderwidth="1" colqty="220" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="descFijoMovil" lineqty="5" reference="solicitud.valoracionNecesidad.descFijoMovil" required="false" cssclass="fo_multiline" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="right" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="7" cellspacing="0" columnwidth="[,10%,10%,10%,10%,10%,10%]" id="table6" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" width="100%" cssclass="fo_footer_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton0" methodinvocation="MactionButton0()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton1" methodinvocation="MactionButton1()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton2" methodinvocation="MactionButton2()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton3" methodinvocation="MactionButton3()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton4" methodinvocation="MactionButton4()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton5" methodinvocation="MactionButton5()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton6" methodinvocation="MactionButton6()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton7" methodinvocation="MactionButton7()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="right" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table7" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="submit" bordercolor="#000000" borderwidth="1" display="Submit" fontface="PLAIN" fontsize="12" fonttype="Default" id="buttonSubmit" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="cancel" bordercolor="#000000" borderwidth="1" display="Cancel" fontface="PLAIN" fontsize="12" fonttype="Default" id="buttonCancel" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+		</table>
+	</presentation>
+	<resources>
+		<resource default=".     .">
+			<label language="es">.     .</label>
+		</resource>
+		<resource default="Alcance Fijo" type="1">
+			<label language="es">Alcance Fijo</label>
+		</resource>
+		<resource default="Alcance Movil" type="1">
+			<label language="es">Alcance Movil</label>
+		</resource>
+		<resource default="Alcance Móvil" type="1">
+			<label language="es">Alcance Móvil</label>
+		</resource>
+		<resource default="Beneficio de la Compra" type="1">
+			<label language="es">Beneficio de la Compra</label>
+		</resource>
+		<resource default="Boton">
+			<label language="en">Boton</label>
+			<label language="es">Boton</label>
+		</resource>
+		<resource default="Botones" type="1">
+			<label language="en">Botones</label>
+			<label language="es">Botones</label>
+		</resource>
+		<resource default="Cancel">
+			<label language="en">Cancel</label>
+			<label language="es">Cancel</label>
+		</resource>
+		<resource default="Carga" type="1">
+			<label language="es">Carga</label>
+		</resource>
+		<resource default="Comentario Regularización Administrativo" type="1">
+			<label language="es">Comentario Regularización Administrativo</label>
+		</resource>
+		<resource default="Compra al Margen del Modelo" type="1">
+			<label language="es">Compra al Margen del Modelo</label>
+		</resource>
+		<resource default="Datos de la Compra" type="1">
+			<label language="es">Datos de la Compra</label>
+		</resource>
+		<resource default="Dejar Pendiente">
+			<label language="es">Pendiente</label>
+		</resource>
+		<resource default="Des" type="1">
+			<label language="es">Des</label>
+		</resource>
+		<resource default="Descripción" type="1">
+			<label language="es">Descripción</label>
+		</resource>
+		<resource default="Descripción Fijo / Móvil" type="1">
+			<label language="es">Descripción Fijo / Móvil</label>
+		</resource>
+		<resource default="Documento" type="1">
+			<label language="es">Documento</label>
+		</resource>
+		<resource default="Fecha Alta :">
+			<label language="es">Fecha Alta :</label>
+		</resource>
+		<resource default="Fecha Alta:">
+			<label language="es">Fecha Alta:</label>
+		</resource>
+		<resource default="FormularioGenerico" type="1">
+			<label language="en">FormularioGenerico</label>
+			<label language="es">FormularioGenerico</label>
+		</resource>
+		<resource default="Gastos Asociados al Pedido" type="1">
+			<label language="es">Gastos Asociados al Pedido</label>
+		</resource>
+		<resource default="Gestos Asociados al Pedido" type="1">
+			<label language="es">Gestos Asociados al Pedido</label>
+		</resource>
+		<resource default="Información Gastos Asociados" type="1">
+			<label language="es">Información Gastos Asociados</label>
+		</resource>
+		<resource default="Información Gestos Asociados" type="1">
+			<label language="es">Información Gestos Asociados</label>
+		</resource>
+		<resource default="L" type="1">
+			<label language="es">L</label>
+		</resource>
+		<resource default="Mensaje" type="1">
+			<label language="es">Mensaje</label>
+		</resource>
+		<resource default="Mensaje :" type="1">
+			<label language="es">Mensaje :</label>
+		</resource>
+		<resource default="Mensaje:" type="1">
+			<label language="es">Mensaje:</label>
+		</resource>
+		<resource default="Motivo Compra al Margen del Modelo" type="1">
+			<label language="es">Motivo Compra al Margen del Modelo</label>
+		</resource>
+		<resource default="Motivo Regularización" type="1">
+			<label language="es">Motivo Regularización</label>
+		</resource>
+		<resource default="Nombre Archivo" type="1">
+			<label language="es">Nombre Archivo</label>
+		</resource>
+		<resource default="Nota" type="1">
+			<label language="es">Nota</label>
+		</resource>
+		<resource default="Nota Compra al Margen del Modelo" type="1">
+			<label language="es">Nota Compra al Margen del Modelo</label>
+		</resource>
+		<resource default="Nota Regularización Administrativa" type="1">
+			<label language="es">Nota Regularización Administrativa</label>
+		</resource>
+		<resource default="Periodicidad de la Compra" type="1">
+			<label language="es">Periodicidad de la Compra</label>
+		</resource>
+		<resource default="Recurrencia" type="1">
+			<label language="es">Recurrencia</label>
+		</resource>
+		<resource default="Recurrencia:" type="1">
+			<label language="es">Recurrencia:</label>
+		</resource>
+		<resource default="Recurrencia;" type="1">
+			<label language="es">Recurrencia;</label>
+		</resource>
+		<resource default="Regularización" type="1">
+			<label language="es">Regularización</label>
+		</resource>
+		<resource default="Regularización:" type="1">
+			<label language="es">Regularización:</label>
+		</resource>
+		<resource default="Rol" type="1">
+			<label language="es">Rol</label>
+		</resource>
+		<resource default="Rol :" type="1">
+			<label language="es">Rol :</label>
+		</resource>
+		<resource default="Rol:" type="1">
+			<label language="es">Rol:</label>
+		</resource>
+		<resource default="Solicitud" type="1">
+			<label language="es">Solicitud</label>
+		</resource>
+		<resource default="Solicitud :" type="1">
+			<label language="es">Solicitud :</label>
+		</resource>
+		<resource default="Solicitud:" type="1">
+			<label language="es">Solicitud:</label>
+		</resource>
+		<resource default="Submit">
+			<label language="en">Submit</label>
+			<label language="es">Submit</label>
+		</resource>
+		<resource default="Titulo">
+			<label language="es">Titulo</label>
+		</resource>
+		<resource default="Ver" type="1">
+			<label language="es">Ver</label>
+		</resource>
+		<resource default="action">
+			<label language="es">action</label>
+		</resource>
+		<resource default="label" type="1">
+			<label language="es">label</label>
+		</resource>
+		<resource default="submit">
+			<label language="es">submit</label>
+		</resource>
+	</resources>
+</component>

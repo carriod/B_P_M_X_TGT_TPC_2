@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="SConsultaSAGI" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="SConsultaSAGI" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SConsultaSAGI"/>
+			<sourceCode language="Java1">this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="getListValuesForFiltro" flags="clientavailable public">
+			<arg name="fechaCreaDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaCreaHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaEnvioDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaEnvioHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaPlanifPreComDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaPlanifPreComHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaPlanifComDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaPlanifComHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaRealPreComDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaRealPreComHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaRealComDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaRealComHasta" description="" flags="in" type="Time"/>
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="sociedadValor" description="" flags="in" type="Int"/>
+			<arg name="resultadoValor" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+    Any[String] value;
+    Any[] values = {};
+    Any[] inParameters = {};
+    String sentenceCond;
+    String sentenceFecha = &quot;&quot;;
+    
+    String sentence = &quot;SELECT DISTINCT sol.SOL_ID, sol.SOL_NROCESTA, sol.SOL_PCE_ID, cge.CGE_ASO_ID, ses.SES_ESO_ID, sol.SOL_CCE_ID, cge.CGE_IDRELACIONADA, cge.CGE_CAR_ID, sol.SOL_CUENTAIMPCONTABLE , sol.SOL_GESTORSOLICITANTE, sol.SOL_GESTORENLACE, apa.APA_ANALISTA, apa.APA_CONTROLLER, sol.SOL_FECHAALTA, sol.SOL_FECHAENVIOANALISIS, sol.SOL_FECHAPLANPRECOMITE, sol.SOL_FECHAPLANCOMITE, cge.CGE_NOMBRENECESIDAD, pce.PCE_DESCRIPCION, eso.ESO_DESCRIPCION, resolucion.RLT_DESCRIPCION &quot; +
+					  &quot;FROM TPC_SOLICITUD sol &quot; +
+					  &quot;LEFT OUTER JOIN TPC_CONTROL_GESTION cge ON sol.SOL_ID = cge.CGE_SOL_ID &quot; +
+					  &quot;LEFT OUTER JOIN TPC_SOLICITUD_ESTADO ses ON sol.SOL_ID = ses.SES_SOL_ID &quot; +
+					  &quot;LEFT OUTER JOIN TPC_ASIGNACION_PARTICIPANTE apa ON sol.SOL_ID = apa.APA_SOL_ID &quot; +
+					  &quot;LEFT OUTER JOIN (select MAX(res.res_id) res_id, res.res_sol_id &quot; +
+					  &quot;                from tpc_resolucion res &quot; + 
+      				  &quot;                group by res.res_sol_id) ultimaResolucion &quot; +    
+					  &quot;	                        ON sol_id = ultimaResolucion.res_sol_id &quot; + 
+					  &quot;LEFT OUTER JOIN (select res.res_id, res.res_sol_id, rlt.rlt_descripcion, rlt.rlt_id &quot; +
+					  &quot;                from tpc_resolucion res &quot; +
+					  &quot;                left outer join (select rlt_id, rlt_descripcion &quot; +
+					  &quot;                                from tpc_resultado_resolucion) rlt &quot; +
+					  &quot;                ON res.res_rlt_id = rlt.rlt_id &quot; +
+					  &quot;                )  resolucion &quot; +
+					  &quot;ON ultimaResolucion.res_id = resolucion.res_id &quot; +
+					  &quot;LEFT OUTER JOIN TPC_PEDIDO_CESTA pce ON sol.SOL_PCE_ID = pce.PCE_ID &quot; +
+					  &quot;LEFT OUTER JOIN TPC_RESOLUCION resoluciones ON sol.SOL_ID = resoluciones.RES_SOL_ID &quot; +
+					  &quot;LEFT OUTER JOIN TPC_ESTADOS_SOLICITUD eso ON ses.SES_ESO_ID = eso.ESO_ID &quot;;
+					 
+ 	
+ 	if (arg.solicitud.id != null &amp;&amp; arg.solicitud.id != 0){
+ 		inParameters[] = arg.solicitud.id;
+ 	}
+ 	if (arg.solicitud.nroCesta != null &amp;&amp; arg.solicitud.nroCesta != 0){
+ 		inParameters[] = arg.solicitud.nroCesta;
+ 	}
+ 	if (arg.solicitud.pedidoCesta.id != null &amp;&amp; arg.solicitud.pedidoCesta.id != 0){
+ 		inParameters[] = arg.solicitud.pedidoCesta.id;
+ 	}
+ 	if (arg.solicitud.controlGestion.areaSolicitante.id != null &amp;&amp; arg.solicitud.controlGestion.areaSolicitante.id != 0){
+ 		inParameters[] = arg.solicitud.controlGestion.areaSolicitante.id;
+ 	}
+ 	if (arg.solicitud.estado.id != null &amp;&amp; arg.solicitud.estado.id != 0){
+ 		inParameters[] = arg.solicitud.estado.id;
+ 	}
+ 	if (arg.solicitud.categoriaCesta.id != null &amp;&amp; arg.solicitud.categoriaCesta.id != 0){
+ 		inParameters[] = arg.solicitud.categoriaCesta.id;
+ 	}
+ 	if (arg.sociedadValor != null &amp;&amp; arg.sociedadValor != 0){
+ 		sentence = sentence + &quot;LEFT OUTER JOIN TPC_SOLICITUD_SOCIEDADES sso ON sol.SOL_ID = sso.SSO_SOL_ID &quot; +
+ 							  &quot;LEFT OUTER JOIN TPC_SOCIEDADES soc ON sso.SSO_SOC_ID = soc.SOC_ID &quot;;
+ 		inParameters[] = arg.sociedadValor;
+ 	}
+ 	if(arg.solicitud.lineaProducto.id != null &amp;&amp; arg.solicitud.lineaProducto.id != 0){
+ 		inParameters[] = arg.solicitud.lineaProducto.id;
+ 	}
+ 	if (arg.solicitud.controlGestion.idRelacionada != null &amp;&amp; arg.solicitud.controlGestion.idRelacionada != 0){
+ 		inParameters[] = arg.solicitud.controlGestion.idRelacionada;
+ 	}
+ 	if (arg.solicitud.controlGestion.clasificacionArea.id != null &amp;&amp; arg.solicitud.controlGestion.clasificacionArea.id != 0){
+ 		inParameters[] = arg.solicitud.controlGestion.clasificacionArea.id;
+ 	}
+ 	if (arg.solicitud.cuentaImpContable != null &amp;&amp; arg.solicitud.cuentaImpContable != 0){
+ 		inParameters[] = arg.solicitud.cuentaImpContable;
+ 	}
+ 	if (arg.resultadoValor != null &amp;&amp; arg.resultadoValor != 0){
+ 		inParameters[] = arg.resultadoValor;
+ 		inParameters[] = arg.resultadoValor;
+ 	}
+ 	if (arg.solicitud.gestorSolicitante != null &amp;&amp; arg.solicitud.gestorSolicitante != &quot;&quot;){
+ 		inParameters[] = arg.solicitud.gestorSolicitante;
+ 	}
+ 	if (arg.solicitud.gestorEnlace != null &amp;&amp; arg.solicitud.gestorEnlace != &quot;&quot;){
+ 		inParameters[] = arg.solicitud.gestorEnlace;
+ 	}
+ 	if (arg.solicitud.asignacionParticipante.analista != null &amp;&amp; arg.solicitud.asignacionParticipante.analista != &quot;&quot;){
+ 		inParameters[] = arg.solicitud.asignacionParticipante.analista;
+ 	}
+ 	if (arg.solicitud.asignacionParticipante.controller != null &amp;&amp; arg.solicitud.asignacionParticipante.controller != &quot;&quot;){
+ 		inParameters[] = arg.solicitud.asignacionParticipante.controller;
+ 	}
+ 	
+ 	//FECHAS
+ 	
+ 	if (arg.fechaCreaDesde != null){
+		inParameters[] = arg.fechaCreaDesde;
+	}
+ 	if (arg.fechaCreaHasta != null){
+		inParameters[] = arg.fechaCreaHasta;
+	}
+	if (arg.fechaEnvioDesde != null){
+		inParameters[] = arg.fechaEnvioDesde;
+	}
+	if (arg.fechaEnvioHasta != null){
+		inParameters[] = arg.fechaEnvioHasta;
+	}
+ 	
+ 		
+		
+ 	
+ 	if(inParameters.length() != 0){
+ 		sentenceCond = &quot;WHERE &quot; + ((arg.solicitud.id != null &amp;&amp; arg.solicitud.id != 0) 								? &quot; sol.SOL_ID = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.nroCesta != null &amp;&amp; arg.solicitud.nroCesta != 0)						? &quot; sol.SOL_NROCESTA = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.pedidoCesta.id != null &amp;&amp; arg.solicitud.pedidoCesta.id != 0)			? &quot; sol.SOL_PCE_ID = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.controlGestion.areaSolicitante.id != null &amp;&amp; arg.solicitud.controlGestion.areaSolicitante.id != 0) ? &quot; cge.CGE_ASO_ID = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.estado.id != null &amp;&amp; arg.solicitud.estado.id != 0) 							? &quot; ses.SES_ESO_ID = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.categoriaCesta.id != null &amp;&amp; arg.solicitud.categoriaCesta.id != 0) 			? &quot; sol.SOL_CCE_ID = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.sociedadValor != null &amp;&amp; arg.sociedadValor != 0) 										? &quot; sso.SSO_SOC_ID = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.lineaProducto.id != null &amp;&amp; arg.solicitud.lineaProducto.id != 0) 			? &quot; sol.SOL_LPR_ID = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.controlGestion.idRelacionada != null &amp;&amp; arg.solicitud.controlGestion.idRelacionada != 0) 			? &quot; cge.CGE_IDRELACIONADA = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.controlGestion.clasificacionArea.id != null &amp;&amp; arg.solicitud.controlGestion.clasificacionArea.id != 0) ? &quot; cge.CGE_CAR_ID = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.cuentaImpContable != null &amp;&amp; arg.solicitud.cuentaImpContable != 0)	? &quot; sol.SOL_CUENTAIMPCONTABLE = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.resultadoValor != null &amp;&amp; arg.resultadoValor != 0) 						? &quot; (resolucion.RLT_ID = ? OR resoluciones.RES_RLT_ID = ?) AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.gestorSolicitante	!= null &amp;&amp; arg.solicitud.gestorSolicitante != &quot;&quot;)	? &quot; sol.SOL_GESTORSOLICITANTE = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.gestorEnlace != null &amp;&amp; arg.solicitud.gestorEnlace != &quot;&quot;) 	? &quot; sol.SOL_GESTORENLACE = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.asignacionParticipante.analista != null &amp;&amp; arg.solicitud.asignacionParticipante.analista != &quot;&quot;) 		? &quot; apa.APA_ANALISTA = ? AND &quot; : &quot;&quot;) +
+ 							  ((arg.solicitud.asignacionParticipante.controller != null &amp;&amp; arg.solicitud.asignacionParticipante.controller != &quot;&quot;) 	? &quot; apa.APA_CONTROLLER = ? AND &quot; : &quot;&quot;) +
+ 							  (arg.fechaCreaDesde != null ? &quot; TRUNC(sol.SOL_FECHAALTA) &gt;= TRUNC(?) AND &quot; : &quot;&quot;) +
+ 							  (arg.fechaCreaHasta != null ? &quot; TRUNC(sol.SOL_FECHAALTA) &lt;= TRUNC(?) AND &quot; : &quot;&quot;) +
+ 							  (arg.fechaEnvioDesde != null ? &quot; TRUNC(sol.SOL_FECHAENVIOANALISIS) &gt;= TRUNC(?) AND &quot; : &quot;&quot;) +
+ 							  (arg.fechaEnvioHasta != null ? &quot; TRUNC(sol.SOL_FECHAENVIOANALISIS) &lt;= TRUNC(?) AND &quot; : &quot;&quot;);
+
+	}
+
+	if(arg.fechaPlanifPreComDesde != null &amp;&amp; arg.fechaPlanifPreComHasta != null){
+		//TODO
+		sentenceFecha = sentenceFecha + &quot;(((TRUNC(sol.SOL_FECHAPLANPRECOMITE) &gt;= TRUNC(?)) AND (TRUNC(sol.SOL_FECHAPLANPRECOMITE) &lt;= TRUNC(?))) OR &quot; + 
+										&quot;(((TRUNC(resoluciones.res_fechaplanificada) &gt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;P&apos;) AND ((TRUNC(resoluciones.res_fechaplanificada) &lt;= TRUNC(?) AND resoluciones.res_tipo = &apos;P&apos;)))) AND &quot;;
+		inParameters[] = arg.fechaPlanifPreComDesde;
+		inParameters[] = arg.fechaPlanifPreComHasta;
+		inParameters[] = arg.fechaPlanifPreComDesde;
+		inParameters[] = arg.fechaPlanifPreComHasta;
+	}else if(arg.fechaPlanifPreComDesde != null){
+		//DESDE
+		sentenceFecha = sentenceFecha + &quot;((TRUNC(sol.SOL_FECHAPLANPRECOMITE) &gt;= TRUNC(?)) OR ((TRUNC(resoluciones.res_fechaplanificada) &gt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;P&apos;)) AND &quot;;
+		inParameters[] = arg.fechaPlanifPreComDesde;
+		inParameters[] = arg.fechaPlanifPreComDesde;
+	}else if(arg.fechaPlanifPreComHasta != null){
+		//HASTA
+		sentenceFecha = sentenceFecha + &quot;((TRUNC(sol.SOL_FECHAPLANPRECOMITE) &lt;= TRUNC(?)) OR ((TRUNC(resoluciones.res_fechaplanificada) &lt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;P&apos;)) AND &quot;;
+		inParameters[] = arg.fechaPlanifPreComDesde;
+		inParameters[] = arg.fechaPlanifPreComDesde;
+	}
+	//-----------------------------------------------------------------------------------------------------------
+	
+	if (arg.fechaPlanifComDesde != null &amp;&amp; arg.fechaPlanifComHasta != null){
+		//TODO
+		sentenceFecha = sentenceFecha + &quot;(((TRUNC(sol.SOL_FECHAPLANCOMITE) &gt;= TRUNC(?)) AND (TRUNC(sol.SOL_FECHAPLANCOMITE) &lt;= TRUNC(?))) OR &quot; + 
+										&quot;(((TRUNC(resoluciones.res_fechaplanificada) &gt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;C&apos;) AND ((TRUNC(resoluciones.res_fechaplanificada) &lt;= TRUNC(?) AND resoluciones.res_tipo = &apos;C&apos;)))) AND &quot;;
+		inParameters[] = arg.fechaPlanifComDesde;
+		inParameters[] = arg.fechaPlanifComHasta;
+		inParameters[] = arg.fechaPlanifComDesde;
+		inParameters[] = arg.fechaPlanifComHasta;
+	}else if(arg.fechaPlanifComDesde != null){
+		//DESDE
+		sentenceFecha = sentenceFecha + &quot;((TRUNC(sol.SOL_FECHAPLANCOMITE) &gt;= TRUNC(?)) OR ((TRUNC(resoluciones.res_fechaplanificada) &gt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;C&apos;)) AND &quot;;
+		inParameters[] = arg.fechaPlanifComDesde;
+		inParameters[] = arg.fechaPlanifComDesde;
+	}else if(arg.fechaPlanifComHasta != null){
+		//HASTA
+		sentenceFecha = sentenceFecha + &quot;((TRUNC(sol.SOL_FECHAPLANCOMITE) &lt;= TRUNC(?)) OR ((TRUNC(resoluciones.res_fechaplanificada) &lt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;C&apos;)) AND &quot;;
+		inParameters[] = arg.fechaPlanifComHasta;
+		inParameters[] = arg.fechaPlanifComHasta;
+	}
+	
+	//----------------------------------------------------------------------------------------------------------------
+	if (arg.fechaRealPreComDesde != null || arg.fechaRealPreComHasta != null){
+		//TODO
+		sentenceFecha = sentenceFecha + &quot;(((TRUNC(sol.SOL_FECHAREALPRECOMITE) &gt;= TRUNC(?)) AND (TRUNC(sol.SOL_FECHAREALPRECOMITE) &lt;= TRUNC(?))) OR &quot; + 
+										&quot;(((TRUNC(resoluciones.res_fechareal) &gt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;P&apos;) AND ((TRUNC(resoluciones.res_fechareal) &lt;= TRUNC(?) AND resoluciones.res_tipo = &apos;P&apos;)))) AND &quot;;
+		inParameters[] = arg.fechaRealPreComDesde;
+		inParameters[] = arg.fechaRealPreComHasta;
+		inParameters[] = arg.fechaRealPreComDesde;
+		inParameters[] = arg.fechaRealPreComHasta;
+	}else if(arg.fechaRealPreComDesde != null){
+		//DESDE
+		sentenceFecha = sentenceFecha + &quot;((TRUNC(sol.SOL_FECHAREALPRECOMITE) &gt;= TRUNC(?)) OR ((TRUNC(resoluciones.res_fechareal) &gt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;P&apos;)) AND &quot;;
+		inParameters[] = arg.fechaRealPreComDesde;
+		inParameters[] = arg.fechaRealPreComDesde;
+	}else if(arg.fechaRealPreComHasta != null){
+		//HASTA
+		sentenceFecha = sentenceFecha + &quot;((TRUNC(sol.SOL_FECHAREALPRECOMITE) &lt;= TRUNC(?)) OR ((TRUNC(resoluciones.res_fechareal) &lt;= TRUNC(?) AND resoluciones.res_tipo = &apos;P&apos;)) AND &quot;;
+		inParameters[] = arg.fechaRealPreComHasta;
+		inParameters[] = arg.fechaRealPreComHasta;
+	}
+	//-----------------------------------
+	if (arg.fechaRealComDesde != null || arg.fechaRealComHasta != null){
+		//TODOS
+		sentenceFecha = sentenceFecha + &quot;(((TRUNC(sol.SOL_FECHAREALCOMITE) &gt;= TRUNC(?)) AND (TRUNC(sol.SOL_FECHAREALCOMITE) &lt;= TRUNC(?))) OR &quot; + 
+										&quot;(((TRUNC(resoluciones.res_fechareal) &gt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;C&apos;) AND ((TRUNC(resoluciones.res_fechareal) &lt;= TRUNC(?) AND resoluciones.res_tipo = &apos;C&apos;)))) AND &quot;;
+		inParameters[] = arg.fechaRealComDesde;
+		inParameters[] = arg.fechaRealComHasta;
+		inParameters[] = arg.fechaRealComDesde;
+		inParameters[] = arg.fechaRealComHasta;
+	}else if(arg.fechaRealComDesde != null){
+		//DESDE
+		sentenceFecha = sentenceFecha + &quot;((TRUNC(sol.SOL_FECHAREALCOMITE) &gt;= TRUNC(?)) OR ((TRUNC(resoluciones.res_fechareal) &gt;= TRUNC(?)) AND resoluciones.res_tipo = &apos;C&apos;)) AND &quot;;
+		inParameters[] = arg.fechaRealComDesde;
+		inParameters[] = arg.fechaRealComDesde;
+	}else if(arg.fechaRealComHasta != null){
+		//HASTA
+		sentenceFecha = sentenceFecha + &quot;((TRUNC(sol.SOL_FECHAREALCOMITE) &lt;= TRUNC(?)) OR ((TRUNC(resoluciones.res_fechareal) &lt;= TRUNC(?) AND resoluciones.res_tipo = &apos;C&apos;)) AND &quot;;
+		inParameters[] = arg.fechaRealComHasta;
+		inParameters[] = arg.fechaRealComHasta;
+	}
+	
+	if((sentenceCond != null &amp;&amp; sentenceCond != &quot;&quot;) &amp;&amp; (sentenceFecha != null &amp;&amp; sentenceFecha != &quot;&quot;)){
+		sentenceFecha = sentenceFecha.substring(first : 0, last : sentenceFecha.length()-4);	
+	}
+	else if((sentenceCond != null &amp;&amp; sentenceCond != &quot;&quot;) &amp;&amp; (sentenceFecha == null || sentenceFecha == &quot;&quot;)){
+		sentenceCond = sentenceCond.substring(first : 0, last : sentenceCond.length()-4);	
+	}
+	else if((sentenceCond == null || sentenceCond == &quot;&quot;) &amp;&amp; (sentenceFecha != null &amp;&amp; sentenceFecha != &quot;&quot;)){
+		sentenceFecha = &quot;WHERE &quot; + sentenceFecha.substring(first : 0, last : sentenceFecha.length()-4);	
+	}
+
+	sentence = sentence + sentenceCond + sentenceFecha + &quot; ORDER BY sol.sol_id&quot;;
+	
+	Utiles.Logger.logInfo(mensaje : &quot;sentenceCond &quot; + sentenceCond);
+	Utiles.Logger.logInfo(mensaje : &quot;sentenceFecha &quot; + sentenceFecha);
+    Utiles.Logger.logInfo(mensaje : &quot;sentence &quot; + sentence);
+    Utiles.Logger.logInfo(mensaje : &quot;inParameters: &quot; +  inParameters);
+
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, implname : this.implname, inParameters : inParameters))
+    { 
+		value = {};
+		
+		value[&quot;SOL_ID&quot;] = (Integer)row[&quot;SOL_ID&quot;];
+		value[&quot;SOL_FECHAALTA&quot;] = (Time)row[&quot;SOL_FECHAALTA&quot;];
+		value[&quot;SOL_NROCESTA&quot;] = (Integer)row[&quot;SOL_NROCESTA&quot;];
+		value[&quot;CGE_NOMBRENECESIDAD&quot;] = (String)row[&quot;CGE_NOMBRENECESIDAD&quot;];
+		value[&quot;PCE_DESCRIPCION&quot;] = (String)row[&quot;PCE_DESCRIPCION&quot;];
+		value[&quot;SOL_GESTORSOLICITANTE&quot;] = (String)row[&quot;SOL_GESTORSOLICITANTE&quot;];
+		value[&quot;SOL_GESTORENLACE&quot;] = (String)row[&quot;SOL_GESTORENLACE&quot;];
+		value[&quot;SOL_FECHAENVIOANALISIS&quot;] = (Time)row[&quot;SOL_FECHAENVIOANALISIS&quot;];
+		value[&quot;APA_ANALISTA&quot;] = (String)row[&quot;APA_ANALISTA&quot;];
+		value[&quot;SOL_FECHAPLANPRECOMITE&quot;] = (Time)row[&quot;SOL_FECHAPLANPRECOMITE&quot;];
+		value[&quot;SOL_FECHAPLANCOMITE&quot;] = (Time)row[&quot;SOL_FECHAPLANCOMITE&quot;];
+		value[&quot;RLT_DESCRIPCION&quot;] = (String)row[&quot;RLT_DESCRIPCION&quot;];
+		value[&quot;ESO_DESCRIPCION&quot;] = (String)row[&quot;ESO_DESCRIPCION&quot;];
+		
+		values[] = value;
+	}
+	respuesta.contenido = values;	
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValuesForFiltro(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValuesForExcel" flags="public server disableclient">
+			<arg name="solicitudes" description="" flags="in" type="Int[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+    Any[] values;
+    Any[String] value;
+    Any[] inParameters = {};
+    String lista;
+    if(arg.solicitudes.length() &gt; 0){
+		for (int i = 0; i &lt; solicitudes.length; i++) {
+		    lista = lista + &quot;?,&quot;;
+		    inParameters[] = solicitudes[i];
+		}
+		lista = lista.substring(first : 0, last : lista.length() - 1);
+	}
+
+	String sentence =   &quot;SELECT &quot; +
+						&quot;sol.sol_id SOLID, &quot; +
+						&quot;cge.cge_idrelacionada IDRELACIONADA, &quot; +
+						&quot;sol.sol_fechaalta FECHAALTA, &quot; +
+						&quot;sol.sol_fechaenvioenlace FECHAENVIOENLACE, &quot; +
+						&quot;sol.sol_fechaenvioanalisis FECHAENVIOANALISIS, &quot; +
+						&quot;cce.cce_descripcion CATEGORIACESTA, &quot; +
+						&quot;pce.pce_descripcion PRODUCTOCESTA, &quot; +
+						&quot;sol.sol_nrocesta NROCESTA, &quot; +
+						&quot;sol.sol_nrocestaanulada NROCESTAANULADA, &quot; +
+						&quot;sol.sol_motivoreemplazo MOTIVOREEMPLAZO, &quot; +
+						&quot;sol.sol_nropedido NROPEDIDO, &quot; +
+						&quot;sol.sol_nrocestaasocpedido NROCESTAASOCPEDIDO, &quot; +
+						&quot;sol.sol_montototalpesos MONTOTOTALPESOS, &quot; +
+						&quot;sol.sol_montototaldolares MONTOTOTALDOLARES, &quot; +
+						&quot;sol.sol_montototaleuros MONTOTOTALEUROS, &quot; +
+						&quot;sol.sol_montototalotro MONTOTOTALOTRO, &quot; +
+						&quot;sol.sol_periodofechainicio PERIODOFECHAINICIO, &quot; +
+						&quot;sol.sol_periodofechafin PERIODOFECHAFIN, &quot; +
+						&quot;sol.sol_gestorsolicitante SOLICITANTE, &quot; +
+						&quot;sol.sol_emailsolicitante EMAILSOLICITANTE, &quot; +
+						&quot;sol.sol_gestorenlace GESTORENLACE, &quot; +
+						&quot;sol.sol_emailenlace EMAILGESTORENLACE, &quot; +
+						&quot;sol.sol_areasolicitante AREASOLICITANTE, &quot; +
+						&quot;sol.sol_centrocostos CENTROCOSTOS, &quot; +
+						&quot;tco.tco_descripcion TIPOCOMPRA, &quot; +
+						&quot;dco.dco_descripcion DESTINOCOMPRA, &quot; +
+						&quot;sociedades.descSociedades SOCIEDADES, &quot; +
+						&quot;cpr.cpr_codigo CATEGORIAPRODUCTOCODIGO, &quot; +
+						&quot;cpr.cpr_descripcion CATEGORIAPRODUCTODESCRIPCION, &quot; +
+						&quot;lpr.lpr_codigo LINEAPRODUCTOCODIGO, &quot; +
+						&quot;lpr.lpr_descripcion LINEAPRODUCTODESCRIPCION, &quot; +
+						&quot;sol.sol_descripcionnecesidad DESCRIPCIONNECESIDAD, &quot; +
+						&quot;spr.spr_descripcion SUBTIPOPRODUCTO, &quot; +
+						&quot;sol.sol_centrocostosimpcontable CENTROCOSTOSIMPCONT, &quot; +
+						&quot;sol.sol_cuentaimpcontable CUENTAIMPCONT, &quot; +
+						&quot;sol.sol_actividadimpcontable ACTIVIDADIMPCONT, &quot; +
+						&quot;sol.sol_pep PEP, &quot; +
+						&quot;vne.vne_beneficiocompra BENEFICIOCMOPRA, &quot; +
+						&quot;vne.vne_recurrencia RECURRENCIA, &quot; +
+						&quot;vne.vne_periodicidadcompra PERIODICIDADCOMPRA, &quot; +
+						&quot;vne.vne_regularizacion REGULARIZACION, &quot; +
+						&quot;vne.vne_motivoregularizacion MOTIVOREGULARIZACION, &quot; +
+						&quot;CASE WHEN doc1.idDocumento IS NOT NULL THEN &apos;SI&apos; ELSE &apos;NO&apos; END AS NOTAREGADMINISTRATIVA, &quot; +
+						&quot;vne.vne_comentarioregadm COMENTARIOREGADM, &quot; +
+						&quot;vne.vne_compramargmod COMPRAMARGMOD, &quot; +
+						&quot;vne.vne_motivocompramargmod MOTIVOCOMPRAMARGMOD, &quot; +
+						&quot;CASE WHEN doc2.idDocumento IS NOT NULL THEN &apos;SI&apos; ELSE &apos;NO&apos; END AS NOTACOMPMARGMOD, &quot; +
+						&quot;vne.vne_gastospedido GASTOSPEDIDO, &quot; +
+						&quot;vne.vne_infogastospedido INFOGASTOSPEDIDO, &quot; +
+						&quot;vne.vne_alcancefijo ALCANCEFIJO, &quot; +
+						&quot;vne.vne_alcancemovil ALCANCEMOVIL, &quot; +
+						&quot;vne.vne_descfijomovil DESCFIJOMOVIL, &quot; +
+						&quot;pas.pas_parteproymayores PARTEPROYECTOSMAYORES, &quot; +
+						&quot;proyectos.descProyectos DESCPROYECTOS, &quot; +
+						&quot;pas.pas_afectaotrasareas AFECTAOTRASAREAS, &quot; +
+						&quot;pas.pas_otrasareasafec OTRASAREASAFEC, &quot; +
+						&quot;tpr.tpr_descripcion TIPOPROYECTO, &quot; +
+						&quot;pro.pro_nombreproveedorcond NOMBREPROVEEDORCOND, &quot; +
+						&quot;CASE WHEN doc3.idDocumento IS NOT NULL THEN &apos;SI&apos; ELSE &apos;NO&apos; END AS CARTAPROVCOND, &quot; +
+						&quot;mpc.mpc_descripcion MOTIVOPROVEEDORCOND, &quot; +
+						&quot;pro.pro_justificacionmotivo JUSTIFICACIONMOTIVO, &quot; +
+						&quot;pro.pro_proveedoressugeridos PROVEEDORESSUGERIDOS, &quot; +
+						&quot;ant.ant_antecedentes ANTECEDENTES, &quot; +
+						&quot;ant.ant_comentariosantecedentes COMENTARIOSANTECEDENTES, &quot; +
+						&quot;ant.ant_incrementoprecio INCREMENTOPRECIO, &quot; +
+						&quot;ant.ant_justificacionincprecio JUSTINCPRECIO, &quot; +
+						&quot;ant.ant_incrementocantidad INCREMENTOCANTIDAD, &quot; +
+						&quot;ant.ant_justificacioninccantidad JUSTINCCANTIDAD, &quot; +
+						&quot;sip.sip_montoimppresejerpesos MONTOIMPPRESEJERPESOS, &quot; +
+						&quot;sip.sip_montoimppresejerdolares MONTOIMPPRESEJERDOLARES, &quot; +
+						&quot;sip.sip_montoimppresejereuros MONTOIMPPRESEJEREUROS, &quot; +
+						&quot;sip.sip_montoimppresejerotro MONTOIMPPRESEJEROTRO, &quot; +
+						&quot;sip.sip_contempladopresupuesto CONTEMPLADOPRESUPUESTO, &quot; +
+						&quot;sip.sip_montoprespesos MONTOPRESPESOS, &quot; +
+						&quot;sip.sip_montopresdolares MONTOPRESDOLARES, &quot; +
+						&quot;sip.sip_montopreseuros MONTOPRESEUROS, &quot; +
+						&quot;sip.sip_montopresotro MONTOPRESOTRO, &quot; +
+						&quot;sip.sip_contempladopdc CONTEMPLADOPDC, &quot; +
+						&quot;sip.sip_montopdcpesos MONTOPDCPESOS, &quot; +
+						&quot;sip.sip_montopdcdolares MONTOPDCDOLARES, &quot; +
+						&quot;sip.sip_montopdceuros MONTOPDCEUROS, &quot; +
+						&quot;sip.sip_montopdcotro MONTOPDCOTRO, &quot; +
+						&quot;sip.sip_premisaspresupuesto PREMISAPRESUPUESTO, &quot; +
+						&quot;sip.sip_existedesvio EXISTEDESVIO, &quot; +
+						&quot;sip.sip_planacciondesvio PLANACCIONDESVIO, &quot; +
+						&quot;sip.sip_montoinvejantpesos MONTOINVEJANTPESOS, &quot; +
+						&quot;sip.sip_montoinvejantdolares MONTOINVEJANTDOLARES, &quot; +
+						&quot;sip.sip_montoinvejanteuros MONTOINVEJANTEUROS, &quot; +
+						&quot;sip.sip_montoinvejantotro MONTOINVEJANTOTRO, &quot; +
+						&quot;sip.sip_gastorealacumpesos GASTOREALACUMPESOS, &quot; +
+						&quot;sip.sip_gastorealacumdolares GASTOREALACUMDOLARES, &quot; +
+						&quot;sip.sip_gastorealacumeuros GASTOREALACUMEUROS, &quot; +
+						&quot;sip.sip_gastorealacumotro GASTOREALACUMOTRO, &quot; +
+						&quot;sip.sip_gastorealproypesos GASTOREALPROYPESOS, &quot; +
+						&quot;sip.sip_gastorealproydolares GASTOREALPROYDOLARES, &quot; +
+						&quot;sip.sip_gastorealproyeuros GASTOREALPROYEUROS, &quot; +
+						&quot;sip.sip_gastorealproyotro GASTOREALPROYOTRO, &quot; +
+						&quot;lcp.lcp_descripcion LISTACOMPRASPARTICULARES, &quot; +
+						&quot;cpa.cpa_aprocomitepatrocinios APROCOMITEPATROCINIOS, &quot; +
+						&quot;cpa.cpa_promotorgasto PROMOTORGASTO, &quot; +
+						&quot;cpa.cpa_expcondpatrocinio EXPCONDPATROCINIO, &quot; +
+						&quot;cpa.cpa_comentariospatrocinio COMENTARIOSPATROCINIO, &quot; +
+						&quot;cpa.cpa_aprobadorrhh APROBADORRHH, &quot; +
+						&quot;CASE WHEN doc4.idDocumento IS NOT NULL THEN &apos;SI&apos; ELSE &apos;NO&apos; END AS EVIDENCIAAPROB, &quot; +
+						&quot;cpa.cpa_productoservicio PRODUCTOSERVICIO, &quot; +
+						&quot;cpa.cpa_gastopresupuestopesos GASTOPRESUPUESTOPESOS, &quot; +
+						&quot;cpa.cpa_gastopresupuestodolares GASTOPRESUPUESTODOLARES, &quot; +
+						&quot;cpa.cpa_gastopresupuestoeuros GASTOPRESUPUESTOEUROS, &quot; +
+						&quot;cpa.cpa_gastopresupuestootro GASTOPRESUPUESTOOTRO, &quot; +
+						&quot;cpa.cpa_ingresospresupuestopesos INGRESOPRESUPUESTOPESOS, &quot; +
+						&quot;cpa.cpa_ingresospresupuestodolares INGRESOPRESUPUESTODOLARES, &quot; +
+						&quot;cpa.cpa_ingresospresupuestoeuros INGRESOPRESUPUESTOEUROS, &quot; +
+						&quot;cpa.cpa_ingresospresupuestootro INGRESOPRESUPUESTOOTRO, &quot; +
+						&quot;cpa.cpa_overbooking OVERBOOKING, &quot; +
+						&quot;cpa.cpa_margenproducto MARGENPRODUCTO, &quot; +
+						&quot;cpa.cpa_mantienemargenanterior MANTIENEMARGENANTERIOR, &quot; +
+						&quot;cpa.cpa_gastoejanteriorpesos GASTOEJANTPESOS, &quot; +
+						&quot;cpa.cpa_gastoejanteriordolares GASTOEJANTDOLARES, &quot; +
+						&quot;cpa.cpa_gastoejanterioreuros GASTOEJANTEUROS, &quot; +
+						&quot;cpa.cpa_gastoejanteriorotro GASTOEJANTOTRO, &quot; +
+						&quot;cpa.cpa_ingresosejanteriorpesos INGRESOEJANTPESOS, &quot; +
+						&quot;cpa.cpa_ingresosejanteriordolares INGRESOEJANTDOLARES, &quot; +
+						&quot;cpa.cpa_ingresosejanterioreuros INGRESOEJANTEUROS, &quot; +
+						&quot;cpa.cpa_ingresosejanteriorotro INGRESOEJANTOTRO, &quot; +
+						&quot;cpa.cpa_comentariosreventa COMENTARIOSREVENTA, &quot; +
+						&quot;cge.cge_nombrenecesidad NOBRENECESIDAD, &quot; +
+						&quot;cge.cge_fechacorte FECHACORTE, &quot; +
+						&quot;cso.cso_descripcion CALIFICACIONSOLICITUD, &quot; +
+						&quot;aso.aso_descripcion AREASOLICITANTE, &quot; +
+						&quot;car.car_descripcion CLASIFICACIONAREA, &quot; +
+						&quot;cge.cge_fueraproceso FUERAPROCESO, &quot; +
+						&quot;mfp.mfp_descripcion MOTIVOFUERAPROCESO, &quot; +
+						&quot;tor.tor_descripcion TIPOORDENDESCRIPCION, &quot; +
+						&quot;tor.tor_codigo TIPOORDENCODIGO, &quot; +
+						&quot;eag.eag_descripcion ESTADOAGENDAMIENTODESCRIPCION, &quot; +
+						&quot;eag.eag_codigo ESTADOAGENDAMIENTOCODIGO, &quot; +
+						&quot;apa.apa_analista ANALISTA, &quot; +
+						&quot;apa.apa_controller CONTROLLER, &quot; +
+						&quot;apa.apa_intervencion INTERVENCION, &quot; +
+						&quot;apa.apa_gerentecompras GERENTECOMPRAS, &quot; +
+						&quot;apa.apa_jefecompras JEFECOMPRAS, &quot; +
+						&quot;apa.apa_comprador COMPRADOR, &quot; +
+						&quot;cge.cge_analisissagi ANALISISSAGI, &quot; +
+						&quot;cge.cge_modificadoporpedido MODIFICADOPORPEDIDO, &quot; +
+						&quot;cge.cge_rechazadocompras RECHAZADOCOMPRAS, &quot; +
+						&quot;recomendacionAnalista.comentarioRecomendacion COMENTARIOANALISTA, &quot; +
+						&quot;recomendacionComprador.comentarioRecomendacion COMENTARIOCOMPRADOR, &quot; +
+						&quot;recomendacionController.comentarioRecomendacion COMENTARIOCONTROLLER, &quot; +
+						&quot;recomendacionIntervencion.comentarioRecomendacion COMENTARIOINTERVENCION, &quot; +
+						&quot;resolucionPreComite.rlt_descripcion RESULTADOP, &quot; +
+						//&quot;resolucionPreComite.res_fechaplanificada FECHAPLANP, &quot; +
+						&quot;sol.sol_fechaplanprecomite FECHAPLANP, &quot; +
+						//&quot;resolucionPreComite.res_fechareal FECHAREALP, &quot; +
+						//&quot;sol.sol_fecharealprecomite FECHAREALP, &quot; +
+						&quot;CASE WHEN resolucionPreComite.res_fechareal IS NOT NULL THEN sol.sol_fecharealprecomite ELSE null END AS FECHAREALP, &quot; +
+						//&quot;resolucionPreComite.res_fechaproxprecomite FECHAPROXPRECOMITEP, &quot; +
+						&quot;sol.sol_fechaproxprecomite FECHAPROXPRECOMITEP, &quot; +
+						//&quot;resolucionPreComite.res_fechaproxcomite FECHAPROXCOMITEP, &quot; +
+						&quot;sol.sol_fechaproxcomite FECHAPROXCOMITEP, &quot; +
+						&quot;resolucionPreComite.msb_descripcion MOTIVOSTANDBYP, &quot; +
+						&quot;resolucionPreComite.res_montoaprobadopesos MONTOAPROBADOPESOSP, &quot; +
+						&quot;resolucionPreComite.res_montoaprobadodolares MONTOAPROBADODOLARESP, &quot; +
+						&quot;resolucionPreComite.res_montoaprobadoeuros MONTOAPROBADOEUROSP, &quot; +
+						&quot;resolucionPreComite.res_montoaprobadootro MONTOAPROBADOOTROP, &quot; +
+						&quot;resolucionPreComite.res_comentario COMENTARIOP, &quot; +
+						&quot;resPre.res_fechaReal PRIMERFECHAREALP, &quot; +
+						&quot;participantesPreComite.descParticipantes PARTICIPANTESP, &quot; +
+						&quot;resolucionPreComite.res_fechaliberacion FECHALIBERACIONP, &quot; +
+						&quot;resolucionPreComite.res_requisitocompras REQUISITOCOMPRASP, &quot; +
+						&quot;resolucionPreComite.res_condicionamientoprov CONDICIONAMIENTOPROVP, &quot; +
+						&quot;resolucionPreComite.res_fechatratamiento EFCHATRATAMIENTOP, &quot; +
+						&quot;resolucionPreComite.res_fechacierre FECHACIERRAP, &quot; +
+						&quot;resolucionComite.rlt_descripcion RESULTADOC, &quot; +
+						//&quot;resolucionComite.res_fechaplanificada FECHAPLANC, &quot; +
+						&quot;sol.sol_fechaplancomite FECHAPLANC, &quot; +
+						//&quot;resolucionComite.res_fechareal FECHAREALC, &quot; +
+						//&quot;sol.sol_fecharealcomite FECHAREALC, &quot; +
+						&quot;CASE WHEN resolucionComite.res_fechareal IS NOT NULL THEN sol.sol_fecharealcomite ELSE null END AS FECHAREALC, &quot; +
+						//&quot;resolucionComite.res_fechaproxprecomite FECHAPROXPRECOMITEC, &quot; +
+						&quot;sol.sol_fechaproxprecomite FECHAPROXPRECOMITEC, &quot; +
+						//&quot;resolucionComite.res_fechaproxcomite FECHAPROXCOMITEC, &quot; +
+						&quot;sol.sol_fechaproxcomite FECHAPROXCOMITEC, &quot; +
+						&quot;resolucionComite.msb_descripcion MOTIVOSTANDBYC, &quot; +
+						&quot;resolucionComite.res_montoaprobadopesos MONTOAPROBADOPESOSC, &quot; +
+						&quot;resolucionComite.res_montoaprobadodolares MONTOAPROBADODOLARESC, &quot; +
+						&quot;resolucionComite.res_montoaprobadoeuros MONTOAPROBADOEUROSC, &quot; +
+						&quot;resolucionComite.res_montoaprobadootro MONTOAPROBADOOTROC, &quot; +
+						&quot;resolucionComite.res_comentario COMENTARIOC, &quot; +
+						&quot;resCo.res_fechaReal PRIMERFECHAREALC, &quot; +
+						&quot;participantesComite.descParticipantes PARTICIPANTESC, &quot; +
+						&quot;resolucionComite.res_fechaliberacion FECHALIBERACIONC, &quot; +
+						&quot;resolucionComite.res_requisitocompras REQUISITOCOMPRASC, &quot; +
+						&quot;resolucionComite.res_condicionamientoprov CONDICIONAMIENTOPROVC, &quot; +
+						&quot;resolucionComite.res_fechatratamiento EFCHATRATAMIENTOC, &quot; +
+						&quot;resolucionComite.res_fechacierre FECHACIERRAC, &quot; +
+						&quot;eso.eso_descripcion ESTADOSOLICITUD &quot; +
+						&quot;from tpc_solicitud sol &quot; +
+						&quot;left outer join tpc_control_gestion cge on cge.cge_sol_id = sol.sol_id &quot; +
+						&quot;left outer join tpc_categoria_producto cpr on cpr.cpr_id = sol.sol_cpr_id  &quot; +
+						&quot;left outer join tpc_linea_producto lpr on lpr.lpr_id = cpr.cpr_lpr_id  &quot; +
+						&quot;left outer join tpc_categoria_cesta cce on cce.cce_id = sol.sol_cce_id &quot; +
+						&quot;left outer join tpc_pedido_cesta pce on pce.pce_id = sol.sol_pce_id &quot; +
+						&quot;left outer join tpc_tipo_compra tco on tco.tco_id = sol.sol_tco_id &quot; +
+						&quot;left outer join tpc_destino_compra dco on dco.dco_id = sol.sol_dco_id &quot; +
+						&quot;left outer join tpc_subtipo_producto spr on spr.spr_id = sol.sol_spr_id &quot; +
+						&quot;left outer join tpc_valoracion_necesidad vne on vne.vne_sol_id = sol.sol_id &quot; +
+						&quot;left outer join tpc_proyectos_asociados pas on pas.pas_sol_id = sol.sol_id &quot; +
+						&quot;left outer join tpc_proveedor pro on pro.pro_sol_id = sol.sol_id &quot; +
+						&quot;left outer join tpc_tipo_proveedor tpr on tpr.tpr_id = pro_tpr_id &quot; +
+						&quot;left outer join tpc_motivo_proveedor_cond mpc on mpc.mpc_id = pro_mpc_id &quot; +
+						&quot;left outer join tpc_antecedentes ant on ant.ant_sol_id = sol.sol_id &quot; +
+						&quot;left outer join tpc_situacion_presupuestaria sip on sip.sip_sol_id = sol.sol_id &quot; +
+						&quot;left outer join tpc_compras_particulares cpa on cpa.cpa_sol_id = sol.sol_id &quot; +
+						&quot;left outer join tpc_lista_compras_particulares lcp on cpa.cpa_lcp_id = lcp.lcp_id &quot; +
+						&quot;left outer join tpc_calificacion_solicitud cso on cge.cge_cso_id = cso.cso_id &quot; +
+						&quot;left outer join tpc_area_solicitante aso on cge.cge_aso_id = aso.aso_id &quot; +
+						&quot;left outer join tpc_clasificacion_area car on cge.cge_car_id = car.car_id &quot; +
+						&quot;left outer join tpc_motivo_fuera_proceso mfp on cge.cge_mfp_id = mfp.mfp_id &quot; +
+						&quot;left outer join tpc_tipo_orden tor on cge.cge_tor_id = tor.tor_id &quot; +
+						&quot;left outer join tpc_estado_agendamiento eag on cge.cge_eag_id = eag.eag_id &quot; +
+						&quot;left outer join tpc_asignacion_participante apa on apa.apa_sol_id = sol.sol_id &quot; +
+						&quot;left outer join tpc_solicitud_estado ses on ses.ses_sol_id = sol.sol_id &quot; +
+						&quot;left outer join tpc_estados_solicitud eso on eso.eso_id = ses.ses_eso_id &quot; +
+						&quot;left outer join (SELECT   sso.sso_sol_id, &quot; +
+        				&quot;						   SUBSTR(RTRIM(XMLAGG(XMLELEMENT(E, soc.soc_descripcion||&apos;,&apos;) ORDER BY soc.soc_id).EXTRACT(&apos;//text()&apos;)), 1, LENGTH(RTRIM(XMLAGG(XMLELEMENT(E, soc.soc_descripcion||&apos;,&apos;) ORDER BY soc.soc_id).EXTRACT(&apos;//text()&apos;)))-1) AS descSociedades &quot; +
+     					&quot;				  from tpc_solicitud_sociedades sso &quot; +
+     					&quot;				  join tpc_sociedades soc on sso.sso_soc_id = soc.soc_id &quot; +
+						&quot;				  GROUP BY sso.sso_sol_id) sociedades &quot; +
+						&quot;      ON sol.sol_id = sociedades.sso_sol_id &quot; +
+						&quot;left outer join (SELECT   pma.pma_sol_id, &quot; +
+        				&quot;						   SUBSTR(RTRIM(XMLAGG(XMLELEMENT(E, concat(npy.npy_descripcion||&apos; - &apos;,pma.pma_porcentajeincidencia||&apos;%&apos;)||&apos;,&apos;) ORDER BY pma.pma_npy_id).EXTRACT(&apos;//text()&apos;)), 1, LENGTH(RTRIM(XMLAGG(XMLELEMENT(E, concat(npy.npy_descripcion||&apos; - &apos;,pma.pma_porcentajeincidencia||&apos;%&apos;)||&apos;,&apos;) ORDER BY pma.pma_npy_id).EXTRACT(&apos;//text()&apos;)))-1) AS descProyectos&quot; +
+     					&quot;				  from tpc_proyectos_mayores pma &quot; +
+     					&quot;				  join tpc_nombre_proyecto npy on npy.npy_id = pma.pma_npy_id &quot; +
+						&quot;				  GROUP BY pma.pma_sol_id) proyectos&quot; +
+						&quot;      ON sol.sol_id = proyectos.pma_sol_id &quot; +
+						&quot;left outer join (select sdo.sdo_sol_id, sdo.sdo_tdo_id idDocumento &quot; +
+						&quot;                 from tpc_solicitud_documentos sdo &quot; +
+						&quot;                 where sdo.sdo_tdo_id = 1) doc1 &quot; +
+						&quot;      ON sol.sol_id = doc1.sdo_sol_id                 &quot; +
+						&quot;left outer join (select sdo.sdo_sol_id, sdo.sdo_tdo_id idDocumento &quot; +
+						&quot;                 from tpc_solicitud_documentos sdo &quot; +
+						&quot;                 where sdo.sdo_tdo_id = 2) doc2 &quot; +
+						&quot;      ON sol.sol_id = doc2.sdo_sol_id                   &quot; +
+						&quot;left outer join (select sdo.sdo_sol_id, sdo.sdo_tdo_id idDocumento &quot; +
+						&quot;                 from tpc_solicitud_documentos sdo &quot; +
+						&quot;                 where sdo.sdo_tdo_id = 3) doc3 &quot; +
+						&quot;      ON sol.sol_id = doc3.sdo_sol_id                      &quot; +
+						&quot;left outer join (select sdo.sdo_sol_id, sdo.sdo_tdo_id idDocumento &quot; +
+						&quot;                 from tpc_solicitud_documentos sdo &quot; +
+						&quot;                 where sdo.sdo_tdo_id = 4) doc4 &quot; +
+						&quot;      ON sol.sol_id = doc4.sdo_sol_id &quot; +
+						&quot;left outer join (select MAX(res2.res_id) res_id, res2.res_sol_id &quot; +
+						&quot;				  from tpc_resolucion res2 &quot; +
+						&quot;                 where res2.res_tipo = &apos;P&apos; &quot; +
+						&quot;				  group by res2.res_sol_id) ultimoPreComite &quot; +
+						&quot;      ON sol.sol_id = ultimoPreComite.res_sol_id &quot; +
+						&quot;left outer join (select MAX(res2.res_id) res_id, res2.res_sol_id &quot; +
+						&quot;				  from tpc_resolucion res2 &quot; +
+						&quot;                 where res2.res_tipo = &apos;C&apos; &quot; +
+						&quot;				  group by res2.res_sol_id) ultimoComite &quot; +
+						&quot;      ON sol.sol_id = ultimoComite.res_sol_id &quot; +
+						&quot;left outer join(select res.res_id, res.res_sol_id, rlt.rlt_descripcion, res.res_fechaplanificada, res.res_fechareal, res.res_fechaproxprecomite, res.res_fechaproxcomite,msb.msb_descripcion, res.res_montoaprobadopesos, res.res_montoaprobadodolares, &quot; +
+						&quot;                res.res_montoaprobadoeuros, res.res_montoaprobadootro, res.res_comentario, res.res_fechaliberacion, res.res_requisitocompras, res.res_condicionamientoprov, res.res_fechatratamiento, res.res_fechacierre &quot; +
+						&quot;                from tpc_resolucion res &quot; +
+						&quot;                left outer join (select rlt_id, rlt_descripcion &quot; +
+						&quot;                                from tpc_resultado_resolucion) rlt &quot; +
+						&quot;                ON res.res_rlt_id = rlt.rlt_id &quot; +
+						&quot;                left outer join (select msb_id, msb_descripcion &quot; +
+						&quot;                                from tpc_motivo_stand_by) msb &quot; +
+						&quot;                ON res.res_msb_id = msb.msb_id &quot; +
+						&quot;                )  resolucionPreComite &quot; +
+						&quot;ON ultimoPreComite.res_id = resolucionPreComite.res_id &quot; +
+						&quot;left outer join (SELECT   rpa.rpa_res_id, &quot; +
+        				&quot;				           SUBSTR(RTRIM(XMLAGG(XMLELEMENT(E, rpa.rpa_participante||&apos;,&apos;) ORDER BY rpa.rpa_res_id).EXTRACT(&apos;//text()&apos;)), 1, LENGTH(RTRIM(XMLAGG(XMLELEMENT(E, rpa.rpa_participante||&apos;,&apos;) ORDER BY rpa.rpa_res_id).EXTRACT(&apos;//text()&apos;)))-1) AS descParticipantes &quot; +
+     					&quot;				  from tpc_resolucion_participantes rpa&quot; +
+						&quot;				  GROUP BY rpa.rpa_res_id) participantesPreComite &quot; +
+						&quot;ON ultimoPreComite.res_id = participantesPreComite.rpa_res_id &quot; +
+						&quot;left outer join(select res.res_id, res.res_sol_id, rlt.rlt_descripcion, res.res_fechaplanificada, res.res_fechareal, res.res_fechaproxprecomite, res.res_fechaproxcomite, msb.msb_descripcion, res.res_montoaprobadopesos, res.res_montoaprobadodolares, &quot; + 
+						&quot;                res.res_montoaprobadoeuros, res.res_montoaprobadootro, res.res_comentario, res.res_fechaliberacion, res.res_requisitocompras, res.res_condicionamientoprov, res.res_fechatratamiento, res.res_fechacierre &quot; +
+						&quot;                from tpc_resolucion res &quot; +
+						&quot;                left outer join (select rlt_id, rlt_descripcion &quot; +
+						&quot;                                from tpc_resultado_resolucion) rlt &quot; +
+						&quot;                ON res.res_rlt_id = rlt.rlt_id &quot; +
+						&quot;                left outer join (select msb_id, msb_descripcion &quot; +
+						&quot;                                from tpc_motivo_stand_by) msb &quot; +
+						&quot;                ON res.res_msb_id = msb.msb_id &quot; +
+						&quot;                )  resolucionComite &quot; +
+						&quot;ON ultimoComite.res_id = resolucionComite.res_id &quot; +
+						&quot;left outer join (SELECT   rpa.rpa_res_id, &quot; +
+        				&quot;				           SUBSTR(RTRIM(XMLAGG(XMLELEMENT(E, rpa.rpa_participante||&apos;,&apos;) ORDER BY rpa.rpa_res_id).EXTRACT(&apos;//text()&apos;)), 1, LENGTH(RTRIM(XMLAGG(XMLELEMENT(E, rpa.rpa_participante||&apos;,&apos;) ORDER BY rpa.rpa_res_id).EXTRACT(&apos;//text()&apos;)))-1) AS descParticipantes &quot; +
+     					&quot;				  from tpc_resolucion_participantes rpa&quot; +
+						&quot;				  GROUP BY rpa.rpa_res_id) participantesComite &quot; +
+						&quot;ON ultimoComite.res_id = participantesComite.rpa_res_id &quot; +
+						&quot;left outer join(select MAX(rsa.rsa_id) rsa_id, rsa.rsa_sol_id &quot; +
+						&quot;				 from tpc_recomendacion_sagi rsa &quot; +
+						&quot;				 where rsa.rsa_rol = &apos;TPC - Analista CdG&apos; &quot; +
+						&quot;				 group by rsa.rsa_sol_id) ultimaRAnalista &quot; +
+						&quot;ON sol.sol_id = ultimaRAnalista.rsa_sol_id &quot; +
+						&quot;left outer join(select MAX(rsa.rsa_id) rsa_id, rsa.rsa_sol_id &quot; +
+						&quot;				 from tpc_recomendacion_sagi rsa &quot; +
+						&quot;				 where rsa.rsa_rol = &apos;TPC - Comprador GC&apos; &quot; +
+						&quot;				 group by rsa.rsa_sol_id) ultimaRComprador &quot; +
+						&quot;ON sol.sol_id = ultimaRComprador.rsa_sol_id &quot; +
+						&quot;left outer join(select MAX(rsa.rsa_id) rsa_id, rsa.rsa_sol_id &quot; +
+						&quot;				 from tpc_recomendacion_sagi rsa &quot; +
+						&quot;				 where rsa.rsa_rol = &apos;TPC - Controller GC&apos; &quot; +
+						&quot;				 group by rsa.rsa_sol_id) ultimaRController &quot; +
+						&quot;ON sol.sol_id = ultimaRController.rsa_sol_id &quot; +
+						&quot;left outer join(select MAX(rsa.rsa_id) rsa_id, rsa.rsa_sol_id &quot; +
+						&quot;				 from tpc_recomendacion_sagi rsa &quot; +
+						&quot;				 where rsa.rsa_rol = &apos;TPC - Intervencion GC&apos; &quot; +
+						&quot;				 group by rsa.rsa_sol_id) ultimaRIntervencion &quot; +
+						&quot;ON sol.sol_id = ultimaRIntervencion.rsa_sol_id &quot; +
+						&quot;left outer join(select rsa.rsa_id, rsa.rsa_recomendacion comentarioRecomendacion &quot; +
+						&quot;                from tpc_recomendacion_sagi rsa &quot; +
+						&quot;                ) recomendacionAnalista &quot; +
+						&quot;ON ultimaRAnalista.rsa_id = recomendacionAnalista.rsa_id  &quot; +
+						&quot;left outer join(select rsa.rsa_id, rsa.rsa_recomendacion comentarioRecomendacion &quot; +
+						&quot;                from tpc_recomendacion_sagi rsa &quot; +
+						&quot;                ) recomendacionComprador &quot; +
+						&quot;ON ultimaRComprador.rsa_id = recomendacionComprador.rsa_id  &quot; +
+						&quot;left outer join(select rsa.rsa_id, rsa.rsa_recomendacion comentarioRecomendacion &quot; +
+						&quot;                from tpc_recomendacion_sagi rsa &quot; +
+						&quot;                ) recomendacionController &quot; +
+						&quot;ON ultimaRController.rsa_id = recomendacionController.rsa_id  &quot; +
+						&quot;left outer join(select rsa.rsa_id, rsa.rsa_recomendacion comentarioRecomendacion &quot; +
+						&quot;                from tpc_recomendacion_sagi rsa &quot; +
+						&quot;                ) recomendacionIntervencion &quot; +
+						&quot;ON ultimaRIntervencion.rsa_id = recomendacionIntervencion.rsa_id  &quot; +
+						&quot;left outer join(select resC.res_sol_id, resC.res_fechareal &quot; +
+										 &quot;from tpc_resolucion resC &quot; +
+										&quot;	inner join( &quot; +
+										&quot;	  select MIN(res_id) res_id, res_sol_id &quot; +
+										&quot;	  from tpc_resolucion &quot; +
+										&quot;	  where res_tipo = &apos;C&apos; &quot; +
+										&quot;	  group by res_sol_id) resctemp &quot; +
+										&quot;	on resctemp.res_id = resC.res_id) resCo &quot; +
+						&quot;ON resCo.res_sol_id = sol.sol_id &quot; +
+						&quot;left outer join(select resP.res_sol_id, resP.res_fechareal &quot; +
+										 &quot;from tpc_resolucion resP &quot; +
+										&quot;	inner join( &quot; +
+										&quot;	  select MIN(res_id) res_id, res_sol_id &quot; +
+										&quot;	  from tpc_resolucion &quot; +
+										&quot;	  where res_tipo = &apos;P&apos; &quot; +
+										&quot;	  group by res_sol_id) resptemp &quot; +
+										&quot;	on resptemp.res_id = resP.res_id) resPre &quot; +
+						&quot;ON resPre.res_sol_id = sol.sol_id &quot; +
+						&quot;WHERE sol.sol_id in (&quot; + lista + &quot;) &quot; + 
+						&quot;ORDER BY sol.sol_id &quot;;
+	
+		Utiles.Logger.logInfo(mensaje : &quot;sentence: &quot; + sentence);
+		Utiles.Logger.logInfo(mensaje : &quot;inParameters: &quot; + inParameters);
+				
+		foreach(row in DynamicSQL.executeQuery(sentence : sentence, implname : this.implname, inParameters : inParameters))
+		    {
+				value = {};
+				value[&quot;sol.sol_id&quot;] = (Integer)row[&quot;SOLID&quot;];
+				value[&quot;cge.cge_idrelacionada&quot;] = (Integer)row[&quot;IDRELACIONADA&quot;];
+				value[&quot;sol.sol_fechaalta&quot;] = (Time)row[&quot;FECHAALTA&quot;];
+				value[&quot;sol.sol_fechaenvioenlace&quot;] = (Time)row[&quot;FECHAENVIOENLACE&quot;];
+				value[&quot;sol.sol_fechaenvioanalisis&quot;] = (Time)row[&quot;FECHAENVIOANALISIS&quot;];
+				value[&quot;cce.cce_descripcion&quot;] = (String)row[&quot;CATEGORIACESTA&quot;];
+				value[&quot;pce.pce_descripcion&quot;] = (String)row[&quot;PRODUCTOCESTA&quot;];
+				value[&quot;sol.sol_nrocesta&quot;] = (Integer)row[&quot;NROCESTA&quot;];
+				value[&quot;sol.sol_nrocestaanulada&quot;] = (Integer)row[&quot;NROCESTAANULADA&quot;];
+				value[&quot;sol.sol_motivoreemplazo&quot;] = (String)row[&quot;MOTIVOREEMPLAZO&quot;];
+				value[&quot;sol.sol_nropedido&quot;] = (Integer)row[&quot;NROPEDIDO&quot;];
+				value[&quot;sol.sol_nrocestaasocpedido&quot;] = (Integer)row[&quot;NROCESTAASOCPEDIDO&quot;];
+				value[&quot;sol.sol_montototalpesos&quot;] = (Decimal)row[&quot;MONTOTOTALPESOS&quot;];
+				value[&quot;sol.sol_montototaldolares&quot;] = (Decimal)row[&quot;MONTOTOTALDOLARES&quot;];
+				value[&quot;sol.sol_montototaleuros&quot;] = (Decimal)row[&quot;MONTOTOTALEUROS&quot;];
+				value[&quot;sol.sol_montototalotro&quot;] = (Decimal)row[&quot;MONTOTOTALOTRO&quot;];
+				value[&quot;sol.sol_periodofechainicio&quot;] = (Time)row[&quot;PERIODOFECHAINICIO&quot;];
+				value[&quot;sol.sol_periodofechafin&quot;] = (Time)row[&quot;PERIODOFECHAINICIO&quot;];
+				value[&quot;sol.sol_gestorsolicitante&quot;] = (String)row[&quot;SOLICITANTE&quot;];
+				value[&quot;sol.sol_emailsolicitante&quot;] = (String)row[&quot;EMAILSOLICITANTE&quot;];
+				value[&quot;sol.sol_gestorenlace&quot;] = (String)row[&quot;GESTORENLACE&quot;];
+				value[&quot;sol.sol_emailenlace&quot;] = (String)row[&quot;EMAILGESTORENLACE&quot;];
+				value[&quot;sol.sol_areasolicitante&quot;] = (String)row[&quot;AREASOLICITANTE&quot;];
+				value[&quot;sol.sol_centrocostos&quot;] = (String)row[&quot;CENTROCOSTOS&quot;];
+				value[&quot;tco.tco_descripcion&quot;] = (String)row[&quot;TIPOCOMPRA&quot;];
+				value[&quot;dco.dco_descripcion&quot;] = (String)row[&quot;DESTINOCOMPRA&quot;];
+				value[&quot;sociedades.descSociedades&quot;] = (String)row[&quot;SOCIEDADES&quot;];
+				value[&quot;cpr.cpr_codigo&quot;] = (String)row[&quot;CATEGORIAPRODUCTOCODIGO&quot;];
+				value[&quot;cpr.cpr_descripcion&quot;] = (String)row[&quot;CATEGORIAPRODUCTODESCRIPCION&quot;];
+				value[&quot;lpr.lpr_codigo&quot;] = (String)row[&quot;LINEAPRODUCTOCODIGO&quot;];
+				value[&quot;lpr.lpr_descripcion&quot;] = (String)row[&quot;LINEAPRODUCTODESCRIPCION&quot;];
+				value[&quot;sol.sol_descripcionnecesidad&quot;] = (String)row[&quot;DESCRIPCIONNECESIDAD&quot;];
+				value[&quot;spr.spr_descripcion&quot;] = (String)row[&quot;SUBTIPOPRODUCTO&quot;];
+				value[&quot;sol.sol_centrocostosimpcontable&quot;] = (Integer)row[&quot;CENTROCOSTOSIMPCONT&quot;];
+				value[&quot;sol.sol_cuentaimpcontable&quot;] = (Integer)row[&quot;CUENTAIMPCONT&quot;];
+				value[&quot;sol.sol_actividadimpcontable&quot;] = (Integer)row[&quot;ACTIVIDADIMPCONT&quot;];
+				value[&quot;sol.sol_pep&quot;] = (String)row[&quot;PEP&quot;];
+				value[&quot;vne.vne_beneficiocompra&quot;] = (String)row[&quot;BENEFICIOCMOPRA&quot;];
+				value[&quot;vne.vne_recurrencia&quot;] = (String)row[&quot;RECURRENCIA&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;RECURRENCIA&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;vne.vne_periodicidadcompra&quot;] = (String)row[&quot;PERIODICIDADCOMPRA&quot;];
+				value[&quot;vne.vne_regularizacion&quot;] = (String)row[&quot;REGULARIZACION&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;REGULARIZACION&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;vne.vne_motivoregularizacion&quot;] = (String)row[&quot;MOTIVOREGULARIZACION&quot;];
+				value[&quot;NOTAREGADMINISTRATIVA&quot;] = (String)row[&quot;NOTAREGADMINISTRATIVA&quot;];
+				value[&quot;vne.vne_comentarioregadm&quot;] = (String)row[&quot;COMENTARIOREGADM&quot;];
+				value[&quot;vne.vne_compramargmod&quot;] = (String)row[&quot;COMPRAMARGMOD&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;COMPRAMARGMOD&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;vne.vne_motivocompramargmod&quot;] = (String)row[&quot;MOTIVOCOMPRAMARGMOD&quot;];
+				value[&quot;NOTACOMPMARGMOD&quot;] = (String)row[&quot;NOTACOMPMARGMOD&quot;];
+				value[&quot;vne.vne_gastospedido&quot;] = (String)row[&quot;GASTOSPEDIDO&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;GASTOSPEDIDO&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;vne.vne_infogastospedido&quot;] = (String)row[&quot;INFOGASTOSPEDIDO&quot;];
+				value[&quot;vne.vne_alcancefijo&quot;] = (String)row[&quot;ALCANCEFIJO&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;ALCANCEFIJO&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;vne.vne_alcancemovil&quot;] = (String)row[&quot;ALCANCEMOVIL&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;ALCANCEMOVIL&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;vne.vne_descfijomovil&quot;] = (String)row[&quot;DESCFIJOMOVIL&quot;];
+				value[&quot;pas.pas_parteproymayores&quot;] = (String)row[&quot;PARTEPROYECTOSMAYORES&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;PARTEPROYECTOSMAYORES&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;proyectos.descProyectos&quot;] = (String)row[&quot;DESCPROYECTOS&quot;];
+				value[&quot;pas.pas_afectaotrasareas&quot;] = (String)row[&quot;AFECTAOTRASAREAS&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;AFECTAOTRASAREAS&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;pas.pas_otrasareasafec&quot;] = (String)row[&quot;OTRASAREASAFEC&quot;];
+				value[&quot;tpr.tpr_descripcion&quot;] = (String)row[&quot;TIPOPROYECTO&quot;];
+				value[&quot;pro.pro_nombreproveedorcond&quot;] = (String)row[&quot;NOMBREPROVEEDORCOND&quot;];
+				value[&quot;CARTAPROVCOND&quot;] = (String)row[&quot;CARTAPROVCOND&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;CARTAPROVCOND&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;mpc.mpc_descripcion&quot;] = (String)row[&quot;MOTIVOPROVEEDORCOND&quot;];
+				value[&quot;pro.pro_justificacionmotivo&quot;] = (String)row[&quot;JUSTIFICACIONMOTIVO&quot;];
+				value[&quot;pro.pro_proveedoressugeridos&quot;] = (String)row[&quot;PROVEEDORESSUGERIDOS&quot;];
+				value[&quot;ant.ant_antecedentes&quot;] = (String)row[&quot;ANTECEDENTES&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;ANTECEDENTES&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;ant.ant_comentariosantecedentes&quot;] = (String)row[&quot;COMENTARIOSANTECEDENTES&quot;];
+				value[&quot;ant.ant_incrementoprecio&quot;] = (String)row[&quot;INCREMENTOPRECIO&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;INCREMENTOPRECIO&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;ant.ant_justificacionincprecio&quot;] = (String)row[&quot;JUSTINCPRECIO&quot;];
+				value[&quot;ant.ant_incrementocantidad&quot;] = (String)row[&quot;INCREMENTOCANTIDAD&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;INCREMENTOCANTIDAD&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;ant.ant_justificacioninccantidad&quot;] = (String)row[&quot;JUSTINCCANTIDAD&quot;];
+				value[&quot;sip.sip_montoimppresejerpesos&quot;] = (Decimal)row[&quot;MONTOIMPPRESEJERPESOS&quot;];
+				value[&quot;sip.sip_montoimppresejerdolares&quot;] = (Decimal)row[&quot;MONTOIMPPRESEJERDOLARES&quot;];
+				value[&quot;sip.sip_montoimppresejereuros&quot;] = (Decimal)row[&quot;MONTOIMPPRESEJEREUROS&quot;];
+				value[&quot;sip.sip_montoimppresejerotro&quot;] = (Integer)row[&quot;MONTOIMPPRESEJEROTRO&quot;];
+				value[&quot;sip.sip_contempladopresupuesto&quot;] = (String)row[&quot;CONTEMPLADOPRESUPUESTO&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;CONTEMPLADOPRESUPUESTO&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;Parcial&quot;;
+				value[&quot;sip.sip_montoprespesos&quot;] = (Decimal)row[&quot;MONTOPRESPESOS&quot;];
+				value[&quot;sip.sip_montopresdolares&quot;] = (Decimal)row[&quot;MONTOPRESDOLARES&quot;];
+				value[&quot;sip.sip_montopreseuros&quot;] = (Decimal)row[&quot;MONTOPRESEUROS&quot;];
+				value[&quot;sip.sip_montopresotro&quot;] = (Integer)row[&quot;MONTOPRESOTRO&quot;];
+				value[&quot;sip.sip_contempladopdc&quot;] = (String)row[&quot;CONTEMPLADOPDC&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;CONTEMPLADOPDC&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;Parcial&quot;;;
+				value[&quot;sip.sip_montopdcpesos&quot;] = (Decimal)row[&quot;MONTOPDCPESOS&quot;];
+				value[&quot;sip.sip_montopdcdolares&quot;] = (Decimal)row[&quot;MONTOPDCDOLARES&quot;];
+				value[&quot;sip.sip_montopdceuros&quot;] = (Decimal)row[&quot;MONTOPDCEUROS&quot;];
+				value[&quot;sip.sip_montopdcotro&quot;] = (Integer)row[&quot;MONTOPDCOTRO&quot;];
+				value[&quot;sip.sip_premisaspresupuesto&quot;] = (String)row[&quot;PREMISAPRESUPUESTO&quot;];
+				value[&quot;sip.sip_existedesvio&quot;] = (String)row[&quot;EXISTEDESVIO&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;EXISTEDESVIO&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;sip.sip_planacciondesvio&quot;] = (String)row[&quot;PLANACCIONDESVIO&quot;];
+				value[&quot;sip.sip_montoinvejantpesos&quot;] = (Decimal)row[&quot;MONTOINVEJANTPESOS&quot;];
+				value[&quot;sip.sip_montoinvejantdolares&quot;] = (Decimal)row[&quot;MONTOINVEJANTDOLARES&quot;];
+				value[&quot;sip.sip_montoinvejanteuros&quot;] = (Decimal)row[&quot;MONTOINVEJANTEUROS&quot;];
+				value[&quot;sip.sip_montoinvejantotro&quot;] = (Integer)row[&quot;MONTOINVEJANTOTRO&quot;];
+				value[&quot;sip.sip_gastorealacumpesos&quot;] = (Decimal)row[&quot;GASTOREALACUMPESOS&quot;];
+				value[&quot;sip.sip_gastorealacumdolares&quot;] = (Decimal)row[&quot;GASTOREALACUMDOLARES&quot;];
+				value[&quot;sip.sip_gastorealacumeuros&quot;] = (Decimal)row[&quot;GASTOREALACUMEUROS&quot;];
+				value[&quot;sip.sip_gastorealacumotro&quot;] = (Integer)row[&quot;GASTOREALACUMOTRO&quot;];
+				value[&quot;sip.sip_gastorealproypesos&quot;] = (Decimal)row[&quot;GASTOREALPROYPESOS&quot;];
+				value[&quot;sip.sip_gastorealproydolares&quot;] = (Decimal)row[&quot;GASTOREALPROYDOLARES&quot;];
+				value[&quot;sip.sip_gastorealproyeuros&quot;] = (Decimal)row[&quot;GASTOREALPROYEUROS&quot;];
+				value[&quot;sip.sip_gastorealproyotro&quot;] = (Integer)row[&quot;GASTOREALPROYOTRO&quot;];
+				value[&quot;lcp.lcp_descripcion&quot;] = (String)row[&quot;LISTACOMPRASPARTICULARES&quot;];
+				value[&quot;cpa.cpa_aprocomitepatrocinios&quot;] = (String)row[&quot;APROCOMITEPATROCINIOS&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;APROCOMITEPATROCINIOS&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;cpa.cpa_promotorgasto&quot;] = (String)row[&quot;PROMOTORGASTO&quot;];
+				value[&quot;cpa.cpa_expcondpatrocinio&quot;] = (String)row[&quot;EXPCONDPATROCINIO&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;EXPCONDPATROCINIO&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;No Aplica&quot;;
+				value[&quot;cpa.cpa_comentariospatrocinio&quot;] = (String)row[&quot;COMENTARIOSPATROCINIO&quot;];
+				value[&quot;cpa.cpa_aprobadorrhh&quot;] = (String)row[&quot;APROBADORRHH&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;APROBADORRHH&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;EVIDENCIAAPROB&quot;] = (String)row[&quot;EVIDENCIAAPROB&quot;];
+				value[&quot;cpa.cpa_productoservicio&quot;] = (String)row[&quot;PRODUCTOSERVICIO&quot;];
+				value[&quot;cpa.cpa_gastopresupuestopesos&quot;] = (Decimal)row[&quot;GASTOPRESUPUESTOPESOS&quot;];
+				value[&quot;cpa.cpa_gastopresupuestodolares&quot;] = (Decimal)row[&quot;GASTOPRESUPUESTODOLARES&quot;];
+				value[&quot;cpa.cpa_gastopresupuestoeuros&quot;] = (Decimal)row[&quot;GASTOPRESUPUESTOEUROS&quot;];
+				value[&quot;cpa.cpa_gastopresupuestootro&quot;] = (Integer)row[&quot;GASTOPRESUPUESTOOTRO&quot;];
+				value[&quot;cpa.cpa_ingresospresupuestopesos&quot;] = (Decimal)row[&quot;INGRESOPRESUPUESTOPESOS&quot;];
+				value[&quot;cpa.cpa_ingresospresupuestodolares&quot;] = (Decimal)row[&quot;INGRESOPRESUPUESTODOLARES&quot;];
+				value[&quot;cpa.cpa_ingresospresupuestoeuros&quot;] = (Decimal)row[&quot;INGRESOPRESUPUESTOEUROS&quot;];
+				value[&quot;cpa.cpa_ingresospresupuestootro&quot;] = (Integer)row[&quot;INGRESOPRESUPUESTOOTRO&quot;];
+				value[&quot;cpa.cpa_overbooking&quot;] = (String)row[&quot;OVERBOOKING&quot;];
+				value[&quot;cpa.cpa_margenproducto&quot;] = (String)row[&quot;MARGENPRODUCTO&quot;];
+				value[&quot;cpa.cpa_mantienemargenanterior&quot;] = (String)row[&quot;MANTIENEMARGENANTERIOR&quot;]==&apos;S&apos;?&quot;Si&quot;:((String)row[&quot;MANTIENEMARGENANTERIOR&quot;])==&apos;N&apos;?&quot;No&quot;:&quot;&quot;;
+				value[&quot;cpa.cpa_gastoejanteriorpesos&quot;] = (Decimal)row[&quot;GASTOEJANTPESOS&quot;];
+				value[&quot;cpa.cpa_gastoejanteriordolares&quot;] = (Decimal)row[&quot;GASTOEJANTDOLARES&quot;];
+				value[&quot;cpa.cpa_gastoejanterioreuros&quot;] = (Decimal)row[&quot;GASTOEJANTEUROS&quot;];
+				value[&quot;cpa.cpa_gastoejanteriorotro&quot;] = (Integer)row[&quot;GASTOEJANTOTRO&quot;];
+				value[&quot;cpa.cpa_ingresosejanteriorpesos&quot;] = (Decimal)row[&quot;INGRESOEJANTPESOS&quot;];
+				value[&quot;cpa.cpa_ingresosejanteriordolares&quot;] = (Decimal)row[&quot;INGRESOEJANTDOLARES&quot;];
+				value[&quot;cpa.cpa_ingresosejanterioreuros&quot;] = (Decimal)row[&quot;INGRESOEJANTEUROS&quot;];
+				value[&quot;cpa.cpa_ingresosejanteriorotro&quot;] = (Integer)row[&quot;INGRESOEJANTOTRO&quot;];
+				value[&quot;cpa.cpa_comentariosreventa&quot;] = (String)row[&quot;COMENTARIOSREVENTA&quot;];
+				value[&quot;cge.cge_nombrenecesidad&quot;] = (String)row[&quot;NOBRENECESIDAD&quot;];
+				value[&quot;cge.cge_fechacorte&quot;] = (Time)row[&quot;FECHACORTE&quot;];
+				value[&quot;cso.cso_descripcion&quot;] = (String)row[&quot;CALIFICACIONSOLICITUD&quot;];
+				value[&quot;aso.aso_descripcion&quot;] = (String)row[&quot;AREASOLICITANTE&quot;];
+				value[&quot;car.car_descripcion&quot;] = (String)row[&quot;CLASIFICACIONAREA&quot;];
+				value[&quot;cge.cge_fueraproceso&quot;] = (String)row[&quot;FUERAPROCESO&quot;];
+				value[&quot;mfp.mfp_descripcion&quot;] = (String)row[&quot;MOTIVOFUERAPROCESO&quot;];
+				value[&quot;tor.tor_codigo&quot;] = (String)row[&quot;TIPOORDENCODIGO&quot;];
+				value[&quot;tor.tor_descripcion&quot;] = (String)row[&quot;TIPOORDENDESCRIPCION&quot;];
+				value[&quot;eag.eag_codigo&quot;] = (String)row[&quot;ESTADOAGENDAMIENTOCODIGO&quot;];
+				value[&quot;eag.eag_descripcion&quot;] = (String)row[&quot;ESTADOAGENDAMIENTODESCRIPCION&quot;];
+				value[&quot;apa.apa_analista&quot;] = (String)row[&quot;ANALISTA&quot;];
+				value[&quot;apa.apa_controller&quot;] = (String)row[&quot;CONTROLLER&quot;];
+				value[&quot;apa.apa_intervencion&quot;] = (String)row[&quot;INTERVENCION&quot;];
+				value[&quot;apa.apa_gerentecompras&quot;] = (String)row[&quot;GERENTECOMPRAS&quot;];
+				value[&quot;apa.apa_jefecompras&quot;] = (String)row[&quot;JEFECOMPRAS&quot;];
+				value[&quot;apa.apa_comprador&quot;] = (String)row[&quot;COMPRADOR&quot;];
+				value[&quot;cge.cge_analisissagi&quot;] = (String)row[&quot;ANALISISSAGI&quot;];
+				value[&quot;cge.cge_modificadoporpedido&quot;] = (String)row[&quot;MODIFICADOPORPEDIDO&quot;];
+				value[&quot;cge.cge_rechazadocompras&quot;] = (String)row[&quot;RECHAZADOCOMPRAS&quot;];
+				value[&quot;recomendacionAnalista.comentarioRecomendacion&quot;] = (String)row[&quot;COMENTARIOANALISTA&quot;];
+				value[&quot;recomendacionComprador.comentarioRecomendacion&quot;] = (String)row[&quot;COMENTARIOCOMPRADOR&quot;];
+				value[&quot;recomendacionController.comentarioRecomendacion&quot;] = (String)row[&quot;COMENTARIOCONTROLLER&quot;];
+				value[&quot;recomendacionIntervencion.comentarioRecomendacion&quot;] = (String)row[&quot;COMENTARIOINTERVENCION&quot;];
+				value[&quot;resolucionPreComite.rlt_descripcion&quot;] = (String)row[&quot;RESULTADOP&quot;];
+				value[&quot;resolucionPreComite.res_fechaplanificada&quot;] = (Time)row[&quot;FECHAPLANP&quot;];
+				value[&quot;resolucionPreComite.res_fechareal&quot;] = (Time)row[&quot;FECHAREALP&quot;];
+				value[&quot;resolucionPreComite.res_fechaproxprecomite&quot;] = (Time)row[&quot;FECHAPROXPRECOMITEP&quot;];
+				value[&quot;resolucionPreComite.res_fechaproxcomite&quot;] = (Time)row[&quot;FECHAPROXCOMITEP&quot;];
+				value[&quot;resolucionPreComite.msb_descripcion&quot;] = (String)row[&quot;MOTIVOSTANDBYP&quot;];
+				value[&quot;resolucionPreComite.res_montoaprobadopesos&quot;] = (Decimal)row[&quot;MONTOAPROBADOPESOSP&quot;];
+				value[&quot;resolucionPreComite.res_montoaprobadodolares&quot;] = (Decimal)row[&quot;MONTOAPROBADODOLARESP&quot;];
+				value[&quot;resolucionPreComite.res_montoaprobadoeuros&quot;] = (Decimal)row[&quot;MONTOAPROBADOEUROSP&quot;];
+				value[&quot;resolucionPreComite.res_montoaprobadootro&quot;] = (Integer)row[&quot;MONTOAPROBADOOTROP&quot;];
+				value[&quot;resolucionPreComite.res_comentario&quot;] = (String)row[&quot;COMENTARIOP&quot;];
+				value[&quot;resolucionPreComite.res_primerfechareal&quot;] = (Time)row[&quot;PRIMERFECHAREALP&quot;];
+				value[&quot;resolucionPreComite.descParticipantes&quot;] = (String)row[&quot;PARTICIPANTESP&quot;];
+				value[&quot;resolucionPreComite.res_fechaliberacion&quot;] = (Time)row[&quot;FECHALIBERACIONP&quot;];
+				value[&quot;resolucionPreComite.res_requisitocompras&quot;] = (String)row[&quot;REQUISITOCOMPRASP&quot;];
+				value[&quot;resolucionPreComite.res_condicionamientoprov&quot;] = (String)row[&quot;CONDICIONAMIENTOPROVP&quot;];
+				value[&quot;resolucionPreComite.res_fechatratamiento&quot;] = (Time)row[&quot;EFCHATRATAMIENTOP&quot;];
+				value[&quot;resolucionPreComite.res_fechacierre&quot;] = (Time)row[&quot;FECHACIERRAP&quot;];
+				value[&quot;resolucionComite.rlt_descripcion&quot;] = (String)row[&quot;RESULTADOC&quot;];
+				value[&quot;resolucionComite.res_fechaplanificada&quot;] = (Time)row[&quot;FECHAPLANC&quot;];
+				value[&quot;resolucionComite.res_fechareal&quot;] = (Time)row[&quot;FECHAREALC&quot;];
+				value[&quot;resolucionComite.res_fechaproxprecomite&quot;] = (Time)row[&quot;FECHAPROXPRECOMITEC&quot;];
+				value[&quot;resolucionComite.res_fechaproxcomite&quot;] = (Time)row[&quot;FECHAPROXCOMITEC&quot;];
+				value[&quot;resolucionComite.msb_descripcion&quot;] = (String)row[&quot;MOTIVOSTANDBYC&quot;];
+				value[&quot;resolucionComite.res_montoaprobadopesos&quot;] = (Decimal)row[&quot;MONTOAPROBADOPESOSC&quot;];				
+				value[&quot;resolucionComite.res_montoaprobadodolares&quot;] = (Decimal)row[&quot;MONTOAPROBADODOLARESC&quot;];
+				value[&quot;resolucionComite.res_montoaprobadoeuros&quot;] = (Decimal)row[&quot;MONTOAPROBADOEUROSC&quot;];
+				value[&quot;resolucionComite.res_montoaprobadootro&quot;] = (Integer)row[&quot;MONTOAPROBADOOTROC&quot;];
+				value[&quot;resolucionComite.res_comentario&quot;] = (String)row[&quot;COMENTARIOC&quot;];
+				value[&quot;resolucionComite.res_primerfechareal&quot;] = (Time)row[&quot;PRIMERFECHAREALC&quot;];
+				value[&quot;resolucionComite.descParticipantes&quot;] = (String)row[&quot;PARTICIPANTESC&quot;];
+				value[&quot;resolucionComite.res_fechaliberacion&quot;] = (Time)row[&quot;FECHALIBERACIONC&quot;];
+				value[&quot;resolucionComite.res_requisitocompras&quot;] = (String)row[&quot;REQUISITOCOMPRASC&quot;];
+				value[&quot;resolucionComite.res_condicionamientoprov&quot;] = (String)row[&quot;CONDICIONAMIENTOPROVC&quot;];
+				value[&quot;resolucionComite.res_fechatratamiento&quot;] = (Time)row[&quot;EFCHATRATAMIENTOC&quot;];
+				value[&quot;resolucionComite.res_fechacierre&quot;] = (Time)row[&quot;FECHACIERRAC&quot;];
+				value[&quot;eso.eso_descripcion&quot;] = (String)row[&quot;ESTADOSOLICITUD&quot;];
+				
+				values[] = value;
+				
+	}
+	respuesta.contenido = values;	
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValuesForExcel(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

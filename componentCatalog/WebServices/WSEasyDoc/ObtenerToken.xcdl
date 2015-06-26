@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="ObtenerToken" description="" versionID="Version 6.5 " flags="invokeable" signature="ObtenerToken;http://localhost/WS;elementsQualified;N" dynamic="true" type="xml">
+	<inherit class="Fuego.Xml.XMLObject" flags="public"/>
+	<objectProperty name="elementType" value="elementType"/>
+	<objectProperty name="invokeableClassName" value="fuego.xmlruntime.XMLObject"/>
+	<objectProperty name="namespace" value="http://localhost/WS"/>
+	<objectProperty name="nativeName" value="ObtenerToken"/>
+	<objectProperty name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+	<objectProperty name="xmlObjectVersion" value="2.0"/>
+	<attributes>
+		<Int length="32" name="docid" flags="hassetter hasgetter public" primitive="true" position="2" writeSignature="@1;Vdocid;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@1;Vdocid;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="1"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="docid"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+		</Int>
+		<Int length="32" name="nroreg" flags="hassetter hasgetter public" primitive="true" position="1" writeSignature="@0;Vnroreg;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@0;Vnroreg;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="0"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="nroreg"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+		</Int>
+		<String name="usuario" flags="hassetter hasgetter public" position="4" writeSignature="@3;Vusuario;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@3;Vusuario;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="3"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="usuario"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+		</String>
+		<Int length="32" name="version" flags="hassetter hasgetter public" primitive="true" position="3" writeSignature="@2;Vversion;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@2;Vversion;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="2"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="version"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+		</Int>
+	</attributes>
+	<methods>
+		<method name="ObtenerToken" flags="static public" signature="DObtenerToken;http://localhost/WS;elementsQualified;N">
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.ObtenerToken"/>
+		</method>
+		<method name="ObtenerToken" flags="static public" signature="XObtenerToken;http://localhost/WS;elementsQualified;N">
+			<arg name="xmlText" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.ObtenerToken"/>
+		</method>
+		<method name="ObtenerToken" flags="static public" signature="FObtenerToken;http://localhost/WS;elementsQualified;N">
+			<arg name="name" description="" flags="in" type="String"/>
+			<arg name="attributes" description="" flags="in" type="String[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.ObtenerToken"/>
+		</method>
+	</methods>
+</component>

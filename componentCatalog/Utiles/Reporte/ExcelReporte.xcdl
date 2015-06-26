@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="ExcelReporte" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Binary name="binaryContent" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ExcelReporte" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Reporte.ExcelReporte"/>
+		</method>
+		<method name="getReport" flags="clientavailable public">
+			<arg name="request" description="" flags="in" type="Fuego.Net.HttpRequest"/>
+			<arg name="response" description="" flags="in" type="Fuego.Net.HttpResponse"/>
+			<sourceCode language="Java1">response.bodyByteContent(arg1 : this.binaryContent);
+
+response.contentType = &quot;application/vnd.ms-excel&quot;;
+response.setHeader(arg1 : &quot;Content-Disposition&quot;, arg2 : &quot;attachment; filename=reporte.xls&quot;);
+
+response.contentLength = this.binaryContent.length();
+response.status = 200;
+
+</sourceCode>
+		</method>
+	</methods>
+</component>

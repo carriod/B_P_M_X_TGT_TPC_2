@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="CellValue" description="CellValue" versionID="Version 6.5 " flags="abstract" signature="jxl.write.biff.CellValue" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<inherit class="Utiles.Jxl.Write.WritableCell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.CellValue"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.CellValue"/>
+	<attributes>
+		<object type="Utiles.Jxl.CellFeatures" name="cellFeatures" flags="hasgetter external" position="1" javaType="jxl.CellFeatures" readSignature="MgetCellFeatures()Ljxl.CellFeatures;"/>
+		<object type="Utiles.Jxl.Format.CellFormat" name="cellFormat" flags="hassetter hasgetter external" position="2" javaType="jxl.format.CellFormat" writeSignature="MsetCellFormat(Ljxl.format.CellFormat;)V" readSignature="MgetCellFormat()Ljxl.format.CellFormat;"/>
+		<Int length="32" name="column" flags="hasgetter external" primitive="true" position="3" javaType="int" readSignature="MgetColumn()I"/>
+		<String name="contents" flags="hasgetter external" position="4" javaType="java.lang.String" readSignature="MgetContents()Ljava.lang.String;"/>
+		<Binary name="data" flags="hasgetter external" position="5" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Bool name="hidden" flags="hasgetter external" primitive="true" position="6" javaType="boolean" readSignature="MisHidden()Z"/>
+		<Int length="32" name="row" flags="hasgetter external" primitive="true" position="7" javaType="int" readSignature="MgetRow()I"/>
+		<object type="Utiles.Jxl.CellType" name="type" flags="hasgetter external" position="8" javaType="jxl.CellType" readSignature="MgetType()Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.Write.WritableCellFeatures" name="writableCellFeatures" flags="hasgetter external" position="9" javaType="jxl.write.WritableCellFeatures" readSignature="MgetWritableCellFeatures()Ljxl.write.WritableCellFeatures;"/>
+	</attributes>
+	<methods>
+		<method name="addCellFeatures" description="addCellFeatures" flags="external final" signature="MaddCellFeatures()V"/>
+		<method name="copyTo" description="copyTo" flags="abstract external" signature="McopyTo(II)Ljxl.write.WritableCell;">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+		</method>
+		<method name="getCellFeatures" description="getCellFeatures" flags="external hidden" signature="MgetCellFeatures()Ljxl.CellFeatures;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.CellFeatures" javaType="jxl.CellFeatures"/>
+		</method>
+		<method name="getCellFormat" description="getCellFormat" flags="external hidden" signature="MgetCellFormat()Ljxl.format.CellFormat;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+		</method>
+		<method name="getColumn" description="getColumn" flags="external hidden" signature="MgetColumn()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getContents" description="getContents" flags="abstract external hidden" signature="MgetContents()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getRow" description="getRow" flags="external hidden" signature="MgetRow()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getType" description="getType" flags="abstract external hidden" signature="MgetType()Ljxl.CellType;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.CellType" javaType="jxl.CellType"/>
+		</method>
+		<method name="getWritableCellFeatures" description="getWritableCellFeatures" flags="external hidden" signature="MgetWritableCellFeatures()Ljxl.write.WritableCellFeatures;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCellFeatures" javaType="jxl.write.WritableCellFeatures"/>
+		</method>
+		<method name="isHidden" description="isHidden" flags="external hidden" signature="MisHidden()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="removeComment" description="removeComment" flags="external final" signature="MremoveComment(Ljxl.biff.drawing.Comment;)V">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.Comment" javaType="jxl.biff.drawing.Comment"/>
+		</method>
+		<method name="setCellFeatures" description="setCellFeatures" flags="external" signature="MsetCellFeatures(Ljxl.write.WritableCellFeatures;)V">
+			<arg name="cf" description="" flags="in external" type="Utiles.Jxl.Write.WritableCellFeatures" javaType="jxl.write.WritableCellFeatures"/>
+		</method>
+		<method name="setCellFormat" description="setCellFormat" flags="external hidden" signature="MsetCellFormat(Ljxl.format.CellFormat;)V">
+			<arg name="cf" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+		</method>
+	</methods>
+</component>

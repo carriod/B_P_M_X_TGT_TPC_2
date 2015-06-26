@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRXmlDataSource" description="JRXmlDataSource" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.data.JRXmlDataSource" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Net.Sf.Jasperreports.Engine.JRRewindableDataSource" flags=""/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.data.JRXmlDataSource"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.data"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.data.JRXmlDataSource"/>
+	<attributes/>
+	<methods>
+		<method name="JRXmlDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRXmlDataSource(Lorg.w3c.dom.Document;)">
+			<arg name="arg1" description="" flags="in external" type="{java,org.w3c.dom.Document,Org.W3c.Dom.Document}" javaType="org.w3c.dom.Document"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource"/>
+		</method>
+		<method name="JRXmlDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRXmlDataSource(Ljava.io.InputStream;)">
+			<arg name="in" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource"/>
+		</method>
+		<method name="JRXmlDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRXmlDataSource(Ljava.lang.String;)">
+			<arg name="uri" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource"/>
+		</method>
+		<method name="JRXmlDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRXmlDataSource(Ljava.io.File;)">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource"/>
+		</method>
+		<method name="JRXmlDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRXmlDataSource(Lorg.w3c.dom.Document;Ljava.lang.String;)">
+			<arg name="arg1" description="" flags="in external" type="{java,org.w3c.dom.Document,Org.W3c.Dom.Document}" javaType="org.w3c.dom.Document"/>
+			<arg name="arg2" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource"/>
+		</method>
+		<method name="JRXmlDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRXmlDataSource(Ljava.io.InputStream;Ljava.lang.String;)">
+			<arg name="in" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="selectExpression" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource"/>
+		</method>
+		<method name="JRXmlDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRXmlDataSource(Ljava.lang.String;Ljava.lang.String;)">
+			<arg name="uri" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="selectExpression" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource"/>
+		</method>
+		<method name="JRXmlDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRXmlDataSource(Ljava.io.File;Ljava.lang.String;)">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<arg name="selectExpression" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource"/>
+		</method>
+		<method name="dataSource" description="dataSource" flags="external" signature="MdataSource()Lnet.sf.jasperreports.engine.data.JRXmlDataSource;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource" javaType="net.sf.jasperreports.engine.data.JRXmlDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="dataSource" description="dataSource" flags="external" signature="MdataSource(Ljava.lang.String;)Lnet.sf.jasperreports.engine.data.JRXmlDataSource;">
+			<arg name="selectExpr" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource" javaType="net.sf.jasperreports.engine.data.JRXmlDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="getFieldValue" description="getFieldValue" flags="external" signature="MgetFieldValue(Lnet.sf.jasperreports.engine.JRField;)Ljava.lang.Object;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}" javaType="net.sf.jasperreports.engine.JRField"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="getText" description="getText" flags="external" signature="MgetText(Lorg.w3c.dom.Node;)Ljava.lang.String;">
+			<arg name="arg1" description="" flags="in external" type="{java,org.w3c.dom.Node,Org.W3c.Dom.Node}" javaType="org.w3c.dom.Node"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="main" description="main" flags="static external hidden" signature="Mmain([Ljava.lang.String;)V">
+			<arg name="args" description="" flags="in external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+			<exception type="Java.Lang.Exception"/>
+		</method>
+		<method name="moveFirst" description="moveFirst" flags="external" signature="MmoveFirst()V">
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="next" description="next" flags="external" signature="Mnext()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="subDataSource" description="subDataSource" flags="external" signature="MsubDataSource()Lnet.sf.jasperreports.engine.data.JRXmlDataSource;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource" javaType="net.sf.jasperreports.engine.data.JRXmlDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="subDataSource" description="subDataSource" flags="external" signature="MsubDataSource(Ljava.lang.String;)Lnet.sf.jasperreports.engine.data.JRXmlDataSource;">
+			<arg name="selectExpr" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRXmlDataSource" javaType="net.sf.jasperreports.engine.data.JRXmlDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="subDocument" description="subDocument" flags="external" signature="MsubDocument()Lorg.w3c.dom.Document;">
+			<outputArgument name="return" description="" flags="retval external" type="{java,org.w3c.dom.Document,Org.W3c.Dom.Document}" javaType="org.w3c.dom.Document"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+	</methods>
+</component>

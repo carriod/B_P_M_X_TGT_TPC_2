@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableFormattingRecords" description="WritableFormattingRecords" versionID="Version 6.5 " flags="" signature="jxl.write.biff.WritableFormattingRecords" type="java">
+	<inherit class="Utiles.Jxl.Biff.FormattingRecords" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.WritableFormattingRecords"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.WritableFormattingRecords"/>
+	<attributes>
+		<object type="Utiles.Jxl.Write.WritableCellFormat" name="normalStyle" flags="hassetter hasgetter attribute static external" position="1" javaType="jxl.write.WritableCellFormat" writeSignature="AnormalStyle;Ljxl.write.WritableCellFormat;" readSignature="AnormalStyle;Ljxl.write.WritableCellFormat;"/>
+	</attributes>
+	<methods>
+		<method name="WritableFormattingRecords" flags="static" signature="Kjxl.write.biff.WritableFormattingRecords(Ljxl.biff.Fonts;Ljxl.write.biff.Styles;)">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Biff.Fonts" javaType="jxl.biff.Fonts"/>
+			<arg name="arg2" description="" flags="in external" type="Utiles.Jxl.Write.Biff.Styles" javaType="jxl.write.biff.Styles"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Biff.WritableFormattingRecords"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Image" description="Image" versionID="Version 6.5 " flags="abstract interface" signature="jxl.Image" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="jxl.Image"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.Image"/>
+	<attributes>
+		<Real length="64" name="column" flags="hasgetter external" primitive="true" position="1" javaType="double" readSignature="MgetColumn()D"/>
+		<Real length="64" name="height" flags="hasgetter external" primitive="true" position="2" javaType="double" readSignature="MgetHeight()D"/>
+		<Binary name="imageData" flags="hasgetter external" position="3" javaType="byte[]" readSignature="MgetImageData()[B"/>
+		<object type="Java.Io.File" name="imageFile" flags="hasgetter external" position="4" javaType="java.io.File" readSignature="MgetImageFile()Ljava.io.File;"/>
+		<Real length="64" name="row" flags="hasgetter external" primitive="true" position="5" javaType="double" readSignature="MgetRow()D"/>
+		<Real length="64" name="width" flags="hasgetter external" primitive="true" position="6" javaType="double" readSignature="MgetWidth()D"/>
+	</attributes>
+	<methods>
+		<method name="getColumn" description="getColumn" flags="abstract external hidden" signature="MgetColumn()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getHeight" description="getHeight" flags="abstract external hidden" signature="MgetHeight()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getImageData" description="getImageData" flags="abstract external hidden" signature="MgetImageData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getImageFile" description="getImageFile" flags="abstract external hidden" signature="MgetImageFile()Ljava.io.File;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.File" javaType="java.io.File"/>
+		</method>
+		<method name="getRow" description="getRow" flags="abstract external hidden" signature="MgetRow()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getWidth" description="getWidth" flags="abstract external hidden" signature="MgetWidth()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="FontRecord" description="FontRecord" versionID="Version 6.5 " flags="" signature="jxl.biff.FontRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<inherit class="Utiles.Jxl.Format.Font" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.FontRecord"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.FontRecord"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.FontRecord.Biff7" name="biff7" flags="hasgetter attribute static external final" position="12" javaType="jxl.biff.FontRecord$Biff7" writeSignature="Abiff7;Ljxl.biff.FontRecord$Biff7;" readSignature="Abiff7;Ljxl.biff.FontRecord$Biff7;"/>
+		<Int length="32" name="boldWeight" flags="hasgetter external" primitive="true" position="1" javaType="int" readSignature="MgetBoldWeight()I"/>
+		<object type="Utiles.Jxl.Format.Colour" name="colour" flags="hasgetter external" position="2" javaType="jxl.format.Colour" readSignature="MgetColour()Ljxl.format.Colour;"/>
+		<Binary name="data" flags="hasgetter external" position="3" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Int length="32" name="fontIndex" flags="hasgetter external" primitive="true" position="4" javaType="int" readSignature="MgetFontIndex()I"/>
+		<Bool name="initialized" flags="hasgetter external" primitive="true" position="5" javaType="boolean" readSignature="MisInitialized()Z"/>
+		<Bool name="italic" flags="hasgetter external" primitive="true" position="6" javaType="boolean" readSignature="MisItalic()Z"/>
+		<String name="name" flags="hasgetter external" position="7" javaType="java.lang.String" readSignature="MgetName()Ljava.lang.String;"/>
+		<Int length="32" name="pointSize" flags="hasgetter external" primitive="true" position="8" javaType="int" readSignature="MgetPointSize()I"/>
+		<object type="Utiles.Jxl.Format.ScriptStyle" name="scriptStyle" flags="hasgetter external" position="9" javaType="jxl.format.ScriptStyle" readSignature="MgetScriptStyle()Ljxl.format.ScriptStyle;"/>
+		<Bool name="struckout" flags="hasgetter external" primitive="true" position="10" javaType="boolean" readSignature="MisStruckout()Z"/>
+		<object type="Utiles.Jxl.Format.UnderlineStyle" name="underlineStyle" flags="hasgetter external" position="11" javaType="jxl.format.UnderlineStyle" readSignature="MgetUnderlineStyle()Ljxl.format.UnderlineStyle;"/>
+	</attributes>
+	<methods>
+		<method name="FontRecord" flags="static" signature="Kjxl.biff.FontRecord(Ljxl.read.biff.Record;Ljxl.WorkbookSettings;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.FontRecord"/>
+		</method>
+		<method name="FontRecord" flags="static" signature="Kjxl.biff.FontRecord(Ljxl.read.biff.Record;Ljxl.WorkbookSettings;Ljxl.biff.FontRecord$Biff7;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<arg name="dummy" description="" flags="in external" type="Utiles.Jxl.Biff.FontRecord.Biff7" javaType="jxl.biff.FontRecord$Biff7"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.FontRecord"/>
+		</method>
+		<method name="equals" description="equals" flags="external hidden" signature="Mequals(Ljava.lang.Object;)Z">
+			<arg name="o" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getBoldWeight" description="getBoldWeight" flags="external hidden" signature="MgetBoldWeight()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getColour" description="getColour" flags="external hidden" signature="MgetColour()Ljxl.format.Colour;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getFontIndex" description="getFontIndex" flags="external final hidden" signature="MgetFontIndex()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getName" description="getName" flags="external hidden" signature="MgetName()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getPointSize" description="getPointSize" flags="external hidden" signature="MgetPointSize()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getScriptStyle" description="getScriptStyle" flags="external hidden" signature="MgetScriptStyle()Ljxl.format.ScriptStyle;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.ScriptStyle" javaType="jxl.format.ScriptStyle"/>
+		</method>
+		<method name="getUnderlineStyle" description="getUnderlineStyle" flags="external hidden" signature="MgetUnderlineStyle()Ljxl.format.UnderlineStyle;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.UnderlineStyle" javaType="jxl.format.UnderlineStyle"/>
+		</method>
+		<method name="hashCode" description="hashCode" flags="external hidden" signature="MhashCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="initialize" description="initialize" flags="external final" signature="Minitialize(I)V">
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="isInitialized" description="isInitialized" flags="external final hidden" signature="MisInitialized()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isItalic" description="isItalic" flags="external hidden" signature="MisItalic()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isStruckout" description="isStruckout" flags="external hidden" signature="MisStruckout()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="uninitialize" description="uninitialize" flags="external final" signature="Muninitialize()V"/>
+	</methods>
+</component>

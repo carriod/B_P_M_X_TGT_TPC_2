@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Documentos" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Bool defaultValue="false" name="check" flags="hassetter hasgetter public includeincheck" position="1"/>
+		<String name="codigoLote" flags="hassetter hasgetter public" position="4"/>
+		<String name="extension" flags="hassetter hasgetter public" position="6"/>
+		<Time scale="2" precision="2" name="fechaCarga" flags="hassetter hasgetter public" position="5"/>
+		<String name="nombreArchivo" flags="hassetter hasgetter public" position="2"/>
+		<String name="nombreUsuario" flags="hassetter hasgetter public" position="3"/>
+	</attributes>
+	<methods>
+		<method name="Documentos" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormVerAdmEasyDocs.Documentos"/>
+		</method>
+		<method name="submitVer" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver*&quot;+ this.codigoLote); </sourceCode>
+		</method>
+	</methods>
+</component>

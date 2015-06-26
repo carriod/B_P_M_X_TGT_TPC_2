@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="BiffType" description="FormatRecord$BiffType" versionID="Version 6.5 " flags="" signature="jxl.biff.FormatRecord$BiffType" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.FormatRecord$BiffType"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.FormatRecord$BiffType"/>
+	<attributes/>
+	<methods>
+		<method name="BiffType" flags="static hidden" signature="Kjxl.biff.FormatRecord$BiffType()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.FormatRecord.BiffType"/>
+		</method>
+	</methods>
+</component>

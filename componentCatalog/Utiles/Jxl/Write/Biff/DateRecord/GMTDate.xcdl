@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="GMTDate" description="DateRecord$GMTDate" versionID="Version 6.5 " flags="" signature="jxl.write.biff.DateRecord$GMTDate" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.DateRecord$GMTDate"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.DateRecord$GMTDate"/>
+	<attributes/>
+	<methods>
+		<method name="GMTDate" flags="static hidden" signature="Kjxl.write.biff.DateRecord$GMTDate()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Biff.DateRecord.GMTDate"/>
+		</method>
+	</methods>
+</component>

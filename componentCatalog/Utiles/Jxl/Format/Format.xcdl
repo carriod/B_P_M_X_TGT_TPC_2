@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Format" description="Format" versionID="Version 6.5 " flags="abstract interface" signature="jxl.format.Format" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="jxl.format.Format"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.Format"/>
+	<attributes>
+		<String name="formatString" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetFormatString()Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="getFormatString" description="getFormatString" flags="abstract external hidden" signature="MgetFormatString()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

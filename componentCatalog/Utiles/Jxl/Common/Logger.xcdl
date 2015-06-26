@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Logger" description="Logger" versionID="Version 6.5 " flags="abstract" signature="jxl.common.Logger" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.common.Logger"/>
+	<objectProperty name="package" value="jxl.common"/>
+	<objectProperty name="typeId" value="jxl.common.Logger"/>
+	<attributes>
+		<Bool name="suppressWarnings" flags="hassetter external" primitive="true" position="1" javaType="boolean" writeSignature="MsetSuppressWarnings(Z)V"/>
+	</attributes>
+	<methods>
+		<method name="debug" description="debug" flags="abstract external" signature="Mdebug(Ljava.lang.Object;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="debug" description="debug" flags="abstract external" signature="Mdebug(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="arg2" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+		<method name="error" description="error" flags="abstract external" signature="Merror(Ljava.lang.Object;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="error" description="error" flags="abstract external" signature="Merror(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="arg2" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+		<method name="fatal" description="fatal" flags="abstract external" signature="Mfatal(Ljava.lang.Object;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="fatal" description="fatal" flags="abstract external" signature="Mfatal(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="arg2" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+		<method name="getLogger" description="getLogger" flags="static external final" signature="MgetLogger(Ljava.lang.Class;)Ljxl.common.Logger;">
+			<arg name="cl" description="" flags="in external" type="Java.Lang.Class" javaType="java.lang.Class"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Common.Logger" javaType="jxl.common.Logger"/>
+		</method>
+		<method name="info" description="info" flags="abstract external" signature="Minfo(Ljava.lang.Object;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="info" description="info" flags="abstract external" signature="Minfo(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="arg2" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+		<method name="setSuppressWarnings" description="setSuppressWarnings" flags="external hidden" signature="MsetSuppressWarnings(Z)V">
+			<arg name="w" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="warn" description="warn" flags="abstract external" signature="Mwarn(Ljava.lang.Object;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="warn" description="warn" flags="abstract external" signature="Mwarn(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="arg1" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="arg2" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+	</methods>
+</component>

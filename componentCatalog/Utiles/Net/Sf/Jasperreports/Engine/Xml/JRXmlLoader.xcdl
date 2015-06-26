@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRXmlLoader" description="JRXmlLoader" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.xml.JRXmlLoader" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.xml.JRXmlLoader"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.xml"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.xml.JRXmlLoader"/>
+	<attributes>
+		<object type="Set(Any)" name="groupBoundDatasets" flags="hasgetter external" position="1" javaType="java.util.Set" readSignature="MgetGroupBoundDatasets()Ljava.util.Set;"/>
+		<object type="Java.Util.Collection" name="groupEvaluatedCharts" flags="hasgetter external" position="2" javaType="java.util.Collection" readSignature="MgetGroupEvaluatedCharts()Ljava.util.Collection;"/>
+		<object type="Java.Util.Collection" name="groupEvaluatedImages" flags="hasgetter external" position="3" javaType="java.util.Collection" readSignature="MgetGroupEvaluatedImages()Ljava.util.Collection;"/>
+		<object type="Java.Util.Collection" name="groupEvaluatedTextFields" flags="hasgetter external" position="4" javaType="java.util.Collection" readSignature="MgetGroupEvaluatedTextFields()Ljava.util.Collection;"/>
+		<object type="Java.Util.Collection" name="groupReprintedElements" flags="hasgetter external" position="5" javaType="java.util.Collection" readSignature="MgetGroupReprintedElements()Ljava.util.Collection;"/>
+		<Bool name="ignoreConsistencyProblems" flags="hassetter hasgetter external" primitive="true" position="6" javaType="boolean" writeSignature="MsetIgnoreConsistencyProblems(Z)V" readSignature="MisIgnoreConsistencyProblems()Z"/>
+		<object type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" name="jasperDesign" flags="hassetter external" position="7" javaType="net.sf.jasperreports.engine.design.JasperDesign" writeSignature="MsetJasperDesign(Lnet.sf.jasperreports.engine.design.JasperDesign;)V"/>
+	</attributes>
+	<methods>
+		<method name="JRXmlLoader" flags="static" signature="Knet.sf.jasperreports.engine.xml.JRXmlLoader(Lorg.apache.commons.digester.Digester;)">
+			<arg name="arg1" description="" flags="in external" type="{java,org.apache.commons.digester.Digester,Org.Apache.Commons.Digester.Digester}" javaType="org.apache.commons.digester.Digester"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Xml.JRXmlLoader"/>
+		</method>
+		<method name="addError" description="addError" flags="external" signature="MaddError(Ljava.lang.Exception;)V">
+			<arg name="e" description="" flags="in external" type="Java.Lang.Exception" javaType="java.lang.Exception"/>
+		</method>
+		<method name="getGroupBoundDatasets" description="getGroupBoundDatasets" flags="external hidden" signature="MgetGroupBoundDatasets()Ljava.util.Set;">
+			<outputArgument name="return" description="" flags="retval external" type="Set(Any)" javaType="java.util.Set"/>
+		</method>
+		<method name="getGroupEvaluatedCharts" description="getGroupEvaluatedCharts" flags="external hidden" signature="MgetGroupEvaluatedCharts()Ljava.util.Collection;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Util.Collection" javaType="java.util.Collection"/>
+		</method>
+		<method name="getGroupEvaluatedImages" description="getGroupEvaluatedImages" flags="external hidden" signature="MgetGroupEvaluatedImages()Ljava.util.Collection;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Util.Collection" javaType="java.util.Collection"/>
+		</method>
+		<method name="getGroupEvaluatedTextFields" description="getGroupEvaluatedTextFields" flags="external hidden" signature="MgetGroupEvaluatedTextFields()Ljava.util.Collection;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Util.Collection" javaType="java.util.Collection"/>
+		</method>
+		<method name="getGroupReprintedElements" description="getGroupReprintedElements" flags="external hidden" signature="MgetGroupReprintedElements()Ljava.util.Collection;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Util.Collection" javaType="java.util.Collection"/>
+		</method>
+		<method name="isIgnoreConsistencyProblems" description="isIgnoreConsistencyProblems" flags="external hidden" signature="MisIgnoreConsistencyProblems()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="load" description="load" flags="static external" signature="Mload(Ljava.lang.String;)Lnet.sf.jasperreports.engine.design.JasperDesign;">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="load" description="load" flags="static external" signature="Mload(Ljava.io.File;)Lnet.sf.jasperreports.engine.design.JasperDesign;">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="load" description="load" flags="static external" signature="Mload(Ljava.io.InputStream;)Lnet.sf.jasperreports.engine.design.JasperDesign;">
+			<arg name="is" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadXML" description="loadXML" flags="external" signature="MloadXML(Lorg.xml.sax.InputSource;)Lnet.sf.jasperreports.engine.design.JasperDesign;">
+			<arg name="arg1" description="" flags="in external" type="{java,org.xml.sax.InputSource,Org.Xml.Sax.InputSource}" javaType="org.xml.sax.InputSource"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadXML" description="loadXML" flags="external" signature="MloadXML(Ljava.io.InputStream;)Lnet.sf.jasperreports.engine.design.JasperDesign;">
+			<arg name="is" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="setIgnoreConsistencyProblems" description="setIgnoreConsistencyProblems" flags="external hidden" signature="MsetIgnoreConsistencyProblems(Z)V">
+			<arg name="ignoreConsistencyProblems" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setJasperDesign" description="setJasperDesign" flags="external hidden" signature="MsetJasperDesign(Lnet.sf.jasperreports.engine.design.JasperDesign;)V">
+			<arg name="jasperDesign" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+		</method>
+	</methods>
+</component>

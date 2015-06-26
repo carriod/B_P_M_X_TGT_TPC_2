@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="OperacionesConTiempo" description="  " versionID="Version 5.5 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="legacy" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="OperacionesConTiempo" flags="static">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.OperacionesConTiempo"/>
+		</method>
+		<method name="compararFechas" description="devuelve -1 si f1&lt;f2, 0 si son iguales y 1 si f1&gt;f2" flags="clientavailable public">
+			<arg name="fecha1" description="" flags="in" type="Time"/>
+			<arg name="fecha2" description="" flags="in" type="Time"/>
+			<outputArgument name="return" description="" flags="retval" primitive="true" type="Int"/>
+			<sourceCode language="Java1">			
+			
+			
+if (fecha1.year &lt; fecha2.year) {
+    return -1;
+}
+else if (fecha1.year &gt; fecha2.year) {
+    return 1;
+}
+else {
+    if (fecha1.month &lt; fecha2.month) {
+        return -1;
+    }
+    else if (fecha1.month &gt; fecha2.month) {
+        return 1;
+    }
+    else {
+        if (fecha1.day &lt; fecha2.day) {
+            return -1;
+        }
+        else if (fecha1.day &gt; fecha2.day) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+}
+</sourceCode>
+		</method>
+		<method name="cuantosmeses" flags="clientavailable public">
+			<arg name="fechaDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaHasta" description="" flags="in" type="Time"/>
+			<variables>
+				<variable name="cantidadMeses" type="Int"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" primitive="true" type="Int"/>
+			<sourceCode language="Java1">			
+			
+			
+				
+			
+			
+if (arg.fechaHasta.year == arg.fechaDesde.year) {
+    cantidadMeses = arg.fechaHasta.month - arg.fechaDesde.month;
+}
+
+return cantidadMeses;
+</sourceCode>
+		</method>
+		<method name="diferenciaDeFechasWorkday" flags="public server">
+			<arg name="fechaInicio" description="" flags="in" type="Time"/>
+			<arg name="fechaFin" description="" flags="in" type="Time"/>
+			<variables>
+				<variable name="aux" type="Time"/>
+				<variable name="mul" type="Int"/>
+				<variable name="sentencia" type="String"/>
+				<variable name="workday" type="Bool"/>
+				<variable name="x" type="Int"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" primitive="true" type="Int"/>
+			<sourceCode language="Java1">			
+			
+			
+				
+				
+				
+				
+				
+			
+			
+mul = 1;
+
+if (fechaInicio &gt; fechaFin) {
+    mul = -1;
+    aux = fechaInicio;
+    fechaInicio = fechaFin;
+    fechaFin = aux;
+}
+
+// me fijo en la tabla calendario cuantos días workday hay
+sentencia = &quot;SELECT COUNT(*) AS x &quot; + 
+            &quot;FROM CORPORATE_CALENDAR &quot; + 
+            &quot;WHERE (date &gt; &apos;&quot; + fechaInicio.year + &quot;/&quot; + fechaInicio.month + &quot;/&quot; + fechaInicio.day + &quot;&apos;) AND &quot; + 
+            &quot;(date &lt; &apos;&quot; + fechaFin.year + &quot;/&quot; + fechaFin.month + &quot;/&quot; + fechaFin.day + &quot;&apos;) AND &quot; + 
+            &quot;(workday = 1)&quot;;
+
+foreach (m in DynamicSQL.executeQuery(sentence : sentencia, implname : &quot;Calendar&quot;)) {
+    x = ((int) m[&quot;x&quot;]) * 9;
+}
+
+// me fijo si el día1 es workday
+workday = this.isWorkday(date : fechaInicio);
+
+// si es el mismo día resto 1
+if (fechaInicio.year == fechaFin.year &amp;&amp; fechaInicio.month == fechaFin.month &amp;&amp; fechaInicio.day == fechaFin.day &amp;&amp; workday) {
+    x = x - 9;
+}
+
+// si el día1 es workday y la hora &lt; 18
+if (fechaInicio.hourOfDay &lt; 18 &amp;&amp; workday) {
+    if (fechaInicio.hourOfDay &gt; 9) {
+        x = x + 18 - fechaInicio.hourOfDay;
+    }
+    else {
+        x = x + 9;
+    }
+}
+
+// me fijo si el día2 es workday
+workday = this.isWorkday(date : fechaFin);
+
+// si el día2 es workday y la hora &gt; 9
+if (fechaFin.hourOfDay &gt; 9 &amp;&amp; workday) {
+    if (fechaFin.hourOfDay &lt; 18) {
+        x = x + fechaFin.hourOfDay - 9;
+    }
+    else {
+        x = x + 9;
+    }
+}
+
+// divido por 9
+return ((int) (x / 9.0)) * mul;
+</sourceCode>
+		</method>
+		<method name="diferenciaDeFechasWorkdayCompleta" flags="clientavailable public">
+			<arg name="fechaInicio" description="" flags="in" type="Time"/>
+			<arg name="fechaFin" description="" flags="in" type="Time"/>
+			<arg name="dias" description="" flags="out" primitive="true" type="Int"/>
+			<arg name="horas" description="" flags="out" primitive="true" type="Int"/>
+			<arg name="minutos" description="" flags="out" primitive="true" type="Int"/>
+			<variables>
+				<variable name="aux" type="Time"/>
+				<variable name="h1" type="Int"/>
+				<variable name="h2" type="Int"/>
+				<variable name="m1" type="Int"/>
+				<variable name="m2" type="Int"/>
+				<variable name="mul" type="Int"/>
+				<variable name="sentencia" type="String"/>
+				<variable name="workday" type="Bool"/>
+				<variable name="x" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">			
+			
+			
+			
+			
+			
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			
+// fechaInicio = &apos;10/06/2005 10:30:00&apos;
+// fechaFin = &apos;13/06/2005 18:30:00&apos;
+mul = 1;
+
+if (fechaInicio &gt; fechaFin) {
+    mul = -1;
+    aux = fechaInicio;
+    fechaInicio = fechaFin;
+    fechaFin = aux;
+}
+
+// me fijo en la tabla calendario cuantos días workday hay
+sentencia = &quot;SELECT COUNT(*) AS x &quot; + 
+            &quot;FROM CORPORATE_CALENDAR &quot; + 
+            &quot;WHERE (date &gt; &apos;&quot; + fechaInicio.year + &quot;/&quot; + fechaInicio.month + &quot;/&quot; + fechaInicio.day + &quot;&apos;) AND &quot; + 
+            &quot;(date &lt; &apos;&quot; + fechaFin.year + &quot;/&quot; + fechaFin.month + &quot;/&quot; + fechaFin.day + &quot;&apos;) AND &quot; + 
+            &quot;(workday = 1)&quot;;
+
+foreach (m in DynamicSQL.executeQuery(sentence : sentencia, implname : &quot;Calendar&quot;)) {
+    x = ((int) m[&quot;x&quot;]) * 9;
+}
+
+// me fijo si el día1 es workday
+workday = this.isWorkday(date : fechaInicio);
+
+// si es el mismo día resto 1
+if (fechaInicio.year == fechaFin.year &amp;&amp; fechaInicio.month == fechaFin.month &amp;&amp; fechaInicio.day == fechaFin.day &amp;&amp; workday) {
+    x = x - 9;
+}
+
+// si el día1 es workday y la hora &lt; 18
+if (fechaInicio.hourOfDay &lt; 18 &amp;&amp; workday) {
+    if (fechaInicio.hourOfDay &gt; 9) {
+        x = x + 18 - fechaInicio.hourOfDay;
+        h1 = fechaInicio.hourOfDay;
+        m1 = fechaInicio.minute;
+    }
+    else {
+        x = x + 9;
+        h1 = 9;
+        m1 = 0;
+    }
+}
+else {
+    h1 = 18;
+    m1 = 0;
+}
+
+// me fijo si el día2 es workday
+workday = this.isWorkday(date : fechaFin);
+
+// si el día2 es workday y la hora &gt; 9
+if (fechaFin.hourOfDay &gt; 9 &amp;&amp; workday) {
+    if (fechaFin.hourOfDay &lt; 18) {
+        x = x + fechaFin.hourOfDay - 9;
+        h2 = fechaFin.hourOfDay;
+        m2 = fechaFin.minute;
+    }
+    else {
+        x = x + 9;
+        h2 = 18;
+        m2 = fechaFin.minute;
+    }
+}
+else {
+    h2 = 9;
+    m2 = 0;
+}
+
+if (fechaFin.hourOfDay &gt;= fechaInicio.hourOfDay) {
+    horas = h2 - h1;
+}
+else {
+    horas = (h2 - 9) + (18 - h1);
+}
+
+if (m2 &gt;= m1) {
+    minutos = m2 - m1;
+}
+else {
+    if (horas != 0) {
+        minutos = m2 + 60 - m1;
+        horas = horas - 1;
+    }
+}
+
+// divido por 9 y redondeo
+dias = ((int) (x / 9.0)) * mul;
+minutos = minutos * mul;
+horas = horas * mul;
+</sourceCode>
+		</method>
+		<method name="diferenciaDeFechasWorkdayMin" description="" flags="public server disableclient">
+			<arg name="fechaInicio" description="" flags="in" type="Time"/>
+			<arg name="fechaFin" description="" flags="in" type="Time"/>
+			<variables>
+				<variable name="minutos" type="Interval"/>
+				<variable name="result" type="Int"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Interval"/>
+			<sourceCode language="Java1">			
+			
+			
+				
+				
+			
+			
+/*
+fechaInicio = &apos;now&apos; - &apos;3d&apos; -&apos;3h&apos;;
+fechaFin = &apos;now&apos; - &apos;3h&apos; -&apos;0h&apos;;
+*/
+if (arg.fechaInicio != null &amp;&amp; arg.fechaFin != null) {
+    try {
+ //       result = GETWORKINGMINS.call(startDate : fechaInicio, endDate : fechaFin);
+
+        if(result != null)
+            minutos = (Interval) (result + &quot;m&quot;);
+        else   
+            minutos = (Interval) (0 + &quot;m&quot;);
+/*
+        display(&quot;fechaInicio &quot; + fechaInicio + &quot;\n&quot; + 
+        &quot;fechaFin &quot; + fechaFin + &quot;\n&quot; +
+        &quot;interval &quot; + minutos.minutes + &quot;minutes&quot; + &quot;\n&quot; + 
+        &quot;result &quot; +(Int)(minutos.hours/(19-8)) + &quot;d &quot; 
+        +(Int)(minutos.hours%(19-8)) + &quot;h &quot;
+        + minutos.minutesOnly + &quot;m&quot;
+        );
+*/
+    }
+    catch (Java.Lang.Exception e) {
+        Utiles.Logger.logSevere(mensaje : &quot;Error calculo fechas ERROR: &quot; + e.message);
+        minutos = (Interval) (0 + &quot;m&quot;);
+    }
+}
+else {
+}
+
+return minutos;
+</sourceCode>
+		</method>
+		<method name="diferenciaDeFechasWorkdayMinS" description="" flags="public server disableclient">
+			<arg name="minutos" description="" flags="in" type="Interval"/>
+			<variables>
+				<variable name="minutosS" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">			
+			
+				
+			
+			
+/*
+fechaInicio = &apos;30/04/2009 18:30:00&apos;;
+fechaFin = &apos;06/05/2009 17:10:00&apos;;
+minutos = OperacionesConTiempo().diferenciaDeFechasWorkdayMin(fechaInicio : fechaInicio, 
+                                           fechaFin : fechaFin);
+*/
+
+/*
+fechaInicio = &apos;now&apos; - &apos;3d&apos; -&apos;3h&apos;;
+fechaFin = &apos;now&apos; - &apos;3h&apos; -&apos;0h&apos;;
+*/
+if(arg.minutos != null){
+    try {
+//        minutosS = GETWORKINGMINSSRTING.call(minutos : arg.minutos.minutes);
+    } catch (Java.Lang.Exception e) {
+        Utiles.Logger.logSevere(mensaje : &quot;Error calculo fechas ERROR: &quot; + e.message);
+        minutosS = &quot;&quot;;
+    }
+}else{
+    minutosS = &quot;&quot;;
+}
+//display(minutosS);
+return minutosS;
+</sourceCode>
+		</method>
+		<method name="formatFechaS" description="" flags="clientavailable public">
+			<arg name="fecha" description="" flags="in" type="Time"/>
+			<variables>
+				<variable name="fechaS" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">			
+			
+				
+			
+			
+//arg.fecha = &apos;now&apos;+&apos;8h&apos;;
+
+fechaS = &quot;&quot;;
+
+if(arg.fecha != null)
+    fechaS = arg.fecha.format(mask : &quot;dd/MM/yyyy kk:mm:ss&quot;,
+             timeZone : TimeZone.getTimeZone(arg1 : &quot;America/Argentina/Buenos_Aires&quot;),
+             locale : Java.Util.Locale.FRANCE);
+           
+//display(fechaS);
+
+return fechaS;
+</sourceCode>
+		</method>
+		<method name="intervalWorkdays" description="" flags="public server disableclient">
+			<arg name="fehaInicio" description="" flags="in" type="Time"/>
+			<arg name="intervalo" description="" flags="in" type="Interval"/>
+			<variables>
+				<variable name="cantDiasNoW" type="Interval"/>
+				<variable name="cantDiasNoWAux" type="Int"/>
+				<variable name="fechaFin" type="Time"/>
+				<variable name="resultado" type="Interval"/>
+				<variable name="sentencia" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Interval"/>
+			<sourceCode language="Java1">			
+			
+			
+				
+				
+				
+				
+				
+			
+			
+fechaFin = arg.fehaInicio + arg.intervalo;
+
+// me fijo en la tabla calendario cuantos días workday hay
+sentencia = &quot;SELECT COUNT(*) AS x &quot; + 
+            &quot;FROM BH_Cl_dias_feriados_nac &quot; + 
+            &quot;WHERE (na_fecha &gt; &apos;&quot; + arg.fehaInicio.year + &quot;/&quot; + arg.fehaInicio.month + &quot;/&quot; + arg.fehaInicio.day + &quot;&apos;) AND &quot; + 
+            &quot;(na_fecha &lt;= &apos;&quot; + fechaFin.year + &quot;/&quot; + fechaFin.month + &quot;/&quot; + fechaFin.day + &quot;&apos;)&quot;;
+
+foreach (m in DynamicSQL.executeQuery(sentence : sentencia, implname : &quot;Documentos&quot;)) {
+    cantDiasNoWAux = ((int) m[&quot;x&quot;]);
+}
+
+cantDiasNoW = Interval(cantDiasNoWAux+&quot;d&quot;);
+
+
+
+if(cantDiasNoW.days &gt; 0){
+    cantDiasNoW = this.intervalWorkdays(fehaInicio : arg.fehaInicio + arg.intervalo, 
+                                                      intervalo : cantDiasNoW);
+}
+
+resultado = arg.intervalo + cantDiasNoW;
+
+//display(&quot;resultado &quot; + resultado);
+
+return resultado;
+</sourceCode>
+		</method>
+		<method name="isWorkday" description="" flags="public server">
+			<arg name="date" description="" flags="in" type="Time"/>
+			<variables>
+				<variable name="sentencia" type="String"/>
+				<variable name="workday" type="Int"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Bool"/>
+			<sourceCode language="Java1">			
+			
+				
+				
+			
+			
+sentencia = &quot;SELECT COUNT(*) AS x &quot; + 
+            &quot;FROM BH_Cl_dias_feriados_nac &quot; + 
+            &quot;WHERE (na_fecha = &apos;&quot; + arg.date.year + &quot;/&quot; + arg.date.month + &quot;/&quot; + arg.date.day + &quot;&apos;)&quot;;
+
+foreach (m in DynamicSQL.executeQuery(sentence : sentencia, implname : &quot;Documentos&quot;)) {
+    workday = ((int) m[&quot;x&quot;]);
+}
+
+if (workday == 1) {
+    return true;
+}
+else {
+    return false;
+}
+</sourceCode>
+		</method>
+		<method name="meses" description="" flags="clientavailable public">
+			<arg name="meses" description="" flags="out" type="String[]"/>
+			<sourceCode language="Java1">			
+arg.meses[0] = &quot;enero&quot;;
+arg.meses[1] = &quot;febrero&quot;;
+arg.meses[2] = &quot;marzo&quot;;
+arg.meses[3] = &quot;abril&quot;;
+arg.meses[4] = &quot;mayo&quot;;
+arg.meses[5] = &quot;junio&quot;;
+arg.meses[6] = &quot;julio&quot;;
+arg.meses[7] = &quot;agosto&quot;;
+arg.meses[8] = &quot;septiembre&quot;;
+arg.meses[9] = &quot;octubre&quot;;
+arg.meses[10] = &quot;noviembre&quot;;
+arg.meses[11] = &quot;diciembre&quot;;
+</sourceCode>
+		</method>
+		<method name="meses_de_Int_a_String" description="" flags="clientavailable public">
+			<arg name="mesString" description="" flags="out" type="String"/>
+			<arg name="mesInt" description="" flags="in" primitive="true" type="Int"/>
+			<variables>
+				<variable name="meses" type="String[]"/>
+			</variables>
+			<sourceCode language="Java1">			
+			
+			
+				
+			
+arg.mesString = &quot;&quot;;
+
+if (arg.mesInt &gt; 0 &amp;&amp; arg.mesInt &lt; 13) {
+    this.meses(out meses : meses);
+
+    arg.mesString = meses[arg.mesInt - 1];
+}
+</sourceCode>
+		</method>
+		<method name="meses_de_String_a_Int" description="" flags="clientavailable public">
+			<arg name="mesInt" description="" flags="out" primitive="true" type="Int"/>
+			<arg name="mesString" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="meses" type="String[]"/>
+			</variables>
+			<sourceCode language="Java1">			
+			
+			
+				
+			
+arg.mesInt = 0;
+this.meses(out meses : meses);
+
+for (int i = 0; i &lt; meses.length; i++) {
+    if (meses[i].toLowerCase() == arg.mesString.toLowerCase()) {
+        arg.mesInt = i + 1;
+    }
+}
+</sourceCode>
+		</method>
+		<method name="retornoPorcentajeTiempo" flags="clientavailable public">
+			<arg name="fechaSalida" description="Fecha con el cálculo realizado" flags="out" type="Time"/>
+			<arg name="fechaEntrada" description="Fecha con la cual se realizara el cálculo" flags="in" type="Time"/>
+			<arg name="coeficienteProporcionTiempo" description="Ingreso del coeficiente para realizar el cáclculo matemático" flags="in" type="Decimal"/>
+			<variables>
+				<variable name="s2" type="Int"/>
+				<variable name="thisInterval" type="Interval"/>
+				<variable name="tiempoOperado" type="Decimal"/>
+				<variable name="tiempoOperadoIntervalo" type="Interval"/>
+			</variables>
+			<sourceCode language="Java1">			
+			
+			
+			
+				
+				
+				
+				
+			
+thisInterval = arg.fechaEntrada - &apos;now&apos;;
+s2 = thisInterval.seconds;
+
+// Conversión a segundos
+// Operación con el coeficiente ingresado
+tiempoOperado = s2 * arg.coeficienteProporcionTiempo;
+
+// Conversión de la variable &quot;tiempoOperado&quot; a un intervalo
+tiempoOperadoIntervalo = ((Interval) (((int) tiempoOperado) * 1000000));
+
+// Seteo de la fecha de salida
+arg.fechaSalida = &apos;now&apos; + tiempoOperadoIntervalo;
+</sourceCode>
+		</method>
+		<method name="timeValue" flags="clientavailable public">
+			<arg name="value" description="" flags="in" type="Any"/>
+			<variables>
+				<variable name="aux" type="String"/>
+				<variable name="campos" type="String[]"/>
+				<variable name="d" type="String"/>
+				<variable name="m" type="String"/>
+				<variable name="meses" type="String[String]"/>
+				<variable name="res" type="Time"/>
+				<variable name="sep" type="String[]"/>
+				<variable name="y" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Time"/>
+			<sourceCode language="Java1">			
+			
+				
+				
+				
+				
+				
+				
+				
+				
+			
+			
+res = Fuego.Time();
+try {
+    res = ((Time) arg.value);
+}
+catch (Java.Exception e) {
+    aux = ((String) arg.value);
+    sep = { &quot;-&quot;, &quot;/&quot;, &quot;.&quot;, &quot; &quot; };
+
+    for (int i = 0; i &lt; sep.length; i++) {
+        campos = aux.fields(delim : sep[i]);
+
+        if (campos.length &gt;= 3) {
+            m = campos[1];
+
+            if (m.length &gt; 2) {
+                meses = { &quot;Jan&quot; : &quot;01&quot;, &quot;Feb&quot; : &quot;02&quot;, &quot;Mar&quot; : &quot;03&quot;, &quot;Apr&quot; : &quot;04&quot;, &quot;May&quot; : &quot;05&quot;, &quot;Jun&quot; : &quot;06&quot;, &quot;Jul&quot; : &quot;07&quot;, &quot;Aug&quot; : &quot;08&quot;, &quot;Sep&quot; : &quot;09&quot;, &quot;Oct&quot; : &quot;10&quot;, &quot;Nov&quot; : &quot;11&quot;, &quot;Dec&quot; : &quot;12&quot; };
+                m = meses[m];
+            }
+
+            if (campos[0].length == 4) {
+                d = campos[2];
+                y = campos[0];
+            }
+            else {
+                d = campos[0];
+                y = campos[2];
+            }
+
+            try {
+                if (campos.length == 3) {
+                    res = ((Time) (y + &quot;/&quot; + m + &quot;/&quot; + d));
+                }
+                else {
+                    res = ((Time) (y + &quot;/&quot; + m + &quot;/&quot; + d + &quot; &quot; + campos[3]));
+                }
+            }
+            catch (Java.Exception e2) {
+                res = null;
+            }
+        }
+    }
+}
+
+return res;
+</sourceCode>
+		</method>
+	</methods>
+</component>

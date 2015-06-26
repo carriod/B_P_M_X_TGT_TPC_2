@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FEasyDoc2" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio2.SEasyDoc2" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FEasyDoc2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada2.FEasyDoc2"/>
+			<sourceCode language="Java1">this.servicio = SEasyDoc2();</sourceCode>
+		</method>
+		<method name="archivarDocumentos" flags="clientavailable public">
+			<arg name="nroReg" description="" flags="in" type="Int(64)"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.archivarDocumentacion(nroReg : arg.nroReg);
+	if (respuesta.resultado == OK) {
+
+/*	
+		Utiles.Logger.logDebug(mensaje : &quot;nroReg: &quot; + arg.nroReg + &quot;\n&quot; +
+							&quot;idDoc: &quot; + arg.idDoc + &quot;\n&quot; +
+							&quot;version: &quot; + arg.version + &quot;\n&quot; +
+							&quot;token: &quot; + (String)respuesta.contenido );
+*/	
+		respuesta.resultado = OK;
+    	respuesta.contenido = (String)respuesta.contenido;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.archivarDocumentacion(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteFile" flags="clientavailable public">
+			<arg name="token" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteFile(token : arg.token);
+	if (respuesta.resultado == OK) {
+		respuesta.resultado = OK;
+    	respuesta.contenido = (String)respuesta.contenido;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteIndividualFile" flags="clientavailable public">
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="codigoLote" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteIndividualFile(token : arg.token, codigoLote : arg.codigoLote);
+	if (respuesta.resultado == OK) {
+		respuesta.resultado = OK;
+    	respuesta.contenido = (String)respuesta.contenido;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteIndividualFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="existFile" flags="clientavailable public">
+			<arg name="nroReg" description="" flags="in" type="Int(64)"/>
+			<arg name="idDoc" description="" flags="in" type="Int"/>
+			<arg name="version" description="" flags="in" type="Int"/>
+			<arg name="token" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.existFile(token : arg.token);
+	boolean existe = false;
+	
+	if (respuesta.resultado == OK) {
+		respuesta.resultado = OK;
+		if ((String)respuesta.contenido == &quot;OK&quot; || ((String) respuesta.contenido).indexOf(text : &quot;ARCHIVOSNOEXISTENTES&quot;) &gt; -1){
+	        existe = true;
+	    }
+		
+		Utiles.Logger.logDebug(mensaje : &quot;nroReg: &quot; + arg.nroReg + &quot;\n&quot; +
+								&quot;idDoc: &quot; + arg.idDoc + &quot;\n&quot; +
+								&quot;version: &quot; + arg.version + &quot;\n&quot; +
+								&quot;respuesta: &quot; + (String)respuesta.contenido + &quot;\n&quot; + 
+								&quot;existe: &quot; + (String)existe);
+
+    	respuesta.contenido = existe;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.existFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="generatePDF" flags="clientavailable public">
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="codigosLote" description="" flags="in" type="String[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.generatePDF(token : arg.token, codigosLote : arg.codigosLote);
+	if (respuesta.resultado == OK) {
+		respuesta.resultado = OK;
+    	respuesta.contenido = (Binary)respuesta.contenido;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.generatePDF(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="generateZIP" flags="clientavailable public">
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="codigosLote" description="" flags="in" type="String[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.generateZIP(token : arg.token, codigosLote : arg.codigosLote);
+	if (respuesta.resultado == OK) {
+		respuesta.resultado = OK;
+    	respuesta.contenido = (Binary)respuesta.contenido;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.generatePDF(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getFile" flags="clientavailable public">
+			<arg name="token" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getFile(token : arg.token);
+	if (respuesta.resultado == OK) {
+		respuesta.resultado = OK;
+    	respuesta.contenido = (Binary)respuesta.contenido;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getIndividualFile" flags="clientavailable public">
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="codigoLote" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getIndividualFile(token : arg.token, codigoLote : arg.codigoLote);
+	if (respuesta.resultado == OK) {
+		respuesta.resultado = OK;
+    	respuesta.contenido = (Binary)respuesta.contenido;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getIndividualFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getToken" flags="clientavailable public">
+			<arg name="nroReg" description="" flags="in" type="Int(64)"/>
+			<arg name="idDoc" description="" flags="in" type="Int"/>
+			<arg name="version" description="" flags="in" type="Int"/>
+			<arg name="usuario" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getToken(nroReg : arg.nroReg, 
+									   idDoc : arg.idDoc, 
+									   version : arg.version, 
+									   usuario : arg.usuario);
+	if (respuesta.resultado == OK) {
+
+/*	
+		Utiles.Logger.logDebug(mensaje : &quot;nroReg: &quot; + arg.nroReg + &quot;\n&quot; +
+							&quot;idDoc: &quot; + arg.idDoc + &quot;\n&quot; +
+							&quot;version: &quot; + arg.version + &quot;\n&quot; +
+							&quot;token: &quot; + (String)respuesta.contenido );
+*/	
+		respuesta.resultado = OK;
+    	respuesta.contenido = (String)respuesta.contenido;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getToken(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="listFiles" flags="clientavailable public">
+			<arg name="token" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+Time fechaTime;
+Any[] listaArchivos = {};
+Any[] archivosWS = {};
+Any[String] archivoLista;
+Any[String] archivoWS;
+
+try {
+	respuesta = this.servicio.listFiles(token : arg.token);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.listFiles(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="uploadFile" flags="clientavailable public">
+			<arg name="archivo" description="" flags="in" type="Binary"/>
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="tipoArchivo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	Integer tipoArch;
+	if (arg.tipoArchivo.toUpperCase() == &quot;DOC&quot;) {
+	    tipoArch = 30;
+	}
+	else if(arg.tipoArchivo.toUpperCase() == &quot;DOCX&quot;){
+		tipoArch = 31;
+	}
+	else if(arg.tipoArchivo.toUpperCase() == &quot;XLS&quot;){
+		tipoArch = 32;
+	}
+	else if(arg.tipoArchivo.toUpperCase() == &quot;XLSX&quot;){
+		tipoArch = 33;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;PDF&quot;){
+		tipoArch = 25;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;RAR&quot;){
+		tipoArch = 34;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;ZIP&quot;){
+		tipoArch = 35;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;TXT&quot;){
+		tipoArch = 36;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;PST&quot;){
+		tipoArch = 37;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;PSTX&quot;){
+		tipoArch = 38;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;PPT&quot;){
+		tipoArch = 39;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;PPS&quot;){
+		tipoArch = 40;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;PPTX&quot;){
+		tipoArch = 41;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;PPSX&quot;){
+		tipoArch = 42;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;ICS&quot;){
+		tipoArch = 43;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;CST&quot;){
+		tipoArch = 44;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;XML&quot;){
+		tipoArch = 45;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;HTML&quot;){
+		tipoArch = 46;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;MSG&quot;){
+		tipoArch = 47;
+	}
+	else if (arg.tipoArchivo.toUpperCase() == &quot;EML&quot;){
+		tipoArch = 48;
+	}
+
+	respuesta = this.servicio.uploadFile(archivo : arg.archivo, 
+										 token : arg.token, 
+										 tipoArchivo : tipoArch);
+
+	if (respuesta.resultado == OK) {
+		respuesta.resultado = OK;
+    	respuesta.contenido = (String)respuesta.contenido;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.uploadFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

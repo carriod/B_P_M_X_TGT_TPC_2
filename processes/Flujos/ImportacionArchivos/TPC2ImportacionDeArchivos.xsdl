@@ -1,0 +1,1423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<xpdl:Package Name="ALBPMPackage-TPC2ImportacionDeArchivos" Id="TPC2ImportacionDeArchivos" xmlns:albpm="http://www.albpm.com/2007/albpm.XPDL2"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:xpdl="http://www.wfmc.org/2004/XPDL2.0alpha" >
+    <xpdl:PackageHeader>
+        <xpdl:XPDLVersion>
+            2.0</xpdl:XPDLVersion>
+        <xpdl:Vendor>
+            BEA Aqualogic BPM</xpdl:Vendor>
+        <xpdl:Created>
+            May 29, 2015 4:26:59 PM</xpdl:Created>
+        <xpdl:VendorExtensions>
+            <xpdl:VendorExtension ToolId="ALBPM" schemaLocation="http://www.albpm.com/2007/albpm.XPDL2 file:ALBPM_XPDL.xsd"/>
+        </xpdl:VendorExtensions>
+    </xpdl:PackageHeader>
+    <xpdl:ConformanceClass GraphConformance="NON_BLOCKED"/>
+    <xpdl:Pools>
+        <xpdl:Pool Id="ALBPMPool" BoundaryVisible="false" Orientation="VERTICAL">
+            <xpdl:Lanes>
+                <xpdl:Lane Name="AutomaticHandler" Id="AutomaticHandler">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" Width="760.0" IsVisible="false">
+                            <xpdl:Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:BooleanFeature name="virtual" value="true"/>
+                            <albpm:StringFeature name="paramVar" value=""/>
+                            <albpm:BooleanFeature name="parametric" value="false"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationLabels>
+                                <albpm:LocalizedLabel language="en" label="AutomaticHandler"/>
+                            </albpm:LocalizationLabels>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="en">
+                                    AutomaticHandler</albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Lane>
+            </xpdl:Lanes>
+        </xpdl:Pool>
+    </xpdl:Pools>
+    <xpdl:WorkflowProcesses>
+        <xpdl:WorkflowProcess Id="TPC2ImportacionDeArchivos" Name="TPC2ImportacionDeArchivos" DefaultStartActivityId="Begin">
+            <xpdl:ProcessHeader/>
+            <xpdl:RedefinableHeader>
+                <xpdl:Author>
+                    Franco Tarditi</xpdl:Author>
+                <xpdl:Version>
+                    0</xpdl:Version>
+            </xpdl:RedefinableHeader>
+            <xpdl:Participants>
+                <xpdl:Participant Id="GestionErrores" Name="Gestion Errores">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="Papi" Name="Papi">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAdministradorABM" Name="TPC - Administrador ABM">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAdministradorSAGI" Name="TPC - Administrador SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAnalistaCdG" Name="TPC - Analista CdG">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAnalistaComite" Name="TPC - Analista Comite">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCCompradorGC" Name="TPC - Comprador GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCConsultasSAGI" Name="TPC - Consultas SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCControllerGC" Name="TPC - Controller GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGerenteCompras" Name="TPC - Gerente Compras">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGestionErrores" Name="TPC - Gestion Errores">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGestorEnlace" Name="TPC - Gestor Enlace">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCIntervencionGC" Name="TPC - Intervencion GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCJefeCompras" Name="TPC - Jefe Compras">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCSolicitanteSAGI" Name="TPC - Solicitante SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCSupervisorCdG" Name="TPC - Supervisor CdG">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPC2Administrador" Name="TPC2 - Administrador">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPC2AdministradorDeABM" Name="TPC2 - Administrador de ABM">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPC2Consulta" Name="TPC2 - Consulta">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPC2Director" Name="TPC2 - Director">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="solicitante" Name="solicitante">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        solicitante</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="papiuser" Name="papiuser">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        papiuser</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="analistaCDG" Name="analistaCDG">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        analistaCDG</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="abm" Name="abm">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        abm</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="jefe" Name="jefe">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        jefe</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="supervisor" Name="supervisor">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        supervisor</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="director" Name="director">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        director</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gestor" Name="gestor">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gestor</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="consultas" Name="consultas">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        consultas</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="comprador" Name="comprador">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        comprador</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="abm2" Name="abm2">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        abm2</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gerente" Name="gerente">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gerente</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="test" Name="test">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        test</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="admin" Name="admin">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        admin</xpdl:Description>
+                </xpdl:Participant>
+            </xpdl:Participants>
+            <xpdl:Applications>
+                <xpdl:Application Id="blanquear" Name="blanquear">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+                <xpdl:Application Id="init" Name="init">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+                <xpdl:Application Id="procesar" Name="procesar">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+                <xpdl:Application Id="verificar" Name="verificar">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+            </xpdl:Applications>
+            <xpdl:ActivitySets/>
+            <xpdl:Activities>
+                <xpdl:Activity Name="Begin" Id="Begin">
+                    <xpdl:Event>
+                        <xpdl:StartEvent Trigger="None"/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="40.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="BEGIN"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:StringFeature name="targetForNonCreatedInstances" value="DO_NOT_CREATE"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="BeginIn" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="rolArg" type="String"/>
+                                        <albpm:Argument name="activityArg" type="String"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="actividad" isExpression="false" source="activityArg"/>
+                                        <albpm:ArgumentMap target="rol" isExpression="false" source="rolArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Inicio"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Verificar" Id="Verificar">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="verificar"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Split Type="XOR">
+                                <xpdl:TransitionRefs>
+                                    <xpdl:TransitionRef Id="VerificarToVerArchivo"/>
+                                    <xpdl:TransitionRef Id="VerificarToImportaciónDeArchivos"/>
+                                </xpdl:TransitionRefs>
+                            </xpdl:Split>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="640.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="AUTOMATIC"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="enableLoop" value="false"/>
+                                <albpm:BooleanFeature name="before" value="true"/>
+                                <albpm:StringFeature name="condition" value=""/>
+                                <albpm:StringFeature name="codeLanguage" value="Fuego"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="Verificar" type="METHOD">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="true"/>
+                                        <albpm:StringFeature name="method" value="verificar"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Verificar"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Verificar"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Procesar" Id="Procesar">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="procesar"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="140.0" YCoordinate="640.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="AUTOMATIC"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="enableLoop" value="false"/>
+                                <albpm:BooleanFeature name="before" value="true"/>
+                                <albpm:StringFeature name="condition" value=""/>
+                                <albpm:StringFeature name="codeLanguage" value="Fuego"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="Procesar" type="METHOD">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="true"/>
+                                        <albpm:StringFeature name="method" value="procesar"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Procesar"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Procesar"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="VerArchivo" Id="VerArchivo">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="480.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="INTERACTIVE_COMPONENT_CALL"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="userSelectsTransition" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="VerArchivo" type="BPM_OBJECT_INTERACTIVE_CALL">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="component" value="TPC2ImportacionDeArchivos"/>
+                                        <albpm:StringFeature name="JSPName" value="Genericos/enlaceForwarder.jsp"/>
+                                        <albpm:BooleanFeature name="presentationDisplay" value="false"/>
+                                        <albpm:StringFeature name="instanceVariable" value="configuracion"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="VerArchivoIn" type="OUT" language="Java">
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="attributes" isExpression="false" source="{ &quot;binario&quot; : binario, &quot;descripcion&quot; : &quot;Importación&quot;, &quot;extension&quot; : &quot;txt&quot;, &quot;fileName&quot; : nombreArchivo, &quot;tamanio&quot; : tamanioArchivo }"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                        <albpm:ArgumentMapping name="VerArchivoOut" type="IN" language="Java"/>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="Ver Archivo"/>
+                                            <albpm:LocalizedLabel language="es" label="Ver Archivo"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="Ver Archivo"/>
+                                    <albpm:LocalizedLabel language="es" label="Ver Archivo"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ImportaciónDeArchivos" Id="ImportaciónDeArchivos">
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Join Type="XOR"/>
+                        </xpdl:TransitionRestriction>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Split Type="XOR">
+                                <xpdl:TransitionRefs>
+                                    <xpdl:TransitionRef Id="ImportaciónDeArchivosToProcesar"/>
+                                    <xpdl:TransitionRef Id="ImportaciónDeArchivosToEnd"/>
+                                </xpdl:TransitionRefs>
+                            </xpdl:Split>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="INTERACTIVE_COMPONENT_CALL"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="userSelectsTransition" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ImportaciónDeArchivos" type="BPM_OBJECT_INTERACTIVE_CALL">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="component" value="Formulario2.FormImportacion"/>
+                                        <albpm:StringFeature name="selectedPresentation" value="FormImportacion"/>
+                                        <albpm:BooleanFeature name="presentationDisplay" value="false"/>
+                                        <albpm:StringFeature name="instanceVariable" value="form"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ImportaciónDeArchivosIn" type="OUT" language="Fuego">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="resultadoVerificar" type="String"/>
+                                                <albpm:Argument name="mostrar1" type="Bool"/>
+                                                <albpm:Argument name="archivoVacio" type="Bool"/>
+                                                <albpm:Argument name="mostrar3" type="Bool"/>
+                                                <albpm:Argument name="listaEntidad" type="Int"/>
+                                                <albpm:Argument name="procesado" type="Bool"/>
+                                                <albpm:Argument name="verificado" type="Bool"/>
+                                                <albpm:Argument name="archivo" type="String(100)"/>
+                                                <albpm:Argument name="resultadoProcesamiento" type="String"/>
+                                                <albpm:Argument name="mostrar2" type="Bool"/>
+                                            </albpm:Arguments>
+                                        </albpm:ArgumentMapping>
+                                        <albpm:ArgumentMapping name="ImportaciónDeArchivosOut" type="IN" language="Fuego">
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="result" isExpression="false" source="selectedButton is null?&quot;cancel&quot;:selectedButton"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="Importación de Archivos"/>
+                                            <albpm:LocalizedLabel language="es" label="Importación de Archivos"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="Importación de Archivos"/>
+                                    <albpm:LocalizedLabel language="es" label="Importación de Archivos"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="CargaDeArchivo" Id="CargaDeArchivo">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="360.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/ImportacionArchivos/TPC2CargaDeArchivos"/>
+                                <albpm:StringFeature name="targetModelName" value="TPC2CargaDeArchivos"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="CargaDeArchivoOut" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="tokenArg" type="String"/>
+                                        <albpm:Argument name="idSolicitudArg" type="Int"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="idSolicitudArg" isExpression="false" source="null"/>
+                                        <albpm:ArgumentMap target="tokenArg" isExpression="false" source="null"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="CargaDeArchivoIn" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="extensionArchivoArg" type="String"/>
+                                        <albpm:Argument name="nombreArchivoArg" type="String"/>
+                                        <albpm:Argument name="fileBinaryArg" type="Binary"/>
+                                        <albpm:Argument name="documentoCargadoArg" type="Bool"/>
+                                        <albpm:Argument name="matrizArchivoArg" type="Any[][]"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="form.archivo" isExpression="false" source="nombreArchivoArg"/>
+                                        <albpm:ArgumentMap target="matrizArchivo" isExpression="false" source="matrizArchivoArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Carga de Archivo"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Blanquear" Id="Blanquear">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="blanquear"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="220.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="AUTOMATIC"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="enableLoop" value="false"/>
+                                <albpm:BooleanFeature name="before" value="true"/>
+                                <albpm:StringFeature name="condition" value=""/>
+                                <albpm:StringFeature name="codeLanguage" value="Fuego"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="Blanquear" type="METHOD">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="true"/>
+                                        <albpm:StringFeature name="method" value="blanquear"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Blanquear"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Blanquear"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="init" Id="init">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="init"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="160.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="AUTOMATIC"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="enableLoop" value="false"/>
+                                <albpm:BooleanFeature name="before" value="true"/>
+                                <albpm:StringFeature name="condition" value=""/>
+                                <albpm:StringFeature name="codeLanguage" value="Fuego"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="init" type="METHOD">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="true"/>
+                                        <albpm:StringFeature name="method" value="init"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="init"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="init"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="End" Id="End">
+                    <xpdl:Event>
+                        <xpdl:EndEvent/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="640.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="END"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="EndOut" type="OUT" language="Fuego"/>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Finalización"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+            </xpdl:Activities>
+            <xpdl:Transitions>
+                <xpdl:Transition Id="ImportaciónDeArchivosToEnd" Name="ImportaciónDeArchivosToEnd" From="ImportaciónDeArchivos" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="640.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToinit" Name="BeginToinit" From="Begin" To="init">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="40.0"/>
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="160.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ImportaciónDeArchivosToBlanquear" Name="ImportaciónDeArchivosToBlanquear" From="ImportaciónDeArchivos" To="Blanquear">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            result == &quot;buscar&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="220.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="CargaDeArchivoToImportaciónDeArchivos" Name="CargaDeArchivoToImportaciónDeArchivos" From="CargaDeArchivo" To="ImportaciónDeArchivos">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="360.0"/>
+                            <xpdl:Coordinates XCoordinate="312.0" YCoordinate="366.0"/>
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="312,366"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="initToImportaciónDeArchivos" Name="initToImportaciónDeArchivos" From="init" To="ImportaciónDeArchivos">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="160.0"/>
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ImportaciónDeArchivosToVerificar" Name="ImportaciónDeArchivosToVerificar" From="ImportaciónDeArchivos" To="Verificar">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            result == &quot;verificar archivo&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                            <xpdl:Coordinates XCoordinate="130.0" YCoordinate="536.0"/>
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="640.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="130,536"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="VerificarToImportaciónDeArchivos" Name="VerificarToImportaciónDeArchivos" From="Verificar" To="ImportaciónDeArchivos">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="640.0"/>
+                            <xpdl:Coordinates XCoordinate="140.0" YCoordinate="468.0"/>
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="140,468"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ImportaciónDeArchivosToProcesar" Name="ImportaciónDeArchivosToProcesar" From="ImportaciónDeArchivos" To="Procesar">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            result == &quot;procesar archivo&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                            <xpdl:Coordinates XCoordinate="44.0" YCoordinate="528.0"/>
+                            <xpdl:Coordinates XCoordinate="140.0" YCoordinate="640.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="44,528"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ProcesarToImportaciónDeArchivos" Name="ProcesarToImportaciónDeArchivos" From="Procesar" To="ImportaciónDeArchivos">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="140.0" YCoordinate="640.0"/>
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="VerificarToVerArchivo" Name="VerificarToVerArchivo" From="Verificar" To="VerArchivo">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            this.tamanioArchivo &gt; 0</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="640.0"/>
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="480.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="VerArchivoToImportaciónDeArchivos" Name="VerArchivoToImportaciónDeArchivos" From="VerArchivo" To="ImportaciónDeArchivos">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="480.0"/>
+                            <xpdl:Coordinates XCoordinate="40.0" YCoordinate="360.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BlanquearToCargaDeArchivo" Name="BlanquearToCargaDeArchivo" From="Blanquear" To="CargaDeArchivo">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="220.0"/>
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="360.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+            </xpdl:Transitions>
+            <xpdl:Extensions>
+                <albpm:ALBPMExtensions>
+                    <albpm:Component>
+                        &lt;component name=&quot;TPC2ImportacionDeArchivos&quot;
+	description=&quot;&quot;
+	versionID=&quot;Version 6.5 &quot;
+	flags=&quot;cloneable&quot;
+	type=&quot;xobject&quot;&gt;
+	&lt;inherit
+		class=&quot;Fuego.Internal.ScreenFlow&quot;
+		flags=&quot;&quot;/&gt;
+	&lt;objectProperty name=&quot;initAllFields&quot;
+		value=&quot;true&quot;/&gt;
+	&lt;objectProperty name=&quot;javaClassName&quot;
+		value=&quot;xobject.Fuego__AutoGen__Screenflows__.__TPC2ImportacionDeArchivos&quot;/&gt;
+	&lt;objectProperty name=&quot;javaSerialId&quot;
+		value=&quot;4278124286&quot;/&gt;
+	&lt;objectProperty name=&quot;methodPrefix&quot;
+		value=&quot;&quot;/&gt;
+	&lt;objectProperty name=&quot;package&quot;
+		value=&quot;xobject.Fuego__AutoGen__Screenflows__&quot;/&gt;
+	&lt;attributes&gt;
+		&lt;String name=&quot;actividad&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;1&quot;/&gt;
+		&lt;Binary name=&quot;binario&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;2&quot;/&gt;
+		&lt;array
+			type=&quot;Negocio2.NCarta2&quot;
+			name=&quot;cartas&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;3&quot;/&gt;
+		&lt;array
+			type=&quot;Negocio2.NCesta2&quot;
+			name=&quot;cestas&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;4&quot;/&gt;
+		&lt;object
+			type=&quot;Negocio2.NConfiguracion2&quot;
+			name=&quot;configuracion&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;5&quot;/&gt;
+		&lt;object
+			type=&quot;Formulario2.FormImportacion&quot;
+			name=&quot;form&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;6&quot;/&gt;
+		&lt;array
+			type=&quot;Any[]&quot;
+			name=&quot;matrizArchivo&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;7&quot;/&gt;
+		&lt;String name=&quot;nombreArchivo&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;8&quot;/&gt;
+		&lt;array
+			type=&quot;Negocio2.NPedido2&quot;
+			name=&quot;pedidos&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;9&quot;/&gt;
+		&lt;array
+			type=&quot;Negocio2.NProceso2&quot;
+			name=&quot;procesos&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;10&quot;/&gt;
+		&lt;String name=&quot;rol&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;11&quot;/&gt;
+		&lt;Int
+			length=&quot;64&quot;
+			name=&quot;tamanioArchivo&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;12&quot;/&gt;
+	&lt;/attributes&gt;
+	&lt;methods&gt;
+		&lt;method name=&quot;TPC2ImportacionDeArchivos&quot;
+			flags=&quot;static&quot;&gt;
+			&lt;outputArgument name=&quot;return&quot;
+				description=&quot;&quot;
+				flags=&quot;retval&quot;
+				type=&quot;TPC2ImportacionDeArchivos&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;blanquear&quot;
+			flags=&quot;server&quot;&gt;
+			&lt;variables&gt;
+				&lt;variable name=&quot;botonesAccion&quot;
+					type=&quot;String[]&quot;/&gt;
+			&lt;/variables&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;this.form = Formulario2.FormImportacion();
+this.form.botonesAccion.clear();
+Fachada2.FConfiguracion2.setBotones(actividad: this.actividad, rol: this.rol, out botonesAccion: botonesAccion);                   			
+for(int index = 0; index &amp;lt; botonesAccion.length; index++){
+    this.form.botonesAccion.extend(labelBoton : botonesAccion[index]);
+}&lt;/sourceCode&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;init&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;variables&gt;
+				&lt;variable name=&quot;botonesAccion&quot;
+					type=&quot;String[]&quot;/&gt;
+			&lt;/variables&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;if(this.form == null){
+	this.form = Formulario2.FormImportacion();
+}
+this.form = Formulario2.FormImportacion();
+this.form.botonesAccion.clear();
+Fachada2.FConfiguracion2.setBotones(actividad: this.actividad, rol : this.rol, out botonesAccion: botonesAccion);                     			
+for(int index = 0; index &amp;lt; botonesAccion.length; index++){
+    this.form.botonesAccion.extend(labelBoton : botonesAccion[index]);
+}
+&lt;/sourceCode&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;procesar&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;Respuesta respuesta;
+int i = 0;
+
+if(this.form.archivo == &amp;quot;IMPORTACION_PROCESOS&amp;quot; &amp;amp;&amp;amp; this.form.listaEntidad == 1){
+	Bool primeraVez = true;
+	for(NProceso2 proceso: this.procesos){	
+		proceso.usuarioAlta = Participant.id;
+		proceso.usuarioModificacion = Participant.id;
+
+		respuesta = FProceso2.setValue(objNegocio : proceso, importacion : true);
+		if(respuesta.resultado != OK){
+			this.form.resultadoProcesamiento = &amp;quot;Hubo un error en el procesamiento.&amp;quot;;
+			this.form.mostrar3 = true;
+			Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+			throw Java.Lang.Exception((String)respuesta.contenido);
+		}else{
+			this.form.resultadoProcesamiento = &amp;quot;El archivo se proceso correctamente.&amp;quot;;
+			this.form.procesado = true;
+			this.form.mostrar3 = true;
+		}
+		i++;
+	}
+}else if(this.form.archivo == &amp;quot;IMPORTACION_CESTAS&amp;quot; &amp;amp;&amp;amp; this.form.listaEntidad == 2){
+
+	for(NCesta2 cesta: this.cestas){	
+		cesta.usuarioAlta = Participant.id;
+		cesta.usuarioModificacion = Participant.id;
+		respuesta = FCesta2.setValue(objNegocio : cesta, importacion : true);
+		if(respuesta.resultado != OK){
+			this.form.resultadoProcesamiento = &amp;quot;Hubo un error en el procesamiento.&amp;quot;;
+			this.form.mostrar3 = true;
+			Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+			throw Java.Lang.Exception((String)respuesta.contenido);
+		}else{
+			this.form.resultadoProcesamiento = &amp;quot;El archivo se proceso correctamente.&amp;quot;;
+			this.form.procesado = true;
+			this.form.mostrar3 = true;
+		}
+		i++;
+	}
+}else if(this.form.archivo == &amp;quot;IMPORTACION_PEDIDOS&amp;quot; &amp;amp;&amp;amp; this.form.listaEntidad == 3){
+	for(NPedido2 pedido: this.pedidos){	
+		pedido.usuarioAlta = Participant.id;
+		pedido.usuarioModificacion = Participant.id;
+		respuesta = FPedido2.setValue(objNegocio : pedido, importacion : true);
+		if(respuesta.resultado != OK){
+			this.form.resultadoProcesamiento = &amp;quot;Hubo un error en el procesamiento.&amp;quot;;
+			this.form.mostrar3 = true;
+			Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+			throw Java.Lang.Exception((String)respuesta.contenido);
+		}else{
+			this.form.resultadoProcesamiento = &amp;quot;El archivo se proceso correctamente.&amp;quot;;
+			this.form.procesado = true;
+			this.form.mostrar3 = true;
+		}
+		i++;
+	}
+}else{
+	for(NCarta2 carta: this.cartas){	
+		respuesta = FCarta2.setValue(objNegocio : carta);
+		if(respuesta.resultado != OK){
+			this.form.resultadoProcesamiento = &amp;quot;Hubo un error en el procesamiento.&amp;quot;;
+			this.form.mostrar3 = true;
+			Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+			throw Java.Lang.Exception((String)respuesta.contenido);
+		}else{
+			this.form.resultadoProcesamiento = &amp;quot;El archivo se proceso correctamente.&amp;quot;;
+			this.form.procesado = true;
+			this.form.mostrar3 = true;
+		}
+		i++;
+	}
+}&lt;/sourceCode&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;verificar&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;Respuesta respuesta;
+this.form.resultadoVerificar = &amp;quot;&amp;quot;;
+this.tamanioArchivo = 0; 
+this.form.mostrar1 = false;
+this.form.mostrar2 = false;
+this.form.mostrar3 = false;
+this.form.archivoVacio = false;
+
+if(this.matrizArchivo.length() &amp;gt; 1){
+	if(this.form.listaEntidad == 1){
+		respuesta = FProceso2.verificarColumnasCSV(matrizCSV : this.matrizArchivo); 
+		
+		if(respuesta.resultado == ERROR){
+			this.form.mostrar1 = true;
+			this.form.resultadoVerificar = (String)respuesta.contenido;
+			
+		}else if(respuesta.resultado == OK){
+						
+			respuesta = FProceso2.verificarCSV(matrizCSV: this.matrizArchivo);
+		
+			if(respuesta.resultado == ERROR){
+				this.form.mostrar1 = true;
+				this.form.resultadoVerificar = &amp;quot;Error al verificar el archivo. Se descargará un archivo con los errores identificados.&amp;quot;;
+				Respuesta respuesta2 = FParametro2.getValueForCodigo(codigo : &amp;quot;NOMBRE_ARCHIVO_VERIFICACION&amp;quot;);
+				String rutaArchivo;
+				NParametro2 objParametro;
+				if(respuesta2.resultado == OK){
+					objParametro = (NParametro2)respuesta2.contenido;
+					this.nombreArchivo = objParametro.valor;
+				}
+				else{
+					Utiles.Logger.logFatal(mensaje : (String)respuesta2.contenido);
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+				respuesta2 = FParametro2.getValueForCodigo(codigo : &amp;quot;RUTA_ARCHIVO_VERIFICACION&amp;quot;);
+				if(respuesta2.resultado == OK){
+					objParametro = (NParametro2)respuesta2.contenido;
+					rutaArchivo = objParametro.valor;
+				}
+				else{
+					Utiles.Logger.logFatal(mensaje : (String)respuesta2.contenido);
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+				LogFile.logTextFile(file : rutaArchivo+this.nombreArchivo, mensajes : (String[])respuesta.contenido);
+				this.binario = BinaryFile.readToBinaryFrom(name : rutaArchivo+nombreArchivo);
+				this.tamanioArchivo = (Java.Lang.Integer)this.binario.length();
+				this.form.procesado = true;
+			}else{
+				this.form.mostrar1 = true;
+				this.form.mostrar2 = true;
+				this.form.verificado = true;
+				this.procesos = (NProceso2[])respuesta.contenido;
+				
+				String resultadoVerificacion = &amp;quot;&amp;quot;;
+				Integer existen = 0;
+				Integer diferencia = 0;
+				for(NProceso2 proceso: procesos){
+					if(proceso.existe){
+				    	existen = existen + 1;
+					}
+				}
+				diferencia = procesos.length() - existen;
+				resultadoVerificacion = &amp;quot;Se verificaron &amp;quot; + procesos.length() + &amp;quot; Procesos.&amp;quot; + &amp;quot;\n&amp;quot;;
+				resultadoVerificacion = resultadoVerificacion + &amp;quot;Se importarán &amp;quot;+diferencia+&amp;quot; registros nuevos.&amp;quot; + &amp;quot;\n&amp;quot;;
+				resultadoVerificacion = resultadoVerificacion + &amp;quot;Se importarán &amp;quot;+existen+&amp;quot; registros existentes.&amp;quot;;
+				this.form.resultadoVerificar = resultadoVerificacion;
+			}
+		}
+	}else if(this.form.listaEntidad == 2){
+		respuesta = FCesta2.verificarColumnasCSV(matrizCSV : this.matrizArchivo); 
+		
+		if(respuesta.resultado == ERROR){
+			this.form.mostrar1 = true;
+			this.form.resultadoVerificar = (String)respuesta.contenido;
+		}else if(respuesta.resultado == OK){
+		
+			respuesta = FCesta2.verificarCSV(matrizCSV: this.matrizArchivo);
+	
+			if(respuesta.resultado == ERROR){
+				this.form.mostrar1 = true;
+				this.form.resultadoVerificar = &amp;quot;Error al verificar el archivo. Se descargará un archivo con los errores identificados.&amp;quot;;
+				Respuesta respuesta2 = FParametro2.getValueForCodigo(codigo : &amp;quot;NOMBRE_ARCHIVO_VERIFICACION&amp;quot;);
+				String rutaArchivo;
+				NParametro2 objParametro;
+				if(respuesta2.resultado == OK){
+					objParametro = (NParametro2)respuesta2.contenido;
+					this.nombreArchivo = objParametro.valor;
+				}
+				else{
+					Utiles.Logger.logFatal(mensaje : (String)respuesta2.contenido);
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+				respuesta2 = FParametro2.getValueForCodigo(codigo : &amp;quot;RUTA_ARCHIVO_VERIFICACION&amp;quot;);
+				if(respuesta2.resultado == OK){
+					objParametro = (NParametro2)respuesta2.contenido;
+					rutaArchivo = objParametro.valor;
+				}
+				else{
+					Utiles.Logger.logFatal(mensaje : (String)respuesta2.contenido);
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+				LogFile.logTextFile(file : rutaArchivo+this.nombreArchivo, mensajes : (String[])respuesta.contenido);
+				this.binario = BinaryFile.readToBinaryFrom(name : rutaArchivo+nombreArchivo);
+				this.tamanioArchivo = (Java.Lang.Integer)this.binario.length();
+				this.form.procesado = true;
+			}else{
+				this.form.mostrar1 = true;
+				this.form.mostrar2 = true;
+				this.form.verificado = true;
+				this.cestas = (NCesta2[])respuesta.contenido;
+				
+				String resultadoVerificacion = &amp;quot;&amp;quot;;
+				Integer existen = 0;
+				Integer diferencia = 0;
+				for(NCesta2 cesta: cestas){
+					if(cesta.existe){
+				    	existen = existen + 1;
+					}
+				}
+				diferencia = cestas.length() - existen;
+				resultadoVerificacion = &amp;quot;Se verificaron &amp;quot; + cestas.length() + &amp;quot; Cestas.&amp;quot; + &amp;quot;\n&amp;quot;;
+				resultadoVerificacion = resultadoVerificacion + &amp;quot;Se importarán &amp;quot;+diferencia+&amp;quot; registros nuevos.&amp;quot; + &amp;quot;\n&amp;quot;;
+				resultadoVerificacion = resultadoVerificacion + &amp;quot;Se importarán &amp;quot;+existen+&amp;quot; registros existentes.&amp;quot;;
+				this.form.resultadoVerificar = resultadoVerificacion;
+			}
+		}
+	}else if(this.form.listaEntidad == 3){
+		respuesta = FPedido2.verificarColumnasCSV(matrizCSV : this.matrizArchivo); 
+		
+		if(respuesta.resultado == ERROR){
+			this.form.mostrar1 = true;
+			this.form.resultadoVerificar = (String)respuesta.contenido;
+		}else if(respuesta.resultado == OK){
+	
+			respuesta = FPedido2.verificarCSV(matrizCSV: this.matrizArchivo);
+		
+			if(respuesta.resultado == ERROR){
+				this.form.mostrar1 = true;
+				this.form.resultadoVerificar = &amp;quot;Error al verificar el archivo. Se descargará un archivo con los errores identificados.&amp;quot;;
+				Respuesta respuesta2 = FParametro2.getValueForCodigo(codigo : &amp;quot;NOMBRE_ARCHIVO_VERIFICACION&amp;quot;);
+				String rutaArchivo;
+				NParametro2 objParametro;
+				if(respuesta2.resultado == OK){
+					objParametro = (NParametro2)respuesta2.contenido;
+					this.nombreArchivo = objParametro.valor;
+				}
+				else{
+					Utiles.Logger.logFatal(mensaje : (String)respuesta2.contenido);
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+				respuesta2 = FParametro2.getValueForCodigo(codigo : &amp;quot;RUTA_ARCHIVO_VERIFICACION&amp;quot;);
+				if(respuesta2.resultado == OK){
+					objParametro = (NParametro2)respuesta2.contenido;
+					rutaArchivo = objParametro.valor;
+				}
+				else{
+					Utiles.Logger.logFatal(mensaje : (String)respuesta2.contenido);
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+				LogFile.logTextFile(file : rutaArchivo+this.nombreArchivo, mensajes : (String[])respuesta.contenido);
+				this.binario = BinaryFile.readToBinaryFrom(name : rutaArchivo+nombreArchivo);
+				this.tamanioArchivo = (Java.Lang.Integer)this.binario.length();
+				this.form.procesado = true;
+			}else{
+				this.form.mostrar1 = true;
+				this.form.mostrar2 = true;
+				this.form.verificado = true;
+				this.pedidos = (NPedido2[])respuesta.contenido;
+				
+				String resultadoVerificacion = &amp;quot;&amp;quot;;
+				Integer existen = 0;
+				Integer diferencia = 0;
+				for(NPedido2 pedido: pedidos){
+					if(pedido.existe){
+				    	existen = existen + 1;
+					}
+				}
+				diferencia = pedidos.length() - existen;
+				resultadoVerificacion = &amp;quot;Se verificaron &amp;quot; + pedidos.length() + &amp;quot; Pedidos.&amp;quot; + &amp;quot;\n&amp;quot;;
+				resultadoVerificacion = resultadoVerificacion + &amp;quot;Se importarán &amp;quot;+diferencia+&amp;quot; registros nuevos.&amp;quot; + &amp;quot;\n&amp;quot;;
+				resultadoVerificacion = resultadoVerificacion + &amp;quot;Se importarán &amp;quot;+existen+&amp;quot; registros existentes.&amp;quot;;
+				this.form.resultadoVerificar = resultadoVerificacion;
+			}		
+		}
+	}else {
+	
+		respuesta = FCarta2.verificarColumnasCSV(matrizCSV : this.matrizArchivo); 
+		
+		if(respuesta.resultado == ERROR){
+			this.form.mostrar1 = true;
+			this.form.resultadoVerificar = (String)respuesta.contenido;
+		}else if(respuesta.resultado == OK){
+		
+			respuesta = FCarta2.verificarCSV(matrizCSV: this.matrizArchivo);
+		
+			if(respuesta.resultado == ERROR){
+				this.form.mostrar1 = true;
+				this.form.resultadoVerificar = &amp;quot;Error al verificar el archivo. Se descargará un archivo con los errores identificados.&amp;quot;;
+				Respuesta respuesta2 = FParametro2.getValueForCodigo(codigo : &amp;quot;NOMBRE_ARCHIVO_VERIFICACION&amp;quot;);
+				String rutaArchivo;
+				NParametro2 objParametro;
+				if(respuesta2.resultado == OK){
+					objParametro = (NParametro2)respuesta2.contenido;
+					this.nombreArchivo = objParametro.valor;
+				}
+				else{
+					Utiles.Logger.logFatal(mensaje : (String)respuesta2.contenido);
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+				respuesta2 = FParametro2.getValueForCodigo(codigo : &amp;quot;RUTA_ARCHIVO_VERIFICACION&amp;quot;);
+				if(respuesta2.resultado == OK){
+					objParametro = (NParametro2)respuesta2.contenido;
+					rutaArchivo = objParametro.valor;
+				}
+				else{
+					Utiles.Logger.logFatal(mensaje : (String)respuesta2.contenido);
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+				LogFile.logTextFile(file : rutaArchivo+this.nombreArchivo, mensajes : (String[])respuesta.contenido);
+				this.binario = BinaryFile.readToBinaryFrom(name : rutaArchivo+nombreArchivo);
+				this.tamanioArchivo = (Java.Lang.Integer)this.binario.length();
+				this.form.procesado = true;
+			}else{
+				this.form.mostrar1 = true;
+				this.form.mostrar2 = true;
+				this.form.verificado = true;
+				this.cartas = (NCarta2[])respuesta.contenido;
+				
+				String resultadoVerificacion = &amp;quot;&amp;quot;;
+				Integer existen = 0;
+				Integer diferencia = 0;
+				for(NCarta2 carta: cartas){
+					if(carta.existe){
+				    	existen = existen + 1;
+					}
+				}
+				diferencia = cartas.length() - existen;
+				resultadoVerificacion = &amp;quot;Se verificaron &amp;quot; + cartas.length() + &amp;quot; Cartas.&amp;quot; + &amp;quot;\n&amp;quot;;
+				resultadoVerificacion = resultadoVerificacion + &amp;quot;Se importarán &amp;quot;+diferencia+&amp;quot; registros nuevos.&amp;quot; + &amp;quot;\n&amp;quot;;
+				resultadoVerificacion = resultadoVerificacion + &amp;quot;Se importarán &amp;quot;+existen+&amp;quot; registros existentes.&amp;quot;;
+				this.form.resultadoVerificar = resultadoVerificacion;
+			}
+		}
+	}
+		
+}else{
+	this.form.mostrar1 = true;
+	this.form.verificado = true;
+	this.form.archivoVacio = true;
+	this.form.resultadoVerificar = &amp;quot;Archivo vacío.&amp;quot;;
+}&lt;/sourceCode&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+	&lt;/methods&gt;
+&lt;/component&gt;</albpm:Component>
+                    <albpm:CorrelationSets/>
+                    <albpm:Localization>
+                        <albpm:LocalizationLabels>
+                            <albpm:LocalizedLabel language="es" label="TPC2 - Importacion de Archivos"/>
+                        </albpm:LocalizationLabels>
+                        <albpm:LocalizationDescriptions>
+                            <albpm:LocalizationDescription language="es">
+                            </albpm:LocalizationDescription>
+                        </albpm:LocalizationDescriptions>
+                    </albpm:Localization>
+                    <albpm:FeatureSet>
+                        <albpm:StringFeature name="GreedyExecutionMode" value="default"/>
+                        <albpm:BooleanFeature name="atomic" value="false"/>
+                        <albpm:StringFeature name="generatesEvents" value="GENERATE_INTERACTIVE_EVENTS"/>
+                        <albpm:BooleanFeature name="horizontal" value="true"/>
+                        <albpm:BooleanFeature name="instanceScreenflow" value="false"/>
+                        <albpm:StringFeature name="scale" value="1.0"/>
+                        <albpm:BooleanFeature name="sharePredefineVariables" value="true"/>
+                        <albpm:BooleanFeature name="useExceptionOrder" value="true"/>
+                        <albpm:StringFeature name="variation" value="Default"/>
+                    </albpm:FeatureSet>
+                </albpm:ALBPMExtensions>
+            </xpdl:Extensions>
+        </xpdl:WorkflowProcess>
+    </xpdl:WorkflowProcesses>
+</xpdl:Package>

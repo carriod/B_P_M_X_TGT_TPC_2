@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="ScriptStyle" description="ScriptStyle" versionID="Version 6.5 " flags="" signature="jxl.format.ScriptStyle" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.ScriptStyle"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.ScriptStyle"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.ScriptStyle" name="NORMAL_SCRIPT" flags="hasgetter attribute static external final" position="3" javaType="jxl.format.ScriptStyle" writeSignature="ANORMAL_SCRIPT;Ljxl.format.ScriptStyle;" readSignature="ANORMAL_SCRIPT;Ljxl.format.ScriptStyle;"/>
+		<object type="Utiles.Jxl.Format.ScriptStyle" name="SUBSCRIPT" flags="hasgetter attribute static external final" position="5" javaType="jxl.format.ScriptStyle" writeSignature="ASUBSCRIPT;Ljxl.format.ScriptStyle;" readSignature="ASUBSCRIPT;Ljxl.format.ScriptStyle;"/>
+		<object type="Utiles.Jxl.Format.ScriptStyle" name="SUPERSCRIPT" flags="hasgetter attribute static external final" position="4" javaType="jxl.format.ScriptStyle" writeSignature="ASUPERSCRIPT;Ljxl.format.ScriptStyle;" readSignature="ASUPERSCRIPT;Ljxl.format.ScriptStyle;"/>
+		<String name="description" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetDescription()Ljava.lang.String;"/>
+		<Int length="32" name="value" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetValue()I"/>
+	</attributes>
+	<methods>
+		<method name="getDescription" description="getDescription" flags="external hidden" signature="MgetDescription()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getStyle" description="getStyle" flags="static external" signature="MgetStyle(I)Ljxl.format.ScriptStyle;">
+			<arg name="val" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.ScriptStyle" javaType="jxl.format.ScriptStyle"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FormEdicionPedidos" description="" versionID="Version 6.5 " flags="cloneable presentable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Lang.Presentable" flags="public"/>
+	<inherit class="Fuego.Internal.PresentableDelegate" flags="public delegated hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="defaultPresentation" value="FormEdicionContratos"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<objectProperty name="presentationNames" value="FormEdicionContratos"/>
+	<attributes>
+		<array type="Formulario2.FormEdicionPedidos.BotonesAccion" name="botonesAccion" flags="hasgetter public" position="6" javaType="fuego.xobject.GroupArray"/>
+		<Bool name="editable" flags="hassetter hasgetter public" position="9"/>
+		<Bool name="fechaEnvioCartaMayorActual" flags="hassetter hasgetter public" position="11"/>
+		<String name="fechaUltimaImportacion" flags="hassetter hasgetter public" position="13"/>
+		<array type="Formulario2.FormEdicionPedidos.ListaCartas" name="listaCartas" flags="hasgetter public" position="1" javaType="fuego.xobject.GroupArray"/>
+		<Int length="32" name="listaMoneda" flags="hassetter hasgetter public includeincheck" position="2">
+			<read language="Java1">return this.objeto.moneda.id;</read>
+			<write language="Java1">this.objeto.moneda.id = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerMonedas"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerMonedas()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerMonedas"/>
+		</Int>
+		<Int length="32" name="listaProveedor" flags="hassetter hasgetter public includeincheck" position="3">
+			<read language="Java1">return this.objeto.proveedor.id;</read>
+			<write language="Java1">this.objeto.proveedor.id = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerProveedores"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerProveedores()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerProveedores"/>
+		</Int>
+		<Int length="32" name="listaSociedad" flags="hassetter hasgetter public includeincheck" position="4">
+			<read language="Java1">return this.objeto.sociedad.id;</read>
+			<write language="Java1">this.objeto.sociedad.id = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerSociedades"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerSociedades()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerSociedades"/>
+		</Int>
+		<object type="Negocio2.NPedido2" name="objeto" flags="hassetter hasgetter public" position="5"/>
+		<String name="rol" flags="hassetter hasgetter public" position="7"/>
+		<object type="Negocio2.NMonto2" name="subTotal" flags="hassetter hasgetter public" position="10"/>
+		<String name="version" flags="hassetter hasgetter public" position="12"/>
+		<Bool name="visible" flags="hassetter hasgetter public" position="8"/>
+	</attributes>
+	<methods>
+		<method name="FormEdicionPedidos" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormEdicionPedidos"/>
+			<sourceCode language="Java1">this.objeto = NPedido2();
+this.subTotal = NMonto2();</sourceCode>
+		</method>
+		<method name="actionButton0" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton0&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton1" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton1&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton2" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton2&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton3" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton3&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton4" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton4&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton5" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton5&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton6" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton6&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton7" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton7&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if (this.objeto.id == null || this.objeto.id &lt;1){
+	this.showError(error : &quot;Campo Pedido: completar para continuar&quot;);
+}
+
+if (this.objeto.montoAdjudicado.montoStr == &quot;&quot; || this.objeto.montoAdjudicado.montoStr == null){
+	this.showError(error : &quot;Campo Total Contrato Monto: completar para continuar&quot;);
+}
+
+if (this.objeto.procesoEdicion &gt;1){
+	if ((this.objeto.montoAdjudicado.montoStr != null) &amp;&amp; (this.objeto.montoAdjudicado.montoStr != &quot;&quot;)){
+		if(!this.objeto.montoAdjudicado.montoStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+			this.showError(error : &quot;&apos;Monto&apos; requiere el formato ###.###.###.###,##&quot;);
+		}
+	}
+	else{
+		this.showError(error : &quot;Campo Monto: completar para continuar.&quot;);
+	}
+	
+}
+
+if (this.objeto.fechaFinVigencia != null &amp;&amp; this.objeto.fechaInicioVigencia == null){
+	this.showError(error : &quot;Campo Fecha Inicio Vigencia: completar para continuar.&quot;);
+}
+
+if (this.objeto.fechaInicioVigencia != null &amp;&amp; this.objeto.fechaFinVigencia == null){
+	this.showError(error : &quot;Campo Fecha Fin Vigencia: completar para continuar.&quot;);
+}
+
+if (this.objeto.fechaInicioVigencia != null &amp;&amp; this.objeto.fechaFinVigencia != null){
+	if (this.objeto.fechaInicioVigencia &gt; this.objeto.fechaFinVigencia)
+		this.showError(error : &quot;Campo Fecha Fin Vigencia: debe ser mayor o igual al campo Fecha Inicio Vigencia&quot;);
+}
+
+
+if (this.objeto.fechaFinIncidencia != null &amp;&amp; this.objeto.fechaInicioIncidencia == null){
+	this.showError(error : &quot;Campo Fecha Inicio Incidencia: completar para continuar.&quot;);
+}
+
+if (this.objeto.fechaFinIncidencia == null &amp;&amp; this.objeto.fechaInicioIncidencia != null){
+	this.showError(error : &quot;Campo Fecha Fin Incidencia: completar para continuar.&quot;);
+}
+
+if (this.objeto.fechaInicioIncidencia != null &amp;&amp; this.objeto.fechaFinIncidencia != null){
+	if (this.objeto.fechaInicioIncidencia &gt; this.objeto.fechaFinIncidencia)
+		this.showError(error : &quot;Campo Fecha Fin Incidencia: debe ser mayor o igual al campo Fecha Inicio Incidencia&quot;);
+}
+
+for (int i=0;i&lt;listaCartas.length();i++) {
+	if (listaCartas[i].carta.fechaCreacion==null){
+		this.showError(error : &quot;Lista Cartas: existen registros con Fecha Creación Carta incompleta para continuar.&quot;);
+		break;
+	}   
+}
+
+for (int i=0;i&lt;listaCartas.length();i++) {
+	if (listaCartas[i].carta.montoParcial.montoStr==null || listaCartas[i].carta.montoParcial.montoStr==&quot;&quot;){
+		this.showError(error : &quot;Lista Cartas: existen registros con Monto Parcial incompleto para continuar.&quot;);
+		break;
+	}   
+}
+/*
+for (int i=0;i&lt;listaCartas.length();i++) {
+	if (listaCartas[i].carta.montoParcial.monto&lt;0){
+		this.showError(error : &quot;Lista Cartas: existen registros con Monto Parcial menor a cero para continuar.&quot;);
+		break;
+	}
+}
+*/
+for (int i=0;i&lt;listaCartas.length();i++) {
+	if (!listaCartas[i].onChangeMonto2()){
+		break;
+	}
+}
+
+if (this.objeto.ultimaCartaEnviada &amp;&amp; this.listaCartas.length() == 0){
+	this.showError(error : &quot;Campo Última Carta Enviada: se requiere cartas en el listado Cartas.&quot;);
+	
+}
+this.onChangeMonto();
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="agregarCarta" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta = FCarta2.getNextValue();
+
+if (respuesta.resultado == OK){
+	int a = (Integer)respuesta.contenido;
+	NCarta2 carta = NCarta2();
+	carta.fechaCreacion=&apos;now&apos;;
+	carta.id=a;
+	this.listaCartas.extend(carta : carta, moneda : &quot;&quot;);
+}
+
+for (int i = 0; i&lt;this.listaCartas.length();i++){
+	this.listaCartas[i].moneda=this.listaMonedaValidValues()[listaMoneda];
+}
+
+this.onChangeRequiereCarta();
+</sourceCode>
+		</method>
+		<method name="initPres" flags="clientavailable public">
+			<sourceCode language="Java1">this.setVisible(componentId : &quot;buttonSubmit&quot;, visible : false, collapsed : true);
+this.setVisible(componentId : &quot;buttonCancel&quot;, visible : false, collapsed : true);
+
+for (int i = 0; i &lt; 7; i++) {
+   this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+}
+ 
+for (int i = 0; i &lt; botonesAccion.length; i++) {
+    if(botonesAccion[i].labelBoton != null){
+    	this.setVisible(componentId : &quot;actionButton&quot;+i, visible : true, collapsed : false);
+    	this.setText(componentId : &quot;actionButton&quot;+i, text : botonesAccion[i].labelBoton);          
+	}else{
+		this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+	}
+}
+
+this.setText(componentId : &quot;proceso&quot;, text : (String)this.objeto.procesoId);
+
+this.setVisual();
+this.setearEditable();
+this.onChangeMoneda();
+this.onChangeRequiereCarta();
+
+Respuesta respuesta = FVersion2.getLastImportacionPedidos(pro_edicion : this.objeto.procesoEdicion, pro_id : this.objeto.procesoId, prv_codigo : this.objeto.proveedor.codigo, 
+                                    soc_id : this.objeto.sociedad.id, mon_id : this.objeto.moneda.id, fpa_codigo : this.objeto.formaDePago.codigo);
+                                    
+if(respuesta.resultado==OK){
+NVersion2 getVersion = (NVersion2) respuesta.contenido;
+	
+	this.version = getVersion.version;
+	this.fechaUltimaImportacion = (String)getVersion.fechaUltimaImportacion.format(&quot;dd-MM-yyyy&quot;);
+
+}</sourceCode>
+		</method>
+		<method name="listaMonedaValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Fuego">return obtenerMonedas()
+</sourceCode>
+		</method>
+		<method name="listaProveedorValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Fuego">return obtenerProveedores()
+</sourceCode>
+		</method>
+		<method name="listaSociedadValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Fuego">return obtenerSociedades()
+</sourceCode>
+		</method>
+		<method name="obtenerMonedas" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Java1">String[Integer] valores = {};
+Respuesta respuesta = Fachada2.FMoneda2.getListValuesCombo(vigencia: true);
+if(respuesta.resultado==OK){
+	valores =(String[Integer])respuesta.contenido;
+}else{
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}
+return valores;</sourceCode>
+		</method>
+		<method name="obtenerProveedores" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Java1">String[Integer] valores = {};
+Respuesta respuesta = FProveedor2.getListValuesCombo(vigencia: true);
+if(respuesta.resultado==OK){
+	valores =(String[Integer])respuesta.contenido;
+}else{
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}
+return valores;</sourceCode>
+		</method>
+		<method name="obtenerSociedades" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Java1">String[Integer] valores = {};
+Respuesta respuesta = Fachada2.FSociedad2.getListValuesCombo(vigencia: true);
+if(respuesta.resultado==OK){
+	valores =(String[Integer])respuesta.contenido;
+}else{
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}
+return valores;</sourceCode>
+		</method>
+		<method name="onChangeFechaEnvioCarta" flags="clientavailable public">
+			<sourceCode language="Java1">for (int i=0;i&lt;this.listaCartas.length();i++){
+	this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;eliminar&quot;, index : i, visible : false);
+}
+Time ultimaFechaEnvioCarta = null;
+for (int index = 0; index &lt; this.listaCartas.length; index++) {
+	if(ultimaFechaEnvioCarta == null || this.listaCartas[index].carta.fechaEnvioCarta &gt; ultimaFechaEnvioCarta){
+		ultimaFechaEnvioCarta = this.listaCartas[index].carta.fechaEnvioCarta;
+	}
+}
+for (int i=0;i&lt;this.listaCartas.length();i++){
+	if(listaCartas[i].carta.fechaEnvioCarta==null){
+		if (this.rol == &quot;TPC2 - Administrador&quot;){
+			this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;eliminar&quot;, index : i, visible : true);
+		}
+		else if (this.rol == &quot;TPC - Gerente Compras&quot;){
+			if(listaCartas[i].carta.fechaFirmaGerencia==null){
+				this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;eliminar&quot;, index : i, visible : true);
+			}
+		}
+		else if (this.rol == &quot;TPC - Jefe Compras&quot;){
+			if(listaCartas[i].carta.fechaVisadoJefatura==null &amp;&amp; listaCartas[i].carta.fechaFirmaGerencia==null){
+				this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;eliminar&quot;, index : i, visible : true);
+			}
+		}
+		else if (this.rol == &quot;TPC - Comprador GC&quot;){
+			if(listaCartas[i].carta.fechaVisadoJefatura==null &amp;&amp; listaCartas[i].carta.fechaFirmaGerencia==null){
+				this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;eliminar&quot;, index : i, visible : true);
+			}
+		}
+	}
+}
+
+if((this.rol == &quot;TPC2 - Administrador&quot;) || (this.rol == &quot;TPC - Gerente Compras&quot;) || (this.rol == &quot;TPC - Jefe Compras&quot;) || (this.rol == &quot;TPC - Comprador GC&quot;)){
+	
+	if(this.rol == &quot;TPC2 - Administrador&quot;){
+		
+		this.setEditable(componentId : &quot;requiereCarta&quot;, editable :  (this.listaCartas.length() &lt;= 0));
+		if(this.objeto.requiereCarta){
+			this.setEditable(componentId : &quot;agregarCarta&quot;, editable : true);
+			this.setCssClassName(componentId : &quot;agregarCarta&quot;, cssClass : &quot;fo_inner_button&quot;);
+		}else{
+			this.setEditable(componentId : &quot;agregarCarta&quot;, editable : false);
+			this.setCssClassName(componentId : &quot;agregarCarta&quot;, cssClass : &quot;fo_inner_buttonNotEditable&quot;);
+		}
+		
+		
+		if(this.objeto.requiereCarta &amp;&amp; this.objeto.consulta.estadoId != 18 &amp;&amp; this.listaCartas.length()&gt;0){
+			
+			this.setVisible(componentId : &quot;ultimaCarta&quot;, visible : true, collapsed : false);
+			this.setVisible(componentId : &quot;ultimaCartaL&quot;, visible : true, collapsed : false);
+			
+		}else{
+			
+
+			this.setVisible(componentId : &quot;ultimaCarta&quot;, visible : false, collapsed : true);
+			this.setVisible(componentId : &quot;ultimaCartaL&quot;, visible : false, collapsed : true);
+			
+		}
+				
+			
+	}else if(this.rol != &quot;TPC2 - Administrador&quot;){
+			
+		if((ultimaFechaEnvioCarta != null &amp;&amp; ultimaFechaEnvioCarta &lt;= Java.Util.Date.now()) || (ultimaFechaEnvioCarta == null &amp;&amp; this.listaCartas.length() &gt; 0)){
+			
+			this.setEditable(componentId : &quot;requiereCarta&quot;, editable :  (this.listaCartas.length() &lt;= 0));
+			
+			if(this.objeto.requiereCarta &amp;&amp; this.objeto.consulta.estadoId != 18 &amp;&amp; this.listaCartas.length()&gt;0 &amp;&amp; (this.objeto.fechaFinVigencia != null &amp;&amp; this.objeto.fechaFinVigencia &gt;= Java.Util.Date.now())){
+				this.setCssClassName(componentId : &quot;agregarCarta&quot;, cssClass : &quot;fo_inner_button&quot;);
+				this.setVisible(componentId : &quot;ultimaCarta&quot;, visible : true, collapsed : false);
+				this.setVisible(componentId : &quot;ultimaCartaL&quot;, visible : true, collapsed : false);
+				
+			}else{
+				
+				this.setVisible(componentId : &quot;ultimaCarta&quot;, visible : false, collapsed : true);
+				this.setVisible(componentId : &quot;ultimaCartaL&quot;, visible : false, collapsed : true);
+		
+			}
+		
+		}else if((ultimaFechaEnvioCarta != null &amp;&amp; ultimaFechaEnvioCarta &gt; Java.Util.Date.now())){
+
+			this.setEditable(componentId : &quot;requiereCarta&quot;, editable : false);
+			this.setEditable(componentId : &quot;agregarCarta&quot;, editable : false);
+			this.setCssClassName(componentId : &quot;agregarCarta&quot;, cssClass : &quot;fo_inner_buttonNotEditable&quot;);
+			this.setVisible(componentId : &quot;ultimaCarta&quot;, visible : false, collapsed : true);
+			this.setVisible(componentId : &quot;ultimaCartaL&quot;, visible : false, collapsed : true);
+		
+			for (int i=0;i&lt;this.listaCartas.length();i++){
+				this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, editable : false);
+				this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : false);
+				this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaCreacionC&quot;, index : i, editable : false);
+				this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, editable : false);
+			}	
+			
+		}
+	}
+}</sourceCode>
+		</method>
+		<method name="onChangeMoneda" flags="clientavailable public">
+			<sourceCode language="Java1">this.subTotal.monto=0;
+for (int i = 0; i&lt;this.listaCartas.length();i++){
+	this.listaCartas[i].moneda=this.listaMonedaValidValues()[listaMoneda];
+	this.subTotal.monto = this.subTotal.monto + this.listaCartas[i].carta.montoParcial.monto;
+}</sourceCode>
+		</method>
+		<method name="onChangeMonto" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Bool"/>
+			<sourceCode language="Java1">boolean ok = true;
+
+if ((this.objeto.montoAdjudicado.montoStr != null) &amp;&amp; (this.objeto.montoAdjudicado.montoStr != &quot;&quot;)){
+	if(!this.objeto.montoAdjudicado.montoStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+		this.showError(error : &quot;Total Contrato Monto requiere el formato ###.###.###.###,##&quot;);
+		ok = false;
+	}
+}
+
+if ((this.objeto.montoDerivado.montoStr != null) &amp;&amp; (this.objeto.montoDerivado.montoStr != &quot;&quot;)){
+	if(!this.objeto.montoDerivado.montoStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+		this.showError(error : &quot;Monto Derivado requiere el formato ###.###.###.###,##&quot;);
+		ok = false;
+	}
+}
+
+if ((this.objeto.montoCertificado.montoStr != null) &amp;&amp; (this.objeto.montoCertificado.montoStr != &quot;&quot;)){
+	if(!this.objeto.montoCertificado.montoStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+		this.showError(error : &quot;Monto Certificado requiere el formato ###.###.###.###,##&quot;);
+		ok = false;
+	}
+}
+
+if ((this.objeto.montoFacturado.montoStr != null) &amp;&amp; (this.objeto.montoFacturado.montoStr != &quot;&quot;)){
+	if(!this.objeto.montoFacturado.montoStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+		this.showError(error : &quot;Monto Facturado requiere el formato ###.###.###.###,##&quot;);
+		ok = false;
+	}
+}
+
+return ok;</sourceCode>
+		</method>
+		<method name="onChangeRequiereCarta" flags="clientavailable public">
+			<sourceCode language="Java1">this.setVisible(componentId : &quot;arrayCartas&quot;, visible : this.objeto.requiereCarta, collapsed : !this.objeto.requiereCarta);
+this.setVisible(componentId : &quot;subTotalL&quot;, visible : this.objeto.requiereCarta, collapsed : !this.objeto.requiereCarta);
+this.setVisible(componentId : &quot;subTotal&quot;, visible : this.objeto.requiereCarta, collapsed : !this.objeto.requiereCarta);
+
+
+if((this.rol == &quot;TPC2 - Administrador&quot;) || (this.rol == &quot;TPC - Gerente Compras&quot;) || (this.rol == &quot;TPC - Jefe Compras&quot;) || (this.rol == &quot;TPC - Comprador GC&quot;)){
+
+	for (int i = 0; i&lt;this.listaCartas.length();i++){
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaCreacionC&quot;, index : i, visible : true);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, visible : true);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, visible : true);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, visible : true);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;monedaP&quot;, index : i, visible : true);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;monto&quot;, index : i, visible : true);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;eliminar&quot;, index : i, visible : false);
+		if(this.rol == &quot;TPC2 - Administrador&quot;){
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaCreacionC&quot;, index : i, editable : true);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, editable : true);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : true);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, editable : true);
+		}
+		else if(this.rol == &quot;TPC - Gerente Compras&quot;){
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaCreacionC&quot;, index : i, editable : true);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, editable : true);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : true);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, editable : false);		
+		}
+		else if(this.rol == &quot;TPC - Jefe Compras&quot;){
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaCreacionC&quot;, index : i, editable : true);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, editable : true);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, editable : false);
+		}
+		else if(this.rol == &quot;TPC - Comprador GC&quot;){
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaCreacionC&quot;, index : i, editable : true);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, editable : false);		}
+	}
+	
+	this.onChangeFechaEnvioCarta();
+
+	if(this.objeto.fechaFinVigencia &lt; Java.Util.Date.now() &amp;&amp; this.rol != &quot;TPC2 - Administrador&quot;){	
+		for(int i = 0; i &lt; this.objeto.carta.length(); i++){
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaCreacionC&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;monto&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;eliminar&quot;, index : i, editable : false);
+		}
+		this.setEditable(componentId : &quot;agregarCarta&quot;, editable : false);
+		this.setCssClassName(componentId : &quot;agregarCarta&quot;, cssClass : &quot;fo_inner_buttonNotEditable&quot;);	
+	}
+	
+}else{
+	for (int i = 0; i&lt;this.listaCartas.length();i++){
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaCreacionC&quot;, index : i, visible : false);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, visible : false);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, visible : false);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, visible : false);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;monedaP&quot;, index : i, visible : false);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;monto&quot;, index : i, visible : false);
+		this.setVisible(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;eliminar&quot;, index : i, visible : false);
+	}
+
+}
+</sourceCode>
+		</method>
+		<method name="procesoButton" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_P_&quot; + this.objeto.procesoId + &quot;_&quot; + this.objeto.procesoEdicion);
+</sourceCode>
+		</method>
+		<method name="setVisual" flags="clientavailable public">
+			<sourceCode language="Java1">visible = false;
+
+if((this.rol == &quot;TPC2 - Administrador&quot;) || (this.rol == &quot;TPC - Gerente Compras&quot;) || (this.rol == &quot;TPC - Jefe Compras&quot;) || (this.rol == &quot;TPC - Comprador GC&quot;)){
+	visible = true;
+}
+
+this.setVisible(componentId : &quot;agregarCarta&quot;, visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;ultimaCarta&quot;, visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;ultimaCartaL&quot;, visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;requiereCarta&quot;, visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;requiereCartaL&quot;, visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios1&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios1L&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios2&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios2L&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios3&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios3L&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios4&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios4L&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios5&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios5L&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios6&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;varios6L&quot;, 		visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;table5[11][0]&quot;,	visible : visible, collapsed : !visible);
+this.setVisible(componentId : &quot;actionButton7&quot;, 	visible : visible, collapsed : !visible);</sourceCode>
+		</method>
+		<method name="setearEditable" flags="clientavailable public">
+			<sourceCode language="Java1">this.setEditable(componentId : &quot;pedido&quot;, editable : false);
+this.setEditable(componentId : &quot;totalContratoMonto&quot;, editable : false);
+this.setEditable(componentId : &quot;varios1&quot;, editable : false);
+this.setEditable(componentId : &quot;varios2&quot;, editable : false);
+this.setEditable(componentId : &quot;varios3&quot;, editable : false);
+this.setEditable(componentId : &quot;varios4&quot;, editable : false);
+this.setEditable(componentId : &quot;varios5&quot;, editable : false);
+this.setEditable(componentId : &quot;varios6&quot;, editable : false);
+this.setEditable(componentId : &quot;planificable&quot;, editable : false);
+this.setEditable(componentId : &quot;fechaInicioVigencia&quot;, editable : false);
+this.setEditable(componentId : &quot;fechaFinVigencia&quot;, editable : false);
+this.setEditable(componentId : &quot;montoDerivado&quot;, editable : false);
+this.setEditable(componentId : &quot;montoCertificado&quot;, editable : false);
+this.setEditable(componentId : &quot;montoFacturado&quot;, editable : false);
+this.setEditable(componentId : &quot;fechaInicioIncidencia&quot;, editable : false);
+this.setEditable(componentId : &quot;fechaFinIncidencia&quot;, editable : false);
+this.setEditable(componentId : &quot;clasificacion&quot;, editable : false);
+this.setEditable(componentId : &quot;detalle&quot;, editable : false);
+this.setEditable(componentId : &quot;fechaCreacion&quot;, editable : false);
+//this.setEditable(componentId : &quot;requiereCarta&quot;, editable : false);
+//this.setEditable(componentId : &quot;ultimaCarta&quot;, editable : false);
+Time ultimaFechaEnvioCarta = null;
+for (int index = 0; index &lt; this.listaCartas.length; index++) {
+	//this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaCreacionC&quot;, index : index, editable : false);
+	//this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : index, editable : false);
+	//this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : index, editable : false);
+	//this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : index, editable : false);
+	if(ultimaFechaEnvioCarta == null || this.listaCartas[index].carta.fechaEnvioCarta &gt; ultimaFechaEnvioCarta){
+		ultimaFechaEnvioCarta = this.listaCartas[index].carta.fechaEnvioCarta;
+	}
+}
+if(this.rol == &quot;TPC - Gerente Compras&quot; || this.rol == &quot;TPC - Jefe Compras&quot; || this.rol == &quot;TPC - Comprador GC&quot;){
+	this.setEditable(componentId : &quot;pedido&quot;, editable : true);
+}
+if((this.rol == &quot;TPC - Gerente Compras&quot; || this.rol == &quot;TPC - Jefe Compras&quot; || this.rol == &quot;TPC - Comprador GC&quot;) &amp;&amp;
+   (ultimaFechaEnvioCarta == null || (ultimaFechaEnvioCarta != null &amp;&amp; ultimaFechaEnvioCarta &lt; Java.Util.Date.now())) &amp;&amp;
+   ((this.objeto.fechaFinVigencia != null &amp;&amp; this.objeto.fechaFinVigencia &gt;= Java.Util.Date.now())) &amp;&amp;
+   (this.objeto.consulta.estadoId != 2 &amp;&amp; this.objeto.consulta.estadoId != 18)){
+	this.setEditable(componentId : &quot;totalContratoMonto&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios1&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios2&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios3&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios4&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios5&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios6&quot;, editable : true);
+	//this.setEditable(componentId : &quot;requiereCarta&quot;, editable : true);
+	if(this.objeto.codigoPlanificacion == null || this.objeto.codigoPlanificacion == &quot;&quot;){
+		this.setEditable(componentId : &quot;planificable&quot;, editable : true);
+	}
+	
+	int i = 0;
+	while(i &lt; this.listaCartas.length()){
+		this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, editable : false);
+		if(this.rol == &quot;TPC - Comprador GC&quot;){
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : false);
+		}else if(this.rol == &quot;TPC - Jefe Compras&quot;){
+				this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : false);
+		}
+		i++;
+	}
+		
+}
+if(this.rol == &quot;TPC2 - Administrador&quot;){
+	this.setEditable(componentId : &quot;pedido&quot;, editable : true);
+	this.setEditable(componentId : &quot;totalContratoMonto&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios1&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios2&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios3&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios4&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios5&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios6&quot;, editable : true);
+	this.setEditable(componentId : &quot;fechaInicioVigencia&quot;, editable : true);
+	this.setEditable(componentId : &quot;fechaFinVigencia&quot;, editable : true);
+	this.setEditable(componentId : &quot;montoDerivado&quot;, editable : true);
+	this.setEditable(componentId : &quot;montoCertificado&quot;, editable : true);
+	this.setEditable(componentId : &quot;montoFacturado&quot;, editable : true);
+	this.setEditable(componentId : &quot;fechaInicioIncidencia&quot;, editable : true);
+	this.setEditable(componentId : &quot;fechaFinIncidencia&quot;, editable : true);
+	this.setEditable(componentId : &quot;clasificacion&quot;, editable : true);
+	this.setEditable(componentId : &quot;detalle&quot;, editable : true);
+	this.setEditable(componentId : &quot;fechaCreacion&quot;, editable : true);
+	//this.setEditable(componentId : &quot;requiereCarta&quot;, editable : true);
+	//this.setEditable(componentId : &quot;ultimaCarta&quot;, editable : false);
+	if(this.objeto.codigoPlanificacion == null || this.objeto.codigoPlanificacion == &quot;&quot;){
+		this.setEditable(componentId : &quot;planificable&quot;, editable : true);
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+if((this.rol == &quot;TPC2 - Administrador&quot;) || (this.rol == &quot;TPC - Gerente Compras&quot;) || (this.rol == &quot;TPC - Jefe Compras&quot;) || (this.rol == &quot;TPC - Comprador GC&quot;)){
+	this.setEditable(componentId : &quot;pedido&quot;, editable : true);
+	this.setEditable(componentId : &quot;totalContratoMonto&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios1&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios2&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios3&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios4&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios5&quot;, editable : true);
+	this.setEditable(componentId : &quot;varios6&quot;, editable : true);
+
+}else{
+	this.setEditable(componentId : &quot;pedido&quot;, editable : false);
+	this.setEditable(componentId : &quot;totalContratoMonto&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios1&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios2&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios3&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios4&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios5&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios6&quot;, editable : false);
+	
+}
+
+if(this.objeto.codigoPlanificacion==null || this.objeto.codigoPlanificacion==&quot;&quot;){
+
+	this.setEditable(componentId : &quot;planificable&quot;, editable : true);
+		
+}else if((this.rol == &quot;TPC - Supervisor CdG&quot;) || (this.rol == &quot;TPC - Analista CdG&quot;) || (this.rol == &quot;TPC - Solicitante SAGI&quot;) || (this.rol == &quot;TPC2 - Consulta&quot;)){
+
+	this.setEditable(componentId : &quot;planificable&quot;, editable : false);
+		
+}else{
+	
+	this.setEditable(componentId : &quot;planificable&quot;, editable : false);
+}
+
+if(this.rol == &quot;TPC2 - Administrador&quot;){
+
+	this.setEditable(componentId : &quot;fechaInicioVigencia&quot;, editable : true);
+	this.setEditable(componentId : &quot;fechaFinVigencia&quot;, editable : true);
+	this.setEditable(componentId : &quot;montoDerivado&quot;, editable : true);
+	this.setEditable(componentId : &quot;montoCertificado&quot;, editable : true);
+	this.setEditable(componentId : &quot;montoFacturado&quot;, editable : true);
+	this.setEditable(componentId : &quot;fechaInicioIncidencia&quot;, editable : true);
+	this.setEditable(componentId : &quot;fechaFinIncidencia&quot;, editable : true);
+	this.setEditable(componentId : &quot;clasificacion&quot;, editable : true);
+	this.setEditable(componentId : &quot;detalle&quot;, editable : true);
+	
+}else{
+
+	this.setEditable(componentId : &quot;fechaInicioVigencia&quot;, editable : false);
+	this.setEditable(componentId : &quot;fechaFinVigencia&quot;, editable : false);
+	this.setEditable(componentId : &quot;montoDerivado&quot;, editable : false);
+	this.setEditable(componentId : &quot;montoCertificado&quot;, editable : false);
+	this.setEditable(componentId : &quot;montoFacturado&quot;, editable : false);
+	this.setEditable(componentId : &quot;fechaInicioIncidencia&quot;, editable : false);
+	this.setEditable(componentId : &quot;fechaFinIncidencia&quot;, editable : false);
+	this.setEditable(componentId : &quot;clasificacion&quot;, editable : false);
+	this.setEditable(componentId : &quot;detalle&quot;, editable : false);
+}
+
+if((this.rol == &quot;TPC - Gerente Compras&quot;) || (this.rol == &quot;TPC - Jefe Compras&quot;) || (this.rol == &quot;TPC - Comprador GC&quot;)){
+	int i = 0;
+	while(i &lt; this.listaCartas.length()){
+		this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaEnvio&quot;, index : i, editable : false);
+		if(this.rol == &quot;TPC - Comprador GC&quot;){
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaVisado&quot;, index : i, editable : false);
+			this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : false);
+		}else if(this.rol == &quot;TPC - Jefe Compras&quot;){
+				this.setEditable(groupComponentId : &quot;arrayCartas&quot;, columnComponentId : &quot;fechaFirma&quot;, index : i, editable : false);
+		}
+		i++;
+	}	
+}
+
+if(this.objeto.fechaFinVigencia &lt; Java.Util.Date.now() &amp;&amp; this.rol != &quot;TPC2 - Administrador&quot;){
+
+	this.setEditable(componentId : &quot;pedido&quot;, editable : false);
+	this.setEditable(componentId : &quot;totalContratoMonto&quot;, editable : false);
+	this.setEditable(componentId : &quot;fechaCreacion&quot;, editable : false);
+	this.setEditable(componentId : &quot;fechaInicioVigencia&quot;, editable : false);
+	this.setEditable(componentId : &quot;fechaFinVigencia&quot;, editable : false);
+	this.setEditable(componentId : &quot;fechaFinVigencia&quot;, editable : false);
+	this.setEditable(componentId : &quot;montoDerivado&quot;, editable : false);
+	this.setEditable(componentId : &quot;montoCertificado&quot;, editable : false);
+	this.setEditable(componentId : &quot;montoFacturado&quot;, editable : false);
+	this.setEditable(componentId : &quot;fechaInicioIncidencia&quot;, editable : false);
+	this.setEditable(componentId : &quot;fechaFinIncidencia&quot;, editable : false);
+	this.setEditable(componentId : &quot;clasificacion&quot;, editable : false);
+	this.setEditable(componentId : &quot;detalle&quot;, editable : false);
+	this.setEditable(componentId : &quot;planificable&quot;, editable : false);
+	this.setEditable(componentId : &quot;requiereCarta&quot;, editable : false);
+	this.setEditable(componentId : &quot;ultimaCarta&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios1&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios2&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios3&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios4&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios5&quot;, editable : false);
+	this.setEditable(componentId : &quot;varios6&quot;, editable : false);
+
+	//el set not editable de las cartas y el boton agregar carta se hace en
+}
+*/</sourceCode>
+		</method>
+	</methods>
+	<presentation checked="false" clienterroraspopup="true" cssfilename="webRoot/webResources/css/tpcstyle.css" errorcssclass="fo_presentation_error" errorfontface="PLAIN" errorfontsize="12" errorfonttype="Times New Roman, Times, serif" height="0" id="FormEdicionContratos" initializationmethod="MinitPres()V" iscssenabled="true" isuxo="false" reference="FormEdicionPedidos" width="0" cssclass="fo_presentation" ismixedcss="false" tabindex="0">
+		<background imageattachment="fixed" imagelayout="no-repeat" imagexposition="center" imageyposition="center">
+			<image alignment="center" bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" required="false" cssclass="fo_image" ismixedcss="false" tabindex="0"/>
+		</background>
+		<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="FormEdicionContratostable" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_presentation_table" ismixedcss="false" tabindex="0">
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table3" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label1" cssclass="fo_title_label" ismixedcss="false" tabindex="0">
+									<value>Listado de Pedidos - Edición</value>
+								</label>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,16%,16%,16%,16%,16%,16%]" id="table5" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title2_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label26" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Datos Generales</value>
+								</label>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="pedidoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Pedido</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="pedido" outputmasktype="0" passwordfield="false" reference="objeto.id" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="proveedorL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Proveedor</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<combo alignment="left" cache="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="proveedor" reference="listaProveedor" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="procesoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Proceso</value>
+								</label>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,50%,15%,35%]" id="table8" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<button action="action" bordercolor="#D0D2D4" borderwidth="1" display=".         ." fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="proceso" methodinvocation="MprocesoButton()V" transparent="true" cssclass="link_button" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="edicionL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Edición</value>
+											</label>
+										</cell>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="right" bordercolor="#D0D2D4" borderwidth="1" colqty="2" displayaslabel="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="edicion" outputmasktype="0" passwordfield="false" reference="objeto.procesoEdicion" required="false" cssclass="fo_text" ismixedcss="true" tabindex="0"/>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="monedaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Total Contrato Moneda</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<combo alignment="left" cache="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="moneda" onchange="MonChangeMoneda()V" reference="listaMoneda" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="totalContratoMontoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Total Contrato Monto</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="totalContratoMonto" onchange="MonChangeMonto()Ljava.lang.Boolean;" outputmasktype="0" passwordfield="false" reference="objeto.montoAdjudicado.montoStr" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="sociedadL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Sociedad</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<combo alignment="left" cache="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="sociedad" reference="listaSociedad" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="fechaCreacionL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Fecha Creacion Pedido</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaCreacion" reference="objeto.fechaCreacion" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="fechaInicioVigenciaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Fecha Inicio Vigencia</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaInicioVigencia" reference="objeto.fechaInicioVigencia" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="fechaFinVigenciaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Fecha Fin Vigencia</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaFinVigencia" reference="objeto.fechaFinVigencia" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="montoDerivadoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Monto Derivado</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="montoDerivado" onchange="MonChangeMonto()Ljava.lang.Boolean;" outputmasktype="0" passwordfield="false" reference="objeto.montoDerivado.montoStr" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="montoCertificadoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Monto Certificado</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="montoCertificado" onchange="MonChangeMonto()Ljava.lang.Boolean;" outputmasktype="0" passwordfield="false" reference="objeto.montoCertificado.montoStr" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="montoFacturadoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Monto Facturado</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="montoFacturado" onchange="MonChangeMonto()Ljava.lang.Boolean;" outputmasktype="0" passwordfield="false" reference="objeto.montoFacturado.montoStr" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="fechaInicioIncidenciaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Fecha Inicio Incidencia</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaInicioIncidencia" reference="objeto.fechaInicioIncidencia" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="fechaFinIncidenciaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Fecha Fin Incidencia</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaFinIncidencia" reference="objeto.fechaFinIncidencia" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="clasificacionL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Clasificacion</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="clasificacion" outputmasktype="0" passwordfield="false" reference="objeto.clasificacion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="detalleL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Detalle Incidencia</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="3" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="110" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="detalle" outputmasktype="0" passwordfield="false" reference="objeto.detalleIncidencia" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="planificableL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Planificable</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="planificable" reference="objeto.planificable" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+									<value/>
+								</check>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="formaDePagoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Forma de Pago</value>
+								</label>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text1" outputmasktype="0" passwordfield="false" reference="objeto.formaDePago.descripcion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title2_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label29" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Cartas</value>
+								</label>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,16%,5%,27%,16%,16%,16%]" id="table10" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="requiereCartaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Requiere Carta</value>
+											</label>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="requiereCarta" onchange="MonChangeRequiereCarta()V" reference="objeto.requiereCarta" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="Agregar Carta" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="agregarCarta" methodinvocation="MagregarCarta()V" transparent="true" cssclass="fo_inner_button" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="ultimaCartaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Ultima Carta Enviada</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="ultimaCarta" reference="objeto.ultimaCartaEnviada" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<array headersortedbgcolor="#0A2F6F" headersortedfgcolor="#FFFFFF" sorted="false" alignment="center" automaticadd="false" bordercolor="#D0D2D4" borderwidth="1" cellpadding="4" cellspacing="1" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" headerbordercolor="#D0D2D4" headerborderwidth="1" headercssclass="fo_group_header_color" headerenabled="true" headerfontface="PLAIN" headerfontsize="12" headerfonttype="Times New Roman, Times, serif" headers="[,ID Carta,Link,Fecha Creación Carta,Fecha Visado Jefatura,Fecha Firma Gerencia,Fecha Envío Carta,Moneda Parcial,Monto Parcial,Eliminar]" headerswidth="[,100,100,100,100,100,100,100,100,100]" id="arrayCartas" indexbordercolor="#D0D2D4" indexborderwidth="1" indexcssclass="fo_group_index" indexenabled="false" indexfontface="PLAIN" indexfontsize="10" indexfonttype="Times New Roman, Times, serif" indextabenabled="false" pagingbgcolor="#ffffff" pagingbordercolor="#D0D2D4" pagingborderstyle="SOLID" pagingborderwidth="1" pagingcssclass="fo_group_paging" pagingfgcolor="#515559" pagingfontface="PLAIN" pagingfontsize="12" pagingfonttype="Arial" pagingshowall="false" reference="listaCartas" rowevencssclass="fo_group_even_tr" rowoddcssclass="fo_group_odd_tr" rows="20" cssclass="fo_group_color" ismixedcss="true" tabindex="0">
+									<addbutton cssclass="fo_group_add" ismixedcss="false" tabindex="0"/>
+									<removebutton cssclass="fo_group_minus" ismixedcss="false" tabindex="0"/>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="idCarta" outputmasktype="0" passwordfield="false" reference="listaCartas[].carta.id" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<link linktype="REFERENCE" linkvalue="listaCartas[].carta.link" texttype="FIXED" textvalue=".     ." fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="link" cssclass="fo_button_email" ismixedcss="false" tabindex="0">
+												<value>link</value>
+											</link>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaCreacionC" reference="listaCartas[].carta.fechaCreacion" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaVisado" onchange="MonChangeFechaEnvioCarta()V" reference="listaCartas[].carta.fechaVisadoJefatura" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaFirma" onchange="MonChangeFechaEnvioCarta()V" reference="listaCartas[].carta.fechaFirmaGerencia" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaEnvio" onchange="MonChangeFechaEnvioCarta()V" reference="listaCartas[].carta.fechaEnvioCarta" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="monedaP" outputmasktype="0" passwordfield="false" reference="listaCartas[].moneda" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="monto" onchange="listaCartas[].:MonChangeMonto2()Ljava.lang.Boolean;" outputmasktype="0" passwordfield="false" reference="listaCartas[].carta.montoParcial.montoStr" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<button action="action" bordercolor="#D0D2D4" borderwidth="1" display=".         ." fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="eliminar" methodinvocation="listaCartas[].:Meliminar()V" transparent="false" cssclass="fo_button_borrar" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</array>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="subTotalL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Sub Total Montos Parciales:</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="subTotal" outputmasktype="0" passwordfield="false" reference="subTotal.montoStr" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title2_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label31" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Datos Varios</value>
+								</label>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios1L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 1</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios1" outputmasktype="0" passwordfield="false" reference="objeto.varios1" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios2L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 2</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios2" outputmasktype="0" passwordfield="false" reference="objeto.varios2" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios3L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 3</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios3" outputmasktype="0" passwordfield="false" reference="objeto.varios3" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios4L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 4</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios4" outputmasktype="0" passwordfield="false" reference="objeto.varios4" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios5L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 5</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios5" outputmasktype="0" passwordfield="false" reference="objeto.varios5" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios6L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 6</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios6" outputmasktype="0" passwordfield="false" reference="objeto.varios6" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,16%,16%,16%,16%,16%,16%]" id="table12" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label33" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Versión:</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text4" outputmasktype="0" passwordfield="false" reference="version" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bgcolor="#ffffff" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label34" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Fecha Última Importación:</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text5" outputmasktype="0" passwordfield="false" reference="fechaUltimaImportacion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="7" cellspacing="0" columnwidth="[,10%,10%,10%,10%,10%,10%,10%,10%]" id="table4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_footer_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton0" methodinvocation="MactionButton0()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" confirmationmessage="¿Está seguro?" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton1" methodinvocation="MactionButton1()V" transparent="false" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton2" methodinvocation="MactionButton2()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton3" methodinvocation="MactionButton3()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton4" methodinvocation="MactionButton4()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton5" methodinvocation="MactionButton5()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton6" methodinvocation="MactionButton6()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton7" methodinvocation="MactionButton7()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table7" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="submit" bordercolor="#D0D2D4" borderwidth="1" display="submit" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonSubmit" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="cancel" bordercolor="#D0D2D4" borderwidth="1" display="cancel" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonCancel" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+		</table>
+	</presentation>
+	<resources>
+		<resource default="- Fecha Última Importación:" type="1">
+			<label language="es">- Fecha Última Importación:</label>
+		</resource>
+		<resource default=".         .">
+			<label language="en">.         .</label>
+			<label language="es">.         .</label>
+		</resource>
+		<resource default=".     .">
+			<label language="es">.     .</label>
+		</resource>
+		<resource default="Agregar Carta">
+			<label language="en">Agregar Carta</label>
+			<label language="es">Agregar Carta</label>
+		</resource>
+		<resource default="Cartas" type="1">
+			<label language="es">Cartas</label>
+		</resource>
+		<resource default="Clasificacion">
+			<label language="en">Clasificacion</label>
+			<label language="es">Clasificacion</label>
+		</resource>
+		<resource default="Datos Generales" type="1">
+			<label language="es">Datos Generales</label>
+		</resource>
+		<resource default="Datos Varios" type="1">
+			<label language="es">Datos Varios</label>
+		</resource>
+		<resource default="Detalle Incidencia">
+			<label language="en">Detalle Incidencia</label>
+			<label language="es">Detalle Incidencia</label>
+		</resource>
+		<resource default="Edicion">
+			<label language="en">Edicion</label>
+			<label language="es">Edicion</label>
+		</resource>
+		<resource default="Edición" type="1">
+			<label language="es">Edición</label>
+		</resource>
+		<resource default="Eliminar">
+			<label language="es">Eliminar</label>
+		</resource>
+		<resource default="F. Creacion Carta">
+			<label language="en">F. Creacion Carta</label>
+			<label language="es">F. Creacion Carta</label>
+		</resource>
+		<resource default="F. Creacion de Contrato/Pedido">
+			<label language="en">F. Creacion de Contrato/Pedido</label>
+			<label language="es">F. Creacion de Contrato/Pedido</label>
+		</resource>
+		<resource default="F. Envio Carta">
+			<label language="en">F. Envio Carta</label>
+			<label language="es">F. Envio Carta</label>
+		</resource>
+		<resource default="F. Fin Incidencia">
+			<label language="en">F. Fin Incidencia</label>
+			<label language="es">F. Fin Incidencia</label>
+		</resource>
+		<resource default="F. Fin Vigencia" type="1">
+			<label language="es">F. Fin Vigencia</label>
+		</resource>
+		<resource default="F. Fin de Vigencia">
+			<label language="en">F. Fin de Vigencia</label>
+			<label language="es">F. Fin de Vigencia</label>
+		</resource>
+		<resource default="F. Firma Gerencia">
+			<label language="en">F. Firma Gerencia</label>
+			<label language="es">F. Firma Gerencia</label>
+		</resource>
+		<resource default="F. Inicio Incidencia">
+			<label language="en">F. Inicio Incidencia</label>
+			<label language="es">F. Inicio Incidencia</label>
+		</resource>
+		<resource default="F. Inicio de Vigencia">
+			<label language="en">F. Inicio de Vigencia</label>
+			<label language="es">F. Inicio de Vigencia</label>
+		</resource>
+		<resource default="F. Visado Jefatura">
+			<label language="en">F. Visado Jefatura</label>
+			<label language="es">F. Visado Jefatura</label>
+		</resource>
+		<resource default="Fecha Creacion Pedido" type="1">
+			<label language="es">Fecha Creacion Pedido</label>
+		</resource>
+		<resource default="Fecha Creación Carta">
+			<label language="es">Fecha Creación Carta</label>
+		</resource>
+		<resource default="Fecha Envío Carta">
+			<label language="es">Fecha Envío Carta</label>
+		</resource>
+		<resource default="Fecha Fin Incidencia" type="1">
+			<label language="es">Fecha Fin Incidencia</label>
+		</resource>
+		<resource default="Fecha Fin Vigencia" type="1">
+			<label language="es">Fecha Fin Vigencia</label>
+		</resource>
+		<resource default="Fecha Firma Gerencia">
+			<label language="es">Fecha Firma Gerencia</label>
+		</resource>
+		<resource default="Fecha Inicio Incidencia" type="1">
+			<label language="es">Fecha Inicio Incidencia</label>
+		</resource>
+		<resource default="Fecha Inicio Vigencia" type="1">
+			<label language="es">Fecha Inicio Vigencia</label>
+		</resource>
+		<resource default="Fecha Visado Jefatura">
+			<label language="es">Fecha Visado Jefatura</label>
+		</resource>
+		<resource default="Forma de Pago" type="1">
+			<label language="es">Forma de Pago</label>
+		</resource>
+		<resource default="Guardar">
+			<label language="en">Guardar</label>
+			<label language="es">Guardar</label>
+		</resource>
+		<resource default="ID Carta">
+			<label language="en">ID Carta</label>
+			<label language="es">ID Carta</label>
+		</resource>
+		<resource default="Link">
+			<label language="en">Link</label>
+			<label language="es">Link</label>
+		</resource>
+		<resource default="Moneda">
+			<label language="en">Moneda</label>
+			<label language="es">Moneda</label>
+		</resource>
+		<resource default="Moneda Parcial">
+			<label language="es">Moneda Parcial</label>
+		</resource>
+		<resource default="Monto Adjudicado">
+			<label language="en">Monto Adjudicado</label>
+			<label language="es">Monto Adjudicado</label>
+		</resource>
+		<resource default="Monto Certificado">
+			<label language="en">Monto Certificado</label>
+			<label language="es">Monto Certificado</label>
+		</resource>
+		<resource default="Monto Derivado">
+			<label language="en">Monto Derivado</label>
+			<label language="es">Monto Derivado</label>
+		</resource>
+		<resource default="Monto Facturado">
+			<label language="en">Monto Facturado</label>
+			<label language="es">Monto Facturado</label>
+		</resource>
+		<resource default="Monto Parcial">
+			<label language="en">Monto Parcial</label>
+			<label language="es">Monto Parcial</label>
+		</resource>
+		<resource default="Nombre Proveedor">
+			<label language="en">Nombre Proveedor</label>
+			<label language="es">Nombre Proveedor</label>
+		</resource>
+		<resource default="Nro. Pedido/Contrato">
+			<label language="en">Nro. Pedido/Contrato</label>
+			<label language="es">Nro. Pedido/Contrato</label>
+		</resource>
+		<resource default="Pedido" type="1">
+			<label language="es">Pedido</label>
+		</resource>
+		<resource default="Planificable" type="1">
+			<label language="es">Planificable</label>
+		</resource>
+		<resource default="Proceso">
+			<label language="en">Proceso</label>
+			<label language="es">Proceso</label>
+		</resource>
+		<resource default="Proveedor" type="1">
+			<label language="es">Proveedor</label>
+		</resource>
+		<resource default="Requiere Carta">
+			<label language="en">Requiere Carta</label>
+			<label language="es">Requiere Carta</label>
+		</resource>
+		<resource default="Salir">
+			<label language="en">Salir</label>
+			<label language="es">Salir</label>
+		</resource>
+		<resource default="Si vuelve perderá los cambios que se hayan realizado. ¿Desea continuar?">
+			<label language="en">Si vuelve perderá los cambios que se hayan
+realizado. ¿Desea continuar?</label>
+			<label language="es">Si vuelve perderá los cambios que se hayan
+realizado. ¿Desea continuar?</label>
+		</resource>
+		<resource default="Sociedad">
+			<label language="en">Sociedad</label>
+			<label language="es">Sociedad</label>
+		</resource>
+		<resource default="Sub Total Montos Parciales:" type="1">
+			<label language="es">Sub Total Montos Parciales:</label>
+		</resource>
+		<resource default="Titulo">
+			<label language="en">Titulo</label>
+			<label language="es">Titulo</label>
+		</resource>
+		<resource default="Total Contrato Moneda" type="1">
+			<label language="es">Total Contrato Moneda</label>
+		</resource>
+		<resource default="Total Contrato Monto" type="1">
+			<label language="es">Total Contrato Monto</label>
+		</resource>
+		<resource default="Ultima Carta Enviada" type="1">
+			<label language="es">Ultima Carta Enviada</label>
+		</resource>
+		<resource default="Varios 1" type="1">
+			<label language="es">Varios 1</label>
+		</resource>
+		<resource default="Varios1">
+			<label language="en">Varios1</label>
+			<label language="es">Varios1</label>
+		</resource>
+		<resource default="Varios2">
+			<label language="en">Varios2</label>
+			<label language="es">Varios2</label>
+		</resource>
+		<resource default="Varios3">
+			<label language="en">Varios3</label>
+			<label language="es">Varios3</label>
+		</resource>
+		<resource default="Varios4">
+			<label language="en">Varios4</label>
+			<label language="es">Varios4</label>
+		</resource>
+		<resource default="Varios5">
+			<label language="en">Varios5</label>
+			<label language="es">Varios5</label>
+		</resource>
+		<resource default="Varios6">
+			<label language="en">Varios6</label>
+			<label language="es">Varios6</label>
+		</resource>
+		<resource default="Versión" type="1">
+			<label language="es">Versión</label>
+		</resource>
+		<resource default="Versión:" type="1">
+			<label language="es">Versión:</label>
+		</resource>
+		<resource default="action">
+			<label language="en">action</label>
+			<label language="es">action</label>
+		</resource>
+		<resource default="cancel">
+			<label language="en">cancel</label>
+			<label language="es">cancel</label>
+		</resource>
+		<resource default="fForma de Pago" type="1">
+			<label language="es">fForma de Pago</label>
+		</resource>
+		<resource default="label" type="1">
+			<label language="en">label</label>
+			<label language="es">label</label>
+		</resource>
+		<resource default="link">
+			<label language="es">link</label>
+		</resource>
+		<resource default="submit">
+			<label language="en">submit</label>
+			<label language="es">submit</label>
+		</resource>
+		<resource default="¿Está seguro?">
+			<label language="es">¿Está seguro?</label>
+		</resource>
+	</resources>
+</component>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<enumeration name="Resultado" versionID="Version 5.7 GA" type="enumeration" description="">
+	<item label="OK"/>
+	<item label="DBERROR"/>
+	<item label="DATAERROR"/>
+	<item label="WSERROR"/>
+	<item label="WSXMLERROR"/>
+	<item label="ERROR"/>
+	<item label="ARGERROR"/>
+	<item label="IGNORE"/>
+</enumeration>

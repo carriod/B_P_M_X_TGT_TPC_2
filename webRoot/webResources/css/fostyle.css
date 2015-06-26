@@ -1,0 +1,656 @@
+.fo_title {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 10pt;
+    width: 100%;
+    color: white;
+    background-color: #FF905C;
+    border-top: black 1px solid;
+    border-bottom: black 1px solid;
+    border-left: black 1px solid;
+    border-right: black 1px solid;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.fo_title2 {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 10pt;
+    width: 100%;
+    color: white;
+    background-color: #FFCC99;
+    border-top: black 1px solid;
+    border-bottom: black 1px solid;
+    border-left: black 1px solid;
+    border-right: black 1px solid;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.fo_radio {
+    font-size: 8pt;
+    font-family: Arial;
+    color: #000000;
+}
+
+.fo_Subtitle {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 8pt;
+    width: 200px;
+    color: black;
+    text-align: left;
+    background-color: #FFFFFF;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+.fo_SubtitleLarge {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 8pt;
+    width: 750px;
+    color: black;
+    text-align: left;
+    background-color: #FFFFFF;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+.fo_SubtitleBC {
+
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 10pt;
+    width: 100%;
+    color: white;
+    text-align: left;
+    background-color: #FF905C;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+
+}
+
+.fo_cellDer {
+    width: 100%;
+    text-align: left;
+
+}
+
+.fo_label {
+/*padding-right: 10px;*/
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: left;
+    color: #000000;
+    /*height: 22px;
+     padding-top: 2px;
+     padding-bottom: 2px;*/
+}
+
+.fo_labels {
+/*padding-right: 10px;*/
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: Right;
+    color: #000000;
+    margin-left: 80px;
+    /*height: 22px;
+            padding-top: 2px;
+     padding-bottom: 2px;*/
+}
+
+.fo_labels2 {
+/*padding-right: 10px;*/
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: Left;
+    color: #000000; /*margin-right: 95px;*/
+    margin-left: 410px; /* height: 22px;*/
+    /*padding-top: 8px;
+     padding-bottom: 8px;*/
+}
+
+.fo_text {
+/*padding-right: 10px;*/
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: left;
+    color: #000000; /*height: 22px;*/
+}
+
+.fo_text_group{
+/*padding-right: 10px;*/
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: center;
+    color: #000000; /*height: 22px;*/
+}
+
+.fo_date {
+    text-align: right;
+}
+
+.fo_multiline {
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: left;
+    color: #000000;
+    height: 40px;
+    width: 600px;
+}
+
+.fo_multiline2 {
+
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: left;
+    color: #000000;
+    height: 40px;
+    width: 760px;
+
+}
+
+.fo_multiline3 {
+
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: left;
+    color: #000000;
+    height: 40px;
+    width: 680px;
+
+}
+
+.fo_multiline4 {
+
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: left;
+    color: #000000;
+    height: 40px;
+    width: 658px;
+
+}
+
+.fo_button {
+    font-family: Arial;
+    font-size: 8pt;
+    color: white;
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: #FF905C;
+}
+
+.fo_label2 {
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: left;
+    color: #000000;
+    height: 22px
+}
+
+.fo_title_cell {
+    font-family: Arial;
+    font-size: 8pt;
+    font-weight: bold;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: black;
+    background-color: white;
+}
+
+.fo_titleLarge {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 10pt;
+    color: white;
+    background-color: #FF905C;
+    border-top: gray 1px solid;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* Style of presentation*/
+.fo_presentation {
+}
+
+/* Style of combo component*/
+
+.fo_combo {
+    font-size: 8pt;
+    font-family: Arial;
+    color: #000000;
+}
+
+.fo_comboSmall {
+    width: 170px;
+    font-size: 8pt;
+    font-family: Arial;
+    color: #000000;
+}
+
+.fo_comboMedium {
+    width: 350px;
+    font-size: 8pt;
+    font-family: Arial;
+    color: #000000;
+
+}
+
+.fo_comboLarge {
+    width: 655px;
+    font-size: 8pt;
+    font-family: Arial;
+    color: #000000;
+}
+
+/* Style of check component*/
+.fo_check {
+}
+
+/* Style of image component*/
+.fo_image {
+}
+
+/* Style of multiline component*/
+
+/* Style of text component*/
+
+/* Style of button component*/
+
+/* Style of label component*/
+
+/* Style of date component*/
+.fo_date {
+    font-size: 8pt;
+    font-family: Arial;
+    color: #000000;
+}
+
+/* Style of interval component*/
+.fo_interval {
+    font-size: 8pt;
+    font-family: Arial;
+    color: #000000;
+}
+
+/* Style of group component*/
+.fo_group {
+    font-family: Arial;
+    font-size: 8pt;
+    border: 1px; /*margin-left: 60px;*/
+/*margin-right: 3px;*/
+    background: #FF905C;
+    border-top: black 1px Solid;
+    border-bottom: black 1px Solid; /*border-left: black 1px Solid;*/
+    border-right: black 1px Solid;
+}
+
+.fo_group2 {
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    background: #E6E6E6;
+}
+
+/* Style of group component*/
+.fo_group_g {
+    font-family: Arial;
+    font-size: 8pt;
+    border: 1px; /*margin-left: 60px;*/
+/*margin-right: 3px;*/
+    background: #000000; /*border-top: black 1px Solid;*/
+/*border-bottom: black 1px Solid;*/
+/*border-left: black 1px Solid;*/
+    border-right: black 1px Solid;
+}
+
+/* Style of group component*/
+.fo_group_g1 {
+    font-family: Arial;
+    font-size: 8pt;
+    /*border: 1px;
+     margin-left: 60px;*/
+/*margin-right: 3px;*/
+    background: #E6E6E6; /*border-top: black 1px Solid;*/
+/*border-bottom: black 1px Solid;*/
+/*border-left: black 1px Solid;*/
+    border-right: black 1px Solid;
+}
+
+/* Style of group component*/
+.fo_group_doc {
+    font-family: Arial;
+    font-size: 8pt;
+    background: #FFFFFF;
+    margin: 1px;
+
+}
+
+.fo_cell_group_doc_1 {
+    background: #E6E6E6;
+    width: 140px;
+}
+
+.fo_cell_group_doc_2 {
+    background: #E6E6E6;
+    width: 60px;
+}
+
+/* Style of group's header component*/
+.fo_group_header {
+    font-weight: bold;
+    background: #FF905C;
+    color: white;
+    text-align: center;
+    font-size: 8pt;
+}
+
+.fo_group_header2 {
+    font-weight: bold;
+    background: #E6E6E6;
+    color: black;
+    text-align: center;
+    font-size: 8pt;
+    border: black 1px Solid;
+    border-collapse: collapse;
+
+}
+
+.fo_group_header3 {
+    font-weight: bold;
+    background: #FF905C;
+    color: white;
+    text-align: center;
+    font-size: 8pt;
+    border-top: black 1px Solid; /*border-bottom: black 1px Solid;*/
+    border-left: black 1px Solid; /*border-right: black 1px Solid;*/
+}
+
+.fo_group_headerConsulta {
+    font-weight: bold;
+    background: #E6E6E6;
+    color: black;
+    text-align: center;
+    font-size: 8pt;
+}
+
+.fo_group_gg {
+    background: #000000;
+    border-right: black 1px Solid;
+
+}
+
+.fo_group_total {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 8pt;
+    color: black;
+    text-align: center;
+    background-color: #FFFFFF;
+
+}
+
+.fo_group_Subtitle {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 8pt;
+    width: 100px;
+    color: black;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+.fo_group_SubtitleLarge {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 8pt;
+    width: 750px;
+    color: black;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+/* Style of group's index component*/
+.fo_group_index {
+}
+
+/* Style of group's paging component*/
+.fo_group_paging {
+}
+
+/* Style of group's component even rows*/
+.fo_group_even_tr {
+    background: #E6E6E6;
+
+}
+
+/* Style of group's component odd rows*/
+.fo_group_odd_tr {
+    background: #E6E6E6;
+
+}
+
+.fo_group_even_tr2 {
+    background: white;
+    border: black 10px Solid;
+    border-collapse: collapse;
+
+}
+
+.fo_group_odd_tr2 {
+    background: white;
+    border: black 10px Solid;
+    border-collapse: collapse;
+}
+
+/* Style of presentation errors*/
+.fo_presentation_error {
+    color: Red;
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 10pt;
+    border-top: gray 1px solid;
+}
+
+/* Style of presentation errors*/
+
+/* Style of radio component*/
+.fo_radio {
+}
+
+.fo_cell {
+}
+
+.fo_cell2 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 8pt;
+    color: black;
+    background-color: white;
+    text-decoration: underline
+}
+
+.fo_cell3 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 8pt;
+    color: black;
+    background-color: #E6E6E6;
+}
+
+.fo_cell4 {
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    color: black;
+    background-color: white;
+    border: black 1px solid;
+    padding: 5px;
+}
+
+.fo_cell5 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 8pt;
+    color: black;
+    background-color: #E6E6E6;
+    border: black 1px solid;
+    padding: 5px;
+}
+
+.fo_cellConsulta {
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    color: black;
+    background-color: #E6E6E6;
+    padding: 3px;
+	font-weight: bold;
+}
+
+.fo_cellConsulta2 {
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    color: black;
+    background-color: #F3F3F3;
+    padding: 3px;
+}
+
+.fo_celld {
+    border-bottom: black 1px solid;
+}
+
+.fo_cell_group {
+/*border-right: black 1px Solid;*/
+    border-left: black 1px Solid;
+    border-bottom: black 1px Solid;
+}
+
+.fo_cell_group2 {
+/*border-right: black 1px Solid;*/
+    border-left: black 1px Solid;
+    border-bottom: black 1px Solid; /*border-top: black 1px Solid;*/
+}
+
+.fo_cellIz {
+    width: 500px;
+}
+
+/* Style of table component*/
+.fo_table {
+}
+
+.fo_table2 {
+    border: black 1px solid;
+    border-collapse: collapse;
+    width: 50%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.fo_table3 {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Style of table's cell components*/
+.fo_table_cell {
+}
+
+/* Style of presentation errors*/
+
+.fo_cell_block {
+    border-top: gray 1px solid;
+    padding-top: 7px;
+    padding-bottom: 3px;
+
+}
+
+/*ESTOS ESTILOS SON DE USO EXCLUSIVO
+DE LA PANTALLA  FormDocumentacionAdjunta/CheckList*/
+
+.fo_cell_group_bord_Sil {
+    border-left: black 1px solid;
+    border-bottom: #A9A9A9 1px Solid;
+}
+
+.fo_cell_group_bord_Sil2 {
+/*border-right: black 1px Solid;*/
+    border-left: black 1px solid;
+    border-bottom: #A9A9A9 1px Solid;
+}
+
+.fo_cell_group_bord_Sil3 {
+/*border-right: black 1px Solid;*/
+    border-left: black 1px solid;
+    border-bottom: #A9A9A9 1px Solid;
+}
+
+.fo_comboMedium2 {
+    width: 310px;
+
+}
+
+/*-----------------------------------------------------------*/
+
+/*Estilo ABM Peritos por Localidad*/
+.fo_text_1 {
+/*padding-right: 10px;*/
+    font-size: 8pt;
+    font-family: Arial;
+    text-align: left;
+    color: #000000; /*height: 22px;*/
+	border-top: black 1px Solid;
+    border-bottom: black 1px Solid;
+	border-left: black 1px Solid;
+    border-right: black 1px Solid;
+}
+
+.fo_text_error 	 {
+/*padding-right: 10px;*/
+    font-size: 10pt;
+    font-family: Arial;
+    text-align: left;
+    color: #FF0000; /*height: 22px;*/
+}
+
+.fo_group_1 {
+    font-family: Arial;
+    font-size: 8pt;
+    border: 1px; /*margin-left: 60px;*/
+/*margin-right: 3px;*/
+    background: #FF905C;
+    border-top: black 1px Solid;
+    border-bottom: black 1px Solid;
+	border-left: black 1px Solid;
+    border-right: black 1px Solid;
+}
+
+.fo_group_2 {
+    font-family: Arial;
+    font-size: 5pt;
+    border: 1px;
+    background: #FF905C;
+    border-top: black 1px Solid;
+    border-bottom: black 1px Solid;
+	border-left: black 1px Solid;
+    border-right: black 1px Solid;
+}
+
+
+
+
+

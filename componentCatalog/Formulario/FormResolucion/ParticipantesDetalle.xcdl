@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="ParticipantesDetalle" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio.NResolucionParticipantes" name="participante" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ParticipantesDetalle" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormResolucion.ParticipantesDetalle"/>
+		</method>
+	</methods>
+</component>

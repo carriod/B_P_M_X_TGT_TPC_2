@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="Historial" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio.NComentario" name="historialComentarios" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="Historial" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormHistorialComentarios.Historial"/>
+		</method>
+	</methods>
+</component>

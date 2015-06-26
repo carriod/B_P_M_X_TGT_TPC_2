@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FSituacionPresupuestaria" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SSituacionPresupuestaria" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FSituacionPresupuestaria" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FSituacionPresupuestaria"/>
+			<sourceCode language="Java1">this.servicio = new SSituacionPresupuestaria();</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteValue(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues(vigencia : false);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesCombo" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues(vigencia : true);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		String[Integer] comboItem;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    String codigo = (String)objArray[&quot;CODIGO&quot;];
+		    String descripcion = (String)objArray[&quot;DESCRIPCION&quot;];
+			//comboItem[(Integer)objArray[&quot;ID&quot;]] = (codigo!=null?codigo:&quot;&quot;) + (codigo!=null&amp;&amp;descripcion!=null?&quot; - &quot;:&quot;&quot;) + (descripcion!=null?descripcion:&quot;&quot;);
+			comboItem[(Integer)objArray[&quot;ID&quot;]] = (descripcion!=null?descripcion:&quot;&quot;);
+		}
+    	respuesta.contenido = comboItem;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NSituacionPresupuestaria"/>
+			<sourceCode language="Java1">NSituacionPresupuestaria objNegocio = NSituacionPresupuestaria();
+
+objNegocio.idSolicitud				= (Integer)arg.objArray[&quot;SOL_ID&quot;];
+objNegocio.montoImpPresEjerPesos  	= (Decimal)arg.objArray[&quot;MONTOIMPPRESEJERPESOS&quot;];
+objNegocio.montoImpPresEjerDolares	= (Decimal)arg.objArray[&quot;MONTOIMPPRESEJERDOLARES&quot;];
+objNegocio.montoImpPresEjerEuros  	= (Decimal)arg.objArray[&quot;MONTOIMPPRESEJEREUROS&quot;];
+objNegocio.montoImpPresEjerOM.id 	= (Integer)arg.objArray[&quot;MON_ID_MONTOIMPPRESEJER&quot;];
+objNegocio.montoImpPresEjerOtro 	= (Decimal)arg.objArray[&quot;MONTOIMPPRESEJEROTRO&quot;];
+objNegocio.contempladoPresupuesto 	= (String) arg.objArray[&quot;CONTEMPLADOPRESUPUESTO&quot;];
+objNegocio.contempladoPdc			= (String) arg.objArray[&quot;CONTEMPLADOPDC&quot;];
+objNegocio.montoPresPesos			= (Decimal)arg.objArray[&quot;MONTOPRESPESOS&quot;];
+objNegocio.montoPresDolares 		= (Decimal)arg.objArray[&quot;MONTOPRESDOLARES&quot;];
+objNegocio.montoPresEuros			= (Decimal)arg.objArray[&quot;MONTOPRESEUROS&quot;];
+objNegocio.montoPresOM.id 			= (Integer)arg.objArray[&quot;MON_ID_MONTOPRES&quot;];
+objNegocio.montoPresOtro 			= (Decimal)arg.objArray[&quot;MONTOPRESOTRO&quot;];
+objNegocio.montoPdcPesos  			= (Decimal)arg.objArray[&quot;MONTOPDCPESOS&quot;];
+objNegocio.montoPdcDolares			= (Decimal)arg.objArray[&quot;MONTOPDCDOLARES&quot;];
+objNegocio.montoPdcEuros  			= (Decimal)arg.objArray[&quot;MONTOPDCEUROS&quot;];
+objNegocio.montoPdcOM.id 			= (Integer)arg.objArray[&quot;MON_ID_MONTOPDC&quot;];
+objNegocio.montoPdcOtro 			= (Decimal)arg.objArray[&quot;MONTOPDCOTRO&quot;];
+objNegocio.premisasPresupuesto 		= (String) arg.objArray[&quot;PREMISASPRESUPUESTO&quot;];
+objNegocio.gastoRealAcumPesos   	= (Decimal)arg.objArray[&quot;GASTOREALACUMPESOS&quot;];
+objNegocio.gastoRealAcumDolares 	= (Decimal)arg.objArray[&quot;GASTOREALACUMDOLARES&quot;];
+objNegocio.gastoRealAcumEuros   	= (Decimal)arg.objArray[&quot;GASTOREALACUMEUROS&quot;];
+objNegocio.gastoRealAcumOM.id 		= (Integer)arg.objArray[&quot;MON_ID_GASTOREALACUM&quot;];
+objNegocio.gastoRealAcumOtro 		= (Decimal)arg.objArray[&quot;GASTOREALACUMOTRO&quot;];
+objNegocio.gastoRealProyPesos  		= (Decimal)arg.objArray[&quot;GASTOREALPROYPESOS&quot;];
+objNegocio.gastoRealProyDolares		= (Decimal)arg.objArray[&quot;GASTOREALPROYDOLARES&quot;];
+objNegocio.gastoRealProyEuros   	= (Decimal)arg.objArray[&quot;GASTOREALPROYEUROS&quot;];
+objNegocio.gastoRealProyOM.id 		= (Integer)arg.objArray[&quot;MON_ID_GASTOREALPROY&quot;];
+objNegocio.gastoRealProyOtro 		= (Decimal)arg.objArray[&quot;GASTOREALPROYOTRO&quot;];
+objNegocio.existeDesvio 			= (Java.Lang.Boolean)arg.objArray[&quot;EXISTEDESVIO&quot;];
+objNegocio.planAccionDesvio 		= (String) arg.objArray[&quot;PLANACCIONDESVIO&quot;];
+objNegocio.montoInvEjPesos  		= (Decimal)arg.objArray[&quot;MONTOINVEJANTPESOS&quot;];
+objNegocio.montoInvEjDolares		= (Decimal)arg.objArray[&quot;MONTOINVEJANTDOLARES&quot;];
+objNegocio.montoInvEjEuros  		= (Decimal)arg.objArray[&quot;MONTOINVEJANTEUROS&quot;];
+objNegocio.montoInvEjOM.id 			= (Integer)arg.objArray[&quot;MON_ID_MONTOINVEJANT&quot;];
+objNegocio.montoInvEjOtro 			= (Decimal)arg.objArray[&quot;MONTOINVEJANTOTRO&quot;];
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="objNegocio" description="" flags="in" type="Negocio.NSituacionPresupuestaria"/>
+			<arg name="nuevaSolicitud" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.setValue( solId : arg.objNegocio.idSolicitud,
+										montoImpPresEjerPesos : arg.objNegocio.montoImpPresEjerPesos,
+										montoImpPresEjerDolares : arg.objNegocio.montoImpPresEjerDolares, 
+	                     			  	montoImpPresEjerEuros : arg.objNegocio.montoImpPresEjerEuros,
+	                     			  	montoImpPresEjerOtro : arg.objNegocio.montoImpPresEjerOtro,
+	                     			  	monIdMontoImpPresEjer : arg.objNegocio.montoImpPresEjerOM.id,
+	                     			  	contempladoPresupuesto : arg.objNegocio.contempladoPresupuesto, 
+	                       				contempladoPdc : arg.objNegocio.contempladoPdc,
+	                       				montoPresPesos : arg.objNegocio.montoPresPesos,
+	                       				montoPresDolares : arg.objNegocio.montoPresDolares, 
+	                       				montoPresEuros : arg.objNegocio.montoPresEuros,
+	                       				monIdMontoPres : arg.objNegocio.montoPresOM.id,
+										montoPresOtro : arg.objNegocio.montoPresOtro,
+	                       				montoPdcPesos : arg.objNegocio.montoPdcPesos,
+	                       				montoPdcDolares : arg.objNegocio.montoPdcDolares, 
+	                       				montoPdcEuros : arg.objNegocio.montoPdcEuros,
+	                       				montoPdcOtro : arg.objNegocio.montoPdcOtro,
+	                       				monIdMontoPdc : arg.objNegocio.montoPdcOM.id,
+	                       				premisasPresupuesto : arg.objNegocio.premisasPresupuesto,
+	                       				gastoRealAcumPesos : arg.objNegocio.gastoRealAcumPesos, 
+	                       				gastoRealAcumDolares : arg.objNegocio.gastoRealAcumDolares,
+	                       				gastoRealAcumEuros : arg.objNegocio.gastoRealAcumEuros,
+	                       				monIdGastoRealAcum : arg.objNegocio.gastoRealAcumOM.id,
+ 										gastoRealAcumOtro : arg.objNegocio.gastoRealAcumOtro,
+	                       				gastoRealProyPesos : arg.objNegocio.gastoRealProyPesos, 
+	                       				gastoRealProyDolares : arg.objNegocio.gastoRealProyDolares,
+	                       				gastoRealProyEuros : arg.objNegocio.gastoRealProyEuros,
+	                       				monIdGastoRealProy : arg.objNegocio.gastoRealProyOM.id,
+ 										gastoRealProyOtro : arg.objNegocio.gastoRealProyOtro,
+	                       				existeDesvio : arg.objNegocio.existeDesvio, 
+	                       				planAccionDesvio : arg.objNegocio.planAccionDesvio,
+	                       				montoInvEjAntPesos : arg.objNegocio.montoInvEjPesos,
+	                       				montoInvEjAntDolares : arg.objNegocio.montoInvEjDolares, 
+	                       				montoInvEjAntEuros : arg.objNegocio.montoInvEjEuros,
+	                       				monIdMontoInvEjAnt : arg.objNegocio.montoInvEjOM.id,
+										montoInvEjAntOtro : arg.objNegocio.montoInvEjOtro,
+	                       				nuevaSolicitud : arg.nuevaSolicitud);
+
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarErrores" flags="clientavailable public">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="rol" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">String[] errores = {};
+if(!arg.solicitud.pedidoCesta.id in {3,5}){
+	
+	if (arg.rol == &quot;TPC - Solicitante SAGI&quot;){
+		
+		
+	}else if(arg.rol == &quot;TPC - Gestor Enlace&quot;){
+	
+		if (arg.solicitud.situacionPresupuestaria.gastoRealAcumDolares == null		&amp;&amp; 
+				arg.solicitud.situacionPresupuestaria.gastoRealAcumEuros == null	&amp;&amp; 
+				arg.solicitud.situacionPresupuestaria.gastoRealAcumPesos == null	&amp;&amp;
+					(arg.solicitud.situacionPresupuestaria.gastoRealAcumOM.id == null || arg.solicitud.situacionPresupuestaria.gastoRealAcumOtro == null))
+		{
+			errores[] = &quot;Debe cargar al menos uno de los montos de inversion o Gasto real acumulado ejerc. actual.&quot;;
+		}
+		
+		if (arg.solicitud.situacionPresupuestaria.gastoRealProyDolares == null		&amp;&amp; 
+				arg.solicitud.situacionPresupuestaria.gastoRealProyEuros == null	&amp;&amp; 
+				arg.solicitud.situacionPresupuestaria.gastoRealProyPesos == null	&amp;&amp;
+					(arg.solicitud.situacionPresupuestaria.gastoRealProyOM.id == null || arg.solicitud.situacionPresupuestaria.gastoRealProyOtro == null))
+		{
+			errores[] = &quot;Debe cargar al menos uno de los montos de inversion o Gasto real proyectado ejerc. actual.&quot;;
+		}
+		
+		
+		if (arg.solicitud.situacionPresupuestaria.montoImpPresEjerDolares == null		&amp;&amp; 
+				arg.solicitud.situacionPresupuestaria.montoImpPresEjerEuros == null		&amp;&amp; 
+				arg.solicitud.situacionPresupuestaria.montoImpPresEjerPesos == null		&amp;&amp;
+					(arg.solicitud.situacionPresupuestaria.montoImpPresEjerOM.id == null || arg.solicitud.situacionPresupuestaria.montoImpPresEjerOtro == null))
+		{
+			errores[] = &quot;Debe cargar al menos uno de los montos Impacto en el Presente Ejercicio.&quot;;
+		}
+		
+		if (arg.solicitud.situacionPresupuestaria.montoInvEjDolares == null		&amp;&amp; 
+				arg.solicitud.situacionPresupuestaria.montoInvEjEuros == null	&amp;&amp; 
+				arg.solicitud.situacionPresupuestaria.montoInvEjPesos == null	&amp;&amp;
+					(arg.solicitud.situacionPresupuestaria.montoInvEjOM.id == null || arg.solicitud.situacionPresupuestaria.montoInvEjOtro == null))
+		{
+			errores[] = &quot;Debe cargar al menos uno de los montos de Inversión o Gasto real ejercicio anterior.&quot;;
+		}
+		
+		if (arg.solicitud.situacionPresupuestaria.contempladoPdc == &apos;S&apos; || arg.solicitud.situacionPresupuestaria.contempladoPdc == &apos;P&apos;){
+			if (arg.solicitud.situacionPresupuestaria.montoPdcDolares == null	&amp;&amp; 
+					arg.solicitud.situacionPresupuestaria.montoPdcEuros == null	&amp;&amp; 
+					arg.solicitud.situacionPresupuestaria.montoPdcPesos == null &amp;&amp;
+						(arg.solicitud.situacionPresupuestaria.montoPdcOM.id == null || arg.solicitud.situacionPresupuestaria.montoPdcOtro == null))
+			{
+				errores[] = &quot;Debe cargar al menos uno de los montos en PDC.&quot;;
+			}
+		}
+		
+		
+		if (arg.solicitud.situacionPresupuestaria.contempladoPresupuesto == &apos;S&apos; || arg.solicitud.situacionPresupuestaria.contempladoPresupuesto == &apos;P&apos;){
+			if (arg.solicitud.situacionPresupuestaria.montoPresDolares == null		&amp;&amp; 
+					arg.solicitud.situacionPresupuestaria.montoPresEuros == null	&amp;&amp; 
+					arg.solicitud.situacionPresupuestaria.montoPresPesos == null	&amp;&amp;
+						(arg.solicitud.situacionPresupuestaria.montoPresOM.id == null || arg.solicitud.situacionPresupuestaria.montoPresOtro == null))
+			{
+				errores[] = &quot;Debe cargar al menos uno de los montos Presupuesto.&quot;;
+			}
+		}
+		
+		if(arg.solicitud.situacionPresupuestaria.premisasPresupuesto == null || arg.solicitud.situacionPresupuestaria.premisasPresupuesto == &quot;&quot;){
+			errores[] = &quot;&apos;Premisas de Presupuesto&apos; es obligatorio&quot;;
+		}
+		
+		if(arg.solicitud.situacionPresupuestaria.existeDesvio){
+			if(arg.solicitud.situacionPresupuestaria.planAccionDesvio == null || arg.solicitud.situacionPresupuestaria.planAccionDesvio == &quot;&quot;){
+				errores[] = &quot;&apos;Plan de acción para obtener desvío&apos; es obligatorio&quot;;
+			}
+		}
+		
+		if (arg.solicitud.situacionPresupuestaria.contempladoPresupuesto == null || arg.solicitud.situacionPresupuestaria.contempladoPresupuesto == &quot;&quot;){
+			errores[] = &quot;Debe seleccionar un valor en Contemplado en el Presupuesto&quot;;
+		}
+		
+		if (arg.solicitud.situacionPresupuestaria.contempladoPdc == null || arg.solicitud.situacionPresupuestaria.contempladoPdc == &quot;&quot;){
+			errores[] = &quot;Debe seleccionar un valor en Contemplado en PDC&quot;;
+		}
+	}
+}
+
+return errores;</sourceCode>
+		</method>
+	</methods>
+</component>

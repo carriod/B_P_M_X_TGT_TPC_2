@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableCellFeatures" description="WritableCellFeatures" versionID="Version 6.5 " flags="" signature="jxl.write.WritableCellFeatures" type="java">
+	<inherit class="Utiles.Jxl.CellFeatures" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.WritableCellFeatures"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.WritableCellFeatures"/>
+	<attributes/>
+	<methods>
+		<method name="WritableCellFeatures" flags="static hidden" signature="Kjxl.write.WritableCellFeatures()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableCellFeatures"/>
+		</method>
+		<method name="WritableCellFeatures" flags="static" signature="Kjxl.write.WritableCellFeatures(Ljxl.CellFeatures;)">
+			<arg name="cf" description="" flags="in external" type="Utiles.Jxl.CellFeatures" javaType="jxl.CellFeatures"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableCellFeatures"/>
+		</method>
+		<method name="removeComment" description="removeComment" flags="external" signature="MremoveComment()V"/>
+		<method name="setComment" description="setComment" flags="external hidden" signature="MsetComment(Ljava.lang.String;)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setComment" description="setComment" flags="external" signature="MsetComment(Ljava.lang.String;DD)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="width" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="height" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+	</methods>
+</component>

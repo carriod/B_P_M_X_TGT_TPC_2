@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<externalResource name="WSTokenService" type="web service" subtype="WSCONSUMER">
+	<property name="uddi.registry" value="HOST_EASYDOC_INTRANET"/>
+	<property name="exceptionPolicy" value="SYSTEM"/>
+	<property name="transport.connector" value="HOST_EASYDOC_INTRANET"/>
+	<property name="binding.type" value="static"/>
+	<property name="uddi.secure" value="false"/>
+	<property name="transport.http.path" value="/WSTokenCompras/WSToken.asmx"/>
+	<property name="transport.type" value="HTTP"/>
+</externalResource>

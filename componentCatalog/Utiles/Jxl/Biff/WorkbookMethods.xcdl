@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WorkbookMethods" description="WorkbookMethods" versionID="Version 6.5 " flags="abstract interface" signature="jxl.biff.WorkbookMethods" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="jxl.biff.WorkbookMethods"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.WorkbookMethods"/>
+	<attributes/>
+	<methods>
+		<method name="getName" description="getName" flags="abstract external" signature="MgetName(I)Ljava.lang.String;">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getNameIndex" description="getNameIndex" flags="abstract external" signature="MgetNameIndex(Ljava.lang.String;)I">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getReadSheet" description="getReadSheet" flags="abstract external" signature="MgetReadSheet(I)Ljxl.Sheet;">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Sheet" javaType="jxl.Sheet"/>
+		</method>
+	</methods>
+</component>

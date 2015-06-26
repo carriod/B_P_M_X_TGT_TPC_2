@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="CellFormat" description="CellFormat" versionID="Version 6.5 " flags="abstract interface" signature="jxl.format.CellFormat" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="jxl.format.CellFormat"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.CellFormat"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.Alignment" name="alignment" flags="hasgetter external" position="1" javaType="jxl.format.Alignment" readSignature="MgetAlignment()Ljxl.format.Alignment;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="backgroundColour" flags="hasgetter external" position="2" javaType="jxl.format.Colour" readSignature="MgetBackgroundColour()Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Font" name="font" flags="hasgetter external" position="3" javaType="jxl.format.Font" readSignature="MgetFont()Ljxl.format.Font;"/>
+		<object type="Utiles.Jxl.Format.Format" name="format" flags="hasgetter external" position="4" javaType="jxl.format.Format" readSignature="MgetFormat()Ljxl.format.Format;"/>
+		<Int length="32" name="indentation" flags="hasgetter external" primitive="true" position="5" javaType="int" readSignature="MgetIndentation()I"/>
+		<Bool name="locked" flags="hasgetter external" primitive="true" position="6" javaType="boolean" readSignature="MisLocked()Z"/>
+		<object type="Utiles.Jxl.Format.Orientation" name="orientation" flags="hasgetter external" position="7" javaType="jxl.format.Orientation" readSignature="MgetOrientation()Ljxl.format.Orientation;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="pattern" flags="hasgetter external" position="8" javaType="jxl.format.Pattern" readSignature="MgetPattern()Ljxl.format.Pattern;"/>
+		<Bool name="shrinkToFit" flags="hasgetter external" primitive="true" position="9" javaType="boolean" readSignature="MisShrinkToFit()Z"/>
+		<object type="Utiles.Jxl.Format.VerticalAlignment" name="verticalAlignment" flags="hasgetter external" position="10" javaType="jxl.format.VerticalAlignment" readSignature="MgetVerticalAlignment()Ljxl.format.VerticalAlignment;"/>
+		<Bool name="wrap" flags="hasgetter external" primitive="true" position="11" javaType="boolean" readSignature="MgetWrap()Z"/>
+	</attributes>
+	<methods>
+		<method name="getAlignment" description="getAlignment" flags="abstract external hidden" signature="MgetAlignment()Ljxl.format.Alignment;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Alignment" javaType="jxl.format.Alignment"/>
+		</method>
+		<method name="getBackgroundColour" description="getBackgroundColour" flags="abstract external hidden" signature="MgetBackgroundColour()Ljxl.format.Colour;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+		</method>
+		<method name="getBorder" description="getBorder" flags="abstract external" signature="MgetBorder(Ljxl.format.Border;)Ljxl.format.BorderLineStyle;">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Format.Border" javaType="jxl.format.Border"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.BorderLineStyle" javaType="jxl.format.BorderLineStyle"/>
+		</method>
+		<method name="getBorderColour" description="getBorderColour" flags="abstract external" signature="MgetBorderColour(Ljxl.format.Border;)Ljxl.format.Colour;">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Format.Border" javaType="jxl.format.Border"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+		</method>
+		<method name="getBorderLine" description="getBorderLine" flags="abstract external" signature="MgetBorderLine(Ljxl.format.Border;)Ljxl.format.BorderLineStyle;">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Format.Border" javaType="jxl.format.Border"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.BorderLineStyle" javaType="jxl.format.BorderLineStyle"/>
+		</method>
+		<method name="getFont" description="getFont" flags="abstract external hidden" signature="MgetFont()Ljxl.format.Font;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Font" javaType="jxl.format.Font"/>
+		</method>
+		<method name="getFormat" description="getFormat" flags="abstract external hidden" signature="MgetFormat()Ljxl.format.Format;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Format" javaType="jxl.format.Format"/>
+		</method>
+		<method name="getIndentation" description="getIndentation" flags="abstract external hidden" signature="MgetIndentation()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getOrientation" description="getOrientation" flags="abstract external hidden" signature="MgetOrientation()Ljxl.format.Orientation;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Orientation" javaType="jxl.format.Orientation"/>
+		</method>
+		<method name="getPattern" description="getPattern" flags="abstract external hidden" signature="MgetPattern()Ljxl.format.Pattern;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Pattern" javaType="jxl.format.Pattern"/>
+		</method>
+		<method name="getVerticalAlignment" description="getVerticalAlignment" flags="abstract external hidden" signature="MgetVerticalAlignment()Ljxl.format.VerticalAlignment;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.VerticalAlignment" javaType="jxl.format.VerticalAlignment"/>
+		</method>
+		<method name="getWrap" description="getWrap" flags="abstract external hidden" signature="MgetWrap()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="hasBorders" description="hasBorders" flags="abstract external" signature="MhasBorders()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isLocked" description="isLocked" flags="abstract external hidden" signature="MisLocked()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isShrinkToFit" description="isShrinkToFit" flags="abstract external hidden" signature="MisShrinkToFit()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

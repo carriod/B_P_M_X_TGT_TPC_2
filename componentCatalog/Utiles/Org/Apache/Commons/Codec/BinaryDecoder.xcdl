@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<component name="BinaryDecoder" description="BinaryDecoder" versionID="Version 6.5 " flags="abstract interface" signature="org.apache.commons.codec.BinaryDecoder" type="java">
+	<inherit class="{java,org.apache.commons.codec.Decoder,Org.Apache.Commons.Codec.Decoder}" flags=""/>
+	<objectProperty name="javaClassName" value="org.apache.commons.codec.BinaryDecoder"/>
+	<objectProperty name="package" value="org.apache.commons.codec"/>
+	<objectProperty name="typeId" value="org.apache.commons.codec.BinaryDecoder"/>
+	<attributes/>
+	<methods>
+		<method name="decode" description="decode" flags="abstract external" signature="Mdecode([B)[B">
+			<arg name="arg1" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,org.apache.commons.codec.DecoderException,Org.Apache.Commons.Codec.DecoderException}"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="SProyectoMayor" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="1"/>
+		<String name="prefijo" flags="hassetter hasgetter public" position="2"/>
+		<String name="tabla" flags="hassetter hasgetter public" position="3"/>
+	</attributes>
+	<methods>
+		<method name="SProyectoMayor" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SProyectoMayor"/>
+			<sourceCode language="Java1">this.prefijo = &quot;PMA_&quot;;
+this.tabla = &quot;TPC_PROYECTOS_MAYORES&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;ID = ?&quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.id;
+		
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteValuesForIdSolicitud" flags="public server disableclient">
+			<arg name="idSolicitud" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.idSolicitud;
+		
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValuesForIdSolicitud(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+     				  &quot;WHERE &quot; + this.prefijo + &quot;ID = ( SELECT MAX(&quot; + this.prefijo + &quot;ID) FROM &quot; + this.tabla  + &quot; )&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;TPY_ID&quot;] = (Integer)row[this.prefijo + &quot;TPY_ID&quot;];
+		value[&quot;NPY_ID&quot;] = (Integer)row[this.prefijo + &quot;NPY_ID&quot;];
+		value[&quot;PORCENTAJEINCIDENCIA&quot;] = (Integer)row[this.prefijo + &quot;PORCENTAJEINCIDENCIA&quot;];
+		value[&quot;RPY_ID&quot;] = (Integer)row[this.prefijo + &quot;RPY_ID&quot;];	
+		value[&quot;APROBADO&quot;] = ((String)row[this.prefijo + &quot;APROBADO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROBADO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;IAP_ID&quot;] = (Integer)row[this.prefijo + &quot;IAP_ID&quot;];
+		value[&quot;FECHAAPROBACION&quot;] = (Time)row[this.prefijo + &quot;FECHAAPROBACION&quot;];
+		value[&quot;MONTOAPROPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROPESOS&quot;];
+		value[&quot;MONTOAPRODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPRODOLARES&quot;];
+		value[&quot;MONTOAPROEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROEUROS&quot;];
+		value[&quot;MON_ID_MONTOTOTAL&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOTOTAL&quot;];
+		value[&quot;MONTOAPROOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROOTRO&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<arg name="vigencia" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  (arg.vigencia? &quot;WHERE &quot; + this.prefijo + &quot;VIGENCIA = &apos;A&apos; &quot; : &quot;&quot;) +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;ID&quot;;
+    				  
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value = {};
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;TPY_ID&quot;] = (Integer)row[this.prefijo + &quot;TPY_ID&quot;];
+		value[&quot;NPY_ID&quot;] = (Integer)row[this.prefijo + &quot;NPY_ID&quot;];
+		value[&quot;PORCENTAJEINCIDENCIA&quot;] = (Integer)row[this.prefijo + &quot;PORCENTAJEINCIDENCIA&quot;];
+		value[&quot;RPY_ID&quot;] = (Integer)row[this.prefijo + &quot;RPY_ID&quot;];	
+		value[&quot;APROBADO&quot;] = ((String)row[this.prefijo + &quot;APROBADO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROBADO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;IAP_ID&quot;] = (Integer)row[this.prefijo + &quot;IAP_ID&quot;];
+		value[&quot;FECHAAPROBACION&quot;] = (Time)row[this.prefijo + &quot;FECHAAPROBACION&quot;];
+		value[&quot;MONTOAPROPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROPESOS&quot;];
+		value[&quot;MONTOAPRODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPRODOLARES&quot;];
+		value[&quot;MONTOAPROEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROEUROS&quot;];
+		value[&quot;MON_ID_MONTOTOTAL&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOTOTAL&quot;];
+		value[&quot;MONTOAPROOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROOTRO&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesForIdSolicitud" flags="clientavailable public">
+			<arg name="idSolicitud" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ? &quot; +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;ID&quot;;
+    				  
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { arg.idSolicitud }))
+    {
+		value = {};
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;TPY_ID&quot;] = (Integer)row[this.prefijo + &quot;TPY_ID&quot;];
+		value[&quot;NPY_ID&quot;] = (Integer)row[this.prefijo + &quot;NPY_ID&quot;];
+		value[&quot;PORCENTAJEINCIDENCIA&quot;] = (Integer)row[this.prefijo + &quot;PORCENTAJEINCIDENCIA&quot;];
+		value[&quot;RPY_ID&quot;] = (Integer)row[this.prefijo + &quot;RPY_ID&quot;];	
+		value[&quot;APROBADO&quot;] = ((String)row[this.prefijo + &quot;APROBADO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROBADO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;IAP_ID&quot;] = (Integer)row[this.prefijo + &quot;IAP_ID&quot;];
+		value[&quot;FECHAAPROBACION&quot;] = (Time)row[this.prefijo + &quot;FECHAAPROBACION&quot;];
+		value[&quot;MONTOAPROPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROPESOS&quot;];
+		value[&quot;MONTOAPRODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPRODOLARES&quot;];
+		value[&quot;MONTOAPROEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROEUROS&quot;];
+		value[&quot;MON_ID_MONTOTOTAL&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOTOTAL&quot;];
+		value[&quot;MONTOAPROOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROOTRO&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;ID = ?&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { arg.id }))
+    {
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;TPY_ID&quot;] = (Integer)row[this.prefijo + &quot;TPY_ID&quot;];
+		value[&quot;NPY_ID&quot;] = (Integer)row[this.prefijo + &quot;NPY_ID&quot;];
+		value[&quot;PORCENTAJEINCIDENCIA&quot;] = (Integer)row[this.prefijo + &quot;PORCENTAJEINCIDENCIA&quot;];
+		value[&quot;RPY_ID&quot;] = (Integer)row[this.prefijo + &quot;RPY_ID&quot;];	
+		value[&quot;APROBADO&quot;] = ((String)row[this.prefijo + &quot;APROBADO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROBADO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;IAP_ID&quot;] = (Integer)row[this.prefijo + &quot;IAP_ID&quot;];
+		value[&quot;FECHAAPROBACION&quot;] = (Time)row[this.prefijo + &quot;FECHAAPROBACION&quot;];
+		value[&quot;MONTOAPROPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROPESOS&quot;];
+		value[&quot;MONTOAPRODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPRODOLARES&quot;];
+		value[&quot;MONTOAPROEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROEUROS&quot;];
+		value[&quot;MON_ID_MONTOTOTAL&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOTOTAL&quot;];
+		value[&quot;MONTOAPROOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROOTRO&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    } else {
+        respuesta.resultado = DATAERROR;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.id + &quot;\&quot; no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="idSolicitud" description="" flags="in" type="Int"/>
+			<arg name="idTpy" description="" flags="in" type="Int"/>
+			<arg name="idNpy" description="" flags="in" type="Int"/>
+			<arg name="idRpy" description="" flags="in" type="Int"/>
+			<arg name="idIap" description="" flags="in" type="Int"/>
+			<arg name="fechaAprobacion" description="" flags="in" type="Time"/>
+			<arg name="montoAproPesos" description="" flags="in" type="Decimal"/>
+			<arg name="montoAproDolares" description="" flags="in" type="Decimal"/>
+			<arg name="montoAproEuros" description="" flags="in" type="Decimal"/>
+			<arg name="aprobado" description="" flags="in" type="Bool"/>
+			<arg name="porcentajeIncidencia" description="" flags="in" type="Int"/>
+			<arg name="montoAproOM" description="" flags="in" type="Int"/>
+			<arg name="montoAproOtro" description="" flags="in" type="Decimal"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;INSERT INTO &quot; + this.tabla + &quot; (&quot; +
+					this.prefijo + &quot;SOL_ID, &quot; +
+					this.prefijo + &quot;TPY_ID, &quot; +
+					this.prefijo + &quot;NPY_ID, &quot; +
+					this.prefijo + &quot;PORCENTAJEINCIDENCIA, &quot; +
+					this.prefijo + &quot;RPY_ID, &quot; +
+					this.prefijo + &quot;APROBADO, &quot; +
+					this.prefijo + &quot;IAP_ID, &quot; +	
+					this.prefijo + &quot;FECHAAPROBACION, &quot; +	
+					this.prefijo + &quot;MONTOAPROPESOS, &quot; +	
+					this.prefijo + &quot;MONTOAPRODOLARES, &quot; +	
+					this.prefijo + &quot;MONTOAPROEUROS, &quot; +	
+					this.prefijo + &quot;MON_ID_MONTOAPRO, &quot; + 
+					this.prefijo + &quot;MONTOAPROOTRO)&quot; + 														
+				&quot;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)&quot;;
+
+		
+	Any[] inParameters = {};
+	inParameters[] = arg.idSolicitud;
+	inParameters[] = arg.idTpy;
+	inParameters[] = arg.idNpy;
+	inParameters[] = arg.porcentajeIncidencia;
+	inParameters[] = arg.idRpy;
+	inParameters[] = arg.aprobado==null?null:arg.aprobado?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.idIap;
+	inParameters[] = arg.fechaAprobacion;
+	inParameters[] = arg.montoAproPesos;
+	inParameters[] = arg.montoAproDolares;
+	inParameters[] = arg.montoAproEuros;
+	inParameters[] = arg.montoAproOM;
+	inParameters[] = arg.montoAproOtro;
+	
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

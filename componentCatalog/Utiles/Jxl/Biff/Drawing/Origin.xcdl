@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Origin" description="Origin" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.Origin" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.Origin"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.Origin"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.Drawing.Origin" name="READ" flags="hasgetter attribute static external final" position="1" javaType="jxl.biff.drawing.Origin" writeSignature="AREAD;Ljxl.biff.drawing.Origin;" readSignature="AREAD;Ljxl.biff.drawing.Origin;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.Origin" name="READ_WRITE" flags="hasgetter attribute static external final" position="3" javaType="jxl.biff.drawing.Origin" writeSignature="AREAD_WRITE;Ljxl.biff.drawing.Origin;" readSignature="AREAD_WRITE;Ljxl.biff.drawing.Origin;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.Origin" name="WRITE" flags="hasgetter attribute static external final" position="2" javaType="jxl.biff.drawing.Origin" writeSignature="AWRITE;Ljxl.biff.drawing.Origin;" readSignature="AWRITE;Ljxl.biff.drawing.Origin;"/>
+	</attributes>
+	<methods/>
+</component>

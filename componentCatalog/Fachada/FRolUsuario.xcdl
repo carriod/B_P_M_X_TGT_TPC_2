@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FRolUsuario" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SRolUsuario" name="service" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FRolUsuario" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FRolUsuario"/>
+			<sourceCode language="Java1">this.service = SRolUsuario();</sourceCode>
+		</method>
+		<method name="addRoleToParticipant" flags="clientavailable public">
+			<arg name="parameter" description="" flags="in" type="String"/>
+			<arg name="roleId" description="" flags="in" type="String"/>
+			<arg name="participantId" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = this.service.addRoleToParticipant(	participantId : arg.participantId,
+												roleId : arg.roleId,
+												parameter : arg.parameter);
+if(respuesta.resultado!= OK){
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error: &quot;+ respuesta.contenido;
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteRoleFromParticipant" flags="clientavailable public">
+			<arg name="participantId" description="" flags="in" type="String"/>
+			<arg name="roleId" description="" flags="in" type="String"/>
+			<arg name="parameter" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="resp" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">resp = this.service.deleteRoleFromParticipant(	participantId : arg.participantId,
+												roleId : arg.roleId,
+												parameter : arg.parameter);
+if(resp.resultado != OK){
+	resp.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error(FRolUsuario): &quot;+ resp.contenido;
+}
+return resp;</sourceCode>
+		</method>
+		<method name="getAllRoleIds" flags="clientavailable public">
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = this.service.getAllRoleIds();
+if(respuesta.resultado!= OK){
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error: &quot;+ respuesta.contenido;
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getRoleById" flags="clientavailable public">
+			<arg name="roleId" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+				<variable name="roleMap" type="Any[String]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = this.service.getRoleById(roleId : arg.roleId);
+if(respuesta.resultado != OK){
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error: &quot;+ respuesta.contenido;
+	return respuesta;
+}
+try {
+    roleMap =(Any[String])respuesta.contenido;
+    boolean parametric = (boolean)roleMap[&quot;parametric&quot;];
+    String[] parameters = (String[])roleMap[&quot;parametricValues&quot;];
+	if(parametric){
+		respuesta = this.service.getDescForRoleParameters(roleId : arg.roleId, parameters : parameters);
+		if(respuesta.resultado==OK){
+			roleMap =(Any[String])respuesta.contenido;
+			roleMap[&quot;id&quot;] = arg.roleId;
+			roleMap[&quot;parametric&quot;] = parametric;
+			respuesta.contenido = roleMap;
+		}
+	}
+
+} catch (Exception e) {
+    Utiles.Logger.logException(exception : e);
+	respuesta.resultado = ERROR;
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error: &quot;+ e.message;
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="searchParticipants" flags="clientavailable public">
+			<arg name="partialName" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = this.service.searchParticipants(partialName : arg.partialName);
+if(respuesta.resultado != OK) {
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error &quot;+ (String)respuesta.contenido;
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="searchRoleAssignForParticipant" flags="clientavailable public">
+			<arg name="partId" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="field" type="String[String]"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+				<variable name="roleAssign" type="Any[]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = this.service.searchRoleAssignForParticipant(partId : arg.partId);
+if(respuesta.resultado!= OK){
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error: &quot;+ respuesta.contenido;
+	return respuesta;
+}
+try{
+	roleAssign=(Any[])respuesta.contenido;
+	respuesta = Respuesta();
+	
+	foreach(it in roleAssign){
+		field = (String[String])it;
+		field[&quot;descripcion&quot;] = (String)(this.service.getDescForRoleParameter(roleId : field[&quot;roleId&quot;], parameter : field[&quot;parametricValue&quot;])).contenido;
+	}
+	respuesta.contenido=roleAssign;
+}catch(Exception e){
+	Utiles.Logger.logException(exception : e);
+	respuesta.resultado = ERROR;
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error: &quot;+ e.message;
+
+}
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

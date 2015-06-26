@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="FormulaMessage" description="FormulaException$FormulaMessage" versionID="Version 6.5 " flags="" signature="jxl.biff.formula.FormulaException$FormulaMessage" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.formula.FormulaException$FormulaMessage"/>
+	<objectProperty name="package" value="jxl.biff.formula"/>
+	<objectProperty name="typeId" value="jxl.biff.formula.FormulaException$FormulaMessage"/>
+	<attributes>
+		<String name="message" flags="hassetter hasgetter attribute external" position="1" javaType="java.lang.String" writeSignature="Amessage;Ljava.lang.String;" readSignature="Amessage;Ljava.lang.String;"/>
+	</attributes>
+	<methods/>
+</component>

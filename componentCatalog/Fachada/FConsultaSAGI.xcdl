@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="FConsultaSAGI" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SConsultaSAGI" name="servicio" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FConsultaSAGI" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FConsultaSAGI"/>
+			<sourceCode language="Java1">this.servicio = SConsultaSAGI();</sourceCode>
+		</method>
+		<method name="cargarContenidoReporte" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<arg name="value" description="" flags="in" type="Any[String]"/>
+			<sourceCode language="Java1">Integer i = 0;
+datos[i][]  = value[&quot;sol.sol_id&quot;]; 
+i = i + 1;
+datos[i][]  = value[&quot;cge.cge_idrelacionada&quot;];
+i = i + 1;
+datos[i][]  = value[&quot;sol.sol_fechaalta&quot;];
+i = i + 1;
+datos[i][]  = value[&quot;sol.sol_fechaenvioenlace&quot;];
+i = i + 1;
+datos[i][]  = value[&quot;sol.sol_fechaenvioanalisis&quot;];
+i = i + 1;
+datos[i][]  = value[&quot;cce.cce_descripcion&quot;];
+i = i + 1;
+datos[i][]  = value[&quot;pce.pce_descripcion&quot;];
+i = i + 1;
+datos[i][]  = value[&quot;sol.sol_nrocesta&quot;];
+i = i + 1;
+datos[i][]  = value[&quot;sol.sol_nrocestaanulada&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_motivoreemplazo&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_nropedido&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_nrocestaasocpedido&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sol.sol_montototalpesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sol.sol_montototaldolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sol.sol_montototaleuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sol.sol_montototalotro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_periodofechainicio&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_periodofechafin&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_gestorsolicitante&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_emailsolicitante&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_gestorenlace&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_emailenlace&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_areasolicitante&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_centrocostos&quot;];
+i = i + 1;
+datos[i][] = value[&quot;tco.tco_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;dco.dco_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sociedades.descSociedades&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cpr.cpr_codigo&quot;] + &quot; - &quot; + value[&quot;cpr.cpr_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;lpr.lpr_codigo&quot;] + &quot; - &quot; + value[&quot;lpr.lpr_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_descripcionnecesidad&quot;];
+i = i + 1;
+datos[i][] = value[&quot;spr.spr_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_centrocostosimpcontable&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_cuentaimpcontable&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_actividadimpcontable&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_pep&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_beneficiocompra&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_recurrencia&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_periodicidadcompra&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_regularizacion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_motivoregularizacion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;NOTAREGADMINISTRATIVA&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_comentarioregadm&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_compramargmod&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_motivocompramargmod&quot;];
+i = i + 1;
+datos[i][] = value[&quot;NOTACOMPMARGMOD&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_gastospedido&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_infogastospedido&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_alcancefijo&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_alcancemovil&quot;];
+i = i + 1;
+datos[i][] = value[&quot;vne.vne_descfijomovil&quot;];
+i = i + 1;
+datos[i][] = value[&quot;pas.pas_parteproymayores&quot;];
+i = i + 1;
+datos[i][] = value[&quot;proyectos.descProyectos&quot;];
+i = i + 1;
+datos[i][] = value[&quot;pas.pas_afectaotrasareas&quot;];
+i = i + 1;
+datos[i][] = value[&quot;pas.pas_otrasareasafec&quot;];
+i = i + 1;
+datos[i][] = value[&quot;tpr.tpr_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;pro.pro_nombreproveedorcond&quot;];
+i = i + 1;
+datos[i][] = value[&quot;CARTAPROVCOND&quot;];
+i = i + 1;
+datos[i][] = value[&quot;mpc.mpc_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;pro.pro_justificacionmotivo&quot;];
+i = i + 1;
+datos[i][] = value[&quot;pro.pro_proveedoressugeridos&quot;];
+i = i + 1;
+datos[i][] = value[&quot;ant.ant_antecedentes&quot;];
+i = i + 1;
+datos[i][] = value[&quot;ant.ant_comentariosantecedentes&quot;];
+i = i + 1;
+datos[i][] = value[&quot;ant.ant_incrementoprecio&quot;];
+i = i + 1;
+datos[i][] = value[&quot;ant.ant_justificacionincprecio&quot;];
+i = i + 1;
+datos[i][] = value[&quot;ant.ant_incrementocantidad&quot;];
+i = i + 1;
+datos[i][] = value[&quot;ant.ant_justificacioninccantidad&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montoimppresejerpesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montoimppresejerdolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montoimppresejereuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montoimppresejerotro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;sip.sip_contempladopresupuesto&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montoprespesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montopresdolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montopreseuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montopresotro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;sip.sip_contempladopdc&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montopdcpesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montopdcdolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montopdceuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montopdcotro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;sip.sip_premisaspresupuesto&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sip.sip_existedesvio&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sip.sip_planacciondesvio&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montoinvejantpesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montoinvejantdolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montoinvejanteuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_montoinvejantotro&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_gastorealacumpesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_gastorealacumdolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_gastorealacumeuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_gastorealacumotro&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_gastorealproypesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_gastorealproydolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_gastorealproyeuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;sip.sip_gastorealproyotro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;lcp.lcp_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_aprocomitepatrocinios&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_promotorgasto&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_expcondpatrocinio&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_comentariospatrocinio&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_aprobadorrhh&quot;];
+i = i + 1;
+datos[i][] = value[&quot;EVIDENCIAAPROB&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_productoservicio&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_gastopresupuestopesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_gastopresupuestodolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_gastopresupuestoeuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_gastopresupuestootro&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_ingresospresupuestopesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_ingresospresupuestodolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_ingresospresupuestoeuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_ingresospresupuestootro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_overbooking&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_margenproducto&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_mantienemargenanterior&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_gastoejanteriorpesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_gastoejanteriordolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_gastoejanterioreuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_gastoejanteriorotro&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_ingresosejanteriorpesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_ingresosejanteriordolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_ingresosejanterioreuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;cpa.cpa_ingresosejanteriorotro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;cpa.cpa_comentariosreventa&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cge.cge_nombrenecesidad&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cge.cge_fechacorte&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cso.cso_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;aso.aso_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;car.car_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cge.cge_fueraproceso&quot;];
+i = i + 1;
+datos[i][] = value[&quot;mfp.mfp_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;tor.tor_codigo&quot;] + &quot; - &quot; + value[&quot;tor.tor_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;eag.eag_codigo&quot;] + &quot; - &quot; + value[&quot;eag.eag_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;eso.eso_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;apa.apa_analista&quot;];
+i = i + 1;
+datos[i][] = value[&quot;apa.apa_intervencion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;apa.apa_gerentecompras&quot;];
+i = i + 1;
+datos[i][] = value[&quot;apa.apa_jefecompras&quot;];
+i = i + 1;
+datos[i][] = value[&quot;apa.apa_comprador&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cge.cge_analisissagi&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cge.cge_modificadoporpedido&quot;];
+i = i + 1;
+datos[i][] = value[&quot;cge.cge_rechazadocompras&quot;];
+i = i + 1;
+datos[i][] = value[&quot;recomendacionAnalista.comentarioRecomendacion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;recomendacionComprador.comentarioRecomendacion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;recomendacionIntervencion.comentarioRecomendacion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.rlt_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.res_fechaplanificada&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.res_fechareal&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.res_fechaproxprecomite&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.res_fechaproxcomite&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.msb_descripcion&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionPreComite.res_montoaprobadopesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionPreComite.res_montoaprobadodolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionPreComite.res_montoaprobadoeuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionPreComite.res_montoaprobadootro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.res_comentario&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.descParticipantes&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.res_fechaliberacion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.res_requisitocompras&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.res_condicionamientoprov&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionPreComite.res_fechacierre&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.rlt_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.res_fechaplanificada&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.res_fechareal&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.res_fechaproxprecomite&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.res_fechaproxcomite&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.msb_descripcion&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionComite.res_montoaprobadopesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionComite.res_montoaprobadodolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionComite.res_montoaprobadoeuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionComite.res_montoaprobadootro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.res_comentario&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.descParticipantes&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.res_fechaliberacion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.res_requisitocompras&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.res_condicionamientoprov&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionComite.res_fechacierre&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.rlt_descripcion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_fechaplanificada&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_fechareal&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_fechaproxprecomite&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_fechaproxcomite&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.msb_descripcion&quot;];
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionUltimaInstancia.res_montoaprobadopesos&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionUltimaInstancia.res_montoaprobadodolares&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionUltimaInstancia.res_montoaprobadoeuros&quot;]);
+i = i + 1;
+datos[i][] = FConfiguracion.setMontoLectura(valorDecimal : (Decimal) value[&quot;resolucionUltimaInstancia.res_montoaprobadootro&quot;]);
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_comentario&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.descParticipantes&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_fechaliberacion&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_requisitocompras&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_condicionamientoprov&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_fechacierre&quot;];
+i = i + 1;
+datos[i][] = value[&quot;resolucionUltimaInstancia.res_tipo&quot;];
+i = i + 1;
+datos[i][] = value[&quot;iteraciones.cantidad&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_fechaplanprecomite&quot;];
+i = i + 1;
+datos[i][] = value[&quot;sol.sol_fechaplancomite&quot;];</sourceCode>
+		</method>
+		<method name="cargarContenidoReporteABM" flags="clientavailable public">
+			<arg name="datos" description="" flags="in" type="Any[][]"/>
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="codigo" description="" flags="in" type="String"/>
+			<arg name="descripcion" description="" flags="in" type="String"/>
+			<arg name="fechaAlta" description="" flags="in" type="Time"/>
+			<arg name="usuarioAlta" description="" flags="in" type="String"/>
+			<arg name="fechaModificacion" description="" flags="in" type="Time"/>
+			<arg name="usuarioModificacion" description="" flags="in" type="String"/>
+			<arg name="vigencia" description="" flags="in" type="Bool"/>
+			<sourceCode language="Java1">datos[0][]  = arg.id; 
+datos[1][]  = arg.codigo;
+datos[2][]  = arg.descripcion;
+datos[3][]  = arg.fechaAlta;
+datos[4][]  = arg.usuarioAlta;
+datos[5][]  = arg.fechaModificacion;
+datos[6][]  = arg.usuarioModificacion;
+datos[7][]  = arg.vigencia;</sourceCode>
+		</method>
+		<method name="cargarContenidoReporteABMGrte" flags="clientavailable public">
+			<arg name="datos" description="" flags="in" type="Any[][]"/>
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="categoria" description="" flags="in" type="String"/>
+			<arg name="gerente" description="" flags="in" type="String"/>
+			<arg name="fechaAlta" description="" flags="in" type="Time"/>
+			<arg name="usuarioAlta" description="" flags="in" type="String"/>
+			<arg name="fechaModificacion" description="" flags="in" type="Time"/>
+			<arg name="usuarioModificacion" description="" flags="in" type="String"/>
+			<sourceCode language="Java1">datos[0][]  = arg.id; 
+datos[1][]  = arg.categoria;
+datos[2][]  = arg.gerente;
+datos[3][]  = arg.fechaAlta;
+datos[4][]  = arg.usuarioAlta;
+datos[5][]  = arg.fechaModificacion;
+datos[6][]  = arg.usuarioModificacion;
+</sourceCode>
+		</method>
+		<method name="cargarTitulosReporte" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<sourceCode language="Java1">Integer i = 0;
+datos[i][]   = &quot;Id Solicitud&quot;;
+i = i + 1;
+datos[i][]   = &quot;Id Relacionada&quot;;
+i = i + 1;
+datos[i][]   = &quot;Fecha de creación de la solicitud&quot;;
+i = i + 1;
+datos[i][]   = &quot;Fecha de envío de solicitante a enlace&quot;;
+i = i + 1;
+datos[i][]   = &quot;Fecha de envío de enlace a Control de Gestión&quot;;
+i = i + 1;
+datos[i][]   = &quot;Categoría&quot;;
+i = i + 1;
+datos[i][]   = &quot;Tipo de pedido&quot;;
+i = i + 1;
+datos[i][]   = &quot;Número de cesta&quot;;
+i = i + 1;
+datos[i][]   = &quot;Número de Cesta anulada&quot;;
+i = i + 1;
+datos[i][]	 = &quot;Motivo de reemplazo de Cesta&quot;;
+i = i + 1;
+datos[i][]  = &quot;Nro de Pedido &quot;;
+i = i + 1;
+datos[i][]  = &quot;Nro de Cesta asociada al pedido &quot;;
+i = i + 1;
+datos[i][]  = &quot;Montos totales de la cesta o del pedido (pesos)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Montos totales de la cesta o del pedido (dólares)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Montos totales de la cesta o del pedido (euros)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Montos totales de la cesta o del pedido (otro)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Fecha inicio período&quot;;
+i = i + 1;
+datos[i][]  = &quot;Fecha fin período&quot;;
+i = i + 1;
+datos[i][]  = &quot;Gestor Solicitante&quot;;
+i = i + 1;
+datos[i][]  = &quot;Dirección email Gestor Solicitante&quot;;
+i = i + 1;
+datos[i][]  = &quot;Enlace&quot;;
+i = i + 1;
+datos[i][]  = &quot;Dirección email Enlace&quot;;
+i = i + 1;
+datos[i][]  = &quot;Área gestor solicitante&quot;;
+i = i + 1;
+datos[i][]  = &quot;Centro de Costos Gestor Solicitante&quot;;
+i = i + 1;
+datos[i][]  = &quot;Tipo de compra&quot;;
+i = i + 1;
+datos[i][]  = &quot;Destino de la compra&quot;;
+i = i + 1;
+datos[i][]  = &quot;Sociedades&quot;;
+i = i + 1;
+datos[i][]  = &quot;Categoría de Producto&quot;;
+i = i + 1;
+datos[i][]  = &quot;Línea de Producto&quot;;
+i = i + 1;
+datos[i][]  = &quot;Descripción de la necesidad&quot;;
+i = i + 1;
+datos[i][]  = &quot;Tipo de Material/Subtipo de Producto&quot;;
+i = i + 1;
+datos[i][]  = &quot;Centro de costos imputación contable&quot;;
+i = i + 1;
+datos[i][]  = &quot;Cuenta imputación contable&quot;;
+i = i + 1;
+datos[i][]  = &quot;Actividad imputación contable&quot;;
+i = i + 1;
+datos[i][]  = &quot;PEP&quot;;
+i = i + 1;
+datos[i][]  = &quot;Beneficio de la compra&quot;;
+i = i + 1;
+datos[i][]  = &quot;Recurrencia&quot;;
+i = i + 1;
+datos[i][]  = &quot;Periodicidad de la compra&quot;;
+i = i + 1;
+datos[i][]  = &quot;Regularización&quot;;
+i = i + 1;
+datos[i][]  = &quot;Motivo Regularización&quot;;
+i = i + 1;
+datos[i][]  = &quot;Nota Regularización Administrativa&quot;;
+i = i + 1;
+datos[i][]  = &quot;Comentario regularización administrativo&quot;;
+i = i + 1;
+datos[i][]  = &quot;Compra al Margen del modelo&quot;;
+i = i + 1;
+datos[i][]  = &quot;Motivo Compra al Margen del modelo&quot;;
+i = i + 1;
+datos[i][]  = &quot;Nota Compra al Margen del modelo&quot;;
+i = i + 1;
+datos[i][]  = &quot;Gastos asociados al pedido&quot;;
+i = i + 1;
+datos[i][]  = &quot;Información Gastos Asociados&quot;;
+i = i + 1;
+datos[i][]  = &quot;Alcance Fijo&quot;;
+i = i + 1;
+datos[i][]  = &quot;Alcance Móvil&quot;;
+i = i + 1;
+datos[i][]  = &quot;Descripción Fijo/Móvil&quot;;
+i = i + 1;
+datos[i][]  = &quot;Forma parte de proyectos mayores&quot;;
+i = i + 1;
+datos[i][]  = &quot;Proyectos mayores&quot;;
+i = i + 1;
+datos[i][]  = &quot;Afecta Otras Áreas&quot;;
+i = i + 1;
+datos[i][]  = &quot;Otras áreas afectadas&quot;;
+i = i + 1;
+datos[i][]  = &quot;Tipo Proveedor&quot;;
+i = i + 1;
+datos[i][]  = &quot;Nombre Proveedor condicionado &quot;;
+i = i + 1;
+datos[i][]  = &quot;Carta Proveedor Condicionado&quot;;
+i = i + 1;
+datos[i][]  = &quot;Clasif. Motivo Proveedor Condicionado&quot;;
+i = i + 1;
+datos[i][]  = &quot;Justificación elección Motivo&quot;;
+i = i + 1;
+datos[i][]  = &quot;Indicar Proveedores Sugeridos&quot;;
+i = i + 1;
+datos[i][]  = &quot;Tiene antecentes&quot;;
+i = i + 1;
+datos[i][]  = &quot;Comentarios a antecedentes&quot;;
+i = i + 1;
+datos[i][]  = &quot;Incremento en Precio&quot;;
+i = i + 1;
+datos[i][]  = &quot;Justificación incremento en Precio&quot;;
+i = i + 1;
+datos[i][]  = &quot;Incremento en Cantidad&quot;;
+i = i + 1;
+datos[i][]  = &quot;Justificación incremento en Cantidad&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto impacto en presente ejercicio (pesos)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto impacto en presente ejercicio (dólares)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto impacto en presente ejercicio (euros)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto impacto en presente ejercicio (otro)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Contemplado en Presupuesto&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto en Presupuesto (pesos)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto en Presupuesto (dólares)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto en Presupuesto (euros)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto en Presupuesto (otro)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Contemplado en PDC (previsión de cierre)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto en PDC (previsión de cierre) (pesos)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto en PDC (previsión de cierre) (dólares)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto en PDC (previsión de cierre) (euros)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto en PDC (previsión de cierre) (otro)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Premisas en presupuesto&quot;;
+i = i + 1;
+datos[i][]  = &quot;Existe Desvío&quot;;
+i = i + 1;
+datos[i][]  = &quot;Plan de acción (para absorver desvío)Texto&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto real ejercicio anterior (pesos)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto real ejercicio anterior (dólares)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto real ejercicio anterior (euros)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto real ejercicio anterior (otro)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto real acumulado ejerc.actual (pesos)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto real acumulado ejerc.actual (dólares)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto real acumulado ejerc.actual (euros)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto real acumulado ejerc.actual (otro)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto proyectado ejerc.actual (pesos)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto proyectado ejerc.actual (dólares)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto proyectado ejerc.actual (euros)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Monto de Inversión o Gasto proyectado ejerc.actual (otro)&quot;;
+i = i + 1;
+datos[i][]  = &quot;Compras Particulares&quot;;
+i = i + 1;
+datos[i][]  = &quot;Aprobado Comité de Patrocinios&quot;;
+i = i + 1;
+datos[i][]  = &quot;Promotor del gasto&quot;;
+i = i + 1;
+datos[i][]  = &quot;Gastos de explotación condicionan patrocinio&quot;;
+i = i + 1;
+datos[i][]  = &quot;Comentarios patrocinio&quot;;
+i = i + 1;
+datos[i][]  = &quot;Aprobado Recursos Humanos&quot;;
+i = i + 1;
+datos[i][]  = &quot;Evidencia Aprobación&quot;;
+i = i + 1;
+datos[i][] = &quot;Producto/Servicio&quot;;
+i = i + 1;
+datos[i][] = &quot;Gasto en Presupuesto (pesos)&quot;;
+i = i + 1;
+datos[i][] = &quot;Gasto en Presupuesto (dólares)&quot;;
+i = i + 1;
+datos[i][] = &quot;Gasto en Presupuesto (euros)&quot;;
+i = i + 1;
+datos[i][] = &quot;Gasto en Presupuesto (otro)&quot;;
+i = i + 1;
+datos[i][] = &quot;Ingresos en Presupuesto (pesos)&quot;;
+i = i + 1;
+datos[i][] = &quot;Ingresos en Presupuesto (dólares)&quot;;
+i = i + 1;
+datos[i][] = &quot;Ingresos en Presupuesto (euros)&quot;;
+i = i + 1;
+datos[i][] = &quot;Ingresos en Presupuesto (otro)&quot;;
+i = i + 1;
+datos[i][] = &quot;Overbooking&quot;;
+i = i + 1;
+datos[i][] = &quot;Margen del Producto/Servicio&quot;;
+i = i + 1;
+datos[i][] = &quot;Mantiene Margen Ejercicio Anterior&quot;;
+i = i + 1;
+datos[i][] = &quot;Gasto en Ejercicio Anterior (pesos)&quot;;
+i = i + 1;
+datos[i][] = &quot;Gasto en Ejercicio Anterior (dólares)&quot;;
+i = i + 1;
+datos[i][] = &quot;Gasto en Ejercicio Anterior (euros)&quot;;
+i = i + 1;
+datos[i][] = &quot;Gasto en Ejercicio Anterior (otro)&quot;;
+i = i + 1;
+datos[i][] = &quot;Ingresos en Ejercicio Anterior (pesos)&quot;;
+i = i + 1;
+datos[i][] = &quot;Ingresos en Ejercicio Anterior (dólares)&quot;;
+i = i + 1;
+datos[i][] = &quot;Ingresos en Ejercicio Anterior (euros)&quot;;
+i = i + 1;
+datos[i][] = &quot;Ingresos en Ejercicio Anterior (otro)&quot;;
+i = i + 1;
+datos[i][] = &quot;Comentarios reventa / otros&quot;;
+i = i + 1;
+datos[i][] = &quot;Nombre&quot;;
+i = i + 1;
+datos[i][] = &quot;Fecha de Corte&quot;;
+i = i + 1;
+datos[i][] = &quot;Calificación de solicitud&quot;;
+i = i + 1;
+datos[i][] = &quot;Área Solicitante&quot;;
+i = i + 1;
+datos[i][] = &quot;Clasificación del área&quot;;
+i = i + 1;
+datos[i][] = &quot;Fuera de Proceso&quot;;
+i = i + 1;
+datos[i][] = &quot;Motivo Fuera de Proceso&quot;;
+i = i + 1;
+datos[i][] = &quot;Tipo&quot;;
+i = i + 1;
+datos[i][] = &quot;Estado para Agendamiento&quot;;
+i = i + 1;
+datos[i][] = &quot;Estado&quot;;
+i = i + 1;
+datos[i][] = &quot;Analista asignado&quot;;
+i = i + 1;
+datos[i][] = &quot;Intervención  asignado&quot;;
+i = i + 1;
+datos[i][] = &quot;Gerente de compras  asignado&quot;;
+i = i + 1;
+datos[i][] = &quot;Jefe de compras asignado&quot;;
+i = i + 1;
+datos[i][] = &quot;Comprador asignado&quot;;
+i = i + 1;
+datos[i][] = &quot;Análisis&quot;;
+i = i + 1;
+datos[i][] = &quot;Modificado por pedido&quot;;
+i = i + 1;
+datos[i][] = &quot;Rechazado Compras &quot;;
+i = i + 1;
+datos[i][] = &quot;Recomendación del analista&quot;;
+i = i + 1;
+datos[i][] = &quot;Recomendación del comprador&quot;;
+i = i + 1;
+datos[i][] = &quot;Recomendación de intervención&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Resultado&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Fecha planificada&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Fecha real&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Fecha próximo Pre Comité&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Fecha próximo Comité&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Motivo stand-by&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Monto aprobado (pesos)&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Monto aprobado (dolares)&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Monto aprobado (euros)&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Monto aprobado (otro)&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Comentarios&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Participantes&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Fecha de liberación de cesta&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Requisitos Compras&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Condicionamiento Proveedor&quot;;
+i = i + 1;
+datos[i][] = &quot;Pre-Comité: Fecha de cierre&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Resultado&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Fecha planificada&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Fecha real&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Fecha próximo Pre Comité&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Fecha próximo Comité&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Motivo stand-by&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Monto aprobado (pesos)&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Monto aprobado (dolares)&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Monto aprobado (euros)&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Monto aprobado (otro)&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Comentarios&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Participantes&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Fecha de liberación de cesta&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Requisitos Compras&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Condicionamiento Proveedor&quot;;
+i = i + 1;
+datos[i][] = &quot;Comité: Fecha de cierre&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Resultado&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Fecha planificada&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Fecha real&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Fecha próximo Pre Comité&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Fecha próximo Comité&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Motivo stand-by&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Monto aprobado (pesos)&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Monto aprobado (dolares)&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Monto aprobado (euros)&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Monto aprobado (otro)&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Comentarios&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Participantes&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Fecha de liberación de cesta&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Requisitos Compras&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Condicionamiento Proveedor&quot;;
+i = i + 1;
+datos[i][] = &quot;Última Instancia: Fecha de cierre&quot;;
+i = i + 1;
+datos[i][] = &quot;Tipo Última Instancia&quot;;
+i = i + 1;
+datos[i][] = &quot;Cantidad de Iteraciones&quot;;
+i = i + 1;
+datos[i][] = &quot;Fecha Próximo Pre-Comité Planificado&quot;;
+i = i + 1;
+datos[i][] = &quot;Fecha Próximo Comité Planificado&quot;;</sourceCode>
+		</method>
+		<method name="cargarTitulosReporteABM" flags="clientavailable public">
+			<arg name="datos" description="" flags="in" type="Any[][]"/>
+			<sourceCode language="Java1">datos[0][]   = &quot;Id&quot;;
+datos[1][]   = &quot;Codigo&quot;;
+datos[2][]   = &quot;Descripcion&quot;;
+datos[3][]   = &quot;Fecha de Alta&quot;;
+datos[4][]   = &quot;Usuario de Alta&quot;;
+datos[5][]   = &quot;Fecha de Modificacion&quot;;
+datos[6][]   = &quot;Usuario de Modificacion&quot;;
+datos[7][]   = &quot;Vigencia&quot;;</sourceCode>
+		</method>
+		<method name="cargarTitulosReporteABMGrte" flags="clientavailable public">
+			<arg name="datos" description="" flags="in" type="Any[][]"/>
+			<sourceCode language="Java1">datos[0][]   = &quot;Id&quot;;
+datos[1][]   = &quot;Categoría Producto&quot;;
+datos[2][]   = &quot;Gerente&quot;;
+datos[3][]   = &quot;Fecha de Alta&quot;;
+datos[4][]   = &quot;Usuario de Alta&quot;;
+datos[5][]   = &quot;Fecha de Modificacion&quot;;
+datos[6][]   = &quot;Usuario de Modificacion&quot;;
+datos[7][]   = &quot;Vigencia&quot;;</sourceCode>
+		</method>
+		<method name="getListValuesForFiltro" flags="clientavailable public">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="resultadoValor" description="" flags="in" type="Int"/>
+			<arg name="sociedadValor" description="" flags="in" type="Int"/>
+			<arg name="fechaCreaDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaCreaHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaEnvioDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaEnvioHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaPlanifPreComDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaPlanifPreComHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaPlanifComDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaPlanifComHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaRealPreComDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaRealPreComHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaRealComDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaRealComHasta" description="" flags="in" type="Time"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValuesForFiltro(fechaCreaDesde : arg.fechaCreaDesde,
+													fechaCreaHasta : arg.fechaCreaHasta, 
+	                                     			fechaEnvioDesde : arg.fechaEnvioDesde,
+	                                     			fechaEnvioHasta : arg.fechaEnvioHasta, 
+	                                    			fechaPlanifPreComDesde : arg.fechaPlanifPreComDesde,
+	                                    			fechaPlanifPreComHasta : arg.fechaPlanifPreComHasta, 
+	                                     			fechaPlanifComDesde : arg.fechaPlanifComDesde,
+	                                     			fechaPlanifComHasta : arg.fechaPlanifComHasta, 
+	                                     			fechaRealPreComDesde : arg.fechaRealPreComDesde,
+	                                     			fechaRealPreComHasta : arg.fechaRealPreComHasta, 
+	                                     			fechaRealComDesde : arg.fechaRealComDesde,
+	                                     			fechaRealComHasta : arg.fechaRealComHasta, 
+	                                     			solicitud : arg.solicitud,
+	                                     			sociedadValor : arg.sociedadValor,
+	                                     			resultadoValor : arg.resultadoValor);
+	
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+    
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValuesForFiltro(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValuesForExcel" flags="clientavailable public">
+			<arg name="solicitudes" description="" flags="in" type="Int[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValuesForExcel(solicitudes : arg.solicitudes);
+	if (respuesta.resultado == OK) {
+		respuesta.contenido = (Any[])respuesta.contenido;
+	}   
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValuesForFiltro(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NResultadoConsultaSAGI"/>
+			<sourceCode language="Java1">NResultadoConsultaSAGI objNegocio = NResultadoConsultaSAGI();
+
+objNegocio.idSolicitud = (Integer)arg.objArray[&quot;SOL_ID&quot;];
+objNegocio.fechaCreacion = (Time)arg.objArray[&quot;SOL_FECHAALTA&quot;];
+objNegocio.nroCesta = (Integer)arg.objArray[&quot;SOL_NROCESTA&quot;];
+objNegocio.nombre = (String)arg.objArray[&quot;CGE_NOMBRENECESIDAD&quot;];
+objNegocio.tipoPedido = (String)arg.objArray[&quot;PCE_DESCRIPCION&quot;];
+objNegocio.solicitante = (String)arg.objArray[&quot;SOL_GESTORSOLICITANTE&quot;];
+objNegocio.enlace = (String)arg.objArray[&quot;SOL_GESTORENLACE&quot;];
+objNegocio.fechaEnvio = (Time)arg.objArray[&quot;SOL_FECHAENVIOANALISIS&quot;];
+objNegocio.analista = (String)arg.objArray[&quot;APA_ANALISTA&quot;];
+objNegocio.resultado = (String)arg.objArray[&quot;RLT_DESCRIPCION&quot;];
+objNegocio.estado = (String)arg.objArray[&quot;ESO_DESCRIPCION&quot;];
+objNegocio.fechaPlanPreComite = (Time)arg.objArray[&quot;SOL_FECHAPLANPRECOMITE&quot;];
+objNegocio.fechaPlanComite = (Time)arg.objArray[&quot;SOL_FECHAPLANCOMITE&quot;];
+
+return objNegocio;</sourceCode>
+		</method>
+	</methods>
+</component>

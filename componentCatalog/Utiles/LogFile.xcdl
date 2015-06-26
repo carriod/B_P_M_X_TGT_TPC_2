@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="LogFile" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="LogFile" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.LogFile"/>
+		</method>
+		<method name="logDelimitedFile" flags="clientavailable public">
+			<arg name="file" description="" flags="in" type="String"/>
+			<arg name="lineas" description="" flags="in" type="String[]"/>
+			<arg name="delimitador" description="" flags="in" type="String"/>
+			<sourceCode language="Java1">Java.Io.File f = Java.Io.File(arg.file);
+
+if (!f.exists()) {
+	f.createNewFile();
+}
+else{
+	f.delete();
+	f.createNewFile();
+}
+
+DelimitedFile df = DelimitedFile();
+df.encoding = &quot;ISO8859_1&quot;;
+df.openForWriting(name : arg.file, append : true, fieldSeparator : arg.delimitador, lineSeparator : &quot;\n&quot;);
+
+//df.writeLineTo(line : &quot;[&quot;+&apos;now&apos;+&quot;] &quot;+arg.mensaje);
+foreach(linea in lineas) {
+    df.writeLineTo(line : linea);
+}
+
+df.close();
+</sourceCode>
+		</method>
+		<method name="logTextFile" flags="clientavailable public">
+			<arg name="file" description="" flags="in" type="String"/>
+			<arg name="mensajes" description="" flags="in" type="String[]"/>
+			<sourceCode language="Java1">Java.Io.File f = Java.Io.File(arg.file);
+
+if (f.exists()) {
+	f.delete();
+}
+f.createNewFile();
+TextFile tf = TextFile();
+tf.encoding = &quot;ISO8859_1&quot;;
+
+tf.openForWriting(name : arg.file, append : true, lineSeparator : &quot;\n&quot;);
+
+//tf.writeLineTo(line : &quot;[&quot;+&apos;now&apos;+&quot;] &quot;+arg.mensaje);
+
+for (int i = 0; i &lt; mensajes.length; i++) {
+    tf.writeLineTo(line : mensajes[i]);
+}
+
+tf.close();
+</sourceCode>
+		</method>
+	</methods>
+</component>

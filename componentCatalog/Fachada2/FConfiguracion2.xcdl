@@ -1,0 +1,1651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="FConfiguracion2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio2.SConfiguracion2" name="servicio" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FConfiguracion2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada2.FConfiguracion2"/>
+			<sourceCode language="Java1">this.servicio = new SConfiguracion2();</sourceCode>
+		</method>
+		<method name="cargarContenidoReporteCumpli" flags="clientavailable public">
+			<arg name="resultadoReporte" description="" flags="in" type="Negocio2.NResultadoReporte2"/>
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<arg name="estado" description="" flags="in" type="String"/>
+			<arg name="reporte" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = resultadoReporte.idCesta;
+i++;
+datos[i][] = resultadoReporte.codigoPlanifCesta;
+i++;
+datos[i][] = resultadoReporte.direcSolicDesc;
+i++;
+datos[i][] = resultadoReporte.tipoCestaDesc;
+i++;
+datos[i][] = resultadoReporte.categoriaProductoCodigo;
+i++;
+datos[i][] = resultadoReporte.categoriaProductoDesc;
+i++;
+datos[i][] = resultadoReporte.monedaDesc;
+i++;
+datos[i][] = resultadoReporte.montoCesta;
+i++;
+datos[i][] = resultadoReporte.fechaLiberacion;
+i++;
+if (Integer.parseInt(reporte)&gt;10){
+	datos[i][] = resultadoReporte.fechaRechazo;
+	i++;
+}
+datos[i][] = resultadoReporte.procesoId;
+i++;
+if (Integer.parseInt(reporte)&gt;10){
+	datos[i][] = resultadoReporte.fechaAprobadoMesa;
+	i++;
+}
+datos[i][] = resultadoReporte.fechaProcesoTerminado;
+i++;
+datos[i][] = resultadoReporte.fechaReprogramada;
+i++;
+datos[i][] = resultadoReporte.fechaObjetivo;
+i++;
+datos[i][] = resultadoReporte.tituloProceso;
+i++;
+datos[i][] = resultadoReporte.lineaProductoDesc;	
+i++;
+datos[i][] = resultadoReporte.tipoCompraDesc;
+i++;
+datos[i][] = resultadoReporte.estadosProcesoDesc;
+i++;
+datos[i][] = resultadoReporte.comprador;
+i++;
+datos[i][] = resultadoReporte.jefatura;
+i++;
+datos[i][] = resultadoReporte.gerencia;
+i++;
+datos[i][] = arg.estado;
+</sourceCode>
+		</method>
+		<method name="cargarContenidoReporteProcesoCTA" flags="clientavailable public">
+			<arg name="cta" description="" flags="in" type="Negocio2.NListaCDV2"/>
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = arg.cta.id;
+i++;
+datos[i][] = arg.cta.idProceso;
+i++;
+datos[i][] = arg.cta.edicionProceso;
+i++;
+datos[i][] = arg.cta.codigoCDV;
+i++;
+datos[i][] = arg.cta.fechaInicioCDV;
+i++;
+datos[i][] = arg.cta.fechaFinCDV;
+i++;</sourceCode>
+		</method>
+		<method name="cargarContenidoReporteProcesoDJAI" flags="clientavailable public">
+			<arg name="djai" description="" flags="in" type="Negocio2.NListaDJAI2"/>
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = arg.djai.id;
+i++;
+datos[i][] = arg.djai.idProceso;
+i++;
+datos[i][] = arg.djai.edicionProceso;
+i++;
+datos[i][] = arg.djai.identificacion;
+i++;
+datos[i][] = arg.djai.fechaInicioDJAI;
+i++;
+datos[i][] = arg.djai.fechaFinDJAI;
+i++;</sourceCode>
+		</method>
+		<method name="cargarContenidoReportesCartaCompleto" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<arg name="carta" description="" flags="in" type="Negocio2.NCarta2"/>
+			<arg name="moneda" description="" flags="in" type="Negocio2.NMoneda2"/>
+			<arg name="sociedad" description="" flags="in" type="Negocio2.NSociedad2"/>
+			<arg name="proveedor" description="" flags="in" type="Negocio2.NProveedor2"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = arg.carta.id ;
+i++;
+datos[i][] = arg.carta.idProceso;
+i++;
+datos[i][] = arg.carta.edicionProceso;
+i++;
+datos[i][] = arg.carta.proveedorCodigo;
+i++;
+datos[i][] = arg.proveedor.descripcion;
+i++;
+datos[i][] = arg.carta.monedaId;
+i++;
+datos[i][] = arg.moneda.descripcion;
+i++;
+datos[i][] = arg.carta.sociedadId;
+i++;
+datos[i][] = arg.sociedad.descripcionLarga;
+i++;
+datos[i][] = arg.carta.link;
+i++;
+datos[i][] = arg.carta.fechaCreacion;
+i++;
+datos[i][] = arg.carta.fechaVisadoJefatura;
+i++;
+datos[i][] = arg.carta.fechaFirmaGerencia;
+i++;
+datos[i][] = arg.carta.fechaEnvioCarta;
+i++;
+datos[i][] = arg.carta.montoParcial.montoStr;
+i++;
+</sourceCode>
+		</method>
+		<method name="cargarContenidoReportesCesta" flags="clientavailable public">
+			<arg name="cesta" description="" flags="in" type="Negocio2.NCesta2"/>
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = arg.cesta.id ;
+i++;
+datos[i][] = arg.cesta.procesoId;
+i++;
+datos[i][] = arg.cesta.procesoEdicion;
+i++;
+datos[i][] = arg.cesta.sociedad.descripcionLarga;
+i++;
+datos[i][] = arg.cesta.consulta.areaSolicitante;
+i++;
+datos[i][] = arg.cesta.categoriaProducto.codigo;
+i++;
+datos[i][] = arg.cesta.categoriaProducto.descripcion;
+if(arg.cesta.consulta.cta){
+	i++;
+	datos[i][] = &quot;Si&quot;;
+}else{
+	i++;
+	datos[i][] = &quot;No&quot;;
+}
+if(arg.cesta.consulta.djai){
+	i++;
+	datos[i][] = &quot;Si&quot;;
+}else{
+	i++;
+	datos[i][] = &quot;No&quot;;
+}
+i++;
+datos[i][] = arg.cesta.consulta.tipoCompra;
+i++;
+datos[i][] = arg.cesta.moneda.descripcion;
+i++;
+datos[i][] = arg.cesta.monto.montoStr;
+i++;
+datos[i][] = arg.cesta.consulta.solicitante;
+i++;
+datos[i][] = arg.cesta.consulta.enlace;
+i++;
+datos[i][] = Time.daysSince(t: arg.cesta.fechaLiberacion);
+i++;
+datos[i][] = arg.cesta.consulta.fechaIngreso;
+i++;
+datos[i][] = arg.cesta.consulta.fechaObjetivo;
+i++;
+datos[i][] = arg.cesta.consulta.fechaReprogramada;
+i++;
+datos[i][] = arg.cesta.consulta.fechaEstimadaFin;
+i++;
+datos[i][] = arg.cesta.consulta.comprador.comprador;
+i++;
+datos[i][] = arg.cesta.consulta.jefatura.descripcion;
+i++;
+datos[i][] = arg.cesta.consulta.gerencia.descripcion;
+i++;
+datos[i][] = arg.cesta.codigoPlanificacion;
+i++;
+datos[i][] = arg.cesta.consulta.estadoProceso;
+if(arg.cesta.consulta.rechazada){
+	i++;
+	datos[i][] = &quot;Si&quot;;
+}else{
+	i++;
+	datos[i][] = &quot;No&quot;;
+}</sourceCode>
+		</method>
+		<method name="cargarContenidoReportesCestaCompleto" flags="clientavailable public">
+			<arg name="datos" description="" flags="in" type="Any[][]"/>
+			<arg name="cesta" description="" flags="in" type="Negocio2.NCesta2"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = arg.cesta.id ;
+i++;
+datos[i][] = arg.cesta.procesoId;
+i++;
+datos[i][] = arg.cesta.procesoEdicion;
+i++;
+datos[i][] = arg.cesta.lineaCesta;
+i++;
+datos[i][] = arg.cesta.tipoCesta.id;
+i++;
+datos[i][] = arg.cesta.tipoCesta.descripcion;
+i++;
+datos[i][] = arg.cesta.fechaCesta;
+i++;
+datos[i][] = arg.cesta.categoriaProducto.codigo;
+i++;
+datos[i][] = arg.cesta.categoriaProducto.descripcion;
+i++;
+datos[i][] = arg.cesta.moneda.id;
+i++;
+datos[i][] = arg.cesta.moneda.descripcion;
+i++;
+datos[i][] = arg.cesta.monto.montoStr;
+i++;
+datos[i][] = arg.cesta.sociedad.id;
+i++;
+datos[i][] = arg.cesta.sociedad.descripcionLarga;
+i++;
+datos[i][] = arg.cesta.cantidad;
+i++;
+datos[i][] = arg.cesta.unidad;
+i++;
+datos[i][] = arg.cesta.codigoPlanificacion;
+i++;
+datos[i][] = arg.cesta.fechaPlanificacion;
+i++;
+datos[i][] = arg.cesta.direccionSolicitante.id;
+i++;
+datos[i][] = arg.cesta.direccionSolicitante.descripcion;
+i++;
+datos[i][] = arg.cesta.fechaAlta;
+i++;
+datos[i][] = arg.cesta.motivoRechazo.id;
+i++;
+datos[i][] = arg.cesta.motivoRechazo.descripcion;
+i++;
+datos[i][] = arg.cesta.fechaRechazo;
+i++;
+datos[i][] = arg.cesta.descripcionNecesidad;
+i++;
+datos[i][] = arg.cesta.historicoProceso;
+i++;
+datos[i][] = arg.cesta.varios1;
+i++;
+datos[i][] = arg.cesta.varios2;
+i++;
+datos[i][] = arg.cesta.varios3;
+i++;
+datos[i][] = arg.cesta.varios4;
+i++;
+datos[i][] = arg.cesta.varios5;
+i++;
+datos[i][] = arg.cesta.varios6;</sourceCode>
+		</method>
+		<method name="cargarContenidoReportesPedido" flags="clientavailable public">
+			<arg name="pedido" description="" flags="in" type="Negocio2.NPedido2"/>
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = arg.pedido.id ;
+i++;
+datos[i][] = arg.pedido.procesoId;
+i++;  
+datos[i][] = arg.pedido.procesoEdicion;
+i++;
+datos[i][] = arg.pedido.consulta.titulo;
+i++;
+datos[i][] = arg.pedido.sociedad.descripcionLarga;
+i++;
+datos[i][] = arg.pedido.categoriaProducto.descripcion;
+i++;
+datos[i][] = arg.pedido.fechaInicioVigencia;
+i++;
+datos[i][] = arg.pedido.fechaFinVigencia;
+i++;
+datos[i][] = arg.pedido.proveedor.descripcion;
+i++;
+datos[i][] = arg.pedido.moneda.descripcion;
+i++;
+datos[i][] = arg.pedido.montoAdjudicado.montoStr;
+i++;
+datos[i][] = arg.pedido.montoDerivado.montoStr;
+i++;
+datos[i][] = arg.pedido.montoCertificado.montoStr;
+i++;
+datos[i][] = arg.pedido.montoFacturado.montoStr;
+i++;
+datos[i][] = arg.pedido.planificable?&quot;Si&quot;:&quot;No&quot;;
+i++;
+datos[i][] = arg.pedido.codigoPlanificacion;
+i++;
+datos[i][] = arg.pedido.formaDePago.descripcion;</sourceCode>
+		</method>
+		<method name="cargarContenidoReportesPedidoCompleto" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<arg name="pedido" description="" flags="in" type="Negocio2.NPedido2"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = arg.pedido.id ;
+i++;
+datos[i][] = arg.pedido.procesoId;
+i++;  
+datos[i][] = arg.pedido.procesoEdicion;
+i++;
+datos[i][] = arg.pedido.proveedor.codigo;
+i++;
+datos[i][] = arg.pedido.proveedor.descripcion;
+i++;
+datos[i][] = arg.pedido.moneda.id;
+i++;
+datos[i][] = arg.pedido.moneda.descripcion;
+i++;
+datos[i][] = arg.pedido.sociedad.id;
+i++;
+datos[i][] = arg.pedido.sociedad.descripcionLarga;
+i++;
+datos[i][] = arg.pedido.categoriaProducto.codigo;
+i++;
+datos[i][] = arg.pedido.categoriaProducto.descripcion;
+i++;
+datos[i][] = arg.pedido.montoAdjudicado.montoStr;
+i++;
+datos[i][] = arg.pedido.fechaCreacion;
+i++;
+datos[i][] = arg.pedido.fechaInicioVigencia;
+i++;
+datos[i][] = arg.pedido.fechaFinVigencia;
+i++;
+datos[i][] = arg.pedido.montoDerivado.montoStr;
+i++;
+datos[i][] = arg.pedido.montoCertificado.montoStr;
+i++;
+datos[i][] = arg.pedido.montoFacturado.montoStr;
+i++;
+datos[i][] = arg.pedido.fechaInicioIncidencia;
+i++;
+datos[i][] = arg.pedido.fechaFinIncidencia;
+i++;
+datos[i][] = arg.pedido.clasificacion;
+i++;
+datos[i][] = arg.pedido.detalleIncidencia;
+i++;
+datos[i][] = arg.pedido.requiereCarta?&quot;Si&quot;:&quot;No&quot;;
+i++;
+datos[i][] = arg.pedido.planificable?&quot;Si&quot;:&quot;No&quot;;
+i++;
+datos[i][] = arg.pedido.codigoPlanificacion;
+i++;
+datos[i][] = arg.pedido.ultimaCartaEnviada?&quot;Si&quot;:&quot;No&quot;;
+i++;
+datos[i][] = arg.pedido.formaDePago.codigo;
+i++;
+datos[i][] = arg.pedido.formaDePago.descripcion;
+i++;
+datos[i][] = arg.pedido.varios1;
+i++;
+datos[i][] = arg.pedido.varios2;
+i++;
+datos[i][] = arg.pedido.varios3;
+i++;
+datos[i][] = arg.pedido.varios4;
+i++;
+datos[i][] = arg.pedido.varios5;
+i++;
+datos[i][] = arg.pedido.varios6;</sourceCode>
+		</method>
+		<method name="cargarContenidoReportesProceso" flags="clientavailable public">
+			<arg name="proceso" description="" flags="in" type="Negocio2.NProceso2"/>
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = arg.proceso.id ;
+i++;
+datos[i][] = arg.proceso.edicion;
+i++;
+datos[i][] = arg.proceso.titulo;
+i++;
+datos[i][] = arg.proceso.cta?&quot;Si&quot;:&quot;No&quot;;
+i++;
+datos[i][] = arg.proceso.djai?&quot;Si&quot;:&quot;No&quot;;
+i++;
+datos[i][] = arg.proceso.tipoCompra.descripcion;
+i++;
+datos[i][] = arg.proceso.moneda.descripcion;
+i++;
+datos[i][] = arg.proceso.monto;
+i++;
+datos[i][] = arg.proceso.fechaIngreso;
+i++;
+datos[i][] = arg.proceso.fechaObjetivo;
+i++;
+datos[i][] = arg.proceso.fechaReprogramada;
+i++;
+datos[i][] = arg.proceso.fechaEstimadaFin;
+i++;
+datos[i][] = Time.daysSince(t: arg.proceso.fechaIngreso);
+i++;
+datos[i][] = arg.proceso.estado.descripcion;
+i++;
+datos[i][] = Time.daysSince(t: arg.proceso.estado.fechaAlta);
+i++;
+datos[i][] = arg.proceso.comprador.comprador;
+i++;
+datos[i][] = arg.proceso.jefatura.descripcionCorta;
+i++;
+datos[i][] = arg.proceso.gerencia.descripcionCorta;
+if(arg.proceso.prioridad == &quot;A&quot;){
+	i++;
+	datos[i][] = &quot;Alta&quot;;
+}else if(arg.proceso.prioridad == &quot;M&quot;){
+	i++;
+	datos[i][] = &quot;Media&quot;;
+}else if(arg.proceso.prioridad == &quot;B&quot;){
+	i++;
+	datos[i][] = &quot;Baja&quot;;
+}else{
+	i++;
+	datos[i][] = &quot;&quot;;
+}
+i++;
+datos[i][] = arg.proceso.proyecto;</sourceCode>
+		</method>
+		<method name="cargarContenidoReportesProcesoCompleto" flags="clientavailable public">
+			<arg name="proceso" description="" flags="in" type="Negocio2.NProceso2"/>
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = arg.proceso.id ;
+i++;
+datos[i][] = arg.proceso.edicion;
+i++;
+datos[i][] = arg.proceso.procesoPadre;
+i++;
+datos[i][] = arg.proceso.titulo;
+i++;
+datos[i][] = arg.proceso.fechaObjetivo;
+i++;
+datos[i][] = arg.proceso.fechaReprogramada;
+i++;
+datos[i][] = arg.proceso.motivoReprogramacion.id;
+i++;
+datos[i][] = arg.proceso.motivoReprogramacion.descripcion;
+i++;
+datos[i][] = arg.proceso.fechaEstimadaFin;
+i++;
+datos[i][] = arg.proceso.fechaProcesoTerminado;
+i++;
+datos[i][] = arg.proceso.motivoTerminado.id;
+i++;
+datos[i][] = arg.proceso.motivoTerminado.descripcion;
+i++;
+datos[i][] = arg.proceso.proyecto;
+i++;
+datos[i][] = arg.proceso.moneda.id;
+i++;
+datos[i][] = arg.proceso.moneda.descripcion;
+i++;
+datos[i][] = arg.proceso.monto;
+if(arg.proceso.prioridad == &quot;A&quot;){
+	i++;
+	datos[i][] = &quot;Alta&quot;;
+}else if(arg.proceso.prioridad == &quot;M&quot;){
+	i++;
+	datos[i][] = &quot;Media&quot;;
+}else if(arg.proceso.prioridad == &quot;B&quot;){
+	i++;
+	datos[i][] = &quot;Baja&quot;;
+}else{
+	i++;
+	datos[i][] = &quot;&quot;;
+}
+i++;
+datos[i][] = arg.proceso.tipoCompra.id;
+i++;
+datos[i][] = arg.proceso.tipoCompra.descripcion;
+i++;
+datos[i][] = arg.proceso.coordinadorTGS;
+i++;
+datos[i][] = arg.proceso.comprador.id;
+i++;
+datos[i][] = arg.proceso.comprador.comprador;
+i++;
+datos[i][] = arg.proceso.jefatura.id;
+i++;
+datos[i][] = arg.proceso.jefatura.descripcionCorta;
+i++;
+datos[i][] = arg.proceso.gerencia.id;
+i++;
+datos[i][] = arg.proceso.gerencia.descripcionCorta;
+i++;
+datos[i][] = arg.proceso.tipoPlanificacion.id;
+i++;
+datos[i][] = arg.proceso.tipoPlanificacion.descripcion;
+i++;
+datos[i][] = arg.proceso.lineaProducto.id;
+i++;
+datos[i][] = arg.proceso.lineaProducto.descripcion;
+i++;
+datos[i][] = arg.proceso.tipoAmbito.id;
+i++;
+datos[i][] = arg.proceso.tipoAmbito.descripcion;
+i++;
+datos[i][] = arg.proceso.fechaIngreso;
+i++;
+datos[i][] = arg.proceso.fechaPliego;
+i++;
+datos[i][] = arg.proceso.fechaInicioLicitacion;
+i++;
+datos[i][] = arg.proceso.fechaEnvioParaDT;
+i++;
+datos[i][] = arg.proceso.fechaInicioNegociacion;
+i++;
+datos[i][] = arg.proceso.fechaAprobadoMesa;
+i++;
+datos[i][] = arg.proceso.fechaEnvioHojaMCT;
+i++;
+datos[i][] = arg.proceso.fechaNecesidad;
+i++;
+datos[i][] = arg.proceso.clasificacion;
+i++;
+datos[i][] = arg.proceso.cta?&quot;Si&quot;:&quot;No&quot;;
+i++;
+datos[i][] = arg.proceso.djai?&quot;Si&quot;:&quot;No&quot;;
+i++;
+datos[i][] = arg.proceso.motivoRechazo.id;
+i++;
+datos[i][] = arg.proceso.motivoRechazo.descripcion;
+i++;
+datos[i][] = arg.proceso.fechaRechazo;
+i++;
+datos[i][] = arg.proceso.estado.id;
+i++;
+datos[i][] = arg.proceso.estado.descripcion;
+i++;
+datos[i][] = Time.daysSince(t: arg.proceso.fechaIngreso);
+i++;
+datos[i][] = Time.daysSince(t: arg.proceso.estado.fechaAlta);
+i++;
+datos[i][] = arg.proceso.varios1;
+i++;
+datos[i][] = arg.proceso.varios2;
+i++;
+datos[i][] = arg.proceso.varios3;
+i++;
+datos[i][] = arg.proceso.varios4;
+i++;
+datos[i][] = arg.proceso.varios5;
+i++;
+datos[i][] = arg.proceso.varios6;</sourceCode>
+		</method>
+		<method name="cargarListadoReportes" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Any[]"/>
+			<sourceCode language="Java1">Any[] resultado = {};
+NListaReporte2 lista = NListaReporte2();
+String[] reportes= {&quot;Cumplimiento en Q (Cant y %, calend / no calend / total)&quot;,
+					&quot;Cumplimiento en $ (Monto y %, calend / no calend / total)&quot;,
+					&quot;Cumplimiento en Q mensual (Cant y %, calend / no calend / total)&quot;,
+					&quot;Cumplimiento en Q mensual (Cant y %, general, complementaria, ordinaria)&quot;,
+					&quot;Cumplimiento en Q (Cant y %, tipo de compra)&quot;,
+					&quot;Cumplimiento en Q (Cant y %,línea de producto)&quot;,
+					&quot;Cumplimiento en $ (Monto y %, línea de producto)&quot;,
+					&quot;Cumplimiento en Q (Cant y %, Área)&quot;,
+					&quot;Cumplimiento en $ (Monto y %, Área)&quot;,
+					&quot;Estacionalidad mensual  (Ingreso, egreso y diferencia)&quot;,
+					&quot;Motivos de Demora en Q (Cantidad y %)&quot;,
+					&quot;Motivos de Demora en $ (Monto y %)&quot;,
+					&quot;Adjudicadas en Mesa no Terminadas (Cantidad)&quot;,
+					&quot;Adjudicadas en Mesa no Terminadas con CDV pendiente (Cantidad)&quot;,
+					&quot;En gestión no adjudicadas (Cantidad)&quot;,
+					&quot;Cestas adjudicadas (Cantidad y %)&quot;,
+					&quot;Cestas en stock (Cantidad y %)&quot;};
+
+for(int i = 0;i &lt; reportes.length();i++){
+	lista = NListaReporte2();
+	
+	lista.id = i+1;
+	lista.descripcion = reportes[i];
+	resultado[] = lista;
+}
+
+return resultado;</sourceCode>
+		</method>
+		<method name="cargarResultRepEstacMensual" flags="clientavailable public">
+			<arg name="filtroArg" description="" flags="in" type="Formulario2.FormGenerarReporte"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.cargarResultRepEstacMensual(filtroArg : filtroArg);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="cargarResultadoReporte" flags="clientavailable public">
+			<arg name="filtroArg" description="" flags="in" type="Formulario2.FormGenerarReporte"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.cargarResultadoReporte(filtroArg : filtroArg);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="cargarResultadoReporteMotDem" flags="clientavailable public">
+			<arg name="filtroArg" description="" flags="in" type="Formulario2.FormGenerarReporte"/>
+			<arg name="reporte" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.cargarResultadoReporteMotDemo(filtroArg : arg.filtroArg, reporte : arg.reporte);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="cargarTitulosReporteCartaCompleto" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][]   = &quot;CARTA ID&quot;;
+i++;
+datos[i][]   = &quot;CARTA PEDIDO PROCESO - ID&quot;;
+i++;
+datos[i][]   = &quot;CARTA PEDIDO PROCESO - EDICION&quot;;
+i++;
+datos[i][]   = &quot;CARTA PEDIDO PROVEEDOR CODIGO&quot;;
+i++;
+datos[i][]   = &quot;CARTA PEDIDO PROVEEDOR DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;CARTA PEDIDO MONEDA ID&quot;;
+i++;
+datos[i][]   = &quot;CARTA PEDIDO MONEDA DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;CARTA PEDIDO SOCIEDAD ID&quot;;
+i++;
+datos[i][]   = &quot;CARTA PEDIDO SOCIEDAD DESCRIPCION LARGA&quot;;
+i++;
+datos[i][]   = &quot;LINK&quot;;
+i++;
+datos[i][]   = &quot;FECHA CREACION&quot;;
+i++;
+datos[i][]   = &quot;FECHA VISADO JEFATURA&quot;;
+i++;
+datos[i][]   = &quot;FECHA FIRMA GERENCIA&quot;;
+i++;
+datos[i][]   = &quot;FECHA ENVIO CARTA&quot;;
+i++;
+datos[i][]   = &quot;MONTO PARCIAL&quot;;
+
+</sourceCode>
+		</method>
+		<method name="cargarTitulosReporteCesta" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][]   = &quot;CESTA_ID&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_ID&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION&quot;;
+i++;
+datos[i][]   = &quot;SOCIEDAD_DESCRIPCIONLARGA&quot;;
+i++;
+datos[i][]   = &quot;DIRECCIONSOLICITANTE_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;CATEGORIAPRODUCTO_CODIGO&quot;;
+i++;
+datos[i][]   = &quot;CATEGORIAPRODUCTO_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_CTA&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_DJAI&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_TIPOCOMPRA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;MONEDA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;MONTO&quot;;
+i++;
+datos[i][]   = &quot;SOLICITANTE_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;ENLACE_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;CANTIDADDIASCOMPRAS&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_FECHAINGRESO&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_FECHAOBJETIVO&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_FECHAREPROGRAMADA&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_FECHAESTIMADAFIN&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_COMPRADOR_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_JEFATURA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_GERENCIA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;CODIGOPLANIFICACION&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_ESTADOPROCESO&quot;;
+i++;
+datos[i][]   = &quot;CESTA_RECHAZADA&quot;;</sourceCode>
+		</method>
+		<method name="cargarTitulosReportePedido" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][]   = &quot;PEDIDO_ID&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_ID&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION_TITULO&quot;;
+i++;
+datos[i][]   = &quot;SOCIEDAD_DESCRIPCIONLARGA&quot;;
+i++;
+datos[i][]   = &quot;CATEGORIAPRODUCTO_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;FECHAINICIOVIGENCIA&quot;;
+i++;
+datos[i][]   = &quot;FECHAFINVIGENCIA&quot;;
+i++;
+datos[i][]   = &quot;PROVEEDOR_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;TOTALCONTRATOMONEDA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;TOTALCONTRATOMONEDA_MONTO&quot;;
+i++;
+datos[i][]   = &quot;MONTODERIVADO&quot;;
+i++;
+datos[i][]   = &quot;MONTOCERTIFICADO&quot;;
+i++;
+datos[i][]   = &quot;MONTOFACTUARDO&quot;;
+i++;
+datos[i][]   = &quot;PLANIFICABLE&quot;;
+i++;
+datos[i][]   = &quot;CODIGOPLANIFICACION&quot;;
+i++;
+datos[i][]   = &quot;FORMAPAGO_DESCRIPCION&quot;;
+</sourceCode>
+		</method>
+		<method name="cargarTitulosReporteProceso" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][]   = &quot;PROCESO_ID&quot;;
+i++;
+datos[i][]   = &quot;EDICION&quot;;
+i++;
+datos[i][]   = &quot;TITULO&quot;;
+i++;
+datos[i][]   = &quot;CTA&quot;;
+i++;
+datos[i][]   = &quot;DJAI&quot;;
+i++;
+datos[i][]   = &quot;TIPOCOMPRA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;MONEDA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;MONTO&quot;;
+i++;
+datos[i][]   = &quot;FECHAINGRESO&quot;;
+i++;
+datos[i][]   = &quot;FECHAOBJETIVO&quot;;
+i++;
+datos[i][]   = &quot;FECHAREPROGRAMADA&quot;;
+i++;
+datos[i][]   = &quot;FECHAESTIMADAFIN&quot;;
+i++;
+datos[i][]   = &quot;CANTIDADDIASCOMPRAS&quot;;
+i++;
+datos[i][]   = &quot;ESTADOPROCESO&quot;;
+i++;
+datos[i][]   = &quot;CANTIDADDIASESTADOPROCESO&quot;;
+i++;
+datos[i][]   = &quot;COMPRADOR&quot;;
+i++;
+datos[i][]   = &quot;JEFATURA&quot;;
+i++;
+datos[i][]   = &quot;GERENCIA&quot;;
+i++;
+datos[i][]   = &quot;PRIORIDAD&quot;;
+i++;
+datos[i][]   = &quot;PROYECTO&quot;;
+</sourceCode>
+		</method>
+		<method name="cargarTitulosReporteProcesoCTA" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = &quot;CTA_ID&quot;;
+i++;
+datos[i][] = &quot;CTA_PRO_ID&quot;;
+i++;
+datos[i][] = &quot;CTA_PRO_EDICION&quot;;
+i++;
+datos[i][] = &quot;CTA_CODIGOCDV&quot;;
+i++;
+datos[i][] = &quot;CTA_FECHAINICIOCDV&quot;;
+i++;
+datos[i][] = &quot;CTA_FECHAFINCDV&quot;;</sourceCode>
+		</method>
+		<method name="cargarTitulosReporteProcesoCompleto" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][]   = &quot;PROCESO_ID&quot;;
+i++;
+datos[i][]   = &quot;EDICION&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_PADRE&quot;;
+i++;
+datos[i][]   = &quot;TITULO&quot;;
+i++;
+datos[i][]   = &quot;FECHA_OBJETIVO&quot;;
+i++;
+datos[i][]   = &quot;FECHA_REPROGRAMADA&quot;;
+i++;
+datos[i][]   = &quot;MOTIVO_REPROGRAMADA_ID&quot;;
+i++;
+datos[i][]   = &quot;MOTIVO_REPROGRAMADA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;FECHA_ESTIMADA_FIN&quot;;
+i++;
+datos[i][]   = &quot;FECHA_PROCESO_TERMINADO&quot;;
+i++;
+datos[i][]   = &quot;MOTIVO_PROCESO_TERMINADO_ID&quot;;
+i++;
+datos[i][]   = &quot;MOTIVO_PROCESO_TERMINADO_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;PROYECTO&quot;;
+i++;
+datos[i][]   = &quot;MONEDA_ID&quot;;
+i++;
+datos[i][]   = &quot;MONEDA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;MONTO&quot;;
+i++;
+datos[i][]   = &quot;PRIORIDAD&quot;;
+i++;
+datos[i][]   = &quot;TIPO_COMPRA_ID&quot;;
+i++;
+datos[i][]   = &quot;TIPO_COMPRA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;COORDINADOR_TGS&quot;;
+i++;
+datos[i][]   = &quot;COMPRADOR_ID&quot;;
+i++;
+datos[i][]   = &quot;COMPRADOR_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;JEFATURA_ID&quot;;
+i++;
+datos[i][]   = &quot;JEFATURA_DESCRIPCION_CORTA&quot;;
+i++;
+datos[i][]   = &quot;GERENCIA_ID&quot;;
+i++;
+datos[i][]   = &quot;GERENCIA_DESCRIPCION_CORTA&quot;;
+i++;
+datos[i][]   = &quot;TIPO_PLANIFICACION_ID&quot;;
+i++;
+datos[i][]   = &quot;TIPO_PLANIFICACION_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;LINEA_PRODUCTO_ID&quot;;
+i++;
+datos[i][]   = &quot;LINEA_PRODUCTO_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;TIPO_AMBITO_ID&quot;;
+i++;
+datos[i][]   = &quot;TIPO_AMBITO_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;FECHA_INGRESO&quot;;
+i++;
+datos[i][]   = &quot;FECHA_PLIEGO&quot;;
+i++;
+datos[i][]   = &quot;FECHA_INICIO_LICITACION&quot;;
+i++;
+datos[i][]   = &quot;FECHA_ENVIO_PARADT&quot;;
+i++;
+datos[i][]   = &quot;FECHA_INICIO_NEGOCIACION&quot;;
+i++;
+datos[i][]   = &quot;FECHA_APROBADO_MESA&quot;;
+i++;
+datos[i][]   = &quot;FECHA_ENVIO_HOJA_MCT&quot;;
+i++;
+datos[i][]   = &quot;FECHA_NECESIDAD&quot;;
+i++;
+datos[i][]   = &quot;CLASIFICACION&quot;;
+i++;
+datos[i][]   = &quot;CTA&quot;;
+i++;
+datos[i][]   = &quot;DJAI&quot;;
+i++;
+datos[i][]   = &quot;MOTIVO_RECHAZO_ID&quot;;
+i++;
+datos[i][]   = &quot;MOTIVO_RECHAZO_DESCRIPCION&quot;;
+i++;
+datos[i][]	 = &quot;FECHA_RECHAZO&quot;;
+i++;
+datos[i][]	 = &quot;ESTADO_ID&quot;;
+i++;
+datos[i][]	 = &quot;ESTADO_DESCRIPCION&quot;;
+i++;
+datos[i][]	 = &quot;CANTIDAD_DIAS_COMPRAS&quot;;
+i++;
+datos[i][]	 = &quot;CANTIDAD_DIAS_ESTADO_PROCESO&quot;;
+i++;
+datos[i][]	 = &quot;VARIOS_1&quot;;
+i++;
+datos[i][]	 = &quot;VARIOS_2&quot;;
+i++;
+datos[i][]	 = &quot;VARIOS_3&quot;;
+i++;
+datos[i][]	 = &quot;VARIOS_4&quot;;
+i++;
+datos[i][]	 = &quot;VARIOS_5&quot;;
+i++;
+datos[i][]	 = &quot;BLOC_DE_NOTAS&quot;;</sourceCode>
+		</method>
+		<method name="cargarTitulosReporteProcesoDJAI" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][] = &quot;DJAI_ID&quot;;
+i++;
+datos[i][] = &quot;DJAI_PRO_ID&quot;;
+i++;
+datos[i][] = &quot;DJAI_PRO_EDICION&quot;;
+i++;
+datos[i][] = &quot;DJAI_IDENTIFICACIONDJAI&quot;;
+i++;
+datos[i][] = &quot;DJAI_FECHAINICIODJAI&quot;;
+i++;
+datos[i][] = &quot;DJAI_FECHAFINDJAI&quot;;</sourceCode>
+		</method>
+		<method name="cargarTitulosReportesCestaCompleto" flags="clientavailable public">
+			<arg name="datos" description="" flags="in" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][]   = &quot;CESTA_ID&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_ID&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_EDICION&quot;;
+i++;
+datos[i][]   = &quot;LINEA_CESTA&quot;;
+i++;
+datos[i][]   = &quot;TIPO_CESTA_ID&quot;;
+i++;
+datos[i][]   = &quot;TIPO_CESTA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;FECHA_CESTA&quot;;
+i++;
+datos[i][]   = &quot;CATEGORIA_PRODUCTO_ID&quot;;
+i++;
+datos[i][]   = &quot;CATEGORIA_PRODUCTO_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;MONEDA_ID&quot;;
+i++;
+datos[i][]   = &quot;MONEDA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;MONTO&quot;;
+i++;
+datos[i][]   = &quot;SOCIEDAD_ID&quot;;
+i++;
+datos[i][]   = &quot;SOCIEDAD_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;CANTIDAD&quot;;
+i++;
+datos[i][]   = &quot;UNIDAD&quot;;
+i++;
+datos[i][]   = &quot;CODIGO_PLANIFICACION&quot;;
+i++;
+datos[i][]   = &quot;FECHA_PLANIFICACION&quot;;
+i++;
+datos[i][]   = &quot;DIRECCION_SOLICITANTE_ID&quot;;
+i++;
+datos[i][]   = &quot;DIRECCION_SOLICITANTE_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;FECHA_CREACION&quot;;
+i++;
+datos[i][]   = &quot;MOTIVO_FECHA_RECHAZO_ID&quot;;
+i++;
+datos[i][]   = &quot;MOTIVO_FECHA_RECHAZO_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;FECHA_RECHAZO&quot;;
+i++;
+datos[i][]   = &quot;DESCRIPCION_DE_LA_NECESIDAD&quot;;
+i++;
+datos[i][]   = &quot;PROCESO_ID_HISTORICO&quot;;
+i++;
+datos[i][]   = &quot;VARIOS_1&quot;;
+i++;
+datos[i][]   = &quot;VARIOS_2&quot;;
+i++;
+datos[i][]   = &quot;VARIOS_3&quot;;
+i++;
+datos[i][]   = &quot;VARIOS_4&quot;;
+i++;
+datos[i][]   = &quot;VARIOS_5&quot;;
+i++;
+datos[i][]   = &quot;VARIOS_6&quot;;</sourceCode>
+		</method>
+		<method name="cargarTitulosReportesCumpl2" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i=0;
+datos[i][]   = &quot;Nro de Cesta&quot;;
+i++;
+datos[i][]   = &quot;Código Planificación&quot;;
+i++;
+datos[i][]   = &quot;Dirección Solicitante&quot;;
+i++;
+datos[i][]   = &quot;Tipo de Cesta&quot;;
+i++;
+datos[i][]   = &quot;Categoría de Producto&quot;;
+i++;
+datos[i][]   = &quot;Moneda&quot;;
+i++;
+datos[i][]   = &quot;Monto&quot;;
+i++;
+datos[i][]   = &quot;Fecha Liberación&quot;;
+i++;
+datos[i][]   = &quot;Proceso&quot;;
+i++;
+datos[i][]   = &quot;Fecha Proceso Terminado&quot;;
+i++;
+datos[i][]   = &quot;Fecha Reprogramada&quot;;
+i++;
+datos[i][]   = &quot;Fecha Objetivo&quot;;
+i++;
+datos[i][]   = &quot;Título&quot;;
+i++;
+datos[i][]   = &quot;Línea de Producto&quot;;
+i++;
+datos[i][]   = &quot;Tipo de Compra&quot;;
+i++;
+datos[i][]   = &quot;Estado del Proceso&quot;;
+i++;
+datos[i][]   = &quot;Comprador&quot;;
+i++;
+datos[i][]   = &quot;Jefatura&quot;;
+i++;
+datos[i][]   = &quot;Gerencia&quot;;
+i++;
+datos[i][]   = &quot;Estado&quot;;</sourceCode>
+		</method>
+		<method name="cargarTitulosReportesCumplimiento" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<arg name="reporte" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="j" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+j = 0;
+int in1, in2 = 0;
+if ((Integer)reporte&gt;10){
+	in1 = 11;
+	in2 = 23;
+}else{
+	in1 = 9;
+	in2 = 21;
+}
+datos[i][0]   = &quot;Cesta&quot;;
+i++;
+for (int index = 1; index &lt; in1; index++) {
+    datos[index][0] = &quot;&quot;;
+}
+datos[in1][0]   = &quot;Proceso&quot;;
+for (int index = in1+1; index &lt; in2; index++) {
+    datos[index][0] = &quot;&quot;;
+}
+datos[j][1]   = &quot;Nro de Cesta&quot;;
+j++;
+datos[j][1]   = &quot;Código Planificación&quot;;
+j++;
+datos[j][1]   = &quot;Dirección Solicitante&quot;;
+j++;
+datos[j][1]   = &quot;Tipo de Cesta&quot;;
+j++;
+datos[j][1]   = &quot;Código Categoría de Producto&quot;;
+j++;
+datos[j][1]   = &quot;Categoría de Producto&quot;;
+j++;
+datos[j][1]   = &quot;Moneda&quot;;
+j++;
+datos[j][1]   = &quot;Monto&quot;;
+j++;
+datos[j][1]   = &quot;Fecha Liberación&quot;;
+j++;
+if ((Integer)reporte&gt;10){
+	datos[j][1]   = &quot;Fecha Rechazo&quot;;
+	j++;
+}
+datos[j][1]   = &quot;Proceso&quot;;
+j++;
+if ((Integer)reporte&gt;10){
+	datos[j][1]   = &quot;Fecha Aprobado en Mesa&quot;;
+	j++;
+}
+datos[j][1]   = &quot;Fecha Proceso Terminado&quot;;
+j++;
+datos[j][1]   = &quot;Fecha Reprogramada&quot;;
+j++;
+datos[j][1]   = &quot;Fecha Objetivo&quot;;
+j++;
+datos[j][1]   = &quot;Título&quot;;
+j++;
+datos[j][1]   = &quot;Línea de Producto&quot;;
+j++;
+datos[j][1]   = &quot;Tipo de Compra&quot;;
+j++;
+datos[j][1]   = &quot;Estado del Proceso&quot;;
+j++;
+datos[j][1]   = &quot;Comprador&quot;;
+j++;
+datos[j][1]   = &quot;Jefatura&quot;;
+j++;
+datos[j][1]   = &quot;Gerencia&quot;;
+j++;
+datos[j][1]   = &quot;Estado&quot;;
+j++;
+
+</sourceCode>
+		</method>
+		<method name="cargarTitulosReportesPedidoCompleto" flags="clientavailable public">
+			<arg name="datos" description="" flags="in out" type="Any[][]"/>
+			<variables>
+				<variable name="i" type="Int"/>
+			</variables>
+			<sourceCode language="Java1">i = 0;
+datos[i][]   = &quot;PEDIDO_ID&quot;;
+i++;
+datos[i][]   = &quot;PEDIDO_PROCESO_ID&quot;;
+i++;
+datos[i][]   = &quot;PEDIDO_PROCESO_EDICION&quot;;
+i++;
+datos[i][]   = &quot;PROOVEDOR_CODIGO&quot;;
+i++;
+datos[i][]   = &quot;PROVEEDOR_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;MONEDA_ID&quot;;
+i++;
+datos[i][]   = &quot;MONEDA_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;SOCIEDAD_ID&quot;;
+i++;
+datos[i][]   = &quot;SOCIEDAD_DESCRIPCION_LARGA&quot;;
+i++;
+datos[i][]   = &quot;CATEGORIAPRODUCTO_CODIGO&quot;;
+i++;
+datos[i][]   = &quot;CATEGORIAPRODUCTO_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;MONTOADJUDICADO&quot;;
+i++;
+datos[i][]   = &quot;FECHACREACION&quot;;
+i++;
+datos[i][]   = &quot;FECHAINICIOVIGENCIA&quot;;
+i++;
+datos[i][]   = &quot;FECHAFINVIGENCIA&quot;;
+i++;
+datos[i][]   = &quot;MONTODERIVADO &quot;;
+i++;
+datos[i][]   = &quot;MONTOCERTIFICADO&quot;;
+i++;
+datos[i][]   = &quot;MONTOFACTURADO &quot;;
+i++;
+datos[i][]   = &quot;FECHAINICIOINCIDENCIA&quot;;
+i++;
+datos[i][]   = &quot;FECHAFININCIDENCIA&quot;;
+i++;
+datos[i][]   = &quot;CLASIFICACION&quot;;
+i++;
+datos[i][]   = &quot;DETALLEINCIDENCIA&quot;;
+i++;
+datos[i][]   = &quot;REQUIERECARTA&quot;;
+i++;
+datos[i][]   = &quot;PLANIFICABLE&quot;;
+i++;
+datos[i][]   = &quot;CODIGOPLANIFICACION&quot;;
+i++;
+datos[i][]   = &quot;ULTIMACARTAENVIADA&quot;;
+i++;
+datos[i][]   = &quot;FORMADEPAGO_CODIGO&quot;;
+i++;
+datos[i][]   = &quot;FORMADEPAGO_DESCRIPCION&quot;;
+i++;
+datos[i][]   = &quot;VARIOS 1&quot;;
+i++;
+datos[i][]   = &quot;VARIOS 2&quot;;
+i++;
+datos[i][]   = &quot;VARIOS 3&quot;;
+i++;
+datos[i][]   = &quot;VARIOS 4&quot;;
+i++;
+datos[i][]   = &quot;VARIOS 5&quot;;
+i++;
+datos[i][]   = &quot;VARIOS 6&quot;;</sourceCode>
+		</method>
+		<method name="filtrarReportes" flags="clientavailable public">
+			<arg name="reporte" description="" flags="in" type="String"/>
+			<arg name="resultadoReporte" description="" flags="in" type="Negocio2.NResultadoReporte2[]"/>
+			<arg name="estado" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NResultadoReporte2[]"/>
+			<sourceCode language="Java1">NResultadoReporte2[] filtro = {};
+
+switch (reporte) {
+		   case &quot;1&quot;: 	foreach (objeto in resultadoReporte){
+							filtro[] = objeto;
+						}
+                     	break;
+           case &quot;2&quot;: 	foreach (objeto in resultadoReporte){
+							filtro[] = objeto;
+						}
+                     	break;
+           case &quot;3&quot;: 	foreach (objeto in resultadoReporte){
+							filtro[] = objeto;
+						}
+                     	break;	
+           case &quot;4&quot;:   foreach (objeto in resultadoReporte){
+							if(estado == &quot;Stock&quot;){
+								if(objeto.tipoCestaId != null &amp;&amp; objeto.fechaLiberacion != null){
+									filtro[] = objeto;
+								}
+							}else if(estado == &quot;Terminadas&quot;){
+								if(objeto.tipoCestaId != null &amp;&amp; objeto.fechaProcesoTerminado != null){
+									filtro[] = objeto;
+								} 
+							}
+						}
+                     	break;
+            case &quot;5&quot;:   foreach (objeto in resultadoReporte){
+							if(estado == &quot;Stock&quot;){
+								if(objeto.tipoCompraId != null){
+									filtro[] = objeto;
+								}
+							}else if(estado == &quot;Terminadas&quot;){
+								if(objeto.tipoCompraId != null &amp;&amp; objeto.fechaProcesoTerminado != null){
+									filtro[] = objeto;
+								}
+							}
+						}
+                     	break;
+            case &quot;6&quot;:   foreach (objeto in resultadoReporte){
+							if(estado == &quot;Stock&quot;){	
+								if(objeto.lineaProductoId != null){
+									filtro[] = objeto;
+								}
+							}else if(estado == &quot;Terminadas&quot;){
+								if(objeto.lineaProductoId != null &amp;&amp; objeto.fechaProcesoTerminado != null){
+									filtro[] = objeto;
+								}
+							}
+						}
+                     	break;
+            case &quot;7&quot;:   foreach (objeto in resultadoReporte){
+							if(estado == &quot;Stock&quot;){	
+								if(objeto.lineaProductoId != null){
+									filtro[] = objeto;
+								}
+							}else if(estado == &quot;Terminadas&quot;){
+								if(objeto.lineaProductoId != null &amp;&amp; objeto.fechaProcesoTerminado != null){
+									filtro[] = objeto;
+								}
+							}
+						}
+                     	break;
+            case &quot;8&quot;:   foreach (objeto in resultadoReporte){
+							if(estado == &quot;Stock&quot;){	
+								if(objeto.direcSolicId != null){
+									filtro[] = objeto;
+								}
+							}else if(estado == &quot;Terminadas&quot;){
+								if(objeto.direcSolicId != null &amp;&amp; objeto.fechaProcesoTerminado != null){
+									filtro[] = objeto;
+								}
+							}
+						}
+                     	break;
+            case &quot;9&quot;:   foreach (objeto in resultadoReporte){
+							if(estado == &quot;Stock&quot;){	
+								if(objeto.direcSolicId != null){
+									filtro[] = objeto;
+								}
+							}else if(estado == &quot;Terminadas&quot;){
+								if(objeto.direcSolicId != null &amp;&amp; objeto.fechaProcesoTerminado != null){
+									filtro[] = objeto;
+								}
+							}
+						}
+                     	break;
+}
+
+return filtro;
+</sourceCode>
+		</method>
+		<method name="setBotones" flags="clientavailable public">
+			<arg name="botonesAccion" description="" flags="out" type="String[]"/>
+			<arg name="actividad" description="" flags="in" type="String"/>
+			<arg name="rol" description="" flags="in" type="String"/>
+			<sourceCode language="Java1">if(arg.actividad == &quot;ADMImportacion&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Salir&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+}
+
+if(arg.actividad == &quot;ADMConsultaDeCestas&quot; || arg.actividad == &quot;GRCConsultaDeCestas&quot; || arg.actividad == &quot;JFCConsultaDeCestas&quot; || arg.actividad == &quot;CMPConsultaDeCestas&quot; ||
+   arg.actividad == &quot;SUPConsultaDeCestas&quot; || arg.actividad == &quot;ANAConsultaDeCestas&quot; || arg.actividad == &quot;CONConsultaDeCestas&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Buscar&quot;;
+	arg.botonesAccion[] = &quot;Limpiar&quot;;
+}
+
+if(arg.actividad == &quot;ADMConsultaDePedidos&quot; || arg.actividad == &quot;GRCConsultaDePedidos&quot; || arg.actividad == &quot;JFCConsultaDePedidos&quot; || arg.actividad == &quot;CMPConsultaDePedidos&quot; ||
+   arg.actividad == &quot;SUPConsultaDePedidos&quot; || arg.actividad == &quot;ANAConsultaDePedidos&quot; || arg.actividad == &quot;CONConsultaDePedidos&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Buscar&quot;;
+	arg.botonesAccion[] = &quot;Limpiar&quot;;
+}
+
+if(arg.actividad == &quot;ADMConsultaDeProcesos&quot; || arg.actividad == &quot;GRCConsultaDeProcesos&quot; || arg.actividad == &quot;JFCConsultaDeProcesos&quot; || arg.actividad == &quot;CMPConsultaDeProcesos&quot; ||
+   arg.actividad == &quot;SUPConsultaDeProcesos&quot; || arg.actividad == &quot;ANAConsultaDeProcesos&quot; || arg.actividad == &quot;CONConsultaDeProcesos&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Buscar&quot;;
+	arg.botonesAccion[] = &quot;Limpiar&quot;;
+}
+
+if(arg.actividad == &quot;EdicionDeCesta&quot; || arg.actividad == &quot;EdicionDePedido&quot; || arg.actividad == &quot;EdicionDeProceso&quot; ){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = &quot;Volver&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	if(arg.rol == &quot;TPC - Supervisor CdG&quot; || arg.rol == &quot;TPC - Analista CdG&quot; || arg.rol == &quot;TPC - Solicitante SAGI&quot; || arg.rol == &quot;TPC2 - Consulta&quot;){
+		arg.botonesAccion[] = null;
+	}
+	else{
+		arg.botonesAccion[] = &quot;Guardar&quot;;
+	}
+}
+
+if(arg.actividad == &quot;HistorialEstados&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Volver&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+}
+</sourceCode>
+		</method>
+		<method name="setMontoEscritura" flags="clientavailable public">
+			<arg name="valorString" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Decimal"/>
+			<sourceCode language="Java1">Decimal valorDecimal;
+String valorTemp = &quot;&quot;;
+Java.Lang.Boolean patron = false;
+try {
+    if ((arg.valorString != null) &amp;&amp; (arg.valorString != &quot;&quot;)){
+		if(arg.valorString.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+			patron = true;
+		}
+	}
+	if(patron){
+		valorTemp = (String)arg.valorString.replace(from : &quot;.&quot;, @to : &quot;&quot;);
+		return valorDecimal = (Decimal)valorTemp.replace(from : &quot;,&quot;, @to : &quot;.&quot;);
+	}
+}
+catch (Any e) {
+    logMessage(&quot;Error en setMontoEscritura: &quot; + e, severity:FATAL);
+}
+return null;</sourceCode>
+		</method>
+		<method name="setMontoLectura" flags="clientavailable public">
+			<arg name="valorDecimal" description="" flags="in" type="Decimal"/>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">String valorString = &quot;&quot;;
+try {
+    String[] cadenaArray = {};
+	String[] cadena2Array = {};
+
+	if(arg.valorDecimal != null){
+
+		valorString = arg.valorDecimal.format(mask : &quot;###,###.##&quot;);
+
+		Java.Lang.Boolean convertir = false;
+		String[] valores = valorString.split(delim : &quot;.&quot;);
+
+		if(valores.length() &gt; 1){
+			String valor = valores[valores.length()-1];
+			if(valor.length()&lt;3){
+				convertir = true;
+			}
+		}
+		else{
+			if(valorString.count(ch : &quot;,&quot;) &gt; 0){
+				convertir = true;
+			}
+		}
+
+		if(convertir){
+			cadenaArray = valorString.chars();
+			for (int index = 0; index &lt; cadenaArray.length; index++) {
+			    if(cadenaArray[index] == &quot;,&quot;){
+			    	cadena2Array[index] = &quot;.&quot;;
+			    }
+			    else if(cadenaArray[index] == &quot;.&quot;){
+			    	cadena2Array[index] = &quot;,&quot;;
+			    }
+			    else{
+			    	cadena2Array[index] = cadenaArray[index];
+			    }
+			}
+			valorString = &quot;&quot;;
+			for (int index = 0; index &lt; cadena2Array.length; index++) {
+			    valorString = valorString + cadena2Array[index];
+			}
+		}
+
+	}
+}
+catch (Any e) {
+	logMessage(&quot;Error en setMontoLectura: &quot; + e, severity:FATAL);
+}
+
+return valorString;</sourceCode>
+		</method>
+		<method name="setSalidaPantalla" flags="clientavailable public">
+			<arg name="result" description="" flags="in" type="String"/>
+			<arg name="configuracion" description="" flags="in" type="Negocio2.NConfiguracion2"/>
+			<sourceCode language="Java1">//BOTONES DE ACCION 
+configuracion.boton = &quot;&quot;;
+if(result == &quot;anular&quot;){
+	configuracion.boton = &quot;anular&quot;;
+}
+if(result == &quot;cancelar&quot;){
+	configuracion.boton = &quot;cancelar&quot;;
+}
+if(result == &quot;verificar completitud&quot;){
+	configuracion.boton = &quot;verificar&quot;;
+}
+if(result == &quot;devolver al solicitante&quot;){
+	configuracion.boton = &quot;devolver&quot;;
+}
+if(result == &quot;guardar borrador&quot;){
+	if(arg.configuracion.actividad == &quot;SSASolicitarAltaSAGI&quot; ||
+		arg.configuracion.actividad == &quot;SSACompletarSAGI&quot;||
+   		arg.configuracion.actividad == &quot;GENCompletarSAGI&quot;){
+		configuracion.boton = &quot;borrador&quot;;
+	}else{
+		configuracion.boton = &quot;guardar&quot;;
+	}
+}
+if(result == &quot;guardar continuar&quot;){
+	if(arg.configuracion.actividad == &quot;SSASolicitarAltaSAGI&quot; ||
+		arg.configuracion.actividad == &quot;SSACompletarSAGI&quot;||
+  		arg.configuracion.actividad == &quot;GENCompletarSAGI&quot;){
+		configuracion.boton = &quot;enviar&quot;;
+	}else{
+		configuracion.boton = &quot;continuar&quot;;
+	}
+}
+/*
+if(result == &quot;guardar borrador&quot;){
+	configuracion.boton = &quot;borrador&quot;;
+}
+if(result == &quot;guardar y enviar&quot;){
+	configuracion.boton = &quot;enviar&quot;;
+}
+if(result == &quot;guardar&quot;){
+	configuracion.boton = &quot;guardar&quot;;
+}
+if(result == &quot;continuar&quot;){
+	configuracion.boton = &quot;continuar&quot;;
+}
+*/
+if(result == &quot;reactivar&quot;){
+	configuracion.boton = &quot;reactivar&quot;;
+}
+if(result == &quot;duplicar&quot;){
+	configuracion.boton = &quot;duplicar&quot;;
+}
+if(result == &quot;volver&quot;){
+	configuracion.boton = &quot;volver&quot;;
+}
+if(configuracion.boton == &quot;&quot;){
+	//BOTONES DE PANTALLA
+	configuracion.proximaPantalla = &quot;&quot;;
+	if(result == &quot;datos generales&quot;){
+		configuracion.proximaPantalla = &quot;DATOSGENERALES&quot;;
+	}
+	if(result == &quot;valoración de la necesidad&quot;){
+		configuracion.proximaPantalla = &quot;VALORACIONNECESIDAD&quot;;
+	}
+	if(result == &quot;proyectos asociados&quot;){
+		configuracion.proximaPantalla = &quot;PROYECTOSASOCIADOS&quot;;
+	}
+	if(result == &quot;proveedor&quot;){
+		configuracion.proximaPantalla = &quot;PROVEEDOR&quot;;
+	}
+	if(result == &quot;antecedentes&quot;){
+		configuracion.proximaPantalla = &quot;ANTECEDENTES&quot;;
+	}
+	if(result == &quot;situación presupuestaria&quot;){
+		configuracion.proximaPantalla = &quot;SITUACIONPRESUPUESTARIA&quot;;
+	}
+	if(result == &quot;compras particulares&quot;){
+		configuracion.proximaPantalla = &quot;COMPRASPARTICULARES&quot;;
+	}
+	if(result == &quot;documentación adjunta&quot;){
+		configuracion.proximaPantalla = &quot;DOCUMENTACIONADJUNTA&quot;;
+	}
+	if(result == &quot;historial de comentarios&quot;){
+		configuracion.proximaPantalla = &quot;HISTORIALCOMENTARIOS&quot;;
+	}
+	if(result == &quot;asignar participante&quot;){
+		configuracion.proximaPantalla = &quot;ASIGNARPARTICIPANTE&quot;;
+	}
+	if(result == &quot;control de gestión&quot;){
+		configuracion.proximaPantalla = &quot;CONTROLGESTION&quot;;
+	}
+	if(result == &quot;recomendar sagi&quot; || result == &quot;historial de recomendaciones&quot;){
+		configuracion.proximaPantalla = &quot;RECOMENDARSAGI&quot;;
+	}
+	if(result == &quot;resolución pre-comité&quot; || result == &quot;resolución comité&quot;){
+		configuracion.proximaPantalla = &quot;RESOLUCION&quot;;
+	}
+}</sourceCode>
+		</method>
+	</methods>
+</component>

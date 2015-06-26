@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FUsuario" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SUsuario" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FUsuario" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FUsuario"/>
+			<sourceCode language="Java1">this.servicio = new SUsuario();</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	//respuesta = this.servicio.deleteValue(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="fecthSession" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Fuego.Fdi.DirectorySession"/>
+			<sourceCode language="Java1">DirectorySession session = DirectorySession.currentEngineSession;
+return session;</sourceCode>
+		</method>
+		<method name="fetchDirHumanParticipant" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="String"/>
+			<arg name="session" description="" flags="in" type="Fuego.Fdi.DirectorySession"/>
+			<outputArgument name="return" description="" flags="retval" type="Fuego.Fdi.DirHumanParticipant"/>
+			<sourceCode language="Java1">DirHumanParticipant dirHumanParticipant = DirHumanParticipant.fetch(session : arg.session, id : arg.id);
+	
+return dirHumanParticipant;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	//respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	//respuesta = this.servicio.getListValues(vigencia : false);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesCombo" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	//respuesta = this.servicio.getListValues(vigencia : true);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		String[Integer] comboItem;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    String codigo = (String)objArray[&quot;CODIGO&quot;];
+		    String descripcion = (String)objArray[&quot;DESCRIPCION&quot;];
+			//comboItem[(Integer)objArray[&quot;ID&quot;]] = (codigo!=null?codigo:&quot;&quot;) + (codigo!=null&amp;&amp;descripcion!=null?&quot; - &quot;:&quot;&quot;) + (descripcion!=null?descripcion:&quot;&quot;);
+			comboItem[(Integer)objArray[&quot;ID&quot;]] = (descripcion!=null?descripcion:&quot;&quot;);
+		}
+    	respuesta.contenido = comboItem;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="getRoleAltaWS" flags="public server disableclient">
+			<arg name="participant" description="" flags="in" type="Fuego.Lib.Participant"/>
+			<arg name="canalCalidad" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+try{
+	boolean esLID = false;
+	boolean esAN = false;
+	boolean esANPI = false;
+	boolean esLC = false;
+	boolean esBO = false;
+
+	foreach(rol in arg.participant.roles){
+		if(rol.name == &quot;Lider de Administracion Comercial&quot;){
+			esLID = true;
+		}else if(rol.name == &quot;Analista de Administracion Comercial&quot;){
+			esAN = true;
+		}else if(rol.name == &quot;Analista Grupo Soporte PortIn&quot;){
+			esANPI = true;
+		}else if(rol.name == &quot;Lider CEC&quot;){
+			esLC = true;
+		}else if(rol.name == &quot;Back Office Agente&quot;){
+			esBO = true;
+		}
+	}
+	
+	String rol;
+	if(arg.canalCalidad == &quot;I&quot;){
+		rol = &quot;Vendedor Indirecto&quot;;
+	}else if (arg.canalCalidad == &quot;D&quot;){
+		rol = &quot;Vendedor Directo&quot;;
+	}	
+
+
+	if(esLID){
+		rol = &quot;Lider de Administracion Comercial&quot;;
+	}else if(esAN){
+		rol = &quot;Analista de Administracion Comercial&quot;;
+	//}else if(esANPI){
+	//	rol = &quot;Analista Grupo Soporte PortIn&quot;;
+	}else if(arg.canalCalidad == &quot;D&quot; &amp;&amp; esLC){
+		rol =  &quot;Lider CEC&quot;;
+	}else if(arg.canalCalidad == &quot;I&quot; &amp;&amp; esBO){
+		rol = &quot;Back Office Agente&quot;;
+	}	
+	
+	Utiles.Logger.logDebug(mensaje : &quot;rol &quot; + rol);
+
+
+	respuesta.resultado = OK;
+	respuesta.contenido = rol;
+
+}catch (Java.Lang.Exception e) {
+    respuesta.resultado = ERROR;
+    respuesta.contenido = &quot;fachada.getRoleForParticipant(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getUsuarioAltaWS" flags="public server disableclient">
+			<arg name="usuarioPGM" description="" flags="in" type="String"/>
+			<arg name="usuarioMovics" description="" flags="in" type="String"/>
+			<arg name="usuarioAlta" description="" flags="out" type="String"/>
+			<arg name="canalCalidad" description="" flags="in" type="String"/>
+			<arg name="codigoVendedor" description="" flags="in" type="String"/>
+			<arg name="codigoSubVendedor" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+/*
+try {
+	Participant participant;
+	arg.usuarioAlta = &quot;&quot;;
+	//BUSCO POR EL USUARIO PGM
+	
+	if(arg.usuarioPGM != null &amp;&amp; arg.usuarioPGM != &quot;&quot;){
+		participant = Participant.find(name : arg.usuarioPGM);
+		if(participant != null){
+			respuesta = this.getRoleAltaWS(canalCalidad : arg.canalCalidad, participant : participant);
+			arg.usuarioAlta = arg.usuarioPGM;
+			return respuesta;
+		}
+	}
+		
+	if(arg.usuarioMovics != null &amp;&amp; arg.usuarioMovics != &quot;&quot;){	
+		//BUSCO POR EL USUARIO MOVICS 
+		participant = Participant.find(name : arg.usuarioMovics);
+		if(participant != null){
+			respuesta = this.getRoleAltaWS(canalCalidad : arg.canalCalidad, participant : participant);
+			arg.usuarioAlta = arg.usuarioMovics;
+			return respuesta;
+		}
+		//BUSCO EN TABLA DE PARAMETRÍA DE USUARIOS
+		respuesta = FUsuario.getValueForUsuarioMovics(usuarioMovics : arg.usuarioMovics);
+		if(respuesta.resultado == OK){
+			NUsuario usuario = (NUsuario)respuesta.contenido;
+			participant = Participant.find(name : usuario.usuarioIris);
+			respuesta = this.getRoleAltaWS(canalCalidad : arg.canalCalidad, participant : participant);
+			arg.usuarioAlta = usuario.usuarioIris;
+			return respuesta;
+		}
+	}
+	
+	//NO SE ENCONTRÓ EL USUARIO. SE ASIGNA POR DEFECTO EL ROL VENDEDOR
+	DirOrganizationalRole role;
+	DirHumanParticipant[] usuarios;
+	
+	if(arg.canalCalidad == &quot;I&quot;){
+		role = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;Vendedor Indirecto (P)&quot;);
+		usuarios = role.fetchAssignedParticipants(parametricValue : arg.codigoVendedor+ &quot;-&quot;+ arg.codigoSubVendedor);
+
+		if (usuarios != null &amp;&amp; usuarios.length() &gt; 0){
+			arg.usuarioAlta = usuarios.first.id;
+		}
+		respuesta.resultado = OK;
+		respuesta.contenido = &quot;Vendedor Indirecto&quot;;
+	}
+	else if(arg.canalCalidad == &quot;D&quot;){
+		role = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;Vendedor Directo (P)&quot;);
+		usuarios = role.fetchAssignedParticipants(parametricValue : arg.codigoVendedor);
+
+		if (usuarios != null &amp;&amp; usuarios.length() &gt; 0){
+			arg.usuarioAlta = usuarios.first.id;
+		}
+		respuesta.resultado = OK;
+		respuesta.contenido = &quot;Vendedor Directo&quot;;
+	}	
+
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = ERROR;
+    respuesta.contenido = &quot;fachada.getRoleForUsuario(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+*/
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	//respuesta = this.servicio.getValueForId(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForUsuarioMovics" flags="public server disableclient">
+			<arg name="usuarioMovics" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	//respuesta = this.servicio.getValueForUsuarioMovics(usuarioMovics : arg.usuarioMovics);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForCodigo(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NUsuario"/>
+			<sourceCode language="Java1">NUsuario objNegocio = NUsuario();
+
+objNegocio.id = (Integer)arg.objArray[&quot;ID&quot;];
+objNegocio.usuario = (String)arg.objArray[&quot;USUARIOMOVICS&quot;];
+objNegocio.email = (String)arg.objArray[&quot;USUARIOMOVICS&quot;];
+objNegocio.nombre = (String)arg.objArray[&quot;USUARIOMOVICS&quot;];
+objNegocio.apellido = (String)arg.objArray[&quot;USUARIOMOVICS&quot;];
+objNegocio.estado = (Bool)arg.objArray[&quot;USUARIOMOVICS&quot;];
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="searchParticipants" flags="clientavailable public">
+			<arg name="partialName" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = this.servicio.searchParticipants(partialName : arg.partialName);
+if(respuesta.resultado != OK) {
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error &quot;+ (String)respuesta.contenido;
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="objNegocio" description="" flags="in" type="Negocio.NUsuario"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+/*
+try {
+	respuesta = this.servicio.setValue(id : arg.objNegocio.id, 
+									   usuarioMovics : arg.objNegocio.usuarioMovics, 
+									   usuarioIris : arg.objNegocio.usuarioIris, 
+									   usuarioAlta : arg.objNegocio.usuarioAlta, 
+									   usuarioModificacion : arg.objNegocio.usuarioModificacion, 
+									   vigencia : arg.objNegocio.vigencia);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+*/
+return respuesta;</sourceCode>
+		</method>
+		<method name="updateStatus" flags="public server disableclient">
+			<arg name="status" description="" flags="in" type="String"/>
+			<arg name="usuario" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+try{
+	String sql = &quot;UPDATE fuego_participant SET fuego_status=&apos;&quot; + arg.status + &quot;&apos;&quot; + &quot; WHERE fuego_rid=&apos;&quot; + arg.usuario + &quot;&apos;&quot;;
+	
+	logMessage(&quot;[modifyUser:executeUpdate]\n&quot; + sql,Severity.DEBUG);
+	
+	DynamicSQL.executeUpdate(sentence : sql, implname : &quot;fdi&quot;, inParameters : {});
+	
+	logMessage(&quot;[modifyUser:executeUpdate] Completo&quot;,Severity.DEBUG);
+}
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

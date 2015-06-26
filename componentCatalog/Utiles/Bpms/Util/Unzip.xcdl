@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="Unzip" description="Unzip" versionID="Version 6.5 " flags="" signature="bpms.util.Unzip" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.util.Unzip"/>
+	<objectProperty name="package" value="bpms.util"/>
+	<objectProperty name="typeId" value="bpms.util.Unzip"/>
+	<attributes>
+		<array type="Binary" name="dataFiles" flags="hassetter hasgetter attribute external" primitive="true" position="2" javaType="byte[][]" writeSignature="AdataFiles;[[B" readSignature="AdataFiles;[[B"/>
+		<array type="String" name="fileNames" flags="hassetter hasgetter attribute external" primitive="true" position="1" javaType="java.lang.String[]" writeSignature="AfileNames;[Ljava.lang.String;" readSignature="AfileNames;[Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="Unzip" flags="static" signature="Kbpms.util.Unzip([B)">
+			<arg name="archivo" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Unzip"/>
+		</method>
+		<method name="Unzip" flags="static" signature="Kbpms.util.Unzip(Ljava.lang.String;)">
+			<arg name="archivo" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Unzip"/>
+		</method>
+		<method name="Unzip" flags="static" signature="Kbpms.util.Unzip(Ljava.io.File;)">
+			<arg name="archivo" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Unzip"/>
+		</method>
+		<method name="copyTo" description="copyTo" flags="external" signature="McopyTo(Ljava.lang.String;)V">
+			<arg name="path" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="copyTo" description="copyTo" flags="external" signature="McopyTo([[B[Ljava.lang.String;)V">
+			<arg name="binArchivos" description="" flags="in external" primitive="true" type="Binary[]" javaType="byte[][]"/>
+			<arg name="archivos" description="" flags="in external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+	</methods>
+</component>

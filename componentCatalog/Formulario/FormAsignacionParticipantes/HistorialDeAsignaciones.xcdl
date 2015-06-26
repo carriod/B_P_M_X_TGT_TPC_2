@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="HistorialDeAsignaciones" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio.NAsignacion" name="asignacion" flags="hassetter hasgetter public" position="1"/>
+		<Time scale="0" precision="0" name="fechaAsignacion" flags="hasgetter public virtual includeincheck" position="2">
+			<read language="Java1">return asignacion.fecha;</read>
+		</Time>
+	</attributes>
+	<methods>
+		<method name="HistorialDeAsignaciones" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormAsignacionParticipantes.HistorialDeAsignaciones"/>
+		</method>
+	</methods>
+</component>

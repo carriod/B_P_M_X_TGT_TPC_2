@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="BPMSMail" description="" versionID="Version 5.5 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="legacy" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<array type="Fuego.Net.MailAttachment" name="attachments" flags="hassetter hasgetter public" position="1"/>
+		<array type="String" name="cc" flags="hassetter hasgetter public" position="2"/>
+		<array type="Utiles.BPMSMailDetalle" name="detalles" flags="hassetter hasgetter public" position="3"/>
+		<String defaultValue="Go to :" name="etiqueta_GOTO" flags="hassetter hasgetter public" position="4"/>
+		<String defaultValue="&quot;Top&quot;" name="etiqueta_TOP" flags="hassetter hasgetter public" position="5"/>
+		<String defaultValue="" name="from" flags="hassetter hasgetter public" position="6"/>
+		<Bool defaultValue="true" name="mostrarIrA" flags="hassetter hasgetter public" position="7"/>
+		<String defaultValue="" name="resumen" flags="hassetter hasgetter public" position="8"/>
+		<String defaultValue="&quot;Resumen&quot;" name="resumenTitulo" flags="hassetter hasgetter public" position="9"/>
+		<String defaultValue="" name="subject" flags="hassetter hasgetter public" position="10"/>
+		<String defaultValue="" name="titulo" flags="hassetter hasgetter public" position="11"/>
+		<array type="String" name="to" flags="hassetter hasgetter public" position="12"/>
+	</attributes>
+	<methods>
+		<method name="BPMSMail" flags="static">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.BPMSMail"/>
+			<sourceCode language="Java1">this.cc = {  };
+this.detalles = {  };
+this.from = &quot;&quot;;
+this.resumen = &quot;&quot;;
+this.subject = &quot;&quot;;
+this.titulo = &quot;&quot;;
+this.@to = {  };
+</sourceCode>
+		</method>
+		<method name="getLink" description="" flags="clientavailable public">
+			<arg name="processId" description="" flags="in" type="String"/>
+			<arg name="instanceId" description="" flags="in" type="String"/>
+			<arg name="actividadDestino" description="" flags="in" type="String"/>
+			<arg name="link" description="" flags="out" type="String"/>
+			<variables>
+				<variable name="server" type="Fuego.Lib.Server"/>
+			</variables>
+			<sourceCode language="Java1">// version 5.5
+server = Fuego.Server();
+arg.link = server.webBUIServer + &quot;/servlet/controller?&quot;;
+arg.link = arg.link + &quot;currentView=&quot; + arg.processId.field(delimiter : &quot;/&quot;, n : 1).field(delimiter : &quot;#&quot;, 
+                                                                                         n : 0) + &quot;%2F&quot; + arg.actividadDestino;
+arg.link = arg.link + &quot;&amp;pageId=1&quot;;
+arg.link = arg.link + &quot;&amp;instanceStampId=&quot; + arg.instanceId.field(delimiter : &quot;@&quot;, 
+                                                                 n : 0).replace(from : &quot;#&quot;, 
+                                                                                @to : &quot;%23&quot;) + 
+           &quot;/&quot; + arg.actividadDestino;
+arg.link = &quot;&lt;a href=\&quot;&quot; + arg.link + &quot;\&quot;&gt;Ver Instancia/Expediente&lt;/a&gt;&quot;;
+</sourceCode>
+		</method>
+		<method name="getLinkToActivityView" flags="clientavailable public">
+			<arg name="processId" description="" flags="in" type="String"/>
+			<arg name="actividadDestino" description="" flags="in" type="String"/>
+			<arg name="mensaje" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="link" type="String"/>
+				<variable name="server" type="Fuego.Lib.Server"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">// version 4.5
+server = Fuego.Server();
+link = server.webBUIServer + &quot;/servlet/controller?&quot;;
+link = link + &quot;&amp;viewName=&quot; + arg.processId.field(delimiter : &quot;/&quot;, n : 0) + &quot;%2F&quot; + arg.actividadDestino;
+link = link + &quot;&amp;from=1&quot;;
+link = &quot;&lt;a href=\&quot;&quot; + link + &quot;\&quot;&gt;&quot; + arg.mensaje + &quot;&lt;/a&gt;&quot;;
+
+return link;
+</sourceCode>
+		</method>
+		<method name="getLinkToApplications" flags="clientavailable public">
+			<arg name="processId" description="" flags="in" type="String"/>
+			<arg name="link" description="" flags="out" type="String"/>
+			<arg name="mensajeLink" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="server" type="Fuego.Lib.Server"/>
+			</variables>
+			<sourceCode language="Java1">// version 4.5
+server = Fuego.Server();
+arg.link = server.webBUIServer + &quot;/servlet/controller?&quot;;
+arg.link = arg.link + &quot;viewName=&quot; + arg.processId.field(delimiter : &quot;/&quot;, n : 0) + &quot;%2Fapplications&amp;from=1&quot;;
+arg.link = &quot;&lt;a href=\&quot;&quot; + arg.link + &quot;\&quot;&gt;&quot; + arg.mensajeLink + &quot;&lt;/a&gt;&quot;;
+</sourceCode>
+		</method>
+		<method name="getMailBody" description="" flags="clientavailable public">
+			<arg name="msg" description="" flags="out" type="String"/>
+			<variables>
+				<variable name="style" type="String"/>
+			</variables>
+			<sourceCode language="Java1">// styleTitulo = RStyleClass.createTableTitleStyle()
+// styleTitulo.fontSize = 12
+//String styleTitulo = &quot;font-family:Verdana; font-weight:bold; font-size:+12; color:#ffffff; background-color:#0B81A5; text-decoration:none; padding:2px 4px 2px 4px;&quot;;
+String styleTitulo = &quot;font-family:Verdana; font-weight:bold; font-size:+12; color:#ffffff; background-color:#02507A; text-decoration:none; padding:2px 4px 2px 4px;&quot;;
+
+// styleResumen = RStyleClass.createTextStyle()
+// styleResumen.paddingLeft = 20
+String styleResumen = &quot;font-family:Verdana; font-size:11px; padding:20px;&quot;;
+
+// styleLinks = RStyleClass.createTextStyle()
+String styleLinks = &quot;font-family:Verdana; font-size:11px;&quot;;
+
+// styleDetalles = RStyleClass.createTextStyle()
+// styleDetalles.paddingLeft = 20
+String styleDetalles = &quot;font-family:Verdana; font-size:11px; padding:20px;&quot;;
+style = styleTitulo.field(delimiter : &quot;padding&quot;, n : 0);
+arg.msg = arg.msg + &quot;&lt;table width=&apos;700&apos;&gt;&quot;;
+arg.msg = arg.msg + &quot;&lt;tr&gt;&lt;td&gt;&lt;table width=&apos;100%&apos; border=&apos;0&apos; cellspacing=&apos;0&apos; cellpadding=&apos;0&apos;&gt;&quot;;
+if(this.titulo.trim() != &quot;&quot;){
+	arg.msg = arg.msg + &quot;&lt;tr&gt;&lt;a name=&apos;inicioMail&apos;&gt;&lt;td style=&apos;&quot; + styleTitulo + &quot;&apos;&gt;&quot;;
+	arg.msg = arg.msg + this.titulo;
+	arg.msg = arg.msg + &quot;&lt;/td&gt;&lt;td align=&apos;right&apos; style=&apos;&quot; + styleTitulo + &quot;&apos;&gt;&quot;;
+	
+}
+/*
+server = Fuego.Server();
+arg.msg = arg.msg + &quot;&lt;img src=&apos;&quot; + server.webBUIServer + &quot;/img/hp_logo.bmp&apos;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;
+arg.msg = arg.msg + &quot;&lt;img src=&apos;http://www.bpms.com.ar/portal/img/set1/logo.gif&apos;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;;
+*/
+arg.msg = arg.msg + &quot;&lt;/td&gt;&lt;/tr&gt;&quot;;
+
+if(this.resumenTitulo.trim != &quot;&quot;){
+	arg.msg = arg.msg + &quot;&lt;tr&gt;&lt;td style=&apos;&quot; + styleTitulo + &quot;&apos;&gt;&quot;;
+    arg.msg = arg.msg + this.resumenTitulo;
+    arg.msg = arg.msg + &quot;&lt;/td&gt;&lt;/tr&gt;&quot;; 
+}
+
+if (this.resumen.trim != &quot;&quot;) {
+    arg.msg = arg.msg + &quot;&lt;tr&gt;&lt;td style=&apos;&quot; + styleResumen + &quot;&apos;&gt;&quot;;
+    arg.msg = arg.msg + this.resumen;
+    arg.msg = arg.msg + &quot;&lt;/td&gt;&lt;/tr&gt;&quot;;
+}
+
+if (this.detalles.length &gt; 1 &amp;&amp; this.mostrarIrA) {
+    arg.msg = arg.msg + &quot;&lt;tr&gt;&lt;td style=&apos;&quot; + styleTitulo + &quot;&apos;&gt;&quot;;
+    arg.msg = arg.msg + this.etiqueta_GOTO;
+    arg.msg = arg.msg + &quot;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&apos;&quot; + styleLinks + &quot;&apos;&gt;&quot;;
+
+    for (int i = 0; i &lt; this.detalles.length; i++) {
+        arg.msg = arg.msg + &quot;&lt;a href=&apos;#&quot; + i + &quot;&apos;&gt;&quot; + this.detalles[i].nombre + &quot;&lt;/a&gt;&lt;BR&gt;&quot;;
+    }
+
+    arg.msg = arg.msg + &quot;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&quot;;
+}
+
+for (int i = 0; i &lt; this.detalles.length; i++) {
+    arg.msg = arg.msg + &quot;&lt;tr&gt;&lt;a name=&quot; + i + &quot;&gt;&lt;td style=&apos;&quot; + styleTitulo + &quot;&apos;&gt;&quot;;
+    arg.msg = arg.msg + this.detalles[i].nombre;
+    arg.msg = arg.msg + &quot;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&apos;&quot; + styleDetalles + &quot;&apos;&gt;&quot;;
+    arg.msg = arg.msg + this.detalles[i].mensaje;
+    arg.msg = arg.msg + &quot;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&apos;&quot; + styleLinks + &quot;&apos;&gt;&quot;;
+    arg.msg = arg.msg + &quot;&lt;a href=&apos;#inicioMail&apos;&gt;&quot; + this.etiqueta_TOP + &quot;&lt;/a&gt;&quot;;
+    arg.msg = arg.msg + &quot;&lt;/td&gt;&lt;/tr&gt;&quot;;
+}
+
+arg.msg = arg.msg + &quot;&lt;tr&gt;&lt;td style=&apos;&quot; + styleTitulo + &quot;&apos;&gt;&quot;;
+arg.msg = arg.msg + &quot;Oracle BPM Mail&quot;;
+arg.msg = arg.msg + &quot;&lt;/td&gt;&lt;/tr&gt;&quot;;
+arg.msg = arg.msg + &quot;&lt;/table&gt;&quot;;
+</sourceCode>
+		</method>
+		<method name="send" description="" flags="clientavailable public">
+			<variables>
+				<variable name="body" type="String"/>
+				<variable name="mail" type="Fuego.Net.Mail"/>
+				<variable name="mailSender" type="Fuego.Net.MailSender"/>
+			</variables>
+			<sourceCode language="Java1">mail = Mail();
+mail.from = this.from;
+mail.recipients = this.@to;
+mail.cc = this.cc;
+mail.contentType = &quot;text/html&quot;;
+mail.attachments = this.attachments;
+mail.subject = this.subject;
+this.getMailBody(out msg : body);
+mail.message = &quot;&lt;html&gt;&lt;body&gt;&quot; + body + &quot;&lt;/body&gt;&lt;/html&gt;&quot;;
+mailSender = Fuego.Net.MailSender(mail);
+mailSender.send(implname : &quot;HOST_SMTP&quot;);
+
+
+</sourceCode>
+		</method>
+		<method name="validarFormatoMail" flags="clientavailable public">
+			<arg name="mail" description="" flags="in" type="String"/>
+			<arg name="error" description="" flags="out" type="Bool" defaultValue="false"/>
+			<arg name="errorMsg" description="" flags="out" type="String"/>
+			<sourceCode language="Java1">arg.errorMsg = &quot;&quot;;
+arg.error = true;
+mail = arg.mail.trim;
+
+if (mail == &quot;&quot;) {
+    arg.errorMsg = &quot;mail vacio&quot;;
+}
+else if (mail.indexOf(text : &quot; &quot;) &gt;= 0) {
+    arg.errorMsg = &quot;mail con espacios&quot;;
+}
+else if (mail.fields(delim : &quot;@&quot;).length != 2) {
+    arg.errorMsg = &quot;mail sin @&quot;;
+}
+else if (mail.field(delimiter : &quot;@&quot;, n : 0).length == 0 || mail.field(delimiter : &quot;@&quot;, 
+                                                                      n : 1).length == 0) {
+    arg.errorMsg = &quot;formato de mail incorrecto&quot;;
+}
+else {
+    arg.error = false;
+}
+</sourceCode>
+		</method>
+	</methods>
+</component>

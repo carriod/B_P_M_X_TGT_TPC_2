@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101228"?>
+<component name="FormVerAdmEasyDocs" description="" versionID="Version 5.7 GA" flags="cloneable presentable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Lang.Presentable" flags="public"/>
+	<inherit class="Fuego.Internal.PresentableDelegate" flags="public delegated hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="defaultPresentation" value="EditarArchivos"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<objectProperty name="presentationNames" value="EditarArchivos"/>
+	<attributes>
+		<array type="Formulario.FormVerAdmEasyDocs.Botones" name="botones" flags="hasgetter public" position="1" javaType="fuego.xobject.GroupArray"/>
+		<array type="Formulario.FormVerAdmEasyDocs.Documentos" name="documentos" flags="hasgetter public" position="5" javaType="fuego.xobject.GroupArray"/>
+		<String name="error" flags="hassetter hasgetter public" position="2"/>
+		<Bool name="permiteBorrar" flags="hassetter hasgetter public" position="6"/>
+		<String name="rol" flags="hassetter hasgetter public" position="3"/>
+		<String name="titulo" flags="hassetter hasgetter public" position="4"/>
+	</attributes>
+	<methods>
+		<method name="FormVerAdmEasyDocs" description="" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormVerAdmEasyDocs"/>
+			<sourceCode language="Java1">
+
+</sourceCode>
+		</method>
+		<method name="initPres" description="" flags="clientavailable public">
+			<sourceCode language="Java1">this.setText(componentId : &quot;titulo&quot;, text : this.titulo);
+this.setVisible(componentId : &quot;buttonSubmit&quot;, visible : false, collapsed : true);
+this.setVisible(componentId : &quot;buttonCancel&quot;, visible : false, collapsed : true);
+
+for (int i = 0; i &lt; 6; i++) {
+   this.setVisible(componentId : &quot;button&quot;+i, visible : false, collapsed : false);
+}
+ 
+for (int i = 0; i &lt; botones.length; i++) {
+    if(botones[i].labelBoton != null){
+    	this.setVisible(componentId : &quot;button&quot;+i, visible : true, collapsed : false);
+    	this.setText(componentId : &quot;button&quot;+i, text : botones[i].labelBoton);            
+	}else{
+		this.setVisible(componentId : &quot;button&quot;+i, visible : false, collapsed : false);
+	}
+	if(botones[i].labelBoton == &quot;Borrar&quot;){
+		this.setEditable(componentId : &quot;button&quot;+i, editable : this.permiteBorrar);
+		this.setCssClassName(componentId : &quot;button&quot;+i, cssClass : this.permiteBorrar?&quot;fo_button&quot;:&quot;fo_buttonNotEditable&quot;);
+	}
+}
+
+/*
+if(mensaje == &quot;&quot; || mensaje == null)
+{
+    this.setVisible(componentId : &quot;mensaje&quot;, visible : false, collapsed : true);
+    this.setVisible(componentId : &quot;label4&quot;, visible : false, collapsed : true);
+}
+*/
+
+if(error != null &amp;&amp; error != &quot;&quot;)
+{
+    this.showError(error : error);
+}
+</sourceCode>
+		</method>
+		<method name="submit_Btn_00" description="" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button0&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);
+
+
+</sourceCode>
+		</method>
+		<method name="submit_Btn_01" description="" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button1&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);
+</sourceCode>
+		</method>
+		<method name="submit_Btn_02" description="" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button2&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="submit_Btn_03" description="" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button3&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);
+</sourceCode>
+		</method>
+		<method name="submit_Btn_04" description="" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button4&quot;);
+resultado = resultado.toLowerCase().trim();
+Utiles.Logger.logFatal(mensaje : &quot;Generar&quot;);
+this.submit(text : resultado);
+</sourceCode>
+		</method>
+		<method name="submit_Btn_05" description="" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button5&quot;);
+resultado = resultado.toLowerCase().trim();
+this.validarCarga();
+this.submit(text : resultado);
+</sourceCode>
+		</method>
+		<method name="submit_Btn_06" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button6&quot;);
+resultado = resultado.toLowerCase().trim();
+this.validarCarga();
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="submit_Btn_07" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;button7&quot;);
+resultado = resultado.toLowerCase().trim();
+this.validarCarga();
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="validarCarga" flags="clientavailable public">
+			<sourceCode language="Java1">boolean seleccionado = false;
+for (int index = 0; index &lt; this.documentos.length; index++) {
+    if(this.documentos[index].check){
+    	seleccionado = true;
+    }
+}
+if(!seleccionado){
+	this.showError(error : &quot;Debe seleccionar al menos un archivo para la operación que desea realizar&quot;);
+} </sourceCode>
+		</method>
+	</methods>
+	<presentation bgcolor="#FFFFFF" checked="true" clienterroraspopup="true" cssfilename="webRoot/webResources/css/movistyle.css" errorcssclass="fo_presentation_error" errorfontface="PLAIN" errorfontsize="12" errorfonttype="Default" height="315" id="EditarArchivos" initializationmethod="MinitPres()V" iscssenabled="true" isuxo="true" reference="FormVerAdmEasyDocs" width="473" cssclass="fo_presentation" ismixedcss="false" tabindex="0">
+		<background imageattachment="fixed" imagelayout="no-repeat" imagexposition="center" imageyposition="center">
+			<image alignment="center" bordercolor="#000000" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Default" fullbrowser="false" required="false" cssclass="fo_image" ismixedcss="false" tabindex="0"/>
+		</background>
+		<table border="true" bottombordercolor="#000000" bottomborderstyle="SOLID" bottomborderwidth="1" cellpadding="6" cellspacing="0" columnwidth="[,100%]" id="table0" leftbordercolor="#000000" leftborderstyle="SOLID" leftborderwidth="1" rightbordercolor="#000000" rightborderstyle="SOLID" rightborderwidth="1" topbordercolor="#000000" topborderstyle="SOLID" topborderwidth="1" width="800" cssclass="fo_presentation_table" ismixedcss="false" tabindex="0">
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="0" cellspacing="5" id="table1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title_cell" ismixedcss="false" tabindex="0">
+								<label bgcolor="#ffffff" fgcolor="#ffffff" fontface="BOLD" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="titulo" cssclass="fo_title_label" ismixedcss="false" tabindex="0">
+									<value>Administrar Documento</value>
+								</label>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<array headersortedbgcolor="#0A2F6F" headersortedfgcolor="#FFFFFF" sorted="false" alignment="center" automaticadd="false" bgcolor="#3366fe" bordercolor="#D0D2D4" borderwidth="1" cellpadding="3" cellspacing="1" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" headerbordercolor="#D0D2D4" headerborderwidth="1" headercssclass="fo_group_header_color" headerenabled="true" headerfontface="PLAIN" headerfontsize="12" headerfonttype="Times New Roman, Times, serif" headers="[,Usuario Carga,Fecha Carga,Archivo,Seleccionado,Ver]" headerswidth="[,150,150,150,50,50]" id="array2" indexbordercolor="#D0D2D4" indexborderwidth="1" indexcssclass="fo_group_index" indexenabled="false" indexfontface="PLAIN" indexfontsize="10" indexfonttype="Times New Roman, Times, serif" indextabenabled="false" pagingbordercolor="#D0D2D4" pagingborderwidth="1" pagingcssclass="fo_group_paging" pagingfontface="PLAIN" pagingfontsize="12" pagingfonttype="Times New Roman, Times, serif" pagingshowall="false" reference="documentos" rowevencssclass="fo_group_even_tr" rowoddcssclass="fo_group_odd_tr" rows="0" cssclass="fo_group_color" ismixedcss="false" tabindex="0">
+						<addbutton cssclass="fo_group_add" ismixedcss="false" tabindex="0"/>
+						<removebutton cssclass="fo_group_minus" ismixedcss="false" tabindex="0"/>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="center" bordercolor="#D0D2D4" borderwidth="1" colqty="10" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text1" outputmasktype="0" passwordfield="false" reference="documentos[].nombreUsuario" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="center" bordercolor="#D0D2D4" borderwidth="1" colqty="10" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text3" outputmasktype="0" passwordfield="false" reference="documentos[].fechaCarga" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="center" bordercolor="#D0D2D4" borderwidth="1" colqty="10" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="text2" outputmasktype="0" passwordfield="false" reference="documentos[].nombreArchivo" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<check bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="check1" reference="documentos[].check" required="false" cssclass="fo_check" ismixedcss="false" tabindex="0">
+									<value/>
+								</check>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display=".     ." fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="Ver" methodinvocation="documentos[].:MsubmitVer()V" transparent="true" cssclass="fo_button_ver" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</array>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="right" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="7" cellspacing="0" columnwidth="[,10%,10%,10%,10%,10%,10%]" id="table6" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" width="100%" cssclass="fo_footer_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="button0" methodinvocation="Msubmit_Btn_00()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="button1" methodinvocation="Msubmit_Btn_01()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="button2" methodinvocation="Msubmit_Btn_02()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="button3" methodinvocation="Msubmit_Btn_03()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="button4" methodinvocation="Msubmit_Btn_04()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="button5" methodinvocation="Msubmit_Btn_05()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="button6" methodinvocation="Msubmit_Btn_06()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="button7" methodinvocation="Msubmit_Btn_07()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="right" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table7" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="submit" bordercolor="#000000" borderwidth="1" display="Submit" fontface="PLAIN" fontsize="12" fonttype="Default" id="buttonSubmit" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="cancel" bordercolor="#000000" borderwidth="1" display="Cancel" fontface="PLAIN" fontsize="12" fonttype="Default" id="buttonCancel" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+		</table>
+	</presentation>
+	<resources>
+		<resource default=".     .">
+			<label language="es">.     .</label>
+		</resource>
+		<resource default="Archivo">
+			<label language="es">Archivo</label>
+		</resource>
+		<resource default="Archivos:" type="1">
+			<label language="es">Archivos:</label>
+		</resource>
+		<resource default="Boton">
+			<label language="en">Boton</label>
+			<label language="es">Boton</label>
+		</resource>
+		<resource default="Botones" type="1">
+			<label language="en">Botones</label>
+			<label language="es">Botones</label>
+		</resource>
+		<resource default="Cancel">
+			<label language="en">Cancel</label>
+			<label language="es">Cancel</label>
+		</resource>
+		<resource default="Check">
+			<label language="es">Check</label>
+		</resource>
+		<resource default="Dejar Pendiente">
+			<label language="es">Pendiente</label>
+		</resource>
+		<resource default="Documento">
+			<label language="es">Documento</label>
+		</resource>
+		<resource default="Documentos:" type="1">
+			<label language="es">Documentos:</label>
+		</resource>
+		<resource default="Editar Archivo" type="1">
+			<label language="es">Editar Archivo</label>
+		</resource>
+		<resource default="Editar Archivos" type="1">
+			<label language="es">Editar Archivos</label>
+		</resource>
+		<resource default="Extensión">
+			<label language="es">Extensión</label>
+		</resource>
+		<resource default="Fecha">
+			<label language="es">Fecha</label>
+		</resource>
+		<resource default="Fecha Alta :">
+			<label language="es">Fecha Alta :</label>
+		</resource>
+		<resource default="Fecha Alta:">
+			<label language="es">Fecha Alta:</label>
+		</resource>
+		<resource default="Fecha Carga">
+			<label language="es">Fecha Carga</label>
+		</resource>
+		<resource default="FormularioGenerico" type="1">
+			<label language="en">FormularioGenerico</label>
+			<label language="es">FormularioGenerico</label>
+		</resource>
+		<resource default="Imagen">
+			<label language="es">Imagen</label>
+		</resource>
+		<resource default="Mensaje" type="1">
+			<label language="es">Mensaje</label>
+		</resource>
+		<resource default="Mensaje :" type="1">
+			<label language="es">Mensaje :</label>
+		</resource>
+		<resource default="Mensaje:" type="1">
+			<label language="es">Mensaje:</label>
+		</resource>
+		<resource default="Rol" type="1">
+			<label language="es">Rol</label>
+		</resource>
+		<resource default="Rol :" type="1">
+			<label language="es">Rol :</label>
+		</resource>
+		<resource default="Rol:" type="1">
+			<label language="es">Rol:</label>
+		</resource>
+		<resource default="Seleccionado">
+			<label language="es">Seleccionado</label>
+		</resource>
+		<resource default="Solicitud" type="1">
+			<label language="es">Solicitud</label>
+		</resource>
+		<resource default="Solicitud :" type="1">
+			<label language="es">Solicitud :</label>
+		</resource>
+		<resource default="Solicitud:" type="1">
+			<label language="es">Solicitud:</label>
+		</resource>
+		<resource default="Submit">
+			<label language="en">Submit</label>
+			<label language="es">Submit</label>
+		</resource>
+		<resource default="Titulo">
+			<label language="es">Titulo</label>
+		</resource>
+		<resource default="Usuario">
+			<label language="es">Usuario</label>
+		</resource>
+		<resource default="Usuario Carga">
+			<label language="es">Usuario Carga</label>
+		</resource>
+		<resource default="Ver">
+			<label language="es">Ver</label>
+		</resource>
+		<resource default="action">
+			<label language="es">action</label>
+		</resource>
+		<resource default="label" type="1">
+			<label language="es">label</label>
+		</resource>
+	</resources>
+</component>

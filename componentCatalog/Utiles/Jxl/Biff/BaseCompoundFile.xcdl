@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="BaseCompoundFile" description="BaseCompoundFile" versionID="Version 6.5 " flags="abstract" signature="jxl.biff.BaseCompoundFile" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.BaseCompoundFile"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.BaseCompoundFile"/>
+	<attributes>
+		<String name="COMP_OBJ_NAME" flags="hasgetter attribute static external final" position="5" javaType="java.lang.String" writeSignature="ACOMP_OBJ_NAME;Ljava.lang.String;" readSignature="ACOMP_OBJ_NAME;Ljava.lang.String;"/>
+		<Int length="32" name="DIRECTORY_PS_TYPE" flags="hasgetter attribute static external final" primitive="true" position="8" javaType="int" writeSignature="ADIRECTORY_PS_TYPE;I" readSignature="ADIRECTORY_PS_TYPE;I"/>
+		<String name="DOCUMENT_SUMMARY_INFORMATION_NAME" flags="hasgetter attribute static external final" position="4" javaType="java.lang.String" writeSignature="ADOCUMENT_SUMMARY_INFORMATION_NAME;Ljava.lang.String;" readSignature="ADOCUMENT_SUMMARY_INFORMATION_NAME;Ljava.lang.String;"/>
+		<Int length="32" name="FILE_PS_TYPE" flags="hasgetter attribute static external final" primitive="true" position="9" javaType="int" writeSignature="AFILE_PS_TYPE;I" readSignature="AFILE_PS_TYPE;I"/>
+		<Int length="32" name="NONE_PS_TYPE" flags="hasgetter attribute static external final" primitive="true" position="7" javaType="int" writeSignature="ANONE_PS_TYPE;I" readSignature="ANONE_PS_TYPE;I"/>
+		<String name="ROOT_ENTRY_NAME" flags="hasgetter attribute static external final" position="1" javaType="java.lang.String" writeSignature="AROOT_ENTRY_NAME;Ljava.lang.String;" readSignature="AROOT_ENTRY_NAME;Ljava.lang.String;"/>
+		<Int length="32" name="ROOT_ENTRY_PS_TYPE" flags="hasgetter attribute static external final" primitive="true" position="10" javaType="int" writeSignature="AROOT_ENTRY_PS_TYPE;I" readSignature="AROOT_ENTRY_PS_TYPE;I"/>
+		<array type="String" name="STANDARD_PROPERTY_SETS" flags="hasgetter attribute static external final" primitive="true" position="6" javaType="java.lang.String[]" writeSignature="ASTANDARD_PROPERTY_SETS;[Ljava.lang.String;" readSignature="ASTANDARD_PROPERTY_SETS;[Ljava.lang.String;"/>
+		<String name="SUMMARY_INFORMATION_NAME" flags="hasgetter attribute static external final" position="3" javaType="java.lang.String" writeSignature="ASUMMARY_INFORMATION_NAME;Ljava.lang.String;" readSignature="ASUMMARY_INFORMATION_NAME;Ljava.lang.String;"/>
+		<String name="WORKBOOK_NAME" flags="hasgetter attribute static external final" position="2" javaType="java.lang.String" writeSignature="AWORKBOOK_NAME;Ljava.lang.String;" readSignature="AWORKBOOK_NAME;Ljava.lang.String;"/>
+	</attributes>
+	<methods/>
+</component>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NListaAntecedentes" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="1"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="2"/>
+		<Decimal name="montoAdjDolares" flags="hassetter hasgetter public includeincheck" position="6"/>
+		<String name="montoAdjDolaresStr" flags="hassetter hasgetter public virtual" position="19">
+			<read language="Java1">if(this.montoAdjDolaresStrTemp == null || this.montoAdjDolaresStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoAdjDolares);
+}
+else{
+	return montoAdjDolaresStrTemp;
+}</read>
+			<write language="Java1">this.montoAdjDolaresStrTemp = value;
+this.montoAdjDolares = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoAdjDolares != null){
+	this.montoAdjDolaresStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoAdjDolaresStrTemp" flags="hassetter hasgetter public" position="23"/>
+		<Decimal name="montoAdjEuros" flags="hassetter hasgetter public includeincheck" position="7"/>
+		<String name="montoAdjEurosStr" flags="hassetter hasgetter public virtual" position="20">
+			<read language="Java1">if(this.montoAdjEurosStrTemp == null || this.montoAdjEurosStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoAdjEuros);
+}
+else{
+	return montoAdjEurosStrTemp;
+}</read>
+			<write language="Java1">this.montoAdjEurosStrTemp = value;
+this.montoAdjEuros = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoAdjEuros != null){
+	this.montoAdjEurosStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoAdjEurosStrTemp" flags="hassetter hasgetter public" position="24"/>
+		<object type="Negocio.NMoneda" name="montoAdjOM" flags="hassetter hasgetter public" position="14"/>
+		<Decimal name="montoAdjOtro" flags="hassetter hasgetter public" position="15"/>
+		<String name="montoAdjOtroStr" flags="hassetter hasgetter public virtual" position="21">
+			<read language="Java1">if(this.montoAdjOtroStrTemp == null || this.montoAdjOtroStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoAdjOtro);
+}
+else{
+	return montoAdjOtroStrTemp;
+}</read>
+			<write language="Java1">this.montoAdjOtroStrTemp = value;
+this.montoAdjOtro = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoAdjOtro != null){
+	this.montoAdjOtroStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoAdjOtroStrTemp" flags="hassetter hasgetter public" position="25"/>
+		<Decimal name="montoAdjPesos" flags="hassetter hasgetter public includeincheck" position="5"/>
+		<String name="montoAdjPesosStr" flags="hassetter hasgetter public virtual" position="18">
+			<read language="Java1">if(this.montoAdjPesosStrTemp == null || this.montoAdjPesosStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoAdjPesos);
+}
+else{
+	return montoAdjPesosStrTemp;
+}</read>
+			<write language="Java1">this.montoAdjPesosStrTemp = value;
+this.montoAdjPesos = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoAdjPesos != null){
+	this.montoAdjPesosStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoAdjPesosStrTemp" flags="hassetter hasgetter public" position="22"/>
+		<Decimal name="numeroCesta" flags="hassetter hasgetter public includeincheck" position="4"/>
+		<Int length="64" name="numeroContrato" flags="hassetter hasgetter public" position="13"/>
+		<Time scale="2" precision="2" name="perContAntFechaFin" flags="hassetter hasgetter public" position="12"/>
+		<Time scale="2" precision="2" name="perContAntFechaInicio" flags="hassetter hasgetter public" position="11"/>
+		<Decimal name="saldoContDolares" flags="hassetter hasgetter public includeincheck" position="9"/>
+		<String name="saldoContDolaresStr" flags="hassetter hasgetter public virtual" position="27">
+			<read language="Java1">if(this.saldoContDolaresStrTemp == null || this.saldoContDolaresStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.saldoContDolares);
+}
+else{
+	return saldoContDolaresStrTemp;
+}</read>
+			<write language="Java1">this.saldoContDolaresStrTemp = value;
+this.saldoContDolares = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.saldoContDolares != null){
+	this.saldoContDolaresStrTemp = null;	
+}</write>
+		</String>
+		<String name="saldoContDolaresStrTemp" flags="hassetter hasgetter public" position="31"/>
+		<Decimal name="saldoContEuros" flags="hassetter hasgetter public includeincheck" position="10"/>
+		<String name="saldoContEurosStr" flags="hassetter hasgetter public virtual" position="28">
+			<read language="Java1">if(this.saldoContEurosStrTemp == null || this.saldoContEurosStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.saldoContEuros);
+}
+else{
+	return saldoContEurosStrTemp;
+}</read>
+			<write language="Java1">this.saldoContEurosStrTemp = value;
+this.saldoContEuros = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.saldoContEuros != null){
+	this.saldoContEurosStrTemp = null;	
+}</write>
+		</String>
+		<String name="saldoContEurosStrTemp" flags="hassetter hasgetter public" position="32"/>
+		<object type="Negocio.NMoneda" name="saldoContOM" flags="hassetter hasgetter public" position="16"/>
+		<Decimal name="saldoContOtro" flags="hassetter hasgetter public includeincheck" position="17"/>
+		<String name="saldoContOtroStr" flags="hassetter hasgetter public virtual" position="29">
+			<read language="Java1">if(this.saldoContOtroStrTemp == null || this.saldoContOtroStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.saldoContOtro);
+}
+else{
+	return saldoContOtroStrTemp;
+}</read>
+			<write language="Java1">this.saldoContOtroStrTemp = value;
+this.saldoContOtro = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.saldoContOtro != null){
+	this.saldoContOtroStrTemp = null;	
+}</write>
+		</String>
+		<String name="saldoContOtroStrTemp" flags="hassetter hasgetter public" position="33"/>
+		<Decimal name="saldoContPesos" flags="hassetter hasgetter public includeincheck" position="8"/>
+		<String name="saldoContPesosStr" flags="hassetter hasgetter public virtual" position="26">
+			<read language="Java1">if(this.saldoContPesosStrTemp == null || this.saldoContPesosStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.saldoContPesos);
+}
+else{
+	return saldoContPesosStrTemp;
+}</read>
+			<write language="Java1">this.saldoContPesosStrTemp = value;
+this.saldoContPesos = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.saldoContPesos != null){
+	this.saldoContPesosStrTemp = null;	
+}</write>
+		</String>
+		<String name="saldoContPesosStrTemp" flags="hassetter hasgetter public" position="30"/>
+		<object type="Negocio.NTipoCesta" name="tipoCesta" flags="hassetter hasgetter public" position="3"/>
+	</attributes>
+	<methods>
+		<method name="NListaAntecedentes" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NListaAntecedentes"/>
+			<sourceCode language="Java1">this.tipoCesta = Negocio.NTipoCesta();
+this.montoAdjOM = NMoneda();
+this.saldoContOM = NMoneda();</sourceCode>
+		</method>
+	</methods>
+</component>

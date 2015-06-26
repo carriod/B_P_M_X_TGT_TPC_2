@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="PageOrientation" description="PageOrientation" versionID="Version 6.5 " flags="" signature="jxl.format.PageOrientation" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.PageOrientation"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.PageOrientation"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.PageOrientation" name="landscape" flags="hassetter hasgetter attribute static external" position="2" javaType="jxl.format.PageOrientation" writeSignature="ALANDSCAPE;Ljxl.format.PageOrientation;" readSignature="ALANDSCAPE;Ljxl.format.PageOrientation;"/>
+		<object type="Utiles.Jxl.Format.PageOrientation" name="portrait" flags="hassetter hasgetter attribute static external" position="1" javaType="jxl.format.PageOrientation" writeSignature="APORTRAIT;Ljxl.format.PageOrientation;" readSignature="APORTRAIT;Ljxl.format.PageOrientation;"/>
+	</attributes>
+	<methods/>
+</component>

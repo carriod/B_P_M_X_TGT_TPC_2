@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="BaseCellFeatures" description="BaseCellFeatures" versionID="Version 6.5 " flags="" signature="jxl.biff.BaseCellFeatures" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.BaseCellFeatures"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.BaseCellFeatures"/>
+	<attributes>
+		<String name="comment" flags="hassetter external" position="1" javaType="java.lang.String" writeSignature="MsetComment(Ljava.lang.String;)V"/>
+		<object type="Utiles.Jxl.Biff.Drawing.Comment" name="commentDrawing" flags="hassetter hasgetter external" position="2" javaType="jxl.biff.drawing.Comment" writeSignature="MsetCommentDrawing(Ljxl.biff.drawing.Comment;)V" readSignature="MgetCommentDrawing()Ljxl.biff.drawing.Comment;"/>
+		<Real length="64" name="commentHeight" flags="hasgetter external" primitive="true" position="3" javaType="double" readSignature="MgetCommentHeight()D"/>
+		<Real length="64" name="commentWidth" flags="hasgetter external" primitive="true" position="4" javaType="double" readSignature="MgetCommentWidth()D"/>
+		<object type="Utiles.Jxl.Common.Logger" name="logger" flags="hassetter hasgetter attribute static external" position="6" javaType="jxl.common.Logger" writeSignature="Alogger;Ljxl.common.Logger;" readSignature="Alogger;Ljxl.common.Logger;"/>
+		<object type="Utiles.Jxl.Write.Biff.CellValue" name="writableCell" flags="hassetter external" position="5" javaType="jxl.write.biff.CellValue" writeSignature="MsetWritableCell(Ljxl.write.biff.CellValue;)V"/>
+	</attributes>
+	<methods>
+		<method name="BaseCellFeatures" flags="static" signature="Kjxl.biff.BaseCellFeatures(Ljxl.biff.BaseCellFeatures;)">
+			<arg name="cf" description="" flags="in external" type="Utiles.Jxl.Biff.BaseCellFeatures" javaType="jxl.biff.BaseCellFeatures"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.BaseCellFeatures"/>
+		</method>
+		<method name="getCommentDrawing" description="getCommentDrawing" flags="external final hidden" signature="MgetCommentDrawing()Ljxl.biff.drawing.Comment;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Drawing.Comment" javaType="jxl.biff.drawing.Comment"/>
+		</method>
+		<method name="getCommentHeight" description="getCommentHeight" flags="external hidden" signature="MgetCommentHeight()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getCommentWidth" description="getCommentWidth" flags="external hidden" signature="MgetCommentWidth()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="removeComment" description="removeComment" flags="external" signature="MremoveComment()V"/>
+		<method name="setComment" description="setComment" flags="external hidden" signature="MsetComment(Ljava.lang.String;)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setComment" description="setComment" flags="external" signature="MsetComment(Ljava.lang.String;DD)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="width" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="height" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setCommentDrawing" description="setCommentDrawing" flags="external final hidden" signature="MsetCommentDrawing(Ljxl.biff.drawing.Comment;)V">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.Comment" javaType="jxl.biff.drawing.Comment"/>
+		</method>
+		<method name="setReadComment" description="setReadComment" flags="external" signature="MsetReadComment(Ljava.lang.String;DD)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="w" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="h" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setWritableCell" description="setWritableCell" flags="external final hidden" signature="MsetWritableCell(Ljxl.write.biff.CellValue;)V">
+			<arg name="wc" description="" flags="in external" type="Utiles.Jxl.Write.Biff.CellValue" javaType="jxl.write.biff.CellValue"/>
+		</method>
+	</methods>
+</component>

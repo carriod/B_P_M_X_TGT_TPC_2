@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="HeaderFooter" description="HeaderFooter" versionID="Version 6.5 " flags="abstract" signature="jxl.biff.HeaderFooter" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.HeaderFooter"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.HeaderFooter"/>
+	<attributes/>
+	<methods>
+		<method name="toString" description="toString" flags="external hidden" signature="MtoString()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

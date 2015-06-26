@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<enumeration name="FormatoDocumento" versionID="Version 6.5 " type="enumeration" description="">
+	<item label="PDF" value="0"/>
+	<item label="ZIP" value="1"/>
+	<item label="NATIVO" value="2"/>
+</enumeration>

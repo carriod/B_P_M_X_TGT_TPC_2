@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="MetodosFile" description="" versionID="Version 5.5 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="legacy" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="MetodosFile" flags="static">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.MetodosFile"/>
+		</method>
+		<method name="dirBarraS" description="Hace dir (ls) recursivamente" flags="clientavailable public">
+			<arg name="dirBase" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="archivos" type="String[]"/>
+				<variable name="dir" type="Java.Io.File"/>
+				<variable name="tmp" type="String"/>
+				<variable name="tmpArray" type="String[]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">dir = Java.File(arg1 : arg.dirBase);
+
+foreach (file in dir.list()) {
+    tmp = arg.dirBase + dir.separatorChar + file;
+
+    if (Java.File(arg1 : tmp).isDirectory()) {
+        tmpArray = this.dirBarraS(dirBase : tmp);
+
+        foreach (f in tmpArray) {
+            archivos[] = f;
+        }
+    }
+    else {
+        archivos[] = tmp;
+    }
+}
+
+return archivos;
+</sourceCode>
+		</method>
+		<method name="getExtension" description="Devuelve la extension del archivo (&quot;-&quot; si no tiene)" flags="clientavailable public">
+			<arg name="file" description="archivo" flags="in" type="String"/>
+			<variables>
+				<variable name="ext" type="String"/>
+				<variable name="i" type="Int"/>
+				<variable name="tmp" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">tmp = &quot;-&quot;;
+i = 1;
+
+while (tmp != &quot;&quot;) {
+    ext = tmp;
+    tmp = file.field(delimiter : &quot;.&quot;, n : i);
+    i = i + 1;
+}
+
+if (ext == &quot;-&quot;) {
+    ext = &quot;&quot;;
+}
+
+return ext;
+</sourceCode>
+		</method>
+		<method name="getInstalationPath" description="" flags="clientavailable public">
+			<variables>
+				<variable name="confDir" type="String"/>
+				<variable name="server" type="Fuego.Lib.Server"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">// Se busca el directorio de configuracion en el servidor 
+server = Fuego.Server();
+
+if (server.homeDir.indexOf(text : &quot;:&quot;) != - 1 &amp;&amp; server.homeDir.length &gt; 1 &amp;&amp; server.homeDir.startsWith(arg1 : &quot;\\&quot;)) {
+    confDir = server.homeDir.substring(first : 1, last : server.homeDir.length);
+}
+else {
+    confDir = server.homeDir;
+}
+
+return confDir;
+</sourceCode>
+		</method>
+		<method name="getName" flags="clientavailable public">
+			<arg name="file" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="archivo" type="String"/>
+				<variable name="tmp" type="Int"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">archivo = sacarPath(file : file);
+
+tmp = archivo.length - getExtension(file : archivo).length - 1;
+
+return archivo.substring(first : 0, last : tmp);
+</sourceCode>
+		</method>
+		<method name="getServerTempDir" description="" flags="clientavailable public">
+			<variables>
+				<variable name="fl" type="Java.Io.File"/>
+				<variable name="p" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">p = this.getInstalationPath() + Java.File.separatorChar + &quot;tmp&quot;;
+fl = Java.File(arg1 : p);
+fl.mkdirs();
+
+return p;
+</sourceCode>
+		</method>
+		<method name="leerArchivoDAT" flags="clientavailable public">
+			<arg name="ruta" description="" flags="in" type="String"/>
+			<arg name="liquidacion" description="" flags="out" type="String"/>
+			<arg name="periodo" description="" flags="out" type="String"/>
+			<arg name="ftp" description="" flags="in" type="Fuego.Net.FTPServer"/>
+			<arg name="rutaFTP" description="" flags="in" type="String"/>
+			<arg name="rutaProcesadosFTP" description="" flags="in" type="String"/>
+			<arg name="rutaProcesados" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+try {
+	Java.Io.File f = new Java.Io.File(arg.ruta);
+	if (!f.exists()){
+		respuesta.resultado = ERROR;
+		respuesta.contenido = &quot;Directorio &apos;&quot; + arg.ruta + &quot;&apos; inexistente.&quot;;
+		Logger.logWarning(mensaje : String(respuesta.contenido));
+		return respuesta;
+	}
+	ftp.currentDirectory = arg.rutaFTP;
+	String[] archivos = ftp.files; 
+	String[] datos = {};
+	for (int index = 0; index &lt; archivos.length; index++) {
+	    String arch = archivos[index];
+	    String extension = this.getExtension(file : arch);
+		String nombreArchivo = this.getName(file : arch);		
+	    if(nombreArchivo.indexOf(text : &quot;INFO_CARPETAS&quot;) == 0 &amp;&amp; extension.toUpperCase() == &quot;DAT&quot;){
+		    String[] datArch = nombreArchivo.split(delim : &quot;_&quot;);
+			arg.liquidacion = datArch[2];
+			arg.periodo = datArch[3];
+		    ftp.retrieveFileFrom(remotefile : arch, localfile : ruta+arch, mode : &quot;I&quot;);
+		    Java.Io.FileReader fr = new Java.Io.FileReader(ruta+arch);		    
+		    BufferedReader br = new BufferedReader(fr);
+		    String linea = &quot;&quot;;
+		    while ((linea = br.readLine()) != null) {
+		        if(linea.trim().length() != 0){
+		        	datos[] = linea;
+		        }
+		    }
+		    fr.close();
+		    ftp.renameFileAt(oldname : arg.rutaFTP+arch, newname : arg.rutaProcesadosFTP+arch);
+		    
+		    Java.Io.File p = new Java.Io.File(arg.rutaProcesados);
+		    if(!p.exists()){
+		    	if(p.mkdir()){
+	    			this.moverArchivo(origen : arg.ruta+arch, destino : arg.rutaProcesados+arch);
+		    	}
+		    }
+		    else{
+	    		this.moverArchivo(origen : arg.ruta+arch, destino : arg.rutaProcesados+arch);
+		    }
+		    
+	    }
+	}
+    respuesta.resultado = OK;
+    respuesta.contenido = datos;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = ERROR;
+    respuesta.contenido = e.message;
+    Logger.logWarning(mensaje : String(respuesta.contenido));
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="leerArchivoDeTexto" description="" flags="clientavailable public">
+			<arg name="pathArchivo" description="" flags="in" type="String"/>
+			<arg name="separador" description="" flags="in" type="String"/>
+			<arg name="error" description="" flags="out" type="Bool" defaultValue="false"/>
+			<arg name="errorMsg" description="" flags="out" type="String"/>
+			<arg name="datos" description="" flags="out" type="String[][]"/>
+			<variables>
+				<variable name="fl" type="Java.Io.RandomAccessFile"/>
+				<variable name="i" type="Int"/>
+				<variable name="linea" type="String"/>
+			</variables>
+			<sourceCode language="Java1">arg.error = false;
+arg.errorMsg = &quot;&quot;;
+try {
+    fl = RandomAccessFile(arg1 : arg.pathArchivo, arg2 : &quot;r&quot;);
+    linea = fl.readLine();
+    i = 0;
+
+    while (linea != null) {
+        arg.datos[i] = linea.fields(delim : arg.separador);
+        linea = fl.readLine();
+        i = i + 1;
+    }
+
+    fl.close();
+}
+catch (Java.Lang.Exception e) {
+    arg.error = true;
+    arg.errorMsg = e.message;
+}
+</sourceCode>
+		</method>
+		<method name="moverArchivo" description="" flags="clientavailable public">
+			<arg name="origen" description="archivo a mover" flags="in" type="String"/>
+			<arg name="destino" description="archivo de destino" flags="in" type="String"/>
+			<variables>
+				<variable name="from" type="Java.Io.File"/>
+				<variable name="to" type="Java.Io.File"/>
+			</variables>
+			<sourceCode language="Java1">from = Java.File(arg1 : arg.origen);
+Java.File(arg1 : this.path(file : arg.destino)).mkdirs();
+
+@to = Java.File(arg1 : arg.destino);
+
+if (from.exists()) {
+    from.renameTo(arg1 : @to);
+}
+</sourceCode>
+		</method>
+		<method name="moverCarpeta" description="" flags="clientavailable public">
+			<arg name="origen" description="" flags="in" type="String"/>
+			<arg name="destino" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="barraDestino" type="String"/>
+				<variable name="from" type="Java.Io.File"/>
+			</variables>
+			<sourceCode language="Java1">from = Java.File(arg1 : arg.origen);
+
+if (from.exists() &amp;&amp; from.isDirectory()) {
+    barraDestino = Java.File(arg1 : arg.destino).separatorChar;
+    arg.destino = arg.destino + barraDestino + from.getName();
+
+    foreach (file in from.listFiles()) {
+        if (file.isDirectory()) {
+            this.moverCarpeta(origen : file.getPath(), destino : Java.File(arg1 : arg.destino).getPath());
+        }
+        else {
+            this.moverArchivo(origen : file.getPath(), destino : Java.File(arg1 : arg.destino).getPath() + 
+                              barraDestino + file.getName());
+        }
+    }
+
+    from.delete();
+}
+</sourceCode>
+		</method>
+		<method name="path" description="" flags="clientavailable public">
+			<arg name="file" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="dir" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">dir = &quot;&quot;;
+try {
+    dir = arg.file.substring(first : 0, last : arg.file.lastIndexOf(text : Java.File(arg1 : arg.file).separatorChar));
+}
+catch (Exception e) {
+    return &quot;&quot;;
+}
+
+return dir;
+</sourceCode>
+		</method>
+		<method name="sacarCaracteresRaros" flags="clientavailable public">
+			<arg name="nombre" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="res" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">res = arg.nombre;
+
+if (this.getExtension(file : arg.nombre) != &quot;&quot;) {
+    res = res.substring(first : 0, last : arg.nombre.length - this.getExtension(file : arg.nombre).length - 1);
+}
+
+res = res.replace(regexp : &apos;/[\/:*?\&quot;\n\t\r&lt;&gt;|]/g&apos;, replacement : &quot; &quot;);
+
+if (res.length &gt; 215) {
+    // el nombre del archivo puede ser de a lo sumo 215 caracteres
+    res = res.substring(first : 0, last : 215);
+}
+
+if (this.getExtension(file : arg.nombre) != &quot;&quot;) {
+    res = res + &quot;.&quot; + this.getExtension(file : arg.nombre);
+}
+
+return res;
+</sourceCode>
+		</method>
+		<method name="sacarPath" description="" flags="clientavailable public">
+			<arg name="file" description="file" flags="in" type="String"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="name" type="String"/>
+				<variable name="tmp" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">arg.file = arg.file.replace(from : &quot;\\\\&quot;, @to : &quot;&quot;);
+tmp = arg.file;
+i = 1;
+
+while (tmp != &quot;&quot;) {
+    name = tmp;
+    tmp = arg.file.field(delimiter : Java.File(arg1 : arg.file).separatorChar, n : i);
+    i = i + 1;
+}
+
+i = 1;
+tmp = name;
+while (tmp != &quot;&quot;) {
+    name = tmp;
+    tmp = arg.file.field(delimiter : &quot;/&quot;, n : i);
+    i = i + 1;
+}
+
+i = 1;
+tmp = name;
+while (tmp != &quot;&quot;) {
+    name = tmp;
+    tmp = arg.file.field(delimiter : &quot;\\&quot;, n : i);
+    i = i + 1;
+}
+
+return name;</sourceCode>
+		</method>
+	</methods>
+</component>

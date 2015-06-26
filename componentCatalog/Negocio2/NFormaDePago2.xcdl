@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NFormaDePago2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String length="50" name="codigo" flags="hassetter hasgetter public includeincheck" position="2"/>
+		<String length="100" name="descripcion" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<Time scale="2" precision="2" name="fechaAlta" flags="hassetter hasgetter public" position="4"/>
+		<Time name="fechaModificacion" flags="hassetter hasgetter public" position="7"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="1"/>
+		<String length="50" name="usuarioAlta" flags="hassetter hasgetter public includeincheck" position="5"/>
+		<String length="50" name="usuarioModificacion" flags="hassetter hasgetter public includeincheck" position="6"/>
+		<Bool name="vigencia" flags="hassetter hasgetter public" position="8"/>
+	</attributes>
+	<methods>
+		<method name="NFormaDePago2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NFormaDePago2"/>
+		</method>
+	</methods>
+</component>

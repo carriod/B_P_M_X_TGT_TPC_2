@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="ListaPedidos" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio2.NPedido2" name="objetoPedido" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ListaPedidos" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormEdicionProcesos.ListaPedidos"/>
+		</method>
+		<method name="pedidoButton" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_E_&quot; + this.objetoPedido.procesoId + &quot;_&quot; + this.objetoPedido.procesoEdicion + &quot;_&quot; + this.objetoPedido.proveedor.codigo + &quot;_&quot; + this.objetoPedido.moneda.id + &quot;_&quot; + this.objetoPedido.sociedad.id + &quot;_&quot; + this.objetoPedido.formaDePago.codigo);</sourceCode>
+		</method>
+	</methods>
+</component>

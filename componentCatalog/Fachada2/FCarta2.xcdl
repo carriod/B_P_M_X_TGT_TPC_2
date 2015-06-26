@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FCarta2" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio2.SCarta2" name="servicio" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FCarta2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada2.FCarta2"/>
+			<sourceCode language="Java1">this.servicio = new SCarta2();</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="cartaId" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta =	this.servicio.deleteValue(cartaId : arg.cartaId);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteValuesForIdPedido" flags="clientavailable public">
+			<arg name="procesoId" description="" flags="in" type="Int"/>
+			<arg name="procesoEdicion" description="" flags="in" type="Int"/>
+			<arg name="sociedadId" description="" flags="in" type="Int"/>
+			<arg name="monedaId" description="" flags="in" type="Int"/>
+			<arg name="proveedorCodigo" description="" flags="in" type="String"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteValuesForIdPedido(procesoId : arg.procesoId, 
+													  procesoEdicion : arg.procesoEdicion, 
+													  monedaId : arg.monedaId, 
+	                                      			  sociedadId : arg.sociedadId, 
+	                                      			  proveedorCodigo : arg.proveedorCodigo,
+	                                      			  formaDePagoCodigo : arg.formaDePagoCodigo);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValuesForIdPedido(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="existeCarta" flags="clientavailable public">
+			<arg name="cartaId" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = servicio.existeCarta(cartaId : arg.cartaId);
+	if(((Bool)respuesta.contenido) == true){
+		respuesta.contenido = true;
+		respuesta.resultado = OK;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues();
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getNextValue" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getNextValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+		int a = (Integer)objArray[&quot;NEXTVAL&quot;];
+    	respuesta.contenido = a;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getNextValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="cartaId" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(cartaId : arg.cartaId);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValuesForCarta" flags="clientavailable public">
+			<arg name="proId" description="" flags="in" type="Int"/>
+			<arg name="proEdicion" description="" flags="in" type="Int"/>
+			<arg name="prvCodigo" description="" flags="in" type="String"/>
+			<arg name="monId" description="" flags="in" type="Int"/>
+			<arg name="socId" description="" flags="in" type="Int"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValuesForCarta(proId : arg.proId,
+												proEdicion : arg.proEdicion,
+												prvCodigo : arg.prvCodigo, 
+												monId : arg.monId, 
+												socId : arg.socId,
+												formaDePagoCodigo : arg.formaDePagoCodigo);
+
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValuesForIdSolicitud(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValuesForPedido" flags="clientavailable public">
+			<arg name="proId" description="" flags="in" type="Int"/>
+			<arg name="proEdicion" description="" flags="in" type="Int"/>
+			<arg name="prvCodigo" description="" flags="in" type="String"/>
+			<arg name="monId" description="" flags="in" type="Int"/>
+			<arg name="socId" description="" flags="in" type="Int"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValuesForPedido(proId : arg.proId,
+												 proEdicion : arg.proEdicion,
+												 prvCodigo : arg.prvCodigo,
+												 monId : arg.monId,
+												 socId : arg.socId,
+												 formaDePagoCodigo : arg.formaDePagoCodigo);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValuesForIdSolicitud(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NCarta2"/>
+			<sourceCode language="Java1">NCarta2 objNegocio = NCarta2();
+
+objNegocio.id = (Integer)arg.objArray[&quot;ID&quot;];
+objNegocio.idProceso = (Integer)arg.objArray[&quot;PRO_ID&quot;];
+objNegocio.edicionProceso = (Integer)arg.objArray[&quot;PRO_EDICION&quot;];
+objNegocio.proveedorCodigo = (String)arg.objArray[&quot;PRV_CODIGO&quot;];
+objNegocio.formaDePagoCodigo = (String)arg.objArray[&quot;FPA_CODIGO&quot;];
+objNegocio.monedaId = (Integer)arg.objArray[&quot;MON_ID&quot;];
+objNegocio.sociedadId = (Integer)arg.objArray[&quot;SOC_ID&quot;];
+objNegocio.link = (String)arg.objArray[&quot;LINK&quot;];
+objNegocio.fechaCreacion = (Time)arg.objArray[&quot;FECHACREACION&quot;];
+objNegocio.fechaVisadoJefatura = (Time)arg.objArray[&quot;FECHAVISADOJEFATURA&quot;];
+objNegocio.fechaFirmaGerencia = (Time)arg.objArray[&quot;FECHAFIRMAGERENCIA&quot;];
+objNegocio.montoParcial.monto = (Decimal)arg.objArray[&quot;MONTOPARCIAL&quot;];
+objNegocio.fechaEnvioCarta = (Time)arg.objArray[&quot;FECHAENVIOCARTA&quot;];
+objNegocio.existe = true;
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="clientavailable public">
+			<arg name="objNegocio" description="" flags="in" type="Negocio2.NCarta2"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.setValue(id : arg.objNegocio.id, 
+									   proId : arg.objNegocio.idProceso, 
+									   proEdicion : arg.objNegocio.edicionProceso, 
+									   prvCodigo : arg.objNegocio.proveedorCodigo, 
+									   monId : arg.objNegocio.monedaId, 
+	                       			   socId : arg.objNegocio.sociedadId,
+	                       			   formaDePagoCodigo : arg.objNegocio.formaDePagoCodigo, 
+	                       			   link : arg.objNegocio.link, 
+	                       			   fechaCreacion : arg.objNegocio.fechaCreacion, 
+	                       			   fechaVisadoJefatura : arg.objNegocio.fechaVisadoJefatura, 
+	                       			   fechaFirmaGerencia : arg.objNegocio.fechaFirmaGerencia, 
+	                       			   fechaEnvioCarta : arg.objNegocio.fechaEnvioCarta, 
+	                       			   montoParcial : arg.objNegocio.montoParcial.monto, 
+	                       			   existe : arg.objNegocio.existe);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarCSV" flags="clientavailable public">
+			<arg name="matrizCSV" description="" flags="in" type="Any[][]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">NCarta2[] cartas = {};
+//String[][] matrizCSV = {};
+String[] errores = {};
+Utiles.Respuesta respuesta;
+Respuesta respuesta2;
+errores.clear();
+
+for(int i = 1; i &lt; matrizCSV.length(); i++){
+ 	for(int j = 0; j &lt; matrizCSV[i].length(); j++){
+
+    NCarta2 carta = NCarta2();
+    NCarta2 cartaBase = NCarta2();
+    respuesta = Respuesta();
+    j = 0;
+    
+	try{
+		if(matrizCSV[i][j] != null){
+      		if(((Integer)matrizCSV[i][j]) &gt; 0){
+	        	carta.id = (Integer)matrizCSV[i][j];
+			}else{
+        	  errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.id: no puede ser menor a 1&quot;;
+	        }
+		}else{
+			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.id: no puede ser vacío&quot;;
+		}
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot; +(i+2)+&quot; - Campo carta.id: no cumple con el formato Integer.&quot;;
+    }
+     //VERIFICA EXISTE CARTA
+    try{
+		respuesta2 = FCarta2.existeCarta(cartaId : carta.id);
+		if(respuesta2.resultado == OK){
+			if(((Bool)respuesta2.contenido) == true){
+				carta.existe = true;
+				Respuesta respuesta3 = FCarta2.getValueForId(cartaId : carta.id);
+				if (respuesta3.resultado == OK){
+					cartaBase = (NCarta2)respuesta3.contenido;
+				}
+			}else{
+	    		errores[] = &quot;Nro Linea &quot;+(i+2)+&quot; - Campo carta.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en base de datos en tabla TPC2_CARTA&quot;;
+			}
+		}
+	}catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Error en la base de datos.&quot;;
+    }
+    j++;
+	 try{
+		if(matrizCSV[i][j] == null){
+		
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	carta.link = (String)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.link: no cumple con el formato String.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+			String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			carta.fechaVisadoJefatura = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+			if (carta.fechaVisadoJefatura &lt; cartaBase.fechaCreacion){
+				errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.fechaVisadoJefatura: no puede ser menor a la Fecha Creación.&quot;;
+			}
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.fechaVisadoJefatura: no cumple con el formato Date.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+			String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			carta.fechaFirmaGerencia = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+			if (carta.fechaFirmaGerencia &lt; cartaBase.fechaCreacion){
+				errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.fechaFirmaGerencia: no puede ser menor a la Fecha Creación.&quot;;
+			}
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.fechaFirmaGerencia: no cumple con el formato Date.&quot;;
+    }
+    j++;
+    try{
+      	if(((String)matrizCSV[i][j]).length() &gt; 0){
+          	carta.montoParcial.monto = (Decimal)matrizCSV[i][j];
+          	if (carta.montoParcial.monto &lt;= 0){
+          		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.montoParcial: debe ser mayor a 0.&quot;;
+          	}
+      	}
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.montoParcial: no cumple con el formato Decimal.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+			String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			carta.fechaEnvioCarta = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+			if (carta.fechaEnvioCarta &lt; cartaBase.fechaCreacion){
+				errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.fechaEnvioCarta: no puede ser menor a la Fecha Creación.&quot;;
+			}
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo carta.fechaEnvioCarta: no cumple con el formato Date.&quot;;
+    }
+    
+    cartas[] = carta;
+  }
+}
+if((matrizCSV.length() &lt; 1)&amp;&amp;(matrizCSV[0].length() &lt; 1)){
+	errores[] = &quot;Archivo vacío.&quot;;
+}
+if(errores.length() &lt;= 0){
+  respuesta.contenido = cartas;
+  respuesta.resultado = OK;
+}else{
+  respuesta.contenido = errores;
+  respuesta.resultado = ERROR;
+}
+for (int index = 0; index &lt; errores.length; index++) {
+    logMessage(&quot;Error: &quot; + errores[index], Severity.FATAL);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarColumnasCSV" flags="clientavailable public">
+			<arg name="matrizCSV" description="" flags="in" type="Any[][]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">//String[][] matrizCSV = {};
+String errores = &quot;&quot;;
+Utiles.Respuesta respuesta;
+Respuesta respuesta2;
+
+int i = 0;
+for(int j = 0; j &lt; matrizCSV[i].length(); j++){
+    respuesta = Respuesta();
+    j = 0;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;CARTA_ID&quot;){
+        }else{
+    		errores = errores + &quot;A – CARTA_ID, &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;LINKCARTA&quot;){
+        }else{
+    		errores = errores + &quot;B – LINKCARTA, &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAVISADOJEFATURA&quot;){
+        }else{
+    		errores = errores + &quot;C – FECHAVISADOJEFATURA, &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAFIRMAGERENCIA&quot;){
+        }else{
+    		errores = errores + &quot;D – FECHAFIRMAGERENCIA, &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MONTOPARCIAL&quot;){
+        }else{
+    		errores = errores + &quot;E – MONTOPARCIAL, &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAENVIOCARTA&quot;){
+        }else{
+    		errores = errores + &quot;F – FECHAENVIOCARTA, &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+}
+
+if((matrizCSV.length() &lt; 1)&amp;&amp;(matrizCSV[0].length() &lt; 1)){
+	errores = &quot;Archivo vacío.&quot;;
+}
+if(errores.length() &lt;= 0){
+	respuesta.resultado = OK;
+}else{
+	respuesta.contenido = &quot;Nombre de Columnas NO Válidas: &quot; + errores;
+	respuesta.resultado = ERROR;
+}
+for (int index = 0; index &lt; errores.length; index++){
+    logMessage(&quot;Error: &quot; + errores, Severity.FATAL);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

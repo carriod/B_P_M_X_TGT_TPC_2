@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="ShapeType" description="ShapeType" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.ShapeType" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.ShapeType"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.ShapeType"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.Drawing.ShapeType" name="HOST_CONTROL" flags="hasgetter attribute static external final" position="3" javaType="jxl.biff.drawing.ShapeType" writeSignature="AHOST_CONTROL;Ljxl.biff.drawing.ShapeType;" readSignature="AHOST_CONTROL;Ljxl.biff.drawing.ShapeType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ShapeType" name="MIN" flags="hasgetter attribute static external final" position="1" javaType="jxl.biff.drawing.ShapeType" writeSignature="AMIN;Ljxl.biff.drawing.ShapeType;" readSignature="AMIN;Ljxl.biff.drawing.ShapeType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ShapeType" name="PICTURE_FRAME" flags="hasgetter attribute static external final" position="2" javaType="jxl.biff.drawing.ShapeType" writeSignature="APICTURE_FRAME;Ljxl.biff.drawing.ShapeType;" readSignature="APICTURE_FRAME;Ljxl.biff.drawing.ShapeType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ShapeType" name="TEXT_BOX" flags="hasgetter attribute static external final" position="4" javaType="jxl.biff.drawing.ShapeType" writeSignature="ATEXT_BOX;Ljxl.biff.drawing.ShapeType;" readSignature="ATEXT_BOX;Ljxl.biff.drawing.ShapeType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ShapeType" name="UNKNOWN" flags="hasgetter attribute static external final" position="5" javaType="jxl.biff.drawing.ShapeType" writeSignature="AUNKNOWN;Ljxl.biff.drawing.ShapeType;" readSignature="AUNKNOWN;Ljxl.biff.drawing.ShapeType;"/>
+	</attributes>
+	<methods/>
+</component>

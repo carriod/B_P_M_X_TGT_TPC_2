@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="ContinueRecord" description="ContinueRecord" versionID="Version 6.5 " flags="" signature="jxl.biff.ContinueRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.ContinueRecord"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.ContinueRecord"/>
+	<attributes>
+		<Binary name="data" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetData()[B"/>
+	</attributes>
+	<methods>
+		<method name="ContinueRecord" flags="static" signature="Kjxl.biff.ContinueRecord([B)">
+			<arg name="d" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.ContinueRecord"/>
+		</method>
+		<method name="ContinueRecord" flags="static" signature="Kjxl.biff.ContinueRecord(Ljxl.read.biff.Record;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.ContinueRecord"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+	</methods>
+</component>

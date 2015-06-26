@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<enumeration name="TipoResultado" versionID="Version 6.5 " type="enumeration" description="">
+	<item label="OK" value="0"/>
+	<item label="FAIL" value="1"/>
+	<item label="TOKENNOVALIDO" value="2"/>
+	<item label="TIPOARCHIVONOVALIDO" value="3"/>
+	<item label="FAILSAVEARCHIVO" value="4"/>
+	<item label="IMPOSIBLECONVERTIRPDF" value="5"/>
+	<item label="DOCUMENTOSINARCHIVOS" value="6"/>
+	<item label="ARCHIVOSNOEXISTENTES" value="7"/>
+	<item label="FAILINGRESARREGISTRO" value="8"/>
+	<item label="FORMATONOVALIDO" value="9"/>
+	<item label="VOLUMENNOVALIDO" value="10"/>
+	<item label="FAILNOMBRELOTE" value="11"/>
+</enumeration>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="MergedCellsRecord" description="MergedCellsRecord" versionID="Version 6.5 " flags="" signature="jxl.write.biff.MergedCellsRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.MergedCellsRecord"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.MergedCellsRecord"/>
+	<attributes>
+		<Binary name="data" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetData()[B"/>
+	</attributes>
+	<methods>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+	</methods>
+</component>

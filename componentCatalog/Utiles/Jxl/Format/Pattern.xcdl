@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Pattern" description="Pattern" versionID="Version 6.5 " flags="" signature="jxl.format.Pattern" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.Pattern"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.Pattern"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.Pattern" name="GRAY_25" flags="hasgetter attribute static external final" position="7" javaType="jxl.format.Pattern" writeSignature="AGRAY_25;Ljxl.format.Pattern;" readSignature="AGRAY_25;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="GRAY_50" flags="hasgetter attribute static external final" position="5" javaType="jxl.format.Pattern" writeSignature="AGRAY_50;Ljxl.format.Pattern;" readSignature="AGRAY_50;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="GRAY_75" flags="hasgetter attribute static external final" position="6" javaType="jxl.format.Pattern" writeSignature="AGRAY_75;Ljxl.format.Pattern;" readSignature="AGRAY_75;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="NONE" flags="hasgetter attribute static external final" position="3" javaType="jxl.format.Pattern" writeSignature="ANONE;Ljxl.format.Pattern;" readSignature="ANONE;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN1" flags="hasgetter attribute static external final" position="8" javaType="jxl.format.Pattern" writeSignature="APATTERN1;Ljxl.format.Pattern;" readSignature="APATTERN1;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN10" flags="hasgetter attribute static external final" position="17" javaType="jxl.format.Pattern" writeSignature="APATTERN10;Ljxl.format.Pattern;" readSignature="APATTERN10;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN11" flags="hasgetter attribute static external final" position="18" javaType="jxl.format.Pattern" writeSignature="APATTERN11;Ljxl.format.Pattern;" readSignature="APATTERN11;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN12" flags="hasgetter attribute static external final" position="19" javaType="jxl.format.Pattern" writeSignature="APATTERN12;Ljxl.format.Pattern;" readSignature="APATTERN12;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN13" flags="hasgetter attribute static external final" position="20" javaType="jxl.format.Pattern" writeSignature="APATTERN13;Ljxl.format.Pattern;" readSignature="APATTERN13;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN14" flags="hasgetter attribute static external final" position="21" javaType="jxl.format.Pattern" writeSignature="APATTERN14;Ljxl.format.Pattern;" readSignature="APATTERN14;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN2" flags="hasgetter attribute static external final" position="9" javaType="jxl.format.Pattern" writeSignature="APATTERN2;Ljxl.format.Pattern;" readSignature="APATTERN2;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN3" flags="hasgetter attribute static external final" position="10" javaType="jxl.format.Pattern" writeSignature="APATTERN3;Ljxl.format.Pattern;" readSignature="APATTERN3;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN4" flags="hasgetter attribute static external final" position="11" javaType="jxl.format.Pattern" writeSignature="APATTERN4;Ljxl.format.Pattern;" readSignature="APATTERN4;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN5" flags="hasgetter attribute static external final" position="12" javaType="jxl.format.Pattern" writeSignature="APATTERN5;Ljxl.format.Pattern;" readSignature="APATTERN5;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN6" flags="hasgetter attribute static external final" position="13" javaType="jxl.format.Pattern" writeSignature="APATTERN6;Ljxl.format.Pattern;" readSignature="APATTERN6;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN7" flags="hasgetter attribute static external final" position="14" javaType="jxl.format.Pattern" writeSignature="APATTERN7;Ljxl.format.Pattern;" readSignature="APATTERN7;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN8" flags="hasgetter attribute static external final" position="15" javaType="jxl.format.Pattern" writeSignature="APATTERN8;Ljxl.format.Pattern;" readSignature="APATTERN8;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="PATTERN9" flags="hasgetter attribute static external final" position="16" javaType="jxl.format.Pattern" writeSignature="APATTERN9;Ljxl.format.Pattern;" readSignature="APATTERN9;Ljxl.format.Pattern;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="SOLID" flags="hasgetter attribute static external final" position="4" javaType="jxl.format.Pattern" writeSignature="ASOLID;Ljxl.format.Pattern;" readSignature="ASOLID;Ljxl.format.Pattern;"/>
+		<String name="description" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetDescription()Ljava.lang.String;"/>
+		<Int length="32" name="value" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetValue()I"/>
+	</attributes>
+	<methods>
+		<method name="getDescription" description="getDescription" flags="external hidden" signature="MgetDescription()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getPattern" description="getPattern" flags="static external" signature="MgetPattern(I)Ljxl.format.Pattern;">
+			<arg name="val" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Pattern" javaType="jxl.format.Pattern"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

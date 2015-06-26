@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<!DOCTYPE preferences SYSTEM "http://java.sun.com/dtd/preferences.dtd">
+
+<preferences EXTERNAL_XML_VERSION="1.0">
+<root type="user">
+<map/>
+<node name="STUDIO">
+<map/>
+<node name="BPMX-DIEGO">
+<map/>
+<node name="10099">
+<map/>
+<node name="port">
+<map>
+<entry key="port" value="8586"/>
+</map>
+</node>
+<node name="protocol">
+<map>
+<entry key="protocol" value="tcp"/>
+</map>
+</node>
+</node>
+<node name="homeDir">
+<map>
+<entry key="homeDir" value="D:\Movistar\OraBPMWrkspcGIT\TGT_TPC_2"/>
+</map>
+</node>
+<node name="logDir">
+<map>
+<entry key="logDir" value="D:\Movistar\OraBPMWrkspcGIT\TGT_TPC_2\system"/>
+</map>
+</node>
+</node>
+<node name="DEVBPMX04">
+<map/>
+<node name="10099">
+<map/>
+<node name="port">
+<map>
+<entry key="port" value="8586"/>
+</map>
+</node>
+<node name="protocol">
+<map>
+<entry key="protocol" value="tcp"/>
+</map>
+</node>
+</node>
+<node name="homeDir">
+<map>
+<entry key="homeDir" value="/root/OracleBPMWorkspace/TGT_TPC_2"/>
+</map>
+</node>
+<node name="logDir">
+<map>
+<entry key="logDir" value="/root/OracleBPMWorkspace/TGT_TPC_2/system"/>
+</map>
+</node>
+</node>
+<node name="MVBPMX">
+<map/>
+<node name="10099">
+<map/>
+<node name="port">
+<map>
+<entry key="port" value="8586"/>
+</map>
+</node>
+<node name="protocol">
+<map>
+<entry key="protocol" value="tcp"/>
+</map>
+</node>
+</node>
+<node name="homeDir">
+<map>
+<entry key="homeDir" value="C:\Users\Mauricio\MyProjects\OracleBPMWorkspace_Movi\TGT_TPC"/>
+</map>
+</node>
+<node name="logDir">
+<map>
+<entry key="logDir" value="C:\Users\Mauricio\MyProjects\OracleBPMWorkspace_Movi\TGT_TPC\system"/>
+</map>
+</node>
+<node name="webConsoleURL">
+<map/>
+</node>
+</node>
+<node name="YJBPMX">
+<map/>
+<node name="10099">
+<map/>
+<node name="port">
+<map>
+<entry key="port" value="8586"/>
+</map>
+</node>
+<node name="protocol">
+<map>
+<entry key="protocol" value="tcp"/>
+</map>
+</node>
+</node>
+<node name="homeDir">
+<map>
+<entry key="homeDir" value="C:\Users\Yago\OracleBPMWorkspace\TGT_TPC_2"/>
+</map>
+</node>
+<node name="logDir">
+<map>
+<entry key="logDir" value="C:\Users\Yago\OracleBPMWorkspace\TGT_TPC_2\system"/>
+</map>
+</node>
+</node>
+<node name="bam">
+<map/>
+<node name="bamSnapshotDisposing">
+<map/>
+</node>
+<node name="bamSnapshotResolution">
+<map/>
+</node>
+</node>
+<node name="creationConfiguration">
+<map>
+<entry key="creationConfiguration" value="TGT_TPC_2"/>
+</map>
+</node>
+<node name="directoryPollingInterval">
+<map/>
+</node>
+<node name="disposer">
+<map/>
+<node name="disposerLatency">
+<map>
+<entry key="disposerLatency" value="2"/>
+</map>
+</node>
+<node name="disposerStartingTime">
+<map>
+<entry key="disposerStartingTime" value="2014-01-15 13:05:10-03:00"/>
+</map>
+</node>
+<node name="instanceCaducity">
+<map>
+<entry key="instanceCaducity" value="15"/>
+</map>
+</node>
+<node name="maxInstancesPerTransaction">
+<map/>
+</node>
+<node name="maxParticipantsPerTransaction">
+<map/>
+</node>
+<node name="maxTimePerTransaction">
+<map/>
+</node>
+<node name="participantCaducity">
+<map/>
+</node>
+</node>
+<node name="execution">
+<map/>
+<node name="automaticExecutionThreadsPoolSize">
+<map/>
+</node>
+<node name="automaticExecutionThreadsPriority">
+<map/>
+</node>
+<node name="automaticItemsQueueSize">
+<map/>
+</node>
+<node name="enableSocketFactory">
+<map>
+<entry key="enableSocketFactory" value="true"/>
+</map>
+</node>
+<node name="httpThreadCount">
+<map/>
+</node>
+<node name="interactiveExecutionThreadsPoolSize">
+<map/>
+</node>
+<node name="interruptionRetryInterval">
+<map/>
+</node>
+<node name="jmsRetryInterval">
+<map/>
+</node>
+<node name="jmsRetryTimes">
+<map/>
+</node>
+<node name="maxAcquiredInstances">
+<map/>
+</node>
+<node name="requestQueueSize">
+<map/>
+</node>
+<node name="requestQueueTimeout">
+<map/>
+</node>
+<node name="retryInterval">
+<map>
+<entry key="retryInterval" value="15"/>
+</map>
+</node>
+<node name="retryTimes">
+<map>
+<entry key="retryTimes" value="1"/>
+</map>
+</node>
+<node name="rogueThreadsLimit">
+<map/>
+</node>
+<node name="tracePattern">
+<map/>
+</node>
+</node>
+<node name="httpDebuggerPort">
+<map>
+<entry key="httpDebuggerPort" value="8080"/>
+</map>
+</node>
+<node name="ipc">
+<map/>
+<node name="maxIncomingConnections">
+<map>
+<entry key="maxIncomingConnections" value="5"/>
+</map>
+</node>
+<node name="serviceEnabled">
+<map>
+<entry key="serviceEnabled" value="false"/>
+</map>
+</node>
+<node name="servicePort">
+<map>
+<entry key="servicePort" value="54350"/>
+</map>
+</node>
+</node>
+<node name="jmx">
+<map/>
+<node name="httpPort">
+<map>
+<entry key="httpPort" value="9090"/>
+</map>
+</node>
+<node name="httpServiceEnabled">
+<map>
+<entry key="httpServiceEnabled" value="false"/>
+</map>
+</node>
+<node name="jrmpPort">
+<map>
+<entry key="jrmpPort" value="1099"/>
+</map>
+</node>
+<node name="jrmpServiceEnabled">
+<map>
+<entry key="jrmpServiceEnabled" value="false"/>
+</map>
+</node>
+</node>
+<node name="locations">
+<map/>
+</node>
+<node name="log">
+<map/>
+<node name="detailLevel">
+<map/>
+</node>
+<node name="engineLogSeverity">
+<map>
+<entry key="engineLogSeverity" value="Warning"/>
+</map>
+</node>
+<node name="mailLogSeverity">
+<map>
+<entry key="mailLogSeverity" value="None"/>
+</map>
+</node>
+<node name="maxLogFiles">
+<map/>
+</node>
+<node name="maxLogSize">
+<map/>
+</node>
+<node name="methodLogSeverity">
+<map>
+<entry key="methodLogSeverity" value="Debug"/>
+</map>
+</node>
+</node>
+<node name="memory">
+<map/>
+<node name="instancesCacheSize">
+<map>
+<entry key="instancesCacheSize" value="5000"/>
+</map>
+</node>
+<node name="maxInstanceSize">
+<map>
+<entry key="maxInstanceSize" value="16"/>
+</map>
+</node>
+<node name="maxJvmHeapSize">
+<map>
+<entry key="maxJvmHeapSize" value="1024"/>
+</map>
+</node>
+</node>
+<node name="networking">
+<map/>
+<node name="administratorMail">
+<map>
+<entry key="administratorMail" value="admin@example.com"/>
+</map>
+</node>
+<node name="mailServerName">
+<map>
+<entry key="mailServerName" value="smtp"/>
+</map>
+</node>
+<node name="portalUrl">
+<map>
+<entry key="portalUrl" value="http://$LOCALHOST$:8585/workspace"/>
+</map>
+</node>
+<node name="startPapiWs">
+<map>
+<entry key="startPapiWs" value="false"/>
+</map>
+</node>
+<node name="webServicesUrl">
+<map>
+<entry key="webServicesUrl" value="http://$LOCALHOST$:8585/fws/servlet/Deploy"/>
+</map>
+</node>
+</node>
+<node name="papi">
+<map/>
+<node name="instanceRetrievalSize">
+<map/>
+</node>
+<node name="latencyBetweenNotifications">
+<map/>
+</node>
+<node name="notifyThreadPriority">
+<map/>
+</node>
+</node>
+<node name="roundTrip">
+<map/>
+<node name="roundTripEnabled">
+<map>
+<entry key="roundTripEnabled" value="false"/>
+</map>
+</node>
+<node name="roundTripGranularity">
+<map>
+<entry key="roundTripGranularity" value="1"/>
+</map>
+</node>
+</node>
+<node name="runtimeConfiguration">
+<map>
+<entry key="runtimeConfiguration" value="TGT_TPC_2"/>
+</map>
+</node>
+<node name="serverId">
+<map/>
+</node>
+<node name="snmp">
+<map/>
+<node name="agentPort">
+<map/>
+</node>
+<node name="managerHost">
+<map/>
+</node>
+<node name="managerPort">
+<map/>
+</node>
+<node name="serviceEnabled">
+<map/>
+</node>
+</node>
+<node name="storeEvents">
+<map/>
+</node>
+<node name="templateId">
+<map>
+<entry key="templateId" value="Mixed"/>
+</map>
+</node>
+<node name="timeouts">
+<map/>
+<node name="itemExecutionTimeout">
+<map>
+<entry key="itemExecutionTimeout" value="720"/>
+</map>
+</node>
+<node name="maxMethodTimeout">
+<map>
+<entry key="maxMethodTimeout" value="1800"/>
+</map>
+</node>
+</node>
+<node name="unselect">
+<map/>
+<node name="delayBetweenTransactions">
+<map/>
+</node>
+<node name="latency">
+<map/>
+</node>
+<node name="maxParticipantsPerTransaction">
+<map/>
+</node>
+<node name="maxTimePerTransaction">
+<map/>
+</node>
+</node>
+<node name="ws">
+<map/>
+<node name="wsListenerPort">
+<map/>
+</node>
+<node name="wsMaxIncomingConnections">
+<map/>
+</node>
+</node>
+</node>
+</root>
+</preferences>

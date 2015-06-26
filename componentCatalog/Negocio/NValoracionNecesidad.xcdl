@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NValoracionNecesidad" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Bool name="alcanceFijo" flags="hassetter hasgetter public includeincheck" position="13"/>
+		<Bool name="alcanceMovil" flags="hassetter hasgetter public includeincheck" position="14"/>
+		<String length="1000" name="beneficioCompra" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<String length="1000" name="comentarioRegAdm" flags="hassetter hasgetter public includeincheck" position="8"/>
+		<Bool name="compraMargMod" flags="hassetter hasgetter public includeincheck" position="9"/>
+		<String length="1000" name="descFijoMovil" flags="hassetter hasgetter public includeincheck" position="15"/>
+		<Bool name="gastosPedido" flags="hassetter hasgetter public includeincheck" position="11"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="2"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="1"/>
+		<String length="1000" name="infoGastosPedido" flags="hassetter hasgetter public includeincheck" position="12"/>
+		<String length="1000" name="motivoCompraMargMod" flags="hassetter hasgetter public includeincheck" position="10"/>
+		<String length="1000" name="motivoRegularizacion" flags="hassetter hasgetter public includeincheck" position="7"/>
+		<String length="50" name="periodicidadCompra" flags="hassetter hasgetter public includeincheck" position="6"/>
+		<Bool name="recurrencia" flags="hassetter hasgetter public includeincheck" position="4"/>
+		<Bool name="regularizacion" flags="hassetter hasgetter public includeincheck" position="5"/>
+	</attributes>
+	<methods>
+		<method name="NValoracionNecesidad" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NValoracionNecesidad"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NConfiguracion2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="actividad" flags="hassetter hasgetter public"/>
+		<String name="boton" flags="hassetter hasgetter public"/>
+		<Bool name="cargaOK" flags="hassetter hasgetter public"/>
+		<map type="String[]" indexType="String" name="errores" description="" flags="hassetter hasgetter public"/>
+		<map type="Bool" indexType="String" name="pantallaEditable" description="" flags="hassetter hasgetter public includeincheck"/>
+		<String name="proximaPantalla" flags="hassetter hasgetter public"/>
+		<String name="rol" flags="hassetter hasgetter public"/>
+	</attributes>
+	<methods>
+		<method name="NConfiguracion2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NConfiguracion2"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<FDIObject>
+	<DirOrganizationalRole>
+		<name>TPC - Gestor Enlace</name>
+		<localizedDisplayNames>
+			<localizedDisplayName>
+				<locale>en</locale>
+				<message>TPC - Gestor Enlace</message>
+			</localizedDisplayName>
+			<localizedDisplayName>
+				<locale>es</locale>
+				<message>TPC - Gestor Enlace</message>
+			</localizedDisplayName>
+		</localizedDisplayNames>
+		<isParametric>false</isParametric>
+	</DirOrganizationalRole>
+</FDIObject>

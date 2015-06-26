@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FPedido2" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio2.SPedido2" name="servicio" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FPedido2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada2.FPedido2"/>
+			<sourceCode language="Java1">this.servicio = new SPedido2();</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="procesoId" description="" flags="in" type="Int"/>
+			<arg name="procesoEdicion" description="" flags="in" type="Int"/>
+			<arg name="proveedorCodigo" description="" flags="in" type="String"/>
+			<arg name="monedaId" description="" flags="in" type="Int"/>
+			<arg name="sociedadId" description="" flags="in" type="Int"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta =	this.servicio.deleteValue(procesoId : arg.procesoId, 
+											procesoEdicion : arg.procesoEdicion,
+											proveedorCodigo : arg.proveedorCodigo, 
+	                          				monedaId : arg.monedaId,
+	                          				sociedadId : arg.sociedadId,
+	                          				formaDePagoCodigo : arg.formaDePagoCodigo);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="existePedido" flags="clientavailable public">
+			<arg name="procesoId" description="" flags="in" type="Int"/>
+			<arg name="procesoEdicion" description="" flags="in" type="Int"/>
+			<arg name="proveedorCodigo" description="" flags="in" type="String"/>
+			<arg name="monedaId" description="" flags="in" type="Int"/>
+			<arg name="sociedadId" description="" flags="in" type="Int"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = servicio.existePedido	(procesoId : arg.procesoId, 
+										procesoEdicion : arg.procesoEdicion,
+										proveedorCodigo : arg.proveedorCodigo,
+										monedaId : arg.monedaId, 
+	                      				sociedadId : arg.sociedadId,
+	                      				formaDePagoCodigo : arg.formaDePagoCodigo);
+	if(((boolean)respuesta.contenido) == true){
+		respuesta.contenido = true;
+		respuesta.resultado = OK;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getDatosComplementarios" flags="clientavailable public">
+			<arg name="pedido" description="" flags="in" type="Negocio2.NPedido2"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try{
+	
+	if(pedido.categoriaProducto.codigo != null &amp;&amp; pedido.categoriaProducto.codigo != &quot;&quot;){
+		respuesta = FCategoriaProducto2.getValueForCodigo(codigo : pedido.categoriaProducto.codigo);
+		if (respuesta.resultado == OK) {
+			pedido.categoriaProducto = ((NCategoriaProducto2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(pedido.sociedad.id != null){
+		respuesta = FSociedad2.getValueForId(id : pedido.sociedad.id);
+		if (respuesta.resultado == OK) {
+			pedido.sociedad = ((NSociedad2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(pedido.moneda.id != null){
+		respuesta = FMoneda2.getValueForId(id : pedido.moneda.id);
+		if (respuesta.resultado == OK) {
+			pedido.moneda = ((NMoneda2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(pedido.proveedor.codigo != null &amp;&amp; pedido.proveedor.codigo != &quot;&quot;){
+		respuesta = FProveedor2.getValueForCodigo(codigo : pedido.proveedor.codigo);
+		if (respuesta.resultado == OK) {
+			pedido.proveedor = ((NProveedor2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(pedido.formaDePago.codigo != null &amp;&amp; pedido.formaDePago.codigo != &quot;&quot;){
+		respuesta = FFormaDePago2.getValueForCodigo(codigo : pedido.formaDePago.codigo);
+		if (respuesta.resultado == OK) {
+			pedido.formaDePago = ((NFormaDePago2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}	
+	pedido.carta.clear();
+	respuesta = FCarta2.getValuesForPedido(proId : pedido.procesoId, proEdicion : pedido.procesoEdicion, prvCodigo : pedido.proveedor.codigo, monId : pedido.moneda.id, socId : pedido.sociedad.id, formaDePagoCodigo : pedido.formaDePago.codigo);
+	if (respuesta.resultado == OK) {
+		pedido.carta = ((NCarta2[]) respuesta.contenido);
+	}else{
+		return respuesta;
+	}
+
+	respuesta.contenido = pedido;
+} 
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getDatosComplementarios(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues();
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesForIdEdicion" flags="clientavailable public">
+			<arg name="procesoId" description="" flags="in" type="Int"/>
+			<arg name="procesoEdicion" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValuesForIdEdicion(procesoId : arg.procesoId, procesoEdicion: arg.procesoEdicion);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    NPedido2 objNegocio = this.mapeoArrayToNegocio(objArray : objArray);
+		    Respuesta respuesta2 = this.getDatosComplementarios(pedido: objNegocio);
+		    objNegocioArray[] = (NPedido2)respuesta2.contenido;
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValuesForIdSolicitud(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesForIdProceso" flags="clientavailable public">
+			<arg name="procesoId" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValuesForIdProceso(procesoId : arg.procesoId);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    NPedido2 objNegocio = this.mapeoArrayToNegocio(objArray : objArray);
+		    Respuesta respuesta2 = this.getDatosComplementarios(pedido: objNegocio);
+		    objNegocioArray[] = (NPedido2)respuesta2.contenido;
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValuesForIdSolicitud(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="procesoId" description="" flags="in" type="Int"/>
+			<arg name="procesoEdicion" description="" flags="in" type="Int"/>
+			<arg name="proveedorCodigo" description="" flags="in" type="String"/>
+			<arg name="monedaId" description="" flags="in" type="Int"/>
+			<arg name="sociedadId" description="" flags="in" type="Int"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(procesoId : arg.procesoId,
+											procesoEdicion : arg.procesoEdicion,
+											proveedorCodigo : arg.proveedorCodigo, 
+	                           				monedaId : arg.monedaId,
+	                           				sociedadId : arg.sociedadId,
+	                           				formaDePagoCodigo : arg.formaDePagoCodigo);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+		NPedido2 pedido = this.mapeoArrayToNegocio(objArray : objArray);
+    	respuesta = this.getDatosComplementarios(pedido : pedido);
+
+    	
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValuesForFiltros" flags="clientavailable public">
+			<arg name="montoHasta" description="" flags="in" type="Decimal"/>
+			<arg name="montoDesde" description="" flags="in" type="Decimal"/>
+			<arg name="pedido" description="" flags="in" type="Negocio2.NPedido2"/>
+			<arg name="compradorId" description="" flags="in" type="Int"/>
+			<arg name="jefaturaId" description="" flags="in" type="Int"/>
+			<arg name="gerenciaId" description="" flags="in" type="Int"/>
+			<arg name="titulo" description="" flags="in" type="String"/>
+			<arg name="fechaInicioDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaInicioHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaFinDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaFinHasta" description="" flags="in" type="Time"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+NPedido2 pedido = NPedido2();
+
+try {
+	respuesta = this.servicio.getValuesForFiltros(varios1 : arg.pedido.varios1,
+													varios2 : arg.pedido.varios2,
+													varios3 : arg.pedido.varios3,
+													varios4 : arg.pedido.varios4, 
+	                                  				varios5 : arg.pedido.varios5,
+	                                  				varios6 : arg.pedido.varios6,
+	                                  				montoDesde : arg.montoDesde,
+	                                  				montoHasta : arg.montoHasta, 
+	                                  				sociedadId : arg.pedido.sociedad.id,
+	                                  				formaDePagoId : arg.pedido.formaDePago.id,
+	                                  				categoriaProductoCodigo : arg.pedido.categoriaProducto.codigo,
+	                                  				compradorId : arg.compradorId, 
+	                                  				jefaturaId : arg.jefaturaId,
+	                                  				gerenciaId : arg.gerenciaId,
+	                                  				id : arg.pedido.id,
+	                                  				proId : arg.pedido.procesoId, 
+	                                  				proEdicionId : arg.pedido.procesoEdicion,
+	                                  				monedaId : arg.pedido.moneda.id,
+	                                  				proveedorId : arg.pedido.proveedor.id,
+	                                  				titulo : arg.titulo,
+	                                  				fechaInicioDesde : arg.fechaInicioDesde,
+	                                  				fechaInicioHasta : arg.fechaInicioHasta, 
+	                                  				fechaFinHasta : arg.fechaFinHasta,
+	                                  				fechaFinDesde : arg.fechaFinDesde);
+
+	if(respuesta.resultado == OK){
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		
+		for(Any valueArray: valuesArray){
+		    Any[String] objArray = (Any[String])valueArray;
+		    pedido = Negocio2.NPedido2();
+		    pedido.id = (Integer)objArray[&quot;ID&quot;];
+			pedido.procesoId = (Integer)objArray[&quot;PRO_ID&quot;];
+			pedido.procesoEdicion = (Integer)objArray[&quot;PRO_EDICION&quot;];
+			pedido.consulta.titulo = (String)objArray[&quot;TITULO&quot;];
+			pedido.sociedad.id = (Integer)objArray[&quot;SOC_ID&quot;];
+			pedido.sociedad.descripcionCorta = (String)objArray[&quot;SOC_DESCRIPCIONCORTA&quot;];
+			pedido.sociedad.descripcionLarga = (String)objArray[&quot;SOC_DESCRIPCIONLARGA&quot;];
+			pedido.categoriaProducto.descripcion = (String)objArray[&quot;CPR_DESCRIPCION&quot;];
+			pedido.formaDePago.codigo = (String)objArray[&quot;FPA_CODIGO&quot;];
+			pedido.formaDePago.descripcion = (String)objArray[&quot;FPA_DESCRIPCION&quot;];
+			pedido.moneda.id = (Integer)objArray[&quot;MON_ID&quot;];
+			pedido.moneda.descripcion = (String)objArray[&quot;MON_DESCRIPCION&quot;];
+			pedido.montoAdjudicado.monto = (Decimal)objArray[&quot;MONTOADJUDICADO&quot;];
+			pedido.montoDerivado.monto = (Decimal)objArray[&quot;MONTODERIVADO&quot;];
+			pedido.montoCertificado.monto = (Decimal)objArray[&quot;MONTOCERTIFICADO&quot;];
+			pedido.montoFacturado.monto = (Decimal)objArray[&quot;MONTOFACTURADO&quot;];
+			pedido.fechaInicioVigencia = ((Time)objArray[&quot;FECHAINICIOVIGENCIA&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAINICIOVIGENCIA&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			pedido.fechaFinVigencia = ((Time)objArray[&quot;FECHAFINVIGENCIA&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAFINVIGENCIA&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			pedido.proveedor.codigo = (String)objArray[&quot;PRV_CODIGO&quot;];
+			pedido.proveedor.descripcion = (String)objArray[&quot;PRV_DESCRIPCION&quot;];
+			pedido.planificable = (boolean)objArray[&quot;PLANIFICABLE&quot;];
+			pedido.codigoPlanificacion = (String)objArray[&quot;CODIGOPLANIFICACION&quot;];
+			pedido.categoriaProducto.codigo = (String)objArray[&quot;PED_CPR_CODIGO&quot;];
+			pedido.fechaCreacion = (Time)objArray[&quot;PED_FECHACREACION&quot;];
+			pedido.fechaInicioIncidencia = (Time)objArray[&quot;PED_FECHAINICIOINCIDENCIA&quot;];
+			pedido.fechaFinIncidencia = (Time)objArray[&quot;PED_FECHAFININCIDENCIA&quot;];
+			pedido.clasificacion = (String)objArray[&quot;PED_CLASIFICACION&quot;];
+			pedido.detalleIncidencia = (String)objArray[&quot;PED_DETALLEINCIDENCIA&quot;];
+			pedido.requiereCarta = (boolean)objArray[&quot;PED_REQUIERECARTA&quot;];
+			pedido.ultimaCartaEnviada = (boolean)objArray[&quot;PED_ULTIMACARTAENVIADA&quot;];
+			pedido.varios1 = (String)objArray[&quot;PED_VARIOS1&quot;];
+			pedido.varios2 = (String)objArray[&quot;PED_VARIOS2&quot;];	
+			pedido.varios3 = (String)objArray[&quot;PED_VARIOS3&quot;];
+			pedido.varios4 = (String)objArray[&quot;PED_VARIOS4&quot;];
+			pedido.varios5 = (String)objArray[&quot;PED_VARIOS5&quot;];
+			pedido.varios6 = (String)objArray[&quot;PED_VARIOS6&quot;];
+			objNegocioArray[] = pedido;			
+		    }
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NPedido2"/>
+			<sourceCode language="Java1">Negocio2.NPedido2 objNegocio = Negocio2.NPedido2();
+
+objNegocio.id = (Integer)arg.objArray[&quot;ID&quot;];
+objNegocio.procesoId = (Integer)arg.objArray[&quot;PRO_ID&quot;];
+objNegocio.procesoEdicion = (Integer)arg.objArray[&quot;PRO_EDICION&quot;];
+objNegocio.proveedor.codigo =  (String)arg.objArray[&quot;PRV_CODIGO&quot;];
+objNegocio.moneda.id = (Integer)arg.objArray[&quot;MON_ID&quot;];
+objNegocio.sociedad.id = (Integer)arg.objArray[&quot;SOC_ID&quot;];
+objNegocio.formaDePago.codigo = (String)arg.objArray[&quot;FPA_CODIGO&quot;];
+objNegocio.categoriaProducto.codigo = (String)arg.objArray[&quot;CPR_CODIGO&quot;];
+objNegocio.montoAdjudicado.monto = (Decimal)arg.objArray[&quot;MONTOADJUDICADO&quot;];
+objNegocio.fechaCreacion = (Time)arg.objArray[&quot;FECHACREACION&quot;];
+objNegocio.fechaInicioVigencia = (Time)arg.objArray[&quot;FECHAINICIOVIGENCIA&quot;];
+objNegocio.fechaFinVigencia = (Time)arg.objArray[&quot;FECHAFINVIGENCIA&quot;];
+objNegocio.montoDerivado.monto = (Decimal)arg.objArray[&quot;MONTODERIVADO&quot;];
+objNegocio.montoCertificado.monto = (Decimal)arg.objArray[&quot;MONTOCERTIFICADO&quot;];
+objNegocio.montoFacturado.monto = (Decimal)arg.objArray[&quot;MONTOFACTURADO&quot;];
+objNegocio.fechaInicioIncidencia = (Time)arg.objArray[&quot;FECHAINICIOINCIDENCIA&quot;];
+objNegocio.fechaFinIncidencia = (Time)arg.objArray[&quot;FECHAFININCIDENCIA&quot;];
+objNegocio.clasificacion = (String)arg.objArray[&quot;CLASIFICACION&quot;];
+objNegocio.detalleIncidencia = (String)arg.objArray[&quot;DETALLEINCIDENCIA&quot;];
+objNegocio.requiereCarta = (boolean)arg.objArray[&quot;REQUIERECARTA&quot;];
+objNegocio.planificable = (boolean)arg.objArray[&quot;PLANIFICABLE&quot;];
+objNegocio.codigoPlanificacion = (String)arg.objArray[&quot;CODIGOPLANIFICACION&quot;];
+objNegocio.ultimaCartaEnviada = (boolean)arg.objArray[&quot;ULTIMACARTAENVIADA&quot;];
+objNegocio.varios1 = (String)arg.objArray[&quot;VARIOS1&quot;];
+objNegocio.varios2 = (String)arg.objArray[&quot;VARIOS2&quot;];
+objNegocio.varios3 = (String)arg.objArray[&quot;VARIOS3&quot;];
+objNegocio.varios4 = (String)arg.objArray[&quot;VARIOS4&quot;];
+objNegocio.varios5 = (String)arg.objArray[&quot;VARIOS5&quot;];
+objNegocio.varios6 = (String)arg.objArray[&quot;VARIOS6&quot;];
+objNegocio.usuarioAlta = (String)arg.objArray[&quot;USUARIOALTA&quot;];
+objNegocio.usuarioModificacion = (String)arg.objArray[&quot;USUARIOMODIFICACION&quot;];
+objNegocio.fechaAlta = (Time)arg.objArray[&quot;FECHAALTA&quot;];
+objNegocio.fechaModificacion = (Time)arg.objArray[&quot;FECHAMODIFICACION&quot;];
+objNegocio.existe = true;
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="clientavailable public">
+			<arg name="objNegocio" description="" flags="in" type="Negocio2.NPedido2"/>
+			<arg name="importacion" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.setValue(id : arg.objNegocio.id,
+										proId : arg.objNegocio.procesoId,
+										proEdicion : arg.objNegocio.procesoEdicion,
+										prvCodigo : arg.objNegocio.proveedor.codigo,
+										monId : arg.objNegocio.moneda.id, 
+	                       				socId : arg.objNegocio.sociedad.id,
+	                       				cprCodigo : arg.objNegocio.categoriaProducto.codigo,
+	                       				formaDePagoCodigo : arg.objNegocio.formaDePago.codigo,
+	                       				montoAdjudicado : arg.objNegocio.montoAdjudicado.monto,
+	                       				fechaCreacion : arg.objNegocio.fechaCreacion, 
+	                       				fechaInicioVigencia : arg.objNegocio.fechaInicioVigencia,
+	                       				fechaFinVigencia : arg.objNegocio.fechaFinVigencia,
+	                       				montoDerivado : arg.objNegocio.montoDerivado.monto, 
+	                       				montoCertificado : arg.objNegocio.montoCertificado.monto,
+	                       				montoFacturado : arg.objNegocio.montoFacturado.monto,
+	                       				fechaInicioIncidencia : arg.objNegocio.fechaInicioIncidencia, 
+	                       				fechaFinIncidencia : arg.objNegocio.fechaFinIncidencia,
+	                       				clasificacion : arg.objNegocio.clasificacion,
+	                       				detalleIncidencia : arg.objNegocio.detalleIncidencia, 
+	                       				requiereCarta : arg.objNegocio.requiereCarta,
+	                       				planificable : arg.objNegocio.planificable,
+	                       				codigoPlanificacion : arg.objNegocio.codigoPlanificacion,
+	                       				ultimaCartaEnviada : arg.objNegocio.ultimaCartaEnviada,
+	                       				varios1 : arg.objNegocio.varios1,
+	                       				varios2 : arg.objNegocio.varios2,
+	                       				varios3 : arg.objNegocio.varios3, 
+	                       				varios4 : arg.objNegocio.varios4,
+	                       				varios5 : arg.objNegocio.varios5,
+	                       				varios6 : arg.objNegocio.varios6,
+	                       				usuarioAlta : arg.objNegocio.usuarioAlta, 
+	                       				usuarioModificacion : arg.objNegocio.usuarioModificacion,
+	                       				existe : arg.objNegocio.existe,
+	                       				importacion : arg.importacion);
+	if(respuesta.resultado != OK){
+		return respuesta;
+	}
+	respuesta = FCarta2.deleteValuesForIdPedido(procesoId : arg.objNegocio.procesoId, 
+											    procesoEdicion :arg.objNegocio.procesoEdicion, 
+											    sociedadId : arg.objNegocio.sociedad.id, 
+	                                			monedaId : arg.objNegocio.moneda.id, 
+	                                			proveedorCodigo : arg.objNegocio.proveedor.codigo,
+	                                			formaDePagoCodigo : arg.objNegocio.formaDePago.codigo);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	for (int i=0;i&lt;arg.objNegocio.carta.length();i++){
+		arg.objNegocio.carta[i].existe = false;
+		arg.objNegocio.carta[i].idProceso = arg.objNegocio.procesoId;
+		arg.objNegocio.carta[i].edicionProceso = arg.objNegocio.procesoEdicion;
+		arg.objNegocio.carta[i].monedaId = arg.objNegocio.moneda.id;
+		arg.objNegocio.carta[i].sociedadId = arg.objNegocio.sociedad.id;
+		arg.objNegocio.carta[i].proveedorCodigo = arg.objNegocio.proveedor.codigo;
+		arg.objNegocio.carta[i].formaDePagoCodigo = arg.objNegocio.formaDePago.codigo;
+		respuesta = FCarta2.setValue(objNegocio : arg.objNegocio.carta[i]);
+		if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+	}
+	
+	respuesta = FProceso2.getValueForId(id : arg.objNegocio.procesoId, edicion : arg.objNegocio.procesoEdicion);
+	if (respuesta.resultado == OK){
+		NProceso2 proceso = (NProceso2)respuesta.contenido;
+		respuesta = FProceso2.calculoEstadoProceso(proceso : proceso);
+		Integer estadoId;
+		if (respuesta.resultado == OK) {
+			estadoId = (Integer)respuesta.contenido;
+			if(estadoId != null &amp;&amp; estadoId != 0){
+				NProcesoEstado2 procesoEstado = NProcesoEstado2();
+				procesoEstado.idProceso = proceso.id;
+				procesoEstado.edicionProceso = proceso.edicion;
+				procesoEstado.idEstadoProceso = estadoId;
+				procesoEstado.usuarioAlta = Participant.id;
+				procesoEstado.usuarioModificacion = Participant.id; 
+				Respuesta respuesta2 = FProcesoEstado2.setValue(objNegocio : procesoEstado);
+				if(respuesta2.resultado != OK){
+					return respuesta2;
+				}
+			}
+		}
+		else{
+			return respuesta;
+		}
+	}else{
+		return respuesta;
+	}
+	
+	
+
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarCSV" flags="clientavailable public">
+			<arg name="matrizCSV" description="" flags="in" type="Any[][]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">NPedido2[] pedidos = {};
+//String[][] matrizCSV = {};
+String[] errores = {};
+Utiles.Respuesta respuesta;
+Respuesta respuesta2;
+errores.clear();
+Any[String] pedidoNoExistente;
+Any[] arrayPedidos = {};
+
+for(int i = 1; i &lt; matrizCSV.length(); i++){
+ 	for(int j = 0; j &lt; matrizCSV[i].length(); j++){
+
+    NPedido2 pedido = NPedido2();
+    respuesta = Respuesta();
+    j = 0;
+    
+	try{
+		if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){}
+		else{
+      		if((Integer)matrizCSV[i][j] &gt; 0){
+	        	pedido.id = (Integer)matrizCSV[i][j];
+			}else{
+        	  errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.id: no puede ser menor a 1&quot;;
+	        }
+		}
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot; +(i+2)+&quot; - Campo pedido.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+	try{
+		if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.procesoId: no permite valor vacío.&quot;; 
+		}else if((Integer)matrizCSV[i][j] &gt; 0){
+			pedido.procesoId = (Integer)matrizCSV[i][j];
+	    }else{
+			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.procesoId: no puede ser menor a 1&quot;;
+	    }
+	}catch(Java.Lang.Exception ee){
+		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.procesoId: no cumple con el formato numérico.&quot;;
+	}
+    j++;
+    try{
+      if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.procesoEdicion: no permite valor vacío.&quot;;  
+        }else if((Integer)matrizCSV[i][j] &gt; 0){
+			pedido.procesoEdicion = (Integer)matrizCSV[i][j];
+        }else{
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.procesoEdicion: no puede ser menor a 1&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.procesoEdicion: no cumple con el formato numérico.&quot;;
+    }
+    //VERIFICA EXISTE PROCESO EDICION
+    try{
+		respuesta2 = FProceso2.existeProcesoEdicion(proId: pedido.procesoId, proEdicion: pedido.procesoEdicion);
+		if(respuesta2.resultado == OK){
+			if(((Bool)respuesta2.contenido) == false){
+				errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.procesoId &amp; Campo pedido.procesoEdicion: no existe en base de datos en tabla TPC2_PROCESO.&quot;;
+			}
+		}
+	}catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Error en la base de datos.&quot;;
+    }
+    j++;
+    try{
+		if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.proveedor.codigo: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	pedido.proveedor.codigo = (String)matrizCSV[i][j];
+	        try{
+	        	respuesta2 = FProveedor2.getValueForCodigo(codigo : pedido.proveedor.codigo);
+	        	if (respuesta2.resultado != OK){
+	        		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.proveedor.codigo: &quot;+(String)matrizCSV[i][j]+&quot; no existe en base de datos en tabla TPC2_PROVEEDOR.&quot;;
+	        	}
+	        }
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.proveedor.codigo: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    try{
+		if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.moneda.id: no permite valor vacío.&quot;;
+        }else{
+			pedido.moneda.id = (Integer)matrizCSV[i][j];
+			try{
+				respuesta2 = FMoneda2.getValueForId(id : pedido.moneda.id);
+				if (respuesta2.resultado != OK)
+	        		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.moneda.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en base de datos en tabla TPC2_MONEDA.&quot;;					
+			}
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.moneda.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    try{
+		if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.sociedad.id: no permite valor vacío.&quot;;
+        }else{
+        	pedido.sociedad.id = (Integer)matrizCSV[i][j];
+        	try{
+        		respuesta2 = FSociedad2.getValueForId(id : pedido.sociedad.id);
+        		if(respuesta2.resultado != OK)
+        			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.sociedad.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en base de datos en tabla TPC2_SOCIEDAD.&quot;;
+        	}
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.sociedad.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+			pedido.categoriaProducto.codigo = (String)matrizCSV[i][j];
+			try{
+				respuesta2 = FCategoriaProducto2.getValueForCodigo(codigo : pedido.categoriaProducto.codigo);
+				if (respuesta2.resultado != OK)
+        			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.categoriaProducto.codigo: &quot;+(String)matrizCSV[i][j]+&quot; no existe en base de datos en tabla TPC2_CATEGORIA_PRODUCTO.&quot;;
+			}
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.categoriaProducto.codigo: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    try{
+      	if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+        	//errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoAdjudicado.monto: no permite valor vacío.&quot;;
+        }else if(((Decimal)matrizCSV[i][j]) &lt; 0){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoAdjudicado: no puede ser menor a 0.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 15){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoAdjudicado: no puede tener mas de 12 digitos para la parte entera y 2 para la parte decimal.&quot;;  
+        }else{
+        	pedido.montoAdjudicado.monto = (Decimal)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoAdjudicado: no cumple con el formato monto.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+			String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			pedido.fechaCreacion = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.fechaCreacion: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+			String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			pedido.fechaInicioVigencia = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.fechaInicioVigencia: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+			String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			pedido.fechaFinVigencia = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.fechaFinVigencia: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	pedido.codigoPlanificacion = (String)matrizCSV[i][j];
+        	pedido.planificable = true;
+        }else{
+        	pedido.planificable = false;
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.codigoPlanificacion: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    try{
+ 		if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+        	//errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoDerivado.monto: no permite valor vacío.&quot;;
+        }else if(((Decimal)matrizCSV[i][j]) &lt; 0){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoDerivado: no puede ser menor a 0.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 15){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoDerivado: no puede tener mas de 12 digitos para la parte entera y 2 para la parte decimal.&quot;;  
+        }else{
+        	pedido.montoDerivado.monto = (Decimal)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoDerivado: no cumple con el formato monto.&quot;;
+    }
+    j++;
+    try{
+ 		if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+        	//errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoCertificado.monto: no permite valor vacío.&quot;;
+        }else if(((Decimal)matrizCSV[i][j]) &lt; 0){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoCertificado: no puede ser menor a 0.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 15){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoCertificado: no puede tener mas de 12 digitos para la parte entera y 2 para la parte decimal.&quot;;  
+        }else{
+        	pedido.montoCertificado.monto = (Decimal)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoCertificado: no cumple con el formato monto.&quot;;
+    }
+    j++;
+    try{
+ 		if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+        	//errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoFacturado.monto: no permite valor vacío.&quot;;
+        }else if(((Decimal)matrizCSV[i][j]) &lt; 0){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoFacturado: no puede ser menor a 0.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 15){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoFacturado: no puede tener mas de 12 digitos para la parte entera y 2 para la parte decimal.&quot;;  
+        }else{
+        	pedido.montoFacturado.monto = (Decimal)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.montoFacturado: no cumple con el formato monto.&quot;;
+    }
+    j++;
+	try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+			String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			pedido.fechaInicioIncidencia = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.fechaInicioIncidencia: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+			String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			pedido.fechaFinIncidencia = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.fechaFinIncidencia: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+         	 pedido.clasificacion = (String)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.clasificacion: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    //
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+         	 pedido.detalleIncidencia = (String)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.detalleIncidencia: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+	try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+         	 pedido.varios1 = (String)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.varios1: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+         	 pedido.varios2 = (String)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.varios2: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    try{
+		if(((String)matrizCSV[i][j]).length() &gt; 0){
+         	 pedido.varios3 = (String)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.varios3: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    try{
+		if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.formaDePago.codigo: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	pedido.formaDePago.codigo = (String)matrizCSV[i][j];
+	        try{
+	        	respuesta2 = FFormaDePago2.getValueForCodigo(codigo : pedido.formaDePago.codigo);
+	        	if (respuesta2.resultado != OK){
+	        		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.formaDePago.codigo: &quot;+(String)matrizCSV[i][j]+&quot; no existe en base de datos en tabla TPC2_FORMA_PAGO.&quot;;
+	        	}
+	        }
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo pedido.formaDePago.codigo: no cumple con el formato alfanumérico.&quot;;
+    }
+    
+    try{
+    	respuesta2 = FPedido2.existePedido(procesoId : pedido.procesoId, procesoEdicion : pedido.procesoEdicion, proveedorCodigo : pedido.proveedor.codigo, monedaId : pedido.moneda.id, 
+    	                      sociedadId : pedido.sociedad.id, formaDePagoCodigo : pedido.formaDePago.codigo);
+		if (respuesta2.resultado == OK )
+			pedido.existe = (boolean)respuesta2.contenido;
+    }
+    
+    Bool encontro = false;
+    int h = 0; 
+    if(!pedido.existe){
+    
+     while(!encontro &amp;&amp; h &lt; arrayPedidos.length()){
+     	Any[String] fila = (Any[String]) arrayPedidos[h];
+     	
+     		if(	fila[&quot;PROCESO_ID&quot;] == pedido.procesoId &amp;&amp;
+     			fila[&quot;PROCESO_EDICION&quot;] == pedido.procesoEdicion &amp;&amp;
+     			fila[&quot;PROVEEDOR_CODIGO&quot;] == pedido.proveedor.codigo &amp;&amp;
+     			fila[&quot;MONEDA_ID&quot;] == pedido.moneda.id &amp;&amp;
+     			fila[&quot;SOCIEDAD_ID&quot;] == pedido.sociedad.id &amp;&amp;
+     			fila[&quot;FORMAPAGO_CODIGO&quot;] == pedido.formaDePago.codigo){
+     			
+     			encontro = true;
+     		}
+   		
+     	h++;
+     }
+     
+     if(encontro){
+     	pedido.existe = true;
+     	
+     }else{
+     	pedidoNoExistente = {};
+     	pedidoNoExistente[&quot;PROCESO_ID&quot;] = pedido.procesoId;
+     	pedidoNoExistente[&quot;PROCESO_EDICION&quot;] = pedido.procesoEdicion;
+     	pedidoNoExistente[&quot;PROVEEDOR_CODIGO&quot;] = pedido.proveedor.codigo;
+     	pedidoNoExistente[&quot;MONEDA_ID&quot;] = pedido.moneda.id;
+     	pedidoNoExistente[&quot;SOCIEDAD_ID&quot;] = pedido.sociedad.id;
+     	pedidoNoExistente[&quot;FORMAPAGO_CODIGO&quot;] = pedido.formaDePago.codigo;
+     
+     	arrayPedidos[] = pedidoNoExistente;
+     }
+     
+    }     
+
+    pedidos[] = pedido;
+  }
+}
+if((matrizCSV.length() &lt; 1)&amp;&amp;(matrizCSV[0].length() &lt; 1)){
+	errores[] = &quot;Archivo vacío.&quot;;
+}
+if(errores.length() &lt;= 0){
+  respuesta.contenido = pedidos;
+  respuesta.resultado = OK;
+}else{
+  respuesta.contenido = errores;
+  respuesta.resultado = ERROR;
+}
+for (int index = 0; index &lt; errores.length; index++) {
+    logMessage(&quot;Error: &quot; + errores[index], Severity.FATAL);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarColumnasCSV" flags="clientavailable public">
+			<arg name="matrizCSV" description="" flags="in" type="Any[][]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">NPedido2[] pedidos = {};
+//String[][] matrizCSV = {};
+String errores = &quot;&quot;;
+Utiles.Respuesta respuesta;
+Respuesta respuesta2;
+
+int i = 0;
+for(int j = 0; j &lt; matrizCSV[i].length(); j++){
+    respuesta = Respuesta();
+    j = 0;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;PEDIDO_ID&quot;){
+        }else{
+    		errores = errores + &quot;[A – PEDIDO_ID], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;PROCESO_ID&quot;){
+        }else{
+    		errores = errores + &quot;[B – PROCESO_ID], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;PROCESO_EDICION&quot;){
+        }else{
+    		errores = errores + &quot;[C – PROCESO_EDICION], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;PROVEEDOR_CODIGO&quot;){
+        }else{
+    		errores = errores + &quot;[D – PROVEEDOR_CODIGO], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MONEDA_ID&quot;){
+        }else{
+    		errores = errores + &quot;[E – MONEDA_ID], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;SOCIEDAD_ID&quot;){
+        }else{
+    		errores = errores + &quot;[F – SOCIEDAD_ID], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;CATEGORIAPRODUCTO_CODIGO&quot;){
+        }else{
+    		errores = errores + &quot;[G – CATEGORIAPRODUCTO_CODIGO], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MONTOADJUDICADO&quot;){
+        }else{
+    		errores = errores + &quot;[H – MONTOADJUDICADO], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHACREACION&quot;){
+        }else{
+    		errores = errores + &quot;[I – FECHACREACION], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAINICIOVIGENCIA&quot;){
+        }else{
+    		errores = errores + &quot;[J – FECHAINICIOVIGENCIA], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAFINVIGENCIA&quot;){
+        }else{
+    		errores = errores + &quot;[K – FECHAFINVIGENCIA], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;CODIGOPLANIFICACION&quot;){
+        }else{
+    		errores = errores + &quot;[L – CODIGOPLANIFICACION], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MONTODERIVADO&quot;){
+        }else{
+    		errores = errores + &quot;[M – MONTODERIVADO], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MONTOCERTIFICADO&quot;){
+        }else{
+    		errores = errores + &quot;[N – MONTOCERTIFICADO], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MONTOFACTURADO&quot;){
+        }else{
+    		errores = errores + &quot;[O – MONTOFACTURADO], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAINICIOINCIDENCIA&quot;){
+        }else{
+    		errores = errores + &quot;[P – FECHAINICIOINCIDENCIA], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAFININCIDENCIA&quot;){
+        }else{
+    		errores = errores + &quot;[Q – FECHAFININCIDENCIA], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;CLASIFICACION&quot;){
+        }else{
+    		errores = errores + &quot;[R – CLASIFICACION], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;DETALLEINCIDENCIA&quot;){
+        }else{
+    		errores = errores + &quot;[S – DETALLEINCIDENCIA], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;VARIOS1&quot;){
+        }else{
+    		errores = errores + &quot;[T – VARIOS1], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;VARIOS2&quot;){
+        }else{
+    		errores = errores + &quot;[U – VARIOS2], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;VARIOS3&quot;){
+        }else{
+    		errores = errores + &quot;[V – VARIOS3], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FORMAPAGOCODIGO&quot;){
+        }else{
+    		errores = errores + &quot;[W – FORMAPAGOCODIGO], &quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+}
+
+if((matrizCSV.length() &lt; 1)&amp;&amp;(matrizCSV[0].length() &lt; 1)){
+	errores = &quot;Archivo vacío.&quot;;
+}
+if(errores.length() &lt;= 0){
+	respuesta.resultado = OK;
+}else{
+	respuesta.contenido = &quot;Nombre de Columnas NO Válidas: &quot; + errores;
+	respuesta.resultado = ERROR;
+}
+for (int index = 0; index &lt; errores.length; index++){
+    logMessage(&quot;Error: &quot; + errores, Severity.FATAL);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

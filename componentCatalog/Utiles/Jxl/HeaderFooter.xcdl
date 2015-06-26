@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="HeaderFooter" description="HeaderFooter" versionID="Version 6.5 " flags="" signature="jxl.HeaderFooter" type="java">
+	<inherit class="Utiles.Jxl.Biff.HeaderFooter" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.HeaderFooter"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.HeaderFooter"/>
+	<attributes>
+		<object type="Utiles.Jxl.HeaderFooter.Contents" name="centre" flags="hasgetter external" position="1" javaType="jxl.HeaderFooter$Contents" readSignature="MgetCentre()Ljxl.HeaderFooter$Contents;"/>
+		<object type="Utiles.Jxl.HeaderFooter.Contents" name="left" flags="hasgetter external" position="2" javaType="jxl.HeaderFooter$Contents" readSignature="MgetLeft()Ljxl.HeaderFooter$Contents;"/>
+		<object type="Utiles.Jxl.HeaderFooter.Contents" name="right" flags="hasgetter external" position="3" javaType="jxl.HeaderFooter$Contents" readSignature="MgetRight()Ljxl.HeaderFooter$Contents;"/>
+	</attributes>
+	<methods>
+		<method name="HeaderFooter" flags="static hidden" signature="Kjxl.HeaderFooter()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.HeaderFooter"/>
+		</method>
+		<method name="HeaderFooter" flags="static" signature="Kjxl.HeaderFooter(Ljxl.HeaderFooter;)">
+			<arg name="hf" description="" flags="in external" type="Utiles.Jxl.HeaderFooter" javaType="jxl.HeaderFooter"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.HeaderFooter"/>
+		</method>
+		<method name="HeaderFooter" flags="static" signature="Kjxl.HeaderFooter(Ljava.lang.String;)">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.HeaderFooter"/>
+		</method>
+		<method name="clear" description="clear" flags="external" signature="Mclear()V"/>
+		<method name="getCentre" description="getCentre" flags="external hidden" signature="MgetCentre()Ljxl.HeaderFooter$Contents;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.HeaderFooter.Contents" javaType="jxl.HeaderFooter$Contents"/>
+		</method>
+		<method name="getLeft" description="getLeft" flags="external hidden" signature="MgetLeft()Ljxl.HeaderFooter$Contents;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.HeaderFooter.Contents" javaType="jxl.HeaderFooter$Contents"/>
+		</method>
+		<method name="getRight" description="getRight" flags="external hidden" signature="MgetRight()Ljxl.HeaderFooter$Contents;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.HeaderFooter.Contents" javaType="jxl.HeaderFooter$Contents"/>
+		</method>
+		<method name="toString" description="toString" flags="external hidden" signature="MtoString()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

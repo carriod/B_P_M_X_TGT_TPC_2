@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DrawingData" description="DrawingData" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.DrawingData" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Jxl.Biff.Drawing.EscherStream" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.DrawingData"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.DrawingData"/>
+	<attributes>
+		<Binary name="data" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetData()[B"/>
+	</attributes>
+	<methods>
+		<method name="DrawingData" flags="static hidden" signature="Kjxl.biff.drawing.DrawingData()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.DrawingData"/>
+		</method>
+		<method name="addData" description="addData" flags="external" signature="MaddData([B)V">
+			<arg name="data" description="" flags="in external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="addRawData" description="addRawData" flags="external" signature="MaddRawData([B)V">
+			<arg name="data" description="" flags="in external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+	</methods>
+</component>

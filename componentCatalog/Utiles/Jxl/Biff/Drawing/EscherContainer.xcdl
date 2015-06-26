@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="EscherContainer" description="EscherContainer" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.EscherContainer" type="java">
+	<inherit class="Utiles.Jxl.Biff.Drawing.EscherRecord" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.EscherContainer"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.EscherContainer"/>
+	<attributes>
+		<array type="Utiles.Jxl.Biff.Drawing.EscherRecord" name="children" flags="hasgetter external" primitive="true" position="1" javaType="jxl.biff.drawing.EscherRecord[]" readSignature="MgetChildren()[Ljxl.biff.drawing.EscherRecord;"/>
+	</attributes>
+	<methods>
+		<method name="EscherContainer" flags="static" signature="Kjxl.biff.drawing.EscherContainer(Ljxl.biff.drawing.EscherRecordData;)">
+			<arg name="erd" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.EscherRecordData" javaType="jxl.biff.drawing.EscherRecordData"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.EscherContainer"/>
+		</method>
+		<method name="add" description="add" flags="external" signature="Madd(Ljxl.biff.drawing.EscherRecord;)V">
+			<arg name="child" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.EscherRecord" javaType="jxl.biff.drawing.EscherRecord"/>
+		</method>
+		<method name="getChildren" description="getChildren" flags="external hidden" signature="MgetChildren()[Ljxl.biff.drawing.EscherRecord;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Biff.Drawing.EscherRecord[]" javaType="jxl.biff.drawing.EscherRecord[]"/>
+		</method>
+		<method name="remove" description="remove" flags="external" signature="Mremove(Ljxl.biff.drawing.EscherRecord;)V">
+			<arg name="child" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.EscherRecord" javaType="jxl.biff.drawing.EscherRecord"/>
+		</method>
+	</methods>
+</component>

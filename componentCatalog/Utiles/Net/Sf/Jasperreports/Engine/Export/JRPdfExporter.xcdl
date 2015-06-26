@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRPdfExporter" description="JRPdfExporter" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.export.JRPdfExporter" type="java">
+	<inherit class="Utiles.Net.Sf.Jasperreports.Engine.JRAbstractExporter" flags="public"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.export.JRPdfExporter"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.export"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.export.JRPdfExporter"/>
+	<attributes/>
+	<methods>
+		<method name="JRPdfExporter" flags="static hidden" signature="Knet.sf.jasperreports.engine.export.JRPdfExporter()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Export.JRPdfExporter"/>
+		</method>
+		<method name="exportReport" description="exportReport" flags="external" signature="MexportReport()V">
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+	</methods>
+</component>

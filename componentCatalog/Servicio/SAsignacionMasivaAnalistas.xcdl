@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="SAsignacionMasivaAnalistas" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="3"/>
+		<String name="prefijo" flags="hassetter hasgetter public" position="2"/>
+		<String name="tabla" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="SAsignacionMasivaAnalistas" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SAsignacionMasivaAnalistas"/>
+			<sourceCode language="Java1">this.prefijo = &quot;SOL_&quot;;
+this.tabla = &quot;TPC_SOLICITUD&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="getValues" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="nroCesta" description="" flags="in" type="Int"/>
+			<arg name="fechaEnvioDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaEnvioHasta" description="" flags="in" type="Time"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+   
+try {
+    Any[String] value;
+    Any[] values = {};  
+	Any[] inParameters = {};
+    String sentence;
+    
+    sentence = &quot;SELECT sol.sol_id ID, sol.sol_nrocesta NROCESTA, sol.sol_descripcionnecesidad DESCRIPCIONNECESIDAD, sol.sol_areasolicitante AREASOLICITANTE, sol.sol_fechaenvioanalisis FECHAENVIOANALISIS &quot; + 
+			   &quot;FROM tpc_solicitud sol &quot; + 
+			   &quot;LEFT OUTER JOIN tpc_asignacion_participante apa on apa.apa_sol_id = sol.sol_id &quot; +
+			   &quot;LEFT OUTER JOIN tpc_solicitud_estado ses on ses.ses_sol_id = sol.sol_id &quot;
+			   &quot;WHERE apa.apa_analista is null AND ses.ses_eso_id = 2 &quot; +
+			   (arg.id != null &amp;&amp; arg.id != 0 ? &quot;AND sol.sol_id = ? &quot;:&quot;&quot; ) +
+			   (arg.nroCesta != null &amp;&amp; arg.nroCesta != 0 ? &quot;AND sol.sol_nrocesta = ? &quot;:&quot;&quot;) +
+			   (arg.fechaEnvioDesde != null ? &quot;AND TRUNC(sol.sol_fechaenvioanalisis) &gt;= TRUNC(?) &quot;:&quot;&quot; ) +
+			   (arg.fechaEnvioHasta != null ? &quot;AND TRUNC(sol.sol_fechaenvioanalisis) &lt;= TRUNC(?) &quot;:&quot;&quot; );
+    
+    if(arg.id != null &amp;&amp; arg.id != 0){
+    	inParameters[] = arg.id;
+    }
+    if(arg.nroCesta != null &amp;&amp; arg.nroCesta != 0){
+   		inParameters[] = arg.nroCesta;
+    }
+    if(arg.fechaEnvioDesde != null){
+   		inParameters[] = arg.fechaEnvioDesde;
+    }
+    if(arg.fechaEnvioHasta != null){
+   		inParameters[] = arg.fechaEnvioHasta;
+    }
+    
+    
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters))
+    {
+		value = {};
+		value[&quot;ID&quot;] = (Integer)row[&quot;ID&quot;];
+		value[&quot;NROCESTA&quot;] = (Integer)row[&quot;NROCESTA&quot;];
+		value[&quot;AREASOLICITANTE&quot;] = (String)row[&quot;AREASOLICITANTE&quot;];
+		value[&quot;FECHAENVIOANALISIS&quot;] = (Time)row[&quot;FECHAENVIOANALISIS&quot;];
+		value[&quot;DESCRIPCIONNECESIDAD&quot;] = (String)row[&quot;DESCRIPCIONNECESIDAD&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="FOrganizacion2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="FOrganizacion2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada2.FOrganizacion2"/>
+		</method>
+		<method name="getParticipantesRol" flags="clientavailable public">
+			<arg name="rolArg" description="" flags="in" type="Fuego.Lib.Role"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">String[] participantesNombres = {};
+
+Participant[] participantes = RoleAdmin.getParticipantsForRole(roleArg : rolArg.name);
+foreach (participante in participantes) {
+    if (! String.isEmpty(target : participante.name)) {
+        participantesNombres[participantesNombres.length()] = participante.name;
+    }
+}
+
+return participantesNombres;</sourceCode>
+		</method>
+		<method name="getRoles" flags="clientavailable public">
+			<arg name="rolArg" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">if(rolArg == &quot;TPC2 - Director&quot;){
+	return { &quot;Director&quot;, 
+		     &quot;Gerente&quot;,
+		     &quot;Jefe&quot;,
+		     &quot;Comprador&quot;};
+}else if(rolArg == &quot;TPC - Gerente Compras&quot;){
+		return { &quot;Gerente&quot;, 
+		     	 &quot;Jefe&quot;,
+		     	 &quot;Comprador&quot;};
+}else if(rolArg == &quot;TPC - Jefe Compras&quot;){
+		return { &quot;Jefe&quot;,
+		     	 &quot;Comprador&quot;};
+}else if(rolArg == &quot;TPC - Comprador GC&quot;){
+		return { &quot;Comprador&quot;};
+}else if(rolArg == &quot;TPC2 - Administrador&quot;){
+		return { &quot;Director&quot;, 
+			     &quot;Gerente&quot;,
+			     &quot;Jefe&quot;,
+			     &quot;Comprador&quot;};
+}
+
+return null;
+</sourceCode>
+		</method>
+	</methods>
+</component>

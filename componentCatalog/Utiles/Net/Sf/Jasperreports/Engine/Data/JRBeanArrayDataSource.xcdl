@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRBeanArrayDataSource" description="JRBeanArrayDataSource" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.data.JRBeanArrayDataSource" type="java">
+	<inherit class="Utiles.Net.Sf.Jasperreports.Engine.Data.JRAbstractBeanDataSource" flags="public"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.data.JRBeanArrayDataSource"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.data"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.data.JRBeanArrayDataSource"/>
+	<attributes/>
+	<methods>
+		<method name="JRBeanArrayDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRBeanArrayDataSource([Ljava.lang.Object;)">
+			<arg name="beanArray" description="" flags="in external" primitive="true" type="Java.Lang.Object[]" javaType="java.lang.Object[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRBeanArrayDataSource"/>
+		</method>
+		<method name="JRBeanArrayDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRBeanArrayDataSource([Ljava.lang.Object;Z)">
+			<arg name="beanArray" description="" flags="in external" primitive="true" type="Java.Lang.Object[]" javaType="java.lang.Object[]"/>
+			<arg name="isUseFieldDescription" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRBeanArrayDataSource"/>
+		</method>
+		<method name="getFieldValue" description="getFieldValue" flags="external" signature="MgetFieldValue(Lnet.sf.jasperreports.engine.JRField;)Ljava.lang.Object;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}" javaType="net.sf.jasperreports.engine.JRField"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="moveFirst" description="moveFirst" flags="external" signature="MmoveFirst()V"/>
+		<method name="next" description="next" flags="external" signature="Mnext()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

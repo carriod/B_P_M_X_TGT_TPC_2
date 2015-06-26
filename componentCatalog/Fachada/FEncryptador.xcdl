@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="FEncryptador" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="patron_busqueda" flags="hassetter hasgetter public" position="1"/>
+		<String name="patron_encripta" flags="hassetter hasgetter public" position="2"/>
+		<String name="prefijoEncriptacion" flags="hassetter hasgetter public" position="3"/>
+	</attributes>
+	<methods>
+		<method name="FEncryptador" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FEncryptador"/>
+			<sourceCode language="Java1">this.patron_busqueda = &quot;HIJKLstv678MNÑOwxyz1EFGhijk2345PQRSABCDlmnTVWXYZabcdefgñopqr90&quot;;
+this.patron_encripta = &quot;ABCDEFGHIJKLMNÑOPQRSTVWXYZabcdefghijklmnñopqrstvwxyz1234567890&quot;;
+this.prefijoEncriptacion = &quot;=BPMX2011&quot;;
+//&quot;ABCDEFGHIJKLMNÑOPQRSTVWXYZabcdefghijklmnñopqrstvwxyz1234567890&quot;;</sourceCode>
+		</method>
+		<method name="decode" description="" flags="public server disableclient">
+			<arg name="password" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="binPwd" type="Binary"/>
+				<variable name="secureStore" type="Fuego.Auth.SecureStore"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">try{
+    binPwd = arg.password.decode();
+    secureStore = SecureStore.load(binary : binPwd, storageKey : &quot;FstorageKey&quot;);
+    return secureStore.getKeyFrom(alias : &quot;clavePapi&quot;, entryKey : &quot;FentryKey&quot;);
+}
+catch(Fuego.Auth.SecureStoreException e)
+{
+    logMessage(&quot;FEncryptador.decode: Hubo un error al desencriptar la pwd &quot; + e.message, severity : WARNING);
+    return arg.password;
+}
+catch(Java.Lang.Exception e)
+{
+    logMessage(&quot;FEncryptador.decode: Hubo un error general al desencriptar la pwd &quot; + e.message, severity : WARNING);
+    return arg.password;
+}
+</sourceCode>
+		</method>
+		<method name="desencriptarCadena" flags="clientavailable public">
+			<arg name="cadena" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">String result;
+
+for (int index = 0; index &lt; arg.cadena.length; index++) {
+    //display(&quot;index &quot; + index + &quot;\ncadena.length &quot; + arg.cadena.length);
+    result = result + this.desencriptarCaracter(caracter : arg.cadena.substring(index, index+1), variable : arg.cadena.length, a_indice : index);
+}
+
+//display(&quot;result.indexOf(this.prefijoEncriptacion) &quot; + result.indexOf(this.prefijoEncriptacion));
+
+if( result.indexOf(this.prefijoEncriptacion) == 0){
+	return result.substring(this.prefijoEncriptacion.length, result.length);
+} else {	return arg.cadena;
+}
+</sourceCode>
+		</method>
+		<method name="desencriptarCaracter" flags="clientavailable public">
+			<arg name="caracter" description="" flags="in" type="String"/>
+			<arg name="variable" description="" flags="in" type="Int"/>
+			<arg name="a_indice" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">String caracterEncriptado;
+int indice;
+
+/*   
+display(&quot;this.patron_encripta.indexOf(arg.caracter) &quot; + this.patron_encripta.indexOf(arg.caracter) +
+&quot;\n arg.variable &quot; + arg.variable +
+&quot;\n arg.a_indice &quot; + arg.a_indice);   
+*/
+ 
+if(this.patron_encripta.indexOf(arg.caracter) != -1){
+	if(this.patron_encripta.indexOf(arg.caracter) - arg.variable - arg.a_indice &gt; 0){
+		indice = (this.patron_encripta.indexOf(arg.caracter) - arg.variable - arg.a_indice) % this.patron_encripta.length; 
+	}else{
+		indice = this.patron_busqueda.length + ((this.patron_encripta.indexOf(caracter) - arg.variable - arg.a_indice) % this.patron_encripta.length);
+		//display(indice);
+	}
+	indice = indice % this.patron_encripta.length;
+	return this.patron_busqueda.substring(indice, indice+1);
+} 
+return caracter;</sourceCode>
+		</method>
+		<method name="encode" description="" flags="public server disableclient">
+			<arg name="password" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="binStore" type="Binary"/>
+				<variable name="sstore" type="Fuego.Auth.SecureStore"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">try{
+    sstore = SecureStore.create();
+    sstore.addKeyTo(alias : &quot;clavePapi&quot;, key : arg.password, entryKey : &quot;FentryKey&quot;);
+    binStore = sstore.store(storageKey : &quot;FstorageKey&quot;);
+    return binStore.encode();
+}
+catch(Fuego.Auth.SecureStoreException e)
+{
+    logMessage(&quot;FEncryptador.encode: Hubo un error al encriptar la pwd &quot; + e.message, severity : WARNING);
+    return arg.password;
+}
+</sourceCode>
+		</method>
+		<method name="encriptarCadena" flags="clientavailable public">
+			<arg name="cadena" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">String result;
+
+arg.cadena = this.prefijoEncriptacion + arg.cadena;
+
+for (int index = 0; index &lt; cadena.length; index++) {
+    //display(&quot;index &quot; + index + &quot;\ncadena.length &quot; + cadena.length);
+    result = result + this.encriptarCaracter(caracter : cadena.substring(index, index+1), variable : cadena.length, a_indice : index);
+}
+ 
+return result;</sourceCode>
+		</method>
+		<method name="encriptarCaracter" flags="clientavailable public">
+			<arg name="caracter" description="" flags="in" type="String"/>
+			<arg name="variable" description="" flags="in" type="Int"/>
+			<arg name="a_indice" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">String caracterEncriptado;
+int indice;
+   
+//display(&quot;this.patron_busqueda.indexOf(arg.caracter) &quot; + this.patron_busqueda.indexOf(arg.caracter));   
+   
+if(this.patron_busqueda.indexOf(arg.caracter) != -1){
+	indice =  (this.patron_busqueda.indexOf(arg.caracter) + arg.variable + arg.a_indice) % patron_busqueda.length; 
+	return this.patron_encripta.substring(indice, indice+1);
+} 
+return caracter;
+</sourceCode>
+		</method>
+	</methods>
+</component>

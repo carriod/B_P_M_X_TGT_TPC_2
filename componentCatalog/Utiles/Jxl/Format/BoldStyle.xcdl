@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="BoldStyle" description="BoldStyle" versionID="Version 6.5 " flags="" signature="jxl.format.BoldStyle" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.BoldStyle"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.BoldStyle"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.BoldStyle" name="BOLD" flags="hasgetter attribute static external final" position="4" javaType="jxl.format.BoldStyle" writeSignature="ABOLD;Ljxl.format.BoldStyle;" readSignature="ABOLD;Ljxl.format.BoldStyle;"/>
+		<object type="Utiles.Jxl.Format.BoldStyle" name="NORMAL" flags="hasgetter attribute static external final" position="3" javaType="jxl.format.BoldStyle" writeSignature="ANORMAL;Ljxl.format.BoldStyle;" readSignature="ANORMAL;Ljxl.format.BoldStyle;"/>
+		<String name="description" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetDescription()Ljava.lang.String;"/>
+		<Int length="32" name="value" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetValue()I"/>
+	</attributes>
+	<methods>
+		<method name="getDescription" description="getDescription" flags="external hidden" signature="MgetDescription()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

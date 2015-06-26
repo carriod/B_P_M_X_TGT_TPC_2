@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<FDIObject>
+	<DirOrganizationalRole>
+		<name>TPC2 - Administrador de ABM</name>
+		<localizedDisplayNames>
+			<localizedDisplayName>
+				<locale>es</locale>
+				<message>TPC2 - Administrador de ABM</message>
+			</localizedDisplayName>
+		</localizedDisplayNames>
+		<isParametric>false</isParametric>
+	</DirOrganizationalRole>
+</FDIObject>

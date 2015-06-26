@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="ProyectosMayores" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Time scale="0" precision="0" name="fechaAprobacion" flags="hasgetter public virtual includeincheck" position="3">
+			<read language="Java1">return proyectoMayor.fechaAprobacion;</read>
+		</Time>
+		<object type="Negocio.NProyectoMayor" name="proyectoMayor" flags="hassetter hasgetter public" position="2"/>
+		<Bool name="seleccionado" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ProyectosMayores" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormProyectosAsociados.ProyectosMayores"/>
+		</method>
+	</methods>
+</component>

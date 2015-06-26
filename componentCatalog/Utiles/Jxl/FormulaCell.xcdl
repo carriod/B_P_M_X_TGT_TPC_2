@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="FormulaCell" description="FormulaCell" versionID="Version 6.5 " flags="abstract interface" signature="jxl.FormulaCell" type="java">
+	<inherit class="Utiles.Jxl.Cell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.FormulaCell"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.FormulaCell"/>
+	<attributes>
+		<String name="formula" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetFormula()Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="getFormula" description="getFormula" flags="abstract external hidden" signature="MgetFormula()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+			<exception type="Utiles.Jxl.Biff.Formula.FormulaException"/>
+		</method>
+	</methods>
+</component>

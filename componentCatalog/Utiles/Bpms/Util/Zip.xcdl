@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="Zip" description="Zip" versionID="Version 6.5 " flags="" signature="bpms.util.Zip" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.util.Zip"/>
+	<objectProperty name="package" value="bpms.util"/>
+	<objectProperty name="typeId" value="bpms.util.Zip"/>
+	<attributes>
+		<Binary name="zipFile" flags="hassetter hasgetter attribute external" position="1" javaType="byte[]" writeSignature="AzipFile;[B" readSignature="AzipFile;[B"/>
+	</attributes>
+	<methods>
+		<method name="Zip" flags="static" signature="Kbpms.util.Zip(Ljava.lang.String;)">
+			<arg name="path" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Zip"/>
+		</method>
+		<method name="Zip" flags="static" signature="Kbpms.util.Zip([Ljava.io.File;)">
+			<arg name="archivos" description="" flags="in external" primitive="true" type="Java.Io.File[]" javaType="java.io.File[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Zip"/>
+		</method>
+		<method name="Zip" flags="static" signature="Kbpms.util.Zip(Ljava.io.File;)">
+			<arg name="path" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Zip"/>
+		</method>
+		<method name="Zip" flags="static" signature="Kbpms.util.Zip([Ljava.lang.String;)">
+			<arg name="archivos" description="" flags="in external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Zip"/>
+		</method>
+		<method name="Zip" flags="static" signature="Kbpms.util.Zip([Ljava.lang.String;Ljava.lang.String;)">
+			<arg name="archivos" description="" flags="in external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+			<arg name="path" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Zip"/>
+		</method>
+		<method name="copyTo" description="copyTo" flags="external" signature="McopyTo(Ljava.lang.String;)V">
+			<arg name="destino" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="copyTo" description="copyTo" flags="external" signature="McopyTo([B)V">
+			<arg name="archivo" description="" flags="in external" type="Binary" javaType="byte[]"/>
+		</method>
+	</methods>
+</component>

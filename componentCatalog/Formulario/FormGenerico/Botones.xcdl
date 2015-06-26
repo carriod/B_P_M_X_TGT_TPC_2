@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="5.7 GA SP3" application="albpmstudio"?>
+<component name="Botones" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="labelBoton" flags="hassetter hasgetter public"/>
+	</attributes>
+	<methods>
+		<method name="Botones" flags="static clientavailable private" language="Fuego">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormGenerico.Botones"/>
+		</method>
+		<method name="submitearboton" description="" flags="clientavailable public" language="Java1">
+this.submit(text : labelBoton);
+		</method>
+	</methods>
+</component>

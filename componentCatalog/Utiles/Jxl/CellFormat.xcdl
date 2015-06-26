@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="CellFormat" description="CellFormat" versionID="Version 6.5 " flags="abstract interface" signature="jxl.CellFormat" type="java">
+	<inherit class="Utiles.Jxl.Format.CellFormat" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.CellFormat"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.CellFormat"/>
+	<attributes/>
+	<methods/>
+</component>

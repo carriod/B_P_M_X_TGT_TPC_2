@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRAbstractBeanDataSource" description="JRAbstractBeanDataSource" versionID="Version 6.5 " flags="abstract" signature="net.sf.jasperreports.engine.data.JRAbstractBeanDataSource" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Net.Sf.Jasperreports.Engine.JRRewindableDataSource" flags=""/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.data.JRAbstractBeanDataSource"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.data"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.data.JRAbstractBeanDataSource"/>
+	<attributes/>
+	<methods>
+		<method name="JRAbstractBeanDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRAbstractBeanDataSource(Z)">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRAbstractBeanDataSource"/>
+		</method>
+	</methods>
+</component>

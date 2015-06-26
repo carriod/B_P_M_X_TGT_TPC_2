@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="SComprasParticulares" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="3"/>
+		<String name="prefijo" flags="hassetter hasgetter public" position="2"/>
+		<String name="tabla" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="SComprasParticulares" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SComprasParticulares"/>
+			<sourceCode language="Java1">this.prefijo = &quot;CPA_&quot;;
+this.tabla = &quot;TPC_COMPRAS_PARTICULARES&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="idSol" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.idSol;
+		
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+     				  &quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ( SELECT MAX(&quot; +
+     				  	this.prefijo + &quot;SOL_ID) FROM &quot; + this.tabla  + &quot; )&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;LCP_ID&quot;] = (String)row[this.prefijo + &quot;LCP_ID&quot;];
+		value[&quot;APROCOMITEPATROCINIOS&quot;] = ((String)row[this.prefijo + &quot;APROCOMITEPATROCINIOS&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROCOMITEPATROCINIOS&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;PROMOTORGASTO&quot;] = (String)row[this.prefijo + &quot;PROMOTORGASTO&quot;];
+		value[&quot;EXPCONDPATROCINIO&quot;] = (String)row[this.prefijo + &quot;EXPCONDPATROCINIO&quot;];
+		value[&quot;COMENTARIOSPATROCINIO&quot;] = (String)row[this.prefijo + &quot;COMENTARIOSPATROCINIO&quot;];
+		value[&quot;APROBADORRHH&quot;] = ((String)row[this.prefijo + &quot;APROBADORRHH&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROBADORRHH&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;PRODUCTOSERVICIO&quot;] = (String)row[this.prefijo + &quot;PRODUCTOSERVICIO&quot;];
+		value[&quot;GASTOPRESUPUESTOPESOS&quot;]	= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTOPESOS&quot;];
+		value[&quot;GASTOPRESUPUESTODOLARES&quot;]= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTODOLARES&quot;];
+		value[&quot;GASTOPRESUPUESTOEUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTOEUROS&quot;];
+		value[&quot;MON_ID_GASTOPRESUPUESTO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_GASTOPRESUPUESTO&quot;];
+		value[&quot;GASTOPRESUPUESTOOTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTOOTRO&quot;];
+		value[&quot;INGRESOSPRESUPUESTOPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTOPESOS&quot;];
+		value[&quot;INGRESOSPRESUPUESTODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTODOLARES&quot;];
+		value[&quot;INGRESOSPRESUPUESTOEUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTOEUROS&quot;];
+		value[&quot;MON_ID_INGRESOSPRESUPUESTO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_INGRESOSPRESUPUESTO&quot;];
+		value[&quot;INGRESOSPRESUPUESTOOTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTOOTRO&quot;];
+		value[&quot;OVERBOOKING&quot;] 	= (String)row[this.prefijo + &quot;OVERBOOKING&quot;];
+		value[&quot;MARGENPRODUCTO&quot;] = (String)row[this.prefijo + &quot;MARGENPRODUCTO&quot;];
+		value[&quot;MANTIENEMARGENANTERIOR&quot;] = ((String)row[this.prefijo + &quot;MANTIENEMARGENANTERIOR&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;MANTIENEMARGENANTERIOR&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;GASTOEJANTERIORPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOEJANTERIORPESOS&quot;];
+		value[&quot;GASTOEJANTERIORDOLARES&quot;] = (Decimal)row[this.prefijo + &quot;GASTOEJANTERIORDOLARES&quot;];
+		value[&quot;GASTOEJANTERIOREUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOEJANTERIOREUROS&quot;];
+		value[&quot;MON_ID_GASTOEJANTERIOR&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_GASTOEJANTERIOR&quot;];
+		value[&quot;GASTOEJANTERIOROTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOEJANTERIOROTRO&quot;];
+		value[&quot;INGRESOSEJANTERIORPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIORPESOS&quot;];
+		value[&quot;INGRESOSEJANTERIORDOLARES&quot;] = (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIORDOLARES&quot;];
+		value[&quot;INGRESOSEJANTERIOREUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIOREUROS&quot;];
+		value[&quot;MON_ID_INGRESOSEJANTERIOR&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_INGRESOSEJANTERIOR&quot;];
+		value[&quot;INGRESOSEJANTERIOROTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIOROTRO&quot;];
+		value[&quot;COMENTARIOSREVENTA&quot;] 	= (String)row[this.prefijo + &quot;COMENTARIOSREVENTA&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<arg name="vigencia" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  (arg.vigencia? &quot;WHERE &quot; + this.prefijo + &quot;VIGENCIA = &apos;A&apos; &quot; : &quot;&quot;) +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;SOL_ID&quot;;
+    				  
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value = {};		
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;LCP_ID&quot;] = (String)row[this.prefijo + &quot;LCP_ID&quot;];
+		value[&quot;APROCOMITEPATROCINIOS&quot;] = ((String)row[this.prefijo + &quot;APROCOMITEPATROCINIOS&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROCOMITEPATROCINIOS&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;PROMOTORGASTO&quot;] = (String)row[this.prefijo + &quot;PROMOTORGASTO&quot;];
+		value[&quot;EXPCONDPATROCINIO&quot;] = (String)row[this.prefijo + &quot;EXPCONDPATROCINIO&quot;];
+		value[&quot;COMENTARIOSPATROCINIO&quot;] = (String)row[this.prefijo + &quot;COMENTARIOSPATROCINIO&quot;];
+		value[&quot;APROBADORRHH&quot;] = ((String)row[this.prefijo + &quot;APROBADORRHH&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROBADORRHH&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;PRODUCTOSERVICIO&quot;] = (String)row[this.prefijo + &quot;PRODUCTOSERVICIO&quot;];
+		value[&quot;GASTOPRESUPUESTOPESOS&quot;]	= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTOPESOS&quot;];
+		value[&quot;GASTOPRESUPUESTODOLARES&quot;]= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTODOLARES&quot;];
+		value[&quot;GASTOPRESUPUESTOEUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTOEUROS&quot;];
+		value[&quot;MON_ID_GASTOPRESUPUESTO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_GASTOPRESUPUESTO&quot;];
+		value[&quot;GASTOPRESUPUESTOOTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTOOTRO&quot;];
+		value[&quot;INGRESOSPRESUPUESTOPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTOPESOS&quot;];
+		value[&quot;INGRESOSPRESUPUESTODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTODOLARES&quot;];
+		value[&quot;INGRESOSPRESUPUESTOEUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTOEUROS&quot;];
+		value[&quot;MON_ID_INGRESOSPRESUPUESTO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_INGRESOSPRESUPUESTO&quot;];
+		value[&quot;INGRESOSPRESUPUESTOOTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTOOTRO&quot;];
+		value[&quot;OVERBOOKING&quot;] 	= (String)row[this.prefijo + &quot;OVERBOOKING&quot;];
+		value[&quot;MARGENPRODUCTO&quot;] = (String)row[this.prefijo + &quot;MARGENPRODUCTO&quot;];
+		value[&quot;MANTIENEMARGENANTERIOR&quot;] = ((String)row[this.prefijo + &quot;MANTIENEMARGENANTERIOR&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;MANTIENEMARGENANTERIOR&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;GASTOEJANTERIORPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOEJANTERIORPESOS&quot;];
+		value[&quot;GASTOEJANTERIORDOLARES&quot;] = (Decimal)row[this.prefijo + &quot;GASTOEJANTERIORDOLARES&quot;];
+		value[&quot;GASTOEJANTERIOREUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOEJANTERIOREUROS&quot;];
+		value[&quot;MON_ID_GASTOEJANTERIOR&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_GASTOEJANTERIOR&quot;];
+		value[&quot;GASTOEJANTERIOROTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOEJANTERIOROTRO&quot;];
+		value[&quot;INGRESOSEJANTERIORPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIORPESOS&quot;];
+		value[&quot;INGRESOSEJANTERIORDOLARES&quot;] = (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIORDOLARES&quot;];
+		value[&quot;INGRESOSEJANTERIOREUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIOREUROS&quot;];
+		value[&quot;MON_ID_INGRESOSEJANTERIOR&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_INGRESOSEJANTERIOR&quot;];
+		value[&quot;INGRESOSEJANTERIOROTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIOROTRO&quot;];
+		value[&quot;COMENTARIOSREVENTA&quot;] 	= (String)row[this.prefijo + &quot;COMENTARIOSREVENTA&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="idSol" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { arg.idSol }))
+    {
+		
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;LCP_ID&quot;] = (String)row[this.prefijo + &quot;LCP_ID&quot;];
+		value[&quot;APROCOMITEPATROCINIOS&quot;] = ((String)row[this.prefijo + &quot;APROCOMITEPATROCINIOS&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROCOMITEPATROCINIOS&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;PROMOTORGASTO&quot;] = (String)row[this.prefijo + &quot;PROMOTORGASTO&quot;];
+		value[&quot;EXPCONDPATROCINIO&quot;] = (String)row[this.prefijo + &quot;EXPCONDPATROCINIO&quot;];
+		value[&quot;COMENTARIOSPATROCINIO&quot;] = (String)row[this.prefijo + &quot;COMENTARIOSPATROCINIO&quot;];
+		value[&quot;APROBADORRHH&quot;] = ((String)row[this.prefijo + &quot;APROBADORRHH&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;APROBADORRHH&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;PRODUCTOSERVICIO&quot;] = (String)row[this.prefijo + &quot;PRODUCTOSERVICIO&quot;];
+		value[&quot;GASTOPRESUPUESTOPESOS&quot;]	= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTOPESOS&quot;];
+		value[&quot;GASTOPRESUPUESTODOLARES&quot;]= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTODOLARES&quot;];
+		value[&quot;GASTOPRESUPUESTOEUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTOEUROS&quot;];
+		value[&quot;MON_ID_GASTOPRESUPUESTO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_GASTOPRESUPUESTO&quot;];
+		value[&quot;GASTOPRESUPUESTOOTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOPRESUPUESTOOTRO&quot;];
+		value[&quot;INGRESOSPRESUPUESTOPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTOPESOS&quot;];
+		value[&quot;INGRESOSPRESUPUESTODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTODOLARES&quot;];
+		value[&quot;INGRESOSPRESUPUESTOEUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTOEUROS&quot;];
+		value[&quot;MON_ID_INGRESOSPRESUPUESTO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_INGRESOSPRESUPUESTO&quot;];
+		value[&quot;INGRESOSPRESUPUESTOOTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSPRESUPUESTOOTRO&quot;];
+		value[&quot;OVERBOOKING&quot;] 	= (String)row[this.prefijo + &quot;OVERBOOKING&quot;];
+		value[&quot;MARGENPRODUCTO&quot;] = (String)row[this.prefijo + &quot;MARGENPRODUCTO&quot;];
+		value[&quot;MANTIENEMARGENANTERIOR&quot;] = ((String)row[this.prefijo + &quot;MANTIENEMARGENANTERIOR&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;MANTIENEMARGENANTERIOR&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;GASTOEJANTERIORPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOEJANTERIORPESOS&quot;];
+		value[&quot;GASTOEJANTERIORDOLARES&quot;] = (Decimal)row[this.prefijo + &quot;GASTOEJANTERIORDOLARES&quot;];
+		value[&quot;GASTOEJANTERIOREUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOEJANTERIOREUROS&quot;];
+		value[&quot;MON_ID_GASTOEJANTERIOR&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_GASTOEJANTERIOR&quot;];
+		value[&quot;GASTOEJANTERIOROTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOEJANTERIOROTRO&quot;];
+		value[&quot;INGRESOSEJANTERIORPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIORPESOS&quot;];
+		value[&quot;INGRESOSEJANTERIORDOLARES&quot;] = (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIORDOLARES&quot;];
+		value[&quot;INGRESOSEJANTERIOREUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIOREUROS&quot;];
+		value[&quot;MON_ID_INGRESOSEJANTERIOR&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_INGRESOSEJANTERIOR&quot;];
+		value[&quot;INGRESOSEJANTERIOROTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;INGRESOSEJANTERIOROTRO&quot;];
+		value[&quot;COMENTARIOSREVENTA&quot;] 	= (String)row[this.prefijo + &quot;COMENTARIOSREVENTA&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    } else {
+        respuesta.resultado = DATAERROR;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.idSol + &quot;\&quot; no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="idSol" description="" flags="in" type="Int"/>
+			<arg name="idLcp" description="" flags="in" type="Int"/>
+			<arg name="aproComitePatrocinions" description="" flags="in" type="Bool"/>
+			<arg name="promotorGasto" description="" flags="in" type="String"/>
+			<arg name="expCondPatrocinio" description="" flags="in" type="String"/>
+			<arg name="comentariosPatrocinio" description="" flags="in" type="String"/>
+			<arg name="aprobadaRrhh" description="" flags="in" type="Bool"/>
+			<arg name="productoServicio" description="" flags="in" type="String"/>
+			<arg name="gastoPresupuestoPesos" description="" flags="in" type="Decimal"/>
+			<arg name="gastoPresupuestoDolares" description="" flags="in" type="Decimal"/>
+			<arg name="gastoPresupuestoEuros" description="" flags="in" type="Decimal"/>
+			<arg name="ingresosPresupuestoPesos" description="" flags="in" type="Decimal"/>
+			<arg name="ingresosPresupuestoDolares" description="" flags="in" type="Decimal"/>
+			<arg name="ingresosPresupuestoEuros" description="" flags="in" type="Decimal"/>
+			<arg name="margenProducto" description="" flags="in" type="String"/>
+			<arg name="mantieneMargenProducto" description="" flags="in" type="Bool"/>
+			<arg name="gastoEjAnteriorPesos" description="" flags="in" type="Decimal"/>
+			<arg name="gastoEjAnteriorDolares" description="" flags="in" type="Decimal"/>
+			<arg name="gastoEjAnteriorEuros" description="" flags="in" type="Decimal"/>
+			<arg name="comentariosReventa" description="" flags="in" type="String"/>
+			<arg name="nuevaSolicitud" description="" flags="in" type="Bool"/>
+			<arg name="ingresosEjAnteriorPesos" description="" flags="in" type="Decimal"/>
+			<arg name="ingresosEjAnteriorDolares" description="" flags="in" type="Decimal"/>
+			<arg name="ingresosEjAnteriorEuros" description="" flags="in" type="Decimal"/>
+			<arg name="gastoPresupuestoOM" description="" flags="in" type="Int"/>
+			<arg name="gastoPresupuestoOtro" description="" flags="in" type="Decimal"/>
+			<arg name="ingresosPresupuestoOM" description="" flags="in" type="Int"/>
+			<arg name="ingresosPresupuestoOtro" description="" flags="in" type="Decimal"/>
+			<arg name="gastoEjAnteriorOM" description="" flags="in" type="Int"/>
+			<arg name="gastoEjAnteriorOtro" description="" flags="in" type="Decimal"/>
+			<arg name="ingresosEjAnteriorOM" description="" flags="in" type="Int"/>
+			<arg name="ingresosEjAnteriorOtro" description="" flags="in" type="Decimal"/>
+			<arg name="overBooking" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	if(!arg.nuevaSolicitud){
+		sentence = &quot;UPDATE &quot; + this.tabla + &quot; SET &quot; +
+						this.prefijo + &quot;SOL_ID = ?, &quot; +
+						this.prefijo + &quot;LCP_ID = ?, &quot; +
+						this.prefijo + &quot;APROCOMITEPATROCINIOS = ?, &quot; +
+						this.prefijo + &quot;PROMOTORGASTO = ?, &quot; +
+					 	this.prefijo + &quot;EXPCONDPATROCINIO = ?, &quot; +
+						this.prefijo + &quot;COMENTARIOSPATROCINIO = ?, &quot; +
+						this.prefijo + &quot;APROBADORRHH = ?, &quot; +
+						this.prefijo + &quot;PRODUCTOSERVICIO = ?, &quot; +
+						this.prefijo + &quot;GASTOPRESUPUESTOPESOS = ?, &quot; +
+						this.prefijo + &quot;GASTOPRESUPUESTODOLARES = ?, &quot; +
+						this.prefijo + &quot;GASTOPRESUPUESTOEUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_GASTOPRESUPUESTO = ?, &quot; +
+						this.prefijo + &quot;GASTOPRESUPUESTOOTRO = ?, &quot; +						
+						this.prefijo + &quot;INGRESOSPRESUPUESTOPESOS = ?, &quot; +
+						this.prefijo + &quot;INGRESOSPRESUPUESTODOLARES = ?, &quot; +
+						this.prefijo + &quot;INGRESOSPRESUPUESTOEUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_INGRESOSPRESUPUESTO = ?, &quot; +
+						this.prefijo + &quot;INGRESOSPRESUPUESTOOTRO = ?, &quot; +					
+						this.prefijo + &quot;OVERBOOKING = ?, &quot; +
+						this.prefijo + &quot;MARGENPRODUCTO = ?, &quot; +
+						this.prefijo + &quot;MANTIENEMARGENANTERIOR = ?, &quot; +
+						this.prefijo + &quot;GASTOEJANTERIORPESOS = ?, &quot; +
+						this.prefijo + &quot;GASTOEJANTERIORDOLARES = ?, &quot; +
+						this.prefijo + &quot;GASTOEJANTERIOREUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_GASTOEJANTERIOR = ?, &quot; +
+						this.prefijo + &quot;GASTOEJANTERIOROTRO = ?, &quot; +
+						this.prefijo + &quot;INGRESOSEJANTERIORPESOS = ?, &quot; +
+						this.prefijo + &quot;INGRESOSEJANTERIORDOLARES = ?, &quot; +
+						this.prefijo + &quot;INGRESOSEJANTERIOREUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_INGRESOSEJANTERIOR = ?, &quot; +
+						this.prefijo + &quot;INGRESOSEJANTERIOROTRO = ?, &quot; +	
+						this.prefijo + &quot;COMENTARIOSREVENTA = ? &quot; +															
+					&quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;	
+	
+	} else {
+		sentence = &quot;INSERT INTO &quot; + this.tabla + &quot; (&quot; +
+						this.prefijo + &quot;SOL_ID, &quot; +
+						this.prefijo + &quot;LCP_ID, &quot; +
+						this.prefijo + &quot;APROCOMITEPATROCINIOS, &quot; +
+						this.prefijo + &quot;PROMOTORGASTO, &quot; +
+						this.prefijo + &quot;EXPCONDPATROCINIO, &quot; +
+						this.prefijo + &quot;COMENTARIOSPATROCINIO, &quot; +
+						this.prefijo + &quot;APROBADORRHH, &quot; +
+						this.prefijo + &quot;PRODUCTOSERVICIO, &quot; +
+						this.prefijo + &quot;GASTOPRESUPUESTOPESOS, &quot; +
+						this.prefijo + &quot;GASTOPRESUPUESTODOLARES, &quot; +
+						this.prefijo + &quot;GASTOPRESUPUESTOEUROS, &quot; +
+						this.prefijo + &quot;MON_ID_GASTOPRESUPUESTO, &quot; +
+						this.prefijo + &quot;GASTOPRESUPUESTOOTRO, &quot; +
+						this.prefijo + &quot;INGRESOSPRESUPUESTOPESOS, &quot; +
+						this.prefijo + &quot;INGRESOSPRESUPUESTODOLARES, &quot; +
+						this.prefijo + &quot;INGRESOSPRESUPUESTOEUROS, &quot; +
+						this.prefijo + &quot;MON_ID_INGRESOSPRESUPUESTO, &quot; +
+						this.prefijo + &quot;INGRESOSPRESUPUESTOOTRO, &quot; +
+						this.prefijo + &quot;OVERBOOKING, &quot; +
+						this.prefijo + &quot;MARGENPRODUCTO, &quot; +
+						this.prefijo + &quot;MANTIENEMARGENANTERIOR, &quot; +
+						this.prefijo + &quot;GASTOEJANTERIORPESOS, &quot; +
+						this.prefijo + &quot;GASTOEJANTERIORDOLARES, &quot; +
+						this.prefijo + &quot;GASTOEJANTERIOREUROS, &quot; +
+						this.prefijo + &quot;MON_ID_GASTOEJANTERIOR, &quot; +
+						this.prefijo + &quot;GASTOEJANTERIOROTRO, &quot; +
+						this.prefijo + &quot;INGRESOSEJANTERIORPESOS, &quot; +
+						this.prefijo + &quot;INGRESOSEJANTERIORDOLARES, &quot; +
+						this.prefijo + &quot;INGRESOSEJANTERIOREUROS, &quot; +
+						this.prefijo + &quot;MON_ID_INGRESOSEJANTERIOR, &quot; +
+						this.prefijo + &quot;INGRESOSEJANTERIOROTRO, &quot; +
+						this.prefijo + &quot;COMENTARIOSREVENTA) &quot; +																
+					&quot;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)&quot;;
+	}
+	
+	Any[] inParameters = {};
+	inParameters[] = arg.idSol;
+	inParameters[] = arg.idLcp;
+	inParameters[] = arg.aproComitePatrocinions==null?null:arg.aproComitePatrocinions?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.promotorGasto;
+	inParameters[] = arg.expCondPatrocinio;
+	inParameters[] = arg.comentariosPatrocinio;
+	inParameters[] = arg.aprobadaRrhh==null?null:arg.aprobadaRrhh?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.productoServicio;
+	inParameters[] = arg.gastoPresupuestoPesos;
+	inParameters[] = arg.gastoPresupuestoDolares;
+	inParameters[] = arg.gastoPresupuestoEuros;
+	inParameters[] = arg.gastoPresupuestoOM;
+	inParameters[] = arg.gastoPresupuestoOtro;
+	inParameters[] = arg.ingresosPresupuestoPesos;
+	inParameters[] = arg.ingresosPresupuestoDolares;
+	inParameters[] = arg.ingresosPresupuestoEuros;
+	inParameters[] = arg.ingresosPresupuestoOM;
+	inParameters[] = arg.ingresosPresupuestoOtro;
+	inParameters[] = arg.overBooking;
+	inParameters[] = arg.margenProducto;
+	inParameters[] = arg.mantieneMargenProducto==null?null:arg.mantieneMargenProducto?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.gastoEjAnteriorPesos;
+	inParameters[] = arg.gastoEjAnteriorDolares;
+	inParameters[] = arg.gastoEjAnteriorEuros;
+	inParameters[] = arg.gastoPresupuestoOM;
+	inParameters[] = arg.gastoEjAnteriorOtro;
+	inParameters[] = arg.ingresosEjAnteriorPesos;
+	inParameters[] = arg.ingresosEjAnteriorDolares;
+	inParameters[] = arg.ingresosEjAnteriorEuros;
+	inParameters[] = arg.ingresosEjAnteriorOM;
+	inParameters[] = arg.ingresosEjAnteriorOtro;
+	inParameters[] = arg.comentariosReventa;	
+	
+	if(!arg.nuevaSolicitud){
+		inParameters[] = arg.idSol;
+	}
+	
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="SimpleLogger" description="SimpleLogger" versionID="Version 6.5 " flags="" signature="jxl.common.log.SimpleLogger" type="java">
+	<inherit class="Utiles.Jxl.Common.Logger" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.common.log.SimpleLogger"/>
+	<objectProperty name="package" value="jxl.common.log"/>
+	<objectProperty name="typeId" value="jxl.common.log.SimpleLogger"/>
+	<attributes>
+		<Bool name="suppressWarnings" flags="hassetter external" primitive="true" position="1" javaType="boolean" writeSignature="MsetSuppressWarnings(Z)V"/>
+	</attributes>
+	<methods>
+		<method name="SimpleLogger" flags="static hidden" signature="Kjxl.common.log.SimpleLogger()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Common.Log.SimpleLogger"/>
+		</method>
+		<method name="debug" description="debug" flags="external" signature="Mdebug(Ljava.lang.Object;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="debug" description="debug" flags="external" signature="Mdebug(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="t" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+		<method name="error" description="error" flags="external" signature="Merror(Ljava.lang.Object;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="error" description="error" flags="external" signature="Merror(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="t" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+		<method name="fatal" description="fatal" flags="external" signature="Mfatal(Ljava.lang.Object;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="fatal" description="fatal" flags="external" signature="Mfatal(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="t" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+		<method name="info" description="info" flags="external" signature="Minfo(Ljava.lang.Object;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="info" description="info" flags="external" signature="Minfo(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="t" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+		<method name="setSuppressWarnings" description="setSuppressWarnings" flags="external hidden" signature="MsetSuppressWarnings(Z)V">
+			<arg name="w" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="warn" description="warn" flags="external" signature="Mwarn(Ljava.lang.Object;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="warn" description="warn" flags="external" signature="Mwarn(Ljava.lang.Object;Ljava.lang.Throwable;)V">
+			<arg name="message" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<arg name="t" description="" flags="in external" type="Java.Lang.Throwable" javaType="java.lang.Throwable"/>
+		</method>
+	</methods>
+</component>

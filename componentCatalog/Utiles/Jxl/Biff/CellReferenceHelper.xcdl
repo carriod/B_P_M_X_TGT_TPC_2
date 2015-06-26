@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="CellReferenceHelper" description="CellReferenceHelper" versionID="Version 6.5 " flags="" signature="jxl.biff.CellReferenceHelper" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.CellReferenceHelper"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.CellReferenceHelper"/>
+	<attributes/>
+	<methods>
+		<method name="getCellReference" description="getCellReference" flags="static external" signature="MgetCellReference(II)Ljava.lang.String;">
+			<arg name="column" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getCellReference" description="getCellReference" flags="static external" signature="MgetCellReference(IILjava.lang.StringBuffer;)V">
+			<arg name="column" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="buf" description="" flags="in external" type="Java.Lang.StringBuffer" javaType="java.lang.StringBuffer"/>
+		</method>
+		<method name="getCellReference" description="getCellReference" flags="static external" signature="MgetCellReference(IIILjxl.biff.formula.ExternalSheet;)Ljava.lang.String;">
+			<arg name="sheet" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="column" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="workbook" description="" flags="in external" type="Utiles.Jxl.Biff.Formula.ExternalSheet" javaType="jxl.biff.formula.ExternalSheet"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getCellReference" description="getCellReference" flags="static external" signature="MgetCellReference(IIILjxl.biff.formula.ExternalSheet;Ljava.lang.StringBuffer;)V">
+			<arg name="sheet" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="column" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="workbook" description="" flags="in external" type="Utiles.Jxl.Biff.Formula.ExternalSheet" javaType="jxl.biff.formula.ExternalSheet"/>
+			<arg name="buf" description="" flags="in external" type="Java.Lang.StringBuffer" javaType="java.lang.StringBuffer"/>
+		</method>
+		<method name="getCellReference" description="getCellReference" flags="static external" signature="MgetCellReference(IZIZLjava.lang.StringBuffer;)V">
+			<arg name="column" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="colabs" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="rowabs" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="buf" description="" flags="in external" type="Java.Lang.StringBuffer" javaType="java.lang.StringBuffer"/>
+		</method>
+		<method name="getCellReference" description="getCellReference" flags="static external" signature="MgetCellReference(IIZIZLjxl.biff.formula.ExternalSheet;Ljava.lang.StringBuffer;)V">
+			<arg name="sheet" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="column" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="colabs" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="rowabs" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="workbook" description="" flags="in external" type="Utiles.Jxl.Biff.Formula.ExternalSheet" javaType="jxl.biff.formula.ExternalSheet"/>
+			<arg name="buf" description="" flags="in external" type="Java.Lang.StringBuffer" javaType="java.lang.StringBuffer"/>
+		</method>
+		<method name="getColumn" description="getColumn" flags="static external" signature="MgetColumn(Ljava.lang.String;)I">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getColumnReference" description="getColumnReference" flags="static external" signature="MgetColumnReference(I)Ljava.lang.String;">
+			<arg name="column" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getColumnReference" description="getColumnReference" flags="static external" signature="MgetColumnReference(ILjava.lang.StringBuffer;)V">
+			<arg name="column" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="buf" description="" flags="in external" type="Java.Lang.StringBuffer" javaType="java.lang.StringBuffer"/>
+		</method>
+		<method name="getRow" description="getRow" flags="static external" signature="MgetRow(Ljava.lang.String;)I">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="isColumnRelative" description="isColumnRelative" flags="static external" signature="MisColumnRelative(Ljava.lang.String;)Z">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isRowRelative" description="isRowRelative" flags="static external" signature="MisRowRelative(Ljava.lang.String;)Z">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

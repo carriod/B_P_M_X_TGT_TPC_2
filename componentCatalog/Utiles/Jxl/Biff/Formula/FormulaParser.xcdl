@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="FormulaParser" description="FormulaParser" versionID="Version 6.5 " flags="" signature="jxl.biff.formula.FormulaParser" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.formula.FormulaParser"/>
+	<objectProperty name="package" value="jxl.biff.formula"/>
+	<objectProperty name="typeId" value="jxl.biff.formula.FormulaParser"/>
+	<attributes>
+		<Binary name="bytes" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetBytes()[B"/>
+		<String name="formula" flags="hasgetter external" position="2" javaType="java.lang.String" readSignature="MgetFormula()Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="FormulaParser" flags="static" signature="Kjxl.biff.formula.FormulaParser(Ljava.lang.String;Ljxl.biff.formula.ExternalSheet;Ljxl.biff.WorkbookMethods;Ljxl.WorkbookSettings;)">
+			<arg name="form" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="es" description="" flags="in external" type="Utiles.Jxl.Biff.Formula.ExternalSheet" javaType="jxl.biff.formula.ExternalSheet"/>
+			<arg name="nt" description="" flags="in external" type="Utiles.Jxl.Biff.WorkbookMethods" javaType="jxl.biff.WorkbookMethods"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Formula.FormulaParser"/>
+		</method>
+		<method name="FormulaParser" flags="static" signature="Kjxl.biff.formula.FormulaParser([BLjxl.Cell;Ljxl.biff.formula.ExternalSheet;Ljxl.biff.WorkbookMethods;Ljxl.WorkbookSettings;)">
+			<arg name="tokens" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="rt" description="" flags="in external" type="Utiles.Jxl.Cell" javaType="jxl.Cell"/>
+			<arg name="es" description="" flags="in external" type="Utiles.Jxl.Biff.Formula.ExternalSheet" javaType="jxl.biff.formula.ExternalSheet"/>
+			<arg name="nt" description="" flags="in external" type="Utiles.Jxl.Biff.WorkbookMethods" javaType="jxl.biff.WorkbookMethods"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Formula.FormulaParser"/>
+		</method>
+		<method name="adjustRelativeCellReferences" description="adjustRelativeCellReferences" flags="external" signature="MadjustRelativeCellReferences(II)V">
+			<arg name="colAdjust" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="rowAdjust" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="columnInserted" description="columnInserted" flags="external" signature="McolumnInserted(IIZ)V">
+			<arg name="sheetIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="currentSheet" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="columnRemoved" description="columnRemoved" flags="external" signature="McolumnRemoved(IIZ)V">
+			<arg name="sheetIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="currentSheet" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getBytes" description="getBytes" flags="external hidden" signature="MgetBytes()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getFormula" description="getFormula" flags="external hidden" signature="MgetFormula()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+			<exception type="Utiles.Jxl.Biff.Formula.FormulaException"/>
+		</method>
+		<method name="parse" description="parse" flags="external" signature="Mparse()V">
+			<exception type="Utiles.Jxl.Biff.Formula.FormulaException"/>
+		</method>
+		<method name="rowInserted" description="rowInserted" flags="external" signature="MrowInserted(IIZ)V">
+			<arg name="sheetIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="currentSheet" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="rowRemoved" description="rowRemoved" flags="external" signature="MrowRemoved(IIZ)V">
+			<arg name="sheetIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="currentSheet" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

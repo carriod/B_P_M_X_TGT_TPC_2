@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableCell" description="WritableCell" versionID="Version 6.5 " flags="abstract interface" signature="jxl.write.WritableCell" type="java">
+	<inherit class="Utiles.Jxl.Cell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.WritableCell"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.WritableCell"/>
+	<attributes>
+		<object type="Utiles.Jxl.Write.WritableCellFeatures" name="cellFeatures" flags="hassetter external" position="1" javaType="jxl.write.WritableCellFeatures" writeSignature="MsetCellFeatures(Ljxl.write.WritableCellFeatures;)V"/>
+		<object type="Utiles.Jxl.Format.CellFormat" name="cellFormat" flags="hassetter external" position="2" javaType="jxl.format.CellFormat" writeSignature="MsetCellFormat(Ljxl.format.CellFormat;)V"/>
+		<object type="Utiles.Jxl.Write.WritableCellFeatures" name="writableCellFeatures" flags="hasgetter external" position="3" javaType="jxl.write.WritableCellFeatures" readSignature="MgetWritableCellFeatures()Ljxl.write.WritableCellFeatures;"/>
+	</attributes>
+	<methods>
+		<method name="copyTo" description="copyTo" flags="abstract external" signature="McopyTo(II)Ljxl.write.WritableCell;">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+		</method>
+		<method name="getWritableCellFeatures" description="getWritableCellFeatures" flags="abstract external hidden" signature="MgetWritableCellFeatures()Ljxl.write.WritableCellFeatures;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCellFeatures" javaType="jxl.write.WritableCellFeatures"/>
+		</method>
+		<method name="setCellFeatures" description="setCellFeatures" flags="abstract external hidden" signature="MsetCellFeatures(Ljxl.write.WritableCellFeatures;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Write.WritableCellFeatures" javaType="jxl.write.WritableCellFeatures"/>
+		</method>
+		<method name="setCellFormat" description="setCellFormat" flags="abstract external hidden" signature="MsetCellFormat(Ljxl.format.CellFormat;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+		</method>
+	</methods>
+</component>

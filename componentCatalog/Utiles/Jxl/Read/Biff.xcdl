@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Biff" description="" versionID="Version 6.5 " flags="abstract" signature="Biff" type="java">
+	<objectProperty name="isPackage" value="true"/>
+	<attributes/>
+	<methods/>
+</component>

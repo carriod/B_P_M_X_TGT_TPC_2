@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="FormulaData" description="FormulaData" versionID="Version 6.5 " flags="abstract interface" signature="jxl.biff.FormulaData" type="java">
+	<inherit class="Utiles.Jxl.Cell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.FormulaData"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.FormulaData"/>
+	<attributes>
+		<Binary name="formulaData" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetFormulaData()[B"/>
+	</attributes>
+	<methods>
+		<method name="getFormulaData" description="getFormulaData" flags="abstract external hidden" signature="MgetFormulaData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="Utiles.Jxl.Biff.Formula.FormulaException"/>
+		</method>
+	</methods>
+</component>

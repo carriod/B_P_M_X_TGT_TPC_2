@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DateTime" description="DateTime" versionID="Version 6.5 " flags="" signature="jxl.write.DateTime" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.DateRecord" flags="public"/>
+	<inherit class="Utiles.Jxl.Write.WritableCell" flags=""/>
+	<inherit class="Utiles.Jxl.DateCell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.DateTime"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.DateTime"/>
+	<attributes>
+		<object type="Utiles.Jxl.Write.Biff.DateRecord.GMTDate" name="GMT" flags="hasgetter attribute static external final" position="1" javaType="jxl.write.biff.DateRecord$GMTDate" writeSignature="AGMT;Ljxl.write.biff.DateRecord$GMTDate;" readSignature="AGMT;Ljxl.write.biff.DateRecord$GMTDate;"/>
+	</attributes>
+	<methods>
+		<method name="DateTime" flags="static" signature="Kjxl.write.DateTime(Ljxl.DateCell;)">
+			<arg name="dc" description="" flags="in external" type="Utiles.Jxl.DateCell" javaType="jxl.DateCell"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.DateTime"/>
+		</method>
+		<method name="DateTime" flags="static" signature="Kjxl.write.DateTime(IILjava.util.Date;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="d" description="" flags="in external" type="Java.Util.Date" javaType="java.util.Date"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.DateTime"/>
+		</method>
+		<method name="DateTime" flags="static" signature="Kjxl.write.DateTime(IILjava.util.Date;Ljxl.write.biff.DateRecord$GMTDate;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="d" description="" flags="in external" type="Java.Util.Date" javaType="java.util.Date"/>
+			<arg name="a" description="" flags="in external" type="Utiles.Jxl.Write.Biff.DateRecord.GMTDate" javaType="jxl.write.biff.DateRecord$GMTDate"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.DateTime"/>
+		</method>
+		<method name="DateTime" flags="static" signature="Kjxl.write.DateTime(IILjava.util.Date;Ljxl.format.CellFormat;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="d" description="" flags="in external" type="Java.Util.Date" javaType="java.util.Date"/>
+			<arg name="st" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.DateTime"/>
+		</method>
+		<method name="DateTime" flags="static" signature="Kjxl.write.DateTime(IILjava.util.Date;Ljxl.format.CellFormat;Ljxl.write.biff.DateRecord$GMTDate;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="d" description="" flags="in external" type="Java.Util.Date" javaType="java.util.Date"/>
+			<arg name="st" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+			<arg name="a" description="" flags="in external" type="Utiles.Jxl.Write.Biff.DateRecord.GMTDate" javaType="jxl.write.biff.DateRecord$GMTDate"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.DateTime"/>
+		</method>
+		<method name="DateTime" flags="static" signature="Kjxl.write.DateTime(IILjava.util.Date;Ljxl.format.CellFormat;Z)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="d" description="" flags="in external" type="Java.Util.Date" javaType="java.util.Date"/>
+			<arg name="st" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+			<arg name="tim" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.DateTime"/>
+		</method>
+		<method name="copyTo" description="copyTo" flags="external" signature="McopyTo(II)Ljxl.write.WritableCell;">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+		</method>
+		<method name="setDate" description="setDate" flags="external hidden" signature="MsetDate(Ljava.util.Date;)V">
+			<arg name="d" description="" flags="in external" type="Java.Util.Date" javaType="java.util.Date"/>
+		</method>
+		<method name="setDate" description="setDate" flags="external" signature="MsetDate(Ljava.util.Date;Ljxl.write.biff.DateRecord$GMTDate;)V">
+			<arg name="d" description="" flags="in external" type="Java.Util.Date" javaType="java.util.Date"/>
+			<arg name="a" description="" flags="in external" type="Utiles.Jxl.Write.Biff.DateRecord.GMTDate" javaType="jxl.write.biff.DateRecord$GMTDate"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="ListadoProcesos" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String validValues="A|M|B" name="listaPrioridad" flags="hassetter hasgetter public includeincheck" position="2">
+			<property name="validValuesDescriptionList" value="Alta,Media,Baja"/>
+		</String>
+		<object type="Negocio2.NProceso2" name="objeto" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ListadoProcesos" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormConsultaProcesos.ListadoProcesos"/>
+		</method>
+		<method name="listaPrioridadValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return [&quot;A&quot; : &quot;Alta&quot;,&quot;M&quot; : &quot;Media&quot;,&quot;B&quot; : &quot;Baja&quot;]
+</sourceCode>
+		</method>
+		<method name="procesoIdButton" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_P_&quot; + this.objeto.id + &quot;_&quot; + this.objeto.edicion);</sourceCode>
+		</method>
+	</methods>
+</component>

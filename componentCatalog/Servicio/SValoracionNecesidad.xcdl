@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="SValoracionNecesidad" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="1"/>
+		<String name="prefijo" flags="hassetter hasgetter public" position="2"/>
+		<String name="tabla" flags="hassetter hasgetter public" position="3"/>
+	</attributes>
+	<methods>
+		<method name="SValoracionNecesidad" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SValoracionNecesidad"/>
+			<sourceCode language="Java1">this.prefijo = &quot;VNE_&quot;;
+this.tabla = &quot;TPC_VALORACION_NECESIDAD&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.id;
+		
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+     				  &quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ( SELECT MAX(&quot; + this.prefijo + &quot;SOL_ID) FROM &quot; + this.tabla  + &quot; )&quot;;	
+	
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;BENEFICIOCOMPRA&quot;]= (String)row[this.prefijo + &quot;BENEFICIOCOMPRA&quot;];	
+		value[&quot;RECURRENCIA&quot;] 	= ((String)row[this.prefijo + &quot;RECURRENCIA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;RECURRENCIA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;	
+		value[&quot;PERIODICIDADCOMPRA&quot;] = (String)row[this.prefijo + &quot;PERIODICIDADCOMPRA&quot;];
+		value[&quot;REGULARIZACION&quot;]		= ((String)row[this.prefijo + &quot;REGULARIZACION&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REGULARIZACION&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;MOTIVOREGULARIZACION&quot;]= (String)row[this.prefijo + &quot;MOTIVOREGULARIZACION&quot;];
+		value[&quot;COMENTARIOREGADM&quot;] 	 = (String)row[this.prefijo + &quot;COMENTARIOREGADM&quot;];
+		value[&quot;COMPRAMARGMOD&quot;] = ((String)row[this.prefijo + &quot;COMPRAMARGMOD&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;COMPRAMARGMOD&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;MOTIVOCOMPRAMARGMOD&quot;]= (String)row[this.prefijo + &quot;MOTIVOCOMPRAMARGMOD&quot;];
+		value[&quot;GASTOSPEDIDO&quot;] 		= ((String)row[this.prefijo + &quot;GASTOSPEDIDO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;GASTOSPEDIDO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;INFOGASTOSPEDIDO&quot;]	= (String)row[this.prefijo + &quot;INFOGASTOSPEDIDO&quot;];		
+		value[&quot;ALCANCEFIJO&quot;] 	 = ((String)row[this.prefijo + &quot;ALCANCEFIJO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ALCANCEFIJO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;ALCANCEMOVIL&quot;]= ((String)row[this.prefijo + &quot;ALCANCEMOVIL&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ALCANCEMOVIL&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;DESCFIJOMOVIL&quot;] 	 = (String)row[this.prefijo + &quot;DESCFIJOMOVIL&quot;];
+    }
+    
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<arg name="vigencia" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  (arg.vigencia? &quot;WHERE &quot; + this.prefijo + &quot;VIGENCIA = &apos;A&apos; &quot; : &quot;&quot;) +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;SOL_ID&quot;;
+    				  
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value = {};
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;BENEFICIOCOMPRA&quot;]= (String)row[this.prefijo + &quot;BENEFICIOCOMPRA&quot;];	
+		value[&quot;RECURRENCIA&quot;] 	= ((String)row[this.prefijo + &quot;RECURRENCIA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;RECURRENCIA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;	
+		value[&quot;PERIODICIDADCOMPRA&quot;] = (String)row[this.prefijo + &quot;PERIODICIDADCOMPRA&quot;];
+		value[&quot;REGULARIZACION&quot;]		= ((String)row[this.prefijo + &quot;REGULARIZACION&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REGULARIZACION&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;MOTIVOREGULARIZACION&quot;]= (String)row[this.prefijo + &quot;MOTIVOREGULARIZACION&quot;];
+		value[&quot;COMENTARIOREGADM&quot;] 	 = (String)row[this.prefijo + &quot;COMENTARIOREGADM&quot;];
+		value[&quot;COMPRAMARGMOD&quot;] = ((String)row[this.prefijo + &quot;COMPRAMARGMOD&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;COMPRAMARGMOD&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;MOTIVOCOMPRAMARGMOD&quot;]= (String)row[this.prefijo + &quot;MOTIVOCOMPRAMARGMOD&quot;];
+		value[&quot;GASTOSPEDIDO&quot;] 		= ((String)row[this.prefijo + &quot;GASTOSPEDIDO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;GASTOSPEDIDO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;INFOGASTOSPEDIDO&quot;]	= (String)row[this.prefijo + &quot;INFOGASTOSPEDIDO&quot;];		
+		value[&quot;ALCANCEFIJO&quot;] 	 = ((String)row[this.prefijo + &quot;ALCANCEFIJO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ALCANCEFIJO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;ALCANCEMOVIL&quot;]= ((String)row[this.prefijo + &quot;ALCANCEMOVIL&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ALCANCEMOVIL&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;DESCFIJOMOVIL&quot;] 	 = (String)row[this.prefijo + &quot;DESCFIJOMOVIL&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForCodigo" flags="public server disableclient">
+			<arg name="codigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;CODIGO = ?&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { arg.codigo }))
+    {		
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;BENEFICIOCOMPRA&quot;]= (String)row[this.prefijo + &quot;BENEFICIOCOMPRA&quot;];	
+		value[&quot;RECURRENCIA&quot;] 	= ((String)row[this.prefijo + &quot;RECURRENCIA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;RECURRENCIA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;	
+		value[&quot;PERIODICIDADCOMPRA&quot;] = (String)row[this.prefijo + &quot;PERIODICIDADCOMPRA&quot;];
+		value[&quot;REGULARIZACION&quot;]		= ((String)row[this.prefijo + &quot;REGULARIZACION&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REGULARIZACION&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;MOTIVOREGULARIZACION&quot;]= (String)row[this.prefijo + &quot;MOTIVOREGULARIZACION&quot;];
+		value[&quot;COMENTARIOREGADM&quot;] 	 = (String)row[this.prefijo + &quot;COMENTARIOREGADM&quot;];
+		value[&quot;COMPRAMARGMOD&quot;] = ((String)row[this.prefijo + &quot;COMPRAMARGMOD&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;COMPRAMARGMOD&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;MOTIVOCOMPRAMARGMOD&quot;]= (String)row[this.prefijo + &quot;MOTIVOCOMPRAMARGMOD&quot;];
+		value[&quot;GASTOSPEDIDO&quot;] 		= ((String)row[this.prefijo + &quot;GASTOSPEDIDO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;GASTOSPEDIDO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;INFOGASTOSPEDIDO&quot;]	= (String)row[this.prefijo + &quot;INFOGASTOSPEDIDO&quot;];		
+		value[&quot;ALCANCEFIJO&quot;] 	 = ((String)row[this.prefijo + &quot;ALCANCEFIJO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ALCANCEFIJO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;ALCANCEMOVIL&quot;]= ((String)row[this.prefijo + &quot;ALCANCEMOVIL&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ALCANCEMOVIL&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;DESCFIJOMOVIL&quot;] 	 = (String)row[this.prefijo + &quot;DESCFIJOMOVIL&quot;];
+	}
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    } else {
+        respuesta.resultado = DATAERROR;
+        respuesta.idTipoError = 16;
+        respuesta.codigoInvalido = arg.codigo;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.codigo + &quot;\&quot; no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForCodigo(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { arg.id }))
+    {
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;BENEFICIOCOMPRA&quot;]= (String)row[this.prefijo + &quot;BENEFICIOCOMPRA&quot;];	
+		value[&quot;RECURRENCIA&quot;] 	= ((String)row[this.prefijo + &quot;RECURRENCIA&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;RECURRENCIA&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;	
+		value[&quot;PERIODICIDADCOMPRA&quot;] = (String)row[this.prefijo + &quot;PERIODICIDADCOMPRA&quot;];
+		value[&quot;REGULARIZACION&quot;]		= ((String)row[this.prefijo + &quot;REGULARIZACION&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;REGULARIZACION&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;MOTIVOREGULARIZACION&quot;]= (String)row[this.prefijo + &quot;MOTIVOREGULARIZACION&quot;];
+		value[&quot;COMENTARIOREGADM&quot;] 	 = (String)row[this.prefijo + &quot;COMENTARIOREGADM&quot;];
+		value[&quot;COMPRAMARGMOD&quot;] = ((String)row[this.prefijo + &quot;COMPRAMARGMOD&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;COMPRAMARGMOD&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;MOTIVOCOMPRAMARGMOD&quot;]= (String)row[this.prefijo + &quot;MOTIVOCOMPRAMARGMOD&quot;];
+		value[&quot;GASTOSPEDIDO&quot;] 		= ((String)row[this.prefijo + &quot;GASTOSPEDIDO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;GASTOSPEDIDO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;INFOGASTOSPEDIDO&quot;]	= (String)row[this.prefijo + &quot;INFOGASTOSPEDIDO&quot;];		
+		value[&quot;ALCANCEFIJO&quot;] 	 = ((String)row[this.prefijo + &quot;ALCANCEFIJO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ALCANCEFIJO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;ALCANCEMOVIL&quot;]= ((String)row[this.prefijo + &quot;ALCANCEMOVIL&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;ALCANCEMOVIL&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		value[&quot;DESCFIJOMOVIL&quot;] 	 = (String)row[this.prefijo + &quot;DESCFIJOMOVIL&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    } else {
+        respuesta.resultado = DATAERROR;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.id + &quot;\&quot; no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="solId" description="" flags="in" type="Int"/>
+			<arg name="beneficioCompra" description="" flags="in" type="String"/>
+			<arg name="periodicidadCompra" description="" flags="in" type="String"/>
+			<arg name="regularizacion" description="" flags="in" type="Bool"/>
+			<arg name="motivoRegularizacion" description="" flags="in" type="String"/>
+			<arg name="comentarioRegAdm" description="" flags="in" type="String"/>
+			<arg name="compraMargMod" description="" flags="in" type="Bool"/>
+			<arg name="motivoCompraMargMod" description="" flags="in" type="String"/>
+			<arg name="gastosPedido" description="" flags="in" type="Bool"/>
+			<arg name="alcanceFijo" description="" flags="in" type="Bool"/>
+			<arg name="alcanceMovil" description="" flags="in" type="Bool"/>
+			<arg name="descFijoMovil" description="" flags="in" type="String"/>
+			<arg name="infoGastosPedido" description="" flags="in" type="String"/>
+			<arg name="recurrencia" description="" flags="in" type="Bool"/>
+			<arg name="nuevaSolicitud" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	if(!arg.nuevaSolicitud){
+		sentence = &quot;UPDATE &quot; + this.tabla + &quot; SET &quot; +
+						this.prefijo + &quot;SOL_ID = ?, &quot; +
+						this.prefijo + &quot;BENEFICIOCOMPRA = ?, &quot; +	
+						this.prefijo + &quot;RECURRENCIA = ?, &quot; +	
+						this.prefijo + &quot;PERIODICIDADCOMPRA = ?, &quot; +	
+						this.prefijo + &quot;REGULARIZACION = ?, &quot; +	
+						this.prefijo + &quot;MOTIVOREGULARIZACION = ?, &quot; +	
+						this.prefijo + &quot;COMENTARIOREGADM = ?, &quot; +	
+						this.prefijo + &quot;COMPRAMARGMOD = ?, &quot; +	
+						this.prefijo + &quot;MOTIVOCOMPRAMARGMOD = ?, &quot; +	
+						this.prefijo + &quot;GASTOSPEDIDO = ?, &quot; +	
+						this.prefijo + &quot;INFOGASTOSPEDIDO = ?, &quot; +	
+						this.prefijo + &quot;ALCANCEFIJO = ?, &quot; +	
+						this.prefijo + &quot;ALCANCEMOVIL = ?, &quot; +	
+						this.prefijo + &quot;DESCFIJOMOVIL = ? &quot; +													
+					&quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;	
+	
+	} else {
+		sentence = &quot;INSERT INTO &quot; + this.tabla + &quot; (&quot; +
+						this.prefijo + &quot;SOL_ID, &quot; +
+						this.prefijo + &quot;BENEFICIOCOMPRA, &quot; +	
+						this.prefijo + &quot;RECURRENCIA, &quot; +	
+						this.prefijo + &quot;PERIODICIDADCOMPRA, &quot; +	
+						this.prefijo + &quot;REGULARIZACION, &quot; +	
+						this.prefijo + &quot;MOTIVOREGULARIZACION, &quot; +	
+						this.prefijo + &quot;COMENTARIOREGADM, &quot; +	
+						this.prefijo + &quot;COMPRAMARGMOD, &quot; +	
+						this.prefijo + &quot;MOTIVOCOMPRAMARGMOD, &quot; +
+						this.prefijo + &quot;GASTOSPEDIDO, &quot; +	
+						this.prefijo + &quot;INFOGASTOSPEDIDO, &quot; +	
+						this.prefijo + &quot;ALCANCEFIJO, &quot; +	
+						this.prefijo + &quot;ALCANCEMOVIL, &quot; +	
+						this.prefijo + &quot;DESCFIJOMOVIL) &quot; +															
+					&quot;VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)&quot;;
+	}
+	Any[] inParameters = {};
+	inParameters[] = arg.solId;
+	inParameters[] = arg.beneficioCompra;
+	inParameters[] = arg.recurrencia==null?null:arg.recurrencia?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.periodicidadCompra;	
+	inParameters[] = arg.regularizacion==null?null:arg.regularizacion?&apos;S&apos;:&apos;N&apos;;	
+	inParameters[] = arg.motivoRegularizacion;	
+	inParameters[] = arg.comentarioRegAdm;	
+	inParameters[] = arg.compraMargMod==null?null:arg.compraMargMod?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.motivoCompraMargMod;	
+	inParameters[] = arg.gastosPedido==null?null:arg.gastosPedido?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.infoGastosPedido;
+	inParameters[] = arg.alcanceFijo==null?null:arg.alcanceFijo?&apos;S&apos;:&apos;N&apos;;	
+	inParameters[] = arg.alcanceMovil==null?null:arg.alcanceMovil?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.descFijoMovil;
+	
+	if(!arg.nuevaSolicitud){	
+		inParameters[] = arg.solId;
+	}
+	
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	respuesta.resultado = OK;
+	respuesta.contenido = result;
+	
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

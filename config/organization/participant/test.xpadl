@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<FDIObject>
+	<DirHumanParticipant>
+		<id>test</id>
+		<displayName>test</displayName>
+		<receivesMail>false</receivesMail>
+		<status>A</status>
+		<timezone>Etc/GMT+3</timezone>
+		<cost>0.0</cost>
+		<efficiency>80</efficiency>
+		<rolesAssignment>
+			<roleAssignment>
+				<roleId>TPC2 - Consulta</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+			<roleAssignment>
+				<roleId>TPC - Analista CdG</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+			<roleAssignment>
+				<roleId>TPC - Comprador GC</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+			<roleAssignment>
+				<roleId>TPC - Gerente Compras</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+			<roleAssignment>
+				<roleId>TPC - Gestion Errores</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+			<roleAssignment>
+				<roleId>TPC - Jefe Compras</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+			<roleAssignment>
+				<roleId>TPC - Supervisor CdG</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+			<roleAssignment>
+				<roleId>TPC2 - Administrador</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+		</rolesAssignment>
+	</DirHumanParticipant>
+</FDIObject>

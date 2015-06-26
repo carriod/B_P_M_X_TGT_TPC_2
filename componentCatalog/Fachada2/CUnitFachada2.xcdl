@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="CUnitFachada2" description="" versionID="Version 6.5 " flags="cloneable replaceable cunit_suite" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<inherit class="Fuego.Test.CUnitSuite" flags="public"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="CUnitFachada2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada2.CUnitFachada2"/>
+			<sourceCode language="Java1"/>
+		</method>
+		<method name="testFCategoriaProducto" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+Negocio2.NCategoriaProducto2 objNegocio;
+Fachada2.FCategoriaProducto2 fachada = new Fachada2.FCategoriaProducto2();
+int id; 
+String codigo;
+String descripcion;
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.id = 9;
+objNegocio.codigo = &quot;COD_PRUEBA&quot;;
+objNegocio.descripcion = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioAlta = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getLastValue()&quot;);
+respuesta = fachada.getLastValue();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NCategoriaProducto2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForCodigo()&quot;);
+respuesta = fachada.getValueForCodigo(codigo : codigo);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NCategoriaProducto2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValuesCombo()&quot;);
+respuesta = fachada.getListValuesCombo(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.descripcion = &quot;DPI&quot;;
+objNegocio.descripcion = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForId()&quot;);
+respuesta = fachada.getValueForId(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NCategoriaProducto2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.deleteValue()&quot;);
+respuesta = fachada.deleteValue(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);</sourceCode>
+		</method>
+		<method name="testFCesta" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+Negocio2.NCesta2 objNegocio;
+Fachada2.FCesta2 fachada = new Fachada2.FCesta2();
+String id;
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.id = &quot;9&quot;;
+objNegocio.usuarioAlta = &quot;TEST&quot;;
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+objNegocio.procesoId = 1;
+objNegocio.procesoEdicion = 1; 
+objNegocio.lineaCesta = 1;
+objNegocio.tipoCesta.id = 1;
+objNegocio.categoriaProducto.codigo = &quot;1111&quot;;
+objNegocio.moneda.id = 1;
+objNegocio.sociedad.codigo = &quot;1&quot;;
+objNegocio.direccionSolicitante.id = 1;
+objNegocio.motivoRechazo.id = 1;
+respuesta = fachada.setValue(objNegocio : objNegocio, importacion: false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getLastValue()&quot;);
+respuesta = fachada.getLastValue();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NCesta2)respuesta.contenido;
+id = objNegocio.id;
+this.log(message : &quot;id &quot; + id);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValuesCombo()&quot;);
+respuesta = fachada.getListValuesCombo();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio, importacion: false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForId()&quot;);
+respuesta = fachada.getValueForId(id : id, lineaCesta: 1);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NCesta2)respuesta.contenido;
+id = objNegocio.id;
+this.log(message : &quot;id &quot; + id);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.deleteValue()&quot;);
+respuesta = fachada.deleteValue(id : id, lineaCesta: 1);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);</sourceCode>
+		</method>
+		<method name="testFDireccionSolicitante" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+Negocio2.NDireccionSolicitante2 objNegocio;
+Fachada2.FDireccionSolicitante2 fachada = new Fachada2.FDireccionSolicitante2();
+int id; 
+String codigo;
+String descripcion;
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.id = 9;
+objNegocio.codigo = &quot;COD_PRUEBA&quot;;
+objNegocio.descripcion = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioAlta = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getLastValue()&quot;);
+respuesta = fachada.getLastValue();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NDireccionSolicitante2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForCodigo()&quot;);
+respuesta = fachada.getValueForCodigo(codigo : codigo);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NDireccionSolicitante2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValuesCombo()&quot;);
+respuesta = fachada.getListValuesCombo(vigencia: true);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.descripcion = &quot;DES_PRUEBA_UPDATE&quot;;
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForId()&quot;);
+respuesta = fachada.getValueForId(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NDireccionSolicitante2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.deleteValue()&quot;);
+respuesta = fachada.deleteValue(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);</sourceCode>
+		</method>
+		<method name="testFMoneda" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+Negocio2.NMoneda2 objNegocio;
+Fachada2.FMoneda2 fachada = new Fachada2.FMoneda2();
+int id; 
+String codigo;
+String descripcion;
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.id = 9;
+objNegocio.codigo = &quot;COD_PRUEBA&quot;;
+objNegocio.descripcion = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioAlta = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getLastValue()&quot;);
+respuesta = fachada.getLastValue();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NMoneda2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForCodigo()&quot;);
+respuesta = fachada.getValueForCodigo(codigo : codigo);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NMoneda2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValuesCombo()&quot;);
+respuesta = fachada.getListValuesCombo(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.descripcion = &quot;DES_PRUEBA_UPDATE&quot;;
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForId()&quot;);
+respuesta = fachada.getValueForId(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NMoneda2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.deleteValue()&quot;);
+respuesta = fachada.deleteValue(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);</sourceCode>
+		</method>
+		<method name="testFMotivoReprogramacion" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+Negocio2.NMotivoReprogramacion2 objNegocio;
+Fachada2.FMotivoReprogramacion2 fachada = new Fachada2.FMotivoReprogramacion2();
+int id; 
+String codigo;
+String descripcion;
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.id = 9;
+objNegocio.codigo = &quot;COD_PRUEBA&quot;;
+objNegocio.descripcion = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioAlta = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getLastValue()&quot;);
+respuesta = fachada.getLastValue();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NMotivoReprogramacion2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForCodigo()&quot;);
+respuesta = fachada.getValueForCodigo(codigo : codigo);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NMotivoReprogramacion2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValuesCombo()&quot;);
+respuesta = fachada.getListValuesCombo(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.descripcion = &quot;DES_PRUEBA_UPDATE&quot;;
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForId()&quot;);
+respuesta = fachada.getValueForId(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NMotivoReprogramacion2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.deleteValue()&quot;);
+respuesta = fachada.deleteValue(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);</sourceCode>
+		</method>
+		<method name="testFParametro" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+Negocio2.NParametro2 objNegocio;
+Fachada2.FParametro2 fachada = new Fachada2.FParametro2(); 
+int id; 
+String codigo;
+String descripcion;
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.id = 9;
+objNegocio.codigo = &quot;COD_PRUEBA&quot;;
+objNegocio.descripcion = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioAlta = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getLastValue()&quot;);
+respuesta = fachada.getLastValue();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NParametro2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForCodigo()&quot;);
+respuesta = fachada.getValueForCodigo(codigo : codigo);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NParametro2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValuesCombo()&quot;);
+respuesta = fachada.getListValuesCombo();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.descripcion = &quot;DES_PRUEBA_UPDATE&quot;;
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForId()&quot;);
+respuesta = fachada.getValueForId(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NParametro2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+/*
+this.log(message : &quot;Test fachada.deleteValue()&quot;);
+respuesta = fachada.deleteValue(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+*/
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);</sourceCode>
+		</method>
+		<method name="testFProveedor" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+Negocio2.NProveedor2 objNegocio;
+Fachada2.FProveedor2 fachada = new Fachada2.FProveedor2();
+int id; 
+String codigo;
+String descripcion;
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.id = 9;
+objNegocio.codigo = &quot;COD_PRUEBA&quot;;
+objNegocio.descripcion = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioAlta = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getLastValue()&quot;);
+respuesta = fachada.getLastValue();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NProveedor2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForCodigo()&quot;);
+respuesta = fachada.getValueForCodigo(codigo : codigo);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NProveedor2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValuesCombo()&quot;);
+respuesta = fachada.getListValuesCombo(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.descripcion = &quot;DES_PRUEBA_UPDATE&quot;;
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForId()&quot;);
+respuesta = fachada.getValueForId(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NProveedor2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.deleteValue()&quot;);
+respuesta = fachada.deleteValue(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);</sourceCode>
+		</method>
+		<method name="testFSociedad" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+Negocio2.NSociedad2 objNegocio;
+Fachada2.FSociedad2 fachada = new Fachada2.FSociedad2();
+int id; 
+String codigo;
+String descripcion;
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.id = 9;
+objNegocio.codigo = &quot;COD_PRUEBA&quot;;
+objNegocio.descripcionCorta = &quot;DPI&quot;;
+objNegocio.descripcionLarga = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioAlta = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getLastValue()&quot;);
+respuesta = fachada.getLastValue();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NSociedad2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcionCorta;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForCodigo()&quot;);
+respuesta = fachada.getValueForCodigo(codigo : codigo);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NSociedad2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcionCorta;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValuesCombo()&quot;);
+respuesta = fachada.getListValuesCombo(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.descripcionCorta = &quot;DPI&quot;;
+objNegocio.descripcionLarga = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForId()&quot;);
+respuesta = fachada.getValueForId(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NSociedad2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcionCorta;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.deleteValue()&quot;);
+respuesta = fachada.deleteValue(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);</sourceCode>
+		</method>
+		<method name="testFTipoCesta" flags="clientavailable public">
+			<sourceCode language="Java1">Respuesta respuesta;
+Negocio2.NTipoCesta2 objNegocio;
+Fachada2.FTipoCesta2 fachada = new Fachada2.FTipoCesta2();
+int id; 
+String codigo;
+String descripcion;
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.id = 9;
+objNegocio.codigo = &quot;COD_PRUEBA&quot;;
+objNegocio.descripcion = &quot;DES_PRUEBA_INSERT&quot;;
+objNegocio.usuarioAlta = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+this.log(message : &quot;Test fachada.getLastValue()&quot;);
+respuesta = fachada.getLastValue();
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NTipoCesta2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForCodigo()&quot;);
+respuesta = fachada.getValueForCodigo(codigo : codigo);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NTipoCesta2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValuesCombo()&quot;);
+respuesta = fachada.getListValuesCombo(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.setValue()&quot;);
+objNegocio.descripcion = &quot;DES_PRUEBA_UPDATE&quot;;
+objNegocio.usuarioModificacion = &quot;TEST&quot;;
+respuesta = fachada.setValue(objNegocio : objNegocio);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getValueForId()&quot;);
+respuesta = fachada.getValueForId(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+objNegocio = (Negocio2.NTipoCesta2)respuesta.contenido;
+id = objNegocio.id;
+codigo = objNegocio.codigo;
+descripcion = objNegocio.descripcion;
+this.log(message : &quot;id &quot; + id + &quot; codigo &quot; + codigo + &quot; descripcion &quot; + descripcion );
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.deleteValue()&quot;);
+respuesta = fachada.deleteValue(id : id);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+respuesta.contenido);
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);
+
+
+this.log(message : &quot;Test fachada.getListValues()&quot;);
+respuesta = fachada.getListValues(vigencia : false);
+this.log(message : &quot;Resultado &quot;+respuesta.resultado);
+this.log(message : &quot;Contenido &quot;+ ((Any[]) respuesta.contenido).length());
+this.assertTrue(b : respuesta.resultado==OK);
+this.log(message : &quot;&quot;);</sourceCode>
+		</method>
+	</methods>
+</component>

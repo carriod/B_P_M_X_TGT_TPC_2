@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="Listado" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio2.NComprador2" name="objeto" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="Listado" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.ABM2.FormABMComprador.Listado"/>
+			<sourceCode language="Java1">this.objeto = NComprador2();</sourceCode>
+		</method>
+		<method name="submitDetalle" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;detalle_&quot;+this.objeto.id);</sourceCode>
+		</method>
+	</methods>
+</component>

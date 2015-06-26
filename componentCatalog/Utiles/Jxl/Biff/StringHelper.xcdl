@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="StringHelper" description="StringHelper" versionID="Version 6.5 " flags="" signature="jxl.biff.StringHelper" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.StringHelper"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.StringHelper"/>
+	<attributes/>
+	<methods>
+		<method name="getBytes" description="getBytes" flags="static external" signature="MgetBytes(Ljava.lang.String;)[B">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getBytes" description="getBytes" flags="static external" signature="MgetBytes(Ljava.lang.String;Ljxl.WorkbookSettings;)[B">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getBytes" description="getBytes" flags="static external" signature="MgetBytes(Ljava.lang.String;[BI)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="d" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getString" description="getString" flags="static external" signature="MgetString([BIILjxl.WorkbookSettings;)Ljava.lang.String;">
+			<arg name="d" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="length" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getUnicodeBytes" description="getUnicodeBytes" flags="static external" signature="MgetUnicodeBytes(Ljava.lang.String;)[B">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getUnicodeBytes" description="getUnicodeBytes" flags="static external" signature="MgetUnicodeBytes(Ljava.lang.String;[BI)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="d" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getUnicodeString" description="getUnicodeString" flags="static external" signature="MgetUnicodeString([BII)Ljava.lang.String;">
+			<arg name="d" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="length" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

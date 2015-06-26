@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JasperPrint" description="JasperPrint" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.JasperPrint" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Java.Io.Serializable" flags=""/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.JasperPrint"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.JasperPrint"/>
+	<attributes>
+		<map type="Any" indexType="Any" name="anchorIndexes" flags="hasgetter external" position="1" javaType="java.util.Map" readSignature="MgetAnchorIndexes()Ljava.util.Map;"/>
+		<object type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" name="defaultFont" flags="hassetter hasgetter external" position="2" javaType="net.sf.jasperreports.engine.JRReportFont" writeSignature="MsetDefaultFont(Lnet.sf.jasperreports.engine.JRReportFont;)V" readSignature="MgetDefaultFont()Lnet.sf.jasperreports.engine.JRReportFont;"/>
+		<object type="{java,net.sf.jasperreports.engine.JRDefaultFontProvider,Net.Sf.Jasperreports.Engine.JRDefaultFontProvider}" name="defaultFontProvider" flags="hasgetter external" position="3" javaType="net.sf.jasperreports.engine.JRDefaultFontProvider" readSignature="MgetDefaultFontProvider()Lnet.sf.jasperreports.engine.JRDefaultFontProvider;"/>
+		<object type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" name="defaultStyle" flags="hassetter hasgetter external" position="4" javaType="net.sf.jasperreports.engine.JRStyle" writeSignature="MsetDefaultStyle(Lnet.sf.jasperreports.engine.JRStyle;)V" readSignature="MgetDefaultStyle()Lnet.sf.jasperreports.engine.JRStyle;"/>
+		<object type="{java,net.sf.jasperreports.engine.JRDefaultStyleProvider,Net.Sf.Jasperreports.Engine.JRDefaultStyleProvider}" name="defaultStyleProvider" flags="hasgetter external" position="5" javaType="net.sf.jasperreports.engine.JRDefaultStyleProvider" readSignature="MgetDefaultStyleProvider()Lnet.sf.jasperreports.engine.JRDefaultStyleProvider;"/>
+		<array type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" name="fonts" flags="hasgetter external" primitive="true" position="6" javaType="net.sf.jasperreports.engine.JRReportFont[]" readSignature="MgetFonts()[Lnet.sf.jasperreports.engine.JRReportFont;"/>
+		<array type="Any" name="fontsList" flags="hasgetter external" position="7" javaType="java.util.List" readSignature="MgetFontsList()Ljava.util.List;"/>
+		<map type="Any" indexType="Any" name="fontsMap" flags="hasgetter external" position="8" javaType="java.util.Map" readSignature="MgetFontsMap()Ljava.util.Map;"/>
+		<String name="name" flags="hassetter hasgetter external" position="9" javaType="java.lang.String" writeSignature="MsetName(Ljava.lang.String;)V" readSignature="MgetName()Ljava.lang.String;"/>
+		<Int length="8" name="orientation" flags="hassetter hasgetter external" primitive="true" position="10" javaType="byte" writeSignature="MsetOrientation(B)V" readSignature="MgetOrientation()B"/>
+		<Int length="32" name="pageHeight" flags="hassetter hasgetter external" primitive="true" position="11" javaType="int" writeSignature="MsetPageHeight(I)V" readSignature="MgetPageHeight()I"/>
+		<Int length="32" name="pageWidth" flags="hassetter hasgetter external" primitive="true" position="12" javaType="int" writeSignature="MsetPageWidth(I)V" readSignature="MgetPageWidth()I"/>
+		<array type="Any" name="pages" flags="hasgetter external" position="13" javaType="java.util.List" readSignature="MgetPages()Ljava.util.List;"/>
+		<array type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" name="styles" flags="hasgetter external" primitive="true" position="14" javaType="net.sf.jasperreports.engine.JRStyle[]" readSignature="MgetStyles()[Lnet.sf.jasperreports.engine.JRStyle;"/>
+		<array type="Any" name="stylesList" flags="hasgetter external" position="15" javaType="java.util.List" readSignature="MgetStylesList()Ljava.util.List;"/>
+		<map type="Any" indexType="Any" name="stylesMap" flags="hasgetter external" position="16" javaType="java.util.Map" readSignature="MgetStylesMap()Ljava.util.Map;"/>
+	</attributes>
+	<methods>
+		<method name="JasperPrint" flags="static hidden" signature="Knet.sf.jasperreports.engine.JasperPrint()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint"/>
+		</method>
+		<method name="addFont" description="addFont" flags="external" signature="MaddFont(Lnet.sf.jasperreports.engine.JRReportFont;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="addPage" description="addPage" flags="external" signature="MaddPage(Lnet.sf.jasperreports.engine.JRPrintPage;)V">
+			<arg name="page" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRPrintPage" javaType="net.sf.jasperreports.engine.JRPrintPage"/>
+		</method>
+		<method name="addPage" description="addPage" flags="external" signature="MaddPage(ILnet.sf.jasperreports.engine.JRPrintPage;)V">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="page" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRPrintPage" javaType="net.sf.jasperreports.engine.JRPrintPage"/>
+		</method>
+		<method name="addStyle" description="addStyle" flags="external" signature="MaddStyle(Lnet.sf.jasperreports.engine.JRStyle;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="getAnchorIndexes" description="getAnchorIndexes" flags="external hidden" signature="MgetAnchorIndexes()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="getDefaultFont" description="getDefaultFont" flags="external hidden" signature="MgetDefaultFont()Lnet.sf.jasperreports.engine.JRReportFont;">
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+		</method>
+		<method name="getDefaultFontProvider" description="getDefaultFontProvider" flags="external hidden" signature="MgetDefaultFontProvider()Lnet.sf.jasperreports.engine.JRDefaultFontProvider;">
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRDefaultFontProvider,Net.Sf.Jasperreports.Engine.JRDefaultFontProvider}" javaType="net.sf.jasperreports.engine.JRDefaultFontProvider"/>
+		</method>
+		<method name="getDefaultStyle" description="getDefaultStyle" flags="external hidden" signature="MgetDefaultStyle()Lnet.sf.jasperreports.engine.JRStyle;">
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+		</method>
+		<method name="getDefaultStyleProvider" description="getDefaultStyleProvider" flags="external hidden" signature="MgetDefaultStyleProvider()Lnet.sf.jasperreports.engine.JRDefaultStyleProvider;">
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRDefaultStyleProvider,Net.Sf.Jasperreports.Engine.JRDefaultStyleProvider}" javaType="net.sf.jasperreports.engine.JRDefaultStyleProvider"/>
+		</method>
+		<method name="getFonts" description="getFonts" flags="external hidden" signature="MgetFonts()[Lnet.sf.jasperreports.engine.JRReportFont;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}[]" javaType="net.sf.jasperreports.engine.JRReportFont[]"/>
+		</method>
+		<method name="getFontsList" description="getFontsList" flags="external hidden" signature="MgetFontsList()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getFontsMap" description="getFontsMap" flags="external hidden" signature="MgetFontsMap()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="getName" description="getName" flags="external hidden" signature="MgetName()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getOrientation" description="getOrientation" flags="external hidden" signature="MgetOrientation()B">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int(8)" javaType="byte"/>
+		</method>
+		<method name="getPageHeight" description="getPageHeight" flags="external hidden" signature="MgetPageHeight()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getPageWidth" description="getPageWidth" flags="external hidden" signature="MgetPageWidth()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getPages" description="getPages" flags="external hidden" signature="MgetPages()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getStyles" description="getStyles" flags="external hidden" signature="MgetStyles()[Lnet.sf.jasperreports.engine.JRStyle;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}[]" javaType="net.sf.jasperreports.engine.JRStyle[]"/>
+		</method>
+		<method name="getStylesList" description="getStylesList" flags="external hidden" signature="MgetStylesList()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getStylesMap" description="getStylesMap" flags="external hidden" signature="MgetStylesMap()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="removeFont" description="removeFont" flags="external" signature="MremoveFont(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JRReportFont;">
+			<arg name="fontName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+		</method>
+		<method name="removeFont" description="removeFont" flags="external" signature="MremoveFont(Lnet.sf.jasperreports.engine.JRReportFont;)Lnet.sf.jasperreports.engine.JRReportFont;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+		</method>
+		<method name="removePage" description="removePage" flags="external" signature="MremovePage(I)Lnet.sf.jasperreports.engine.JRPrintPage;">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JRPrintPage" javaType="net.sf.jasperreports.engine.JRPrintPage"/>
+		</method>
+		<method name="removeStyle" description="removeStyle" flags="external" signature="MremoveStyle(Lnet.sf.jasperreports.engine.JRStyle;)Lnet.sf.jasperreports.engine.JRStyle;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+		</method>
+		<method name="removeStyle" description="removeStyle" flags="external" signature="MremoveStyle(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JRStyle;">
+			<arg name="styleName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+		</method>
+		<method name="setDefaultFont" description="setDefaultFont" flags="external hidden" signature="MsetDefaultFont(Lnet.sf.jasperreports.engine.JRReportFont;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+		</method>
+		<method name="setDefaultStyle" description="setDefaultStyle" flags="external hidden" signature="MsetDefaultStyle(Lnet.sf.jasperreports.engine.JRStyle;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+		</method>
+		<method name="setName" description="setName" flags="external hidden" signature="MsetName(Ljava.lang.String;)V">
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setOrientation" description="setOrientation" flags="external hidden" signature="MsetOrientation(B)V">
+			<arg name="orientation" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+		</method>
+		<method name="setPageHeight" description="setPageHeight" flags="external hidden" signature="MsetPageHeight(I)V">
+			<arg name="pageHeight" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setPageWidth" description="setPageWidth" flags="external hidden" signature="MsetPageWidth(I)V">
+			<arg name="pageWidth" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

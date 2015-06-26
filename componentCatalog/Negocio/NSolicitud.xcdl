@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="NSolicitud" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Int length="32" name="actividadImpContable" flags="hassetter hasgetter public includeincheck" position="30"/>
+		<object type="Negocio.NAntecedentes" name="antecedentes" flags="hassetter hasgetter public" position="39"/>
+		<Bool name="anulada" flags="hassetter hasgetter public" position="32"/>
+		<String length="50" name="areaSolicitante" flags="hassetter hasgetter public" position="19"/>
+		<object type="Negocio.NAsignacionParticipante" name="asignacionParticipante" flags="hassetter hasgetter public" position="45"/>
+		<object type="Negocio.NCategoriaCesta" name="categoriaCesta" flags="hassetter hasgetter public" position="6"/>
+		<object type="Negocio.NCategoriaProducto" name="categoriaProducto" flags="hassetter hasgetter public" position="25"/>
+		<Int length="32" name="centroCostos" flags="hassetter hasgetter public includeincheck" position="21"/>
+		<Int length="32" name="centroCostosImpContable" flags="hassetter hasgetter public" position="28"/>
+		<object type="Negocio.NComentario" name="comentario" flags="hassetter hasgetter public" position="54"/>
+		<String name="comentarioResolucion" flags="hassetter hasgetter public" position="69"/>
+		<object type="Negocio.NComentariosDocumentos" name="comentariosDocumentos" flags="hassetter hasgetter public" position="56"/>
+		<object type="Negocio.NComprasParticulares" name="comprasParticulares" flags="hassetter hasgetter public" position="46"/>
+		<object type="Negocio.NControlGestion" name="controlGestion" flags="hassetter hasgetter public" position="37"/>
+		<Int length="64" name="cuentaImpContable" flags="hassetter hasgetter public" position="29"/>
+		<String length="1000" name="descripcionNecesidad" flags="hassetter hasgetter public" position="27"/>
+		<object type="Negocio.NDestinoCompra" name="destinoCompra" flags="hassetter hasgetter public" position="24"/>
+		<array type="Negocio.NSolicitud.Documentos" name="documentos" flags="hasgetter public" position="38" javaType="fuego.xobject.GroupArray"/>
+		<Bool name="duplicada" flags="hassetter hasgetter public" position="58"/>
+		<String length="50" name="emailEnlace" flags="hassetter hasgetter public" position="22"/>
+		<String length="50" name="emailSolicitante" flags="hassetter hasgetter public" position="20"/>
+		<object type="Negocio.NSolicitudEstado" name="estado" flags="hassetter hasgetter public" position="34"/>
+		<Time scale="2" precision="2" name="fechaAlta" flags="hassetter hasgetter public" position="5"/>
+		<Time scale="2" precision="2" name="fechaEnvioAnalisis" flags="hassetter hasgetter public" position="48"/>
+		<Time scale="2" precision="2" name="fechaEnvioEnlace" flags="hassetter hasgetter public" position="67"/>
+		<Time scale="2" precision="2" name="fechaLiberacion" flags="hassetter hasgetter public" position="62"/>
+		<Time scale="2" precision="2" name="fechaModificacion" flags="hassetter hasgetter public" position="4"/>
+		<Time scale="2" precision="2" name="fechaPlanComite" flags="hassetter hasgetter public" position="64"/>
+		<Time scale="2" precision="2" name="fechaPlanPreComite" flags="hassetter hasgetter public" position="63"/>
+		<Time scale="2" precision="2" name="fechaProxComite" flags="hassetter hasgetter public" position="78"/>
+		<Time scale="2" precision="2" name="fechaProxPreComite" flags="hassetter hasgetter public" position="79"/>
+		<Time scale="2" precision="2" name="fechaRealComite" flags="hassetter hasgetter public" position="66"/>
+		<Time scale="2" precision="2" name="fechaRealPreComite" flags="hassetter hasgetter public" position="65"/>
+		<String length="50" name="gestorEnlace" flags="hassetter hasgetter public" position="18"/>
+		<String length="50" name="gestorSolicitante" flags="hassetter hasgetter public" position="35"/>
+		<array type="Negocio.NSolicitud.HistorialAsignaciones" name="historialAsignaciones" flags="hasgetter public" position="47" javaType="fuego.xobject.GroupArray"/>
+		<array type="Negocio.NSolicitud.HistorialComentarios" name="historialComentarios" flags="hasgetter public" position="50" javaType="fuego.xobject.GroupArray"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="3"/>
+		<object type="Negocio.NLineaProducto" name="lineaProducto" flags="hassetter hasgetter public" position="68"/>
+		<array type="Negocio.NSolicitud.ListaAntecedentes" name="listaAntecedentes" flags="hasgetter public" position="40" javaType="fuego.xobject.GroupArray"/>
+		<Decimal name="montoTotalDolares" flags="hassetter hasgetter public includeincheck" position="16"/>
+		<String name="montoTotalDolaresStr" flags="hassetter hasgetter public virtual includeincheck" position="76">
+			<read language="Java1">if(this.montoTotalDolaresStrTemp == null || this.montoTotalDolaresStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoTotalDolares);
+}
+else{
+	return montoTotalDolaresStrTemp;
+}</read>
+			<write language="Java1">this.montoTotalDolaresStrTemp = value;
+this.montoTotalDolares = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoTotalDolares != null){
+	this.montoTotalDolaresStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoTotalDolaresStrTemp" flags="hassetter hasgetter public" position="77"/>
+		<Decimal name="montoTotalEuros" flags="hassetter hasgetter public" position="17"/>
+		<String name="montoTotalEurosStr" flags="hassetter hasgetter public virtual includeincheck" position="71">
+			<read language="Java1">if(this.montoTotalEurosStrTemp == null || this.montoTotalEurosStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoTotalEuros);
+}
+else{
+	return montoTotalEurosStrTemp;
+}</read>
+			<write language="Java1">this.montoTotalEurosStrTemp = value;
+this.montoTotalEuros = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoTotalEuros != null){
+	this.montoTotalEurosStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoTotalEurosStrTemp" flags="hassetter hasgetter public" position="74"/>
+		<object type="Negocio.NMoneda" name="montoTotalOM" flags="hassetter hasgetter public includeincheck" position="52"/>
+		<Decimal name="montoTotalOtro" flags="hassetter hasgetter public" position="53"/>
+		<String name="montoTotalOtroStr" flags="hassetter hasgetter public virtual includeincheck" position="72">
+			<read language="Java1">if(this.montoTotalOtroStrTemp == null || this.montoTotalOtroStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoTotalOtro);
+}
+else{
+	return montoTotalOtroStrTemp;
+}</read>
+			<write language="Java1">this.montoTotalOtroStrTemp = value;
+this.montoTotalOtro = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoTotalOtro != null){
+	this.montoTotalOtroStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoTotalOtroStrTemp" flags="hassetter hasgetter public" position="75"/>
+		<Decimal name="montoTotalPesos" flags="hassetter hasgetter public includeincheck" position="15"/>
+		<String name="montoTotalPesosStr" flags="hassetter hasgetter public virtual includeincheck" position="70">
+			<read language="Java1">if(this.montoTotalPesosStrTemp == null || this.montoTotalPesosStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoTotalPesos);
+}
+else{
+	return montoTotalPesosStrTemp;
+}</read>
+			<write language="Java1">this.montoTotalPesosStrTemp = value;
+this.montoTotalPesos = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoTotalPesos != null){
+	this.montoTotalPesosStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoTotalPesosStrTemp" flags="hassetter hasgetter public" position="73"/>
+		<String length="1000" name="motivoReemplazo" flags="hassetter hasgetter public" position="12"/>
+		<Int length="32" name="nroCesta" flags="hassetter hasgetter public" position="8"/>
+		<Int length="32" name="nroCestaAnulada" flags="hassetter hasgetter public" position="11"/>
+		<Int length="32" name="nroCestaAsocPedido" flags="hassetter hasgetter public" position="10"/>
+		<Int length="64" name="nroPedido" flags="hassetter hasgetter public includeincheck" position="9"/>
+		<object type="Negocio.NPedidoCesta" name="pedidoCesta" flags="hassetter hasgetter public" position="7"/>
+		<String length="50" name="pep" flags="hassetter hasgetter public" position="31"/>
+		<Time scale="2" precision="2" name="periodoFechaFin" flags="hassetter hasgetter public" position="14"/>
+		<Time scale="2" precision="2" name="periodoFechaInicio" flags="hassetter hasgetter public" position="13"/>
+		<object type="Negocio.NProveedor" name="proveedor" flags="hassetter hasgetter public" position="36"/>
+		<object type="Negocio.NProyectosAsociados" name="proyectosAsociados" flags="hassetter hasgetter public" position="41"/>
+		<array type="Negocio.NSolicitud.ProyectosMayores" name="proyectosMayores" flags="hasgetter public" position="42" javaType="fuego.xobject.GroupArray"/>
+		<Bool name="reactivada" flags="hassetter hasgetter public" position="59"/>
+		<object type="Negocio.NRecomendacionSAGI" name="recomendacionSAGI" flags="hassetter hasgetter public" position="55"/>
+		<array type="Negocio.NSolicitud.RecomendacionesSAGI" name="recomendacionesSAGI" flags="hasgetter public" position="49" javaType="fuego.xobject.GroupArray"/>
+		<Bool name="requiereCompras" flags="hassetter hasgetter public" position="61"/>
+		<Bool name="requiereIntervencion" flags="hassetter hasgetter public" position="60"/>
+		<array type="Negocio.NSolicitud.Resoluciones" name="resoluciones" flags="hasgetter public" position="51" javaType="fuego.xobject.GroupArray"/>
+		<Int length="32" name="resultadoResolucion" flags="hassetter hasgetter public" position="57"/>
+		<object type="Negocio.NSituacionPresupuestaria" name="situacionPresupuestaria" flags="hassetter hasgetter public" position="44"/>
+		<array type="Negocio.NSolicitud.Sociedades" name="sociedades" flags="hasgetter public" position="33" javaType="fuego.xobject.GroupArray"/>
+		<object type="Negocio.NSubtipoProducto" name="subtipoProducto" flags="hassetter hasgetter public" position="26"/>
+		<object type="Negocio.NTipoCompra" name="tipoCompra" flags="hassetter hasgetter public" position="23"/>
+		<String length="50" name="usuarioAlta" flags="hassetter hasgetter public includeincheck" position="2"/>
+		<String length="50" name="usuarioModificacion" flags="hassetter hasgetter public includeincheck" position="1"/>
+		<object type="Negocio.NValoracionNecesidad" name="valoracionNecesidad" flags="hassetter hasgetter public includeincheck" position="43"/>
+	</attributes>
+	<methods>
+		<method name="NSolicitud" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NSolicitud"/>
+			<sourceCode language="Java1">this.antecedentes = NAntecedentes();
+this.asignacionParticipante = NAsignacionParticipante();
+this.categoriaCesta = NCategoriaCesta();
+this.categoriaProducto = NCategoriaProducto();
+this.controlGestion = NControlGestion();
+this.comprasParticulares = NComprasParticulares();
+this.destinoCompra = NDestinoCompra();
+this.estado = NSolicitudEstado();
+this.pedidoCesta = NPedidoCesta();
+this.proveedor = NProveedor();
+this.proyectosAsociados = NProyectosAsociados();
+this.subtipoProducto = NSubtipoProducto();
+this.tipoCompra = NTipoCompra();
+this.valoracionNecesidad = NValoracionNecesidad();
+this.situacionPresupuestaria = NSituacionPresupuestaria();
+this.montoTotalOM = NMoneda();
+this.comentariosDocumentos = NComentariosDocumentos();
+this.comentario = NComentario();
+this.recomendacionSAGI = NRecomendacionSAGI();
+this.lineaProducto = NLineaProducto();
+</sourceCode>
+		</method>
+	</methods>
+</component>

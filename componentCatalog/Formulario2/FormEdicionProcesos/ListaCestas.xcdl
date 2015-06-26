@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="ListaCestas" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio2.NCesta2" name="objetoCesta" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ListaCestas" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormEdicionProcesos.ListaCestas"/>
+		</method>
+		<method name="cestaButton" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_C_&quot; + this.objetoCesta.id + &quot;_&quot; + this.objetoCesta.lineaCesta);</sourceCode>
+		</method>
+	</methods>
+</component>

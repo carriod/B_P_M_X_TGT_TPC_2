@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<component name="MetodosGenericosParticipante" description="" versionID="Version 5.5 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="legacy" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="MetodosGenericosParticipante" flags="static">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.MetodosGenericosParticipante"/>
+		</method>
+		<method name="buscarDatosEnLDAP" description="" flags="public server">
+			<arg name="ids" description="" flags="in" type="String[]"/>
+			<arg name="nombres" description="devuelve el id si no es encontrado el id" flags="out" type="String[]"/>
+			<arg name="mails" description="devuelve vacio si no es encontrado el id" flags="out" type="String[]"/>
+			<variables>
+				<variable name="part" type="Fuego.Fdi.DirHumanParticipant"/>
+			</variables>
+			<sourceCode language="Java1">foreach (id in arg.ids) {
+    part = DirHumanParticipant.fetch(session : DirectorySession.currentEngineSession, 
+                                     id : id);
+
+    if (part != null) {
+        arg.nombres[] = part.displayName;
+        arg.mails[] = part.mail;
+    }
+    else {
+        arg.nombres[] = id;
+        arg.mails[] = &quot;&quot;;
+    }
+}
+</sourceCode>
+		</method>
+		<method name="buscarNombresEnLDAP" description="" flags="clientavailable public server">
+			<arg name="ids" description="" flags="in" type="String[]"/>
+			<variables>
+				<variable name="part" type="Fuego.Fdi.DirHumanParticipant"/>
+				<variable name="res" type="String[]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">foreach (id in arg.ids) {
+    part = DirHumanParticipant.fetch(session : DirectorySession.currentEngineSession, 
+                                     id : id);
+
+    if (part != null) {
+        res[] = part.displayName;
+    }
+    else {
+        res[] = id;
+    }
+}
+
+return res;
+/*              
+	FUEGO_PARTICIPANT.fuego_id=id
+	load FUEGO_PARTICIPANT returning x
+	if x then
+		res[]=FUEGO_PARTICIPANT.fuego_displayname
+	else
+		res[]=id
+	end
+end
+return res*/
+</sourceCode>
+		</method>
+		<method name="obtenerParticipantId" flags="clientavailable public">
+			<variables>
+				<variable name="par" type="String[String]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">JSP.show(page : &quot;BibliotecaMetodos/obtenerParticipantId.jsp&quot;, out parameters : par);
+
+return par[&quot;userID&quot;];
+</sourceCode>
+		</method>
+	</methods>
+</component>

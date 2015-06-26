@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Workbook" description="Workbook" versionID="Version 6.5 " flags="abstract" signature="jxl.Workbook" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.Workbook"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.Workbook"/>
+	<attributes>
+		<Int length="32" name="numberOfSheets" flags="hasgetter external" primitive="true" position="1" javaType="int" readSignature="MgetNumberOfSheets()I"/>
+		<Bool name="protected" flags="hasgetter external" primitive="true" position="2" javaType="boolean" readSignature="MisProtected()Z"/>
+		<array type="String" name="rangeNames" flags="hasgetter external" primitive="true" position="3" javaType="java.lang.String[]" readSignature="MgetRangeNames()[Ljava.lang.String;"/>
+		<array type="String" name="sheetNames" flags="hasgetter external" primitive="true" position="4" javaType="java.lang.String[]" readSignature="MgetSheetNames()[Ljava.lang.String;"/>
+		<array type="Utiles.Jxl.Sheet" name="sheets" flags="hasgetter external" primitive="true" position="5" javaType="jxl.Sheet[]" readSignature="MgetSheets()[Ljxl.Sheet;"/>
+		<String name="version" flags="hasgetter static external" position="6" javaType="java.lang.String" readSignature="MgetVersion()Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="close" description="close" flags="abstract external" signature="Mclose()V"/>
+		<method name="createWorkbook" description="createWorkbook" flags="static external" signature="McreateWorkbook(Ljava.io.File;)Ljxl.write.WritableWorkbook;">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableWorkbook" javaType="jxl.write.WritableWorkbook"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="createWorkbook" description="createWorkbook" flags="static external" signature="McreateWorkbook(Ljava.io.OutputStream;)Ljxl.write.WritableWorkbook;">
+			<arg name="os" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableWorkbook" javaType="jxl.write.WritableWorkbook"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="createWorkbook" description="createWorkbook" flags="static external" signature="McreateWorkbook(Ljava.io.OutputStream;Ljxl.WorkbookSettings;)Ljxl.write.WritableWorkbook;">
+			<arg name="os" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableWorkbook" javaType="jxl.write.WritableWorkbook"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="createWorkbook" description="createWorkbook" flags="static external" signature="McreateWorkbook(Ljava.io.OutputStream;Ljxl.Workbook;)Ljxl.write.WritableWorkbook;">
+			<arg name="os" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="in" description="" flags="in external" type="Utiles.Jxl.Workbook" javaType="jxl.Workbook"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableWorkbook" javaType="jxl.write.WritableWorkbook"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="createWorkbook" description="createWorkbook" flags="static external" signature="McreateWorkbook(Ljava.io.File;Ljxl.Workbook;)Ljxl.write.WritableWorkbook;">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<arg name="in" description="" flags="in external" type="Utiles.Jxl.Workbook" javaType="jxl.Workbook"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableWorkbook" javaType="jxl.write.WritableWorkbook"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="createWorkbook" description="createWorkbook" flags="static external" signature="McreateWorkbook(Ljava.io.File;Ljxl.WorkbookSettings;)Ljxl.write.WritableWorkbook;">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableWorkbook" javaType="jxl.write.WritableWorkbook"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="createWorkbook" description="createWorkbook" flags="static external" signature="McreateWorkbook(Ljava.io.OutputStream;Ljxl.Workbook;Ljxl.WorkbookSettings;)Ljxl.write.WritableWorkbook;">
+			<arg name="os" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="in" description="" flags="in external" type="Utiles.Jxl.Workbook" javaType="jxl.Workbook"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableWorkbook" javaType="jxl.write.WritableWorkbook"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="createWorkbook" description="createWorkbook" flags="static external" signature="McreateWorkbook(Ljava.io.File;Ljxl.Workbook;Ljxl.WorkbookSettings;)Ljxl.write.WritableWorkbook;">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<arg name="in" description="" flags="in external" type="Utiles.Jxl.Workbook" javaType="jxl.Workbook"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableWorkbook" javaType="jxl.write.WritableWorkbook"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="findByName" description="findByName" flags="abstract external" signature="MfindByName(Ljava.lang.String;)[Ljxl.Range;">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Range[]" javaType="jxl.Range[]"/>
+		</method>
+		<method name="findCellByName" description="findCellByName" flags="abstract external" signature="MfindCellByName(Ljava.lang.String;)Ljxl.Cell;">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Cell" javaType="jxl.Cell"/>
+		</method>
+		<method name="getNumberOfSheets" description="getNumberOfSheets" flags="abstract external hidden" signature="MgetNumberOfSheets()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getRangeNames" description="getRangeNames" flags="abstract external hidden" signature="MgetRangeNames()[Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+		</method>
+		<method name="getSheet" description="getSheet" flags="abstract external" signature="MgetSheet(Ljava.lang.String;)Ljxl.Sheet;">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Sheet" javaType="jxl.Sheet"/>
+		</method>
+		<method name="getSheet" description="getSheet" flags="abstract external" signature="MgetSheet(I)Ljxl.Sheet;">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Sheet" javaType="jxl.Sheet"/>
+			<exception type="Java.Lang.IndexOutOfBoundsException"/>
+		</method>
+		<method name="getSheetNames" description="getSheetNames" flags="abstract external hidden" signature="MgetSheetNames()[Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+		</method>
+		<method name="getSheets" description="getSheets" flags="abstract external hidden" signature="MgetSheets()[Ljxl.Sheet;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Sheet[]" javaType="jxl.Sheet[]"/>
+		</method>
+		<method name="getVersion" description="getVersion" flags="static external hidden" signature="MgetVersion()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getWorkbook" description="getWorkbook" flags="static external" signature="MgetWorkbook(Ljava.io.File;)Ljxl.Workbook;">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Workbook" javaType="jxl.Workbook"/>
+			<exception type="Java.Io.IOException"/>
+			<exception type="Utiles.Jxl.Read.Biff.BiffException"/>
+		</method>
+		<method name="getWorkbook" description="getWorkbook" flags="static external" signature="MgetWorkbook(Ljava.io.InputStream;)Ljxl.Workbook;">
+			<arg name="is" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Workbook" javaType="jxl.Workbook"/>
+			<exception type="Java.Io.IOException"/>
+			<exception type="Utiles.Jxl.Read.Biff.BiffException"/>
+		</method>
+		<method name="getWorkbook" description="getWorkbook" flags="static external" signature="MgetWorkbook(Ljava.io.File;Ljxl.WorkbookSettings;)Ljxl.Workbook;">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Workbook" javaType="jxl.Workbook"/>
+			<exception type="Java.Io.IOException"/>
+			<exception type="Utiles.Jxl.Read.Biff.BiffException"/>
+		</method>
+		<method name="getWorkbook" description="getWorkbook" flags="static external" signature="MgetWorkbook(Ljava.io.InputStream;Ljxl.WorkbookSettings;)Ljxl.Workbook;">
+			<arg name="is" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Workbook" javaType="jxl.Workbook"/>
+			<exception type="Java.Io.IOException"/>
+			<exception type="Utiles.Jxl.Read.Biff.BiffException"/>
+		</method>
+		<method name="isProtected" description="isProtected" flags="abstract external hidden" signature="MisProtected()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

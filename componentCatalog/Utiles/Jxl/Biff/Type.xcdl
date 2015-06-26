@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Type" description="Type" versionID="Version 6.5 " flags="" signature="jxl.biff.Type" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.Type"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.Type"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.Type" name="ALRUNS" flags="hasgetter attribute static external final" position="109" javaType="jxl.biff.Type" writeSignature="AALRUNS;Ljxl.biff.Type;" readSignature="AALRUNS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="ARRAY" flags="hasgetter attribute static external final" position="28" javaType="jxl.biff.Type" writeSignature="AARRAY;Ljxl.biff.Type;" readSignature="AARRAY;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="BACKUP" flags="hasgetter attribute static external final" position="69" javaType="jxl.biff.Type" writeSignature="ABACKUP;Ljxl.biff.Type;" readSignature="ABACKUP;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="BLANK" flags="hasgetter attribute static external final" position="8" javaType="jxl.biff.Type" writeSignature="ABLANK;Ljxl.biff.Type;" readSignature="ABLANK;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="BOF" flags="hasgetter attribute static external final" position="2" javaType="jxl.biff.Type" writeSignature="ABOF;Ljxl.biff.Type;" readSignature="ABOF;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="BOOKBOOL" flags="hasgetter attribute static external final" position="73" javaType="jxl.biff.Type" writeSignature="ABOOKBOOL;Ljxl.biff.Type;" readSignature="ABOOKBOOL;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="BOOLERR" flags="hasgetter attribute static external final" position="35" javaType="jxl.biff.Type" writeSignature="ABOOLERR;Ljxl.biff.Type;" readSignature="ABOOLERR;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="BOTTOMMARGIN" flags="hasgetter attribute static external final" position="95" javaType="jxl.biff.Type" writeSignature="ABOTTOMMARGIN;Ljxl.biff.Type;" readSignature="ABOTTOMMARGIN;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="BOUNDSHEET" flags="hasgetter attribute static external final" position="4" javaType="jxl.biff.Type" writeSignature="ABOUNDSHEET;Ljxl.biff.Type;" readSignature="ABOUNDSHEET;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="BUTTONPROPERTYSET" flags="hasgetter attribute static external final" position="105" javaType="jxl.biff.Type" writeSignature="ABUTTONPROPERTYSET;Ljxl.biff.Type;" readSignature="ABUTTONPROPERTYSET;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="CALCCOUNT" flags="hasgetter attribute static external final" position="77" javaType="jxl.biff.Type" writeSignature="ACALCCOUNT;Ljxl.biff.Type;" readSignature="ACALCCOUNT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="CALCMODE" flags="hasgetter attribute static external final" position="76" javaType="jxl.biff.Type" writeSignature="ACALCMODE;Ljxl.biff.Type;" readSignature="ACALCMODE;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="CODEPAGE" flags="hasgetter attribute static external final" position="45" javaType="jxl.biff.Type" writeSignature="ACODEPAGE;Ljxl.biff.Type;" readSignature="ACODEPAGE;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="COLINFO" flags="hasgetter attribute static external final" position="19" javaType="jxl.biff.Type" writeSignature="ACOLINFO;Ljxl.biff.Type;" readSignature="ACOLINFO;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="CONTINUE" flags="hasgetter attribute static external final" position="21" javaType="jxl.biff.Type" writeSignature="ACONTINUE;Ljxl.biff.Type;" readSignature="ACONTINUE;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="COUNTRY" flags="hasgetter attribute static external final" position="48" javaType="jxl.biff.Type" writeSignature="ACOUNTRY;Ljxl.biff.Type;" readSignature="ACOUNTRY;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="CRN" flags="hasgetter attribute static external final" position="40" javaType="jxl.biff.Type" writeSignature="ACRN;Ljxl.biff.Type;" readSignature="ACRN;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="DBCELL" flags="hasgetter attribute static external final" position="17" javaType="jxl.biff.Type" writeSignature="ADBCELL;Ljxl.biff.Type;" readSignature="ADBCELL;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="DEFAULTROWHEIGHT" flags="hasgetter attribute static external final" position="42" javaType="jxl.biff.Type" writeSignature="ADEFAULTROWHEIGHT;Ljxl.biff.Type;" readSignature="ADEFAULTROWHEIGHT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="DEFCOLWIDTH" flags="hasgetter attribute static external final" position="41" javaType="jxl.biff.Type" writeSignature="ADEFCOLWIDTH;Ljxl.biff.Type;" readSignature="ADEFCOLWIDTH;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="DELTA" flags="hasgetter attribute static external final" position="81" javaType="jxl.biff.Type" writeSignature="ADELTA;Ljxl.biff.Type;" readSignature="ADELTA;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="DIMENSION" flags="hasgetter attribute static external final" position="7" javaType="jxl.biff.Type" writeSignature="ADIMENSION;Ljxl.biff.Type;" readSignature="ADIMENSION;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="DSF" flags="hasgetter attribute static external final" position="46" javaType="jxl.biff.Type" writeSignature="ADSF;Ljxl.biff.Type;" readSignature="ADSF;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="DV" flags="hasgetter attribute static external final" position="103" javaType="jxl.biff.Type" writeSignature="ADV;Ljxl.biff.Type;" readSignature="ADV;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="DVAL" flags="hasgetter attribute static external final" position="104" javaType="jxl.biff.Type" writeSignature="ADVAL;Ljxl.biff.Type;" readSignature="ADVAL;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="EOF" flags="hasgetter attribute static external final" position="3" javaType="jxl.biff.Type" writeSignature="AEOF;Ljxl.biff.Type;" readSignature="AEOF;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="EXTERNNAME" flags="hasgetter attribute static external final" position="96" javaType="jxl.biff.Type" writeSignature="AEXTERNNAME;Ljxl.biff.Type;" readSignature="AEXTERNNAME;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="EXTERNSHEET" flags="hasgetter attribute static external final" position="6" javaType="jxl.biff.Type" writeSignature="AEXTERNSHEET;Ljxl.biff.Type;" readSignature="AEXTERNSHEET;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="EXTSST" flags="hasgetter attribute static external final" position="20" javaType="jxl.biff.Type" writeSignature="AEXTSST;Ljxl.biff.Type;" readSignature="AEXTSST;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="FBI" flags="hasgetter attribute static external final" position="108" javaType="jxl.biff.Type" writeSignature="AFBI;Ljxl.biff.Type;" readSignature="AFBI;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="FILEPASS" flags="hasgetter attribute static external final" position="57" javaType="jxl.biff.Type" writeSignature="AFILEPASS;Ljxl.biff.Type;" readSignature="AFILEPASS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="FNGROUPCOUNT" flags="hasgetter attribute static external final" position="47" javaType="jxl.biff.Type" writeSignature="AFNGROUPCOUNT;Ljxl.biff.Type;" readSignature="AFNGROUPCOUNT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="FONT" flags="hasgetter attribute static external final" position="74" javaType="jxl.biff.Type" writeSignature="AFONT;Ljxl.biff.Type;" readSignature="AFONT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="FONTX" flags="hasgetter attribute static external final" position="106" javaType="jxl.biff.Type" writeSignature="AFONTX;Ljxl.biff.Type;" readSignature="AFONTX;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="FOOTER" flags="hasgetter attribute static external final" position="54" javaType="jxl.biff.Type" writeSignature="AFOOTER;Ljxl.biff.Type;" readSignature="AFOOTER;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="FORMAT" flags="hasgetter attribute static external final" position="33" javaType="jxl.biff.Type" writeSignature="AFORMAT;Ljxl.biff.Type;" readSignature="AFORMAT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="FORMULA" flags="hasgetter attribute static external final" position="30" javaType="jxl.biff.Type" writeSignature="AFORMULA;Ljxl.biff.Type;" readSignature="AFORMULA;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="FORMULA2" flags="hasgetter attribute static external final" position="31" javaType="jxl.biff.Type" writeSignature="AFORMULA2;Ljxl.biff.Type;" readSignature="AFORMULA2;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="GRIDSET" flags="hasgetter attribute static external final" position="60" javaType="jxl.biff.Type" writeSignature="AGRIDSET;Ljxl.biff.Type;" readSignature="AGRIDSET;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="GUTS" flags="hasgetter attribute static external final" position="61" javaType="jxl.biff.Type" writeSignature="AGUTS;Ljxl.biff.Type;" readSignature="AGUTS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="HCENTER" flags="hasgetter attribute static external final" position="55" javaType="jxl.biff.Type" writeSignature="AHCENTER;Ljxl.biff.Type;" readSignature="AHCENTER;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="HEADER" flags="hasgetter attribute static external final" position="53" javaType="jxl.biff.Type" writeSignature="AHEADER;Ljxl.biff.Type;" readSignature="AHEADER;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="HIDEOBJ" flags="hasgetter attribute static external final" position="70" javaType="jxl.biff.Type" writeSignature="AHIDEOBJ;Ljxl.biff.Type;" readSignature="AHIDEOBJ;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="HLINK" flags="hasgetter attribute static external final" position="88" javaType="jxl.biff.Type" writeSignature="AHLINK;Ljxl.biff.Type;" readSignature="AHLINK;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="HORIZONTALPAGEBREAKS" flags="hasgetter attribute static external final" position="86" javaType="jxl.biff.Type" writeSignature="AHORIZONTALPAGEBREAKS;Ljxl.biff.Type;" readSignature="AHORIZONTALPAGEBREAKS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="IFMT" flags="hasgetter attribute static external final" position="107" javaType="jxl.biff.Type" writeSignature="AIFMT;Ljxl.biff.Type;" readSignature="AIFMT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="INDEX" flags="hasgetter attribute static external final" position="16" javaType="jxl.biff.Type" writeSignature="AINDEX;Ljxl.biff.Type;" readSignature="AINDEX;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="INTERFACEEND" flags="hasgetter attribute static external final" position="38" javaType="jxl.biff.Type" writeSignature="AINTERFACEEND;Ljxl.biff.Type;" readSignature="AINTERFACEEND;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="INTERFACEHDR" flags="hasgetter attribute static external final" position="36" javaType="jxl.biff.Type" writeSignature="AINTERFACEHDR;Ljxl.biff.Type;" readSignature="AINTERFACEHDR;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="ITERATION" flags="hasgetter attribute static external final" position="83" javaType="jxl.biff.Type" writeSignature="AITERATION;Ljxl.biff.Type;" readSignature="AITERATION;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="LABEL" flags="hasgetter attribute static external final" position="22" javaType="jxl.biff.Type" writeSignature="ALABEL;Ljxl.biff.Type;" readSignature="ALABEL;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="LABELSST" flags="hasgetter attribute static external final" position="24" javaType="jxl.biff.Type" writeSignature="ALABELSST;Ljxl.biff.Type;" readSignature="ALABELSST;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="LEFTMARGIN" flags="hasgetter attribute static external final" position="92" javaType="jxl.biff.Type" writeSignature="ALEFTMARGIN;Ljxl.biff.Type;" readSignature="ALEFTMARGIN;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="MERGEDCELLS" flags="hasgetter attribute static external final" position="82" javaType="jxl.biff.Type" writeSignature="AMERGEDCELLS;Ljxl.biff.Type;" readSignature="AMERGEDCELLS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="MMS" flags="hasgetter attribute static external final" position="75" javaType="jxl.biff.Type" writeSignature="AMMS;Ljxl.biff.Type;" readSignature="AMMS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="MSODRAWING" flags="hasgetter attribute static external final" position="90" javaType="jxl.biff.Type" writeSignature="AMSODRAWING;Ljxl.biff.Type;" readSignature="AMSODRAWING;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="MSODRAWINGGROUP" flags="hasgetter attribute static external final" position="91" javaType="jxl.biff.Type" writeSignature="AMSODRAWINGGROUP;Ljxl.biff.Type;" readSignature="AMSODRAWINGGROUP;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="MULBLANK" flags="hasgetter attribute static external final" position="9" javaType="jxl.biff.Type" writeSignature="AMULBLANK;Ljxl.biff.Type;" readSignature="AMULBLANK;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="MULRK" flags="hasgetter attribute static external final" position="15" javaType="jxl.biff.Type" writeSignature="AMULRK;Ljxl.biff.Type;" readSignature="AMULRK;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="NAME" flags="hasgetter attribute static external final" position="26" javaType="jxl.biff.Type" writeSignature="ANAME;Ljxl.biff.Type;" readSignature="ANAME;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="NINETEENFOUR" flags="hasgetter attribute static external final" position="71" javaType="jxl.biff.Type" writeSignature="ANINETEENFOUR;Ljxl.biff.Type;" readSignature="ANINETEENFOUR;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="NOTE" flags="hasgetter attribute static external final" position="11" javaType="jxl.biff.Type" writeSignature="ANOTE;Ljxl.biff.Type;" readSignature="ANOTE;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="NUMBER" flags="hasgetter attribute static external final" position="25" javaType="jxl.biff.Type" writeSignature="ANUMBER;Ljxl.biff.Type;" readSignature="ANUMBER;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="OBJ" flags="hasgetter attribute static external final" position="89" javaType="jxl.biff.Type" writeSignature="AOBJ;Ljxl.biff.Type;" readSignature="AOBJ;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="OBJPROJ" flags="hasgetter attribute static external final" position="80" javaType="jxl.biff.Type" writeSignature="AOBJPROJ;Ljxl.biff.Type;" readSignature="AOBJPROJ;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="OBJPROTECT" flags="hasgetter attribute static external final" position="51" javaType="jxl.biff.Type" writeSignature="AOBJPROTECT;Ljxl.biff.Type;" readSignature="AOBJPROTECT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PALETTE" flags="hasgetter attribute static external final" position="97" javaType="jxl.biff.Type" writeSignature="APALETTE;Ljxl.biff.Type;" readSignature="APALETTE;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PANE" flags="hasgetter attribute static external final" position="100" javaType="jxl.biff.Type" writeSignature="APANE;Ljxl.biff.Type;" readSignature="APANE;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PASSWORD" flags="hasgetter attribute static external final" position="65" javaType="jxl.biff.Type" writeSignature="APASSWORD;Ljxl.biff.Type;" readSignature="APASSWORD;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PLS" flags="hasgetter attribute static external final" position="98" javaType="jxl.biff.Type" writeSignature="APLS;Ljxl.biff.Type;" readSignature="APLS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PRECISION" flags="hasgetter attribute static external final" position="72" javaType="jxl.biff.Type" writeSignature="APRECISION;Ljxl.biff.Type;" readSignature="APRECISION;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PRINTGRIDLINES" flags="hasgetter attribute static external final" position="59" javaType="jxl.biff.Type" writeSignature="APRINTGRIDLINES;Ljxl.biff.Type;" readSignature="APRINTGRIDLINES;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PRINTHEADERS" flags="hasgetter attribute static external final" position="52" javaType="jxl.biff.Type" writeSignature="APRINTHEADERS;Ljxl.biff.Type;" readSignature="APRINTHEADERS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PROT4REV" flags="hasgetter attribute static external final" position="63" javaType="jxl.biff.Type" writeSignature="APROT4REV;Ljxl.biff.Type;" readSignature="APROT4REV;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PROT4REVPASS" flags="hasgetter attribute static external final" position="64" javaType="jxl.biff.Type" writeSignature="APROT4REVPASS;Ljxl.biff.Type;" readSignature="APROT4REVPASS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="PROTECT" flags="hasgetter attribute static external final" position="49" javaType="jxl.biff.Type" writeSignature="APROTECT;Ljxl.biff.Type;" readSignature="APROTECT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="REFMODE" flags="hasgetter attribute static external final" position="78" javaType="jxl.biff.Type" writeSignature="AREFMODE;Ljxl.biff.Type;" readSignature="AREFMODE;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="REFRESHALL" flags="hasgetter attribute static external final" position="66" javaType="jxl.biff.Type" writeSignature="AREFRESHALL;Ljxl.biff.Type;" readSignature="AREFRESHALL;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="RIGHTMARGIN" flags="hasgetter attribute static external final" position="93" javaType="jxl.biff.Type" writeSignature="ARIGHTMARGIN;Ljxl.biff.Type;" readSignature="ARIGHTMARGIN;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="RK" flags="hasgetter attribute static external final" position="13" javaType="jxl.biff.Type" writeSignature="ARK;Ljxl.biff.Type;" readSignature="ARK;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="RK2" flags="hasgetter attribute static external final" position="14" javaType="jxl.biff.Type" writeSignature="ARK2;Ljxl.biff.Type;" readSignature="ARK2;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="ROW" flags="hasgetter attribute static external final" position="10" javaType="jxl.biff.Type" writeSignature="AROW;Ljxl.biff.Type;" readSignature="AROW;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="RSTRING" flags="hasgetter attribute static external final" position="23" javaType="jxl.biff.Type" writeSignature="ARSTRING;Ljxl.biff.Type;" readSignature="ARSTRING;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="SAVERECALC" flags="hasgetter attribute static external final" position="37" javaType="jxl.biff.Type" writeSignature="ASAVERECALC;Ljxl.biff.Type;" readSignature="ASAVERECALC;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="SCENPROTECT" flags="hasgetter attribute static external final" position="50" javaType="jxl.biff.Type" writeSignature="ASCENPROTECT;Ljxl.biff.Type;" readSignature="ASCENPROTECT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="SCL" flags="hasgetter attribute static external final" position="99" javaType="jxl.biff.Type" writeSignature="ASCL;Ljxl.biff.Type;" readSignature="ASCL;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="SELECTION" flags="hasgetter attribute static external final" position="87" javaType="jxl.biff.Type" writeSignature="ASELECTION;Ljxl.biff.Type;" readSignature="ASELECTION;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="SETUP" flags="hasgetter attribute static external final" position="58" javaType="jxl.biff.Type" writeSignature="ASETUP;Ljxl.biff.Type;" readSignature="ASETUP;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="SHAREDFORMULA" flags="hasgetter attribute static external final" position="32" javaType="jxl.biff.Type" writeSignature="ASHAREDFORMULA;Ljxl.biff.Type;" readSignature="ASHAREDFORMULA;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="SORT" flags="hasgetter attribute static external final" position="102" javaType="jxl.biff.Type" writeSignature="ASORT;Ljxl.biff.Type;" readSignature="ASORT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="SST" flags="hasgetter attribute static external final" position="18" javaType="jxl.biff.Type" writeSignature="ASST;Ljxl.biff.Type;" readSignature="ASST;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="STRING" flags="hasgetter attribute static external final" position="29" javaType="jxl.biff.Type" writeSignature="ASTRING;Ljxl.biff.Type;" readSignature="ASTRING;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="STYLE" flags="hasgetter attribute static external final" position="84" javaType="jxl.biff.Type" writeSignature="ASTYLE;Ljxl.biff.Type;" readSignature="ASTYLE;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="SUPBOOK" flags="hasgetter attribute static external final" position="5" javaType="jxl.biff.Type" writeSignature="ASUPBOOK;Ljxl.biff.Type;" readSignature="ASUPBOOK;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="TABID" flags="hasgetter attribute static external final" position="27" javaType="jxl.biff.Type" writeSignature="ATABID;Ljxl.biff.Type;" readSignature="ATABID;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="TEMPLATE" flags="hasgetter attribute static external final" position="79" javaType="jxl.biff.Type" writeSignature="ATEMPLATE;Ljxl.biff.Type;" readSignature="ATEMPLATE;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="TOPMARGIN" flags="hasgetter attribute static external final" position="94" javaType="jxl.biff.Type" writeSignature="ATOPMARGIN;Ljxl.biff.Type;" readSignature="ATOPMARGIN;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="TXO" flags="hasgetter attribute static external final" position="12" javaType="jxl.biff.Type" writeSignature="ATXO;Ljxl.biff.Type;" readSignature="ATXO;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="U1C0" flags="hasgetter attribute static external final" position="111" javaType="jxl.biff.Type" writeSignature="AU1C0;Ljxl.biff.Type;" readSignature="AU1C0;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="U1C1" flags="hasgetter attribute static external final" position="112" javaType="jxl.biff.Type" writeSignature="AU1C1;Ljxl.biff.Type;" readSignature="AU1C1;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="UNKNOWN" flags="hasgetter attribute static external final" position="110" javaType="jxl.biff.Type" writeSignature="AUNKNOWN;Ljxl.biff.Type;" readSignature="AUNKNOWN;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="USESELFS" flags="hasgetter attribute static external final" position="85" javaType="jxl.biff.Type" writeSignature="AUSESELFS;Ljxl.biff.Type;" readSignature="AUSESELFS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="VCENTER" flags="hasgetter attribute static external final" position="56" javaType="jxl.biff.Type" writeSignature="AVCENTER;Ljxl.biff.Type;" readSignature="AVCENTER;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="WEIRD1" flags="hasgetter attribute static external final" position="101" javaType="jxl.biff.Type" writeSignature="AWEIRD1;Ljxl.biff.Type;" readSignature="AWEIRD1;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="WINDOW1" flags="hasgetter attribute static external final" position="67" javaType="jxl.biff.Type" writeSignature="AWINDOW1;Ljxl.biff.Type;" readSignature="AWINDOW1;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="WINDOW2" flags="hasgetter attribute static external final" position="68" javaType="jxl.biff.Type" writeSignature="AWINDOW2;Ljxl.biff.Type;" readSignature="AWINDOW2;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="WINDOWPROTECT" flags="hasgetter attribute static external final" position="62" javaType="jxl.biff.Type" writeSignature="AWINDOWPROTECT;Ljxl.biff.Type;" readSignature="AWINDOWPROTECT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="WRITEACCESS" flags="hasgetter attribute static external final" position="43" javaType="jxl.biff.Type" writeSignature="AWRITEACCESS;Ljxl.biff.Type;" readSignature="AWRITEACCESS;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="WSBOOL" flags="hasgetter attribute static external final" position="44" javaType="jxl.biff.Type" writeSignature="AWSBOOL;Ljxl.biff.Type;" readSignature="AWSBOOL;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="XCT" flags="hasgetter attribute static external final" position="39" javaType="jxl.biff.Type" writeSignature="AXCT;Ljxl.biff.Type;" readSignature="AXCT;Ljxl.biff.Type;"/>
+		<object type="Utiles.Jxl.Biff.Type" name="XF" flags="hasgetter attribute static external final" position="34" javaType="jxl.biff.Type" writeSignature="AXF;Ljxl.biff.Type;" readSignature="AXF;Ljxl.biff.Type;"/>
+		<Int length="32" name="value" flags="hasgetter attribute external final" primitive="true" position="1" javaType="int" writeSignature="Avalue;I" readSignature="Avalue;I"/>
+	</attributes>
+	<methods>
+		<method name="createType" description="createType" flags="static external" signature="McreateType(I)Ljxl.biff.Type;">
+			<arg name="v" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Type" javaType="jxl.biff.Type"/>
+		</method>
+		<method name="equals" description="equals" flags="external hidden" signature="Mequals(Ljava.lang.Object;)Z">
+			<arg name="o" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getType" description="getType" flags="static external" signature="MgetType(I)Ljxl.biff.Type;">
+			<arg name="v" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Type" javaType="jxl.biff.Type"/>
+		</method>
+		<method name="hashCode" description="hashCode" flags="external hidden" signature="MhashCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

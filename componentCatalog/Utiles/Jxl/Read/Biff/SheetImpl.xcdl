@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="SheetImpl" description="SheetImpl" versionID="Version 6.5 " flags="" signature="jxl.read.biff.SheetImpl" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Jxl.Sheet" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.read.biff.SheetImpl"/>
+	<objectProperty name="package" value="jxl.read.biff"/>
+	<objectProperty name="typeId" value="jxl.read.biff.SheetImpl"/>
+	<attributes>
+		<object type="Utiles.Jxl.Read.Biff.ButtonPropertySetRecord" name="buttonPropertySet" flags="hasgetter external" position="2" javaType="jxl.read.biff.ButtonPropertySetRecord" readSignature="MgetButtonPropertySet()Ljxl.read.biff.ButtonPropertySetRecord;"/>
+		<array type="Utiles.Jxl.Biff.Drawing.Chart" name="charts" flags="hasgetter external" primitive="true" position="3" javaType="jxl.biff.drawing.Chart[]" readSignature="MgetCharts()[Ljxl.biff.drawing.Chart;"/>
+		<array type="Utiles.Jxl.Read.Biff.ColumnInfoRecord" name="columnInfos" flags="hasgetter external" primitive="true" position="4" javaType="jxl.read.biff.ColumnInfoRecord[]" readSignature="MgetColumnInfos()[Ljxl.read.biff.ColumnInfoRecord;"/>
+		<Int length="32" name="columns" flags="hasgetter external" primitive="true" position="5" javaType="int" readSignature="MgetColumns()I"/>
+		<object type="Utiles.Jxl.Read.Biff.DataValidation" name="dataValidation" flags="hasgetter external" position="6" javaType="jxl.read.biff.DataValidation" readSignature="MgetDataValidation()Ljxl.read.biff.DataValidation;"/>
+		<array type="Utiles.Jxl.Biff.Drawing.DrawingGroupObject" name="drawings" flags="hasgetter external" primitive="true" position="7" javaType="jxl.biff.drawing.DrawingGroupObject[]" readSignature="MgetDrawings()[Ljxl.biff.drawing.DrawingGroupObject;"/>
+		<Bool name="hidden" flags="hasgetter external" primitive="true" position="8" javaType="boolean" readSignature="MisHidden()Z"/>
+		<array type="Utiles.Jxl.Hyperlink" name="hyperlinks" flags="hasgetter external" primitive="true" position="9" javaType="jxl.Hyperlink[]" readSignature="MgetHyperlinks()[Ljxl.Hyperlink;"/>
+		<array type="Utiles.Jxl.Range" name="mergedCells" flags="hasgetter external" primitive="true" position="10" javaType="jxl.Range[]" readSignature="MgetMergedCells()[Ljxl.Range;"/>
+		<String name="name" flags="hasgetter external" position="11" javaType="java.lang.String" readSignature="MgetName()Ljava.lang.String;"/>
+		<Int length="32" name="numberOfImages" flags="hasgetter external" primitive="true" position="12" javaType="int" readSignature="MgetNumberOfImages()I"/>
+		<object type="Utiles.Jxl.Read.Biff.PLSRecord" name="pls" flags="hasgetter external" position="1" javaType="jxl.read.biff.PLSRecord" readSignature="MgetPLS()Ljxl.read.biff.PLSRecord;"/>
+		<Bool name="protected" flags="hasgetter external" primitive="true" position="13" javaType="boolean" readSignature="MisProtected()Z"/>
+		<array type="Int" name="rowPageBreaks" flags="hasgetter external" primitive="true" position="14" javaType="int[]" readSignature="MgetRowPageBreaks()[I"/>
+		<array type="Utiles.Jxl.Read.Biff.RowRecord" name="rowProperties" flags="hasgetter external" primitive="true" position="15" javaType="jxl.read.biff.RowRecord[]" readSignature="MgetRowProperties()[Ljxl.read.biff.RowRecord;"/>
+		<Int length="32" name="rows" flags="hasgetter external" primitive="true" position="16" javaType="int" readSignature="MgetRows()I"/>
+		<object type="Utiles.Jxl.SheetSettings" name="settings" flags="hasgetter external" position="17" javaType="jxl.SheetSettings" readSignature="MgetSettings()Ljxl.SheetSettings;"/>
+		<object type="Utiles.Jxl.Read.Biff.BOFRecord" name="sheetBof" flags="hasgetter external" position="18" javaType="jxl.read.biff.BOFRecord" readSignature="MgetSheetBof()Ljxl.read.biff.BOFRecord;"/>
+		<object type="Utiles.Jxl.Read.Biff.BOFRecord" name="workbookBof" flags="hasgetter external" position="19" javaType="jxl.read.biff.BOFRecord" readSignature="MgetWorkbookBof()Ljxl.read.biff.BOFRecord;"/>
+		<object type="Utiles.Jxl.Biff.WorkspaceInformationRecord" name="workspaceOptions" flags="hasgetter external" position="20" javaType="jxl.biff.WorkspaceInformationRecord" readSignature="MgetWorkspaceOptions()Ljxl.biff.WorkspaceInformationRecord;"/>
+	</attributes>
+	<methods>
+		<method name="findCell" description="findCell" flags="external" signature="MfindCell(Ljava.lang.String;)Ljxl.Cell;">
+			<arg name="contents" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Cell" javaType="jxl.Cell"/>
+		</method>
+		<method name="findLabelCell" description="findLabelCell" flags="external" signature="MfindLabelCell(Ljava.lang.String;)Ljxl.LabelCell;">
+			<arg name="contents" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.LabelCell" javaType="jxl.LabelCell"/>
+		</method>
+		<method name="getButtonPropertySet" description="getButtonPropertySet" flags="external hidden" signature="MgetButtonPropertySet()Ljxl.read.biff.ButtonPropertySetRecord;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Read.Biff.ButtonPropertySetRecord" javaType="jxl.read.biff.ButtonPropertySetRecord"/>
+		</method>
+		<method name="getCell" description="getCell" flags="external" signature="MgetCell(II)Ljxl.Cell;">
+			<arg name="column" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Cell" javaType="jxl.Cell"/>
+		</method>
+		<method name="getCharts" description="getCharts" flags="external final hidden" signature="MgetCharts()[Ljxl.biff.drawing.Chart;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Biff.Drawing.Chart[]" javaType="jxl.biff.drawing.Chart[]"/>
+		</method>
+		<method name="getColumn" description="getColumn" flags="external" signature="MgetColumn(I)[Ljxl.Cell;">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Cell[]" javaType="jxl.Cell[]"/>
+		</method>
+		<method name="getColumnFormat" description="getColumnFormat" flags="external" signature="MgetColumnFormat(I)Ljxl.format.CellFormat;">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+		</method>
+		<method name="getColumnInfo" description="getColumnInfo" flags="external" signature="MgetColumnInfo(I)Ljxl.read.biff.ColumnInfoRecord;">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Read.Biff.ColumnInfoRecord" javaType="jxl.read.biff.ColumnInfoRecord"/>
+		</method>
+		<method name="getColumnInfos" description="getColumnInfos" flags="external hidden" signature="MgetColumnInfos()[Ljxl.read.biff.ColumnInfoRecord;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Read.Biff.ColumnInfoRecord[]" javaType="jxl.read.biff.ColumnInfoRecord[]"/>
+		</method>
+		<method name="getColumnView" description="getColumnView" flags="external" signature="MgetColumnView(I)Ljxl.CellView;">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.CellView" javaType="jxl.CellView"/>
+		</method>
+		<method name="getColumnWidth" description="getColumnWidth" flags="external" signature="MgetColumnWidth(I)I">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getColumns" description="getColumns" flags="external hidden" signature="MgetColumns()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getDataValidation" description="getDataValidation" flags="external hidden" signature="MgetDataValidation()Ljxl.read.biff.DataValidation;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Read.Biff.DataValidation" javaType="jxl.read.biff.DataValidation"/>
+		</method>
+		<method name="getDrawing" description="getDrawing" flags="external" signature="MgetDrawing(I)Ljxl.Image;">
+			<arg name="i" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Image" javaType="jxl.Image"/>
+		</method>
+		<method name="getDrawings" description="getDrawings" flags="external final hidden" signature="MgetDrawings()[Ljxl.biff.drawing.DrawingGroupObject;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Biff.Drawing.DrawingGroupObject[]" javaType="jxl.biff.drawing.DrawingGroupObject[]"/>
+		</method>
+		<method name="getHyperlinks" description="getHyperlinks" flags="external hidden" signature="MgetHyperlinks()[Ljxl.Hyperlink;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Hyperlink[]" javaType="jxl.Hyperlink[]"/>
+		</method>
+		<method name="getMergedCells" description="getMergedCells" flags="external hidden" signature="MgetMergedCells()[Ljxl.Range;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Range[]" javaType="jxl.Range[]"/>
+		</method>
+		<method name="getName" description="getName" flags="external hidden" signature="MgetName()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getNumberOfImages" description="getNumberOfImages" flags="external hidden" signature="MgetNumberOfImages()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getPLS" description="getPLS" flags="external hidden" signature="MgetPLS()Ljxl.read.biff.PLSRecord;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Read.Biff.PLSRecord" javaType="jxl.read.biff.PLSRecord"/>
+		</method>
+		<method name="getRow" description="getRow" flags="external" signature="MgetRow(I)[Ljxl.Cell;">
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Cell[]" javaType="jxl.Cell[]"/>
+		</method>
+		<method name="getRowHeight" description="getRowHeight" flags="external" signature="MgetRowHeight(I)I">
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getRowPageBreaks" description="getRowPageBreaks" flags="external final hidden" signature="MgetRowPageBreaks()[I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int[]" javaType="int[]"/>
+		</method>
+		<method name="getRowProperties" description="getRowProperties" flags="external hidden" signature="MgetRowProperties()[Ljxl.read.biff.RowRecord;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Read.Biff.RowRecord[]" javaType="jxl.read.biff.RowRecord[]"/>
+		</method>
+		<method name="getRowView" description="getRowView" flags="external" signature="MgetRowView(I)Ljxl.CellView;">
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.CellView" javaType="jxl.CellView"/>
+		</method>
+		<method name="getRows" description="getRows" flags="external hidden" signature="MgetRows()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getSettings" description="getSettings" flags="external hidden" signature="MgetSettings()Ljxl.SheetSettings;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.SheetSettings" javaType="jxl.SheetSettings"/>
+		</method>
+		<method name="getSheetBof" description="getSheetBof" flags="external hidden" signature="MgetSheetBof()Ljxl.read.biff.BOFRecord;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Read.Biff.BOFRecord" javaType="jxl.read.biff.BOFRecord"/>
+		</method>
+		<method name="getWorkbookBof" description="getWorkbookBof" flags="external hidden" signature="MgetWorkbookBof()Ljxl.read.biff.BOFRecord;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Read.Biff.BOFRecord" javaType="jxl.read.biff.BOFRecord"/>
+		</method>
+		<method name="getWorkspaceOptions" description="getWorkspaceOptions" flags="external hidden" signature="MgetWorkspaceOptions()Ljxl.biff.WorkspaceInformationRecord;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.WorkspaceInformationRecord" javaType="jxl.biff.WorkspaceInformationRecord"/>
+		</method>
+		<method name="isHidden" description="isHidden" flags="external hidden" signature="MisHidden()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isProtected" description="isProtected" flags="external hidden" signature="MisProtected()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

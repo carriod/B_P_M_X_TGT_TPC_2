@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<FDIObject>
+	<DirHumanParticipant>
+		<id>director</id>
+		<displayName>director</displayName>
+		<receivesMail>false</receivesMail>
+		<status>A</status>
+		<timezone>America/Argentina/Buenos_Aires</timezone>
+		<cost>0.0</cost>
+		<efficiency>80</efficiency>
+		<rolesAssignment>
+			<roleAssignment>
+				<roleId>TPC2 - Director</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+		</rolesAssignment>
+	</DirHumanParticipant>
+</FDIObject>

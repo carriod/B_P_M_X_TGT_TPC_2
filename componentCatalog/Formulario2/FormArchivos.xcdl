@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FormArchivos" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Binary name="archivo" flags="hassetter hasgetter public" position="4"/>
+		<String name="boton" flags="hassetter hasgetter public" position="3"/>
+		<array type="Formulario2.FormArchivos.Documentos" name="documentos" flags="hasgetter public" position="8" javaType="fuego.xobject.GroupArray"/>
+		<String name="mensajeError" flags="hassetter hasgetter public includeincheck" position="5"/>
+		<String defaultValue="titulo" name="titulo" flags="hassetter hasgetter public includeincheck" position="1"/>
+		<String name="urlScaneo" flags="hassetter hasgetter public" position="2"/>
+		<String name="urlScaneoDMZ" flags="hassetter hasgetter public" position="6"/>
+		<String name="workspaceDMZ" flags="hassetter hasgetter public" position="7"/>
+	</attributes>
+	<methods>
+		<method name="FormArchivos" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormArchivos"/>
+			<sourceCode language="Java1"/>
+		</method>
+	</methods>
+	<resources>
+		<resource default="ADJUNTAR ARCHIVOS" type="1">
+			<label language="es">ADJUNTAR ARCHIVOS</label>
+		</resource>
+		<resource default="Agregar">
+			<label language="es">Agregar</label>
+		</resource>
+		<resource default="Archivo" type="1">
+			<label language="es">Archivo</label>
+		</resource>
+		<resource default="Archivos" type="1">
+			<label language="es">Archivos</label>
+		</resource>
+		<resource default="C" type="1">
+			<label language="es">C</label>
+		</resource>
+		<resource default="CARGAR OPERACION" type="1">
+			<label language="es">CARGAR OPERACION</label>
+		</resource>
+		<resource default="Canal / Agente" type="1">
+			<label language="es">Canal / Agente</label>
+		</resource>
+		<resource default="Cancelar">
+			<label language="es">Cancelar</label>
+		</resource>
+		<resource default="Cargar" type="1">
+			<label language="es">Cargar</label>
+		</resource>
+		<resource default="Cliente Existente" type="1">
+			<label language="es">Cliente Existente</label>
+		</resource>
+		<resource default="Continuar">
+			<label language="es">Continuar</label>
+		</resource>
+		<resource default="DATOS DE LA OPERACION" type="1">
+			<label language="es">DATOS DE LA OPERACION</label>
+		</resource>
+		<resource default="DATOS DE LA SOLICITUD DE SERVICIO" type="1">
+			<label language="es">DATOS DE LA SOLICITUD DE SERVICIO</label>
+		</resource>
+		<resource default="DOCUMENTOS" type="1">
+			<label language="es">DOCUMENTOS</label>
+		</resource>
+		<resource default="Documento" type="1">
+			<label language="es">Documento</label>
+		</resource>
+		<resource default="Eliminar" type="1">
+			<label language="es">Eliminar</label>
+		</resource>
+		<resource default="Enviar">
+			<label language="es">Enviar</label>
+		</resource>
+		<resource default="Examinar">
+			<label language="es">Examinar</label>
+		</resource>
+		<resource default="Examinar...">
+			<label language="es">Examinar...</label>
+		</resource>
+		<resource default="Excepción" type="1">
+			<label language="es">Excepción</label>
+		</resource>
+		<resource default="Forma de Contratación" type="1">
+			<label language="es">Forma de Contratación</label>
+		</resource>
+		<resource default="Líneas">
+			<label language="es">Líneas</label>
+		</resource>
+		<resource default="Nro de Formulario" type="1">
+			<label language="es">Nro de Formulario</label>
+		</resource>
+		<resource default="Punto de Venta" type="1">
+			<label language="es">Punto de Venta</label>
+		</resource>
+		<resource default="SCANEO DE ARCHIVOS" type="1">
+			<label language="es">SCANEO DE ARCHIVOS</label>
+		</resource>
+		<resource default="Scanear" type="1">
+			<label language="es">Scanear</label>
+		</resource>
+		<resource default="Segmento" type="1">
+			<label language="es">Segmento</label>
+		</resource>
+		<resource default="SubVendedor" type="1">
+			<label language="es">SubVendedor</label>
+		</resource>
+		<resource default="Tipo de Formulario" type="1">
+			<label language="es">Tipo de Formulario</label>
+		</resource>
+		<resource default="Tipo de Operación">
+			<label language="es">Tipo de Operación</label>
+		</resource>
+		<resource default="Tipo de Producto">
+			<label language="es">Tipo de Producto</label>
+		</resource>
+		<resource default="Usuario" type="1">
+			<label language="es">Usuario</label>
+		</resource>
+		<resource default="Vendedor" type="1">
+			<label language="es">Vendedor</label>
+		</resource>
+		<resource default="Ver" type="1">
+			<label language="es">Ver</label>
+		</resource>
+		<resource default="action">
+			<label language="es">action</label>
+		</resource>
+		<resource default="cancel">
+			<label language="es">cancel</label>
+		</resource>
+		<resource default="label" type="1">
+			<label language="es">label</label>
+		</resource>
+		<resource default="submit">
+			<label language="es">submit</label>
+		</resource>
+	</resources>
+</component>

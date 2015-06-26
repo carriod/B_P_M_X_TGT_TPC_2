@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="FJasperExt" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="FJasperExt" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FJasperExt"/>
+		</method>
+		<method name="cargarEnDocAdmin" description="" flags="clientavailable public">
+			<arg name="fJasper" description="" flags="in" type="Fachada.FJasper"/>
+			<arg name="idSolicitud" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="docCategoriaArg" description="" flags="in" type="String"/>
+			<arg name="docCategoriaLabelArg" description="" flags="in" type="String"/>
+			<arg name="docRevisionArg" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="idProceso" description="" flags="in" primitive="true" type="Int"/>
+			<variables>
+				<variable name="dest" type="String"/>
+				<variable name="fi" type="Java.Io.File"/>
+				<variable name="name" type="String"/>
+				<variable name="pdfBinary" type="Binary"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">try {
+    pdfBinary = fJasper.getPDFStream();
+
+    // PARA EL ADMINISTRADOR DE DOCUMENTOS
+    // /para agregar un archivo:
+//    docsId = DocsIdProceso.forIds(idProceso : idProceso, id : idSolicitud);
+
+    // ver!!!
+//    docCategory= DocsCategory();
+//    docCategory.category = docCategoriaArg;
+//    docCategory.categoryLabel = docCategoriaLabelArg;
+//    docCategory.docsId = docsId;
+//    docCategory.revision = docRevisionArg;
+//    dest = docCategory.getFileNameForDoc(docName : fJasper.nombreFormulario + &quot;.pdf&quot;);
+    name = fJasper.nombreFormulario + &quot;.pdf&quot;;
+
+    // se genera el path para que luego se copie el archivo a ese destino:
+    fi = Java.File(arg1 : MetodosFile.path(file : dest));
+    fi.mkdirs();
+
+    // se genera el archivo PDF que podrá ser visualizado desde el administrador de documentos:    
+    BinaryFile.writeFromBinaryTo(data : pdfBinary, name : dest, append : false);
+
+    // para que quede en la base el archivo como existente.
+/*
+    doc = Utiles.DOC_XO.Document.createNew(docsId : docsId
+                                  , revision : docRevisionArg
+                                  , category : docCategoriaArg
+                                  , name : name
+                                  , file : dest
+                                  , description : fJasper.nombreFormulario + idSolicitud + &quot; &quot; + &apos;now&apos;.format(mask : &quot;dd/MM/yyyy HH:mm:ss&quot;)
+                                  , participantId : Participant.id
+                                  , initialState : 1);
+*/
+    Utiles.Logger.logDebug(mensaje : &quot;Solciitud: &quot; + arg.idSolicitud + &quot; cargarEnDocAdmin - dest: &quot; + dest);                             
+} catch(Java.Lang.Exception e) {
+    Utiles.Logger.logMsgAndException(message : &quot;Error al generar pdf solicitud (&quot;+idSolicitud+&quot;)&quot;, exception : e);
+    throw e;
+}
+return &quot;&quot;;
+</sourceCode>
+		</method>
+		<method name="crearPDFCTDictamen" description="" flags="clientavailable public">
+			<arg name="nroSolicitud" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="nombreYApellido" description="" flags="in" type="String"/>
+			<arg name="campana" description="" flags="in" type="String"/>
+			<arg name="cuil" description="" flags="in" type="String"/>
+			<arg name="fecha" description="" flags="in" type="Time"/>
+			<arg name="idCobis" description="" flags="in" type="String"/>
+			<arg name="dictamen" description="" flags="in" type="Any[String]"/>
+			<variables>
+				<variable name="fJasper" type="Fachada.FJasper"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FJasper"/>
+			<sourceCode language="Java1">			
+			
+			
+			
+			
+			
+			
+			
+				
+			
+			
+Utiles.Logger.logDebug(mensaje : &quot;FJasperFrom - crearPDFContratoTarjeta - INICIO&quot;);
+
+fJasper = FJasper();
+fJasper.nombreFormulario = &quot;ContratosTarjetasDictamen&quot;;
+
+Respuesta respuesta = FValues.getValue(id : &quot;PATH_JASPER_IMG&quot;);
+
+if (respuesta.resultado == OK) {
+    fJasper.parameters.put(arg1 : &quot;pathImagen&quot;, arg2 : respuesta.contenido);
+}
+else {
+    Utiles.Logger.logWarning(&quot;No se pudo cargar valor de tabla\n&quot; + respuesta.contenido);
+    throw Java.Lang.Exception(&quot;No se pudo cargar valor de tabla\n&quot; + respuesta.contenido);
+}
+
+fJasper.parameters.put(arg1 : &quot;nroSolicitud&quot;, arg2 : ((String) arg.nroSolicitud));
+fJasper.parameters.put(arg1 : &quot;nombreYApellido&quot;, arg2 : ((String) arg.nombreYApellido));
+fJasper.parameters.put(arg1 : &quot;campana&quot;, arg2 : ((String) arg.campana));
+fJasper.parameters.put(arg1 : &quot;cuil&quot;, arg2 : ((String) arg.cuil));
+fJasper.parameters.put(arg1 : &quot;fecha&quot;, arg2 : ((String) arg.fecha.format(mask : &quot;dd/MM/yyyy&quot;)));
+fJasper.parameters.put(arg1 : &quot;idCobis&quot;, arg2 : ((String) arg.idCobis));
+
+///////////////////////////DICTAMEN-INICIO//////////////////////////////////////
+fJasper.parameters.put(arg1 : &quot;dictamen&quot;, arg2 : ((String) arg.dictamen[&quot;dictamen&quot;]));
+fJasper.parameters.put(arg1 : &quot;motivosRechazo&quot;, arg2 : ((String) arg.dictamen[&quot;motivosRechazo&quot;]));
+fJasper.parameters.put(arg1 : &quot;observaciones&quot;, arg2 : ((String) arg.dictamen[&quot;observaciones&quot;]));
+fJasper.parameters.put(arg1 : &quot;limiteCompra&quot;, arg2 : ((String) arg.dictamen[&quot;limiteCompra&quot;]));
+fJasper.parameters.put(arg1 : &quot;grupoRiesgo&quot;, arg2 : ((String) arg.dictamen[&quot;grupoRiesgo&quot;]));
+fJasper.parameters.put(arg1 : &quot;ingresoComputado&quot;, arg2 : ((String) arg.dictamen[&quot;ingresoComputado&quot;]));
+fJasper.parameters.put(arg1 : &quot;scoreBH&quot;, arg2 : ((String) arg.dictamen[&quot;scoreBH&quot;]));
+fJasper.parameters.put(arg1 : &quot;rankingBH&quot;, arg2 : ((String) arg.dictamen[&quot;rankingBH&quot;]));
+fJasper.parameters.put(arg1 : &quot;endeudamiento&quot;, arg2 : ((String) arg.dictamen[&quot;endeudamiento&quot;]));
+fJasper.parameters.put(arg1 : &quot;compromiso&quot;, arg2 : ((String) arg.dictamen[&quot;compromiso&quot;]));
+///////////////////////////DICTAMEN-FIN/////////////////////////////////////////
+this.quitaNulls(parametros : fJasper.parameters);
+
+Utiles.Logger.logDebug(mensaje : &quot;FJasperFrom - crearPDFContratoTarjeta - parameters: &quot; + fJasper.parameters);
+
+Utiles.Logger.logDebug(mensaje : &quot;FJasperFrom - crearPDFContratoTarjeta - FIN&quot;);
+return fJasper;
+</sourceCode>
+		</method>
+		<method name="crearPDFCTDictamenTemp" description="" flags="clientavailable public">
+			<arg name="nroSolicitud" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="nombreYApellido" description="" flags="in" type="String"/>
+			<arg name="campana" description="" flags="in" type="String"/>
+			<arg name="cuil" description="" flags="in" type="String"/>
+			<arg name="fecha" description="" flags="in" type="Time"/>
+			<arg name="idCobis" description="" flags="in" type="String"/>
+			<arg name="dictamen" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">			
+			
+			
+			
+			
+			
+			
+			
+Utiles.Logger.logDebug(mensaje : &quot;INICIO - crearPDFContratoTarjetaTemp&quot;);
+
+FJasper fJasper;
+Utiles.Respuesta respuesta = Respuesta();
+
+try {
+    fJasper = FJasperExt.crearPDFCTDictamen(nroSolicitud : arg.nroSolicitud, nombreYApellido : arg.nombreYApellido, campana : arg.campana, 
+                                            cuil : arg.cuil, fecha : arg.fecha, idCobis : arg.idCobis, dictamen : arg.dictamen);
+    respuesta.resultado = OK; 
+    respuesta.contenido = fJasper.getPDFStream();
+    //nfc = fJasper.crearPDF(pathSalida : &quot;C:\\Documents and Settings\\c02283\\Escritorio\\&quot;);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = ERROR;
+    respuesta.contenido = e.message;
+}
+
+Utiles.Logger.logDebug(mensaje : &quot;FIN - crearPDFContratoTarjetaTemp&quot;);
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="crearPDFCTRemito" description="" flags="clientavailable public">
+			<arg name="adminDeLegajos" description="" flags="in" type="String"/>
+			<arg name="fecha" description="" flags="in" type="Time"/>
+			<arg name="nroRemito" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="remitos" description="" flags="in" type="Any[String][]"/>
+			<variables>
+				<variable name="fJasper" type="Fachada.FJasper"/>
+				<variable name="mapa" type="Java.Util.HashMap"/>
+				<variable name="rem" type="Any[String]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FJasper"/>
+			<sourceCode language="Java1">			
+			
+			
+			
+			
+				
+				
+				
+			
+			
+Utiles.Logger.logDebug(mensaje : &quot;FJasperFrom - crearPDFContratoTarjeta - INICIO&quot;);
+
+fJasper = FJasper();
+fJasper.nombreFormulario = &quot;ContratosTarjetasRemito&quot;;
+
+Respuesta respuesta = FValues.getValue(id : &quot;PATH_JASPER_IMG&quot;);
+
+if (respuesta.resultado == OK) {
+    fJasper.parameters.put(arg1 : &quot;pathImagen&quot;, arg2 : respuesta.contenido);
+}
+else {
+    Utiles.Logger.logWarning(&quot;No se pudo cargar valor de tabla\n&quot; + respuesta.contenido);
+    throw Java.Lang.Exception(&quot;No se pudo cargar valor de tabla\n&quot; + respuesta.contenido);
+}
+
+fJasper.parameters.put(arg1 : &quot;adminDeLegajos&quot;, arg2 : ((String) arg.adminDeLegajos));
+fJasper.parameters.put(arg1 : &quot;fecha&quot;, arg2 : ((String) arg.fecha.format(mask : &quot;dd/MM/yyyy&quot;)));
+fJasper.parameters.put(arg1 : &quot;nroRemito&quot;, arg2 : ((String) arg.nroRemito));
+
+foreach (remito in arg.remitos) {
+    mapa = HashMap();
+    rem = (Any[String])remito;
+    mapa.put(arg1 : &quot;nroSolicitud&quot;, arg2 : (String)rem[&quot;nroSolicitud&quot;]);
+    mapa.put(arg1 : &quot;apellidoYNombre&quot;, arg2 : (String)rem[&quot;apellidoYNombre&quot;]);
+    mapa.put(arg1 : &quot;canal&quot;, arg2 : (String)rem[&quot;canal&quot;]);
+    mapa.put(arg1 : &quot;subCanal&quot;, arg2 : (String)rem[&quot;subCanal&quot;]);
+    fJasper.fields.add(arg1 : fJasper.fields.size(), arg2 : mapa);
+}
+
+this.quitaNulls(parametros : fJasper.parameters);
+
+Utiles.Logger.logDebug(mensaje : &quot;FJasperFrom - crearPDFContratoTarjeta - parameters: &quot; + fJasper.parameters);
+
+Utiles.Logger.logDebug(mensaje : &quot;FJasperFrom - crearPDFContratoTarjeta - FIN&quot;);
+return fJasper;
+</sourceCode>
+		</method>
+		<method name="crearPDFCTRemitoTemp" description="" flags="clientavailable public">
+			<arg name="adminDeLegajos" description="" flags="in" type="String"/>
+			<arg name="fecha" description="" flags="in" type="Time"/>
+			<arg name="nroRemito" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="remitos" description="" flags="in" type="Any[String][]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">			
+			
+			
+			
+			
+Utiles.Logger.logDebug(mensaje : &quot;INICIO - crearPDFContratoTarjetaTemp&quot;);
+
+FJasper fJasper;
+Utiles.Respuesta respuesta = Respuesta();
+
+try {
+    fJasper = FJasperExt.crearPDFCTRemito(adminDeLegajos : arg.adminDeLegajos, fecha : arg.fecha, nroRemito : arg.nroRemito, remitos : arg.remitos);
+
+    respuesta.resultado = OK; 
+    respuesta.contenido = fJasper.getPDFStream();
+    //nfc = fJasper.crearPDF(pathSalida : &quot;C:\\Documents and Settings\\c02283\\Escritorio\\&quot;);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = ERROR;
+    respuesta.contenido = e.message;
+}
+
+Utiles.Logger.logDebug(mensaje : &quot;FIN - crearPDFContratoTarjetaTemp&quot;);
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="crearPDFContratoTarjeta" description="" flags="clientavailable public">
+			<arg name="nombreYApellido" description="" flags="in" type="String"/>
+			<arg name="nroSolicitud" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="campana" description="" flags="in" type="String"/>
+			<arg name="cuil" description="" flags="in" type="String"/>
+			<arg name="fecha" description="" flags="in" type="Time"/>
+			<arg name="idCobis" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="fJasper" type="Fachada.FJasper"/>
+				<variable name="pathTmp" type="String"/>
+				<variable name="result2" type="String"/>
+				<variable name="val" type="String"/>
+				<variable name="valor" type="Int(64)"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FJasper"/>
+			<sourceCode language="Java1">			
+			
+			
+			
+			
+			
+			
+				
+				
+				
+				
+				
+			
+			
+Utiles.Logger.logDebug(mensaje : &quot;FJasperFrom - crearPDFContratoTarjeta - INICIO&quot;);
+
+fJasper = FJasper();
+fJasper.nombreFormulario = &quot;ContratosTarjetas&quot;;
+
+Respuesta respuesta = FValues.getValue(id : &quot;PATH_JASPER_IMG&quot;);
+
+if (respuesta.resultado == OK) {
+    fJasper.parameters.put(&quot;pathImagen&quot;, respuesta.contenido);
+}
+else {
+    Utiles.Logger.logWarning(&quot;No se pudo cargar valor de tabla\n&quot; + respuesta.contenido);
+    throw Java.Lang.Exception(&quot;No se pudo cargar valor de tabla\n&quot; + respuesta.contenido);
+}
+
+respuesta = FValues.getValue(id : &quot;PATH_JASPER_TMP&quot;);
+
+if (respuesta.resultado == OK) {
+    pathTmp = (String)respuesta.contenido;
+}
+else {
+    Utiles.Logger.logWarning(&quot;No se pudo cargar valor de tabla\n&quot; + respuesta.contenido);
+    throw Java.Lang.Exception(&quot;No se pudo cargar valor de tabla\n&quot; + respuesta.contenido);
+}
+
+valor = 1000000000000000 + arg.nroSolicitud;
+
+result2 = GenerarCode39.toPNG(((String)valor), pathTmp, 100, 2, false);
+fJasper.parameters.put(&quot;codigoBarras&quot;, ((String) pathTmp+(String)valor+&quot;.png&quot;));
+fJasper.parameters.put(&quot;nroSolicitud&quot;, ((String) arg.nroSolicitud));
+fJasper.parameters.put(&quot;nombreYApellido&quot;, ((String) arg.nombreYApellido));
+fJasper.parameters.put(&quot;campana&quot;, ((String) arg.campana));
+fJasper.parameters.put(&quot;cuil&quot;, ((String) arg.cuil));
+fJasper.parameters.put(&quot;fecha&quot;, ((String) arg.fecha.format(mask : &quot;dd/MM/yyyy&quot;)));
+fJasper.parameters.put(&quot;idCobis&quot;, ((String) arg.idCobis));
+foreach (element in ((((String) valor).chars()))) {
+    val = val + &quot;   &quot; + element;
+}
+fJasper.parameters.put(&quot;codigoNumero&quot;, &quot;&quot;+(String)val.trim());
+
+this.quitaNulls(parametros : fJasper.parameters);
+
+Utiles.Logger.logDebug(mensaje : &quot;FJasperFrom - crearPDFContratoTarjeta - parameters: &quot; + fJasper.parameters);
+
+Utiles.Logger.logDebug(mensaje : &quot;FJasperFrom - crearPDFContratoTarjeta - FIN&quot;);
+return fJasper;
+</sourceCode>
+		</method>
+		<method name="crearPDFContratoTarjetaTemp" description="" flags="clientavailable public">
+			<arg name="nroSolicitud" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="idCobis" description="" flags="in" type="String"/>
+			<arg name="fecha" description="" flags="in" type="Time"/>
+			<arg name="campana" description="" flags="in" type="String"/>
+			<arg name="cuil" description="" flags="in" type="String"/>
+			<arg name="nombreYApellido" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">			
+			
+			
+			
+			
+			
+			
+Utiles.Logger.logDebug(mensaje : &quot;INICIO - crearPDFContratoTarjetaTemp&quot;);
+
+FJasper fJasper;
+Utiles.Respuesta respuesta = Respuesta();
+
+try {
+    fJasper = FJasperExt.crearPDFContratoTarjeta(nombreYApellido : arg.nombreYApellido, nroSolicitud : arg.nroSolicitud, campana : arg.campana, 
+                                                 cuil : arg.cuil, fecha : arg.fecha, idCobis : arg.idCobis);
+    respuesta.resultado = OK; 
+    respuesta.contenido = fJasper.getPDFStream();
+    //nfc = fJasper.crearPDF(pathSalida : &quot;C:\\Documents and Settings\\c02283\\Escritorio\\&quot;);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = ERROR;
+    respuesta.contenido = e.message;
+}
+
+Utiles.Logger.logDebug(mensaje : &quot;FIN - crearPDFContratoTarjetaTemp&quot;);
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="quitaNulls" description="" flags="clientavailable public">
+			<arg name="parametros" description="" flags="in" type="Java.Util.Map"/>
+			<sourceCode language="Java1">			
+foreach (key in parametros.keySet()) {
+    if (parametros.get(arg1 : key) == null) {
+        parametros.put(arg1 : key, arg2 : &quot; &quot;);
+    }
+}
+</sourceCode>
+		</method>
+	</methods>
+</component>

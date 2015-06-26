@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="PaletteRecord" description="PaletteRecord" versionID="Version 6.5 " flags="" signature="jxl.biff.PaletteRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.PaletteRecord"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.PaletteRecord"/>
+	<attributes>
+		<Binary name="data" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Bool name="dirty" flags="hasgetter external" primitive="true" position="2" javaType="boolean" readSignature="MisDirty()Z"/>
+	</attributes>
+	<methods>
+		<method name="PaletteRecord" flags="static hidden" signature="Kjxl.biff.PaletteRecord()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.PaletteRecord"/>
+		</method>
+		<method name="PaletteRecord" flags="static" signature="Kjxl.biff.PaletteRecord(Ljxl.read.biff.Record;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.PaletteRecord"/>
+		</method>
+		<method name="getColourRGB" description="getColourRGB" flags="external" signature="MgetColourRGB(Ljxl.format.Colour;)Ljxl.format.RGB;">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.RGB" javaType="jxl.format.RGB"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="isDirty" description="isDirty" flags="external hidden" signature="MisDirty()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setColourRGB" description="setColourRGB" flags="external" signature="MsetColourRGB(Ljxl.format.Colour;III)V">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="g" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="b" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

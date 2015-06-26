@@ -1,0 +1,2409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FProceso2" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio2.SProceso2" name="servicio" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FProceso2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada2.FProceso2"/>
+			<sourceCode language="Java1">this.servicio = new SProceso2();</sourceCode>
+		</method>
+		<method name="calcularEstadoProceso2" flags="clientavailable public">
+			<arg name="proceso" description="" flags="in" type="Negocio2.NProceso2"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try{
+	Integer estadoId;
+	//Anulado
+	if (arg.proceso.fechaRechazo != null &amp;&amp; arg.proceso.motivoRechazo != null){
+		estadoId = 2;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	
+	//estadoTerminado
+	if(arg.proceso.fechaProcesoTerminado != null &amp;&amp; arg.proceso.motivoTerminado != null){
+		boolean ultimaCartaEnviada = false;
+		boolean requiereCartaFechaEnvioCartaCompleto = true;
+		for (NPedido2 pedido : arg.proceso.pedidos) {
+			if (pedido.ultimaCartaEnviada){
+				ultimaCartaEnviada = true;
+			}
+			if (pedido.requiereCarta){
+				for (NCarta2 carta : pedido.carta) {
+					if (carta.fechaEnvioCarta == null){
+						requiereCartaFechaEnvioCartaCompleto = false;
+					}
+				}
+			}
+		}
+		if (ultimaCartaEnviada &amp;&amp; requiereCartaFechaEnvioCartaCompleto){
+			estadoId = 18;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}	
+	}
+	
+	//Carta Enviada
+	boolean noEnvioTodasCartas = false;
+	for (NPedido2 pedido : arg.proceso.pedidos) {
+		if (pedido.requiereCarta){
+			for (NCarta2 carta : pedido.carta) {
+				if (carta.fechaEnvioCarta == null){
+					noEnvioTodasCartas = true;
+				}
+			}
+		}
+	}
+	if (noEnvioTodasCartas){
+		estadoId = 16;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	
+	//Múltiples Cartas en Proceso
+	boolean cartaSinFechaEnvio = false;
+	boolean cartaConFechaEnvio = false;
+	for (NPedido2 pedido : arg.proceso.pedidos) {
+		if (pedido.requiereCarta){
+			for (NCarta2 carta : pedido.carta) {
+				if (carta.fechaEnvioCarta == null){
+					cartaSinFechaEnvio = true;
+				}
+				if(carta.fechaEnvioCarta != null){				
+					cartaConFechaEnvio = true;
+				}
+			}
+		}
+	}
+	if (cartaSinFechaEnvio &amp;&amp; cartaConFechaEnvio){
+		estadoId = 17;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	
+	
+	//Carta en Proceso de Envío
+	if (arg.proceso.pedidos.length()&gt;0){
+		boolean requiereCartaFechaFirmaGerenciaCompleto = true;
+		for (NPedido2 pedido : arg.proceso.pedidos) {
+			if (pedido.requiereCarta){
+				for (NCarta2 carta : pedido.carta) {
+					if (carta.fechaFirmaGerencia == null){
+						requiereCartaFechaFirmaGerenciaCompleto = false;
+					}
+				}
+			}
+		}
+		if (requiereCartaFechaFirmaGerenciaCompleto){
+			estadoId = 15;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+	}
+	
+	//Visado Jefatura
+	if (arg.proceso.pedidos.length()&gt;0){
+		boolean requiereCartaFechaVisadoJefaturaCompleto = true;
+		for (NPedido2 pedido : arg.proceso.pedidos) {
+			if (pedido.requiereCarta){
+				for (NCarta2 carta : pedido.carta) {
+					if (carta.fechaVisadoJefatura == null){
+						requiereCartaFechaVisadoJefaturaCompleto = false;
+					}
+				}
+			}
+		}
+		if (requiereCartaFechaVisadoJefaturaCompleto){
+			estadoId = 14;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+	}
+	
+	//Carta en Proceso
+	if (arg.proceso.pedidos.length()&gt;0){
+		boolean requiereCartaFechaCreacionCompleto = true;
+		for (NPedido2 pedido : arg.proceso.pedidos) {
+			if (pedido.requiereCarta){
+				for (NCarta2 carta : pedido.carta) {
+					if (carta.fechaCreacion == null){
+						requiereCartaFechaCreacionCompleto = false;
+					}
+				}
+			}
+		}
+		if (requiereCartaFechaCreacionCompleto){
+			estadoId = 13;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+	}
+	
+	//Pendiente Carta
+	if (arg.proceso.pedidos.length()&gt;0){
+		boolean requiereCarta = false;
+		for (NPedido2 pedido : arg.proceso.pedidos) {
+			if (pedido.requiereCarta){
+				requiereCarta = true;
+			}
+		}
+		if (requiereCarta){
+			estadoId = 12;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+	}
+	
+	//Pendiente DJAI y Otros
+	if (arg.proceso.djai){
+		int cantDJAIFechaFinIncompleta = 0;
+		boolean fechaInicioDJAICompleta = false;
+		for (NListaDJAI2 djai : arg.proceso.listaDJAI) {
+		    if(djai.fechaFinDJAI == null){
+		    	cantDJAIFechaFinIncompleta++;
+		    	if(djai.fechaInicioDJAI != null){
+		    		fechaInicioDJAICompleta = true;
+		    	}
+	    	}
+		}
+		if (cantDJAIFechaFinIncompleta&gt;=1){
+			if(fechaInicioDJAICompleta){
+				estadoId = 11;
+			}
+			else{
+				estadoId = 10;
+			}
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+	}
+	
+	//Pendiente CDV y Otros
+	if (arg.proceso.cta){
+		int cantCDVFechaFinIncompleta = 0;
+		boolean fechaInicioCDVCompleta = false;
+		for (NListaCDV2 cdv : arg.proceso.listaCDV) {
+		    if(cdv.fechaFinCDV == null){
+		    	cantCDVFechaFinIncompleta++;
+		    	if(cdv.fechaInicioCDV != null){
+		    		fechaInicioCDVCompleta = true;
+		    	}
+	    	}
+		}
+
+		if (cantCDVFechaFinIncompleta&gt;=1){
+			if(fechaInicioCDVCompleta){
+				estadoId = 9;
+			}
+			else{
+				estadoId = 8;
+			}
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+	}
+	
+	//Adjudicado en Mesa
+	if (arg.proceso.fechaAprobadoMesa != null){
+		estadoId = 7;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	
+	//Negociación
+	if (arg.proceso.fechaInicioNegociacion != null){
+		estadoId = 6;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	
+	//Validacion
+	if (arg.proceso.fechaEnvioParaDT != null){
+		estadoId = 5;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	
+	//Licitacion
+	if (arg.proceso.fechaInicioLicitacion != null){
+		estadoId = 4;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	
+	//Pliego
+	if (arg.proceso.fechaPliego != null){
+		estadoId = 3;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	
+	//Analizando Especificaciones
+	if (arg.proceso.fechaIngreso != null){
+		estadoId = 1;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = ERROR;
+    respuesta.contenido = &quot;fachada.calculoEstadoProceso(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="calculoEstadoProceso" flags="clientavailable public">
+			<arg name="proceso" description="" flags="in" type="Negocio2.NProceso2"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try{
+	Integer estadoId;
+	//Anulado
+	if (arg.proceso.fechaRechazo != null &amp;&amp; arg.proceso.motivoRechazo != null){
+		estadoId = 2;
+		respuesta.resultado = OK;
+		respuesta.contenido = estadoId;
+		return respuesta;
+	}
+	boolean requiereCarta=false;
+	boolean tieneCarta = false;
+	for (NPedido2 pedido : arg.proceso.pedidos){
+		if (pedido.requiereCarta){
+			requiereCarta = true;
+		}
+		if (pedido.carta.length() &gt; 0){
+			tieneCarta = true;
+		}
+	}
+	
+	if (requiereCarta &amp;&amp; tieneCarta){
+	//si requiere cartas
+		
+		//estadoTerminado
+		if(arg.proceso.fechaProcesoTerminado != null &amp;&amp; arg.proceso.motivoTerminado != null){
+			boolean ultimaCartaEnviada = false;
+			boolean requiereCartaFechaEnvioCartaCompleto = true;
+			for (NPedido2 pedido : arg.proceso.pedidos) {
+				if (pedido.ultimaCartaEnviada){
+					ultimaCartaEnviada = true;
+				}
+				if (pedido.requiereCarta){
+					for (NCarta2 carta : pedido.carta) {
+						if (carta.fechaEnvioCarta == null){
+							requiereCartaFechaEnvioCartaCompleto = false;
+						}
+					}
+				}
+			}
+			if (ultimaCartaEnviada &amp;&amp; requiereCartaFechaEnvioCartaCompleto){
+				estadoId = 18;
+				respuesta.resultado = OK;
+				respuesta.contenido = estadoId;
+				return respuesta;
+			}	
+		}
+		
+		//Carta Enviada
+		if (arg.proceso.pedidos.length()&gt;0){
+			boolean requiereCartaFechaEnvioCartaCompleto = true;
+			int cantCartas = 0;
+			for (NPedido2 pedido : arg.proceso.pedidos) {
+				if (pedido.requiereCarta){
+					if (pedido.carta.length()&gt;0){
+						for (NCarta2 carta : pedido.carta) {
+							if (carta.fechaEnvioCarta == null){
+								requiereCartaFechaEnvioCartaCompleto = false;
+							}
+						}
+					}
+				}
+			}
+			if (requiereCartaFechaEnvioCartaCompleto){
+				estadoId = 16;
+				respuesta.resultado = OK;
+				respuesta.contenido = estadoId;
+				return respuesta;
+			}
+		}
+		//Múltiples Cartas en Proceso
+		boolean cartaSinFechaEnvio = false;
+		boolean cartaConFechaEnvio = false;
+		for (NPedido2 pedido : arg.proceso.pedidos) {
+			if (pedido.requiereCarta){
+				for (NCarta2 carta : pedido.carta) {
+					if (carta.fechaEnvioCarta == null){
+						cartaSinFechaEnvio = true;
+					}
+					if(carta.fechaEnvioCarta != null){				
+						cartaConFechaEnvio = true;
+					}
+				}
+			}
+		}
+		if (cartaSinFechaEnvio &amp;&amp; cartaConFechaEnvio){
+			estadoId = 17;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+		
+		//Carta en Proceso de Envío
+		if (arg.proceso.pedidos.length()&gt;0){
+			boolean requiereCartaFechaFirmaGerenciaCompleto = true;
+			for (NPedido2 pedido : arg.proceso.pedidos) {
+				if (pedido.requiereCarta){
+					if (pedido.carta.length()&gt;0){
+						for (NCarta2 carta : pedido.carta) {
+							if (carta.fechaFirmaGerencia == null){
+								requiereCartaFechaFirmaGerenciaCompleto = false;
+							}
+						}
+					}
+				}
+			}
+			if (requiereCartaFechaFirmaGerenciaCompleto){
+				estadoId = 15;
+				respuesta.resultado = OK;
+				respuesta.contenido = estadoId;
+				return respuesta;
+			}
+		}
+		
+		//Visado Jefatura
+		if (arg.proceso.pedidos.length()&gt;0){
+			boolean requiereCartaFechaVisadoJefaturaCompleto = true;
+			for (NPedido2 pedido : arg.proceso.pedidos) {
+				if (pedido.requiereCarta){
+					if (pedido.carta.length()&gt;0){
+						for (NCarta2 carta : pedido.carta) {
+							if (carta.fechaVisadoJefatura == null){
+								requiereCartaFechaVisadoJefaturaCompleto = false;
+							}
+						}
+					}
+				}
+			}
+			if (requiereCartaFechaVisadoJefaturaCompleto){
+				estadoId = 14;
+				respuesta.resultado = OK;
+				respuesta.contenido = estadoId;
+				return respuesta;
+			}
+		}
+		
+		//Carta en Proceso
+		if (arg.proceso.pedidos.length()&gt;0){
+			boolean requiereCartaFechaCreacionCompleto = true;
+			for (NPedido2 pedido : arg.proceso.pedidos) {
+				if (pedido.requiereCarta){
+					if (pedido.carta.length()&gt;0){
+						for (NCarta2 carta : pedido.carta) {
+							if (carta.fechaCreacion == null){
+								requiereCartaFechaCreacionCompleto = false;
+							}
+						}
+					}
+				}
+			}
+			if (requiereCartaFechaCreacionCompleto){
+				estadoId = 13;
+				respuesta.resultado = OK;
+				respuesta.contenido = estadoId;
+				return respuesta;
+			}
+		}
+	}else{	
+	///Si no tiene cartas
+		
+		//estadoTerminado
+		if(arg.proceso.fechaProcesoTerminado != null &amp;&amp; arg.proceso.motivoTerminado != null &amp;&amp; !requiereCarta){
+			estadoId = 18;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+		
+		//Pendiente Carta
+		if (arg.proceso.pedidos.length()&gt;0){
+			if (requiereCarta){
+				estadoId = 12;
+				respuesta.resultado = OK;
+				respuesta.contenido = estadoId;
+				return respuesta;
+			}
+		}
+		
+		//Pendiente DJAI y Otros
+		if (arg.proceso.djai){
+			int cantDJAIFechaFinIncompleta = 0;
+			boolean fechaInicioDJAICompleta = false;
+			for (NListaDJAI2 djai : arg.proceso.listaDJAI) {
+			    if(djai.fechaFinDJAI == null){
+			    	cantDJAIFechaFinIncompleta++;
+			    	if(djai.fechaInicioDJAI != null){
+			    		fechaInicioDJAICompleta = true;
+			    	}
+		    	}
+			}
+			if (cantDJAIFechaFinIncompleta&gt;=1){
+				if(fechaInicioDJAICompleta){
+					estadoId = 11;
+				}
+				else{
+					estadoId = 10;
+				}
+				respuesta.resultado = OK;
+				respuesta.contenido = estadoId;
+				return respuesta;
+			}
+		}
+		
+		//Pendiente CDV y Otros
+		if (arg.proceso.cta){
+			int cantCDVFechaFinIncompleta = 0;
+			boolean fechaInicioCDVCompleta = false;
+			for (NListaCDV2 cdv : arg.proceso.listaCDV) {
+			    if(cdv.fechaFinCDV == null){
+			    	cantCDVFechaFinIncompleta++;
+			    	if(cdv.fechaInicioCDV != null){
+			    		fechaInicioCDVCompleta = true;
+			    	}
+		    	}
+			}
+	
+			if (cantCDVFechaFinIncompleta&gt;=1){
+				if(fechaInicioCDVCompleta){
+					estadoId = 9;
+				}
+				else{
+					estadoId = 8;
+				}
+				respuesta.resultado = OK;
+				respuesta.contenido = estadoId;
+				return respuesta;
+			}
+		}
+		
+		//Adjudicado en Mesa
+		if (arg.proceso.fechaAprobadoMesa != null){
+			estadoId = 7;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+		
+		//Negociación
+		if (arg.proceso.fechaInicioNegociacion != null){
+			estadoId = 6;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+		
+		//Validacion
+		if (arg.proceso.fechaEnvioParaDT != null){
+			estadoId = 5;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+		
+		//Licitacion
+		if (arg.proceso.fechaInicioLicitacion != null){
+			estadoId = 4;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+		
+		//Pliego
+		if (arg.proceso.fechaPliego != null){
+			estadoId = 3;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+		
+		//Analizando Especificaciones
+		if (arg.proceso.fechaIngreso != null){
+			estadoId = 1;
+			respuesta.resultado = OK;
+			respuesta.contenido = estadoId;
+			return respuesta;
+		}
+		
+	}	
+	
+	
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = ERROR;
+    respuesta.contenido = &quot;fachada.calculoEstadoProceso(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteValue(id: arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="diasCompra" flags="clientavailable public">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="edicion" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+NProceso2 proceso = NProceso2();
+Integer dias;
+
+try {
+	respuesta = FProceso2.getValueForId(id: arg.id, edicion: arg.edicion);
+	if(respuesta.resultado == OK){
+    	proceso = (NProceso2)respuesta.contenido;
+    	dias = Time.daysSince(t: proceso.fechaIngreso);
+    	respuesta.contenido = dias;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="diasEstado" flags="clientavailable public">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="edicion" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+NProceso2 proceso = NProceso2();
+Integer dias;
+
+try {
+	respuesta = FProceso2.getValueForId(id: arg.id, edicion: arg.edicion);
+	if(respuesta.resultado == OK){
+    	proceso = (NProceso2)respuesta.contenido;
+    	dias = proceso.diasEnEstado;
+    	respuesta.contenido = dias;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="existeProcesoEdicion" flags="clientavailable public">
+			<arg name="proId" description="" flags="in" type="Int"/>
+			<arg name="proEdicion" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+NCesta2 cesta = NCesta2();
+
+try {
+	respuesta = servicio.existeProcesoEdicion(proId : arg.proId, proEdicion : arg.proEdicion);
+	if(((Bool)respuesta.contenido) == true){
+		respuesta.contenido = true;
+		respuesta.resultado = OK;
+	}else{
+		respuesta.contenido = false;
+		respuesta.resultado = OK;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="existeProcesoPadre" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForIDPadre(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	NProceso2 proceso = this.mapeoArrayToNegocio(objArray : objArray);
+    	respuesta = this.getDatosComplementarios(proceso: proceso);
+    	respuesta.resultado = OK;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getDatosComplementarios" flags="clientavailable public">
+			<arg name="proceso" description="" flags="in" type="Negocio2.NProceso2"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try{
+	if(proceso.motivoReprogramacion.id != null){
+		respuesta = FMotivoReprogramacion2.getValueForId(id : proceso.motivoReprogramacion.id);
+		if (respuesta.resultado == OK) {
+			proceso.motivoReprogramacion = ((NMotivoReprogramacion2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(proceso.motivoTerminado.id != null){
+		respuesta = FMotivoTerminado2.getValueForId(id : proceso.motivoTerminado.id);
+		if (respuesta.resultado == OK) {
+			proceso.motivoTerminado = ((NMotivoTerminado2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(proceso.moneda.id != null){
+		respuesta = FMoneda2.getValueForId(id : proceso.moneda.id);
+		if (respuesta.resultado == OK) {
+			proceso.moneda = ((NMoneda2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(proceso.tipoCompra.id != null){
+		respuesta = FTipoCompra2.getValueForId(id : proceso.tipoCompra.id);
+		if (respuesta.resultado == OK) {
+			proceso.tipoCompra = ((NTipoCompra2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(proceso.comprador.id != null){
+		respuesta = FComprador2.getValueForId(id : proceso.comprador.id);
+		if (respuesta.resultado == OK) {
+			proceso.comprador = ((NComprador2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(proceso.jefatura.id != null){
+		respuesta = FJefatura2.getValueForId(id : proceso.jefatura.id);
+		if (respuesta.resultado == OK) {
+			proceso.jefatura = ((NJefatura2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(proceso.gerencia.id != null){
+		respuesta = FGerencia2.getValueForId(id : proceso.gerencia.id);
+		if (respuesta.resultado == OK) {
+			proceso.gerencia = ((NGerencia2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(proceso.tipoPlanificacion.id != null){
+		respuesta = FTipoPlanificacion2.getValueForId(id : proceso.tipoPlanificacion.id);
+		if (respuesta.resultado == OK) {
+			proceso.tipoPlanificacion = ((NTipoPlanificacion2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(proceso.lineaProducto.id != null){
+		respuesta = FLineaProducto2.getValueForId(id : proceso.lineaProducto.id);
+		if (respuesta.resultado == OK) {
+			proceso.lineaProducto = ((NLineaProducto2)respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	if(proceso.tipoAmbito.id != null){
+		respuesta = FTipoAmbito2.getValueForId(id : proceso.tipoAmbito.id);
+		if (respuesta.resultado == OK) {
+			proceso.tipoAmbito = ((NTipoAmbito2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}	
+	if(proceso.motivoRechazo.id != null){
+		respuesta = FMotivoRechazo2.getValueForId(id : proceso.motivoRechazo.id);
+		if (respuesta.resultado == OK) {
+			proceso.motivoRechazo = ((NMotivoRechazo2) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	proceso.cestas.clear();
+	respuesta = FCesta2.getListValuesForIdProceso(procesoId : proceso.id);
+	if (respuesta.resultado == OK) {
+		proceso.cestas =  (NCesta2[])respuesta.contenido;
+	}else if(respuesta.resultado == DATAERROR){
+	}
+	else{
+		return respuesta;
+	}
+	proceso.pedidos.clear();
+	respuesta = FPedido2.getListValuesForIdEdicion(procesoId : proceso.id, procesoEdicion : proceso.edicion);
+	if (respuesta.resultado == OK) {
+		proceso.pedidos =  (NPedido2[])respuesta.contenido;	
+	}else if(respuesta.resultado == DATAERROR){
+	}else{
+		return respuesta;
+	}
+	proceso.comentarios.clear();
+	respuesta = FComentario2.getListValuesForIdProceso(procesoId : proceso.id);
+	if (respuesta.resultado == OK) {
+		proceso.comentarios = (NComentario2[])respuesta.contenido;	
+	}else if(respuesta.resultado == DATAERROR){
+	}else{
+		return respuesta;
+	}
+	proceso.listaCDV.clear();
+	respuesta = FListaCDV2.getListValuesForIdProceso(procesoId : proceso.id);
+	if (respuesta.resultado == OK) {
+		proceso.listaCDV = (NListaCDV2[])respuesta.contenido;	
+	}else if(respuesta.resultado == DATAERROR){
+	}else{
+		return respuesta;
+	}
+	proceso.listaDJAI.clear();
+	respuesta = FListaDJAI2.getListValuesForIdProceso(procesoId : proceso.id);
+	if (respuesta.resultado == OK) {
+		proceso.listaDJAI = (NListaDJAI2[])respuesta.contenido;	
+	}else if(respuesta.resultado == DATAERROR){
+	}else{
+		return respuesta;
+	}
+	respuesta = FProcesoEstado2.getValueForIdProceso(idProceso : proceso.id, edicionProceso : proceso.edicion);
+	if (respuesta.resultado == OK) {
+		proceso.estado = (NProcesoEstado2)respuesta.contenido;	
+	}else if(respuesta.resultado == DATAERROR){
+	}else{
+		return respuesta;
+	}
+	
+	respuesta.contenido = proceso;
+} 
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getDatosComplementarios(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+ 
+try {
+	respuesta = this.servicio.getListValues();
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesCombo" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues();
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		String[Integer] comboItem;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    String codigo = (String)objArray[&quot;CODIGO&quot;];
+		    String descripcion = (String)objArray[&quot;DESCRIPCION&quot;];
+			//comboItem[(Integer)objArray[&quot;ID&quot;]] = (codigo!=null?codigo:&quot;&quot;) + (codigo!=null&amp;&amp;descripcion!=null?&quot; - &quot;:&quot;&quot;) + (descripcion!=null?descripcion:&quot;&quot;);
+			comboItem[(Integer)objArray[&quot;ID&quot;]] = (descripcion!=null?descripcion:&quot;&quot;);
+		}
+    	respuesta.contenido = comboItem;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="getValueForCodigo" flags="public server disableclient">
+			<arg name="codigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForCodigo(codigo : arg.codigo);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForCodigo(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="edicion" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(id: arg.id, edicion: arg.edicion);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	NProceso2 proceso = this.mapeoArrayToNegocio(objArray : objArray);
+    	respuesta = this.getDatosComplementarios(proceso: proceso);
+    	respuesta.resultado = OK;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValuesForFiltros" flags="clientavailable public">
+			<arg name="proceso" description="" flags="in" type="Negocio2.NProceso2"/>
+			<arg name="diasEstado" description="" flags="in" type="Int"/>
+			<arg name="diasCompra" description="" flags="in" type="Int"/>
+			<arg name="fechaIngresoDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaIngresoHasta" description="" flags="in" type="Time"/>
+			<arg name="fechaObjetivoDesde" description="" flags="in" type="Time"/>
+			<arg name="fechaObjetivoHasta" description="" flags="in" type="Time"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+NProceso2 proceso = NProceso2();
+
+try {
+	respuesta = this.servicio.getValuesForFiltros(compradorId : arg.proceso.comprador.id,
+												  jefeId : arg.proceso.jefatura.id,
+												  gerenteId : arg.proceso.gerencia.id,
+												  id : arg.proceso.id, 
+				                                  prioridad : arg.proceso.prioridad,
+				                                  titulo : arg.proceso.titulo,
+				                                  estadoId : arg.proceso.estado.id,
+				                                  diasEstado : arg.diasEstado, 
+				                                  cta : arg.proceso.cta,
+				                                  djai : arg.proceso.djai,
+				                                  tipoCompraId : arg.proceso.tipoCompra.id,
+				                                  diasCompra : arg.diasCompra, 
+				                                  proyecto : arg.proceso.proyecto,
+				                                  fechaIngresoDesde : arg.fechaIngresoDesde,
+				                                  fechaIngresoHasta : arg.fechaIngresoHasta, 
+				                                  fechaObjetivoDesde : arg.fechaObjetivoDesde,
+				                                  fechaObjetivoHasta : arg.fechaObjetivoHasta, 
+				                                  varios1 : arg.proceso.varios1,
+				                                  varios2 : arg.proceso.varios2,
+				                                  varios3 : arg.proceso.varios3,
+				                                  varios4 : arg.proceso.varios4, 
+				                                  varios5 : arg.proceso.varios5,
+				                                  varios6 : arg.proceso.varios6);
+
+	if(respuesta.resultado == OK){
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for(Any valueArray: valuesArray){			
+		    Any[String] objArray = (Any[String])valueArray;			
+		    proceso = NProceso2();
+		    proceso.id = (Integer)objArray[&quot;ID&quot;];
+			proceso.edicion = (Integer)objArray[&quot;EDICION&quot;];
+			proceso.titulo = (String)objArray[&quot;TITULO&quot;];
+			proceso.procesoPadre = (Integer)objArray[&quot;PROCESOPADRE&quot;];
+			proceso.cta = (Bool)objArray[&quot;CTA&quot;];
+			proceso.djai = (Bool)objArray[&quot;DJAI&quot;];
+			proceso.tipoCompra.id = (Integer)objArray[&quot;TIPOCOMPRA_ID&quot;];
+			proceso.tipoCompra.descripcion = (String)objArray[&quot;TIPOCOMPRA_DESCRIPCION&quot;];
+			proceso.moneda.id = (Integer)objArray[&quot;MONEDA_ID&quot;];
+			proceso.moneda.descripcion = (String)objArray[&quot;MONEDA_DESCRIPCION&quot;];
+			proceso.monto = (Decimal)objArray[&quot;MONTO&quot;];
+			proceso.fechaIngreso = (Time)objArray[&quot;FECHAINGRESO&quot;];
+			proceso.fechaPliego = ((Time)objArray[&quot;FECHAPLIEGO&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAPLIEGO&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.fechaInicioLicitacion = ((Time)objArray[&quot;FECHAINICIOLICITACION&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAINICIOLICITACION&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.fechaEnvioParaDT = ((Time)objArray[&quot;FECHAENVIOPARADT&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAENVIOPARADT&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.fechaInicioNegociacion = ((Time)objArray[&quot;FECHAINICIONEGOCIACION&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAINICIONEGOCIACION&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.fechaAprobadoMesa = ((Time)objArray[&quot;FECHAAPROBADOMESA&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAAPROBADOMESA&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.fechaEnvioHojaMCT = ((Time)objArray[&quot;FECHAENVIOHOJAMCT&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAENVIOHOJAMCT&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.fechaNecesidad = ((Time)objArray[&quot;FECHANECESIDAD&quot;]) !=null ? Time(((Time)objArray[&quot;FECHANECESIDAD&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.fechaObjetivo = ((Time)objArray[&quot;FECHAOBJETIVO&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAOBJETIVO&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.fechaReprogramada = ((Time)objArray[&quot;FECHAREPROGRAMADA&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAREPROGRAMADA&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.fechaEstimadaFin = ((Time)objArray[&quot;FECHAESTIMADAFIN&quot;]) !=null ? Time(((Time)objArray[&quot;FECHAESTIMADAFIN&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.diasEnCompra = (Integer)Time.daysSince(t : proceso.fechaIngreso);
+			proceso.estado.id = (Integer)objArray[&quot;ESTADO_ID&quot;];
+			proceso.estado.descripcion = (String)objArray[&quot;ESTADO_DESCRIPCION&quot;];
+			proceso.diasEnEstado = (Integer)Time.daysSince(t : (Time)objArray[&quot;FECHAESTADO&quot;]);
+			proceso.comprador.id = (Integer)objArray[&quot;COMPRADOR_ID&quot;];
+			proceso.comprador.comprador = (String)objArray[&quot;COMPRADOR_DESCRIPCION&quot;];
+			proceso.jefatura.id = (Integer)objArray[&quot;JEFATURA_ID&quot;];
+			proceso.jefatura.descripcionCorta = (String)objArray[&quot;JEFATURA_DESCRIPCIONCORTA&quot;];
+			proceso.gerencia.id = (Integer)objArray[&quot;GERENCIA_ID&quot;];
+			proceso.gerencia.descripcionCorta = (String)objArray[&quot;GERENCIA_DESCRIPCIONCORTA&quot;];
+			proceso.prioridad = (String)objArray[&quot;PRIORIDAD&quot;];
+			proceso.proyecto = (String)objArray[&quot;PROYECTO&quot;];
+			proceso.motivoReprogramacion.id = (Integer)objArray[&quot;MOTIVOREPROGRAMADA_ID&quot;];
+			proceso.motivoReprogramacion.descripcion = (String)objArray[&quot;MOTIVOREPROGRAMADA_DESCRIPCION&quot;];
+			proceso.fechaProcesoTerminado = (Time)objArray[&quot;FECHAPROCESOTERMINADO&quot;];
+			proceso.motivoTerminado.id = (Integer)objArray[&quot;MOTIVOTERMINADO_ID&quot;];
+			proceso.motivoTerminado.descripcion = (String)objArray[&quot;MOTIVOTERMINADO_DESCRIPCION&quot;];
+			proceso.coordinadorTGS = (String)objArray[&quot;COORDINADORTGS&quot;];
+			proceso.tipoPlanificacion.id = (Integer)objArray[&quot;TIPOPLANIFICACION_ID&quot;];
+			proceso.tipoPlanificacion.descripcion = (String)objArray[&quot;TIPOPLANIFICACION_DESCRIPCION&quot;];
+			proceso.lineaProducto.id = (Integer)objArray[&quot;LINEAPRODUCTO_ID&quot;];
+			proceso.lineaProducto.descripcion = (String)objArray[&quot;LINEAPRODUCTO_DESCRIPCION&quot;];
+			proceso.tipoAmbito.id = (Integer)objArray[&quot;TIPOAMBITO_ID&quot;];
+			proceso.tipoAmbito.descripcion = (String)objArray[&quot;TIPOAMBITO_DESCRIPCION&quot;];
+			proceso.clasificacion = (String)objArray[&quot;CLASIFICACION&quot;];
+			proceso.motivoRechazo.id = (Integer)objArray[&quot;MOTIVORECHAZO_ID&quot;];
+			proceso.motivoRechazo.descripcion = (String)objArray[&quot;MOTIVORECHAZO_DESCRIPCION&quot;];
+			proceso.fechaRechazo = ((Time)objArray[&quot;FECHARECHAZO&quot;]) !=null ? Time(((Time)objArray[&quot;FECHARECHAZO&quot;]).format(&quot;yyyyMMdd&quot;)) : null;
+			proceso.varios1 = (String)objArray[&quot;VARIOS1&quot;];
+			proceso.varios2 = (String)objArray[&quot;VARIOS2&quot;];
+			proceso.varios3 = (String)objArray[&quot;VARIOS3&quot;];
+			proceso.varios4 = (String)objArray[&quot;VARIOS4&quot;];
+			proceso.varios5 = (String)objArray[&quot;VARIOS5&quot;];
+			proceso.varios6 = (String)objArray[&quot;VARIOS6&quot;];
+		    objNegocioArray[] = proceso;
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NProceso2"/>
+			<sourceCode language="Java1">Negocio2.NProceso2 objNegocio = Negocio2.NProceso2();
+
+objNegocio.id =  (Integer)arg.objArray[&quot;ID&quot;];
+objNegocio.edicion =  (Integer)arg.objArray[&quot;EDICION&quot;];
+objNegocio.procesoPadre =  (Integer)arg.objArray[&quot;PROCESOPADRE&quot;];
+objNegocio.titulo =  (String)arg.objArray[&quot;TITULO&quot;];
+objNegocio.fechaObjetivo =  (Time)arg.objArray[&quot;FECHAOBJETIVO&quot;];
+objNegocio.fechaReprogramada =  (Time)arg.objArray[&quot;FECHAREPROGRAMADA&quot;];
+objNegocio.motivoReprogramacion.id =  (Integer)arg.objArray[&quot;MRE_ID&quot;];
+objNegocio.fechaEstimadaFin =  (Time)arg.objArray[&quot;FECHAESTIMADAFIN&quot;];
+objNegocio.fechaRechazo =  (Time)arg.objArray[&quot;FECHARECHAZO&quot;];
+objNegocio.fechaProcesoTerminado =  (Time)arg.objArray[&quot;FECHAPROCESOTERMINADO&quot;];
+objNegocio.motivoTerminado.id =  (Integer)arg.objArray[&quot;MTE_ID&quot;];
+objNegocio.proyecto =  (String)arg.objArray[&quot;PROYECTO&quot;];
+objNegocio.moneda.id =  (Integer)arg.objArray[&quot;MON_ID&quot;];
+objNegocio.monto =  (Decimal)arg.objArray[&quot;MONTO&quot;];
+objNegocio.prioridad =  (String)arg.objArray[&quot;PRIORIDAD&quot;];
+objNegocio.tipoCompra.id =  (Integer)arg.objArray[&quot;TCO_ID&quot;];
+objNegocio.coordinadorTGS =  (String)arg.objArray[&quot;COORDINADORTGS&quot;];
+objNegocio.comprador.id =  (Integer)arg.objArray[&quot;CMP_ID&quot;];
+objNegocio.jefatura.id =  (Integer)arg.objArray[&quot;JEF_ID&quot;];
+objNegocio.gerencia.id =  (Integer)arg.objArray[&quot;GER_ID&quot;];
+objNegocio.tipoPlanificacion.id =  (Integer)arg.objArray[&quot;TPL_ID&quot;];
+objNegocio.lineaProducto.id =  (Integer)arg.objArray[&quot;LPR_ID&quot;];
+objNegocio.tipoAmbito.id =  (Integer)arg.objArray[&quot;TAM_ID&quot;];
+objNegocio.fechaIngreso =  (Time)arg.objArray[&quot;FECHAINGRESO&quot;];
+objNegocio.fechaPliego =  (Time)arg.objArray[&quot;FECHAPLIEGO&quot;];
+objNegocio.fechaInicioLicitacion =  (Time)arg.objArray[&quot;FECHAINICIOLICITACION&quot;];
+objNegocio.fechaEnvioParaDT =  (Time)arg.objArray[&quot;FECHAENVIOPARADT&quot;];
+objNegocio.fechaInicioNegociacion =  (Time)arg.objArray[&quot;FECHAINICIONEGOCIACION&quot;];
+objNegocio.fechaAprobadoMesa =  (Time)arg.objArray[&quot;FECHAAPROBADOMESA&quot;];
+objNegocio.fechaEnvioHojaMCT =  (Time)arg.objArray[&quot;FECHAENVIOHOJAMCT&quot;];
+objNegocio.fechaNecesidad =  (Time)arg.objArray[&quot;FECHANECESIDAD&quot;];
+objNegocio.clasificacion =  (String)arg.objArray[&quot;CLASIFICACION&quot;];
+objNegocio.cta =  (Bool)arg.objArray[&quot;CTA&quot;];
+objNegocio.djai =  (Bool)arg.objArray[&quot;DJAI&quot;];
+objNegocio.motivoRechazo.id =  (Integer)arg.objArray[&quot;MRC_ID&quot;];
+objNegocio.fechaRechazo =  (Time)arg.objArray[&quot;FECHARECHAZO&quot;];
+objNegocio.varios1 =  (String)arg.objArray[&quot;VARIOS1&quot;];
+objNegocio.varios2 =  (String)arg.objArray[&quot;VARIOS2&quot;];
+objNegocio.varios3 =  (String)arg.objArray[&quot;VARIOS3&quot;];
+objNegocio.varios4 =  (String)arg.objArray[&quot;VARIOS4&quot;];
+objNegocio.varios5 =  (String)arg.objArray[&quot;VARIOS5&quot;];
+objNegocio.varios6 =  (String)arg.objArray[&quot;VARIOS6&quot;];
+objNegocio.usuarioAlta =  (String)arg.objArray[&quot;USUARIOALTA&quot;];
+objNegocio.fechaAlta =  (Time)arg.objArray[&quot;FECHAALTA&quot;];
+objNegocio.usuarioModificacion =  (String)arg.objArray[&quot;USUARIOMODIFICACION&quot;];
+objNegocio.fechaModificacion =  (Time)arg.objArray[&quot;FECHAMODIFICACION&quot;];
+objNegocio.estado.id = (Integer)arg.objArray[&quot;ESTADO&quot;];
+objNegocio.diasEnCompra = (Integer)Time.daysSince(t : (Time)arg.objArray[&quot;FECHAINGRESO&quot;]);
+objNegocio.diasEnEstado = (Integer)Time.daysSince(t : (Time)arg.objArray[&quot;FECHAESTADO&quot;]);
+
+
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="objNegocio" description="" flags="in" type="Negocio2.NProceso2"/>
+			<arg name="importacion" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta, respuesta2;
+
+try {
+	respuesta = this.servicio.setValue(id : arg.objNegocio.id,
+									   edicion : arg.objNegocio.edicion,
+									   procesoPadre : arg.objNegocio.procesoPadre,
+									   titulo : arg.objNegocio.titulo,
+									   fechaObjetivo : arg.objNegocio.fechaObjetivo,
+				                       fechaReprogramada : arg.objNegocio.fechaReprogramada,
+				                       mreId : arg.objNegocio.motivoReprogramacion.id,
+				                       fechaEstimadaFin : arg.objNegocio.fechaEstimadaFin, 
+				                       fechaProcesoTerminado : arg.objNegocio.fechaProcesoTerminado,
+				                       mteId : arg.objNegocio.motivoTerminado.id,
+				                       proyecto : arg.objNegocio.proyecto,
+				                       monId : arg.objNegocio.moneda.id,
+				                       monto : arg.objNegocio.monto,
+				                       prioridad : arg.objNegocio.prioridad,
+				                       tcoId : arg.objNegocio.tipoCompra.id,
+				                       coordinadorTGS : arg.objNegocio.coordinadorTGS,
+				                       cmpId : arg.objNegocio.comprador.id,
+				                       jefId : arg.objNegocio.jefatura.id,
+				                       gerId : arg.objNegocio.gerencia.id,
+				                       tplId : arg.objNegocio.tipoPlanificacion.id,
+				                       lprId : arg.objNegocio.lineaProducto.id,
+				                       tamId : arg.objNegocio.tipoAmbito.id,
+				                       fechaIngreso : arg.objNegocio.fechaIngreso,
+				                       fechaPliego : arg.objNegocio.fechaPliego,
+				                       fechaInicioLicitacion : arg.objNegocio.fechaInicioLicitacion,
+				                       fechaEnvioParaDT : arg.objNegocio.fechaEnvioParaDT,
+				                       fechaInicioNegociacion : arg.objNegocio.fechaInicioNegociacion,
+				                       fechaAprobadoMesa : arg.objNegocio.fechaAprobadoMesa,
+				                       fechaEnvioHojaMCT : arg.objNegocio.fechaEnvioHojaMCT,
+				                       fechaNecesidad : arg.objNegocio.fechaNecesidad,
+				                       clasificacion : arg.objNegocio.clasificacion,
+				                       cta : arg.objNegocio.cta,
+				                       djai : arg.objNegocio.djai,
+				                       mrcId : arg.objNegocio.motivoRechazo.id,
+				                       fechaRechazo : arg.objNegocio.fechaRechazo,
+				                       varios1 : arg.objNegocio.varios1,
+				                       varios2 : arg.objNegocio.varios2,
+				                       varios3 : arg.objNegocio.varios3,
+				                       varios4 : arg.objNegocio.varios4,
+				                       varios5 : arg.objNegocio.varios5,
+				                       varios6 : arg.objNegocio.varios6,
+				                       fechaAlta : arg.objNegocio.fechaAlta,
+				                       usuarioAlta : arg.objNegocio.usuarioAlta,
+				                       fechaModificacion : arg.objNegocio.fechaModificacion,
+				                       usuarioModificacion : arg.objNegocio.usuarioModificacion,
+				                       existe : arg.objNegocio.existe,
+				                       importacion: arg.importacion);
+
+	if(respuesta.resultado != OK){
+		return respuesta;
+	}
+	respuesta = FListaCDV2.deleteValuesForIdProceso(procesoId : arg.objNegocio.id);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	for (int i=0;i&lt;arg.objNegocio.listaCDV.length();i++){
+		arg.objNegocio.listaCDV[i].idProceso = arg.objNegocio.id;
+		arg.objNegocio.listaCDV[i].edicionProceso = arg.objNegocio.edicion;
+		respuesta = FListaCDV2.setValue(objNegocio : arg.objNegocio.listaCDV[i]);
+		if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+	}
+	respuesta = FListaDJAI2.deleteValuesForIdProceso(procesoId : arg.objNegocio.id);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	for (int i=0;i&lt;arg.objNegocio.listaDJAI.length();i++){
+		arg.objNegocio.listaDJAI[i].idProceso = arg.objNegocio.id;
+		arg.objNegocio.listaDJAI[i].edicionProceso = arg.objNegocio.edicion;
+		respuesta = FListaDJAI2.setValue(objNegocio : arg.objNegocio.listaDJAI[i]);
+		if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+	}
+	
+	respuesta = servicio.setCTADJAIForIdProceso(id : arg.objNegocio.id, cta : arg.objNegocio.cta, djai : arg.objNegocio.djai);
+	if (respuesta.resultado != OK) {
+		return respuesta;	
+	}
+	
+	if(arg.objNegocio.comentario != null){
+		if(arg.objNegocio.comentario.comentario != null &amp;&amp; arg.objNegocio.comentario.comentario.trim() != &quot;&quot;){
+			arg.objNegocio.comentario.idProceso = arg.objNegocio.id;
+			arg.objNegocio.comentario.edicionProceso = arg.objNegocio.edicion;
+			arg.objNegocio.comentario.tipo = &quot;C&quot;;
+			arg.objNegocio.comentario.usuario = Participant.id;
+			respuesta = FComentario2.setValue(objNegocio : arg.objNegocio.comentario);
+			if (respuesta.resultado != OK) {
+				return respuesta;	
+			}
+		} 	
+	}
+	if(arg.objNegocio.observacion != null){
+		if(arg.objNegocio.observacion.comentario != null &amp;&amp; arg.objNegocio.observacion.comentario.trim() != &quot;&quot;){
+			arg.objNegocio.observacion.idProceso = arg.objNegocio.id;
+			arg.objNegocio.observacion.edicionProceso = arg.objNegocio.edicion;
+			arg.objNegocio.observacion.tipo = &quot;O&quot;;
+			arg.objNegocio.observacion.usuario = Participant.id;
+			respuesta = FComentario2.setValue(objNegocio : arg.objNegocio.observacion);
+			if (respuesta.resultado != OK) {
+				return respuesta;		
+			}
+		} 	
+	}
+	//update de los comentarios 
+	if(arg.objNegocio.comentarios.length() &gt; 0){
+		for(int i = 0; i &lt; arg.objNegocio.comentarios.length(); i++){
+		
+			respuesta = FComentario2.getValueForId(id : arg.objNegocio.comentarios[i].id);
+			
+			if(respuesta.resultado == OK){
+				NComentario2 comentarioObservacion = (NComentario2) respuesta.contenido;
+				
+				if(comentarioObservacion.comentario != arg.objNegocio.comentarios[i].comentario){
+				
+					if(arg.objNegocio.comentarios[i].tipo == &quot;Comentario&quot;){
+						arg.objNegocio.comentario.id = arg.objNegocio.comentarios[i].id;
+						arg.objNegocio.comentario.idProceso = arg.objNegocio.comentarios[i].idProceso;
+						arg.objNegocio.comentario.edicionProceso = arg.objNegocio.comentarios[i].edicionProceso;   
+						arg.objNegocio.comentario.comentario = arg.objNegocio.comentarios[i].comentario;
+						arg.objNegocio.comentario.usuario = Participant.id;
+						respuesta = FComentario2.setValue(objNegocio : arg.objNegocio.comentario);
+						if (respuesta.resultado != OK) {
+							return respuesta;	
+						}
+					}else if(arg.objNegocio.comentarios[i].tipo == &quot;Observación&quot;){
+						arg.objNegocio.observacion.id = arg.objNegocio.comentarios[i].id; 
+						arg.objNegocio.observacion.idProceso = arg.objNegocio.comentarios[i].idProceso;
+						arg.objNegocio.observacion.edicionProceso = arg.objNegocio.comentarios[i].edicionProceso;   
+						arg.objNegocio.observacion.comentario = arg.objNegocio.comentarios[i].comentario;
+						arg.objNegocio.observacion.usuario = Participant.id;
+						respuesta = FComentario2.setValue(objNegocio : arg.objNegocio.observacion);
+						if (respuesta.resultado != OK) {
+							return respuesta;	
+						}		
+					}
+				}
+			}
+		}	
+	}
+	
+	Integer estadoId = -1;
+	respuesta = this.calculoEstadoProceso(proceso : arg.objNegocio);
+	if(respuesta.resultado == OK){
+		estadoId = ((Integer)respuesta.contenido);	
+	}
+	else{
+		return respuesta;
+	}
+	if(estadoId != -1 &amp;&amp; estadoId != arg.objNegocio.estado.idEstadoProceso){
+			
+			NProcesoEstado2 procesoEstado = NProcesoEstado2();
+			procesoEstado.idProceso = arg.objNegocio.id;
+			procesoEstado.edicionProceso = arg.objNegocio.edicion;					
+			procesoEstado.idEstadoProceso = estadoId;
+			procesoEstado.usuarioAlta = Participant.id;
+			procesoEstado.usuarioModificacion = Participant.id; 
+			respuesta = FProcesoEstado2.setValue(objNegocio : procesoEstado);
+			if(respuesta.resultado != OK){
+				return respuesta;
+			}
+	}
+
+	if(arg.objNegocio.fechaRechazo != null &amp;&amp; arg.objNegocio.motivoRechazo.id != null){
+		for (int i=0;i&lt;arg.objNegocio.cestas.length();i++){
+			if (arg.objNegocio.id == arg.objNegocio.cestas[i].procesoId &amp;&amp; arg.objNegocio.edicion == arg.objNegocio.cestas[i].procesoEdicion){
+				if(arg.objNegocio.cestas[i].fechaRechazo == null &amp;&amp; arg.objNegocio.cestas[i].motivoRechazo.id == null){
+					arg.objNegocio.cestas[i].fechaRechazo = arg.objNegocio.fechaRechazo;
+					arg.objNegocio.cestas[i].motivoRechazo.id = arg.objNegocio.motivoRechazo.id;
+					arg.objNegocio.cestas[i].historicoProceso = arg.objNegocio.id;
+					respuesta = FCesta2.setValue(objNegocio : arg.objNegocio.cestas[i], importacion : arg.importacion);
+					if (respuesta.resultado != OK) {
+						return respuesta;		
+					}
+				}
+			}
+		}
+	}else if(arg.objNegocio.fechaRechazo == null &amp;&amp; arg.objNegocio.motivoRechazo.id == null){
+		for (int i=0;i&lt;arg.objNegocio.cestas.length();i++){
+			if (arg.objNegocio.id == arg.objNegocio.cestas[i].procesoId &amp;&amp; arg.objNegocio.edicion == arg.objNegocio.cestas[i].procesoEdicion){
+				arg.objNegocio.cestas[i].fechaRechazo = arg.objNegocio.fechaRechazo;
+				arg.objNegocio.cestas[i].motivoRechazo.id = arg.objNegocio.motivoRechazo.id;
+				arg.objNegocio.cestas[i].historicoProceso = null;
+				respuesta = FCesta2.setValue(objNegocio : arg.objNegocio.cestas[i], importacion : arg.importacion);
+				if (respuesta.resultado != OK) {
+					return respuesta;		
+				}
+			}
+		}
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarCSV" flags="clientavailable public">
+			<arg name="matrizCSV" description="" flags="in" type="Any[][]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">NProceso2[] procesos = {};
+//String[][] matrizCSV = {};
+String[] errores = {};
+Utiles.Respuesta respuesta;
+Respuesta respuesta2;
+errores.clear();
+Integer[Integer][Integer] noExistenVerificados = {};
+
+
+for(int i = 1; i &lt; matrizCSV.length(); i++){
+ 	for(int j = 0; j &lt; matrizCSV[i].length(); j++){
+
+	    NProceso2 proceso = NProceso2();
+	    respuesta = Respuesta();
+	    j = 0;
+	    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	    try{
+	        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+	            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.id: no permite valor vacío.&quot;;  
+	        }else if(((Integer)matrizCSV[i][j]) &gt; 0){
+	            proceso.id = (Integer)matrizCSV[i][j];
+	        }else{
+	            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.id: no permite valor menor a 1.&quot;;  
+	        }
+		    }catch(Java.Lang.Exception ee){
+		        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.id: no cumple con el formato numérico.&quot;;
+		    }
+		    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	    try{
+	        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+	            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.edicion: no permite valor vacío.&quot;;  
+	        }else if(((Integer)matrizCSV[i][j]) &gt; 0){
+	            proceso.edicion = (Integer)matrizCSV[i][j];
+	        }else{
+	            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.edicion: no permite valor menor a 1.&quot;;  
+	        }
+	    }catch(Java.Lang.Exception ee){
+	        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.edicion: no cumple con el formato numérico.&quot;;
+	    }
+	    j++;
+    //VERIFICA EXISTE PROCESO
+	NProceso2 procesoBase = null;
+	proceso.existe = false;
+	try{
+
+		respuesta2 = FProceso2.getValueForId(id : proceso.id, edicion : proceso.edicion);
+		if(respuesta2.resultado == OK){
+			proceso.existe = true;
+			procesoBase = NProceso2(respuesta2.contenido);
+        }
+         
+        if(!proceso.existe){
+			if(noExistenVerificados[proceso.id][proceso.edicion] != null){
+				proceso.existe = true;
+			}else{
+				noExistenVerificados[proceso.id][proceso.edicion] = 1;
+			}
+      	   
+        }
+        
+	}
+	catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.procesoPadre: no cumple con el formato numérico.&quot;;
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+           // errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.procesoPadre]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	if((String)matrizCSV[i][j] != null || (String)matrizCSV[i][j] != &quot;&quot;){
+        	try{
+        		respuesta2 = FProceso2.existeProcesoPadre(id : (Integer)matrizCSV[i][j]);
+        		if((Integer)matrizCSV[i][j] &gt; 0){
+        			if(respuesta2.resultado == OK){
+        		  		proceso.procesoPadre = (Integer)matrizCSV[i][j];
+            		}else{
+            			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.procesoPadre.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe base de datos en la tabla TPC2_PROCESO.&quot;;
+            		}
+            	}else{
+            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.procesoPadre.id: no permite valor menor a 1.&quot;;
+            	}
+            	}catch(Java.Lang.Exception ee){
+		        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.procesoPadre.id: no cumple con el formato numérico.&quot;;
+		    }
+         	}else{
+         		if(procesoBase.procesoPadre != null){
+         			proceso.procesoPadre = procesoBase.procesoPadre;
+         		}else{
+         			proceso.procesoPadre = null;
+         		}
+         	}
+        }else{
+            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.procesoPadre.id: no permite valor menor a 1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.procesoPadre.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.titulo: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            proceso.titulo = (String)matrizCSV[i][j];
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.titulo: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.titulo: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaObjetivo: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			proceso.fechaObjetivo = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaObjetivo]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaObjetivo: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaReprogramada]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	if((String)matrizCSV[i][j] != null || (String)matrizCSV[i][j] != &quot;&quot;){
+            	String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+				Time fechaTime;
+				fechaTime.year = (Integer)fechaStr[2];
+				fechaTime.month = (Integer)fechaStr[1];
+				fechaTime.day = (Integer)fechaStr[0];
+				proceso.fechaReprogramada = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        	}else{
+        		if(procesoBase.fechaReprogramada != null){
+        			proceso.fechaReprogramada = procesoBase.fechaReprogramada;
+        		}else{
+        			proceso.fechaReprogramada = null;
+        		}
+        	}
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaReprogramada]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaReprogramada: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.motivoReprogramacion.id]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	try{
+        		respuesta2 = FMotivoReprogramacion2.getValueForId(id:((Integer)matrizCSV[i][j]));
+        		if(respuesta2.resultado == OK){
+            		proceso.motivoReprogramacion.id = (Integer)matrizCSV[i][j];
+            	}else{
+            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoReprogramacion.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_MOTIVO_REPROGRAMACION.&quot;;
+            		proceso.motivoReprogramacion.id = -1;
+            	}
+            	}catch(Java.Lang.Exception ee){
+		        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoReprogramacion.id: no cumple con el formato numérico&quot;;
+		    }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.motivoReprogramacion.id]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoReprogramacion.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaEstimadaFin]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			proceso.fechaEstimadaFin = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaEstimadaFin]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaEstimadaFin: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaRechazo]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	if((String)matrizCSV[i][j] != null || (String)matrizCSV[i][j] != &quot;&quot;){
+            	String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+				Time fechaTime;
+				fechaTime.year = (Integer)fechaStr[2];
+				fechaTime.month = (Integer)fechaStr[1];
+				fechaTime.day = (Integer)fechaStr[0];
+				proceso.fechaRechazo = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+            }else{ if(procesoBase.fechaRechazo != null){
+            	  	 proceso.fechaRechazo = procesoBase.fechaRechazo;
+            	  }else{
+            	  	 proceso.fechaRechazo = null;
+            	  }
+            }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaRechazo]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaRechazo: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaNecesidad]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			proceso.fechaNecesidad = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaNecesidad]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaNecesidad: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.clasificacion]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            proceso.clasificacion = (String)matrizCSV[i][j];
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.clasificacion]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.clasificacion: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.lineaProducto.codigo]: no permite valor vacío.&quot;;  
+        }else if(((String) matrizCSV[i][j]).length() &gt; 0){
+        	try{
+        		respuesta2 = FLineaProducto2.getValueForId(id : ((Integer)matrizCSV[i][j]));
+        		if(respuesta2.resultado == OK){
+            		proceso.lineaProducto.id = (Integer)matrizCSV[i][j];
+            	}else{
+            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.lineaProducto.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_LINEA_PRODUCTO.&quot;;
+            	}
+            	}catch(Java.Lang.Exception ee){
+		        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.lineaProducto.id: no cumple con el formato numérico.&quot;;
+		    }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.lineaProducto.codigo]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.lineaProducto.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.ambito.id]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	try{
+        		respuesta2 = FTipoAmbito2.getValueForId(id : (Integer)matrizCSV[i][j]);
+        		if(respuesta2.resultado == OK){
+            		  proceso.tipoAmbito.id = (Integer)matrizCSV[i][j];
+            	}else{
+            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.ambito.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_TIPO_AMBITO.&quot;;
+            	}
+            	}catch(Java.Lang.Exception ee){
+		        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.ambito.id: no cumple con el formato numérico.&quot;;
+		    }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.ambito.id]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.ambito.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.moneda.id]: no permite valor vacío.&quot;;
+            proceso.moneda.id = 1;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            	try{
+        		respuesta2 = FMoneda2.getValueForId(id : (Integer)matrizCSV[i][j]);
+        		if(respuesta2.resultado == OK){
+            		  proceso.moneda.id = (Integer)matrizCSV[i][j];
+            	}else{
+            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.moneda.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_MONEDA.&quot;;
+            	}
+            	}catch(Java.Lang.Exception ee){
+		        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.moneda.id: no cumple con el formato numérico.&quot;;
+		    }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.moneda.id]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.moneda.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+       if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+        	//errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.monto: no permite valor vacío.&quot;;
+        }else if(((Decimal)matrizCSV[i][j]) &lt; 0){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.monto: no puede ser menor a 0.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 15){
+        	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.monto: no puede tener mas de 12 digitos para la parte entera y 2 para la parte decimal.&quot;;  
+        }else{
+        	proceso.monto = (Decimal)matrizCSV[i][j];
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.monto: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.tipoCompra.id]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	try{
+        		respuesta2 = FTipoCompra2.getValueForId(id : (Integer)matrizCSV[i][j]);
+        		if(respuesta2.resultado == OK){
+            		  proceso.tipoCompra.id = (Integer)matrizCSV[i][j];
+            	}else{
+            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.tipoCompra.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_TIPO_COMPRA.&quot;;
+            	}
+            	}catch(Java.Lang.Exception ee){
+		        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.tipoCompra.id: no cumple con el formato numérico.&quot;;
+		    }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.tipoCompra.id]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.tipoCompra.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.coordinadorTGS]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            proceso.coordinadorTGS = (String)matrizCSV[i][j];
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.coordinadorTGS]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.coordinadorTGS: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: no permite valor vacío.&quot;;  
+        }else if(((Integer)matrizCSV[i][j]) &gt; 0){
+	        	if(procesoBase != null){
+		        	if(procesoBase.comprador.id == 31){
+		        		try{
+        					respuesta2 = FComprador2.getValueForId(id : (Integer)matrizCSV[i][j]);
+			        		if(respuesta2.resultado == OK){
+			        			NComprador2 comprador = (NComprador2) respuesta2.contenido;
+			     		
+			        			try{
+			     				
+			        				Fuego.Lib.Participant participant = Participant.find(name : comprador.usuarioComprador);
+									//si no encuentra salta al catch
+			            		  	proceso.comprador.id = (Integer)matrizCSV[i][j];
+			        							     						
+			     					}catch(Java.Lang.Exception ee){
+			     				
+			     						errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: &quot;+(String)matrizCSV[i][j]+&quot; no es usuario de BPM.&quot;;
+			     						
+			            			}
+			            	}else{
+			            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_COMPRADOR.&quot;;
+			            	}
+			            	
+			            	}catch(Java.Lang.Exception ee){
+
+		        				errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: no cumple con el formato numérico.&quot;;
+		   				}
+		        	  
+		           	}else{
+		           		proceso.comprador.id = procesoBase.comprador.id;
+		           	}
+		        }else{
+		      		  try{
+        					respuesta2 = FComprador2.getValueForId(id : (Integer)matrizCSV[i][j]);
+			        		if(respuesta2.resultado == OK){
+			        			NComprador2 comprador = (NComprador2) respuesta2.contenido;
+			     				try{
+			        				Fuego.Lib.Participant participant = Participant.find(name : comprador.usuarioComprador);
+			        				if (participant == null) {
+				     					errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: &quot;+(String)matrizCSV[i][j]+&quot; no es usuario de BPM.&quot;;
+			        				} else {
+			            		  		proceso.comprador.id = (Integer)matrizCSV[i][j];
+			        				}
+			     				}catch(Java.Lang.Exception ee){
+			     					Utiles.Logger.logException(exception : ee);
+			     					errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: &quot;+(String)matrizCSV[i][j]+&quot; no es usuario de BPM.&quot;;
+			            		}
+			            	}else{
+			            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_COMPRADOR.&quot;;
+			            	}
+			            }catch(Java.Lang.Exception ee){
+	     					Utiles.Logger.logException(exception : ee);
+		        			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: no cumple con el formato numérico.&quot;;
+		   				} 	
+		        }
+        }else{
+            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: no permite valor menor a 1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+   		Utiles.Logger.logException(exception : ee);
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.comprador.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.jefatura.id]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	try{
+        					respuesta2 = FJefatura2.getValueForId(id : (Integer)matrizCSV[i][j]);
+			        		if(respuesta2.resultado == OK){
+			            		  	  proceso.jefatura.id = (Integer)matrizCSV[i][j];
+			            	}else{
+			            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.jefatura.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_JEFATURA.&quot;;
+			            	}
+			            	}catch(Java.Lang.Exception ee){
+		        				errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.jefatura.id: no cumple con el formato numérico.&quot;;
+		   } 
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.jefatura.id]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.jefatura.id: no cumple con el formato numérico.&quot;;
+        
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.gerencia.id: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	try{
+        					respuesta2 = FGerencia2.getValueForId(id : (Integer)matrizCSV[i][j]);
+			        		if(respuesta2.resultado == OK){
+			            		  	  proceso.gerencia.id = (Integer)matrizCSV[i][j];
+			            	}else{
+			            		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.gerencia.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_GERENCIA.&quot;;
+			            	}
+			            	}catch(Java.Lang.Exception ee){
+		        				errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.gerencia.id: no cumple con el formato numérico.&quot;;
+		   }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.gerencia.id]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.gerencia.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.tipoPlanificacion.id]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	try{
+        			respuesta2 = FTipoPlanificacion2.getValueForId(id : (Integer)matrizCSV[i][j]);
+			      		if(respuesta2.resultado == OK){
+			              	  proceso.tipoPlanificacion.id = (Integer)matrizCSV[i][j];
+			            }else{
+			            	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.tipoPlanificacion.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_TIPO_PLANIFICACION.&quot;;
+			            }
+			}catch(Java.Lang.Exception ee){
+		      			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.tipoPlanificacion.id: no cumple con el formato numérico.&quot;;
+		   }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.tipoPlanificacion.id]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.tipoPlanificacion.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaIngreso: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+			Time fechaTime;
+			fechaTime.year = (Integer)fechaStr[2];
+			fechaTime.month = (Integer)fechaStr[1];
+			fechaTime.day = (Integer)fechaStr[0];
+			proceso.fechaIngreso = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaIngreso]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaIngreso: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaAprobadoMesa]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	if((String)matrizCSV[i][j] != null || (String)matrizCSV[i][j] != &quot;&quot;){
+            	String[] fechaStr = ((String) (matrizCSV[i][j])).split(delim : &quot;/&quot;);
+				Time fechaTime;
+				fechaTime.year = (Integer)fechaStr[2];
+				fechaTime.month = (Integer)fechaStr[1];
+				fechaTime.day = (Integer)fechaStr[0];
+				proceso.fechaAprobadoMesa = Time(fechaTime.format(&quot;yyyyMMdd&quot;));
+            }else{
+            	proceso.fechaAprobadoMesa = procesoBase.fechaAprobadoMesa;
+            }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.fechaAprobadoMesa]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaAprobadoMesa: no cumple con el formato dd/mm/aaaa.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.motivoRechazo.id]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	try{
+        			respuesta2 = FMotivoRechazo2.getValueForId(id : (Integer)matrizCSV[i][j]);
+			      		if(respuesta2.resultado == OK){
+			              	 proceso.motivoRechazo.id = (Integer)matrizCSV[i][j];
+			            }else{
+			            	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoRechazo.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_MOTIVO_RECHAZO.&quot;;
+			            }
+			}catch(Java.Lang.Exception ee){
+		      			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoRechazo.id: no cumple con el formato numérico.&quot;;
+		   }
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.motivoRechazo.id]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoRechazo.id: no cumple con el formato numérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.motivoTerminadoId]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+        	try{
+        			respuesta2 = FMotivoTerminado2.getValueForId(id : (Integer)matrizCSV[i][j]);
+			      		if(respuesta2.resultado == OK){
+			              	 proceso.motivoTerminado.id = (Integer)matrizCSV[i][j];
+			            }else{
+			            	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoTerminado.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_MOTIVO_TERMINADO.&quot;;
+			            	proceso.motivoTerminado.id = -1;
+			            }
+			}catch(Java.Lang.Exception ee){
+		      			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoTerminadoId: no cumple con el formato numérico.&quot;;
+		   }
+            }else{
+            	if(procesoBase.motivoTerminado.id != null){
+            		proceso.motivoTerminado.id = procesoBase.motivoTerminado.id;
+            	}else{
+            		try{
+        			respuesta2 = FMotivoTerminado2.getValueForId(id : (Integer)matrizCSV[i][j]);
+			      		if(respuesta2.resultado == OK){
+			              	 proceso.motivoTerminado.id = (Integer)matrizCSV[i][j];
+			            }else{
+			            	errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoTerminado.id: &quot;+(String)matrizCSV[i][j]+&quot; no existe en la tabla TPC2_MOTIVO_TERMINADO.&quot;;
+			            	proceso.motivoTerminado.id = -1;
+			            }
+					}catch(Java.Lang.Exception ee){
+		      			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoTerminadoId: no cumple con el formato numérico.&quot;;
+		   			}
+		   		}
+		   	} 
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoTerminadoId: no cumple con el formato numérico.&quot;;
+    }
+    j++;    
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.varios1]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            proceso.varios1 = (String)matrizCSV[i][j];
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.varios1]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.varios1: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.varios2]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            proceso.varios2 = (String)matrizCSV[i][j];
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.varios2]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.varios2: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    try{
+        if(matrizCSV[i][j] == null || ((String)matrizCSV[i][j]).length() == 0){
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.varios3]: no permite valor vacío.&quot;;  
+        }else if(((String)matrizCSV[i][j]).length() &gt; 0){
+            proceso.varios3 = (String)matrizCSV[i][j];
+        }else{
+            //errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo[proceso.varios3]: no permite valor menor a -1.&quot;;  //VER
+        }
+    }catch(Java.Lang.Exception ee){
+        errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.varios3: no cumple con el formato alfanumérico.&quot;;
+    }
+    j++;
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    if(proceso.fechaReprogramada == null || proceso.motivoReprogramacion.id == null || proceso.motivoReprogramacion.id == -1){
+    	
+    	if(proceso.fechaReprogramada != null &amp;&amp; proceso.motivoReprogramacion.id == null){
+    		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.motivoReprogramacion.id: no puede estar vacío, si proceso.fechaReprogramada está completo.&quot;;
+    	
+    	}else if(proceso.fechaReprogramada != null &amp;&amp; proceso.motivoReprogramacion.id == -1){
+    		//Asigno null porque en la verificacion de la existencia de la ID, si la variable no existe en BD, le asigna -1.
+    		//Esto permite que no salten dos errores (no existencia de ID y motivoReprogramacion.id vacio).
+    		proceso.motivoReprogramacion.id = null;
+    	
+    	}else if(proceso.motivoReprogramacion.id != null){
+    		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Campo proceso.fechaReprogramada: no puede estar vacío, si proceso.motivoReprogramacion.id está completo.&quot;; 
+		}
+    		
+    	
+    }
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    if((proceso.motivoRechazo.id != null)&amp;&amp;(proceso.fechaRechazo != null)){
+    
+    	if(!proceso.existe){
+			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Validacion Rechazo: no cumple con la validación: Campo proceso.id: no existe en base de datos en tabla PROCESO.&quot;; 
+    	}
+    }else if((proceso.motivoRechazo.id == null)&amp;&amp;(proceso.fechaRechazo == null)){
+    }else{
+    
+		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Validacion Rechazo: no cumple con la validación. Deben estar completos los campos proceso.FechaRechazo, proceso.motivoRechazo.Id y proceso.motivoTerminado.id&quot;;    	
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    if(procesoBase != null){
+    
+    	if(proceso.fechaRechazo != null &amp;&amp; proceso.motivoRechazo.id != null  &amp;&amp; procesoBase.fechaRechazo == null &amp;&amp; procesoBase.motivoRechazo.id == null){
+
+    		//Pregunto si el MotivoTerminado es &quot;Proceso Anulado&quot; -&gt; id = 15
+ 			if(proceso.motivoTerminado.id == 15){	
+    			proceso.fechaProcesoTerminado = proceso.fechaRechazo;
+    		
+  			}else if(proceso.motivoTerminado.id == null){
+    			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Validacion Rechazo: proceso.motivoTerminado.id no puede estar vacío, si proceso.fechaRechazo y proceso.motivoRechazo.id están completos.&quot;;
+    	
+    		}else if(proceso.motivoTerminado.id != 15 &amp;&amp; proceso.motivoTerminado.id != -1){
+    	 		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Validación Rechazo: el Motivo Terminado debe corresponderse con 15 - \&quot;Proceso Anulado\&quot;.&quot;; 
+    		
+    		}else if(proceso.motivoTerminado.id == -1){
+    				//Se habia asignado a -1 al no encontrar ID en BD, esto evita que se tiren dos errores (ID no encontrada y motivoTerminado.id vacio)
+    				proceso.motivoTerminado.id = null;
+    		}
+		    	
+    	}else if(procesoBase.fechaRechazo != null){
+       			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Proceso rechazado: no se puede deshacer.&quot;;
+    
+    	
+    	
+    	}else if(procesoBase.motivoRechazo.id != null){
+    			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Proceso rechazado: no se puede deshacer.&quot;;
+    	}
+    	
+    }else if(procesoBase == null){
+
+    	 if(proceso.fechaRechazo != null &amp;&amp; proceso.motivoRechazo.id != null){
+  
+    		//Pregunto si el MotivoTerminado es &quot;Proceso Anulado&quot; -&gt; id = 15
+ 			if(proceso.motivoTerminado.id == 15){	
+    			proceso.fechaProcesoTerminado = proceso.fechaRechazo;
+    		
+  			}else if(proceso.motivoTerminado.id == null){
+    			errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Validacion Rechazo: proceso.motivoTerminado.id no puede estar vacío, si proceso.fechaRechazo y proceso.motivoRechazo.id están completos.&quot;;
+    	
+    		}else if(proceso.motivoTerminado.id != 15 &amp;&amp; proceso.motivoTerminado.id != -1){
+    	 		errores[] = &quot;Nro Línea &quot;+(i+2)+&quot; - Validación Rechazo: el Motivo Terminado debe corresponderse con 15 - \&quot;Proceso Anulado\&quot;.&quot;; 
+    		
+    		}else if(proceso.motivoTerminado.id == -1){
+    				//Se habia asignado a -1 al no encontrar ID en BD, esto evita que se tiren dos errores (ID no encontrada y motivoTerminado.id vacio)
+    				proceso.motivoTerminado.id = null;
+    		}
+    	}
+    }   
+ 
+    
+    
+    //DJAI
+    respuesta2 = FListaDJAI2.getListValuesForIdProceso(procesoId : proceso.id);
+    if (respuesta2.resultado == OK){
+    	proceso.listaDJAI = (NListaDJAI2[])respuesta2.contenido;
+    	if (proceso.listaDJAI.length()&gt;0)
+    		proceso.djai = true;
+    	else
+    		proceso.djai = false;
+    }else
+    	proceso.djai = false;
+		
+	    
+    //CDV
+	respuesta2 = FListaCDV2.getListValuesForIdProceso(procesoId : proceso.id);
+    if (respuesta2.resultado == OK){
+    	proceso.listaCDV = (NListaCDV2[])respuesta2.contenido;
+    	if (proceso.listaCDV.length()&gt;0)
+    		proceso.cta = true;
+    	else
+    		proceso.cta = false;
+    }else
+    	proceso.cta = false; 
+	
+    //Asigno cestas si existe proceso
+	if(procesoBase != null){
+		proceso.cestas = procesoBase.cestas;
+	}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    procesos[] = proceso;
+	
+	}
+	
+	
+}
+
+if((matrizCSV.length() &lt; 1)&amp;&amp;(matrizCSV[0].length() &lt; 1)){
+	errores[] = &quot;Archivo vacío.&quot;;
+}
+if(errores.length() &lt;= 0){
+  respuesta.contenido = procesos;
+  respuesta.resultado = OK;
+}else{
+  respuesta.contenido = errores;
+  respuesta.resultado = ERROR;
+}
+for (int index = 0; index &lt; errores.length; index++) {
+    logMessage(&quot;Error: &quot; + errores[index], Severity.FATAL);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarColumnasCSV" flags="clientavailable public">
+			<arg name="matrizCSV" description="" flags="in" type="Any[][]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">NCesta2[] cestas = {};
+//String[][] matrizCSV = {};
+String errores = &quot;&quot;;
+Utiles.Respuesta respuesta;
+Respuesta respuesta2;
+
+int i = 0;
+for(int j = 0; j &lt; matrizCSV[i].length(); j++){
+    respuesta = Respuesta();
+    j = 0;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;PROCESO_ID&quot;){
+        }else{
+    		errores = errores + &quot;[A – PROCESO_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;EDICION&quot;){
+        }else{
+    		errores = errores + &quot;, [B – EDICION]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;PROCESO_PADRE_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [C – PROCESO_PADRE_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;TITULO&quot;){
+        }else{
+    		errores = errores + &quot;, [D – TITULO]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAOBJETIVO&quot;){
+        }else{
+    		errores = errores + &quot;, [E – FECHAOBJETIVO]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAREPROGRAMADA&quot;){
+        }else{
+    		errores = errores + &quot;, [F – FECHAREPROGRAMADA]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MOTIVOREPROGRAMACION_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [G – MOTIVOREPROGRAMACION_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAESTIMADAFIN&quot;){
+        }else{
+    		errores = errores + &quot;, [H – FECHAESTIMADAFIN]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHARECHAZO&quot;){
+        }else{
+    		errores = errores + &quot;, [I – FECHARECHAZO]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHANECESIDAD&quot;){
+        }else{
+    		errores = errores + &quot;, [J – FECHANECESIDAD]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;CLASIFICACION&quot;){
+        }else{
+    		errores = errores + &quot;, [K – CLASIFICACION]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;LINEAPRODUCTO_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [L – LINEAPRODUCTO_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;AMBITO_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [M – AMBITO_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MONEDA_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [N – MONEDA_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MONTO&quot;){
+        }else{
+    		errores = errores + &quot;, [O – MONTO]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;TIPOCOMPRA_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [P – TIPOCOMPRA_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;COORDINADORTGS&quot;){
+        }else{
+    		errores = errores + &quot;, [Q – COORDINADORTGS]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;COMPRADOR_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [R – COMPRADOR_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;JEFATURA_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [S – JEFATURA_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;GERENCIA_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [T – GERENCIA_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;TIPOPLANIFICACION_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [U – TIPOPLANIFICACION_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAINGRESO&quot;){
+        }else{
+    		errores = errores + &quot;, [V – FECHAINGRESO]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;FECHAAPROBADOMESA&quot;){
+        }else{
+    		errores = errores + &quot;, [W – FECHAAPROBADOMESA]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MOTIVORECHAZO_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [X – MOTIVORECHAZO_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;MOTIVOTERMINADO_ID&quot;){
+        }else{
+    		errores = errores + &quot;, [Y – MOTIVOTERMINADO_ID]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;VARIOS1&quot;){
+        }else{
+    		errores = errores + &quot;, [Z – VARIOS1]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;VARIOS2&quot;){
+        }else{
+    		errores = errores + &quot;, [AA – VARIOS2]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+    j++;
+    //-------------------------------------------------------------------------------------------------------
+	try{
+    	if(matrizCSV[i][j] == &quot;VARIOS3&quot;){
+        }else{
+    		errores = errores + &quot;, [AB – VARIOS3]&quot;;
+        }
+    }catch(Java.Lang.Exception ee){
+    	errores = &quot;ERROR &quot;;
+    }
+}
+
+if((matrizCSV.length() &lt; 1)&amp;&amp;(matrizCSV[0].length() &lt; 1)){
+	errores = &quot;Archivo vacío.&quot;;
+}
+if(errores.length() &lt;= 0){
+	respuesta.resultado = OK;
+}else{
+	respuesta.contenido = &quot;Nombre de Columnas NO Válidas: &quot; + errores;
+	respuesta.resultado = ERROR;
+}
+for (int index = 0; index &lt; errores.length; index++){
+    logMessage(&quot;Error: &quot; + errores, Severity.FATAL);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

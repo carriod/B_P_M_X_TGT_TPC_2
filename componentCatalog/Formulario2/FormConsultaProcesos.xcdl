@@ -1,0 +1,1113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="FormConsultaProcesos" description="" versionID="Version 6.5 " flags="cloneable presentable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Lang.Presentable" flags="public"/>
+	<inherit class="Fuego.Internal.PresentableDelegate" flags="public delegated hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<objectProperty name="presentationNames" value="FormListaProcesos,FormFiltroProcesos"/>
+	<attributes>
+		<array type="Formulario2.FormConsultaProcesos.BotonesAccion" name="botonesAccion" flags="hasgetter public" position="17" javaType="fuego.xobject.GroupArray"/>
+		<Int length="32" name="diasCompra" flags="hassetter hasgetter public" position="16"/>
+		<Int length="32" name="diasEstado" flags="hassetter hasgetter public" position="15"/>
+		<Time scale="0" precision="0" name="fechaIngresoDesde" flags="hassetter hasgetter public includeincheck" position="1"/>
+		<Time scale="0" precision="0" name="fechaIngresoHasta" flags="hassetter hasgetter public includeincheck" position="2"/>
+		<Time scale="0" precision="0" name="fechaObjetivoDesde" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<Time scale="0" precision="0" name="fechaObjetivoHasta" flags="hassetter hasgetter public includeincheck" position="4"/>
+		<Bool validValues="true|false" name="listaCTA" flags="hassetter hasgetter public includeincheck" position="20">
+			<read language="Java1">return this.objeto.cta;</read>
+			<write language="Java1">this.objeto.cta = value;</write>
+			<property name="validValuesDescriptionList" value="Si,No"/>
+		</Bool>
+		<Int length="32" name="listaComprador" flags="hassetter hasgetter public includeincheck" position="5">
+			<read language="Java1">return objeto.comprador.id;</read>
+			<write language="Java1">objeto.comprador.id = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerCompradores"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerCompradores()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerCompradores"/>
+		</Int>
+		<Bool validValues="true|false" name="listaDJAI" flags="hassetter hasgetter public includeincheck" position="21">
+			<read language="Java1">return this.objeto.djai;</read>
+			<write language="Java1">this.objeto.djai = value;</write>
+			<property name="validValuesDescriptionList" value="Si,No"/>
+		</Bool>
+		<Int length="32" name="listaEstado" flags="hassetter hasgetter public includeincheck" position="6">
+			<read language="Java1">return objeto.estado.id;</read>
+			<write language="Java1">objeto.estado.id = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerEstados"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerEstados()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerEstados"/>
+		</Int>
+		<Int length="32" name="listaGerencia" flags="hassetter hasgetter public includeincheck" position="7">
+			<read language="Java1">return objeto.gerencia.id;</read>
+			<write language="Java1">objeto.gerencia.id = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerGerencias"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerGerencias()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerGerencias"/>
+		</Int>
+		<Int length="32" name="listaJefatura" flags="hassetter hasgetter public includeincheck" position="8">
+			<read language="Java1">return objeto.jefatura.id;</read>
+			<write language="Java1">objeto.jefatura.id = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerJefaturas"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerJefaturas()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerJefaturas"/>
+		</Int>
+		<String validValues="A|M|B" name="listaPrioridad" flags="hassetter hasgetter public includeincheck" position="9">
+			<read language="Java1">return objeto.prioridad;</read>
+			<write language="Java1">objeto.prioridad = value;</write>
+			<property name="validValuesDescriptionList" value="Alta,Media,Baja"/>
+		</String>
+		<Int length="32" name="listaSociedad" flags="hassetter hasgetter public includeincheck" position="10">
+			<read language="Java1">return objeto.sociedad.id;</read>
+			<write language="Java1">objeto.sociedad.id = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerSociedades"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerSociedades()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerSociedades"/>
+		</Int>
+		<Int length="32" name="listaTipoCompra" flags="hassetter hasgetter public includeincheck" position="11">
+			<read language="Java1">return objeto.tipoCompra.id;</read>
+			<write language="Java1">objeto.tipoCompra.id = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerTiposCompra"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerTiposCompra()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerTiposCompra"/>
+		</Int>
+		<array type="Formulario2.FormConsultaProcesos.ListadoProcesos" name="listadoProcesos" flags="hasgetter public" position="12" javaType="fuego.xobject.GroupArray"/>
+		<object type="Negocio2.NProceso2" name="objeto" flags="hassetter hasgetter public" position="13"/>
+		<String name="rol" flags="hassetter hasgetter public" position="18"/>
+		<String name="titulo" flags="hassetter hasgetter public" position="14"/>
+		<String name="userID" flags="hassetter hasgetter public" position="19"/>
+	</attributes>
+	<methods>
+		<method name="FormConsultaProcesos" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormConsultaProcesos"/>
+			<sourceCode language="Java1">this.objeto = Negocio2.NProceso2();</sourceCode>
+		</method>
+		<method name="actionButton0" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton0&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton1" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton1&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton2" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton2&quot;);
+resultado = resultado.toLowerCase().trim();
+ 
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton3" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton3&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton4" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton4&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton5" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton5&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton6" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton6&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if(this.fechaIngresoDesde != null &amp;&amp; fechaIngresoHasta == null){
+	this.fechaIngresoHasta = Time(&apos;now&apos;.format(&quot;yyyyMMdd&quot;));
+}
+else if(fechaIngresoHasta != null &amp;&amp; fechaIngresoDesde == null){
+	fechaIngresoDesde.day = 1;
+	fechaIngresoDesde.month = 1;
+	fechaIngresoDesde.year = fechaIngresoHasta.year;
+	fechaIngresoDesde = Time(fechaIngresoDesde.format(&quot;yyyyMMdd&quot;));
+}
+else if(fechaIngresoDesde != null &amp;&amp; fechaIngresoHasta != null &amp;&amp; fechaIngresoDesde &gt; fechaIngresoHasta){
+	this.showError(error : &quot;Campo Fecha Ingreso Hasta: debe ser mayor o igual al campo Fecha Ingreso Desde.&quot;);
+}
+
+if(this.fechaObjetivoDesde != null &amp;&amp; fechaObjetivoHasta == null){
+	this.fechaObjetivoHasta = Time(&apos;now&apos;.format(&quot;yyyyMMdd&quot;));
+	
+}else if(fechaObjetivoHasta != null &amp;&amp; fechaObjetivoDesde == null){
+	fechaObjetivoDesde.day = 1;
+	fechaObjetivoDesde.month = 1;
+	fechaObjetivoDesde.year = fechaObjetivoHasta.year;
+	fechaObjetivoDesde = Time(fechaObjetivoDesde.format(&quot;yyyyMMdd&quot;));
+}
+else if(fechaObjetivoDesde != null &amp;&amp; fechaObjetivoHasta != null &amp;&amp; fechaObjetivoDesde &gt; fechaObjetivoHasta){
+	this.showError(error : &quot;Campo Fecha Objetivo Hasta: debe ser mayor o igual al campo Fecha Objetivo Desde.&quot;);
+}
+ 
+if(this.objeto.id != null &amp;&amp; this.objeto.id &lt;= 0){ 
+	this.showError(error : &quot;Campo Proceso: debe ser mayor a cero.&quot;);
+}
+ 
+if(this.diasCompra != null &amp;&amp; this.diasCompra &lt; 0){
+	this.showError(error : &quot;Campo Cantidad Días en Compras: debe ser mayor o igual a cero.&quot;);
+}
+if(this.diasEstado != null &amp;&amp; this.diasEstado &lt; 0){
+	this.showError(error : &quot;Campo Cantidad Días en Estado del Proceso: debe ser mayor o igual a cero.&quot;);
+}
+ 
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton6Lista" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton6Lista&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton7" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton7&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="initPres" flags="clientavailable public">
+			<sourceCode language="Java1">this.setVisible(componentId : &quot;buttonSubmit&quot;, visible : false, collapsed : true);
+this.setVisible(componentId : &quot;buttonCancel&quot;, visible : false, collapsed : true);
+
+for (int i = 0; i &lt; 7; i++) {
+   this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+}
+ 
+for (int i = 0; i &lt; botonesAccion.length; i++) {
+    if(botonesAccion[i].labelBoton != null){
+    	this.setVisible(componentId : &quot;actionButton&quot;+i, visible : true, collapsed : false);
+    	this.setText(componentId : &quot;actionButton&quot;+i, text : botonesAccion[i].labelBoton);          
+	}else{
+		this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+	}
+}
+
+this.setVisual();
+</sourceCode>
+		</method>
+		<method name="initPresLista" flags="clientavailable public">
+			<sourceCode language="Java1">this.setVisible(componentId : &quot;buttonSubmit&quot;, visible : false, collapsed : true);
+this.setVisible(componentId : &quot;buttonCancel&quot;, visible : false, collapsed : true);
+
+for (int i = 0; i &lt; 7; i++) {
+	if(i == 6){
+		this.setVisible(componentId : &quot;actionButton6Lista&quot;, visible : false, collapsed : false);
+	}else{
+		this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+	}
+   
+}
+ 
+for (int i = 0; i &lt; botonesAccion.length; i++) {
+    if(botonesAccion[i].labelBoton != null){
+    	
+    	if(i == 6){
+    		this.setVisible(componentId : &quot;actionButton6Lista&quot;, visible : true, collapsed : false);
+    		this.setText(componentId : &quot;actionButton6Lista&quot;, text : botonesAccion[i].labelBoton);
+    	}else{
+    	 	this.setVisible(componentId : &quot;actionButton&quot;+i, visible : true, collapsed : false);
+    		this.setText(componentId : &quot;actionButton&quot;+i, text : botonesAccion[i].labelBoton);
+    	}
+          
+	}else{
+		
+    	if(i == 6){
+    		this.setVisible(componentId : &quot;actionButton6Lista&quot;, visible : false, collapsed : false);
+    	}else{
+    		this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+    	}
+		
+		
+	}
+}
+for(int i = 0; i &lt; this.listadoProcesos.length(); i++){
+	this.setText(groupComponentId : &quot;arrayProcesos&quot;, columnComponentId : &quot;procesoIdButton&quot;, index : i, text: (String)this.listadoProcesos[i].objeto.id);
+}
+
+if(this.rol == &quot;TPC - Supervisor CdG&quot; || this.rol == &quot;TPC - Analista CdG&quot; || this.rol == &quot;TPC2 - Consulta&quot;){
+	for (int i = 0; i &lt; listadoProcesos.length; i++) {
+	    if(listadoProcesos[i].objeto.estado.id in ({8,9,10,11,12,13,14,15,16,17})){
+	    	listadoProcesos[i].objeto.estado.id = 19;
+	    	Respuesta respuesta = FEstadosProceso2.getValueForId(id : listadoProcesos[i].objeto.estado.id);
+	    	if(respuesta.resultado == OK){
+				listadoProcesos[i].objeto.estado.descripcion = ((NEstadosProceso2) respuesta.contenido).descripcion;
+			}
+			else{
+				Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+				throw Java.Lang.Exception((String)respuesta.contenido);
+			}
+	    }
+	}
+}
+
+this.setVisualLista();</sourceCode>
+		</method>
+		<method name="listaCTAValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Bool]"/>
+			<sourceCode language="Fuego">return [true : &quot;Si&quot;,false : &quot;No&quot;]
+</sourceCode>
+		</method>
+		<method name="listaCompradorValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Fuego">return obtenerCompradores()
+</sourceCode>
+		</method>
+		<method name="listaDJAIValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Bool]"/>
+			<sourceCode language="Fuego">return [true : &quot;Si&quot;,false : &quot;No&quot;]
+</sourceCode>
+		</method>
+		<method name="listaEstadoValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Fuego">return obtenerEstados()
+</sourceCode>
+		</method>
+		<method name="listaGerenciaValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Fuego">return obtenerGerencias()
+</sourceCode>
+		</method>
+		<method name="listaJefaturaValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Fuego">return obtenerJefaturas()
+</sourceCode>
+		</method>
+		<method name="listaPrioridadValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return [&quot;A&quot; : &quot;Alta&quot;,&quot;M&quot; : &quot;Media&quot;,&quot;B&quot; : &quot;Baja&quot;]
+</sourceCode>
+		</method>
+		<method name="listaSociedadValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Fuego">return obtenerSociedades()
+</sourceCode>
+		</method>
+		<method name="listaTipoCompraValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Fuego">return obtenerTiposCompra()
+</sourceCode>
+		</method>
+		<method name="obtenerCompradores" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Java1">String[Integer] valores = {};
+Respuesta respuesta = FComprador2.getListValuesCombo(vigencia : false);
+if(respuesta.resultado==OK){
+	valores = (String[Integer])respuesta.contenido;
+}else{
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}
+return valores;</sourceCode>
+		</method>
+		<method name="obtenerEstados" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Java1">String[Integer] valores = {};
+Respuesta respuesta = Fachada2.FEstadosProceso2.getListValuesCombo(rol: this.rol, vigencia : false);
+if(respuesta.resultado==OK){
+	valores = (String[Integer])respuesta.contenido;
+}else{
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}
+return valores;</sourceCode>
+		</method>
+		<method name="obtenerGerencias" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Java1">String[Integer] valores = {};
+Respuesta respuesta = FGerencia2.getListValuesCombo(vigencia : false);
+if(respuesta.resultado==OK){
+	valores = (String[Integer])respuesta.contenido;
+}else{
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}
+return valores;</sourceCode>
+		</method>
+		<method name="obtenerJefaturas" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Java1">String[Integer] valores = {};
+Respuesta respuesta = FJefatura2.getListValuesCombo(vigencia : false);
+if(respuesta.resultado==OK){
+	valores = (String[Integer])respuesta.contenido;
+}else{
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}
+return valores;</sourceCode>
+		</method>
+		<method name="obtenerSociedades" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Java1">String[Integer] valores = {};
+Respuesta respuesta = FSociedad2.getListValuesCombo(vigencia : false);
+if(respuesta.resultado==OK){
+	valores = (String[Integer])respuesta.contenido;
+}else{
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}
+return valores;</sourceCode>
+		</method>
+		<method name="obtenerTiposCompra" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[Int]"/>
+			<sourceCode language="Java1">String[Integer] valores = {};
+Respuesta respuesta = FTipoCompra2.getListValuesCombo(vigencia : false);
+if(respuesta.resultado==OK){
+	valores = (String[Integer])respuesta.contenido;
+}else{
+	throw Java.Lang.Exception((String)respuesta.contenido);
+}
+return valores;</sourceCode>
+		</method>
+		<method name="setVisual" flags="clientavailable public">
+			<sourceCode language="Java1">Java.Lang. Boolean visible = true;
+if(this.rol == &quot;TPC - Supervisor CdG&quot; || this.rol == &quot;TPC - Analista CdG&quot;){
+	
+	visible = false;
+
+	this.setVisible(componentId : &quot;tableDatosVarios&quot;, visible : visible, collapsed : !visible);
+
+}</sourceCode>
+		</method>
+		<method name="setVisualLista" flags="clientavailable public">
+			<variables>
+				<variable name="visible" type="Bool"/>
+			</variables>
+			<sourceCode language="Java1">if(this.rol != &quot;TPC2 - Administrador&quot;){
+	this.setVisible(componentId : &quot;actionButton7&quot;, visible : false, collapsed : true);
+	this.setVisible(componentId : &quot;actionButton6Lista&quot;, visible : false, collapsed : true);
+	this.setVisible(componentId : &quot;actionButton5&quot;, visible : false, collapsed : true);
+	this.setVisible(componentId : &quot;actionButton4&quot;, visible : false, collapsed : true);
+}
+
+if(this.listadoProcesos.length() &gt;= 1){
+	visible = true;
+	
+	if(this.rol == &quot;TPC - Supervisor CdG&quot; || this.rol == &quot;TPC - Analista CdG&quot;){
+	
+		for(int i=0; i &lt; this.listadoProcesos.length(); i++){
+			
+			this.setVisible(groupComponentId : &quot;arrayProcesos&quot;, columnComponentId : &quot;diasEstado&quot;, index : i, visible : false);
+	
+		
+		}
+	}
+}
+this.setearEditableLista();</sourceCode>
+		</method>
+		<method name="setearEditable" flags="clientavailable public">
+			<sourceCode language="Java1"/>
+		</method>
+		<method name="setearEditableLista" flags="clientavailable public">
+			<sourceCode language="Java1">if(this.listadoProcesos.length() &gt;= 1){
+	this.setEditable(componentId : &quot;actionButton7&quot;, editable : true);
+	this.setCssClassName(componentId : &quot;actionButton7&quot;, cssClass : &quot;fo_button&quot;);	
+	
+	this.setEditable(componentId : &quot;actionButton6Lista&quot;, editable : true);
+	this.setCssClassName(componentId : &quot;actionButton6Lista&quot;, cssClass : &quot;fo_button&quot;);	
+	
+	this.setEditable(componentId : &quot;actionButton5&quot;, editable : true);
+	this.setCssClassName(componentId : &quot;actionButton5&quot;, cssClass : &quot;fo_button&quot;);	
+	
+	this.setEditable(componentId : &quot;actionButton4&quot;, editable : true);
+	this.setCssClassName(componentId : &quot;actionButton4&quot;, cssClass : &quot;fo_button&quot;);	
+}else{
+	this.setEditable(componentId : &quot;actionButton7&quot;, editable : false);
+	this.setCssClassName(componentId : &quot;actionButton7&quot;, cssClass : &quot;fo_buttonNotEditable&quot;);
+	
+	this.setEditable(componentId : &quot;actionButton6Lista&quot;, editable : false);
+	this.setCssClassName(componentId : &quot;actionButton6Lista&quot;, cssClass : &quot;fo_buttonNotEditable&quot;);
+	
+	this.setEditable(componentId : &quot;actionButton5&quot;, editable : false);
+	this.setCssClassName(componentId : &quot;actionButton5&quot;, cssClass : &quot;fo_buttonNotEditable&quot;);
+		
+	this.setEditable(componentId : &quot;actionButton4&quot;, editable : false);
+	this.setCssClassName(componentId : &quot;actionButton4&quot;, cssClass : &quot;fo_buttonNotEditable&quot;);
+}
+</sourceCode>
+		</method>
+	</methods>
+	<presentation checked="false" clienterroraspopup="true" cssfilename="webRoot/webResources/css/tpcstyle.css" errorcssclass="fo_presentation_error" errorfontface="PLAIN" errorfontsize="12" errorfonttype="Times New Roman, Times, serif" height="0" id="FormListaProcesos" initializationmethod="MinitPresLista()V" iscssenabled="true" isuxo="false" reference="FormConsultaProcesos" width="0" cssclass="fo_presentation" ismixedcss="true" tabindex="0">
+		<background imageattachment="fixed" imagelayout="no-repeat" imagexposition="center" imageyposition="center">
+			<image alignment="center" bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" required="false" cssclass="fo_image" ismixedcss="false" tabindex="0"/>
+		</background>
+		<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="FormListaProcesostable" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_presentation_table" ismixedcss="false" tabindex="0">
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label1" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Listado de Procesos - Listado</value>
+								</label>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,100%]" id="table2" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title2_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label2" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Procesos Encontrados</value>
+								</label>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<array headersortedbgcolor="#0A2F6F" headersortedfgcolor="#FFFFFF" sorted="true" alignment="center" automaticadd="false" bordercolor="#D0D2D4" borderwidth="1" cellpadding="3" cellspacing="1" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" headerbordercolor="#D0D2D4" headerborderwidth="1" headercssclass="fo_group_header_color" headerenabled="true" headerfontface="PLAIN" headerfontsize="12" headerfonttype="Times New Roman, Times, serif" headers="[,Proceso,Edición,Título,CTA,DJAI,Tipo de Compra,Moneda,Monto,Fecha Ingreso,Fecha Objetivo,Fecha Reprogramada,Fecha Estimada Fin,Cantidad de Días en Compras,Estado del Proceso,Cantidad de Días en Estado del Proceso,Comprador,Jefatura,Gerencia,Prioridad,Proyecto]" headerswidth="[,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100]" id="arrayProcesos" indexbgcolor="#ffffff" indexbordercolor="#D0D2D4" indexborderwidth="1" indexcssclass="fo_group_index" indexenabled="false" indexfgcolor="#ffffff" indexfontface="PLAIN" indexfontsize="10" indexfonttype="Times New Roman, Times, serif" indextabenabled="false" pagingbgcolor="#ffffff" pagingbordercolor="#D0D2D4" pagingborderstyle="SOLID" pagingborderwidth="1" pagingcssclass="fo_group_paging" pagingfgcolor="#515559" pagingfontface="PLAIN" pagingfontsize="12" pagingfonttype="Arial" pagingshowall="false" reference="listadoProcesos" rowevencssclass="fo_group_even_tr" rowoddcssclass="fo_group_odd_tr" rows="20" cssclass="fo_group_color" ismixedcss="true" tabindex="0">
+									<addbutton cssclass="fo_group_add" ismixedcss="false" tabindex="0"/>
+									<removebutton cssclass="fo_group_minus" ismixedcss="false" tabindex="0"/>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="link" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="procesoIdButton" methodinvocation="listadoProcesos[].:MprocesoIdButton()V" transparent="true" cssclass="link_button" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="edicion" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.edicion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0">
+												<value>link</value>
+											</text>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="titulo" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.titulo" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="cta" reference="listadoProcesos[].objeto.cta" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<check bordercolor="#D0D2D4" borderwidth="1" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="djai" reference="listadoProcesos[].objeto.djai" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0">
+												<value/>
+											</check>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="tipoCompra" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.tipoCompra.descripcion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="moneda" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.moneda.descripcion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="monto" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.monto" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaIngreso" reference="listadoProcesos[].objeto.fechaIngreso" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaObjetivo" reference="listadoProcesos[].objeto.fechaObjetivo" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaReprogramada" reference="listadoProcesos[].objeto.fechaReprogramada" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaEstimadaFin" reference="listadoProcesos[].objeto.fechaEstimadaFin" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="diasCompras" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.diasEnCompra" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="estado" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.estado.descripcion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="diasEstado" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.diasEnEstado" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="comprador" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.comprador.comprador" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="jefatura" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.jefatura.descripcionCorta" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="gerencia" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.gerencia.descripcionCorta" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="prioridad" reference="listadoProcesos[].listaPrioridad" required="false" transparent="true" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="proyecto" outputmasktype="0" passwordfield="false" reference="listadoProcesos[].objeto.proyecto" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</array>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="7" cellspacing="0" columnwidth="[,10%,10%,10%,10%,10%,10%,10%,10%]" id="table3" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_footer_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton0" methodinvocation="MactionButton0()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton1" methodinvocation="MactionButton1()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bgcolor="#ffffff" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton2" methodinvocation="MactionButton2()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton3" methodinvocation="MactionButton3()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bgcolor="#000000" bordercolor="#D0D2D4" borderwidth="1" display="action" fgcolor="#ffffff" fontface="BOLD" fontsize="16" fonttype="Times New Roman, Times, serif" id="actionButton4" methodinvocation="MactionButton4()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bgcolor="#000000" bordercolor="#D0D2D4" borderwidth="1" display="action" fgcolor="#ffffff" fontface="BOLD" fontsize="16" fonttype="Times New Roman, Times, serif" id="actionButton5" methodinvocation="MactionButton5()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bgcolor="#ffffff" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="BOLD" fontsize="14" fonttype="Times New Roman, Times, serif" id="actionButton6Lista" methodinvocation="MactionButton6Lista()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bgcolor="#000000" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="BOLD" fontsize="16" fonttype="Times New Roman, Times, serif" id="actionButton7" methodinvocation="MactionButton7()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,50%,50%]" id="table4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="submit" bordercolor="#D0D2D4" borderwidth="1" display="submit" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonSubmit" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="cancel" bordercolor="#D0D2D4" borderwidth="1" display="cancel" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonCancel" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+		</table>
+	</presentation>
+	<presentation checked="false" clienterroraspopup="true" cssfilename="webRoot/webResources/css/tpcstyle.css" errorcssclass="fo_presentation_error" errorfontface="PLAIN" errorfontsize="12" errorfonttype="Times New Roman, Times, serif" height="0" id="FormFiltroProcesos" initializationmethod="MinitPres()V" iscssenabled="true" isuxo="false" reference="FormConsultaProcesos" width="0" cssclass="fo_presentation" ismixedcss="false" tabindex="0">
+		<background imageattachment="fixed" imagelayout="no-repeat" imagexposition="center" imageyposition="center">
+			<image alignment="center" bordercolor="#D0D2D4" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" required="false" cssclass="fo_image" ismixedcss="false" tabindex="0"/>
+		</background>
+		<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="FormFiltroProcesostable" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_presentation_table" ismixedcss="false" tabindex="0">
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="2" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label1" cssclass="fo_title_label" ismixedcss="false" tabindex="0">
+									<value>Listado de Procesos - Filtros de Búsqueda</value>
+								</label>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,16%,16%,16%,16%,16%,16%]" id="tableDatosGenerales" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title2_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label2" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Filtros de Búsqueda</value>
+								</label>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="compradorL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Comprador</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="comprador" reference="listaComprador" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="jefaturaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Jefatura</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="jefatura" reference="listaJefatura" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="gerenciaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Gerencia</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="gerencia" reference="listaGerencia" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="procesoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Proceso</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="proceso" outputmasktype="0" passwordfield="false" reference="objeto.id" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="prioridadL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Prioridad</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="prioridad" reference="listaPrioridad" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="tituloL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Título</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="titulo" outputmasktype="0" passwordfield="false" reference="objeto.titulo" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="estadoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Estado del Proceso</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="estado" reference="listaEstado" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="diasEstadoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Cantidad de Días en Estado del Proceso</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="diasEstado" outputmasktype="0" passwordfield="false" reference="diasEstado" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="ctaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>CTA</value>
+								</label>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,[]" id="table7" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="cta" reference="listaCTA" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="djaiL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>DJAI</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="djai" reference="listaDJAI" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="tipoCompraL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Tipo de Compra</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="tipoCompra" reference="listaTipoCompra" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="diasComprasL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Cantidad de Días en Compras</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="diasCompras" outputmasktype="0" passwordfield="false" reference="diasCompra" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="proyectoL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Proyecto</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="proyecto" outputmasktype="0" passwordfield="false" reference="objeto.proyecto" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,12%,13%,12%,13%,12%,13%,12%,13%]" id="tableFechas" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label16" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Fecha Ingreso:</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label17" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Fecha Objetivo:</value>
+								</label>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="fechaIngresoDesdeL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Desde</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaIngresoDesde" reference="fechaIngresoDesde" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="fechaIngresoHastaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Hasta</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaIngresoHasta" reference="fechaIngresoHasta" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="fechaObjetivoDesdeL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Desde</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaObjetivoDesde" reference="fechaObjetivoDesde" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="fechaObjetivoHastaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Hasta</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaObjetivoHasta" reference="fechaObjetivoHasta" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,16%,16%,16%,16%,16%,16%]" id="tableDatosVarios" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios1L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 1</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios1" outputmasktype="0" passwordfield="false" reference="objeto.varios1" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios2L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 2</value>
+								</label>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios2" outputmasktype="0" passwordfield="false" reference="objeto.varios2" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios3L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios3</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios3" outputmasktype="0" passwordfield="false" reference="objeto.varios3" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios4L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 4</value>
+								</label>
+							</cell>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios4" outputmasktype="0" passwordfield="false" reference="objeto.varios4" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios5L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Varios 5</value>
+								</label>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios5" outputmasktype="0" passwordfield="false" reference="objeto.varios5" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="varios6L" cssclass="fo_label" ismixedcss="false" tabindex="0">
+									<value>Bloc de Notas</value>
+								</label>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="5" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<multilinetext bordercolor="#D0D2D4" borderwidth="1" colqty="5" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="varios6" lineqty="5" reference="objeto.varios6" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,10%,10%,10%,10%,10%,10%,10%,10%]" id="table3" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_footer_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton0" methodinvocation="MactionButton0()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton1" methodinvocation="MactionButton1()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton2" methodinvocation="MactionButton2()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton3" methodinvocation="MactionButton3()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton4" methodinvocation="MactionButton4()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton5" methodinvocation="MactionButton5()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fgcolor="#ffffff" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton6" methodinvocation="MactionButton6()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#D0D2D4" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="actionButton7" methodinvocation="MactionButton7()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,50%,50%]" id="table6" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="submit" bordercolor="#D0D2D4" borderwidth="1" display="submit" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonSubmit" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="cancel" bordercolor="#D0D2D4" borderwidth="1" display="cancel" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="buttonCancel" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+		</table>
+	</presentation>
+	<resources>
+		<resource default="Area">
+			<label language="en">Area</label>
+			<label language="es">Area</label>
+		</resource>
+		<resource default="Bloc de Notas" type="1">
+			<label language="es">Bloc de Notas</label>
+		</resource>
+		<resource default="Buscar">
+			<label language="en">Buscar</label>
+			<label language="es">Buscar</label>
+		</resource>
+		<resource default="CTA">
+			<label language="en">CTA</label>
+			<label language="es">CTA</label>
+		</resource>
+		<resource default="Cancelar">
+			<label language="en">Cancelar</label>
+			<label language="es">Cancelar</label>
+		</resource>
+		<resource default="Cantidad de Días en Compras">
+			<label language="es">Cantidad de Días en Compras</label>
+		</resource>
+		<resource default="Cantidad de Días en Estado del Proceso">
+			<label language="es">Cantidad de Días en Estado del Proceso</label>
+		</resource>
+		<resource default="Cantidad dias">
+			<label language="en">Cantidad dias</label>
+			<label language="es">Cantidad dias</label>
+		</resource>
+		<resource default="Comprador">
+			<label language="en">Comprador</label>
+			<label language="es">Comprador</label>
+		</resource>
+		<resource default="DJAI">
+			<label language="en">DJAI</label>
+			<label language="es">DJAI</label>
+		</resource>
+		<resource default="Desde">
+			<label language="en">Desde</label>
+			<label language="es">Desde</label>
+		</resource>
+		<resource default="Dias en Compra">
+			<label language="en">Dias en Compra</label>
+			<label language="es">Dias en Compra</label>
+		</resource>
+		<resource default="Dias en Estado">
+			<label language="en">Dias en Estado</label>
+			<label language="es">Dias en Estado</label>
+		</resource>
+		<resource default="Edicion">
+			<label language="en">Edicion</label>
+			<label language="es">Edicion</label>
+		</resource>
+		<resource default="Edición">
+			<label language="es">Edición</label>
+		</resource>
+		<resource default="Estado">
+			<label language="en">Estado</label>
+			<label language="es">Estado</label>
+		</resource>
+		<resource default="Estado del Proceso">
+			<label language="es">Estado del Proceso</label>
+		</resource>
+		<resource default="Fecha Estimada Fin">
+			<label language="es">Fecha Estimada Fin</label>
+		</resource>
+		<resource default="Fecha Informativa">
+			<label language="en">Fecha Informativa</label>
+			<label language="es">Fecha Informativa</label>
+		</resource>
+		<resource default="Fecha Ingreso">
+			<label language="es">Fecha Ingreso</label>
+		</resource>
+		<resource default="Fecha Ingreso:">
+			<label language="en">Fecha Ingreso:</label>
+			<label language="es">Fecha Ingreso:</label>
+		</resource>
+		<resource default="Fecha Objetivo">
+			<label language="en">Fecha Objetivo</label>
+			<label language="es">Fecha Objetivo</label>
+		</resource>
+		<resource default="Fecha Objetivo:">
+			<label language="en">Fecha Objetivo:</label>
+			<label language="es">Fecha Objetivo:</label>
+		</resource>
+		<resource default="Fecha Reprogramada">
+			<label language="en">Fecha Reprogramada</label>
+			<label language="es">Fecha Reprogramada</label>
+		</resource>
+		<resource default="Fecha de Ingreso">
+			<label language="en">Fecha de Ingreso</label>
+			<label language="es">Fecha de Ingreso</label>
+		</resource>
+		<resource default="Filtros de Búsqueda">
+			<label language="es">Filtros de Búsqueda</label>
+		</resource>
+		<resource default="Gerencia">
+			<label language="en">Gerencia</label>
+			<label language="es">Gerencia</label>
+		</resource>
+		<resource default="Hasta">
+			<label language="en">Hasta</label>
+			<label language="es">Hasta</label>
+		</resource>
+		<resource default="Jefatura">
+			<label language="en">Jefatura</label>
+			<label language="es">Jefatura</label>
+		</resource>
+		<resource default="Limpiar">
+			<label language="en">Limpiar</label>
+			<label language="es">Limpiar</label>
+		</resource>
+		<resource default="Listado de Procesos - Filtros de Búsqueda">
+			<label language="es">Listado de Procesos - Filtros de Búsqueda</label>
+		</resource>
+		<resource default="Moneda">
+			<label language="es">Moneda</label>
+		</resource>
+		<resource default="Monto">
+			<label language="es">Monto</label>
+		</resource>
+		<resource default="Monto en Pesos">
+			<label language="en">Monto en Pesos</label>
+			<label language="es">Monto en Pesos</label>
+		</resource>
+		<resource default="Prioridad">
+			<label language="en">Prioridad</label>
+			<label language="es">Prioridad</label>
+		</resource>
+		<resource default="Proceso">
+			<label language="en">Proceso</label>
+			<label language="es">Proceso</label>
+		</resource>
+		<resource default="Procesos Encontrados" type="1">
+			<label language="es">Procesos Encontrados</label>
+		</resource>
+		<resource default="Proyecto">
+			<label language="en">Proyecto</label>
+			<label language="es">Proyecto</label>
+		</resource>
+		<resource default="Sociedad">
+			<label language="en">Sociedad</label>
+			<label language="es">Sociedad</label>
+		</resource>
+		<resource default="SubTitulo">
+			<label language="en">SubTitulo</label>
+			<label language="es">SubTitulo</label>
+		</resource>
+		<resource default="Tipo de Compra">
+			<label language="en">Tipo de Compra</label>
+			<label language="es">Tipo de Compra</label>
+		</resource>
+		<resource default="Titulo">
+			<label language="en">Titulo</label>
+			<label language="es">Titulo</label>
+		</resource>
+		<resource default="Tìtulo" type="1">
+			<label language="es">Tìtulo</label>
+		</resource>
+		<resource default="Título">
+			<label language="es">Título</label>
+		</resource>
+		<resource default="Varios1">
+			<label language="en">Varios1</label>
+			<label language="es">Varios1</label>
+		</resource>
+		<resource default="Varios2">
+			<label language="en">Varios2</label>
+			<label language="es">Varios2</label>
+		</resource>
+		<resource default="Varios3">
+			<label language="en">Varios3</label>
+			<label language="es">Varios3</label>
+		</resource>
+		<resource default="Varios4">
+			<label language="en">Varios4</label>
+			<label language="es">Varios4</label>
+		</resource>
+		<resource default="Varios5">
+			<label language="en">Varios5</label>
+			<label language="es">Varios5</label>
+		</resource>
+		<resource default="Varios6">
+			<label language="en">Varios6</label>
+			<label language="es">Varios6</label>
+		</resource>
+		<resource default="action">
+			<label language="es">action</label>
+		</resource>
+		<resource default="cancel">
+			<label language="en">cancel</label>
+			<label language="es">cancel</label>
+		</resource>
+		<resource default="label" type="1">
+			<label language="en">label</label>
+			<label language="es">label</label>
+		</resource>
+		<resource default="link">
+			<label language="es">link</label>
+		</resource>
+		<resource default="submit">
+			<label language="en">submit</label>
+			<label language="es">submit</label>
+		</resource>
+	</resources>
+</component>

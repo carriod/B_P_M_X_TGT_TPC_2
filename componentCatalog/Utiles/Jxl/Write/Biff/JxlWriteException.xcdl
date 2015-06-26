@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="JxlWriteException" description="JxlWriteException" versionID="Version 6.5 " flags="exception system_exception" signature="jxl.write.biff.JxlWriteException" type="java">
+	<inherit class="Utiles.Jxl.Write.WriteException" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.JxlWriteException"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.JxlWriteException"/>
+	<attributes/>
+	<methods>
+		<method name="JxlWriteException" flags="static" signature="Kjxl.write.biff.JxlWriteException(Ljxl.write.biff.JxlWriteException$WriteMessage;)">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Write.Biff.JxlWriteException.WriteMessage" javaType="jxl.write.biff.JxlWriteException$WriteMessage"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Biff.JxlWriteException"/>
+		</method>
+	</methods>
+</component>

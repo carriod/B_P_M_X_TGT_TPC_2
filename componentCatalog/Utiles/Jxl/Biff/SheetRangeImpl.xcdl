@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="SheetRangeImpl" description="SheetRangeImpl" versionID="Version 6.5 " flags="" signature="jxl.biff.SheetRangeImpl" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Jxl.Range" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.SheetRangeImpl"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.SheetRangeImpl"/>
+	<attributes>
+		<object type="Utiles.Jxl.Cell" name="bottomRight" flags="hasgetter external" position="1" javaType="jxl.Cell" readSignature="MgetBottomRight()Ljxl.Cell;"/>
+		<Int length="32" name="firstSheetIndex" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetFirstSheetIndex()I"/>
+		<Int length="32" name="lastSheetIndex" flags="hasgetter external" primitive="true" position="3" javaType="int" readSignature="MgetLastSheetIndex()I"/>
+		<object type="Utiles.Jxl.Cell" name="topLeft" flags="hasgetter external" position="4" javaType="jxl.Cell" readSignature="MgetTopLeft()Ljxl.Cell;"/>
+	</attributes>
+	<methods>
+		<method name="SheetRangeImpl" flags="static" signature="Kjxl.biff.SheetRangeImpl(Ljxl.biff.SheetRangeImpl;Ljxl.Sheet;)">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Biff.SheetRangeImpl" javaType="jxl.biff.SheetRangeImpl"/>
+			<arg name="s" description="" flags="in external" type="Utiles.Jxl.Sheet" javaType="jxl.Sheet"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.SheetRangeImpl"/>
+		</method>
+		<method name="SheetRangeImpl" flags="static" signature="Kjxl.biff.SheetRangeImpl(Ljxl.Sheet;IIII)">
+			<arg name="s" description="" flags="in external" type="Utiles.Jxl.Sheet" javaType="jxl.Sheet"/>
+			<arg name="c1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="c2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.SheetRangeImpl"/>
+		</method>
+		<method name="equals" description="equals" flags="external hidden" signature="Mequals(Ljava.lang.Object;)Z">
+			<arg name="o" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getBottomRight" description="getBottomRight" flags="external hidden" signature="MgetBottomRight()Ljxl.Cell;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Cell" javaType="jxl.Cell"/>
+		</method>
+		<method name="getFirstSheetIndex" description="getFirstSheetIndex" flags="external hidden" signature="MgetFirstSheetIndex()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getLastSheetIndex" description="getLastSheetIndex" flags="external hidden" signature="MgetLastSheetIndex()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getTopLeft" description="getTopLeft" flags="external hidden" signature="MgetTopLeft()Ljxl.Cell;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Cell" javaType="jxl.Cell"/>
+		</method>
+		<method name="hashCode" description="hashCode" flags="external hidden" signature="MhashCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="insertColumn" description="insertColumn" flags="external" signature="MinsertColumn(I)V">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="insertRow" description="insertRow" flags="external" signature="MinsertRow(I)V">
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="intersects" description="intersects" flags="external" signature="Mintersects(Ljxl.biff.SheetRangeImpl;)Z">
+			<arg name="range" description="" flags="in external" type="Utiles.Jxl.Biff.SheetRangeImpl" javaType="jxl.biff.SheetRangeImpl"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="removeColumn" description="removeColumn" flags="external" signature="MremoveColumn(I)V">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="removeRow" description="removeRow" flags="external" signature="MremoveRow(I)V">
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="toString" description="toString" flags="external hidden" signature="MtoString()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

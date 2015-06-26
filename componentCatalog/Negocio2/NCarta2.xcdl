@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NCarta2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String length="50" name="codigoPlanificacion" flags="hassetter hasgetter public includeincheck" position="1"/>
+		<Int length="32" name="edicionProceso" flags="hassetter hasgetter public" position="11"/>
+		<Bool name="existe" flags="hassetter hasgetter public" position="9"/>
+		<Time scale="0" precision="0" name="fechaCreacion" flags="hassetter hasgetter public includeincheck" position="2"/>
+		<Time scale="0" precision="0" name="fechaEnvioCarta" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<Time scale="0" precision="0" name="fechaFirmaGerencia" flags="hassetter hasgetter public includeincheck" position="4"/>
+		<Time scale="0" precision="0" name="fechaVisadoJefatura" flags="hassetter hasgetter public includeincheck" position="5"/>
+		<String name="formaDePagoCodigo" flags="hassetter hasgetter public" position="15"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="6"/>
+		<Int length="32" name="idProceso" flags="hassetter hasgetter public" position="10"/>
+		<String name="link" flags="hassetter hasgetter public" position="7"/>
+		<Int length="32" name="monedaId" flags="hassetter hasgetter public" position="13"/>
+		<object type="Negocio2.NMonto2" name="montoParcial" flags="hassetter hasgetter public" position="8"/>
+		<String name="proveedorCodigo" flags="hassetter hasgetter public" position="14"/>
+		<Int length="32" name="sociedadId" flags="hassetter hasgetter public" position="12"/>
+	</attributes>
+	<methods>
+		<method name="NCarta2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NCarta2"/>
+			<sourceCode language="Java1">montoParcial = NMonto2();</sourceCode>
+		</method>
+	</methods>
+</component>

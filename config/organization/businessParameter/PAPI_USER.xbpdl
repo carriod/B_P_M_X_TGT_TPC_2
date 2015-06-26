@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<FDIObject>
+	<DirBusinessParameter>
+		<id>PAPI_USER</id>
+		<type>String</type>
+		<defaultValue><![CDATA[papiuser]]></defaultValue>
+		<valuesMap/>
+	</DirBusinessParameter>
+</FDIObject>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DisplayFormat" description="DisplayFormat" versionID="Version 6.5 " flags="abstract interface" signature="jxl.biff.DisplayFormat" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="jxl.biff.DisplayFormat"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.DisplayFormat"/>
+	<attributes>
+		<Bool name="builtIn" flags="hasgetter external" primitive="true" position="1" javaType="boolean" readSignature="MisBuiltIn()Z"/>
+		<Int length="32" name="formatIndex" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetFormatIndex()I"/>
+		<Bool name="initialized" flags="hasgetter external" primitive="true" position="3" javaType="boolean" readSignature="MisInitialized()Z"/>
+	</attributes>
+	<methods>
+		<method name="getFormatIndex" description="getFormatIndex" flags="abstract external hidden" signature="MgetFormatIndex()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="initialize" description="initialize" flags="abstract external" signature="Minitialize(I)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="isBuiltIn" description="isBuiltIn" flags="abstract external hidden" signature="MisBuiltIn()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isInitialized" description="isInitialized" flags="abstract external hidden" signature="MisInitialized()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

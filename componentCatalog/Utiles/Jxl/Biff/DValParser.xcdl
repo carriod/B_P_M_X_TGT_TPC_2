@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DValParser" description="DValParser" versionID="Version 6.5 " flags="" signature="jxl.biff.DValParser" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.DValParser"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.DValParser"/>
+	<attributes>
+		<Binary name="data" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Int length="32" name="numberOfDVRecords" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetNumberOfDVRecords()I"/>
+	</attributes>
+	<methods>
+		<method name="DValParser" flags="static" signature="Kjxl.biff.DValParser([B)">
+			<arg name="data" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.DValParser"/>
+		</method>
+		<method name="dvRemoved" description="dvRemoved" flags="external" signature="MdvRemoved()V"/>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getNumberOfDVRecords" description="getNumberOfDVRecords" flags="external hidden" signature="MgetNumberOfDVRecords()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

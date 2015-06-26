@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="FormatRecord" description="FormatRecord" versionID="Version 6.5 " flags="" signature="jxl.biff.FormatRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<inherit class="Utiles.Jxl.Biff.DisplayFormat" flags=""/>
+	<inherit class="Utiles.Jxl.Format.Format" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.FormatRecord"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.FormatRecord"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.FormatRecord.BiffType" name="biff7" flags="hasgetter attribute static external final" position="13" javaType="jxl.biff.FormatRecord$BiffType" writeSignature="Abiff7;Ljxl.biff.FormatRecord$BiffType;" readSignature="Abiff7;Ljxl.biff.FormatRecord$BiffType;"/>
+		<object type="Utiles.Jxl.Biff.FormatRecord.BiffType" name="biff8" flags="hasgetter attribute static external final" position="12" javaType="jxl.biff.FormatRecord$BiffType" writeSignature="Abiff8;Ljxl.biff.FormatRecord$BiffType;" readSignature="Abiff8;Ljxl.biff.FormatRecord$BiffType;"/>
+		<Bool name="builtIn" flags="hasgetter external" primitive="true" position="1" javaType="boolean" readSignature="MisBuiltIn()Z"/>
+		<Binary name="data" flags="hasgetter external" position="2" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Bool name="date" flags="hasgetter external" primitive="true" position="3" javaType="boolean" readSignature="MisDate()Z"/>
+		<object type="Java.Text.DateFormat" name="dateFormat" flags="hasgetter external" position="4" javaType="java.text.DateFormat" readSignature="MgetDateFormat()Ljava.text.DateFormat;"/>
+		<Int length="32" name="formatIndex" flags="hasgetter external" primitive="true" position="5" javaType="int" readSignature="MgetFormatIndex()I"/>
+		<String name="formatString" flags="hasgetter external" position="6" javaType="java.lang.String" readSignature="MgetFormatString()Ljava.lang.String;"/>
+		<Int length="32" name="indexCode" flags="hasgetter external" primitive="true" position="7" javaType="int" readSignature="MgetIndexCode()I"/>
+		<Bool name="initialized" flags="hasgetter external" primitive="true" position="8" javaType="boolean" readSignature="MisInitialized()Z"/>
+		<object type="Utiles.Jxl.Common.Logger" name="logger" flags="hassetter hasgetter attribute static external" position="11" javaType="jxl.common.Logger" writeSignature="Alogger;Ljxl.common.Logger;" readSignature="Alogger;Ljxl.common.Logger;"/>
+		<Bool name="number" flags="hasgetter external" primitive="true" position="9" javaType="boolean" readSignature="MisNumber()Z"/>
+		<object type="Java.Text.NumberFormat" name="numberFormat" flags="hasgetter external" position="10" javaType="java.text.NumberFormat" readSignature="MgetNumberFormat()Ljava.text.NumberFormat;"/>
+	</attributes>
+	<methods>
+		<method name="FormatRecord" flags="static" signature="Kjxl.biff.FormatRecord(Ljxl.read.biff.Record;Ljxl.WorkbookSettings;Ljxl.biff.FormatRecord$BiffType;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<arg name="biffType" description="" flags="in external" type="Utiles.Jxl.Biff.FormatRecord.BiffType" javaType="jxl.biff.FormatRecord$BiffType"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.FormatRecord"/>
+		</method>
+		<method name="equals" description="equals" flags="external hidden" signature="Mequals(Ljava.lang.Object;)Z">
+			<arg name="o" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getDateFormat" description="getDateFormat" flags="external final hidden" signature="MgetDateFormat()Ljava.text.DateFormat;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Text.DateFormat" javaType="java.text.DateFormat"/>
+		</method>
+		<method name="getFormatIndex" description="getFormatIndex" flags="external hidden" signature="MgetFormatIndex()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getFormatString" description="getFormatString" flags="external hidden" signature="MgetFormatString()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getIndexCode" description="getIndexCode" flags="external hidden" signature="MgetIndexCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getNumberFormat" description="getNumberFormat" flags="external final hidden" signature="MgetNumberFormat()Ljava.text.NumberFormat;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Text.NumberFormat" javaType="java.text.NumberFormat"/>
+		</method>
+		<method name="hashCode" description="hashCode" flags="external hidden" signature="MhashCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="initialize" description="initialize" flags="external" signature="Minitialize(I)V">
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="isBuiltIn" description="isBuiltIn" flags="external hidden" signature="MisBuiltIn()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isDate" description="isDate" flags="external final hidden" signature="MisDate()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isInitialized" description="isInitialized" flags="external hidden" signature="MisInitialized()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isNumber" description="isNumber" flags="external final hidden" signature="MisNumber()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

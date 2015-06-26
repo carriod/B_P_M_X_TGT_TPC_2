@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<externalResource name="HOST_EASYDOC_INTRANET" type="SERVER" subtype="SERVER">
+	<property name="url" value="http://186.124.220.181:80"/>
+	<property name="timeout" value="15"/>
+</externalResource>

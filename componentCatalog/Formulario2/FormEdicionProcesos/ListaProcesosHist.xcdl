@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="ListaProcesosHist" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio2.NProcesoEstadoHistorico2" name="procesoEstadoHist" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ListaProcesosHist" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormEdicionProcesos.ListaProcesosHist"/>
+			<sourceCode language="Java1">NProcesoEstadoHistorico2 procesoEstadoHist = NProcesoEstadoHistorico2();</sourceCode>
+		</method>
+	</methods>
+</component>

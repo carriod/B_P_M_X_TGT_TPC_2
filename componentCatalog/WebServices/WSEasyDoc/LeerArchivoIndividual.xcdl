@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="LeerArchivoIndividual" description="" versionID="Version 6.5 " flags="invokeable" signature="LeerArchivoIndividual;http://localhost/WS;elementsQualified;N" dynamic="true" type="xml">
+	<inherit class="Fuego.Xml.XMLObject" flags="public"/>
+	<objectProperty name="elementType" value="elementType"/>
+	<objectProperty name="invokeableClassName" value="fuego.xmlruntime.XMLObject"/>
+	<objectProperty name="namespace" value="http://localhost/WS"/>
+	<objectProperty name="nativeName" value="LeerArchivoIndividual"/>
+	<objectProperty name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+	<objectProperty name="xmlObjectVersion" value="2.0"/>
+	<attributes>
+		<String name="ixArchivo" flags="hassetter hasgetter public" position="2" writeSignature="@1;VixArchivo;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@1;VixArchivo;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="1"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="ixArchivo"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+		</String>
+		<String name="token" flags="hassetter hasgetter public" position="1" writeSignature="@0;Vtoken;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@0;Vtoken;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="0"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="token"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+		</String>
+	</attributes>
+	<methods>
+		<method name="LeerArchivoIndividual" flags="static public" signature="DLeerArchivoIndividual;http://localhost/WS;elementsQualified;N">
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.LeerArchivoIndividual"/>
+		</method>
+		<method name="LeerArchivoIndividual" flags="static public" signature="XLeerArchivoIndividual;http://localhost/WS;elementsQualified;N">
+			<arg name="xmlText" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.LeerArchivoIndividual"/>
+		</method>
+		<method name="LeerArchivoIndividual" flags="static public" signature="FLeerArchivoIndividual;http://localhost/WS;elementsQualified;N">
+			<arg name="name" description="" flags="in" type="String"/>
+			<arg name="attributes" description="" flags="in" type="String[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.LeerArchivoIndividual"/>
+		</method>
+	</methods>
+</component>

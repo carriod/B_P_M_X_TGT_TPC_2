@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="FConfiguracion" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="FConfiguracion" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FConfiguracion"/>
+			<sourceCode language="Java1"/>
+		</method>
+		<method name="setBotones" flags="clientavailable public">
+			<arg name="configuracion" description="" flags="in" type="Negocio.NConfiguracion"/>
+			<arg name="botonesAccion" description="" flags="out" type="String[]"/>
+			<arg name="botonesSolapa" description="" flags="out" type="String[]"/>
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<sourceCode language="Java1">if(arg.configuracion.actividad == &quot;SSASolicitarAltaSAGI&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = &quot;Verificar Completitud&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Guardar Borrador&quot;;
+	arg.botonesAccion[] = &quot;Guardar Continuar&quot;;
+	//BOTONES DE PANTALLAS
+	arg.botonesSolapa[] = &quot;Datos Generales&quot;;
+	arg.botonesSolapa[] = &quot;Valoración de la Necesidad&quot;;
+	arg.botonesSolapa[] = &quot;Proyectos Asociados&quot;;
+	arg.botonesSolapa[] = &quot;Proveedor&quot;;
+	arg.botonesSolapa[] = &quot;Antecedentes&quot;;
+	arg.botonesSolapa[] = &quot;Situación Presupuestaria&quot;;
+	arg.botonesSolapa[] = &quot;Compras Particulares&quot;;
+	arg.botonesSolapa[] = &quot;Documentación Adjunta&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Comentarios&quot;;
+	arg.botonesSolapa[] = null;
+	arg.botonesSolapa[] = null;
+	arg.botonesSolapa[] = null;
+}
+if(arg.configuracion.actividad == &quot;SSACompletarSAGI&quot; ||
+   arg.configuracion.actividad == &quot;GENCompletarSAGI&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Anular&quot;;
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = &quot;Verificar Completitud&quot;;
+	if(arg.configuracion.rol == &quot;TPC - Gestor Enlace&quot;){
+		arg.botonesAccion[] = &quot;Devolver al Solicitante&quot;;
+	}
+	else{
+		arg.botonesAccion[] = null;
+	}
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Guardar Borrador&quot;;
+	arg.botonesAccion[] = &quot;Guardar Continuar&quot;;
+	//BOTONES DE PANTALLAS
+	arg.botonesSolapa[] = &quot;Datos Generales&quot;;
+	arg.botonesSolapa[] = &quot;Valoración de la Necesidad&quot;;
+	arg.botonesSolapa[] = &quot;Proyectos Asociados&quot;;
+	arg.botonesSolapa[] = &quot;Proveedor&quot;;
+	arg.botonesSolapa[] = &quot;Antecedentes&quot;;
+	arg.botonesSolapa[] = &quot;Situación Presupuestaria&quot;;
+	arg.botonesSolapa[] = &quot;Compras Particulares&quot;;
+	arg.botonesSolapa[] = &quot;Documentación Adjunta&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Comentarios&quot;;
+	arg.botonesSolapa[] = null;
+	arg.botonesSolapa[] = null;
+	arg.botonesSolapa[] = null;
+}
+else if(arg.configuracion.actividad == &quot;SCGAsignarParticipantesSAGI&quot; ||
+		arg.configuracion.actividad == &quot;ACGAsignarParticipantesSAGI&quot; ||
+		arg.configuracion.actividad == &quot;GCOAsignarParticipantesSAGI&quot; ||
+		arg.configuracion.actividad == &quot;JCOAsignarParticipantesSAGI&quot; )
+{
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Guardar Borrador&quot;;
+	arg.botonesAccion[] = &quot;Guardar Continuar&quot;;
+	//BOTONES DE PANTALLAS
+	arg.botonesSolapa[] = &quot;Datos Generales&quot;;
+	arg.botonesSolapa[] = &quot;Valoración de la Necesidad&quot;;
+	arg.botonesSolapa[] = &quot;Proyectos Asociados&quot;;
+	arg.botonesSolapa[] = &quot;Proveedor&quot;;
+	arg.botonesSolapa[] = &quot;Antecedentes&quot;;
+	arg.botonesSolapa[] = &quot;Situación Presupuestaria&quot;;
+	arg.botonesSolapa[] = &quot;Compras Particulares&quot;;
+	arg.botonesSolapa[] = &quot;Documentación Adjunta&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Comentarios&quot;;
+	arg.botonesSolapa[] = &quot;Asignar Participante&quot;;
+	if(arg.configuracion.rol == &quot;TPC - Analista CdG&quot; || arg.configuracion.rol == &quot;TPC - Supervisor CdG&quot;){
+		arg.botonesSolapa[] = &quot;Control de Gestión&quot;;
+	}
+	else{
+		arg.botonesSolapa[] = null;
+	}
+	arg.botonesSolapa[] = null;
+}
+else if(arg.configuracion.actividad == &quot;ACGAnalizarSAGI&quot; || 
+		arg.configuracion.actividad == &quot;ACGCompletarSAGI&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Guardar Borrador&quot;;
+	arg.botonesAccion[] = &quot;Guardar Continuar&quot;;
+	//BOTONES DE PANTALLAS
+	arg.botonesSolapa[] = &quot;Datos Generales&quot;;
+	arg.botonesSolapa[] = &quot;Valoración de la Necesidad&quot;;
+	arg.botonesSolapa[] = &quot;Proyectos Asociados&quot;;
+	arg.botonesSolapa[] = &quot;Proveedor&quot;;
+	arg.botonesSolapa[] = &quot;Antecedentes&quot;;
+	arg.botonesSolapa[] = &quot;Situación Presupuestaria&quot;;
+	arg.botonesSolapa[] = &quot;Compras Particulares&quot;;
+	arg.botonesSolapa[] = &quot;Documentación Adjunta&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Comentarios&quot;;
+	arg.botonesSolapa[] = &quot;Control de Gestión&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Recomendaciones&quot;;
+	arg.botonesSolapa[] = null;
+}
+else if(arg.configuracion.actividad == &quot;AnalizarSAGIPlanificada&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Guardar Borrador&quot;;
+	arg.botonesAccion[] = &quot;Guardar Continuar&quot;;
+	//BOTONES DE PANTALLAS
+	arg.botonesSolapa[] = &quot;Datos Generales&quot;;
+	arg.botonesSolapa[] = &quot;Valoración de la Necesidad&quot;;
+	arg.botonesSolapa[] = &quot;Proyectos Asociados&quot;;
+	arg.botonesSolapa[] = &quot;Proveedor&quot;;
+	arg.botonesSolapa[] = &quot;Antecedentes&quot;;
+	arg.botonesSolapa[] = &quot;Situación Presupuestaria&quot;;
+	arg.botonesSolapa[] = &quot;Compras Particulares&quot;;
+	arg.botonesSolapa[] = &quot;Documentación Adjunta&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Comentarios&quot;;
+	arg.botonesSolapa[] = &quot;Control de Gestión&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Recomendaciones&quot;;
+	arg.botonesSolapa[] = null;
+}
+else if(arg.configuracion.actividad == &quot;ACOResolucionPreComite&quot; ||
+		arg.configuracion.actividad == &quot;ACOResolucionComite&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	if(arg.configuracion.proximaPantalla == &quot;HISTORIALCOMENTARIOS&quot;){
+		arg.botonesAccion[] = null;
+		arg.botonesAccion[] = &quot;Guardar Borrador&quot;;
+	}else{
+		arg.botonesAccion[] = &quot;Guardar Borrador&quot;;
+		arg.botonesAccion[] = &quot;Guardar Continuar&quot;;
+	}
+	//BOTONES DE PANTALLAS
+	arg.botonesSolapa[] = &quot;Datos Generales&quot;;
+	arg.botonesSolapa[] = &quot;Valoración de la Necesidad&quot;;
+	arg.botonesSolapa[] = &quot;Proyectos Asociados&quot;;
+	arg.botonesSolapa[] = &quot;Proveedor&quot;;
+	arg.botonesSolapa[] = &quot;Antecedentes&quot;;
+	arg.botonesSolapa[] = &quot;Situación Presupuestaria&quot;;
+	arg.botonesSolapa[] = &quot;Compras Particulares&quot;;
+	arg.botonesSolapa[] = &quot;Documentación Adjunta&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Comentarios&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Recomendaciones&quot;;
+	if(arg.configuracion.actividad == &quot;ACOResolucionPreComite&quot;)
+		arg.botonesSolapa[] = &quot;Resolución Pre-Comité&quot;;
+	else if(arg.configuracion.actividad == &quot;ACOResolucionComite&quot;){
+		arg.botonesSolapa[] = &quot;Resolución Comité&quot;;
+	}
+	arg.botonesSolapa[] = null;
+}
+else if(arg.configuracion.actividad == &quot;CGCRecomendarSAGI&quot; ||
+		arg.configuracion.actividad == &quot;IGCRecomendarSAGI&quot; ||
+		arg.configuracion.actividad == &quot;OGCRecomendarSAGI&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Guardar Borrador&quot;;
+	arg.botonesAccion[] = &quot;Guardar Continuar&quot;;
+	//BOTONES DE PANTALLAS
+	arg.botonesSolapa[] = &quot;Datos Generales&quot;;
+	arg.botonesSolapa[] = &quot;Valoración de la Necesidad&quot;;
+	arg.botonesSolapa[] = &quot;Proyectos Asociados&quot;;
+	arg.botonesSolapa[] = &quot;Proveedor&quot;;
+	arg.botonesSolapa[] = &quot;Antecedentes&quot;;
+	arg.botonesSolapa[] = &quot;Situación Presupuestaria&quot;;
+	arg.botonesSolapa[] = &quot;Compras Particulares&quot;;
+	arg.botonesSolapa[] = &quot;Documentación Adjunta&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Comentarios&quot;;
+	arg.botonesSolapa[] = &quot;Recomendar SAGI&quot;;
+	arg.botonesSolapa[] = null;
+	arg.botonesSolapa[] = null;
+}
+else if(arg.configuracion.actividad == &quot;CSAListadoDeSolicitudesSAGI&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = &quot;Cancelar&quot;;
+	arg.botonesAccion[] = &quot;Volver&quot;;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	if(arg.configuracion.proximaPantalla == &quot;DATOSGENERALES&quot; &amp;&amp; arg.solicitud.anulada){
+		arg.botonesAccion[] = &quot;Reactivar&quot;;
+	}
+	else{
+		arg.botonesAccion[] = null;
+	}
+	if(arg.configuracion.proximaPantalla == &quot;DATOSGENERALES&quot;){
+		Participant participant;
+		Bool rol = false;
+		participant = Participant.find(name : Participant.id);
+		foreach(role in participant.roles){
+			if(role.name == &quot;TPC - Solicitante SAGI&quot;){
+				arg.botonesAccion[] = &quot;Duplicar&quot;;
+				rol = true;
+			}
+		}
+		if(rol == false){			
+			arg.botonesAccion[] = null;
+		}
+	}else if(arg.configuracion.proximaPantalla == &quot;ASIGNARPARTICIPANTE&quot;){
+		arg.botonesAccion[] = &quot;Guardar Continuar&quot;;		
+	}else if(arg.configuracion.proximaPantalla == &quot;HISTORIALCOMENTARIOS&quot; || arg.configuracion.proximaPantalla == &quot;CONTROLGESTION&quot;){
+		arg.botonesAccion[] = &quot;Guardar Borrador&quot;;
+	}
+	else{
+		arg.botonesAccion[] = null;
+	}
+	//BOTONES DE PANTALLAS
+	arg.botonesSolapa[] = &quot;Datos Generales&quot;;
+	arg.botonesSolapa[] = &quot;Valoración de la Necesidad&quot;;
+	arg.botonesSolapa[] = &quot;Proyectos Asociados&quot;;
+	arg.botonesSolapa[] = &quot;Proveedor&quot;;
+	arg.botonesSolapa[] = &quot;Antecedentes&quot;;
+	arg.botonesSolapa[] = &quot;Situación Presupuestaria&quot;;
+	arg.botonesSolapa[] = &quot;Compras Particulares&quot;;
+	arg.botonesSolapa[] = &quot;Documentación Adjunta&quot;;
+	arg.botonesSolapa[] = &quot;Control de Gestión&quot;;
+	arg.botonesSolapa[] = &quot;Asignar Participante&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Comentarios&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Recomendaciones&quot;;
+}
+else if(arg.configuracion.actividad == &quot;SCGAsignarMasivamenteAnalistaGastos&quot;){
+	//BOTONES DE ACCION
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = null;
+	arg.botonesAccion[] = &quot;Volver&quot;;
+	//BOTONES DE PANTALLAS
+	arg.botonesSolapa[] = &quot;Datos Generales&quot;;
+	arg.botonesSolapa[] = &quot;Valoración de la Necesidad&quot;;
+	arg.botonesSolapa[] = &quot;Proyectos Asociados&quot;;
+	arg.botonesSolapa[] = &quot;Proveedor&quot;;
+	arg.botonesSolapa[] = &quot;Antecedentes&quot;;
+	arg.botonesSolapa[] = &quot;Situación Presupuestaria&quot;;
+	arg.botonesSolapa[] = &quot;Compras Particulares&quot;;
+	arg.botonesSolapa[] = &quot;Documentación Adjunta&quot;;
+	arg.botonesSolapa[] = &quot;Historial de Comentarios&quot;;
+	arg.botonesSolapa[] = null;
+	arg.botonesSolapa[] = null;
+	arg.botonesSolapa[] = null;
+}</sourceCode>
+		</method>
+		<method name="setMontoEscritura" flags="clientavailable public">
+			<arg name="valorString" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Decimal"/>
+			<sourceCode language="Java1">Decimal valorDecimal;
+String valorTemp = &quot;&quot;;
+Java.Lang.Boolean patron = false;
+try {
+    if ((arg.valorString != null) &amp;&amp; (arg.valorString != &quot;&quot;)){
+		if(arg.valorString.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+			patron = true;
+		}
+	}
+	if(patron){
+		valorTemp = (String)arg.valorString.replace(from : &quot;.&quot;, @to : &quot;&quot;);
+		return valorDecimal = (Decimal)valorTemp.replace(from : &quot;,&quot;, @to : &quot;.&quot;);
+	}
+}
+catch (Any e) {
+    logMessage(&quot;Error en setMontoEscritura: &quot; + e, severity:FATAL);
+}
+return null;</sourceCode>
+		</method>
+		<method name="setMontoLectura" flags="clientavailable public">
+			<arg name="valorDecimal" description="" flags="in" type="Decimal"/>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">String valorString = &quot;&quot;;
+try {
+    String[] cadenaArray = {};
+	String[] cadena2Array = {};
+
+	if(arg.valorDecimal != null){
+
+		valorString = arg.valorDecimal.format(mask : &quot;###,###.##&quot;);
+
+		Java.Lang.Boolean convertir = false;
+		String[] valores = valorString.split(delim : &quot;.&quot;);
+
+		if(valores.length() &gt; 1){
+			String valor = valores[valores.length()-1];
+			if(valor.length()&lt;3){
+				convertir = true;
+			}
+		}
+		else{
+			if(valorString.count(ch : &quot;,&quot;) &gt; 0){
+				convertir = true;
+			}
+		}
+
+		if(convertir){
+			cadenaArray = valorString.chars();
+			for (int index = 0; index &lt; cadenaArray.length; index++) {
+			    if(cadenaArray[index] == &quot;,&quot;){
+			    	cadena2Array[index] = &quot;.&quot;;
+			    }
+			    else if(cadenaArray[index] == &quot;.&quot;){
+			    	cadena2Array[index] = &quot;,&quot;;
+			    }
+			    else{
+			    	cadena2Array[index] = cadenaArray[index];
+			    }
+			}
+			valorString = &quot;&quot;;
+			for (int index = 0; index &lt; cadena2Array.length; index++) {
+			    valorString = valorString + cadena2Array[index];
+			}
+		}
+
+	}
+}
+catch (Any e) {
+	logMessage(&quot;Error en setMontoLectura: &quot; + e, severity:FATAL);
+}
+
+return valorString;</sourceCode>
+		</method>
+		<method name="setSalidaPantalla" flags="clientavailable public">
+			<arg name="configuracion" description="" flags="in out" type="Negocio.NConfiguracion"/>
+			<arg name="result" description="" flags="in" type="String"/>
+			<sourceCode language="Java1">//BOTONES DE ACCION 
+configuracion.boton = &quot;&quot;;
+if(result == &quot;anular&quot;){
+	configuracion.boton = &quot;anular&quot;;
+}
+if(result == &quot;cancelar&quot;){
+	configuracion.boton = &quot;cancelar&quot;;
+}
+if(result == &quot;verificar completitud&quot;){
+	configuracion.boton = &quot;verificar&quot;;
+}
+if(result == &quot;devolver al solicitante&quot;){
+	configuracion.boton = &quot;devolver&quot;;
+}
+if(result == &quot;guardar borrador&quot;){
+	if(arg.configuracion.actividad == &quot;SSASolicitarAltaSAGI&quot; ||
+		arg.configuracion.actividad == &quot;SSACompletarSAGI&quot;||
+   		arg.configuracion.actividad == &quot;GENCompletarSAGI&quot;){
+		configuracion.boton = &quot;borrador&quot;;
+	}else{
+		configuracion.boton = &quot;guardar&quot;;
+	}
+}
+if(result == &quot;guardar continuar&quot;){
+	if(arg.configuracion.actividad == &quot;SSASolicitarAltaSAGI&quot; ||
+		arg.configuracion.actividad == &quot;SSACompletarSAGI&quot;||
+  		arg.configuracion.actividad == &quot;GENCompletarSAGI&quot;){
+		configuracion.boton = &quot;enviar&quot;;
+	}else{
+		configuracion.boton = &quot;continuar&quot;;
+	}
+}
+/*
+if(result == &quot;guardar borrador&quot;){
+	configuracion.boton = &quot;borrador&quot;;
+}
+if(result == &quot;guardar y enviar&quot;){
+	configuracion.boton = &quot;enviar&quot;;
+}
+if(result == &quot;guardar&quot;){
+	configuracion.boton = &quot;guardar&quot;;
+}
+if(result == &quot;continuar&quot;){
+	configuracion.boton = &quot;continuar&quot;;
+}
+*/
+if(result == &quot;reactivar&quot;){
+	configuracion.boton = &quot;reactivar&quot;;
+}
+if(result == &quot;duplicar&quot;){
+	configuracion.boton = &quot;duplicar&quot;;
+}
+if(result == &quot;volver&quot;){
+	configuracion.boton = &quot;volver&quot;;
+}
+if(configuracion.boton == &quot;&quot;){
+	//BOTONES DE PANTALLA
+	configuracion.proximaPantalla = &quot;&quot;;
+	if(result == &quot;datos generales&quot;){
+		configuracion.proximaPantalla = &quot;DATOSGENERALES&quot;;
+	}
+	if(result == &quot;valoración de la necesidad&quot;){
+		configuracion.proximaPantalla = &quot;VALORACIONNECESIDAD&quot;;
+	}
+	if(result == &quot;proyectos asociados&quot;){
+		configuracion.proximaPantalla = &quot;PROYECTOSASOCIADOS&quot;;
+	}
+	if(result == &quot;proveedor&quot;){
+		configuracion.proximaPantalla = &quot;PROVEEDOR&quot;;
+	}
+	if(result == &quot;antecedentes&quot;){
+		configuracion.proximaPantalla = &quot;ANTECEDENTES&quot;;
+	}
+	if(result == &quot;situación presupuestaria&quot;){
+		configuracion.proximaPantalla = &quot;SITUACIONPRESUPUESTARIA&quot;;
+	}
+	if(result == &quot;compras particulares&quot;){
+		configuracion.proximaPantalla = &quot;COMPRASPARTICULARES&quot;;
+	}
+	if(result == &quot;documentación adjunta&quot;){
+		configuracion.proximaPantalla = &quot;DOCUMENTACIONADJUNTA&quot;;
+	}
+	if(result == &quot;historial de comentarios&quot;){
+		configuracion.proximaPantalla = &quot;HISTORIALCOMENTARIOS&quot;;
+	}
+	if(result == &quot;asignar participante&quot;){
+		configuracion.proximaPantalla = &quot;ASIGNARPARTICIPANTE&quot;;
+	}
+	if(result == &quot;control de gestión&quot;){
+		configuracion.proximaPantalla = &quot;CONTROLGESTION&quot;;
+	}
+	if(result == &quot;recomendar sagi&quot; || result == &quot;historial de recomendaciones&quot;){
+		configuracion.proximaPantalla = &quot;RECOMENDARSAGI&quot;;
+	}
+	if(result == &quot;resolución pre-comité&quot; || result == &quot;resolución comité&quot;){
+		configuracion.proximaPantalla = &quot;RESOLUCION&quot;;
+	}
+}</sourceCode>
+		</method>
+	</methods>
+</component>

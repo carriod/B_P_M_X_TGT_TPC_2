@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="NProyectosAsociados" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Bool name="afectaOtrasAreas" flags="hassetter hasgetter public" position="2"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="1"/>
+		<String name="otrasAreasAfec" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<Bool name="parteProyMayores" flags="hassetter hasgetter public" position="4"/>
+	</attributes>
+	<methods>
+		<method name="NProyectosAsociados" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NProyectosAsociados"/>
+		</method>
+	</methods>
+</component>

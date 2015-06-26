@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="RowsExceededException" description="RowsExceededException" versionID="Version 6.5 " flags="exception system_exception" signature="jxl.write.biff.RowsExceededException" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.JxlWriteException" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.RowsExceededException"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.RowsExceededException"/>
+	<attributes/>
+	<methods>
+		<method name="RowsExceededException" flags="static hidden" signature="Kjxl.write.biff.RowsExceededException()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Biff.RowsExceededException"/>
+		</method>
+	</methods>
+</component>

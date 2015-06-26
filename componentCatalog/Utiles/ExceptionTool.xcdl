@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<component name="ExceptionTool" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="ExceptionTool" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.ExceptionTool"/>
+		</method>
+		<method name="getInfo" description="" flags="clientavailable public">
+			<arg name="exceptionHolder" description="" flags="in" type="Any"/>
+			<arg name="className" description="" flags="out" type="String"/>
+			<arg name="message" description="" flags="out" type="String"/>
+			<arg name="stackTraceString" description="" flags="out" type="String"/>
+			<arg name="classNameException" description="" flags="out" type="String"/>
+			<sourceCode language="Java1">if(exceptionHolder != null){
+    classNameException = exceptionHolder.getClass().name;
+}else{
+    classNameException = &quot;Java.Lang.NoClassDefFoundError&quot;;
+}
+Logger.logDebug(mensaje : &quot;exceptionHolder className: &quot; + classNameException);
+ExceptionTool.getStandardInfo(exceptionHolder : exceptionHolder, out className : className, 
+                              out message : message, out stackTraceString : stackTraceString);
+</sourceCode>
+		</method>
+		<method name="getStandardInfo" description="" flags="clientavailable public">
+			<arg name="exceptionHolder" description="" flags="in" type="Any"/>
+			<arg name="className" description="" flags="out" type="String"/>
+			<arg name="message" description="" flags="out" type="String"/>
+			<arg name="stackTraceString" description="" flags="out" type="String"/>
+			<variables>
+				<variable name="exception" type="Java.Lang.Exception"/>
+			</variables>
+			<sourceCode language="Java1">if (exceptionHolder instanceof Java.Lang.Exception) {
+    try {
+        exception = ((Java.Exception) exceptionHolder);
+        className = exception.stackTrace[1].className;
+        message = exception.message;
+        Writer result = StringWriter();
+        PrintWriter printWriter = PrintWriter(arg1 : result);
+        exception.printStackTrace(arg1 : printWriter);
+
+        stackTraceString = ((String) result);
+    }
+    catch (Any e) {
+        message = &quot;Error de clase desconocida&quot;;
+    }
+}
+else {
+    message = &quot;Error de clase desconocida&quot;;
+}
+</sourceCode>
+		</method>
+	</methods>
+</component>

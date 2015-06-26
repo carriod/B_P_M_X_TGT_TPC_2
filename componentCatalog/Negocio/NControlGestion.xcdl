@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NControlGestion" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="analisisConFormato" flags="hassetter hasgetter public includeincheck" position="18"/>
+		<String length="1000" name="analisisSagi" flags="hassetter hasgetter public includeincheck" position="15"/>
+		<object type="Negocio.NAreaSolicitante" name="areaSolicitante" flags="hassetter hasgetter public" position="16"/>
+		<object type="Negocio.NCalificacionSolicitud" name="calificacionSolicitud" flags="hassetter hasgetter public" position="4"/>
+		<object type="Negocio.NClasificacionArea" name="clasificacionArea" flags="hassetter hasgetter public" position="5"/>
+		<String name="condicionamientoProveedor" flags="hassetter hasgetter public includeincheck" position="14"/>
+		<object type="Negocio.NEstadoAgendamiento" name="estadoAgendamiento" flags="hassetter hasgetter public" position="9"/>
+		<Time scale="2" precision="2" name="fechaCorte" flags="hassetter hasgetter public" position="17"/>
+		<Time scale="2" precision="2" name="fechaPlanificacionPreComite" flags="hassetter hasgetter public" position="10"/>
+		<Bool name="fueraProceso" flags="hassetter hasgetter public includeincheck" position="6"/>
+		<Int length="32" name="idRelacionada" flags="hassetter hasgetter public" position="2"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="1"/>
+		<String length="1" name="modificadoPorPedido" flags="hassetter hasgetter public" position="12"/>
+		<object type="Negocio.NMotivoFueraProceso" name="motivoFueraProceso" flags="hassetter hasgetter public" position="7"/>
+		<String length="50" name="nombreNecesidad" flags="hassetter hasgetter public" position="3"/>
+		<String length="1" name="rechazadoCompras" flags="hassetter hasgetter public includeincheck" position="11"/>
+		<String name="requisitosCompras" flags="hassetter hasgetter public" position="13"/>
+		<object type="Negocio.NTipoOrden" name="tipoOrden" flags="hassetter hasgetter public" position="8"/>
+	</attributes>
+	<methods>
+		<method name="NControlGestion" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NControlGestion"/>
+			<sourceCode language="Java1">this.calificacionSolicitud = NCalificacionSolicitud();
+this.clasificacionArea = NClasificacionArea();
+this.estadoAgendamiento = NEstadoAgendamiento();
+this.motivoFueraProceso = NMotivoFueraProceso();
+this.areaSolicitante = NAreaSolicitante();
+this.tipoOrden = NTipoOrden();</sourceCode>
+		</method>
+	</methods>
+</component>

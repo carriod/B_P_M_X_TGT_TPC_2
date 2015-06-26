@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Comment" description="Comment" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.Comment" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Jxl.Biff.Drawing.DrawingGroupObject" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.Comment"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.Comment"/>
+	<attributes>
+		<Int length="32" name="blipId" flags="hasgetter external" primitive="true" position="1" javaType="int" readSignature="MgetBlipId()I"/>
+		<Int length="32" name="column" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetColumn()I"/>
+		<String name="commentText" flags="hassetter external" position="3" javaType="java.lang.String" writeSignature="MsetCommentText(Ljava.lang.String;)V"/>
+		<object type="Utiles.Jxl.Biff.Drawing.DrawingGroup" name="drawingGroup" flags="hassetter hasgetter external" position="4" javaType="jxl.biff.drawing.DrawingGroup" writeSignature="MsetDrawingGroup(Ljxl.biff.drawing.DrawingGroup;)V" readSignature="MgetDrawingGroup()Ljxl.biff.drawing.DrawingGroup;"/>
+		<Bool name="first" flags="hasgetter external" primitive="true" position="5" javaType="boolean" readSignature="MisFirst()Z"/>
+		<Bool name="formObject" flags="hasgetter external" primitive="true" position="6" javaType="boolean" readSignature="MisFormObject()Z"/>
+		<object type="Utiles.Jxl.Biff.ContinueRecord" name="formatting" flags="hassetter external" position="7" javaType="jxl.biff.ContinueRecord" writeSignature="MsetFormatting(Ljxl.biff.ContinueRecord;)V"/>
+		<Real length="64" name="height" flags="hassetter hasgetter external" primitive="true" position="8" javaType="double" writeSignature="MsetHeight(D)V" readSignature="MgetHeight()D"/>
+		<Binary name="imageBytes" flags="hasgetter external" position="9" javaType="byte[]" readSignature="MgetImageBytes()[B"/>
+		<Binary name="imageData" flags="hasgetter external" position="10" javaType="byte[]" readSignature="MgetImageData()[B"/>
+		<String name="imageFilePath" flags="hasgetter external" position="11" javaType="java.lang.String" readSignature="MgetImageFilePath()Ljava.lang.String;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.MsoDrawingRecord" name="msoDrawingRecord" flags="hasgetter external" position="12" javaType="jxl.biff.drawing.MsoDrawingRecord" readSignature="MgetMsoDrawingRecord()Ljxl.biff.drawing.MsoDrawingRecord;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.NoteRecord" name="note" flags="hassetter external" position="13" javaType="jxl.biff.drawing.NoteRecord" writeSignature="MsetNote(Ljxl.biff.drawing.NoteRecord;)V"/>
+		<Int length="32" name="objectId" flags="hasgetter external" primitive="true" position="14" javaType="int" readSignature="MgetObjectId()I"/>
+		<object type="Utiles.Jxl.Biff.Drawing.Origin" name="origin" flags="hasgetter external" position="15" javaType="jxl.biff.drawing.Origin" readSignature="MgetOrigin()Ljxl.biff.drawing.Origin;"/>
+		<Int length="32" name="referenceCount" flags="hassetter hasgetter external" primitive="true" position="16" javaType="int" writeSignature="MsetReferenceCount(I)V" readSignature="MgetReferenceCount()I"/>
+		<Int length="32" name="row" flags="hasgetter external" primitive="true" position="17" javaType="int" readSignature="MgetRow()I"/>
+		<Int length="32" name="shapeId" flags="hasgetter external" primitive="true" position="18" javaType="int" readSignature="MgetShapeId()I"/>
+		<object type="Utiles.Jxl.Biff.Drawing.EscherContainer" name="spContainer" flags="hasgetter external" position="19" javaType="jxl.biff.drawing.EscherContainer" readSignature="MgetSpContainer()Ljxl.biff.drawing.EscherContainer;"/>
+		<String name="text" flags="hasgetter external" position="20" javaType="java.lang.String" readSignature="MgetText()Ljava.lang.String;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.TextObjectRecord" name="textObject" flags="hassetter external" position="21" javaType="jxl.biff.drawing.TextObjectRecord" writeSignature="MsetTextObject(Ljxl.biff.drawing.TextObjectRecord;)V"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ShapeType" name="type" flags="hasgetter external" position="22" javaType="jxl.biff.drawing.ShapeType" readSignature="MgetType()Ljxl.biff.drawing.ShapeType;"/>
+		<Real length="64" name="width" flags="hassetter hasgetter external" primitive="true" position="23" javaType="double" writeSignature="MsetWidth(D)V" readSignature="MgetWidth()D"/>
+		<Real length="64" name="x" flags="hassetter hasgetter external" primitive="true" position="24" javaType="double" writeSignature="MsetX(D)V" readSignature="MgetX()D"/>
+		<Real length="64" name="y" flags="hassetter hasgetter external" primitive="true" position="25" javaType="double" writeSignature="MsetY(D)V" readSignature="MgetY()D"/>
+	</attributes>
+	<methods>
+		<method name="Comment" flags="static" signature="Kjxl.biff.drawing.Comment(Ljxl.biff.drawing.DrawingGroupObject;Ljxl.biff.drawing.DrawingGroup;Ljxl.WorkbookSettings;)">
+			<arg name="dgo" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroupObject" javaType="jxl.biff.drawing.DrawingGroupObject"/>
+			<arg name="dg" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroup" javaType="jxl.biff.drawing.DrawingGroup"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.Comment"/>
+		</method>
+		<method name="Comment" flags="static" signature="Kjxl.biff.drawing.Comment(Ljava.lang.String;II)">
+			<arg name="text" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.Comment"/>
+		</method>
+		<method name="Comment" flags="static" signature="Kjxl.biff.drawing.Comment(Ljxl.biff.drawing.MsoDrawingRecord;Ljxl.biff.drawing.ObjRecord;Ljxl.biff.drawing.DrawingData;Ljxl.biff.drawing.DrawingGroup;Ljxl.WorkbookSettings;)">
+			<arg name="mso" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.MsoDrawingRecord" javaType="jxl.biff.drawing.MsoDrawingRecord"/>
+			<arg name="obj" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.ObjRecord" javaType="jxl.biff.drawing.ObjRecord"/>
+			<arg name="dd" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingData" javaType="jxl.biff.drawing.DrawingData"/>
+			<arg name="dg" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroup" javaType="jxl.biff.drawing.DrawingGroup"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.Comment"/>
+		</method>
+		<method name="addMso" description="addMso" flags="external" signature="MaddMso(Ljxl.biff.drawing.MsoDrawingRecord;)V">
+			<arg name="d" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.MsoDrawingRecord" javaType="jxl.biff.drawing.MsoDrawingRecord"/>
+		</method>
+		<method name="getBlipId" description="getBlipId" flags="external final hidden" signature="MgetBlipId()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getColumn" description="getColumn" flags="external hidden" signature="MgetColumn()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getDrawingGroup" description="getDrawingGroup" flags="external hidden" signature="MgetDrawingGroup()Ljxl.biff.drawing.DrawingGroup;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Drawing.DrawingGroup" javaType="jxl.biff.drawing.DrawingGroup"/>
+		</method>
+		<method name="getHeight" description="getHeight" flags="external hidden" signature="MgetHeight()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getImageBytes" description="getImageBytes" flags="external hidden" signature="MgetImageBytes()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getImageData" description="getImageData" flags="external hidden" signature="MgetImageData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getImageFilePath" description="getImageFilePath" flags="external hidden" signature="MgetImageFilePath()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getMsoDrawingRecord" description="getMsoDrawingRecord" flags="external hidden" signature="MgetMsoDrawingRecord()Ljxl.biff.drawing.MsoDrawingRecord;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Drawing.MsoDrawingRecord" javaType="jxl.biff.drawing.MsoDrawingRecord"/>
+		</method>
+		<method name="getObjectId" description="getObjectId" flags="external final hidden" signature="MgetObjectId()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getOrigin" description="getOrigin" flags="external hidden" signature="MgetOrigin()Ljxl.biff.drawing.Origin;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Drawing.Origin" javaType="jxl.biff.drawing.Origin"/>
+		</method>
+		<method name="getReferenceCount" description="getReferenceCount" flags="external hidden" signature="MgetReferenceCount()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getRow" description="getRow" flags="external hidden" signature="MgetRow()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getShapeId" description="getShapeId" flags="external final hidden" signature="MgetShapeId()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getSpContainer" description="getSpContainer" flags="external hidden" signature="MgetSpContainer()Ljxl.biff.drawing.EscherContainer;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Drawing.EscherContainer" javaType="jxl.biff.drawing.EscherContainer"/>
+		</method>
+		<method name="getText" description="getText" flags="external hidden" signature="MgetText()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getType" description="getType" flags="external hidden" signature="MgetType()Ljxl.biff.drawing.ShapeType;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Drawing.ShapeType" javaType="jxl.biff.drawing.ShapeType"/>
+		</method>
+		<method name="getWidth" description="getWidth" flags="external hidden" signature="MgetWidth()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getX" description="getX" flags="external hidden" signature="MgetX()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getY" description="getY" flags="external hidden" signature="MgetY()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="hashCode" description="hashCode" flags="external hidden" signature="MhashCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="isFirst" description="isFirst" flags="external hidden" signature="MisFirst()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isFormObject" description="isFormObject" flags="external hidden" signature="MisFormObject()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setCommentText" description="setCommentText" flags="external hidden" signature="MsetCommentText(Ljava.lang.String;)V">
+			<arg name="t" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setDrawingGroup" description="setDrawingGroup" flags="external hidden" signature="MsetDrawingGroup(Ljxl.biff.drawing.DrawingGroup;)V">
+			<arg name="dg" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroup" javaType="jxl.biff.drawing.DrawingGroup"/>
+		</method>
+		<method name="setFormatting" description="setFormatting" flags="external hidden" signature="MsetFormatting(Ljxl.biff.ContinueRecord;)V">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Biff.ContinueRecord" javaType="jxl.biff.ContinueRecord"/>
+		</method>
+		<method name="setHeight" description="setHeight" flags="external hidden" signature="MsetHeight(D)V">
+			<arg name="h" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setNote" description="setNote" flags="external hidden" signature="MsetNote(Ljxl.biff.drawing.NoteRecord;)V">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.NoteRecord" javaType="jxl.biff.drawing.NoteRecord"/>
+		</method>
+		<method name="setObjectId" description="setObjectId" flags="external final" signature="MsetObjectId(III)V">
+			<arg name="objid" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="bip" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="sid" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setReferenceCount" description="setReferenceCount" flags="external hidden" signature="MsetReferenceCount(I)V">
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setText" description="setText" flags="external" signature="MsetText(Ljxl.biff.ContinueRecord;)V">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Biff.ContinueRecord" javaType="jxl.biff.ContinueRecord"/>
+		</method>
+		<method name="setTextObject" description="setTextObject" flags="external hidden" signature="MsetTextObject(Ljxl.biff.drawing.TextObjectRecord;)V">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.TextObjectRecord" javaType="jxl.biff.drawing.TextObjectRecord"/>
+		</method>
+		<method name="setWidth" description="setWidth" flags="external hidden" signature="MsetWidth(D)V">
+			<arg name="w" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setX" description="setX" flags="external hidden" signature="MsetX(D)V">
+			<arg name="x" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setY" description="setY" flags="external hidden" signature="MsetY(D)V">
+			<arg name="y" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="writeAdditionalRecords" description="writeAdditionalRecords" flags="external" signature="MwriteAdditionalRecords(Ljxl.write.biff.File;)V">
+			<arg name="outputFile" description="" flags="in external" type="Utiles.Jxl.Write.Biff.File" javaType="jxl.write.biff.File"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeTailRecords" description="writeTailRecords" flags="external" signature="MwriteTailRecords(Ljxl.write.biff.File;)V">
+			<arg name="outputFile" description="" flags="in external" type="Utiles.Jxl.Write.Biff.File" javaType="jxl.write.biff.File"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+	</methods>
+</component>

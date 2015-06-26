@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NMonto2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Decimal scale="2" precision="2" name="monto" flags="hassetter hasgetter public" position="1"/>
+		<String name="montoStr" flags="hassetter hasgetter public" position="2">
+			<read language="Java1">if(this.montoStrTemp == null || this.montoStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.monto);
+}
+else{
+	return montoStrTemp;
+}</read>
+			<write language="Java1">this.montoStrTemp = value;
+this.monto = FConfiguracion2.setMontoEscritura(valorString : value);
+if(this.monto != null){
+	this.montoStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoStrTemp" flags="hassetter hasgetter public" position="3"/>
+	</attributes>
+	<methods>
+		<method name="NMonto2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NMonto2"/>
+		</method>
+	</methods>
+</component>

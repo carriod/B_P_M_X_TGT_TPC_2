@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="BookmarkStack" description="JRPdfExporter$BookmarkStack" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.export.JRPdfExporter$BookmarkStack" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.export.JRPdfExporter$BookmarkStack"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.export"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.export.JRPdfExporter$BookmarkStack"/>
+	<attributes/>
+	<methods/>
+</component>

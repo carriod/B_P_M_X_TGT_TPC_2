@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="NumFormatRecordsException" description="NumFormatRecordsException" versionID="Version 6.5 " flags="exception system_exception" signature="jxl.biff.NumFormatRecordsException" type="java">
+	<inherit class="Java.Lang.Exception" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.NumFormatRecordsException"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.NumFormatRecordsException"/>
+	<attributes/>
+	<methods>
+		<method name="NumFormatRecordsException" flags="static hidden" signature="Kjxl.biff.NumFormatRecordsException()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.NumFormatRecordsException"/>
+		</method>
+	</methods>
+</component>

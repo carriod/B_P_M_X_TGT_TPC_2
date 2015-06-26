@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Contents" description="HeaderFooter$Contents" versionID="Version 6.5 " flags="" signature="jxl.HeaderFooter$Contents" type="java">
+	<inherit class="Utiles.Jxl.Biff.HeaderFooter.Contents" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.HeaderFooter$Contents"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.HeaderFooter$Contents"/>
+	<attributes>
+		<String name="fontName" flags="hassetter external" position="1" javaType="java.lang.String" writeSignature="MsetFontName(Ljava.lang.String;)V"/>
+	</attributes>
+	<methods>
+		<method name="append" description="append" flags="external" signature="Mappend(Ljava.lang.String;)V">
+			<arg name="txt" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="appendDate" description="appendDate" flags="external" signature="MappendDate()V"/>
+		<method name="appendPageNumber" description="appendPageNumber" flags="external" signature="MappendPageNumber()V"/>
+		<method name="appendTime" description="appendTime" flags="external" signature="MappendTime()V"/>
+		<method name="appendTotalPages" description="appendTotalPages" flags="external" signature="MappendTotalPages()V"/>
+		<method name="appendWorkSheetName" description="appendWorkSheetName" flags="external" signature="MappendWorkSheetName()V"/>
+		<method name="appendWorkbookName" description="appendWorkbookName" flags="external" signature="MappendWorkbookName()V"/>
+		<method name="clear" description="clear" flags="external" signature="Mclear()V"/>
+		<method name="empty" description="empty" flags="external" signature="Mempty()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setFontName" description="setFontName" flags="external hidden" signature="MsetFontName(Ljava.lang.String;)V">
+			<arg name="fontName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setFontSize" description="setFontSize" flags="external" signature="MsetFontSize(I)Z">
+			<arg name="size" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="toggleBold" description="toggleBold" flags="external" signature="MtoggleBold()V"/>
+		<method name="toggleDoubleUnderline" description="toggleDoubleUnderline" flags="external" signature="MtoggleDoubleUnderline()V"/>
+		<method name="toggleItalics" description="toggleItalics" flags="external" signature="MtoggleItalics()V"/>
+		<method name="toggleOutline" description="toggleOutline" flags="external" signature="MtoggleOutline()V"/>
+		<method name="toggleShadow" description="toggleShadow" flags="external" signature="MtoggleShadow()V"/>
+		<method name="toggleStrikethrough" description="toggleStrikethrough" flags="external" signature="MtoggleStrikethrough()V"/>
+		<method name="toggleSubScript" description="toggleSubScript" flags="external" signature="MtoggleSubScript()V"/>
+		<method name="toggleSuperScript" description="toggleSuperScript" flags="external" signature="MtoggleSuperScript()V"/>
+		<method name="toggleUnderline" description="toggleUnderline" flags="external" signature="MtoggleUnderline()V"/>
+	</methods>
+</component>

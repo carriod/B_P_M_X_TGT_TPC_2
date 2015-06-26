@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NResolucion" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Bool name="borrador" flags="hassetter hasgetter public" position="20"/>
+		<String name="comentario" flags="hassetter hasgetter public" position="11"/>
+		<String name="condicionamientoProv" flags="hassetter hasgetter public" position="14"/>
+		<Time scale="2" precision="2" name="fechaCierre" flags="hassetter hasgetter public" position="21"/>
+		<Time scale="2" precision="2" name="fechaLiberacion" flags="hassetter hasgetter public" position="15"/>
+		<Time scale="2" precision="2" name="fechaPlanificada" flags="hassetter hasgetter public" position="2"/>
+		<Time scale="2" precision="2" name="fechaProximoComite" flags="hassetter hasgetter public includeincheck" position="6"/>
+		<Time scale="2" precision="2" name="fechaProximoPreComite" flags="hassetter hasgetter public" position="7"/>
+		<Time scale="2" precision="2" name="fechaReal" flags="hassetter hasgetter public" position="3"/>
+		<Time scale="2" precision="2" name="fechaTratamiento" flags="hassetter hasgetter public" position="22"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="16"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="1"/>
+		<Decimal name="montoAprobadoDolares" flags="hassetter hasgetter public" position="9"/>
+		<String name="montoAprobadoDolaresStr" flags="hassetter hasgetter public required virtual" position="24">
+			<read language="Java1">if(this.montoAprobadoDolaresStrTemp == null || this.montoAprobadoDolaresStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoAprobadoDolares);
+}
+else{
+	return montoAprobadoDolaresStrTemp;
+}</read>
+			<write language="Java1">this.montoAprobadoDolaresStrTemp = value;
+this.montoAprobadoDolares = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoAprobadoDolares != null){
+	this.montoAprobadoDolaresStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoAprobadoDolaresStrTemp" flags="hassetter hasgetter public" position="28"/>
+		<Decimal name="montoAprobadoEuros" flags="hassetter hasgetter public" position="10"/>
+		<String name="montoAprobadoEurosStr" flags="hassetter hasgetter public virtual" position="25">
+			<read language="Java1">if(this.montoAprobadoEurosStrTemp == null || this.montoAprobadoEurosStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoAprobadoEuros);
+}
+else{
+	return montoAprobadoEurosStrTemp;
+}</read>
+			<write language="Java1">this.montoAprobadoEurosStrTemp = value;
+this.montoAprobadoEuros = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoAprobadoEuros != null){
+	this.montoAprobadoEurosStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoAprobadoEurosStrTemp" flags="hassetter hasgetter public" position="29"/>
+		<object type="Negocio.NMoneda" name="montoAprobadoOM" flags="hassetter hasgetter public" position="18"/>
+		<Decimal name="montoAprobadoOtro" flags="hassetter hasgetter public" position="19"/>
+		<String name="montoAprobadoOtroStr" flags="hassetter hasgetter public virtual" position="26">
+			<read language="Java1">if(this.montoAprobadoOtroStrTemp == null || this.montoAprobadoOtroStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoAprobadoOtro);
+}
+else{
+	return montoAprobadoOtroStrTemp;
+}</read>
+			<write language="Java1">this.montoAprobadoOtroStrTemp = value;
+this.montoAprobadoOtro = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoAprobadoOtro != null){
+	this.montoAprobadoOtroStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoAprobadoOtroStrTemp" flags="hassetter hasgetter public" position="30"/>
+		<Decimal name="montoAprobadoPesos" flags="hassetter hasgetter public" position="8"/>
+		<String name="montoAprobadoPesosStr" flags="hassetter hasgetter public virtual" position="23">
+			<read language="Java1">if(this.montoAprobadoPesosStrTemp == null || this.montoAprobadoPesosStrTemp == &quot;&quot;){
+	return FConfiguracion.setMontoLectura(valorDecimal : this.montoAprobadoPesos);
+}
+else{
+	return montoAprobadoPesosStrTemp;
+}</read>
+			<write language="Java1">this.montoAprobadoPesosStrTemp = value;
+this.montoAprobadoPesos = FConfiguracion.setMontoEscritura(valorString : value);
+if(this.montoAprobadoPesos != null){
+	this.montoAprobadoPesosStrTemp = null;	
+}</write>
+		</String>
+		<String name="montoAprobadoPesosStrTemp" flags="hassetter hasgetter public" position="27"/>
+		<object type="Negocio.NMotivoStandBy" name="motivoStandBy" flags="hassetter hasgetter public" position="5"/>
+		<array type="Negocio.NResolucion.Participantes" name="participantes" flags="hasgetter public" position="17" javaType="fuego.xobject.GroupArray"/>
+		<String name="requisitoCompras" flags="hassetter hasgetter public" position="13"/>
+		<object type="Negocio.NResultadoResolucion" name="resultadoResolucion" flags="hassetter hasgetter public" position="4"/>
+		<String name="tipo" flags="hassetter hasgetter public" position="12"/>
+	</attributes>
+	<methods>
+		<method name="NResolucion" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NResolucion"/>
+			<sourceCode language="Java1">this.resultadoResolucion = NResultadoResolucion();
+this.motivoStandBy = NMotivoStandBy();
+this.montoAprobadoOM = NMoneda();</sourceCode>
+		</method>
+	</methods>
+</component>

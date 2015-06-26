@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="PropertyStorage" description="BaseCompoundFile$PropertyStorage" versionID="Version 6.5 " flags="abstract" signature="jxl.biff.BaseCompoundFile$PropertyStorage" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.BaseCompoundFile$PropertyStorage"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.BaseCompoundFile$PropertyStorage"/>
+	<attributes>
+		<Int length="32" name="child" flags="hassetter external" primitive="true" position="1" javaType="int" writeSignature="MsetChild(I)V"/>
+		<Int length="32" name="colour" flags="hassetter external" primitive="true" position="2" javaType="int" writeSignature="MsetColour(I)V"/>
+		<Binary name="data" flags="hassetter hasgetter attribute external" position="9" javaType="byte[]" writeSignature="Adata;[B" readSignature="Adata;[B"/>
+		<String name="name" flags="hassetter hasgetter attribute external" position="8" javaType="java.lang.String" writeSignature="Aname;Ljava.lang.String;" readSignature="Aname;Ljava.lang.String;"/>
+		<Int length="32" name="next" flags="hassetter external" primitive="true" position="3" javaType="int" writeSignature="MsetNext(I)V"/>
+		<Int length="32" name="previous" flags="hassetter external" primitive="true" position="4" javaType="int" writeSignature="MsetPrevious(I)V"/>
+		<Int length="32" name="size" flags="hassetter external" primitive="true" position="5" javaType="int" writeSignature="MsetSize(I)V"/>
+		<Int length="32" name="startBlock" flags="hassetter external" primitive="true" position="6" javaType="int" writeSignature="MsetStartBlock(I)V"/>
+		<Int length="32" name="type" flags="hassetter external" primitive="true" position="7" javaType="int" writeSignature="MsetType(I)V"/>
+	</attributes>
+	<methods>
+		<method name="setChild" description="setChild" flags="external hidden" signature="MsetChild(I)V">
+			<arg name="dir" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setColour" description="setColour" flags="external hidden" signature="MsetColour(I)V">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setNext" description="setNext" flags="external hidden" signature="MsetNext(I)V">
+			<arg name="nxt" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setPrevious" description="setPrevious" flags="external hidden" signature="MsetPrevious(I)V">
+			<arg name="prev" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setSize" description="setSize" flags="external hidden" signature="MsetSize(I)V">
+			<arg name="s" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setStartBlock" description="setStartBlock" flags="external hidden" signature="MsetStartBlock(I)V">
+			<arg name="sb" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setType" description="setType" flags="external hidden" signature="MsetType(I)V">
+			<arg name="t" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

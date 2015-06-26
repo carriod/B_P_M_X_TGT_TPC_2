@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="SEasyDoc2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="SEasyDoc2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio2.SEasyDoc2"/>
+			<sourceCode language="Java1">
+</sourceCode>
+		</method>
+		<method name="archivarDocumentacion" flags="clientavailable public">
+			<arg name="nroReg" description="" flags="in" type="Int(64)"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+	WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+	webService.migrarDocumento(nroreg : arg.nroReg, out migrarDocumentoResult : edRespuesta);
+
+
+
+    if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        respuesta.resultado = OK;
+        respuesta.contenido = edRespuesta.valor;
+    }
+    else if(edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.ARCHIVOSNOEXISTENTES){
+    	respuesta.resultado = IGNORE;
+    	respuesta.contenido = &quot;Archivos no existentes&quot;;
+    }
+    else if(edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.DOCUMENTOSINARCHIVOS){
+    	respuesta.resultado = IGNORE;
+    	respuesta.contenido = &quot;Documentos sin archivos&quot;;
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.archivarDocumentacion\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+
+/*
+obtenerTokenResult = &quot;a223d23eba4a46e29209e1c4f537ebca&quot;;
+respuesta.resultado = OK;
+respuesta.contenido = obtenerTokenResult;
+*/
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.archivarDocumentacion(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.archivarDocumentacion(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.archivarDocumentacion(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.archivarDocumentacion(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteFile" flags="public server disableclient">
+			<arg name="token" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+
+	WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+    webService.borrarArchivo(token : arg.token, out borrarArchivoResult : edRespuesta);
+
+//Respuestas 08-03-12 
+//&quot;documento eliminado OK&quot;  
+//(Exception error) no tipificado (string) 
+	if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        respuesta.resultado = OK;
+        respuesta.contenido = edRespuesta.valor;
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.deleteFile\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.deleteFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.deleteFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.deleteFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.deleteFile(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteIndividualFile" flags="public server disableclient">
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="codigoLote" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {
+    WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+    WebServices.WSEasyDoc.ArrayOfString arrayOfString = WebServices.WSEasyDoc.ArrayOfString();
+	arrayOfString.string[] = arg.codigoLote;
+	webService.borrarArchivoIndividual(token : arg.token, ixArchivo : arrayOfString, out borrarArchivoIndividualResult : edRespuesta);
+
+	if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        respuesta.resultado = OK;
+        respuesta.contenido = edRespuesta.valor;
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.deleteFile\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+
+/*  
+    WebServices.WSEasyDoc.EDRespuesta borrarArchivoIndividualResult; 
+    //webService.borrarArchivoIndividual(token : arg.token, codigoLote : arg.codigoLote, out borrarArchivoIndividualResult : borrarArchivoIndividualResult);
+WebServices.WSEasyDoc.ArrayOfString ixArchivo = WebServices.WSEasyDoc.ArrayOfString();
+ixArchivo.string[] = arg.codigoLote;
+webService.borrarArchivoIndividual(token : arg.token, ixArchivo : ixArchivo, out borrarArchivoIndividualResult : borrarArchivoIndividualResult);
+
+
+
+  
+    if (borrarArchivoIndividualResult != null &amp;&amp; borrarArchivoIndividualResult.length() &gt; 0) {
+        respuesta.resultado = OK;
+        respuesta.contenido = borrarArchivoIndividualResult;
+	}
+    else {
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.deleteIndividualFile\n listarArchivosResult: &quot; + borrarArchivoIndividualResult;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+*/
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.deleteIndividualFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.deleteIndividualFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.deleteIndividualFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.deleteIndividualFile(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="existFile" flags="public server disableclient">
+			<arg name="token" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+    WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+    
+    webService.existeArchivo(token : arg.token, out existeArchivoResult : edRespuesta);
+
+
+
+//&quot;existe&quot;
+//&quot;no_existe_archivo_físico_o_lógico&quot;  (significa que uno de los dos procedimientos falló, el grabado físico o el lógico)
+//&quot;no_existe_archivo_lógico_o_lógico&quot;  (significa que uno de los dos procedimientos falló, el grabado físico o el lógico)
+//&quot;no_existe&quot;    
+ 
+                  
+    	//existeArchivoResult != null &amp;&amp; (existeArchivoResult.trim().toLowerCase().replace(&quot;_&quot;, &quot;&quot;).trim().toLowerCase() == &quot;existe&quot; || 
+    	//								existeArchivoResult.trim().toLowerCase().replace(&quot;_&quot;, &quot;&quot;).trim().toLowerCase() == &quot;noexiste&quot; || 
+    	//								existeArchivoResult.trim().toLowerCase().replace(&quot;_&quot;, &quot;&quot;).trim().toLowerCase() == &quot;noexistearchivofísicoológico&quot; ||
+    	//								existeArchivoResult.trim().toLowerCase().replace(&quot;_&quot;, &quot;&quot;).trim().toLowerCase() == &quot;noexistearchivológicoológico&quot; ||
+    	//								existeArchivoResult.trim().toLowerCase() == (&quot;Operation is not valid due to the current state of the object.&quot;).trim().toLowerCase())
+   	if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        respuesta.resultado = OK;
+        respuesta.contenido = (String)edRespuesta.resultado;
+    }
+    else if (edRespuesta.resultado == TipoResultado.ARCHIVOSNOEXISTENTES) {
+        respuesta.resultado = OK;
+        respuesta.contenido = (String)edRespuesta.resultado + &quot; - &quot; + edRespuesta.valor;
+    }
+    else if (edRespuesta.resultado == TipoResultado.DOCUMENTOSINARCHIVOS) {
+        respuesta.resultado = OK;
+        respuesta.contenido = (String)edRespuesta.resultado + &quot; - &quot; + edRespuesta.valor;
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.existFile\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+
+/*
+    existeArchivoResult = &quot;existe&quot;;
+    respuesta.resultado = OK;
+    respuesta.contenido = existeArchivoResult;
+*/
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.existFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.existFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.existFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.existFile(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="generatePDF" flags="public server disableclient">
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="codigosLote" description="" flags="in" type="String[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+    WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+    WebServices.WSEasyDoc.ArrayOfString arrayOfString = WebServices.WSEasyDoc.ArrayOfString();
+	arrayOfString.string = arg.codigosLote;
+    webService.leerArchivoPDFParcial(token : arg.token, ixArchivo : arrayOfString, out leerArchivoPDFParcialResult : edRespuesta);
+    
+    if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        WebServices.WSEasyDoc.EDRespuestaDocumento edRespuestaDocumento = WebServices.WSEasyDoc.EDRespuestaDocumento(edRespuesta);        
+        if(edRespuestaDocumento.documento != null &amp;&amp; edRespuestaDocumento.documento.length &gt; 0){
+	        respuesta.resultado = OK;
+	        respuesta.contenido = edRespuestaDocumento.documento;
+        }
+        else {
+	        respuesta.resultado = WSXMLERROR;
+	        respuesta.contenido = &quot;Respuesta servicio.generatePDF\n : documento vacío&quot; ;
+	        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+	    }
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.generatePDF\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.generatePDF(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.generatePDF(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.generatePDF(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.generatePDF(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="generateZIP" flags="public server disableclient">
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="codigosLote" description="" flags="in" type="String[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+    WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+    WebServices.WSEasyDoc.ArrayOfString arrayOfString = WebServices.WSEasyDoc.ArrayOfString();
+	arrayOfString.string = arg.codigosLote;
+	webService.leerArchivoParcialNativo(token : arg.token, ixArchivo : arrayOfString, out leerArchivoParcialNativoResult : edRespuesta);
+
+    if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        WebServices.WSEasyDoc.EDRespuestaDocumento edRespuestaDocumento = WebServices.WSEasyDoc.EDRespuestaDocumento(edRespuesta);        
+        if(edRespuestaDocumento.documento != null &amp;&amp; edRespuestaDocumento.documento.length &gt; 0){
+	        respuesta.resultado = OK;
+	        respuesta.contenido = edRespuestaDocumento.documento;
+        }
+        else {
+	        respuesta.resultado = WSXMLERROR;
+	        respuesta.contenido = &quot;Respuesta servicio.generateZIP\n : documento vacío&quot; ;
+	        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+	    }
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.generateZIP\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.generateZIP(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.generateZIP(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.generateZIP(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.generateZIP(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getFile" flags="public server disableclient">
+			<arg name="token" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+	WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+    webService.leerArchivo(token : arg.token, out leerArchivoResult : edRespuesta);
+//Respuestas 08-03-12 
+//byte[]
+//null
+  	if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        WebServices.WSEasyDoc.EDRespuestaDocumento edRespuestaDocumento = WebServices.WSEasyDoc.EDRespuestaDocumento(edRespuesta);        
+        if(edRespuestaDocumento.documento != null &amp;&amp; edRespuestaDocumento.documento.length &gt; 0){
+	        respuesta.resultado = OK;
+	        respuesta.contenido = edRespuestaDocumento.documento;
+        }
+        else {
+	        respuesta.resultado = WSXMLERROR;
+	        respuesta.contenido = &quot;Respuesta servicio.getFile\n : documento vacío&quot; ;
+	        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+	    }
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.getFile\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.getFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.getFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.getFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.getFile(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getIndividualFile" flags="public server disableclient">
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="codigoLote" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+    WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+    webService.leerArchivoIndividualNativo(token : arg.token, ixArchivo : arg.codigoLote, out leerArchivoIndividualNativoResult : edRespuesta);
+
+	if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+	    WebServices.WSEasyDoc.EDRespuestaDocumento edRespuestaDocumento = WebServices.WSEasyDoc.EDRespuestaDocumento(edRespuesta);        
+	    if(edRespuestaDocumento.documento != null &amp;&amp; edRespuestaDocumento.documento.length &gt; 0){
+	        respuesta.resultado = OK;
+	        respuesta.contenido = edRespuestaDocumento.documento;
+	    }
+	    else {
+	        respuesta.resultado = WSXMLERROR;
+	        respuesta.contenido = &quot;Respuesta servicio.getIndividualFile\n : documento vacío&quot; ;
+	        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+	    }
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.getIndividualFile\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.getIndividualFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.getIndividualFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.getIndividualFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.getIndividualFile(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getToken" flags="public server disableclient">
+			<arg name="nroReg" description="" flags="in" type="Int"/>
+			<arg name="idDoc" description="" flags="in" type="Int"/>
+			<arg name="version" description="" flags="in" type="Int"/>
+			<arg name="usuario" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+	WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+	webService.obtenerToken(nroreg : arg.nroReg, docid : arg.idDoc, version : arg.version, usuario : arg.usuario, out obtenerTokenResult : edRespuesta);
+
+
+//Respuestas 08-03-12 
+//un token válido
+//cadena vacia (&quot;&quot;)
+  
+
+
+    if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        respuesta.resultado = OK;
+        respuesta.contenido = edRespuesta.valor;
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.getToken\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+
+/*
+obtenerTokenResult = &quot;a223d23eba4a46e29209e1c4f537ebca&quot;;
+respuesta.resultado = OK;
+respuesta.contenido = obtenerTokenResult;
+*/
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.getToken(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.getToken(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.getToken(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.getToken(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="listFiles" flags="public server disableclient">
+			<arg name="token" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+	WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+	webService.listarArchivos(token : arg.token, out listarArchivosResult : edRespuesta);
+
+	//Respuestas 08-03-12 
+	//&quot;documento eliminado OK&quot;  
+	//(Exception error) no tipificado (string) 
+	if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        WebServices.WSEasyDoc.EDRespuestaListaArchivos edRespuestaListaArchivos = WebServices.WSEasyDoc.EDRespuestaListaArchivos(edRespuesta);        
+        Any[] archivos = {};
+        Any[String] archivo;
+        for (int index = 0; index &lt; edRespuestaListaArchivos.archivos.listarArchivosDoc.length; index++) {
+            archivo = {};
+            archivo[&quot;CodigoLote&quot;] =  edRespuestaListaArchivos.archivos.listarArchivosDoc[index].ixArchivo;
+	    	archivo[&quot;UsuarioCarga&quot;] = edRespuestaListaArchivos.archivos.listarArchivosDoc[index].usuarioCarga;
+	    	archivo[&quot;Extension&quot;] = edRespuestaListaArchivos.archivos.listarArchivosDoc[index].extension;
+	    	archivo[&quot;FechaCarga&quot;] = edRespuestaListaArchivos.archivos.listarArchivosDoc[index].fechaCarga;
+	    	archivo[&quot;NombreArchivo&quot;] = edRespuestaListaArchivos.archivos.listarArchivosDoc[index].nombreArchivo;
+            archivos[] = archivo;
+        }
+        respuesta.resultado = OK;
+        respuesta.contenido = archivos;
+    }
+    else {
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.listFiles\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.listFiles(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.listFiles(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.listFiles(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.listFiles(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="uploadFile" flags="public server disableclient">
+			<arg name="archivo" description="" flags="in" type="Binary"/>
+			<arg name="token" description="" flags="in" type="String"/>
+			<arg name="tipoArchivo" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">WebServices.WSEasyDoc.WSTokenService webService = WebServices.WSEasyDoc.WSTokenService();
+
+Respuesta respuesta = Respuesta();
+
+try {  
+	WebServices.WSEasyDoc.EDRespuesta edRespuesta = WebServices.WSEasyDoc.EDRespuesta();
+    webService.ingresarArchivo(token : arg.token, 
+    								tipoarchivo : arg.tipoArchivo, 
+    								archivo : arg.archivo, 
+    								out ingresarArchivoResult : edRespuesta);
+    								
+//Respuestas 08-03-12 
+//&quot;no_existe_registro_en_tabla_token&quot;
+//&quot;no_existe_registro_en_tabla_tipos&quot;
+//&quot;no_existe_registro_en_tabla_montaje&quot;
+//&quot;No pudo crearse el directorio&quot;            
+//(Exception error) no tipificado (string)       
+//&quot;Archivo no grabado&quot; 
+//&quot;Archivo grabado OK&quot;
+
+    if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.OK) {
+        respuesta.resultado = OK;
+        respuesta.contenido = edRespuesta.valor;
+    }
+    else if (edRespuesta.resultado == WebServices.WSEasyDoc.TipoResultado.FAILINGRESARREGISTRO){
+    	respuesta.resultado = DATAERROR;
+    	respuesta.contenido = &quot;Documento vacío&quot;;
+    }
+    else {    	
+    	WebServices.WSEasyDoc.EDRespuestaError edRespuestaError = WebServices.WSEasyDoc.EDRespuestaError(edRespuesta);
+        respuesta.resultado = WSXMLERROR;
+        respuesta.contenido = &quot;Respuesta servicio.uploadFile\nedRespuestaError.resultado: &quot; + edRespuestaError.resultado + &quot;\nedRespuestaError.tipoError: &quot; + edRespuestaError.tipoError + &quot;\nedRespuestaError.errorFull&quot; + edRespuestaError.errorFull;
+        Utiles.Logger.logSevere(mensaje : (String) respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.uploadFile(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}catch (SoapFaultException e) {
+    respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.uploadFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString;
+    Utiles.Logger.logFatal(mensaje : &quot;servicio.uploadFile(): SoapFaultException &quot; + e.faultCode + &quot;\n&quot; + e.faultString);
+}catch (Any e) {
+	respuesta.resultado = WSERROR;
+    respuesta.contenido = &quot;servicio.uploadFile(): Error &quot; + e;
+    Utiles.Logger.logFatal(mensaje : (String)e);
+}
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

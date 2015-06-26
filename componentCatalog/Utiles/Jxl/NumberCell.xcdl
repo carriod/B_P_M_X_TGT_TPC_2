@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="NumberCell" description="NumberCell" versionID="Version 6.5 " flags="abstract interface" signature="jxl.NumberCell" type="java">
+	<inherit class="Utiles.Jxl.Cell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.NumberCell"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.NumberCell"/>
+	<attributes>
+		<object type="Java.Text.NumberFormat" name="numberFormat" flags="hasgetter external" position="1" javaType="java.text.NumberFormat" readSignature="MgetNumberFormat()Ljava.text.NumberFormat;"/>
+		<Real length="64" name="value" flags="hasgetter external" primitive="true" position="2" javaType="double" readSignature="MgetValue()D"/>
+	</attributes>
+	<methods>
+		<method name="getNumberFormat" description="getNumberFormat" flags="abstract external hidden" signature="MgetNumberFormat()Ljava.text.NumberFormat;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Text.NumberFormat" javaType="java.text.NumberFormat"/>
+		</method>
+		<method name="getValue" description="getValue" flags="abstract external hidden" signature="MgetValue()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="VerticalAlignment" description="VerticalAlignment" versionID="Version 6.5 " flags="" signature="jxl.format.VerticalAlignment" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.VerticalAlignment"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.VerticalAlignment"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.VerticalAlignment" name="bottom" flags="hassetter hasgetter attribute static external" position="5" javaType="jxl.format.VerticalAlignment" writeSignature="ABOTTOM;Ljxl.format.VerticalAlignment;" readSignature="ABOTTOM;Ljxl.format.VerticalAlignment;"/>
+		<object type="Utiles.Jxl.Format.VerticalAlignment" name="centre" flags="hassetter hasgetter attribute static external" position="4" javaType="jxl.format.VerticalAlignment" writeSignature="ACENTRE;Ljxl.format.VerticalAlignment;" readSignature="ACENTRE;Ljxl.format.VerticalAlignment;"/>
+		<String name="description" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetDescription()Ljava.lang.String;"/>
+		<object type="Utiles.Jxl.Format.VerticalAlignment" name="justify" flags="hassetter hasgetter attribute static external" position="6" javaType="jxl.format.VerticalAlignment" writeSignature="AJUSTIFY;Ljxl.format.VerticalAlignment;" readSignature="AJUSTIFY;Ljxl.format.VerticalAlignment;"/>
+		<object type="Utiles.Jxl.Format.VerticalAlignment" name="top" flags="hassetter hasgetter attribute static external" position="3" javaType="jxl.format.VerticalAlignment" writeSignature="ATOP;Ljxl.format.VerticalAlignment;" readSignature="ATOP;Ljxl.format.VerticalAlignment;"/>
+		<Int length="32" name="value" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetValue()I"/>
+	</attributes>
+	<methods>
+		<method name="getAlignment" description="getAlignment" flags="static external" signature="MgetAlignment(I)Ljxl.format.VerticalAlignment;">
+			<arg name="val" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.VerticalAlignment" javaType="jxl.format.VerticalAlignment"/>
+		</method>
+		<method name="getDescription" description="getDescription" flags="external hidden" signature="MgetDescription()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

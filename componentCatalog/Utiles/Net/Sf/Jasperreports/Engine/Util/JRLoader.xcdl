@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRLoader" description="JRLoader" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.util.JRLoader" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.util.JRLoader"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.util"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.util.JRLoader"/>
+	<attributes/>
+	<methods>
+		<method name="JRLoader" flags="static hidden" signature="Knet.sf.jasperreports.engine.util.JRLoader()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Util.JRLoader"/>
+		</method>
+		<method name="getFileInputStream" description="getFileInputStream" flags="static external" signature="MgetFileInputStream(Ljava.lang.String;)Ljava.io.InputStream;">
+			<arg name="filename" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="getLocationInputStream" description="getLocationInputStream" flags="static external" signature="MgetLocationInputStream(Ljava.lang.String;)Ljava.io.InputStream;">
+			<arg name="location" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="getResourceInputStream" description="getResourceInputStream" flags="static external" signature="MgetResourceInputStream(Ljava.lang.String;)Ljava.io.InputStream;">
+			<arg name="resource" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+		</method>
+		<method name="getURLInputStream" description="getURLInputStream" flags="static external" signature="MgetURLInputStream(Ljava.lang.String;)Ljava.io.InputStream;">
+			<arg name="spec" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadBytes" description="loadBytes" flags="static external" signature="MloadBytes(Ljava.net.URL;)[B">
+			<arg name="url" description="" flags="in external" type="Java.Net.URL" javaType="java.net.URL"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadBytes" description="loadBytes" flags="static external" signature="MloadBytes(Ljava.io.File;)[B">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadBytes" description="loadBytes" flags="static external" signature="MloadBytes(Ljava.io.InputStream;)[B">
+			<arg name="is" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadBytesFromLocation" description="loadBytesFromLocation" flags="static external" signature="MloadBytesFromLocation(Ljava.lang.String;)[B">
+			<arg name="location" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadBytesFromLocation" description="loadBytesFromLocation" flags="static external" signature="MloadBytesFromLocation(Ljava.lang.String;Ljava.lang.ClassLoader;)[B">
+			<arg name="location" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="classLoader" description="" flags="in external" type="Java.Lang.ClassLoader" javaType="java.lang.ClassLoader"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadObject" description="loadObject" flags="static external" signature="MloadObject(Ljava.io.File;)Ljava.lang.Object;">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadObject" description="loadObject" flags="static external" signature="MloadObject(Ljava.net.URL;)Ljava.lang.Object;">
+			<arg name="url" description="" flags="in external" type="Java.Net.URL" javaType="java.net.URL"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadObject" description="loadObject" flags="static external" signature="MloadObject(Ljava.lang.String;)Ljava.lang.Object;">
+			<arg name="fileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadObject" description="loadObject" flags="static external" signature="MloadObject(Ljava.io.InputStream;)Ljava.lang.Object;">
+			<arg name="is" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadObjectFromLocation" description="loadObjectFromLocation" flags="static external" signature="MloadObjectFromLocation(Ljava.lang.String;)Ljava.lang.Object;">
+			<arg name="location" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadObjectFromLocation" description="loadObjectFromLocation" flags="static external" signature="MloadObjectFromLocation(Ljava.lang.String;Ljava.lang.ClassLoader;)Ljava.lang.Object;">
+			<arg name="location" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="classLoader" description="" flags="in external" type="Java.Lang.ClassLoader" javaType="java.lang.ClassLoader"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+	</methods>
+</component>

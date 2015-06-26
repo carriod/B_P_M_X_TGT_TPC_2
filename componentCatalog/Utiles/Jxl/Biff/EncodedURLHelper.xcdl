@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="EncodedURLHelper" description="EncodedURLHelper" versionID="Version 6.5 " flags="" signature="jxl.biff.EncodedURLHelper" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.EncodedURLHelper"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.EncodedURLHelper"/>
+	<attributes/>
+	<methods>
+		<method name="EncodedURLHelper" flags="static hidden" signature="Kjxl.biff.EncodedURLHelper()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.EncodedURLHelper"/>
+		</method>
+		<method name="getEncodedURL" description="getEncodedURL" flags="static external" signature="MgetEncodedURL(Ljava.lang.String;Ljxl.WorkbookSettings;)[B">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="ListaCDV" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio2.NListaCDV2" name="objetoCDV" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ListaCDV" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormEdicionProcesos.ListaCDV"/>
+		</method>
+		<method name="eliminar" flags="clientavailable public">
+			<sourceCode language="Java1">Integer index = this.listaCDV.indexOf(element : this);
+this.listaCDV.delete(index : index);
+if(this.listaCDV.length() &gt; 0){
+	this.setEditable(componentId : &quot;cta&quot;, editable : false);
+}
+else{
+	this.setEditable(componentId : &quot;cta&quot;, editable : true);
+}
+
+if(this.objeto.cta){
+	this.setEditable(componentId: &quot;agregarCTA&quot;, editable: true);
+}
+else{
+	this.setEditable(componentId: &quot;agregarCTA&quot;, editable: false);
+}
+</sourceCode>
+		</method>
+	</methods>
+</component>

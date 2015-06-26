@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="NAntecedentes" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String length="1000" name="comentariosAntecedentes" flags="hassetter hasgetter public includeincheck" position="2"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public includeincheck" position="1"/>
+		<Bool name="incrementoCantidad" flags="hassetter hasgetter public includeincheck" position="5"/>
+		<Bool name="incrementoPrecio" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<String length="1000" name="justificacionInCantidad" flags="hassetter hasgetter public includeincheck" position="6"/>
+		<String length="1000" name="justificacionInPrecio" flags="hassetter hasgetter public includeincheck" position="4"/>
+		<Bool name="tieneAntecedentes" flags="hassetter hasgetter public includeincheck" position="7"/>
+	</attributes>
+	<methods>
+		<method name="NAntecedentes" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NAntecedentes"/>
+		</method>
+	</methods>
+</component>

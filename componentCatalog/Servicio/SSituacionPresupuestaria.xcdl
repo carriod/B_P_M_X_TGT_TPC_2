@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="SSituacionPresupuestaria" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="3"/>
+		<String name="prefijo" flags="hassetter hasgetter public" position="2"/>
+		<String name="tabla" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="SSituacionPresupuestaria" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SSituacionPresupuestaria"/>
+			<sourceCode language="Java1">this.prefijo = &quot;SIP_&quot;;
+this.tabla = &quot;TPC_SITUACION_PRESUPUESTARIA&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.id;
+		
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+     				  &quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ( SELECT MAX(&quot; + this.prefijo + &quot;SOL_ID) FROM &quot; + this.tabla  + &quot; )&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;MONTOIMPPRESEJERPESOS&quot;]	= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJERPESOS&quot;];
+		value[&quot;MONTOIMPPRESEJERDOLARES&quot;]= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJERDOLARES&quot;];
+		value[&quot;MONTOIMPPRESEJEREUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJEREUROS&quot;];
+		value[&quot;MON_ID_MONTOIMPPRESEJER&quot;]= (Integer)row[this.prefijo + &quot;MON_ID_MONTOIMPPRESEJER&quot;];
+		value[&quot;MONTOIMPPRESEJEROTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJEROTRO&quot;];
+		value[&quot;CONTEMPLADOPRESUPUESTO&quot;]	= ((String)row[this.prefijo + &quot;CONTEMPLADOPRESUPUESTO&quot;]);
+		value[&quot;CONTEMPLADOPDC&quot;] 		= ((String)row[this.prefijo + &quot;CONTEMPLADOPDC&quot;]);
+		value[&quot;MONTOPRESPESOS&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOPRESPESOS&quot;];
+    	value[&quot;MONTOPRESDOLARES&quot;]		= (Decimal)row[this.prefijo + &quot;MONTOPRESDOLARES&quot;];
+    	value[&quot;MONTOPRESEUROS&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOPRESEUROS&quot;];
+    	value[&quot;MON_ID_MONTOPRES&quot;]		= (Integer)row[this.prefijo + &quot;MON_ID_MONTOPRES&quot;];
+		value[&quot;MONTOPRESOTRO&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPRESOTRO&quot;];
+    	value[&quot;MONTOPDCPESOS&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPDCPESOS&quot;];
+    	value[&quot;MONTOPDCDOLARES&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOPDCDOLARES&quot;];
+    	value[&quot;MONTOPDCEUROS&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPDCEUROS&quot;];
+    	value[&quot;MON_ID_MONTOPDC&quot;]		= (Integer)row[this.prefijo + &quot;MON_ID_MONTOPDC&quot;];
+		value[&quot;MONTOPDCOTRO&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPDCOTRO&quot;];
+    	value[&quot;PREMISASPRESUPUESTO&quot;]	= (String)row[this.prefijo + &quot;PREMISASPRESUPUESTO&quot;];
+    	value[&quot;GASTOREALACUMPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOREALACUMPESOS&quot;];
+    	value[&quot;GASTOREALACUMDOLARES&quot;]	= (Decimal)row[this.prefijo + &quot;GASTOREALACUMDOLARES&quot;];
+    	value[&quot;GASTOREALACUMEUROS&quot;]  	= (Decimal)row[this.prefijo + &quot;GASTOREALACUMEUROS&quot;];
+    	value[&quot;MON_ID_GASTOREALACUM&quot;]	= (Integer)row[this.prefijo + &quot;MON_ID_GASTOREALACUM&quot;];
+		value[&quot;GASTOREALACUMOTRO&quot;] 		= (Decimal)row[this.prefijo + &quot;GASTOREALACUMOTRO&quot;];
+    	value[&quot;GASTOREALPROYPESOS&quot;]		= (Decimal)row[this.prefijo + &quot;GASTOREALPROYPESOS&quot;];
+    	value[&quot;GASTOREALPROYDOLARES&quot;]	= (Decimal)row[this.prefijo + &quot;GASTOREALPROYDOLARES&quot;];
+    	value[&quot;GASTOREALPROYEUROS&quot;]		= (Decimal)row[this.prefijo + &quot;GASTOREALPROYEUROS&quot;];
+    	value[&quot;MON_ID_GASTOREALPROY&quot;]	= (Integer)row[this.prefijo + &quot;MON_ID_GASTOREALPROY&quot;];
+		value[&quot;GASTOREALPROYOTRO&quot;] 		= (Decimal)row[this.prefijo + &quot;GASTOREALPROYOTRO&quot;];
+    	value[&quot;EXISTEDESVIO&quot;]			= ((String)row[this.prefijo + &quot;EXISTEDESVIO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;EXISTEDESVIO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+    	value[&quot;PLANACCIONDESVIO&quot;]		= (String)row[this.prefijo + &quot;PLANACCIONDESVIO&quot;];
+    	value[&quot;MONTOINVEJANTPESOS&quot;]		= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTPESOS&quot;];
+    	value[&quot;MONTOINVEJANTDOLARES&quot;]	= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTDOLARES&quot;];
+    	value[&quot;MONTOINVEJANTEUROS&quot;]		= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTEUROS&quot;];
+    	value[&quot;MON_ID_MONTOINVEJANT&quot;]	= (Integer)row[this.prefijo + &quot;MON_ID_MONTOINVEJANT&quot;];
+		value[&quot;MONTOINVEJANTOTRO&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTOTRO&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<arg name="vigencia" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  (arg.vigencia? &quot;WHERE &quot; + this.prefijo + &quot;VIGENCIA = &apos;A&apos; &quot; : &quot;&quot;) +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;SOL_ID&quot;;
+    				  
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value = {};
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;MONTOIMPPRESEJERPESOS&quot;]	= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJERPESOS&quot;];
+		value[&quot;MONTOIMPPRESEJERDOLARES&quot;]= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJERDOLARES&quot;];
+		value[&quot;MONTOIMPPRESEJEREUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJEREUROS&quot;];
+		value[&quot;MON_ID_MONTOIMPPRESEJER&quot;]= (Integer)row[this.prefijo + &quot;MON_ID_MONTOIMPPRESEJER&quot;];
+		value[&quot;MONTOIMPPRESEJEROTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJEROTRO&quot;];
+		value[&quot;CONTEMPLADOPRESUPUESTO&quot;]	= ((String)row[this.prefijo + &quot;CONTEMPLADOPRESUPUESTO&quot;]);
+		value[&quot;CONTEMPLADOPDC&quot;] 		= ((String)row[this.prefijo + &quot;CONTEMPLADOPDC&quot;]);
+		value[&quot;MONTOPRESPESOS&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOPRESPESOS&quot;];
+    	value[&quot;MONTOPRESDOLARES&quot;]		= (Decimal)row[this.prefijo + &quot;MONTOPRESDOLARES&quot;];
+    	value[&quot;MONTOPRESEUROS&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOPRESEUROS&quot;];
+    	value[&quot;MON_ID_MONTOPRES&quot;]		= (Integer)row[this.prefijo + &quot;MON_ID_MONTOPRES&quot;];
+		value[&quot;MONTOPRESOTRO&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPRESOTRO&quot;];
+    	value[&quot;MONTOPDCPESOS&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPDCPESOS&quot;];
+    	value[&quot;MONTOPDCDOLARES&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOPDCDOLARES&quot;];
+    	value[&quot;MONTOPDCEUROS&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPDCEUROS&quot;];
+    	value[&quot;MON_ID_MONTOPDC&quot;]		= (Integer)row[this.prefijo + &quot;MON_ID_MONTOPDC&quot;];
+		value[&quot;MONTOPDCOTRO&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPDCOTRO&quot;];
+    	value[&quot;PREMISASPRESUPUESTO&quot;]	= (String)row[this.prefijo + &quot;PREMISASPRESUPUESTO&quot;];
+    	value[&quot;GASTOREALACUMPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOREALACUMPESOS&quot;];
+    	value[&quot;GASTOREALACUMDOLARES&quot;]	= (Decimal)row[this.prefijo + &quot;GASTOREALACUMDOLARES&quot;];
+    	value[&quot;GASTOREALACUMEUROS&quot;]  	= (Decimal)row[this.prefijo + &quot;GASTOREALACUMEUROS&quot;];
+    	value[&quot;MON_ID_GASTOREALACUM&quot;]	= (Integer)row[this.prefijo + &quot;MON_ID_GASTOREALACUM&quot;];
+		value[&quot;GASTOREALACUMOTRO&quot;] 		= (Decimal)row[this.prefijo + &quot;GASTOREALACUMOTRO&quot;];
+    	value[&quot;GASTOREALPROYPESOS&quot;]		= (Decimal)row[this.prefijo + &quot;GASTOREALPROYPESOS&quot;];
+    	value[&quot;GASTOREALPROYDOLARES&quot;]	= (Decimal)row[this.prefijo + &quot;GASTOREALPROYDOLARES&quot;];
+    	value[&quot;GASTOREALPROYEUROS&quot;]		= (Decimal)row[this.prefijo + &quot;GASTOREALPROYEUROS&quot;];
+    	value[&quot;MON_ID_GASTOREALPROY&quot;]	= (Decimal)row[this.prefijo + &quot;MON_ID_GASTOREALPROY&quot;];
+		value[&quot;GASTOREALPROYOTRO&quot;] 		= (Decimal)row[this.prefijo + &quot;GASTOREALPROYOTRO&quot;];
+    	value[&quot;EXISTEDESVIO&quot;]			= ((String)row[this.prefijo + &quot;EXISTEDESVIO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;EXISTEDESVIO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+    	value[&quot;PLANACCIONDESVIO&quot;]		= (String)row[this.prefijo + &quot;PLANACCIONDESVIO&quot;];
+    	value[&quot;MONTOINVEJANTPESOS&quot;]		= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTPESOS&quot;];
+    	value[&quot;MONTOINVEJANTDOLARES&quot;]	= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTDOLARES&quot;];
+    	value[&quot;MONTOINVEJANTEUROS&quot;]		= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTEUROS&quot;];
+    	value[&quot;MON_ID_MONTOINVEJANT&quot;]	= (Integer)row[this.prefijo + &quot;MON_ID_MONTOINVEJANT&quot;];
+		value[&quot;MONTOINVEJANTOTRO&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTOTRO&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { arg.id }))
+    {
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;MONTOIMPPRESEJERPESOS&quot;]	= (Decimal) row[this.prefijo + &quot;MONTOIMPPRESEJERPESOS&quot;];
+		value[&quot;MONTOIMPPRESEJERDOLARES&quot;]= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJERDOLARES&quot;];
+		value[&quot;MONTOIMPPRESEJEREUROS&quot;] 	= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJEREUROS&quot;];
+		value[&quot;MON_ID_MONTOIMPPRESEJER&quot;]= (Integer)row[this.prefijo + &quot;MON_ID_MONTOIMPPRESEJER&quot;];
+		value[&quot;MONTOIMPPRESEJEROTRO&quot;] 	= (Decimal)row[this.prefijo + &quot;MONTOIMPPRESEJEROTRO&quot;];
+		value[&quot;CONTEMPLADOPRESUPUESTO&quot;]	= ((String)row[this.prefijo + &quot;CONTEMPLADOPRESUPUESTO&quot;]);
+		value[&quot;CONTEMPLADOPDC&quot;] 		= ((String)row[this.prefijo + &quot;CONTEMPLADOPDC&quot;]);
+		value[&quot;MONTOPRESPESOS&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOPRESPESOS&quot;];
+    	value[&quot;MONTOPRESDOLARES&quot;]		= (Decimal)row[this.prefijo + &quot;MONTOPRESDOLARES&quot;];
+    	value[&quot;MONTOPRESEUROS&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOPRESEUROS&quot;];
+    	value[&quot;MON_ID_MONTOPRES&quot;]		= (Integer)row[this.prefijo + &quot;MON_ID_MONTOPRES&quot;];
+		value[&quot;MONTOPRESOTRO&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPRESOTRO&quot;];
+    	value[&quot;MONTOPDCPESOS&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPDCPESOS&quot;];
+    	value[&quot;MONTOPDCDOLARES&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOPDCDOLARES&quot;];
+    	value[&quot;MONTOPDCEUROS&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPDCEUROS&quot;];
+    	value[&quot;MON_ID_MONTOPDC&quot;]		= (Integer)row[this.prefijo + &quot;MON_ID_MONTOPDC&quot;];
+		value[&quot;MONTOPDCOTRO&quot;] 			= (Decimal)row[this.prefijo + &quot;MONTOPDCOTRO&quot;];
+    	value[&quot;PREMISASPRESUPUESTO&quot;]	= (String)row[this.prefijo + &quot;PREMISASPRESUPUESTO&quot;];
+    	value[&quot;GASTOREALACUMPESOS&quot;] 	= (Decimal)row[this.prefijo + &quot;GASTOREALACUMPESOS&quot;];
+    	value[&quot;GASTOREALACUMDOLARES&quot;]	= (Decimal)row[this.prefijo + &quot;GASTOREALACUMDOLARES&quot;];
+    	value[&quot;GASTOREALACUMEUROS&quot;]  	= (Decimal)row[this.prefijo + &quot;GASTOREALACUMEUROS&quot;];
+    	value[&quot;MON_ID_GASTOREALACUM&quot;]	= (Integer)row[this.prefijo + &quot;MON_ID_GASTOREALACUM&quot;];
+		value[&quot;GASTOREALACUMOTRO&quot;] 		= (Decimal)row[this.prefijo + &quot;GASTOREALACUMOTRO&quot;];
+    	value[&quot;GASTOREALPROYPESOS&quot;]		= (Decimal)row[this.prefijo + &quot;GASTOREALPROYPESOS&quot;];
+    	value[&quot;GASTOREALPROYDOLARES&quot;]	= (Decimal)row[this.prefijo + &quot;GASTOREALPROYDOLARES&quot;];
+    	value[&quot;GASTOREALPROYEUROS&quot;]		= (Decimal)row[this.prefijo + &quot;GASTOREALPROYEUROS&quot;];
+    	value[&quot;MON_ID_GASTOREALPROY&quot;]	= (Integer)row[this.prefijo + &quot;MON_ID_GASTOREALPROY&quot;];
+		value[&quot;GASTOREALPROYOTRO&quot;] 		= (Decimal)row[this.prefijo + &quot;GASTOREALPROYOTRO&quot;];
+    	value[&quot;EXISTEDESVIO&quot;]			= ((String)row[this.prefijo + &quot;EXISTEDESVIO&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;EXISTEDESVIO&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+    	value[&quot;PLANACCIONDESVIO&quot;]		= (String)row[this.prefijo + &quot;PLANACCIONDESVIO&quot;];
+    	value[&quot;MONTOINVEJANTPESOS&quot;]		= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTPESOS&quot;];
+    	value[&quot;MONTOINVEJANTDOLARES&quot;]	= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTDOLARES&quot;];
+    	value[&quot;MONTOINVEJANTEUROS&quot;]		= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTEUROS&quot;];
+    	value[&quot;MON_ID_MONTOINVEJANT&quot;]	= (Integer)row[this.prefijo + &quot;MON_ID_MONTOINVEJANT&quot;];
+		value[&quot;MONTOINVEJANTOTRO&quot;] 		= (Decimal)row[this.prefijo + &quot;MONTOINVEJANTOTRO&quot;];
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    } else {
+        respuesta.resultado = DATAERROR;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.id + &quot;\&quot; no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="solId" description="" flags="in" type="Int"/>
+			<arg name="montoImpPresEjerPesos" description="" flags="in" type="Decimal"/>
+			<arg name="montoImpPresEjerDolares" description="" flags="in" type="Decimal"/>
+			<arg name="montoImpPresEjerEuros" description="" flags="in" type="Decimal"/>
+			<arg name="contempladoPresupuesto" description="" flags="in" type="String"/>
+			<arg name="contempladoPdc" description="" flags="in" type="String"/>
+			<arg name="montoPresPesos" description="" flags="in" type="Decimal"/>
+			<arg name="montoPresDolares" description="" flags="in" type="Decimal"/>
+			<arg name="montoPresEuros" description="" flags="in" type="Decimal"/>
+			<arg name="montoPdcPesos" description="" flags="in" type="Decimal"/>
+			<arg name="montoPdcDolares" description="" flags="in" type="Decimal"/>
+			<arg name="montoPdcEuros" description="" flags="in" type="Decimal"/>
+			<arg name="premisasPresupuesto" description="" flags="in" type="String"/>
+			<arg name="gastoRealAcumPesos" description="" flags="in" type="Decimal"/>
+			<arg name="gastoRealAcumEuros" description="" flags="in" type="Decimal"/>
+			<arg name="gastoRealProyPesos" description="" flags="in" type="Decimal"/>
+			<arg name="gastoRealProyDolares" description="" flags="in" type="Decimal"/>
+			<arg name="gastoRealProyEuros" description="" flags="in" type="Decimal"/>
+			<arg name="existeDesvio" description="" flags="in" type="Bool"/>
+			<arg name="planAccionDesvio" description="" flags="in" type="String"/>
+			<arg name="montoInvEjAntPesos" description="" flags="in" type="Decimal"/>
+			<arg name="montoInvEjAntDolares" description="" flags="in" type="Decimal"/>
+			<arg name="montoInvEjAntEuros" description="" flags="in" type="Decimal"/>
+			<arg name="nuevaSolicitud" description="" flags="in" type="Bool"/>
+			<arg name="monIdMontoImpPresEjer" description="" flags="in" type="Int"/>
+			<arg name="montoImpPresEjerOtro" description="" flags="in" type="Decimal"/>
+			<arg name="monIdMontoPres" description="" flags="in" type="Int"/>
+			<arg name="montoPresOtro" description="" flags="in" type="Decimal"/>
+			<arg name="monIdMontoPdc" description="" flags="in" type="Int"/>
+			<arg name="montoPdcOtro" description="" flags="in" type="Decimal"/>
+			<arg name="monIdGastoRealAcum" description="" flags="in" type="Int"/>
+			<arg name="gastoRealAcumOtro" description="" flags="in" type="Decimal"/>
+			<arg name="monIdGastoRealProy" description="" flags="in" type="Int"/>
+			<arg name="gastoRealProyOtro" description="" flags="in" type="Decimal"/>
+			<arg name="monIdMontoInvEjAnt" description="" flags="in" type="Int"/>
+			<arg name="montoInvEjAntOtro" description="" flags="in" type="Decimal"/>
+			<arg name="gastoRealAcumDolares" description="" flags="in" type="Decimal"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	if(!arg.nuevaSolicitud){
+		sentence = &quot;UPDATE &quot; + this.tabla + &quot; SET &quot; +
+						this.prefijo + &quot;MONTOIMPPRESEJERPESOS = ?, &quot; +
+						this.prefijo + &quot;MONTOIMPPRESEJERDOLARES = ?, &quot; +
+						this.prefijo + &quot;MONTOIMPPRESEJEREUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_MONTOIMPPRESEJER = ?, &quot; +
+						this.prefijo + &quot;MONTOIMPPRESEJEROTRO = ?, &quot; +
+						this.prefijo + &quot;CONTEMPLADOPRESUPUESTO = ?, &quot; +
+						this.prefijo + &quot;CONTEMPLADOPDC = ?, &quot; +
+						this.prefijo + &quot;MONTOPRESPESOS = ?, &quot; +
+						this.prefijo + &quot;MONTOPRESDOLARES = ?, &quot; +
+						this.prefijo + &quot;MONTOPRESEUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_MONTOPRES = ?, &quot; +
+						this.prefijo + &quot;MONTOPRESOTRO = ?, &quot; +
+						this.prefijo + &quot;MONTOPDCPESOS = ?, &quot; +
+						this.prefijo + &quot;MONTOPDCDOLARES = ?, &quot; +
+						this.prefijo + &quot;MONTOPDCEUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_MONTOPDC = ?, &quot; +
+						this.prefijo + &quot;MONTOPDCOTRO = ?, &quot; +
+						this.prefijo + &quot;PREMISASPRESUPUESTO = ?, &quot; +
+						this.prefijo + &quot;GASTOREALACUMPESOS = ?, &quot; +
+						this.prefijo + &quot;GASTOREALACUMDOLARES = ?, &quot; +
+						this.prefijo + &quot;GASTOREALACUMEUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_GASTOREALACUM = ?, &quot; +
+						this.prefijo + &quot;GASTOREALACUMOTRO = ?, &quot; +
+						this.prefijo + &quot;GASTOREALPROYPESOS = ?, &quot; +
+						this.prefijo + &quot;GASTOREALPROYDOLARES = ?, &quot; +
+						this.prefijo + &quot;GASTOREALPROYEUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_GASTOREALPROY = ?, &quot; +
+						this.prefijo + &quot;GASTOREALPROYOTRO = ?, &quot; +
+						this.prefijo + &quot;EXISTEDESVIO = ?, &quot; +
+						this.prefijo + &quot;PLANACCIONDESVIO = ?, &quot; +
+						this.prefijo + &quot;MONTOINVEJANTPESOS = ?, &quot; +
+						this.prefijo + &quot;MONTOINVEJANTDOLARES = ?, &quot; +
+						this.prefijo + &quot;MONTOINVEJANTEUROS = ?, &quot; +
+						this.prefijo + &quot;MON_ID_MONTOINVEJANT = ?, &quot; +
+						this.prefijo + &quot;MONTOINVEJANTOTRO = ? &quot; +												
+					&quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;	
+	
+	} else {
+		sentence = &quot;INSERT INTO &quot; + this.tabla + &quot; (&quot; +
+						this.prefijo + &quot;MONTOIMPPRESEJERPESOS, &quot; +
+						this.prefijo + &quot;MONTOIMPPRESEJERDOLARES, &quot; +
+						this.prefijo + &quot;MONTOIMPPRESEJEREUROS, &quot; +
+						this.prefijo + &quot;MON_ID_MONTOIMPPRESEJER, &quot; +
+						this.prefijo + &quot;MONTOIMPPRESEJEROTRO, &quot; +
+						this.prefijo + &quot;CONTEMPLADOPRESUPUESTO, &quot; +
+						this.prefijo + &quot;CONTEMPLADOPDC, &quot; +
+						this.prefijo + &quot;MONTOPRESPESOS, &quot; +
+						this.prefijo + &quot;MONTOPRESDOLARES, &quot; +
+						this.prefijo + &quot;MONTOPRESEUROS, &quot; +
+						this.prefijo + &quot;MON_ID_MONTOPRES, &quot; +
+						this.prefijo + &quot;MONTOPRESOTRO, &quot; +
+						this.prefijo + &quot;MONTOPDCPESOS, &quot; +
+						this.prefijo + &quot;MONTOPDCDOLARES, &quot; +
+						this.prefijo + &quot;MONTOPDCEUROS, &quot; +
+						this.prefijo + &quot;MON_ID_MONTOPDC, &quot; +
+						this.prefijo + &quot;MONTOPDCOTRO, &quot; +
+						this.prefijo + &quot;PREMISASPRESUPUESTO, &quot; +
+						this.prefijo + &quot;GASTOREALACUMPESOS, &quot; +
+						this.prefijo + &quot;GASTOREALACUMDOLARES, &quot; +
+						this.prefijo + &quot;GASTOREALACUMEUROS, &quot; +
+						this.prefijo + &quot;MON_ID_GASTOREALACUM, &quot; +
+						this.prefijo + &quot;GASTOREALACUMOTRO, &quot; +
+						this.prefijo + &quot;GASTOREALPROYPESOS, &quot; +
+						this.prefijo + &quot;GASTOREALPROYDOLARES, &quot; +
+						this.prefijo + &quot;GASTOREALPROYEUROS, &quot; +
+						this.prefijo + &quot;MON_ID_GASTOREALPROY, &quot; +
+						this.prefijo + &quot;GASTOREALPROYOTRO, &quot; +
+						this.prefijo + &quot;EXISTEDESVIO, &quot; +
+						this.prefijo + &quot;PLANACCIONDESVIO, &quot; +
+						this.prefijo + &quot;MONTOINVEJANTPESOS, &quot; +
+						this.prefijo + &quot;MONTOINVEJANTDOLARES, &quot; +
+						this.prefijo + &quot;MONTOINVEJANTEUROS, &quot; +
+						this.prefijo + &quot;MON_ID_MONTOINVEJANT, &quot; +
+						this.prefijo + &quot;MONTOINVEJANTOTRO, &quot; +
+						this.prefijo + &quot;SOL_ID) &quot; +																
+					&quot;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)&quot;;
+	}	
+	Any[] inParameters = {};
+	inParameters[] = arg.montoImpPresEjerPesos;
+	inParameters[] = arg.montoImpPresEjerDolares;	
+	inParameters[] = arg.montoImpPresEjerEuros;
+	inParameters[] = arg.monIdMontoImpPresEjer;
+	inParameters[] = arg.montoImpPresEjerOtro;
+	inParameters[] = arg.contempladoPresupuesto;	
+	inParameters[] = arg.contempladoPdc;	
+	inParameters[] = arg.montoPresPesos;	
+	inParameters[] = arg.montoPresDolares;	
+	inParameters[] = arg.montoPresEuros;
+	inParameters[] = arg.monIdMontoPres;
+	inParameters[] = arg.montoPresOtro;
+	inParameters[] = arg.montoPdcPesos;	
+	inParameters[] = arg.montoPdcDolares;	
+	inParameters[] = arg.montoPdcEuros;	
+	inParameters[] = arg.monIdMontoPdc;
+	inParameters[] = arg.montoPdcOtro;
+	inParameters[] = arg.premisasPresupuesto;	
+	inParameters[] = arg.gastoRealAcumPesos;	
+	inParameters[] = arg.gastoRealAcumDolares;	
+	inParameters[] = arg.gastoRealAcumEuros;
+	inParameters[] = arg.monIdGastoRealAcum;
+	inParameters[] = arg.gastoRealAcumOtro;
+	inParameters[] = arg.gastoRealProyPesos;
+	inParameters[] = arg.gastoRealProyDolares;
+	inParameters[] = arg.gastoRealProyEuros;
+	inParameters[] = arg.monIdGastoRealProy;
+	inParameters[] = arg.gastoRealProyOtro;
+	inParameters[] = arg.existeDesvio==null?null:arg.existeDesvio?&apos;S&apos;:&apos;N&apos;;
+	inParameters[] = arg.planAccionDesvio;
+	inParameters[] = arg.montoInvEjAntPesos;
+	inParameters[] = arg.montoInvEjAntDolares;
+	inParameters[] = arg.montoInvEjAntEuros;
+	inParameters[] = arg.monIdMontoInvEjAnt;
+	inParameters[] = arg.montoInvEjAntOtro;
+	inParameters[] = arg.solId;
+	
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

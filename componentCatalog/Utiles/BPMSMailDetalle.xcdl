@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<component name="BPMSMailDetalle" description="" versionID="Version 5.5 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="legacy" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String defaultValue="" name="mensaje" flags="hassetter hasgetter public" position="1"/>
+		<String defaultValue="" name="nombre" flags="hassetter hasgetter public" position="2"/>
+	</attributes>
+	<methods>
+		<method name="BPMSMailDetalle" flags="static">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.BPMSMailDetalle"/>
+			<sourceCode language="Java1"/>
+		</method>
+	</methods>
+</component>

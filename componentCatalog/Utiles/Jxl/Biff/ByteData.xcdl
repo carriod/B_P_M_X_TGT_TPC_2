@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="ByteData" description="ByteData" versionID="Version 6.5 " flags="abstract interface" signature="jxl.biff.ByteData" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="jxl.biff.ByteData"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.ByteData"/>
+	<attributes>
+		<Binary name="bytes" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetBytes()[B"/>
+	</attributes>
+	<methods>
+		<method name="getBytes" description="getBytes" flags="abstract external hidden" signature="MgetBytes()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+	</methods>
+</component>

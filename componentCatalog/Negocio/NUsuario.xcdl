@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NUsuario" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Bool name="administrador" flags="hassetter hasgetter public includeincheck" position="9"/>
+		<String name="apellido" flags="hassetter hasgetter public" position="3"/>
+		<String name="clase" flags="hassetter hasgetter public" position="4"/>
+		<String name="dominio" flags="hassetter hasgetter public" position="10"/>
+		<String name="email" flags="hassetter hasgetter public" position="8"/>
+		<Bool name="estado" flags="hassetter hasgetter public" position="7"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="1"/>
+		<String name="nombre" flags="hassetter hasgetter public" position="2"/>
+		<String name="password" flags="hassetter hasgetter public" position="6"/>
+		<String name="usuario" flags="hassetter hasgetter public" position="5"/>
+	</attributes>
+	<methods>
+		<method name="NUsuario" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NUsuario"/>
+			<sourceCode language="Java1"/>
+		</method>
+	</methods>
+</component>

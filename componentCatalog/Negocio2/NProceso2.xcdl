@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NProceso2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<array type="Negocio2.NCesta2" name="cestas" flags="hassetter hasgetter public" position="56"/>
+		<String name="clasificacion" flags="hassetter hasgetter public" position="52"/>
+		<object type="Negocio2.NComentario2" name="comentario" flags="hassetter hasgetter public" position="1"/>
+		<array type="Negocio2.NComentario2" name="comentarios" flags="hassetter hasgetter public" position="58"/>
+		<object type="Negocio2.NComprador2" name="comprador" flags="hassetter hasgetter public" position="2"/>
+		<String length="100" name="coordinadorTGS" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<Bool name="cta" flags="hassetter hasgetter public" position="4"/>
+		<Int length="32" name="diasEnCompra" flags="hassetter hasgetter public" position="5"/>
+		<Int length="32" name="diasEnEstado" flags="hassetter hasgetter public" position="6"/>
+		<Int length="32" name="diasHastaObjetivo" flags="hassetter hasgetter public" position="7"/>
+		<Bool name="djai" flags="hassetter hasgetter public" position="8"/>
+		<Int length="32" name="edicion" flags="hassetter hasgetter public" position="9"/>
+		<object type="Negocio2.NProcesoEstado2" name="estado" flags="hassetter hasgetter public includeincheck" position="49"/>
+		<Bool name="existe" flags="hassetter hasgetter public" position="53"/>
+		<Time scale="0" precision="0" name="fechaAlta" flags="hassetter hasgetter public includeincheck" position="10"/>
+		<Time scale="0" precision="0" name="fechaAprobadoMesa" flags="hassetter hasgetter public includeincheck" position="11"/>
+		<Time scale="0" precision="0" name="fechaEnvioHojaMCT" flags="hassetter hasgetter public includeincheck" position="12"/>
+		<Time scale="0" precision="0" name="fechaEnvioParaDT" flags="hassetter hasgetter public includeincheck" position="13"/>
+		<Time scale="0" precision="0" name="fechaEstimadaFin" flags="hassetter hasgetter public includeincheck" position="14"/>
+		<Time scale="0" precision="0" name="fechaIngreso" flags="hassetter hasgetter public includeincheck" position="15"/>
+		<Time scale="0" precision="0" name="fechaInicioLicitacion" flags="hassetter hasgetter public includeincheck" position="16"/>
+		<Time scale="0" precision="0" name="fechaInicioNegociacion" flags="hassetter hasgetter public includeincheck" position="17"/>
+		<Time scale="0" precision="0" name="fechaModificacion" flags="hassetter hasgetter public includeincheck" position="18"/>
+		<Time scale="0" precision="0" name="fechaNecesidad" flags="hassetter hasgetter public includeincheck" position="19"/>
+		<Time scale="0" precision="0" name="fechaObjetivo" flags="hassetter hasgetter public includeincheck" position="20"/>
+		<Time scale="0" precision="0" name="fechaPliego" flags="hassetter hasgetter public includeincheck" position="21"/>
+		<Time scale="0" precision="0" name="fechaProcesoTerminado" flags="hassetter hasgetter public includeincheck" position="22"/>
+		<Time scale="0" precision="0" name="fechaRechazo" flags="hassetter hasgetter public includeincheck" position="54"/>
+		<Time scale="0" precision="0" name="fechaReprogramada" flags="hassetter hasgetter public includeincheck" position="23"/>
+		<object type="Negocio2.NGerencia2" name="gerencia" flags="hassetter hasgetter public includeincheck" position="24"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="25"/>
+		<object type="Negocio2.NJefatura2" name="jefatura" flags="hassetter hasgetter public includeincheck" position="26"/>
+		<object type="Negocio2.NLineaProducto2" name="lineaProducto" flags="hassetter hasgetter public" position="50"/>
+		<array type="Negocio2.NListaCDV2" name="listaCDV" flags="hassetter hasgetter public includeincheck" position="27"/>
+		<array type="Negocio2.NListaDJAI2" name="listaDJAI" flags="hassetter hasgetter public" position="28"/>
+		<object type="Negocio2.NMoneda2" name="moneda" flags="hassetter hasgetter public" position="29"/>
+		<Decimal name="monto" flags="hassetter hasgetter public" position="30"/>
+		<object type="Negocio2.NMotivoRechazo2" name="motivoRechazo" flags="hassetter hasgetter public includeincheck" position="51"/>
+		<object type="Negocio2.NMotivoReprogramacion2" name="motivoReprogramacion" flags="hassetter hasgetter public" position="31"/>
+		<object type="Negocio2.NMotivoTerminado2" name="motivoTerminado" flags="hassetter hasgetter public" position="32"/>
+		<object type="Negocio2.NComentario2" name="observacion" flags="hassetter hasgetter public" position="59"/>
+		<array type="Negocio2.NPedido2" name="pedidos" flags="hassetter hasgetter public" position="57"/>
+		<String length="1" name="prioridad" flags="hassetter hasgetter public includeincheck" position="33"/>
+		<object type="Negocio2.NProcesoEstado2" name="procesoEstado" flags="hassetter hasgetter public" position="34"/>
+		<Int length="32" name="procesoPadre" flags="hassetter hasgetter public" position="35"/>
+		<String length="100" name="proyecto" flags="hassetter hasgetter public includeincheck" position="36"/>
+		<object type="Negocio2.NSociedad2" name="sociedad" flags="hassetter hasgetter public" position="55"/>
+		<object type="Negocio2.NTipoAmbito2" name="tipoAmbito" flags="hassetter hasgetter public" position="37"/>
+		<object type="Negocio2.NTipoCompra2" name="tipoCompra" flags="hassetter hasgetter public" position="38"/>
+		<object type="Negocio2.NTipoPlanificacion2" name="tipoPlanificacion" flags="hassetter hasgetter public" position="39"/>
+		<String length="100" name="titulo" flags="hassetter hasgetter public includeincheck" position="40"/>
+		<String length="50" name="usuarioAlta" flags="hassetter hasgetter public includeincheck" position="41"/>
+		<String length="50" name="usuarioModificacion" flags="hassetter hasgetter public includeincheck" position="42"/>
+		<String length="100" name="varios1" flags="hassetter hasgetter public includeincheck" position="43"/>
+		<String length="100" name="varios2" flags="hassetter hasgetter public includeincheck" position="44"/>
+		<String length="100" name="varios3" flags="hassetter hasgetter public includeincheck" position="45"/>
+		<String length="100" name="varios4" flags="hassetter hasgetter public includeincheck" position="46"/>
+		<String length="100" name="varios5" flags="hassetter hasgetter public includeincheck" position="47"/>
+		<String length="1000" name="varios6" flags="hassetter hasgetter public includeincheck" position="48"/>
+	</attributes>
+	<methods>
+		<method name="NProceso2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NProceso2"/>
+			<sourceCode language="Java1">comentario = NComentario2();
+comprador = NComprador2();
+estado = NProcesoEstado2();
+gerencia = NGerencia2();
+jefatura = NJefatura2();
+lineaProducto = NLineaProducto2();
+moneda = NMoneda2();
+motivoRechazo = NMotivoRechazo2();
+motivoReprogramacion = NMotivoReprogramacion2();
+motivoTerminado = NMotivoTerminado2();
+observacion = NComentario2();
+procesoEstado = NProcesoEstado2();
+tipoAmbito = NTipoAmbito2();
+tipoCompra = NTipoCompra2();
+tipoPlanificacion = NTipoPlanificacion2();
+sociedad = NSociedad2();</sourceCode>
+		</method>
+	</methods>
+</component>

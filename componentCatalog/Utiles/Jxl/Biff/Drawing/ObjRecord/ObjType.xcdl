@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="ObjType" description="ObjRecord$ObjType" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.ObjRecord$ObjType" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.ObjRecord$ObjType"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.ObjRecord$ObjType"/>
+	<attributes>
+		<String name="desc" flags="hassetter hasgetter attribute external" position="2" javaType="java.lang.String" writeSignature="Adesc;Ljava.lang.String;" readSignature="Adesc;Ljava.lang.String;"/>
+		<Int length="32" name="value" flags="hassetter hasgetter attribute external" primitive="true" position="1" javaType="int" writeSignature="Avalue;I" readSignature="Avalue;I"/>
+	</attributes>
+	<methods>
+		<method name="getType" description="getType" flags="static external" signature="MgetType(I)Ljxl.biff.drawing.ObjRecord$ObjType;">
+			<arg name="val" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" javaType="jxl.biff.drawing.ObjRecord$ObjType"/>
+		</method>
+		<method name="toString" description="toString" flags="external hidden" signature="MtoString()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

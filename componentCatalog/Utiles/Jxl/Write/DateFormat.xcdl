@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DateFormat" description="DateFormat" versionID="Version 6.5 " flags="" signature="jxl.write.DateFormat" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.DateFormatRecord" flags="public"/>
+	<inherit class="Utiles.Jxl.Biff.DisplayFormat" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.DateFormat"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.DateFormat"/>
+	<attributes/>
+	<methods>
+		<method name="DateFormat" flags="static" signature="Kjxl.write.DateFormat(Ljava.lang.String;)">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.DateFormat"/>
+		</method>
+	</methods>
+</component>

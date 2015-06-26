@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRAbstractExporter" description="JRAbstractExporter" versionID="Version 6.5 " flags="abstract" signature="net.sf.jasperreports.engine.JRAbstractExporter" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Net.Sf.Jasperreports.Engine.JRExporter" flags=""/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.JRAbstractExporter"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.JRAbstractExporter"/>
+	<attributes>
+		<map type="Any" indexType="Any" name="parameters" flags="hassetter hasgetter external" position="1" javaType="java.util.Map" writeSignature="MsetParameters(Ljava.util.Map;)V" readSignature="MgetParameters()Ljava.util.Map;"/>
+	</attributes>
+	<methods>
+		<method name="exportReport" description="exportReport" flags="abstract external" signature="MexportReport()V">
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="getParameter" description="getParameter" flags="external" signature="MgetParameter(Lnet.sf.jasperreports.engine.JRExporterParameter;)Ljava.lang.Object;">
+			<arg name="parameter" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRExporterParameter" javaType="net.sf.jasperreports.engine.JRExporterParameter"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="getParameters" description="getParameters" flags="external hidden" signature="MgetParameters()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="setParameter" description="setParameter" flags="external" signature="MsetParameter(Lnet.sf.jasperreports.engine.JRExporterParameter;Ljava.lang.Object;)V">
+			<arg name="parameter" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRExporterParameter" javaType="net.sf.jasperreports.engine.JRExporterParameter"/>
+			<arg name="value" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="setParameters" description="setParameters" flags="external hidden" signature="MsetParameters(Ljava.util.Map;)V">
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+	</methods>
+</component>

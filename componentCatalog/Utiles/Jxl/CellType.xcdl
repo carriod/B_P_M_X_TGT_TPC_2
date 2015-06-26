@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="CellType" description="CellType" versionID="Version 6.5 " flags="" signature="jxl.CellType" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.CellType"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.CellType"/>
+	<attributes>
+		<object type="Utiles.Jxl.CellType" name="BOOLEAN" flags="hasgetter attribute static external final" position="4" javaType="jxl.CellType" writeSignature="ABOOLEAN;Ljxl.CellType;" readSignature="ABOOLEAN;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="BOOLEAN_FORMULA" flags="hasgetter attribute static external final" position="9" javaType="jxl.CellType" writeSignature="ABOOLEAN_FORMULA;Ljxl.CellType;" readSignature="ABOOLEAN_FORMULA;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="DATE" flags="hasgetter attribute static external final" position="11" javaType="jxl.CellType" writeSignature="ADATE;Ljxl.CellType;" readSignature="ADATE;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="DATE_FORMULA" flags="hasgetter attribute static external final" position="7" javaType="jxl.CellType" writeSignature="ADATE_FORMULA;Ljxl.CellType;" readSignature="ADATE_FORMULA;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="EMPTY" flags="hasgetter attribute static external final" position="1" javaType="jxl.CellType" writeSignature="AEMPTY;Ljxl.CellType;" readSignature="AEMPTY;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="ERROR" flags="hasgetter attribute static external final" position="5" javaType="jxl.CellType" writeSignature="AERROR;Ljxl.CellType;" readSignature="AERROR;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="FORMULA_ERROR" flags="hasgetter attribute static external final" position="10" javaType="jxl.CellType" writeSignature="AFORMULA_ERROR;Ljxl.CellType;" readSignature="AFORMULA_ERROR;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="LABEL" flags="hasgetter attribute static external final" position="2" javaType="jxl.CellType" writeSignature="ALABEL;Ljxl.CellType;" readSignature="ALABEL;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="NUMBER" flags="hasgetter attribute static external final" position="3" javaType="jxl.CellType" writeSignature="ANUMBER;Ljxl.CellType;" readSignature="ANUMBER;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="NUMBER_FORMULA" flags="hasgetter attribute static external final" position="6" javaType="jxl.CellType" writeSignature="ANUMBER_FORMULA;Ljxl.CellType;" readSignature="ANUMBER_FORMULA;Ljxl.CellType;"/>
+		<object type="Utiles.Jxl.CellType" name="STRING_FORMULA" flags="hasgetter attribute static external final" position="8" javaType="jxl.CellType" writeSignature="ASTRING_FORMULA;Ljxl.CellType;" readSignature="ASTRING_FORMULA;Ljxl.CellType;"/>
+	</attributes>
+	<methods>
+		<method name="toString" description="toString" flags="external hidden" signature="MtoString()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FVersion2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio2.SVersion2" name="version" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FVersion2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada2.FVersion2"/>
+		</method>
+		<method name="getLastImportacionCestas" flags="public server disableclient">
+			<arg name="ces_id" description="" flags="in" type="String"/>
+			<arg name="lineaCesta_id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = SVersion2.getLastImportacionCestas(ces_id : arg.ces_id, lineaCesta_id : arg.lineaCesta_id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastImportacion(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastImportacionPedidos" flags="public server disableclient">
+			<arg name="pro_edicion" description="" flags="in" type="Int"/>
+			<arg name="pro_id" description="" flags="in" type="Int"/>
+			<arg name="prv_codigo" description="" flags="in" type="String"/>
+			<arg name="soc_id" description="" flags="in" type="Int"/>
+			<arg name="mon_id" description="" flags="in" type="Int"/>
+			<arg name="fpa_codigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = SVersion2.getLastImportacionPedidos(pro_edicion : arg.pro_edicion, pro_id : arg.pro_id, prv_codigo : arg.prv_codigo, 
+	                                    mon_id : arg.mon_id, soc_id : arg.soc_id, fpa_codigo : arg.fpa_codigo);
+
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastImportacionPedidos(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastImportacionProcesos" flags="public server disableclient">
+			<arg name="pro_id" description="" flags="in" type="Int"/>
+			<arg name="pro_edicion" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = SVersion2.getLastImportacionProcesos(pro_id : arg.pro_id, pro_edicion : arg.pro_edicion);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastImportacion(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NVersion2"/>
+			<sourceCode language="Java1">NVersion2 objNegocio = NVersion2();
+if((Time)arg.objArray[&quot;FechaModificacion&quot;] != null){
+	objNegocio.fechaUltimaImportacion = Time(((Time) arg.objArray[&quot;FechaModificacion&quot;]).format(&quot;yyyyMMdd&quot;));
+	
+	
+}else{
+	objNegocio.fechaUltimaImportacion = Time(((Time) arg.objArray[&quot;FechaAlta&quot;]).format(&quot;yyyyMMdd&quot;));
+}
+return objNegocio;</sourceCode>
+		</method>
+	</methods>
+</component>

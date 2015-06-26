@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="FControlGestion" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SControlGestion" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FControlGestion" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FControlGestion"/>
+			<sourceCode language="Java1">this.servicio = new SControlGestion(); </sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteValue(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getDatosComplementarios" flags="public server disableclient">
+			<arg name="controlGestion" description="" flags="in" type="Negocio.NControlGestion"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	if(controlGestion.calificacionSolicitud.id != null){
+		respuesta = FCalificacionSolicitud.getValueForId(id : controlGestion.calificacionSolicitud.id);
+		if (respuesta.resultado == OK) {
+			controlGestion.calificacionSolicitud = ((NCalificacionSolicitud) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(controlGestion.clasificacionArea.id != null){
+		respuesta = FClasificacionArea.getValueForId(id : controlGestion.clasificacionArea.id);
+		if (respuesta.resultado == OK) {
+			controlGestion.clasificacionArea = ((NClasificacionArea) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+			
+	if(controlGestion.estadoAgendamiento.id != null){
+		respuesta = FEstadoAgendamiento.getValueForId(id : controlGestion.estadoAgendamiento.id);
+		if (respuesta.resultado == OK) {
+			controlGestion.estadoAgendamiento = ((NEstadoAgendamiento) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(controlGestion.motivoFueraProceso.id != null){
+		respuesta = FMotivoFueraProceso.getValueForId(id : controlGestion.motivoFueraProceso.id);
+		if (respuesta.resultado == OK) {
+			controlGestion.motivoFueraProceso = ((NMotivoFueraProceso) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(controlGestion.tipoOrden.id != null){
+		respuesta = FTipoOrden.getValueForId(id : controlGestion.tipoOrden.id);
+		if (respuesta.resultado == OK) {
+			controlGestion.tipoOrden = ((NTipoOrden) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}	
+	
+	if(controlGestion.areaSolicitante.id != null){
+		respuesta = FAreaSolicitante.getValueForId(id : controlGestion.areaSolicitante.id);
+		if (respuesta.resultado == OK) {
+			controlGestion.areaSolicitante = ((NAreaSolicitante) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	respuesta.contenido = controlGestion;
+} 
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getDatosComplementarios(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues;
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	NControlGestion controlGestion = this.mapeoArrayToNegocio(objArray : objArray);
+    	respuesta = this.getDatosComplementarios(controlGestion : controlGestion);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NControlGestion"/>
+			<sourceCode language="Java1">NControlGestion objNegocio = NControlGestion();
+
+objNegocio.idSolicitud = (Integer)arg.objArray[&quot;SOL_ID&quot;];
+objNegocio.idRelacionada = (Integer)arg.objArray[&quot;IDRELACIONADA&quot;];
+objNegocio.nombreNecesidad = (String)arg.objArray[&quot;NOMBRENECESIDAD&quot;];
+objNegocio.fechaCorte = (Time)arg.objArray[&quot;FECHACORTE&quot;];
+objNegocio.calificacionSolicitud.id = (Integer)arg.objArray[&quot;CSO_ID&quot;];
+objNegocio.areaSolicitante.id = (Integer)arg.objArray[&quot;ASO_ID&quot;];
+objNegocio.clasificacionArea.id = (Integer)arg.objArray[&quot;CAR_ID&quot;];
+objNegocio.fueraProceso = (Java.Lang.Boolean)arg.objArray[&quot;FUERAPROCESO&quot;];
+objNegocio.motivoFueraProceso.id = (Integer)arg.objArray[&quot;MFP_ID&quot;];
+objNegocio.tipoOrden.id = (Integer)arg.objArray[&quot;TOR_ID&quot;];
+objNegocio.estadoAgendamiento.id = (Integer)arg.objArray[&quot;EAG_ID&quot;];
+objNegocio.fechaPlanificacionPreComite = (Time)arg.objArray[&quot;FECHAPLANPRECOMITE&quot;];
+objNegocio.rechazadoCompras = (char)arg.objArray[&quot;RECHAZADOCOMPRAS&quot;];
+objNegocio.modificadoPorPedido = (char)arg.objArray[&quot;MODIFICADOPORPEDIDO&quot;];
+objNegocio.requisitosCompras = (String)arg.objArray[&quot;REQUISITOSCOMPRAS&quot;];
+objNegocio.condicionamientoProveedor = (String)arg.objArray[&quot;CONDICIONAMIENTOPROVEEDOR&quot;];
+objNegocio.analisisSagi = (String)arg.objArray[&quot;ANALISISSAGI&quot;];
+objNegocio.analisisConFormato = (String)arg.objArray[&quot;ANALISISCONFORMATO&quot;];
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="objNegocio" description="" flags="in" type="Negocio.NControlGestion"/>
+			<arg name="solicitudNueva" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.setValue(idSolicitud : arg.objNegocio.idSolicitud,
+									   idRelacionada : arg.objNegocio.idRelacionada,
+	                       			   nombreNecesidad : arg.objNegocio.nombreNecesidad,
+	                       			   fechaCorte : arg.objNegocio.fechaCorte,
+	                       			   idCso : arg.objNegocio.calificacionSolicitud.id,
+	                       			   idAso : arg.objNegocio.areaSolicitante.id,
+	                         		   idCar : arg.objNegocio.clasificacionArea.id,
+	                         		   fueraProceso : arg.objNegocio.fueraProceso, 
+	                       			   idMfp : arg.objNegocio.motivoFueraProceso.id ,
+	                         		   idTor : arg.objNegocio.tipoOrden.id,
+	                         		   idEag : arg.objNegocio.estadoAgendamiento.id, 
+	                      			   fechaPlanificacionPreComite : arg.objNegocio.fechaPlanificacionPreComite,
+	                        		   rechazadoCompras : arg.objNegocio.rechazadoCompras,
+	                         		   modificadoPorPedido : arg.objNegocio.modificadoPorPedido, 
+	                      			   requisitosCompras : arg.objNegocio.requisitosCompras,
+	                      			   condicionamientoProveedor : arg.objNegocio.condicionamientoProveedor,
+	                        		   analisSagi : arg.objNegocio.analisisSagi,
+	                        		   analisisConFormato : arg.objNegocio.analisisConFormato,
+	                        		   solicitudNueva : arg.solicitudNueva);
+
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarErrores" flags="clientavailable public">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="actividad" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">String[] errores = {};
+
+if (arg.actividad != &quot;ACGCompletarSAGI&quot;){
+
+	if(arg.solicitud.controlGestion.idRelacionada == null){
+		errores[] = &quot;Id Relacionada&apos; es obligatorio&quot;;	
+	}
+	if(arg.solicitud.controlGestion.nombreNecesidad == null){
+		errores[] = &quot;Nombre(Descripcion de la Necesidad)&apos; es obligatorio&quot;;	
+	}
+	if(arg.solicitud.controlGestion.fechaCorte == null){
+		errores[] = &quot;Fecha de Corte&apos; es obligatorio&quot;;	
+	}
+	if(arg.solicitud.controlGestion.calificacionSolicitud.id == null){
+		errores[] = &quot;Calificacion de Solicitud&apos; es obligatorio&quot;;	
+	}
+	if(arg.solicitud.controlGestion.clasificacionArea.id == null){
+		errores[] = &quot;Clasificacion del Area&apos; es obligatorio&quot;;	
+	}
+	
+	if(arg.solicitud.controlGestion.fueraProceso == null){
+		errores[] = &quot;Fuera de Proceso&apos; es obligatorio&quot;;	
+	}
+	if(arg.solicitud.controlGestion.fueraProceso){
+		if(arg.solicitud.controlGestion.motivoFueraProceso.id == null){
+			errores[] = &quot;Motivo Fuera de Proceso&apos; es obligatorio&quot;;	
+		}
+	}
+	if(arg.solicitud.controlGestion.tipoOrden.id == null){
+		errores[] = &quot;Tipo&apos; es obligatorio&quot;;	
+	}
+	if(arg.solicitud.controlGestion.estadoAgendamiento.id == null){
+		errores[] = &quot;Estado Agendamiento&apos; es obligatorio&quot;;	
+	}
+	if(arg.solicitud.fechaPlanPreComite == null){
+		errores[] = &quot;Fecha Planificacion Pre-Comite&apos; es obligatorio&quot;;	
+	}
+	if(arg.solicitud.controlGestion.analisisSagi == null){
+		errores[] = &quot;Analisis de la SAGI&apos; es obligatorio&quot;;	
+	}
+	if(arg.solicitud.recomendacionSAGI.recomendacion == null){
+		errores[] = &quot;Recomendacion SAGI&apos; es obligatorio&quot;;	
+	}
+}else{
+	if (arg.solicitud.controlGestion.rechazadoCompras == null){
+		errores[] = &quot;&apos;Rechazado Compras&apos; es obligatorio&quot;;
+	}
+	if (arg.solicitud.controlGestion.modificadoPorPedido == null){
+		errores[] = &quot;&apos;Modificado por Pedido&apos; es obligatorio&quot;;
+	}
+}
+
+return errores;</sourceCode>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="GenerarCode39" description="generarCode39" versionID="Version 6.5 " flags="" signature="barcode.generarCode39" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="barcode.generarCode39"/>
+	<objectProperty name="package" value="barcode"/>
+	<objectProperty name="typeId" value="barcode.generarCode39"/>
+	<attributes/>
+	<methods>
+		<method name="GenerarCode39" flags="static hidden" signature="Kbarcode.generarCode39()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Barcode.GenerarCode39"/>
+		</method>
+		<method name="main" description="main" flags="static external hidden" signature="Mmain([Ljava.lang.String;)V">
+			<arg name="args" description="" flags="in external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+		</method>
+		<method name="toPNG" description="toPNG" flags="static external" signature="MtoPNG(Ljava.lang.String;Ljava.lang.String;IIZ)Ljava.lang.String;">
+			<arg name="codigo" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="path" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="height" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="width" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="showText" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+			<exception type="Java.Lang.Exception"/>
+		</method>
+	</methods>
+</component>

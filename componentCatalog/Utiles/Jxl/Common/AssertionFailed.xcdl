@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="AssertionFailed" description="AssertionFailed" versionID="Version 6.5 " flags="exception system_exception" signature="jxl.common.AssertionFailed" type="java">
+	<inherit class="Java.Lang.RuntimeException" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.common.AssertionFailed"/>
+	<objectProperty name="package" value="jxl.common"/>
+	<objectProperty name="typeId" value="jxl.common.AssertionFailed"/>
+	<attributes/>
+	<methods>
+		<method name="AssertionFailed" flags="static hidden" signature="Kjxl.common.AssertionFailed()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Common.AssertionFailed"/>
+		</method>
+		<method name="AssertionFailed" flags="static" signature="Kjxl.common.AssertionFailed(Ljava.lang.String;)">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Common.AssertionFailed"/>
+		</method>
+	</methods>
+</component>

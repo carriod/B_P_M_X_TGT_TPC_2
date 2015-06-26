@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Border" description="Border" versionID="Version 6.5 " flags="" signature="jxl.format.Border" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.Border"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.Border"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.Border" name="ALL" flags="hasgetter attribute static external final" position="3" javaType="jxl.format.Border" writeSignature="AALL;Ljxl.format.Border;" readSignature="AALL;Ljxl.format.Border;"/>
+		<object type="Utiles.Jxl.Format.Border" name="BOTTOM" flags="hasgetter attribute static external final" position="5" javaType="jxl.format.Border" writeSignature="ABOTTOM;Ljxl.format.Border;" readSignature="ABOTTOM;Ljxl.format.Border;"/>
+		<object type="Utiles.Jxl.Format.Border" name="LEFT" flags="hasgetter attribute static external final" position="6" javaType="jxl.format.Border" writeSignature="ALEFT;Ljxl.format.Border;" readSignature="ALEFT;Ljxl.format.Border;"/>
+		<object type="Utiles.Jxl.Format.Border" name="NONE" flags="hasgetter attribute static external final" position="2" javaType="jxl.format.Border" writeSignature="ANONE;Ljxl.format.Border;" readSignature="ANONE;Ljxl.format.Border;"/>
+		<object type="Utiles.Jxl.Format.Border" name="RIGHT" flags="hasgetter attribute static external final" position="7" javaType="jxl.format.Border" writeSignature="ARIGHT;Ljxl.format.Border;" readSignature="ARIGHT;Ljxl.format.Border;"/>
+		<object type="Utiles.Jxl.Format.Border" name="TOP" flags="hasgetter attribute static external final" position="4" javaType="jxl.format.Border" writeSignature="ATOP;Ljxl.format.Border;" readSignature="ATOP;Ljxl.format.Border;"/>
+		<String name="description" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetDescription()Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="getDescription" description="getDescription" flags="external hidden" signature="MgetDescription()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

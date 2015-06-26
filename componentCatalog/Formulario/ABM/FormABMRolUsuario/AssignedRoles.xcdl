@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="AssignedRoles" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="description" flags="hassetter hasgetter public" position="3"/>
+		<String name="id" flags="hassetter hasgetter public" position="1"/>
+		<String name="parameter" flags="hassetter hasgetter public" position="2"/>
+	</attributes>
+	<methods>
+		<method name="AssignedRoles" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.ABM.FormABMRolUsuario.AssignedRoles"/>
+		</method>
+		<method name="submitEliminar" flags="clientavailable public">
+			<sourceCode language="Java1">this.selectedRoleId = this.id;
+this.selectedRoleParameter = this.parameter;
+this.selectedRoleDescription = this.description;
+this.submit(&quot;eliminar&quot;);
+</sourceCode>
+		</method>
+	</methods>
+</component>

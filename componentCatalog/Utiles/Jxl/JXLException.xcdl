@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="JXLException" description="JXLException" versionID="Version 6.5 " flags="exception system_exception" signature="jxl.JXLException" type="java">
+	<inherit class="Java.Lang.Exception" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.JXLException"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.JXLException"/>
+	<attributes/>
+	<methods/>
+</component>

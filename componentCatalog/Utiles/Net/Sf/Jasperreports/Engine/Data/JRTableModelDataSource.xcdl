@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRTableModelDataSource" description="JRTableModelDataSource" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.data.JRTableModelDataSource" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Net.Sf.Jasperreports.Engine.JRRewindableDataSource" flags=""/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.data.JRTableModelDataSource"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.data"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.data.JRTableModelDataSource"/>
+	<attributes/>
+	<methods>
+		<method name="JRTableModelDataSource" flags="static" signature="Knet.sf.jasperreports.engine.data.JRTableModelDataSource(Ljavax.swing.table.TableModel;)">
+			<arg name="arg1" description="" flags="in external" type="{java,javax.swing.table.TableModel,Javax.Swing.Table.TableModel}" javaType="javax.swing.table.TableModel"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRTableModelDataSource"/>
+		</method>
+		<method name="getFieldValue" description="getFieldValue" flags="external" signature="MgetFieldValue(Lnet.sf.jasperreports.engine.JRField;)Ljava.lang.Object;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}" javaType="net.sf.jasperreports.engine.JRField"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="moveFirst" description="moveFirst" flags="external" signature="MmoveFirst()V"/>
+		<method name="next" description="next" flags="external" signature="Mnext()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

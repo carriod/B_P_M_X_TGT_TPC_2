@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="FResolucion" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SResolucion" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FResolucion" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FResolucion"/>
+			<sourceCode language="Java1">this.servicio = new SResolucion();</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteValue(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteValuesForIdSolicitud" flags="clientavailable public">
+			<arg name="idSolicitud" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteValuesForIdSolicitud(idSolicitud : arg.idSolicitud);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValuesForIdSolicitud(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getDatosComplementarios" flags="public server disableclient">
+			<arg name="resolucion" description="" flags="in" type="Negocio.NResolucion"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	if(resolucion.resultadoResolucion.id != null){
+		respuesta = FResultadoResolucion.getValueForId(id : resolucion.resultadoResolucion.id);
+		if (respuesta.resultado == OK) {
+			resolucion.resultadoResolucion = ((NResultadoResolucion) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(resolucion.motivoStandBy.id != null){
+		respuesta = FMotivoStandBy.getValueForId(id : resolucion.motivoStandBy.id);
+		if (respuesta.resultado == OK) {
+			resolucion.motivoStandBy = ((NMotivoStandBy) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(resolucion.montoAprobadoOM.id != null){
+		respuesta = FMoneda.getValueForId(id : resolucion.montoAprobadoOM.id);
+		if (respuesta.resultado == OK) {
+			resolucion.montoAprobadoOM = ((NMoneda) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	respuesta = FResolucionParticipantes.getListValuesForIdResolucion(idResolucion : resolucion.id);
+	if (respuesta.resultado == OK) {
+		foreach (rep in ((Any[])respuesta.contenido)) {
+			NResolucionParticipantes repAux = (NResolucionParticipantes) rep;
+			resolucion.participantes.extend(participante : repAux);
+		}
+	}else{
+		return respuesta;
+	}
+	
+	
+	respuesta.contenido = resolucion;
+
+} 
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getDatosComplementarios(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValueForIdSol" flags="clientavailable public">
+			<arg name="idSol" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValueForIdSol(idSol : arg.idSol);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues(vigencia : false);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesForIdSolicitud" flags="clientavailable public">
+			<arg name="idSolicitud" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+Respuesta respuesta2;
+
+try {
+	respuesta = this.servicio.getListValuesForIdSolicitud(idSolicitud : arg.idSolicitud);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    NResolucion res = this.mapeoArrayToNegocio(objArray : objArray);
+		    respuesta2 = this.getDatosComplementarios(resolucion : res);
+		    if (respuesta2.resultado == OK){
+		    	objNegocioArray[] = (NResolucion)respuesta2.contenido;
+		    } 
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValuesForIdSolicitud(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+		NResolucion resolucion = this.mapeoArrayToNegocio(objArray : objArray);
+    	respuesta = this.getDatosComplementarios(resolucion : resolucion);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NResolucion"/>
+			<sourceCode language="Java1">NResolucion objNegocio = NResolucion();
+
+objNegocio.id = (Integer)objArray[&quot;ID&quot;];
+objNegocio.idSolicitud = (Integer)arg.objArray[&quot;SOL_ID&quot;];
+objNegocio.tipo = (String)arg.objArray[&quot;TIPO&quot;];
+objNegocio.fechaPlanificada = (Time)arg.objArray[&quot;FECHAPLANIFICADA&quot;];
+objNegocio.fechaReal = (Time)arg.objArray[&quot;FECHAREAL&quot;];
+objNegocio.resultadoResolucion.id = (Integer)arg.objArray[&quot;RLT_ID&quot;];
+objNegocio.motivoStandBy.id = (Integer)arg.objArray[&quot;MSB_ID&quot;];
+objNegocio.fechaProximoComite = (Time)arg.objArray[&quot;FECHAPROXCOMITE&quot;];
+objNegocio.fechaProximoPreComite = (Time)arg.objArray[&quot;FECHAPROXPRECOMITE&quot;];
+objNegocio.montoAprobadoPesos = (Decimal)arg.objArray[&quot;MONTOAPROBADOPESOS&quot;];
+objNegocio.montoAprobadoDolares = (Decimal)arg.objArray[&quot;MONTOAPROBADODOLARES&quot;];
+objNegocio.montoAprobadoEuros = (Decimal)arg.objArray[&quot;MONTOAPROBADOEUROS&quot;];
+objNegocio.montoAprobadoOM.id = (Integer)arg.objArray[&quot;MON_ID_MONTOAPROBADO&quot;];
+objNegocio.montoAprobadoOtro = (Decimal)arg.objArray[&quot;MONTOAPROBADOOTRO&quot;];
+objNegocio.comentario = (String)arg.objArray[&quot;COMENTARIO&quot;];
+objNegocio.fechaLiberacion = (Time)arg.objArray[&quot;FECHALIBERACION&quot;];
+objNegocio.requisitoCompras = (String)arg.objArray[&quot;REQUISITOCOMPRAS&quot;];
+objNegocio.condicionamientoProv = (String)arg.objArray[&quot;CONDICIONAMIENTOPROV&quot;];
+objNegocio.fechaTratamiento = (Time)arg.objArray[&quot;FECHATRATAMIENTO&quot;];
+objNegocio.fechaCierre = (Time)arg.objArray[&quot;FECHACIERRE&quot;];
+objNegocio.borrador = (Java.Lang.Boolean)arg.objArray[&quot;BORRADOR&quot;];
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="objNegocio" description="" flags="in" type="Negocio.NResolucion"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.setValue(id : arg.objNegocio.id,
+									   idSolicitud : arg.objNegocio.idSolicitud,
+									   tipo : arg.objNegocio.tipo, 
+									   fechaPlanificada : arg.objNegocio.fechaPlanificada, 
+	                       			   fechaReal : arg.objNegocio.fechaReal, 
+	                       			   idResultadoResolucion : arg.objNegocio.resultadoResolucion.id, 
+	                       			   idMotivoStandBy : arg.objNegocio.motivoStandBy.id, 
+	                       			   fechaProximoComite : arg.objNegocio.fechaProximoComite, 
+	                       			   fechaProximoPreComite : arg.objNegocio.fechaProximoPreComite, 
+	                       			   montoAprobadoPesos : arg.objNegocio.montoAprobadoPesos, 
+	                       			   montoAprobadoDolares : arg.objNegocio.montoAprobadoDolares, 
+	                       			   montoAprobadoEuros : arg.objNegocio.montoAprobadoEuros, 
+	                       			   montoAprobadoOM : arg.objNegocio.montoAprobadoOM.id,
+	                       			   montoAprobadoOtro : arg.objNegocio.montoAprobadoOtro,
+	                       			   comentario : arg.objNegocio.comentario, 
+	                       			   fechaLiberacion : arg.objNegocio.fechaLiberacion,
+	                       			   requisitoCompras : arg.objNegocio.requisitoCompras, 
+	                       			   condicionamientoProv : arg.objNegocio.condicionamientoProv,
+	                       			   fechaTratamiento : arg.objNegocio.fechaTratamiento,
+	                       			   fechaCierre : arg.objNegocio.fechaCierre,
+	                       			   borrador : arg.objNegocio.borrador);
+	                       			      
+    if(respuesta.resultado == OK){	   
+    	arg.objNegocio.id = (Integer)respuesta.contenido;
+    
+		for (int i=0;i&lt;arg.objNegocio.participantes.length();i++){
+			arg.objNegocio.participantes[i].participante.idResolucion = arg.objNegocio.id;
+			respuesta = FResolucionParticipantes.setValue(objNegocio : arg.objNegocio.participantes[i].participante);
+			if (respuesta.resultado != OK) {
+				return respuesta;		
+			}
+		}
+	}
+	
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarErrores" flags="clientavailable public">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">String[] errores = {};
+
+
+
+return errores;</sourceCode>
+		</method>
+	</methods>
+</component>

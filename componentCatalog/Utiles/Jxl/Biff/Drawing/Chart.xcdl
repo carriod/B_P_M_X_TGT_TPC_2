@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Chart" description="Chart" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.Chart" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Jxl.Biff.ByteData" flags=""/>
+	<inherit class="Utiles.Jxl.Biff.Drawing.EscherStream" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.Chart"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.Chart"/>
+	<attributes>
+		<Binary name="bytes" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetBytes()[B"/>
+		<Binary name="data" flags="hasgetter external" position="2" javaType="byte[]" readSignature="MgetData()[B"/>
+	</attributes>
+	<methods>
+		<method name="Chart" flags="static" signature="Kjxl.biff.drawing.Chart(Ljxl.biff.drawing.MsoDrawingRecord;Ljxl.biff.drawing.ObjRecord;Ljxl.biff.drawing.DrawingData;IILjxl.read.biff.File;Ljxl.WorkbookSettings;)">
+			<arg name="mso" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.MsoDrawingRecord" javaType="jxl.biff.drawing.MsoDrawingRecord"/>
+			<arg name="obj" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.ObjRecord" javaType="jxl.biff.drawing.ObjRecord"/>
+			<arg name="dd" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingData" javaType="jxl.biff.drawing.DrawingData"/>
+			<arg name="sp" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="ep" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="f" description="" flags="in external" type="Utiles.Jxl.Read.Biff.File" javaType="jxl.read.biff.File"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.Chart"/>
+		</method>
+		<method name="getBytes" description="getBytes" flags="external hidden" signature="MgetBytes()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="rationalize" description="rationalize" flags="external" signature="Mrationalize(Ljxl.biff.IndexMapping;Ljxl.biff.IndexMapping;Ljxl.biff.IndexMapping;)V">
+			<arg name="xfMapping" description="" flags="in external" type="Utiles.Jxl.Biff.IndexMapping" javaType="jxl.biff.IndexMapping"/>
+			<arg name="fontMapping" description="" flags="in external" type="Utiles.Jxl.Biff.IndexMapping" javaType="jxl.biff.IndexMapping"/>
+			<arg name="formatMapping" description="" flags="in external" type="Utiles.Jxl.Biff.IndexMapping" javaType="jxl.biff.IndexMapping"/>
+		</method>
+	</methods>
+</component>

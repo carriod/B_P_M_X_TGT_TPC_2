@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="RoleAdmin" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="RoleAdmin" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Roles.RoleAdmin"/>
+		</method>
+		<method name="getParticipantsForRole" flags="clientavailable public">
+			<arg name="roleArg" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Fuego.Lib.Participant[]"/>
+			<sourceCode language="Java1">// Para obtener todos los participantes asignados a cierto rol es necesario hacerlo de dos formas distintas.
+// 1) DirOrganizationalRole.fetch solo trae los participantes asignados en forma directa.
+// 2) Por lo tanto hay que buscar los participantes que tienen cierto rol, por pertenecer a algun grupo que lo tiene.
+// Va a almacenar todos los participantes que tengan cierto rol.
+//NParticipant[] aprobadores = {  };
+
+Fuego.Lib.Participant[] participantes = {};
+if (roleArg == null || roleArg.trim().length() == 0)
+	return participantes; 
+
+try{
+	DirectorySession session = DirectorySession.currentEngineSession;
+	
+	String parametricValue = null;
+	int valueSeparatorIndex = roleArg.indexOf(text : &quot;:&quot;) ;
+	if (valueSeparatorIndex &gt;0){
+		parametricValue = roleArg.substring(first : valueSeparatorIndex +1);
+		roleArg = roleArg.substring(first : 0, valueSeparatorIndex );
+	}
+	
+	logMessage(&quot;--&gt; *** Va a buscar los participantes del rol &quot; + roleArg + &quot; con valor &quot; + parametricValue, severity:Severity.DEBUG);
+
+	
+	// Obtengo todos los participantes para cierto rol
+	DirOrganizationalRole rol = DirOrganizationalRole.fetch(session : session, id : roleArg);
+	
+	if (rol != null){ 
+		// Está comentado por un tema de performance aprovechando que PF sólo asigna roles directamente a 
+		// los participantes (no mediante grupos)
+		
+		// Obtengo todos los grupos
+		/*DirOrganizationalGroup[] grupos = DirOrganizationalGroup.fetchAll(session : session);
+		
+		foreach (grupo in grupos) {
+		    // Veo que el grupo tenga cierto rol
+		    if (grupo.hasRoleAssigned(role : rol.id) || this.inheritRole(group : grupo, rol : rol, 
+		                                                                 cycleControl : {  }) ) {
+		        foreach (element in grupo.assignedParticipants) {
+					participantes[participantes.length()] = Participant.find(name : DirHumanParticipant.fetch(session : session, 
+		                                                                                id : element).id);                                                                                
+		                                                                                
+		        }
+		    }
+		}
+		*/
+		
+		Fuego.Fdi.DirHumanParticipant[] dirHumanParts;
+		if (parametricValue != null){
+			dirHumanParts = rol.fetchAssignedParticipants(parametricValue : parametricValue);
+		}
+		else{
+			dirHumanParts = rol.fetchAssignedParticipants();
+		}
+		
+		foreach (r in dirHumanParts) {
+			try{
+				Participant participante = Participant.find(name : r.id);
+				if(participante!=null) {
+					participantes[participantes.length()] = Participant.find(name : r.id);
+					logMessage(&quot;--&gt; Agrega participante &quot; + r.id, severity:Severity.DEBUG);
+				}
+			}
+			catch(Any e){
+				logMessage(&quot;--&gt; No pudo agregar el participante &quot; + r.id + &quot; &quot; + e, severity:Severity.WARNING);
+			}
+		}
+	}
+}
+catch (Any e){
+	logMessage(&quot;--&gt; Error al obtener los participantes del rol &quot; + roleArg +  &quot; &quot; + e, severity:Severity.WARNING );
+}
+
+logMessage(&quot;--&gt; ***&quot;, severity:Severity.DEBUG);
+
+return participantes;
+</sourceCode>
+		</method>
+		<method name="inheritRole" flags="clientavailable public">
+			<arg name="group" description="" flags="in" type="Fuego.Fdi.DirOrganizationalGroup"/>
+			<arg name="rol" description="" flags="in" type="Fuego.Fdi.DirOrganizationalRole"/>
+			<arg name="cycleControl" description="" flags="in" type="String[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Bool"/>
+			<sourceCode language="Java1">boolean resultado = false;
+DirectorySession session = DirectorySession.currentEngineSession;
+
+foreach (grupoId in group.assignedGroups) {
+    Fuego.Fdi.DirOrganizationalGroup grupoPadre = DirOrganizationalGroup.fetch(session : session, 
+                                                                               id : grupoId);
+	if (grupoPadre != null){
+	    // Si el grupo tiene el rol buscado entonces termino de iterar.
+	    if (grupoPadre.hasRoleAssigned(role : arg.rol.id)) {
+	        resultado = true;
+	
+	        break;
+	    }
+	    else if (grupoPadre.assignedGroups.length() == 0) {
+	        resultado = false;
+	    }
+	    else {
+	        // Verifico si hay grupos que forman ciclos. Ej: A-&gt;B-&gt;A.
+	        boolean hayCiclo = false;
+	
+	        foreach (cdc in cycleControl) {
+	            if (cdc == grupoId) {
+	                hayCiclo = true;
+	
+	                break;
+	            }
+	        }
+	
+	        // Si no hay ciclo debo verificar si alguno de los grupos de los que hereda tiene el rol buscado.
+	        if (! hayCiclo) {
+	            arg.cycleControl.extend(arg1 : grupoId);
+	            resultado = this.inheritRole(group : grupoPadre, rol : rol, cycleControl : arg.cycleControl);
+	        }
+	    }
+	}
+}
+
+return resultado;
+</sourceCode>
+		</method>
+	</methods>
+</component>

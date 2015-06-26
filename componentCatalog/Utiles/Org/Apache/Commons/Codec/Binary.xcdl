@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<component name="Binary" description="" versionID="Version 6.5 " flags="abstract" signature="Binary" type="java">
+	<objectProperty name="isPackage" value="true"/>
+	<attributes/>
+	<methods/>
+</component>

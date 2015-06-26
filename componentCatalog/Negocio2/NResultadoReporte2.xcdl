@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="NResultadoReporte2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="categoriaProductoCodigo" flags="hassetter hasgetter public" position="26"/>
+		<String name="categoriaProductoDesc" flags="hassetter hasgetter public" position="5"/>
+		<String name="codigoPlanifCesta" flags="hassetter hasgetter public" position="2"/>
+		<String name="comprador" flags="hassetter hasgetter public" position="17"/>
+		<String name="direcSolicDesc" flags="hassetter hasgetter public" position="3"/>
+		<Int length="32" name="direcSolicId" flags="hassetter hasgetter public" position="27"/>
+		<String name="estadosProcesoDesc" flags="hassetter hasgetter public" position="16"/>
+		<Time scale="2" precision="2" name="fechaAprobadoMesa" flags="hassetter hasgetter public" position="31"/>
+		<Time scale="0" precision="0" name="fechaCalculada" flags="hassetter hasgetter public includeincheck" position="24"/>
+		<Time scale="2" precision="2" name="fechaLiberacion" flags="hassetter hasgetter public" position="9"/>
+		<Time scale="2" precision="2" name="fechaObjetivo" flags="hassetter hasgetter public" position="14"/>
+		<Time scale="2" precision="2" name="fechaProcesoTerminado" flags="hassetter hasgetter public" position="12"/>
+		<Time scale="2" precision="2" name="fechaRechazo" flags="hassetter hasgetter public includeincheck" position="30"/>
+		<Time scale="2" precision="2" name="fechaReprogramada" flags="hassetter hasgetter public" position="13"/>
+		<String name="gerencia" flags="hassetter hasgetter public" position="19"/>
+		<Int length="32" name="idCesta" flags="hassetter hasgetter public" position="1"/>
+		<String name="jefatura" flags="hassetter hasgetter public" position="18"/>
+		<String name="lineaProductoDesc" flags="hassetter hasgetter public" position="21"/>
+		<Int length="32" name="lineaProductoId" flags="hassetter hasgetter public" position="20"/>
+		<String name="monedaDesc" flags="hassetter hasgetter public" position="7"/>
+		<Int length="32" name="monedaId" flags="hassetter hasgetter public" position="6"/>
+		<String name="montoCesta" flags="hassetter hasgetter public includeincheck" position="8"/>
+		<String name="motivoReprogDesc" flags="hassetter hasgetter public" position="29"/>
+		<Int length="32" name="motivoReprogId" flags="hassetter hasgetter public" position="28"/>
+		<Int length="32" name="procesoEdicion" flags="hassetter hasgetter public" position="11"/>
+		<Int length="32" name="procesoId" flags="hassetter hasgetter public" position="10"/>
+		<String name="tipoCestaDesc" flags="hassetter hasgetter public" position="4"/>
+		<Int length="32" name="tipoCestaId" flags="hassetter hasgetter public" position="25"/>
+		<String name="tipoCompraDesc" flags="hassetter hasgetter public" position="23"/>
+		<Int length="32" name="tipoCompraId" flags="hassetter hasgetter public" position="22"/>
+		<String name="tituloProceso" flags="hassetter hasgetter public" position="15"/>
+	</attributes>
+	<methods>
+		<method name="NResultadoReporte2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NResultadoReporte2"/>
+		</method>
+	</methods>
+</component>

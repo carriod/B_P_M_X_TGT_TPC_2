@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Record" description="Record" versionID="Version 6.5 " flags="" signature="jxl.read.biff.Record" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.read.biff.Record"/>
+	<objectProperty name="package" value="jxl.read.biff"/>
+	<objectProperty name="typeId" value="jxl.read.biff.Record"/>
+	<attributes>
+		<Int length="32" name="code" flags="hasgetter external" primitive="true" position="1" javaType="int" readSignature="MgetCode()I"/>
+		<Binary name="data" flags="hasgetter external" position="2" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Int length="32" name="length" flags="hasgetter external" primitive="true" position="3" javaType="int" readSignature="MgetLength()I"/>
+		<object type="Utiles.Jxl.Biff.Type" name="type" flags="hasgetter external" position="4" javaType="jxl.biff.Type" readSignature="MgetType()Ljxl.biff.Type;"/>
+	</attributes>
+	<methods>
+		<method name="addContinueRecord" description="addContinueRecord" flags="external" signature="MaddContinueRecord(Ljxl.read.biff.Record;)V">
+			<arg name="d" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+		</method>
+		<method name="getCode" description="getCode" flags="external hidden" signature="MgetCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getLength" description="getLength" flags="external hidden" signature="MgetLength()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getType" description="getType" flags="external hidden" signature="MgetType()Ljxl.biff.Type;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Type" javaType="jxl.biff.Type"/>
+		</method>
+	</methods>
+</component>

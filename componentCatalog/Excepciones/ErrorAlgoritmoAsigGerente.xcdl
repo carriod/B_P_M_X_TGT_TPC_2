@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="ErrorAlgoritmoAsigGerente" description="" versionID="Version 6.5 " flags="cloneable exception replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Utiles.Respuesta" name="errorRespuesta" flags="hassetter hasgetter public"/>
+	</attributes>
+	<methods>
+		<method name="ErrorAlgoritmoAsigGerente" flags="static clientavailable">
+			<arg name="respuesta" description="" flags="in" type="Utiles.Respuesta"/>
+			<outputArgument name="return" description="" flags="retval" type="Excepciones.ErrorAlgoritmoAsigGerente"/>
+			<sourceCode language="Java1">this.errorRespuesta = arg.respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

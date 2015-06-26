@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="MalformedStreamException" description="MultipartStream$MalformedStreamException" versionID="Version 6.5 " flags="abstract exception system_exception" signature="bpms.fileupload.MultipartStream$MalformedStreamException" type="java">
+	<inherit class="Java.Io.IOException" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.fileupload.MultipartStream$MalformedStreamException"/>
+	<objectProperty name="package" value="bpms.fileupload"/>
+	<objectProperty name="typeId" value="bpms.fileupload.MultipartStream$MalformedStreamException"/>
+	<attributes/>
+	<methods/>
+</component>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="Resoluciones" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Time scale="0" precision="0" name="fechaPlanificada" flags="hasgetter public virtual includeincheck" position="2">
+			<read language="Java1">return resolucion.fechaPlanificada;</read>
+		</Time>
+		<Time scale="0" precision="0" name="fechaReal" flags="hasgetter public virtual includeincheck" position="3">
+			<read language="Java1">return resolucion.fechaReal;</read>
+		</Time>
+		<object type="Negocio.NResolucion" name="resolucion" flags="hassetter hasgetter public" position="1"/>
+		<String name="tipo" flags="hasgetter public virtual includeincheck" position="4">
+			<read language="Java1">if(this.resolucion.tipo == &quot;P&quot;){
+	return &quot;Pre-Comité&quot;;
+}
+else if(this.resolucion.tipo == &quot;C&quot;){
+	return &quot;Comité&quot;;
+}
+return &quot;&quot;;</read>
+		</String>
+	</attributes>
+	<methods>
+		<method name="Resoluciones" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormResolucion.Resoluciones"/>
+		</method>
+		<method name="botonVer" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_&quot; + this.resolucion.id);
+
+</sourceCode>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableSheet" description="WritableSheet" versionID="Version 6.5 " flags="abstract interface" signature="jxl.write.WritableSheet" type="java">
+	<inherit class="Utiles.Jxl.Sheet" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.WritableSheet"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.WritableSheet"/>
+	<attributes>
+		<Bool name="hidden" flags="hassetter external" primitive="true" position="1" javaType="boolean" writeSignature="MsetHidden(Z)V"/>
+		<String name="name" flags="hassetter external" position="2" javaType="java.lang.String" writeSignature="MsetName(Ljava.lang.String;)V"/>
+		<Int length="32" name="numberOfImages" flags="hasgetter external" primitive="true" position="3" javaType="int" readSignature="MgetNumberOfImages()I"/>
+		<object type="Utiles.Jxl.Format.PageOrientation" name="pageSetup" flags="hassetter external" position="4" javaType="jxl.format.PageOrientation" writeSignature="MsetPageSetup(Ljxl.format.PageOrientation;)V"/>
+		<Bool name="protected" flags="hassetter external" primitive="true" position="5" javaType="boolean" writeSignature="MsetProtected(Z)V"/>
+		<array type="Utiles.Jxl.Write.WritableHyperlink" name="writableHyperlinks" flags="hasgetter external" primitive="true" position="6" javaType="jxl.write.WritableHyperlink[]" readSignature="MgetWritableHyperlinks()[Ljxl.write.WritableHyperlink;"/>
+	</attributes>
+	<methods>
+		<method name="addCell" description="addCell" flags="abstract external" signature="MaddCell(Ljxl.write.WritableCell;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+			<exception type="Utiles.Jxl.Write.Biff.RowsExceededException"/>
+		</method>
+		<method name="addHyperlink" description="addHyperlink" flags="abstract external" signature="MaddHyperlink(Ljxl.write.WritableHyperlink;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Write.WritableHyperlink" javaType="jxl.write.WritableHyperlink"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+			<exception type="Utiles.Jxl.Write.Biff.RowsExceededException"/>
+		</method>
+		<method name="addImage" description="addImage" flags="abstract external" signature="MaddImage(Ljxl.write.WritableImage;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Write.WritableImage" javaType="jxl.write.WritableImage"/>
+		</method>
+		<method name="addRowPageBreak" description="addRowPageBreak" flags="abstract external" signature="MaddRowPageBreak(I)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getImage" description="getImage" flags="abstract external" signature="MgetImage(I)Ljxl.write.WritableImage;">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableImage" javaType="jxl.write.WritableImage"/>
+		</method>
+		<method name="getNumberOfImages" description="getNumberOfImages" flags="abstract external hidden" signature="MgetNumberOfImages()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getWritableCell" description="getWritableCell" flags="abstract external" signature="MgetWritableCell(II)Ljxl.write.WritableCell;">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+		</method>
+		<method name="getWritableHyperlinks" description="getWritableHyperlinks" flags="abstract external hidden" signature="MgetWritableHyperlinks()[Ljxl.write.WritableHyperlink;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Write.WritableHyperlink[]" javaType="jxl.write.WritableHyperlink[]"/>
+		</method>
+		<method name="insertColumn" description="insertColumn" flags="abstract external" signature="MinsertColumn(I)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="insertRow" description="insertRow" flags="abstract external" signature="MinsertRow(I)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="mergeCells" description="mergeCells" flags="abstract external" signature="MmergeCells(IIII)Ljxl.Range;">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg3" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg4" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Range" javaType="jxl.Range"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+			<exception type="Utiles.Jxl.Write.Biff.RowsExceededException"/>
+		</method>
+		<method name="removeColumn" description="removeColumn" flags="abstract external" signature="MremoveColumn(I)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="removeHyperlink" description="removeHyperlink" flags="abstract external" signature="MremoveHyperlink(Ljxl.write.WritableHyperlink;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Write.WritableHyperlink" javaType="jxl.write.WritableHyperlink"/>
+		</method>
+		<method name="removeHyperlink" description="removeHyperlink" flags="abstract external" signature="MremoveHyperlink(Ljxl.write.WritableHyperlink;Z)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Write.WritableHyperlink" javaType="jxl.write.WritableHyperlink"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="removeImage" description="removeImage" flags="abstract external" signature="MremoveImage(Ljxl.write.WritableImage;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Write.WritableImage" javaType="jxl.write.WritableImage"/>
+		</method>
+		<method name="removeRow" description="removeRow" flags="abstract external" signature="MremoveRow(I)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setColumnView" description="setColumnView" flags="abstract external" signature="MsetColumnView(ILjxl.CellView;)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" type="Utiles.Jxl.CellView" javaType="jxl.CellView"/>
+		</method>
+		<method name="setColumnView" description="setColumnView" flags="abstract external" signature="MsetColumnView(II)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setColumnView" description="setColumnView" flags="abstract external" signature="MsetColumnView(IILjxl.format.CellFormat;)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg3" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+		</method>
+		<method name="setFooter" description="setFooter" flags="abstract external" signature="MsetFooter(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)V">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="arg2" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="arg3" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setHeader" description="setHeader" flags="abstract external" signature="MsetHeader(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)V">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="arg2" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="arg3" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setHidden" description="setHidden" flags="abstract external hidden" signature="MsetHidden(Z)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setName" description="setName" flags="abstract external hidden" signature="MsetName(Ljava.lang.String;)V">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setPageSetup" description="setPageSetup" flags="abstract external hidden" signature="MsetPageSetup(Ljxl.format.PageOrientation;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Format.PageOrientation" javaType="jxl.format.PageOrientation"/>
+		</method>
+		<method name="setPageSetup" description="setPageSetup" flags="abstract external" signature="MsetPageSetup(Ljxl.format.PageOrientation;DD)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Format.PageOrientation" javaType="jxl.format.PageOrientation"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="arg3" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setPageSetup" description="setPageSetup" flags="abstract external" signature="MsetPageSetup(Ljxl.format.PageOrientation;Ljxl.format.PaperSize;DD)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Format.PageOrientation" javaType="jxl.format.PageOrientation"/>
+			<arg name="arg2" description="" flags="in external" type="Utiles.Jxl.Format.PaperSize" javaType="jxl.format.PaperSize"/>
+			<arg name="arg3" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="arg4" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setProtected" description="setProtected" flags="abstract external hidden" signature="MsetProtected(Z)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setRowView" description="setRowView" flags="abstract external" signature="MsetRowView(II)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<exception type="Utiles.Jxl.Write.Biff.RowsExceededException"/>
+		</method>
+		<method name="setRowView" description="setRowView" flags="abstract external" signature="MsetRowView(IZ)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="Utiles.Jxl.Write.Biff.RowsExceededException"/>
+		</method>
+		<method name="setRowView" description="setRowView" flags="abstract external" signature="MsetRowView(IIZ)V">
+			<arg name="arg1" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="arg3" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="Utiles.Jxl.Write.Biff.RowsExceededException"/>
+		</method>
+		<method name="unmergeCells" description="unmergeCells" flags="abstract external" signature="MunmergeCells(Ljxl.Range;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Range" javaType="jxl.Range"/>
+		</method>
+	</methods>
+</component>

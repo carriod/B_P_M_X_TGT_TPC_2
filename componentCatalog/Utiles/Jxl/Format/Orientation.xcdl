@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Orientation" description="Orientation" versionID="Version 6.5 " flags="" signature="jxl.format.Orientation" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.Orientation"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.Orientation"/>
+	<attributes>
+		<String name="description" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetDescription()Ljava.lang.String;"/>
+		<object type="Utiles.Jxl.Format.Orientation" name="horizontal" flags="hassetter hasgetter attribute static external" position="3" javaType="jxl.format.Orientation" writeSignature="AHORIZONTAL;Ljxl.format.Orientation;" readSignature="AHORIZONTAL;Ljxl.format.Orientation;"/>
+		<object type="Utiles.Jxl.Format.Orientation" name="minus45" flags="hassetter hasgetter attribute static external" position="8" javaType="jxl.format.Orientation" writeSignature="AMINUS_45;Ljxl.format.Orientation;" readSignature="AMINUS_45;Ljxl.format.Orientation;"/>
+		<object type="Utiles.Jxl.Format.Orientation" name="minus90" flags="hassetter hasgetter attribute static external" position="6" javaType="jxl.format.Orientation" writeSignature="AMINUS_90;Ljxl.format.Orientation;" readSignature="AMINUS_90;Ljxl.format.Orientation;"/>
+		<object type="Utiles.Jxl.Format.Orientation" name="plus45" flags="hassetter hasgetter attribute static external" position="7" javaType="jxl.format.Orientation" writeSignature="APLUS_45;Ljxl.format.Orientation;" readSignature="APLUS_45;Ljxl.format.Orientation;"/>
+		<object type="Utiles.Jxl.Format.Orientation" name="plus90" flags="hassetter hasgetter attribute static external" position="5" javaType="jxl.format.Orientation" writeSignature="APLUS_90;Ljxl.format.Orientation;" readSignature="APLUS_90;Ljxl.format.Orientation;"/>
+		<object type="Utiles.Jxl.Format.Orientation" name="stacked" flags="hassetter hasgetter attribute static external" position="9" javaType="jxl.format.Orientation" writeSignature="ASTACKED;Ljxl.format.Orientation;" readSignature="ASTACKED;Ljxl.format.Orientation;"/>
+		<Int length="32" name="value" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetValue()I"/>
+		<object type="Utiles.Jxl.Format.Orientation" name="vertical" flags="hassetter hasgetter attribute static external" position="4" javaType="jxl.format.Orientation" writeSignature="AVERTICAL;Ljxl.format.Orientation;" readSignature="AVERTICAL;Ljxl.format.Orientation;"/>
+	</attributes>
+	<methods>
+		<method name="getDescription" description="getDescription" flags="external hidden" signature="MgetDescription()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getOrientation" description="getOrientation" flags="static external" signature="MgetOrientation(I)Ljxl.format.Orientation;">
+			<arg name="val" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Orientation" javaType="jxl.format.Orientation"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="IntegerHelper" description="IntegerHelper" versionID="Version 6.5 " flags="" signature="jxl.biff.IntegerHelper" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.IntegerHelper"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.IntegerHelper"/>
+	<attributes/>
+	<methods>
+		<method name="getFourBytes" description="getFourBytes" flags="static external" signature="MgetFourBytes(I)[B">
+			<arg name="i" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getFourBytes" description="getFourBytes" flags="static external" signature="MgetFourBytes(I[BI)V">
+			<arg name="i" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="target" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getInt" description="getInt" flags="static external" signature="MgetInt(BB)I">
+			<arg name="b1" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+			<arg name="b2" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getInt" description="getInt" flags="static external" signature="MgetInt(BBBB)I">
+			<arg name="b1" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+			<arg name="b2" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+			<arg name="b3" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+			<arg name="b4" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getShort" description="getShort" flags="static external" signature="MgetShort(BB)S">
+			<arg name="b1" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+			<arg name="b2" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int(16)" javaType="short"/>
+		</method>
+		<method name="getTwoBytes" description="getTwoBytes" flags="static external" signature="MgetTwoBytes(I)[B">
+			<arg name="i" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getTwoBytes" description="getTwoBytes" flags="static external" signature="MgetTwoBytes(I[BI)V">
+			<arg name="i" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="target" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

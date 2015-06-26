@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="IllegalBoundaryException" description="MultipartStream$IllegalBoundaryException" versionID="Version 6.5 " flags="abstract exception system_exception" signature="bpms.fileupload.MultipartStream$IllegalBoundaryException" type="java">
+	<inherit class="Java.Io.IOException" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.fileupload.MultipartStream$IllegalBoundaryException"/>
+	<objectProperty name="package" value="bpms.fileupload"/>
+	<objectProperty name="typeId" value="bpms.fileupload.MultipartStream$IllegalBoundaryException"/>
+	<attributes/>
+	<methods/>
+</component>

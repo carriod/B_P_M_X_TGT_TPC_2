@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<AnalyzerProperties xmlns:xsi='http://bea.com/albpm/DynamicXml/version/2.0' xsi:type='fuego.data.AnalyzerProperties' id='1'>
+	<updateTime>0001-01-31T22:00:00-05:00</updateTime>
+
+	<logDirectory>D:\Movistar\OraBPMWrkspcGIT\TGT_TPC_2\system</logDirectory>
+
+	<disableUpdate xsi:type='long'>-1</disableUpdate>
+
+	<disabledVariables xsi:null='1'></disabledVariables>
+
+	<disableDatawarehouse xsi:type='long'>-1</disableDatawarehouse>
+
+	<updateFrequencyMinutes xsi:type='long'>60</updateFrequencyMinutes>
+
+	<o3ServerPort xsi:type='long'>8787</o3ServerPort>
+
+	<runWorkload xsi:type='boolean'>true</runWorkload>
+
+	<runPerformance xsi:type='boolean'>true</runPerformance>
+
+	<disableDatawarehouseBoolean xsi:type='boolean'>true</disableDatawarehouseBoolean>
+
+	<snapshotTime>0001-01-31T22:00:00-05:00</snapshotTime>
+
+	<cubesUpdateTime>0001-02-01T00:00:00-05:00</cubesUpdateTime>
+
+	<configuration>TGT_TPC_2_RTS</configuration>
+
+	<disableBAMUpdate xsi:type='boolean'>true</disableBAMUpdate>
+
+	<caducityInHours xsi:type='long'>24</caducityInHours>
+
+	<language>es</language>
+
+	<bamRuntimeConfiguration>TGT_TPC_2_BAM</bamRuntimeConfiguration>
+
+	<generateO3Cubes xsi:type='boolean'>false</generateO3Cubes>
+
+	<bamConfiguration>TGT_TPC_2_BAM</bamConfiguration>
+
+	<disableUpdateBoolean xsi:type='boolean'>true</disableUpdateBoolean>
+
+	<measureVariables xsi:null='1'></measureVariables>
+
+	<enableO3Service xsi:type='boolean'>false</enableO3Service>
+
+	<updateFrequency xsi:type='long'>0</updateFrequency>
+
+	<logDefaultSeverities>Debug</logDefaultSeverities>
+
+	<o3ServerHost>localhost</o3ServerHost>
+</AnalyzerProperties>

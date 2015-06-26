@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="SheetSettings" description="SheetSettings" versionID="Version 6.5 " flags="" signature="jxl.SheetSettings" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.SheetSettings"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.SheetSettings"/>
+	<attributes>
+		<Int length="32" name="DEFAULT_DEFAULT_ROW_HEIGHT" flags="hasgetter attribute static external final" primitive="true" position="37" javaType="int" writeSignature="ADEFAULT_DEFAULT_ROW_HEIGHT;I" readSignature="ADEFAULT_DEFAULT_ROW_HEIGHT;I"/>
+		<Real length="64" name="bottomMargin" flags="hassetter hasgetter external" primitive="true" position="1" javaType="double" writeSignature="MsetBottomMargin(D)V" readSignature="MgetBottomMargin()D"/>
+		<Int length="32" name="copies" flags="hassetter hasgetter external" primitive="true" position="2" javaType="int" writeSignature="MsetCopies(I)V" readSignature="MgetCopies()I"/>
+		<Int length="32" name="defaultColumnWidth" flags="hassetter hasgetter external" primitive="true" position="3" javaType="int" writeSignature="MsetDefaultColumnWidth(I)V" readSignature="MgetDefaultColumnWidth()I"/>
+		<Real length="64" name="defaultHeightMargin" flags="hasgetter external" primitive="true" position="4" javaType="double" readSignature="MgetDefaultHeightMargin()D"/>
+		<Int length="32" name="defaultRowHeight" flags="hassetter hasgetter external" primitive="true" position="5" javaType="int" writeSignature="MsetDefaultRowHeight(I)V" readSignature="MgetDefaultRowHeight()I"/>
+		<Real length="64" name="defaultWidthMargin" flags="hasgetter external" primitive="true" position="6" javaType="double" readSignature="MgetDefaultWidthMargin()D"/>
+		<Bool name="displayZeroValues" flags="hassetter hasgetter external" primitive="true" position="7" javaType="boolean" writeSignature="MsetDisplayZeroValues(Z)V" readSignature="MgetDisplayZeroValues()Z"/>
+		<Int length="32" name="fitHeight" flags="hassetter hasgetter external" primitive="true" position="8" javaType="int" writeSignature="MsetFitHeight(I)V" readSignature="MgetFitHeight()I"/>
+		<Bool name="fitToPages" flags="hassetter hasgetter external" primitive="true" position="9" javaType="boolean" writeSignature="MsetFitToPages(Z)V" readSignature="MgetFitToPages()Z"/>
+		<Int length="32" name="fitWidth" flags="hassetter hasgetter external" primitive="true" position="10" javaType="int" writeSignature="MsetFitWidth(I)V" readSignature="MgetFitWidth()I"/>
+		<object type="Utiles.Jxl.HeaderFooter" name="footer" flags="hassetter hasgetter external" position="11" javaType="jxl.HeaderFooter" writeSignature="MsetFooter(Ljxl.HeaderFooter;)V" readSignature="MgetFooter()Ljxl.HeaderFooter;"/>
+		<Real length="64" name="footerMargin" flags="hassetter hasgetter external" primitive="true" position="12" javaType="double" writeSignature="MsetFooterMargin(D)V" readSignature="MgetFooterMargin()D"/>
+		<object type="Utiles.Jxl.HeaderFooter" name="header" flags="hassetter hasgetter external" position="13" javaType="jxl.HeaderFooter" writeSignature="MsetHeader(Ljxl.HeaderFooter;)V" readSignature="MgetHeader()Ljxl.HeaderFooter;"/>
+		<Real length="64" name="headerMargin" flags="hassetter hasgetter external" primitive="true" position="14" javaType="double" writeSignature="MsetHeaderMargin(D)V" readSignature="MgetHeaderMargin()D"/>
+		<Bool name="hidden" flags="hassetter hasgetter external" primitive="true" position="15" javaType="boolean" writeSignature="MsetHidden(Z)V" readSignature="MisHidden()Z"/>
+		<Bool name="horizontalCentre" flags="hassetter hasgetter external" primitive="true" position="16" javaType="boolean" writeSignature="MsetHorizontalCentre(Z)V" readSignature="MisHorizontalCentre()Z"/>
+		<Int length="32" name="horizontalFreeze" flags="hassetter hasgetter external" primitive="true" position="17" javaType="int" writeSignature="MsetHorizontalFreeze(I)V" readSignature="MgetHorizontalFreeze()I"/>
+		<Int length="32" name="horizontalPrintResolution" flags="hassetter hasgetter external" primitive="true" position="18" javaType="int" writeSignature="MsetHorizontalPrintResolution(I)V" readSignature="MgetHorizontalPrintResolution()I"/>
+		<Real length="64" name="leftMargin" flags="hassetter hasgetter external" primitive="true" position="19" javaType="double" writeSignature="MsetLeftMargin(D)V" readSignature="MgetLeftMargin()D"/>
+		<object type="Utiles.Jxl.Format.PageOrientation" name="orientation" flags="hassetter hasgetter external" position="20" javaType="jxl.format.PageOrientation" writeSignature="MsetOrientation(Ljxl.format.PageOrientation;)V" readSignature="MgetOrientation()Ljxl.format.PageOrientation;"/>
+		<Int length="32" name="pageStart" flags="hassetter hasgetter external" primitive="true" position="21" javaType="int" writeSignature="MsetPageStart(I)V" readSignature="MgetPageStart()I"/>
+		<object type="Utiles.Jxl.Format.PaperSize" name="paperSize" flags="hassetter hasgetter external" position="22" javaType="jxl.format.PaperSize" writeSignature="MsetPaperSize(Ljxl.format.PaperSize;)V" readSignature="MgetPaperSize()Ljxl.format.PaperSize;"/>
+		<String name="password" flags="hassetter hasgetter external" position="23" javaType="java.lang.String" writeSignature="MsetPassword(Ljava.lang.String;)V" readSignature="MgetPassword()Ljava.lang.String;"/>
+		<Int length="32" name="passwordHash" flags="hassetter hasgetter external" primitive="true" position="24" javaType="int" writeSignature="MsetPasswordHash(I)V" readSignature="MgetPasswordHash()I"/>
+		<Bool name="printGridLines" flags="hassetter hasgetter external" primitive="true" position="25" javaType="boolean" writeSignature="MsetPrintGridLines(Z)V" readSignature="MgetPrintGridLines()Z"/>
+		<Bool name="printHeaders" flags="hassetter hasgetter external" primitive="true" position="26" javaType="boolean" writeSignature="MsetPrintHeaders(Z)V" readSignature="MgetPrintHeaders()Z"/>
+		<Bool name="protected" flags="hassetter hasgetter external" primitive="true" position="27" javaType="boolean" writeSignature="MsetProtected(Z)V" readSignature="MisProtected()Z"/>
+		<Real length="64" name="rightMargin" flags="hassetter hasgetter external" primitive="true" position="28" javaType="double" writeSignature="MsetRightMargin(D)V" readSignature="MgetRightMargin()D"/>
+		<Int length="32" name="scaleFactor" flags="hassetter hasgetter external" primitive="true" position="29" javaType="int" writeSignature="MsetScaleFactor(I)V" readSignature="MgetScaleFactor()I"/>
+		<Bool name="selected" flags="hassetter hasgetter external" primitive="true" position="30" javaType="boolean" writeSignature="MsetSelected(Z)V" readSignature="MisSelected()Z"/>
+		<Bool name="showGridLines" flags="hassetter hasgetter external" primitive="true" position="31" javaType="boolean" writeSignature="MsetShowGridLines(Z)V" readSignature="MgetShowGridLines()Z"/>
+		<Real length="64" name="topMargin" flags="hassetter hasgetter external" primitive="true" position="32" javaType="double" writeSignature="MsetTopMargin(D)V" readSignature="MgetTopMargin()D"/>
+		<Bool name="verticalCentre" flags="hassetter hasgetter external" primitive="true" position="33" javaType="boolean" writeSignature="MsetVerticalCentre(Z)V" readSignature="MisVerticalCentre()Z"/>
+		<Int length="32" name="verticalFreeze" flags="hassetter hasgetter external" primitive="true" position="34" javaType="int" writeSignature="MsetVerticalFreeze(I)V" readSignature="MgetVerticalFreeze()I"/>
+		<Int length="32" name="verticalPrintResolution" flags="hassetter hasgetter external" primitive="true" position="35" javaType="int" writeSignature="MsetVerticalPrintResolution(I)V" readSignature="MgetVerticalPrintResolution()I"/>
+		<Int length="32" name="zoomFactor" flags="hassetter hasgetter external" primitive="true" position="36" javaType="int" writeSignature="MsetZoomFactor(I)V" readSignature="MgetZoomFactor()I"/>
+	</attributes>
+	<methods>
+		<method name="SheetSettings" flags="static hidden" signature="Kjxl.SheetSettings()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.SheetSettings"/>
+		</method>
+		<method name="SheetSettings" flags="static" signature="Kjxl.SheetSettings(Ljxl.SheetSettings;)">
+			<arg name="copy" description="" flags="in external" type="Utiles.Jxl.SheetSettings" javaType="jxl.SheetSettings"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.SheetSettings"/>
+		</method>
+		<method name="getBottomMargin" description="getBottomMargin" flags="external hidden" signature="MgetBottomMargin()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getCopies" description="getCopies" flags="external hidden" signature="MgetCopies()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getDefaultColumnWidth" description="getDefaultColumnWidth" flags="external hidden" signature="MgetDefaultColumnWidth()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getDefaultHeightMargin" description="getDefaultHeightMargin" flags="external hidden" signature="MgetDefaultHeightMargin()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getDefaultRowHeight" description="getDefaultRowHeight" flags="external hidden" signature="MgetDefaultRowHeight()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getDefaultWidthMargin" description="getDefaultWidthMargin" flags="external hidden" signature="MgetDefaultWidthMargin()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getDisplayZeroValues" description="getDisplayZeroValues" flags="external hidden" signature="MgetDisplayZeroValues()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getFitHeight" description="getFitHeight" flags="external hidden" signature="MgetFitHeight()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getFitToPages" description="getFitToPages" flags="external hidden" signature="MgetFitToPages()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getFitWidth" description="getFitWidth" flags="external hidden" signature="MgetFitWidth()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getFooter" description="getFooter" flags="external hidden" signature="MgetFooter()Ljxl.HeaderFooter;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.HeaderFooter" javaType="jxl.HeaderFooter"/>
+		</method>
+		<method name="getFooterMargin" description="getFooterMargin" flags="external hidden" signature="MgetFooterMargin()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getHeader" description="getHeader" flags="external hidden" signature="MgetHeader()Ljxl.HeaderFooter;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.HeaderFooter" javaType="jxl.HeaderFooter"/>
+		</method>
+		<method name="getHeaderMargin" description="getHeaderMargin" flags="external hidden" signature="MgetHeaderMargin()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getHorizontalFreeze" description="getHorizontalFreeze" flags="external hidden" signature="MgetHorizontalFreeze()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getHorizontalPrintResolution" description="getHorizontalPrintResolution" flags="external hidden" signature="MgetHorizontalPrintResolution()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getLeftMargin" description="getLeftMargin" flags="external hidden" signature="MgetLeftMargin()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getOrientation" description="getOrientation" flags="external hidden" signature="MgetOrientation()Ljxl.format.PageOrientation;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.PageOrientation" javaType="jxl.format.PageOrientation"/>
+		</method>
+		<method name="getPageStart" description="getPageStart" flags="external hidden" signature="MgetPageStart()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getPaperSize" description="getPaperSize" flags="external hidden" signature="MgetPaperSize()Ljxl.format.PaperSize;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.PaperSize" javaType="jxl.format.PaperSize"/>
+		</method>
+		<method name="getPassword" description="getPassword" flags="external hidden" signature="MgetPassword()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getPasswordHash" description="getPasswordHash" flags="external hidden" signature="MgetPasswordHash()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getPrintGridLines" description="getPrintGridLines" flags="external hidden" signature="MgetPrintGridLines()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getPrintHeaders" description="getPrintHeaders" flags="external hidden" signature="MgetPrintHeaders()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getRightMargin" description="getRightMargin" flags="external hidden" signature="MgetRightMargin()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getScaleFactor" description="getScaleFactor" flags="external hidden" signature="MgetScaleFactor()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getShowGridLines" description="getShowGridLines" flags="external hidden" signature="MgetShowGridLines()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getTopMargin" description="getTopMargin" flags="external hidden" signature="MgetTopMargin()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getVerticalFreeze" description="getVerticalFreeze" flags="external hidden" signature="MgetVerticalFreeze()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getVerticalPrintResolution" description="getVerticalPrintResolution" flags="external hidden" signature="MgetVerticalPrintResolution()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getZoomFactor" description="getZoomFactor" flags="external hidden" signature="MgetZoomFactor()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="isHidden" description="isHidden" flags="external hidden" signature="MisHidden()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isHorizontalCentre" description="isHorizontalCentre" flags="external hidden" signature="MisHorizontalCentre()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isProtected" description="isProtected" flags="external hidden" signature="MisProtected()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isSelected" description="isSelected" flags="external hidden" signature="MisSelected()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isVerticalCentre" description="isVerticalCentre" flags="external hidden" signature="MisVerticalCentre()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setBottomMargin" description="setBottomMargin" flags="external hidden" signature="MsetBottomMargin(D)V">
+			<arg name="m" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setCopies" description="setCopies" flags="external hidden" signature="MsetCopies(I)V">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setDefaultColumnWidth" description="setDefaultColumnWidth" flags="external hidden" signature="MsetDefaultColumnWidth(I)V">
+			<arg name="w" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setDefaultRowHeight" description="setDefaultRowHeight" flags="external hidden" signature="MsetDefaultRowHeight(I)V">
+			<arg name="h" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setDisplayZeroValues" description="setDisplayZeroValues" flags="external hidden" signature="MsetDisplayZeroValues(Z)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setFitHeight" description="setFitHeight" flags="external hidden" signature="MsetFitHeight(I)V">
+			<arg name="fh" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setFitToPages" description="setFitToPages" flags="external hidden" signature="MsetFitToPages(Z)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setFitWidth" description="setFitWidth" flags="external hidden" signature="MsetFitWidth(I)V">
+			<arg name="fw" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setFooter" description="setFooter" flags="external hidden" signature="MsetFooter(Ljxl.HeaderFooter;)V">
+			<arg name="f" description="" flags="in external" type="Utiles.Jxl.HeaderFooter" javaType="jxl.HeaderFooter"/>
+		</method>
+		<method name="setFooterMargin" description="setFooterMargin" flags="external hidden" signature="MsetFooterMargin(D)V">
+			<arg name="d" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setHeader" description="setHeader" flags="external hidden" signature="MsetHeader(Ljxl.HeaderFooter;)V">
+			<arg name="h" description="" flags="in external" type="Utiles.Jxl.HeaderFooter" javaType="jxl.HeaderFooter"/>
+		</method>
+		<method name="setHeaderMargin" description="setHeaderMargin" flags="external hidden" signature="MsetHeaderMargin(D)V">
+			<arg name="d" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setHidden" description="setHidden" flags="external hidden" signature="MsetHidden(Z)V">
+			<arg name="h" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setHorizontalCentre" description="setHorizontalCentre" flags="external hidden" signature="MsetHorizontalCentre(Z)V">
+			<arg name="horizontalCentre" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setHorizontalFreeze" description="setHorizontalFreeze" flags="external hidden" signature="MsetHorizontalFreeze(I)V">
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setHorizontalPrintResolution" description="setHorizontalPrintResolution" flags="external hidden" signature="MsetHorizontalPrintResolution(I)V">
+			<arg name="hpw" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setLeftMargin" description="setLeftMargin" flags="external hidden" signature="MsetLeftMargin(D)V">
+			<arg name="m" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setOrientation" description="setOrientation" flags="external hidden" signature="MsetOrientation(Ljxl.format.PageOrientation;)V">
+			<arg name="po" description="" flags="in external" type="Utiles.Jxl.Format.PageOrientation" javaType="jxl.format.PageOrientation"/>
+		</method>
+		<method name="setPageStart" description="setPageStart" flags="external hidden" signature="MsetPageStart(I)V">
+			<arg name="ps" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setPaperSize" description="setPaperSize" flags="external hidden" signature="MsetPaperSize(Ljxl.format.PaperSize;)V">
+			<arg name="ps" description="" flags="in external" type="Utiles.Jxl.Format.PaperSize" javaType="jxl.format.PaperSize"/>
+		</method>
+		<method name="setPassword" description="setPassword" flags="external hidden" signature="MsetPassword(Ljava.lang.String;)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setPasswordHash" description="setPasswordHash" flags="external hidden" signature="MsetPasswordHash(I)V">
+			<arg name="ph" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setPrintGridLines" description="setPrintGridLines" flags="external hidden" signature="MsetPrintGridLines(Z)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setPrintHeaders" description="setPrintHeaders" flags="external hidden" signature="MsetPrintHeaders(Z)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setProtected" description="setProtected" flags="external hidden" signature="MsetProtected(Z)V">
+			<arg name="p" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setRightMargin" description="setRightMargin" flags="external hidden" signature="MsetRightMargin(D)V">
+			<arg name="m" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setScaleFactor" description="setScaleFactor" flags="external hidden" signature="MsetScaleFactor(I)V">
+			<arg name="sf" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setSelected" description="setSelected" flags="external" signature="MsetSelected()V"/>
+		<method name="setSelected" description="setSelected" flags="external hidden" signature="MsetSelected(Z)V">
+			<arg name="s" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setShowGridLines" description="setShowGridLines" flags="external hidden" signature="MsetShowGridLines(Z)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setTopMargin" description="setTopMargin" flags="external hidden" signature="MsetTopMargin(D)V">
+			<arg name="m" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setVerticalCentre" description="setVerticalCentre" flags="external hidden" signature="MsetVerticalCentre(Z)V">
+			<arg name="verticalCentre" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setVerticalFreeze" description="setVerticalFreeze" flags="external hidden" signature="MsetVerticalFreeze(I)V">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setVerticalPrintResolution" description="setVerticalPrintResolution" flags="external hidden" signature="MsetVerticalPrintResolution(I)V">
+			<arg name="vpw" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setZoomFactor" description="setZoomFactor" flags="external hidden" signature="MsetZoomFactor(I)V">
+			<arg name="zf" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

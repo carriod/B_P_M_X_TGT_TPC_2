@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableFonts" description="WritableFonts" versionID="Version 6.5 " flags="" signature="jxl.write.biff.WritableFonts" type="java">
+	<inherit class="Utiles.Jxl.Biff.Fonts" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.WritableFonts"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.WritableFonts"/>
+	<attributes/>
+	<methods>
+		<method name="WritableFonts" flags="static" signature="Kjxl.write.biff.WritableFonts(Ljxl.write.biff.WritableWorkbookImpl;)">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Write.Biff.WritableWorkbookImpl" javaType="jxl.write.biff.WritableWorkbookImpl"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Biff.WritableFonts"/>
+		</method>
+	</methods>
+</component>

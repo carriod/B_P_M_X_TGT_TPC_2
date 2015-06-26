@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="HyperlinkRecord" description="HyperlinkRecord" versionID="Version 6.5 " flags="" signature="jxl.write.biff.HyperlinkRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.HyperlinkRecord"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.HyperlinkRecord"/>
+	<attributes>
+		<Int length="32" name="column" flags="hasgetter external" primitive="true" position="3" javaType="int" readSignature="MgetColumn()I"/>
+		<Binary name="data" flags="hasgetter external" position="4" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Bool name="file" flags="hasgetter external" primitive="true" position="5" javaType="boolean" readSignature="MisFile()Z"/>
+		<Int length="32" name="lastColumn" flags="hasgetter external" primitive="true" position="6" javaType="int" readSignature="MgetLastColumn()I"/>
+		<Int length="32" name="lastRow" flags="hasgetter external" primitive="true" position="7" javaType="int" readSignature="MgetLastRow()I"/>
+		<Bool name="location" flags="hasgetter external" primitive="true" position="8" javaType="boolean" readSignature="MisLocation()Z"/>
+		<object type="Utiles.Jxl.Range" name="range" flags="hasgetter external" position="9" javaType="jxl.Range" readSignature="MgetRange()Ljxl.Range;"/>
+		<Int length="32" name="row" flags="hasgetter external" primitive="true" position="10" javaType="int" readSignature="MgetRow()I"/>
+		<Bool name="unc" flags="hasgetter external" primitive="true" position="1" javaType="boolean" readSignature="MisUNC()Z"/>
+		<Bool name="url" flags="hasgetter external" primitive="true" position="2" javaType="boolean" readSignature="MisURL()Z"/>
+	</attributes>
+	<methods>
+		<method name="getColumn" description="getColumn" flags="external hidden" signature="MgetColumn()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getFile" description="getFile" flags="external" signature="MgetFile()Ljava.io.File;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.File" javaType="java.io.File"/>
+		</method>
+		<method name="getLastColumn" description="getLastColumn" flags="external hidden" signature="MgetLastColumn()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getLastRow" description="getLastRow" flags="external hidden" signature="MgetLastRow()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getRange" description="getRange" flags="external hidden" signature="MgetRange()Ljxl.Range;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Range" javaType="jxl.Range"/>
+		</method>
+		<method name="getRow" description="getRow" flags="external hidden" signature="MgetRow()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getURL" description="getURL" flags="external" signature="MgetURL()Ljava.net.URL;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Net.URL" javaType="java.net.URL"/>
+		</method>
+		<method name="isFile" description="isFile" flags="external hidden" signature="MisFile()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isLocation" description="isLocation" flags="external hidden" signature="MisLocation()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isUNC" description="isUNC" flags="external hidden" signature="MisUNC()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isURL" description="isURL" flags="external hidden" signature="MisURL()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setFile" description="setFile" flags="external" signature="MsetFile(Ljava.io.File;)V">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+		</method>
+		<method name="setURL" description="setURL" flags="external" signature="MsetURL(Ljava.net.URL;)V">
+			<arg name="url" description="" flags="in external" type="Java.Net.URL" javaType="java.net.URL"/>
+		</method>
+		<method name="toString" description="toString" flags="external hidden" signature="MtoString()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

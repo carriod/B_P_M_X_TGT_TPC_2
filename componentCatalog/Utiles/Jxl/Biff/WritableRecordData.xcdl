@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableRecordData" description="WritableRecordData" versionID="Version 6.5 " flags="abstract" signature="jxl.biff.WritableRecordData" type="java">
+	<inherit class="Utiles.Jxl.Biff.RecordData" flags="public"/>
+	<inherit class="Utiles.Jxl.Biff.ByteData" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.WritableRecordData"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.WritableRecordData"/>
+	<attributes>
+		<Binary name="bytes" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetBytes()[B"/>
+	</attributes>
+	<methods>
+		<method name="getBytes" description="getBytes" flags="external final hidden" signature="MgetBytes()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+	</methods>
+</component>

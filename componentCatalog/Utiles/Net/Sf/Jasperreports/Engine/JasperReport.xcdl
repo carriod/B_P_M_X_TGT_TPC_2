@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JasperReport" description="JasperReport" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.JasperReport" type="java">
+	<inherit class="{java,net.sf.jasperreports.engine.base.JRBaseReport,Net.Sf.Jasperreports.Engine.Base.JRBaseReport}" flags="public"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.JasperReport"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.JasperReport"/>
+	<attributes>
+		<object type="Java.Io.Serializable" name="compileData" flags="hasgetter external" position="1" javaType="java.io.Serializable" readSignature="MgetCompileData()Ljava.io.Serializable;"/>
+		<String name="compileNameSuffix" flags="hasgetter external" position="2" javaType="java.lang.String" readSignature="MgetCompileNameSuffix()Ljava.lang.String;"/>
+		<String name="compilerClass" flags="hasgetter external" position="3" javaType="java.lang.String" readSignature="MgetCompilerClass()Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="JasperReport" flags="static" signature="Knet.sf.jasperreports.engine.JasperReport(Lnet.sf.jasperreports.engine.JRReport;Ljava.lang.String;Ljava.io.Serializable;Lnet.sf.jasperreports.engine.JRExpressionCollector;Ljava.lang.String;)">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRReport,Net.Sf.Jasperreports.Engine.JRReport}" javaType="net.sf.jasperreports.engine.JRReport"/>
+			<arg name="arg2" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="arg3" description="" flags="in external" type="Java.Io.Serializable" javaType="java.io.Serializable"/>
+			<arg name="arg4" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRExpressionCollector,Net.Sf.Jasperreports.Engine.JRExpressionCollector}" javaType="net.sf.jasperreports.engine.JRExpressionCollector"/>
+			<arg name="arg5" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport"/>
+		</method>
+		<method name="getCompileData" description="getCompileData" flags="external hidden" signature="MgetCompileData()Ljava.io.Serializable;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.Serializable" javaType="java.io.Serializable"/>
+		</method>
+		<method name="getCompileNameSuffix" description="getCompileNameSuffix" flags="external hidden" signature="MgetCompileNameSuffix()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getCompilerClass" description="getCompilerClass" flags="external hidden" signature="MgetCompilerClass()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

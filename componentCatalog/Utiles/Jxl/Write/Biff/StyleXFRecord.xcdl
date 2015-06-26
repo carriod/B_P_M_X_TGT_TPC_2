@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="StyleXFRecord" description="StyleXFRecord" versionID="Version 6.5 " flags="" signature="jxl.write.biff.StyleXFRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.XFRecord" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.StyleXFRecord"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.StyleXFRecord"/>
+	<attributes>
+		<Int length="32" name="cellOptions" flags="hassetter external" primitive="true" position="1" javaType="int" writeSignature="MsetCellOptions(I)V"/>
+	</attributes>
+	<methods>
+		<method name="StyleXFRecord" flags="static" signature="Kjxl.write.biff.StyleXFRecord(Ljxl.biff.FontRecord;Ljxl.biff.DisplayFormat;)">
+			<arg name="fnt" description="" flags="in external" type="Utiles.Jxl.Biff.FontRecord" javaType="jxl.biff.FontRecord"/>
+			<arg name="form" description="" flags="in external" type="Utiles.Jxl.Biff.DisplayFormat" javaType="jxl.biff.DisplayFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Biff.StyleXFRecord"/>
+		</method>
+		<method name="setCellOptions" description="setCellOptions" flags="external final hidden" signature="MsetCellOptions(I)V">
+			<arg name="opt" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setLocked" description="setLocked" flags="external hidden" signature="MsetLocked(Z)V">
+			<arg name="l" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

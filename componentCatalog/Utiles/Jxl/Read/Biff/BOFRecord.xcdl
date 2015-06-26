@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="BOFRecord" description="BOFRecord" versionID="Version 6.5 " flags="" signature="jxl.read.biff.BOFRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.RecordData" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.read.biff.BOFRecord"/>
+	<objectProperty name="package" value="jxl.read.biff"/>
+	<objectProperty name="typeId" value="jxl.read.biff.BOFRecord"/>
+	<attributes>
+		<Bool name="biff7" flags="hasgetter external" primitive="true" position="1" javaType="boolean" readSignature="MisBiff7()Z"/>
+		<Bool name="biff8" flags="hasgetter external" primitive="true" position="2" javaType="boolean" readSignature="MisBiff8()Z"/>
+		<Bool name="chart" flags="hasgetter external" primitive="true" position="3" javaType="boolean" readSignature="MisChart()Z"/>
+		<Bool name="macroSheet" flags="hasgetter external" primitive="true" position="4" javaType="boolean" readSignature="MisMacroSheet()Z"/>
+		<Bool name="worksheet" flags="hasgetter external" primitive="true" position="5" javaType="boolean" readSignature="MisWorksheet()Z"/>
+	</attributes>
+	<methods>
+		<method name="isBiff7" description="isBiff7" flags="external hidden" signature="MisBiff7()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isBiff8" description="isBiff8" flags="external hidden" signature="MisBiff8()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isChart" description="isChart" flags="external hidden" signature="MisChart()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isMacroSheet" description="isMacroSheet" flags="external hidden" signature="MisMacroSheet()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isWorksheet" description="isWorksheet" flags="external hidden" signature="MisWorksheet()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

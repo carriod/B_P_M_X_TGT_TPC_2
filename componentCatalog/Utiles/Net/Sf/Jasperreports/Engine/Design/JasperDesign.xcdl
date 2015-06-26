@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JasperDesign" description="JasperDesign" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.design.JasperDesign" type="java">
+	<inherit class="{java,net.sf.jasperreports.engine.base.JRBaseReport,Net.Sf.Jasperreports.Engine.Base.JRBaseReport}" flags="public"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.design.JasperDesign"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.design"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.design.JasperDesign"/>
+	<attributes>
+		<String name="BACKGROUND_PROPERTY" flags="hasgetter attribute static external final" position="26" javaType="java.lang.String" writeSignature="ABACKGROUND_PROPERTY;Ljava.lang.String;" readSignature="ABACKGROUND_PROPERTY;Ljava.lang.String;"/>
+		<String name="BOTTOM_MARGIN_PROPERTY" flags="hasgetter attribute static external final" position="33" javaType="java.lang.String" writeSignature="ABOTTOM_MARGIN_PROPERTY;Ljava.lang.String;" readSignature="ABOTTOM_MARGIN_PROPERTY;Ljava.lang.String;"/>
+		<String name="COLUMN_COUNT_PROPERTY" flags="hasgetter attribute static external final" position="27" javaType="java.lang.String" writeSignature="ACOLUMN_COUNT_PROPERTY;Ljava.lang.String;" readSignature="ACOLUMN_COUNT_PROPERTY;Ljava.lang.String;"/>
+		<String name="COLUMN_FOOTER_PROPERTY" flags="hasgetter attribute static external final" position="29" javaType="java.lang.String" writeSignature="ACOLUMN_FOOTER_PROPERTY;Ljava.lang.String;" readSignature="ACOLUMN_FOOTER_PROPERTY;Ljava.lang.String;"/>
+		<String name="COLUMN_HEADER_PROPERTY" flags="hasgetter attribute static external final" position="28" javaType="java.lang.String" writeSignature="ACOLUMN_HEADER_PROPERTY;Ljava.lang.String;" readSignature="ACOLUMN_HEADER_PROPERTY;Ljava.lang.String;"/>
+		<String name="COLUMN_SPACING_PROPERTY" flags="hasgetter attribute static external final" position="35" javaType="java.lang.String" writeSignature="ACOLUMN_SPACING_PROPERTY;Ljava.lang.String;" readSignature="ACOLUMN_SPACING_PROPERTY;Ljava.lang.String;"/>
+		<String name="COLUMN_WIDTH_PROPERTY" flags="hasgetter attribute static external final" position="34" javaType="java.lang.String" writeSignature="ACOLUMN_WIDTH_PROPERTY;Ljava.lang.String;" readSignature="ACOLUMN_WIDTH_PROPERTY;Ljava.lang.String;"/>
+		<String name="DEFAULT_FONT_PROPERTY" flags="hasgetter attribute static external final" position="37" javaType="java.lang.String" writeSignature="ADEFAULT_FONT_PROPERTY;Ljava.lang.String;" readSignature="ADEFAULT_FONT_PROPERTY;Ljava.lang.String;"/>
+		<String name="DEFAULT_STYLE_PROPERTY" flags="hasgetter attribute static external final" position="38" javaType="java.lang.String" writeSignature="ADEFAULT_STYLE_PROPERTY;Ljava.lang.String;" readSignature="ADEFAULT_STYLE_PROPERTY;Ljava.lang.String;"/>
+		<String name="DETAIL_PROPERTY" flags="hasgetter attribute static external final" position="49" javaType="java.lang.String" writeSignature="ADETAIL_PROPERTY;Ljava.lang.String;" readSignature="ADETAIL_PROPERTY;Ljava.lang.String;"/>
+		<String name="FLOAT_COLUMN_FOOTER_PROPERTY" flags="hasgetter attribute static external final" position="48" javaType="java.lang.String" writeSignature="AFLOAT_COLUMN_FOOTER_PROPERTY;Ljava.lang.String;" readSignature="AFLOAT_COLUMN_FOOTER_PROPERTY;Ljava.lang.String;"/>
+		<String name="LANGUAGE_PROPERTY" flags="hasgetter attribute static external final" position="21" javaType="java.lang.String" writeSignature="ALANGUAGE_PROPERTY;Ljava.lang.String;" readSignature="ALANGUAGE_PROPERTY;Ljava.lang.String;"/>
+		<String name="LAST_PAGE_FOOTER_PROPERTY" flags="hasgetter attribute static external final" position="45" javaType="java.lang.String" writeSignature="ALAST_PAGE_FOOTER_PROPERTY;Ljava.lang.String;" readSignature="ALAST_PAGE_FOOTER_PROPERTY;Ljava.lang.String;"/>
+		<String name="LEFT_MARGIN_PROPERTY" flags="hasgetter attribute static external final" position="30" javaType="java.lang.String" writeSignature="ALEFT_MARGIN_PROPERTY;Ljava.lang.String;" readSignature="ALEFT_MARGIN_PROPERTY;Ljava.lang.String;"/>
+		<String name="NAME_PROPERTY" flags="hasgetter attribute static external final" position="20" javaType="java.lang.String" writeSignature="ANAME_PROPERTY;Ljava.lang.String;" readSignature="ANAME_PROPERTY;Ljava.lang.String;"/>
+		<String name="ORIENTATION_PROPERTY" flags="hasgetter attribute static external final" position="25" javaType="java.lang.String" writeSignature="AORIENTATION_PROPERTY;Ljava.lang.String;" readSignature="AORIENTATION_PROPERTY;Ljava.lang.String;"/>
+		<String name="PAGE_FOOTER_PROPERTY" flags="hasgetter attribute static external final" position="44" javaType="java.lang.String" writeSignature="APAGE_FOOTER_PROPERTY;Ljava.lang.String;" readSignature="APAGE_FOOTER_PROPERTY;Ljava.lang.String;"/>
+		<String name="PAGE_HEADER_PROPERTY" flags="hasgetter attribute static external final" position="43" javaType="java.lang.String" writeSignature="APAGE_HEADER_PROPERTY;Ljava.lang.String;" readSignature="APAGE_HEADER_PROPERTY;Ljava.lang.String;"/>
+		<String name="PAGE_HEIGHT_PROPERTY" flags="hasgetter attribute static external final" position="42" javaType="java.lang.String" writeSignature="APAGE_HEIGHT_PROPERTY;Ljava.lang.String;" readSignature="APAGE_HEIGHT_PROPERTY;Ljava.lang.String;"/>
+		<String name="PAGE_WIDTH_PROPERTY" flags="hasgetter attribute static external final" position="41" javaType="java.lang.String" writeSignature="APAGE_WIDTH_PROPERTY;Ljava.lang.String;" readSignature="APAGE_WIDTH_PROPERTY;Ljava.lang.String;"/>
+		<String name="PRINT_ORDER_PROPERTY" flags="hasgetter attribute static external final" position="36" javaType="java.lang.String" writeSignature="APRINT_ORDER_PROPERTY;Ljava.lang.String;" readSignature="APRINT_ORDER_PROPERTY;Ljava.lang.String;"/>
+		<String name="QUERY_PROPERTY" flags="hasgetter attribute static external final" position="22" javaType="java.lang.String" writeSignature="AQUERY_PROPERTY;Ljava.lang.String;" readSignature="AQUERY_PROPERTY;Ljava.lang.String;"/>
+		<String name="RESOURCE_BUNDLE_PROPERTY" flags="hasgetter attribute static external final" position="23" javaType="java.lang.String" writeSignature="ARESOURCE_BUNDLE_PROPERTY;Ljava.lang.String;" readSignature="ARESOURCE_BUNDLE_PROPERTY;Ljava.lang.String;"/>
+		<String name="RIGHT_MARGIN_PROPERTY" flags="hasgetter attribute static external final" position="31" javaType="java.lang.String" writeSignature="ARIGHT_MARGIN_PROPERTY;Ljava.lang.String;" readSignature="ARIGHT_MARGIN_PROPERTY;Ljava.lang.String;"/>
+		<String name="SCRIPTLET_CLASS_PROPERTY" flags="hasgetter attribute static external final" position="24" javaType="java.lang.String" writeSignature="ASCRIPTLET_CLASS_PROPERTY;Ljava.lang.String;" readSignature="ASCRIPTLET_CLASS_PROPERTY;Ljava.lang.String;"/>
+		<String name="SUMMARY_NEW_PAGE_PROPERTY" flags="hasgetter attribute static external final" position="47" javaType="java.lang.String" writeSignature="ASUMMARY_NEW_PAGE_PROPERTY;Ljava.lang.String;" readSignature="ASUMMARY_NEW_PAGE_PROPERTY;Ljava.lang.String;"/>
+		<String name="SUMMARY_PROPERTY" flags="hasgetter attribute static external final" position="46" javaType="java.lang.String" writeSignature="ASUMMARY_PROPERTY;Ljava.lang.String;" readSignature="ASUMMARY_PROPERTY;Ljava.lang.String;"/>
+		<String name="TITLE_NEW_PAGE_PROPERTY" flags="hasgetter attribute static external final" position="40" javaType="java.lang.String" writeSignature="ATITLE_NEW_PAGE_PROPERTY;Ljava.lang.String;" readSignature="ATITLE_NEW_PAGE_PROPERTY;Ljava.lang.String;"/>
+		<String name="TITLE_PROPERTY" flags="hasgetter attribute static external final" position="39" javaType="java.lang.String" writeSignature="ATITLE_PROPERTY;Ljava.lang.String;" readSignature="ATITLE_PROPERTY;Ljava.lang.String;"/>
+		<String name="TOP_MARGIN_PROPERTY" flags="hasgetter attribute static external final" position="32" javaType="java.lang.String" writeSignature="ATOP_MARGIN_PROPERTY;Ljava.lang.String;" readSignature="ATOP_MARGIN_PROPERTY;Ljava.lang.String;"/>
+		<map type="Any" indexType="Any" name="datasetMap" flags="hasgetter external" position="1" javaType="java.util.Map" readSignature="MgetDatasetMap()Ljava.util.Map;"/>
+		<array type="{java,net.sf.jasperreports.engine.JRDataset,Net.Sf.Jasperreports.Engine.JRDataset}" name="datasets" flags="hasgetter external" primitive="true" position="2" javaType="net.sf.jasperreports.engine.JRDataset[]" readSignature="MgetDatasets()[Lnet.sf.jasperreports.engine.JRDataset;"/>
+		<array type="Any" name="datasetsList" flags="hasgetter external" position="3" javaType="java.util.List" readSignature="MgetDatasetsList()Ljava.util.List;"/>
+		<object type="Java.Util.Collection" name="expressions" flags="hasgetter external" position="4" javaType="java.util.Collection" readSignature="MgetExpressions()Ljava.util.Collection;"/>
+		<array type="Any" name="fieldsList" flags="hasgetter external" position="5" javaType="java.util.List" readSignature="MgetFieldsList()Ljava.util.List;"/>
+		<map type="Any" indexType="Any" name="fieldsMap" flags="hasgetter external" position="6" javaType="java.util.Map" readSignature="MgetFieldsMap()Ljava.util.Map;"/>
+		<array type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" name="fonts" flags="hasgetter external" primitive="true" position="7" javaType="net.sf.jasperreports.engine.JRReportFont[]" readSignature="MgetFonts()[Lnet.sf.jasperreports.engine.JRReportFont;"/>
+		<array type="Any" name="fontsList" flags="hasgetter external" position="8" javaType="java.util.List" readSignature="MgetFontsList()Ljava.util.List;"/>
+		<map type="Any" indexType="Any" name="fontsMap" flags="hasgetter external" position="9" javaType="java.util.Map" readSignature="MgetFontsMap()Ljava.util.Map;"/>
+		<array type="Any" name="groupsList" flags="hasgetter external" position="10" javaType="java.util.List" readSignature="MgetGroupsList()Ljava.util.List;"/>
+		<map type="Any" indexType="Any" name="groupsMap" flags="hasgetter external" position="11" javaType="java.util.Map" readSignature="MgetGroupsMap()Ljava.util.Map;"/>
+		<object type="{java,net.sf.jasperreports.engine.design.JRDesignDataset,Net.Sf.Jasperreports.Engine.Design.JRDesignDataset}" name="mainDesignDataset" flags="hasgetter external" position="12" javaType="net.sf.jasperreports.engine.design.JRDesignDataset" readSignature="MgetMainDesignDataset()Lnet.sf.jasperreports.engine.design.JRDesignDataset;"/>
+		<array type="Any" name="parametersList" flags="hasgetter external" position="13" javaType="java.util.List" readSignature="MgetParametersList()Ljava.util.List;"/>
+		<map type="Any" indexType="Any" name="parametersMap" flags="hasgetter external" position="14" javaType="java.util.Map" readSignature="MgetParametersMap()Ljava.util.Map;"/>
+		<array type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" name="styles" flags="hasgetter external" primitive="true" position="15" javaType="net.sf.jasperreports.engine.JRStyle[]" readSignature="MgetStyles()[Lnet.sf.jasperreports.engine.JRStyle;"/>
+		<array type="Any" name="stylesList" flags="hasgetter external" position="16" javaType="java.util.List" readSignature="MgetStylesList()Ljava.util.List;"/>
+		<map type="Any" indexType="Any" name="stylesMap" flags="hasgetter external" position="17" javaType="java.util.Map" readSignature="MgetStylesMap()Ljava.util.Map;"/>
+		<array type="Any" name="variablesList" flags="hasgetter external" position="18" javaType="java.util.List" readSignature="MgetVariablesList()Ljava.util.List;"/>
+		<map type="Any" indexType="Any" name="variablesMap" flags="hasgetter external" position="19" javaType="java.util.Map" readSignature="MgetVariablesMap()Ljava.util.Map;"/>
+	</attributes>
+	<methods>
+		<method name="JasperDesign" flags="static hidden" signature="Knet.sf.jasperreports.engine.design.JasperDesign()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign"/>
+		</method>
+		<method name="addDataset" description="addDataset" flags="external" signature="MaddDataset(Lnet.sf.jasperreports.engine.design.JRDesignDataset;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.design.JRDesignDataset,Net.Sf.Jasperreports.Engine.Design.JRDesignDataset}" javaType="net.sf.jasperreports.engine.design.JRDesignDataset"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="addField" description="addField" flags="external" signature="MaddField(Lnet.sf.jasperreports.engine.JRField;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}" javaType="net.sf.jasperreports.engine.JRField"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="addFont" description="addFont" flags="external" signature="MaddFont(Lnet.sf.jasperreports.engine.JRReportFont;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="addGroup" description="addGroup" flags="external" signature="MaddGroup(Lnet.sf.jasperreports.engine.design.JRDesignGroup;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.design.JRDesignGroup,Net.Sf.Jasperreports.Engine.Design.JRDesignGroup}" javaType="net.sf.jasperreports.engine.design.JRDesignGroup"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="addImport" description="addImport" flags="external" signature="MaddImport(Ljava.lang.String;)V">
+			<arg name="value" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="addParameter" description="addParameter" flags="external" signature="MaddParameter(Lnet.sf.jasperreports.engine.JRParameter;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRParameter,Net.Sf.Jasperreports.Engine.JRParameter}" javaType="net.sf.jasperreports.engine.JRParameter"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="addPropertyChangeListener" description="addPropertyChangeListener" flags="external" signature="MaddPropertyChangeListener(Ljava.beans.PropertyChangeListener;)V">
+			<arg name="l" description="" flags="in external" type="Java.Beans.PropertyChangeListener" javaType="java.beans.PropertyChangeListener"/>
+		</method>
+		<method name="addPropertyChangeListener" description="addPropertyChangeListener" flags="external" signature="MaddPropertyChangeListener(Ljava.lang.String;Ljava.beans.PropertyChangeListener;)V">
+			<arg name="propName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="l" description="" flags="in external" type="Java.Beans.PropertyChangeListener" javaType="java.beans.PropertyChangeListener"/>
+		</method>
+		<method name="addStyle" description="addStyle" flags="external" signature="MaddStyle(Lnet.sf.jasperreports.engine.JRStyle;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="addVariable" description="addVariable" flags="external" signature="MaddVariable(Lnet.sf.jasperreports.engine.design.JRDesignVariable;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.design.JRDesignVariable,Net.Sf.Jasperreports.Engine.Design.JRDesignVariable}" javaType="net.sf.jasperreports.engine.design.JRDesignVariable"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="getDatasetMap" description="getDatasetMap" flags="external hidden" signature="MgetDatasetMap()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="getDatasets" description="getDatasets" flags="external hidden" signature="MgetDatasets()[Lnet.sf.jasperreports.engine.JRDataset;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="{java,net.sf.jasperreports.engine.JRDataset,Net.Sf.Jasperreports.Engine.JRDataset}[]" javaType="net.sf.jasperreports.engine.JRDataset[]"/>
+		</method>
+		<method name="getDatasetsList" description="getDatasetsList" flags="external hidden" signature="MgetDatasetsList()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getExpressions" description="getExpressions" flags="external hidden" signature="MgetExpressions()Ljava.util.Collection;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Util.Collection" javaType="java.util.Collection"/>
+		</method>
+		<method name="getFieldsList" description="getFieldsList" flags="external hidden" signature="MgetFieldsList()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getFieldsMap" description="getFieldsMap" flags="external hidden" signature="MgetFieldsMap()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="getFonts" description="getFonts" flags="external hidden" signature="MgetFonts()[Lnet.sf.jasperreports.engine.JRReportFont;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}[]" javaType="net.sf.jasperreports.engine.JRReportFont[]"/>
+		</method>
+		<method name="getFontsList" description="getFontsList" flags="external hidden" signature="MgetFontsList()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getFontsMap" description="getFontsMap" flags="external hidden" signature="MgetFontsMap()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="getGroupsList" description="getGroupsList" flags="external hidden" signature="MgetGroupsList()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getGroupsMap" description="getGroupsMap" flags="external hidden" signature="MgetGroupsMap()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="getMainDesignDataset" description="getMainDesignDataset" flags="external hidden" signature="MgetMainDesignDataset()Lnet.sf.jasperreports.engine.design.JRDesignDataset;">
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.design.JRDesignDataset,Net.Sf.Jasperreports.Engine.Design.JRDesignDataset}" javaType="net.sf.jasperreports.engine.design.JRDesignDataset"/>
+		</method>
+		<method name="getParametersList" description="getParametersList" flags="external hidden" signature="MgetParametersList()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getParametersMap" description="getParametersMap" flags="external hidden" signature="MgetParametersMap()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="getStyles" description="getStyles" flags="external hidden" signature="MgetStyles()[Lnet.sf.jasperreports.engine.JRStyle;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}[]" javaType="net.sf.jasperreports.engine.JRStyle[]"/>
+		</method>
+		<method name="getStylesList" description="getStylesList" flags="external hidden" signature="MgetStylesList()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getStylesMap" description="getStylesMap" flags="external hidden" signature="MgetStylesMap()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="getVariablesList" description="getVariablesList" flags="external hidden" signature="MgetVariablesList()Ljava.util.List;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[]" javaType="java.util.List"/>
+		</method>
+		<method name="getVariablesMap" description="getVariablesMap" flags="external hidden" signature="MgetVariablesMap()Ljava.util.Map;">
+			<outputArgument name="return" description="" flags="retval external" type="Any[Any]" javaType="java.util.Map"/>
+		</method>
+		<method name="preprocess" description="preprocess" flags="external" signature="Mpreprocess()V"/>
+		<method name="removeDataset" description="removeDataset" flags="external" signature="MremoveDataset(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JRDataset;">
+			<arg name="datasetName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRDataset,Net.Sf.Jasperreports.Engine.JRDataset}" javaType="net.sf.jasperreports.engine.JRDataset"/>
+		</method>
+		<method name="removeDataset" description="removeDataset" flags="external" signature="MremoveDataset(Lnet.sf.jasperreports.engine.JRDataset;)Lnet.sf.jasperreports.engine.JRDataset;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRDataset,Net.Sf.Jasperreports.Engine.JRDataset}" javaType="net.sf.jasperreports.engine.JRDataset"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRDataset,Net.Sf.Jasperreports.Engine.JRDataset}" javaType="net.sf.jasperreports.engine.JRDataset"/>
+		</method>
+		<method name="removeField" description="removeField" flags="external" signature="MremoveField(Lnet.sf.jasperreports.engine.JRField;)Lnet.sf.jasperreports.engine.JRField;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}" javaType="net.sf.jasperreports.engine.JRField"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}" javaType="net.sf.jasperreports.engine.JRField"/>
+		</method>
+		<method name="removeField" description="removeField" flags="external" signature="MremoveField(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JRField;">
+			<arg name="fieldName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}" javaType="net.sf.jasperreports.engine.JRField"/>
+		</method>
+		<method name="removeFont" description="removeFont" flags="external" signature="MremoveFont(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JRReportFont;">
+			<arg name="propName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+		</method>
+		<method name="removeFont" description="removeFont" flags="external" signature="MremoveFont(Lnet.sf.jasperreports.engine.JRReportFont;)Lnet.sf.jasperreports.engine.JRReportFont;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+		</method>
+		<method name="removeGroup" description="removeGroup" flags="external" signature="MremoveGroup(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JRGroup;">
+			<arg name="groupName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRGroup,Net.Sf.Jasperreports.Engine.JRGroup}" javaType="net.sf.jasperreports.engine.JRGroup"/>
+		</method>
+		<method name="removeGroup" description="removeGroup" flags="external" signature="MremoveGroup(Lnet.sf.jasperreports.engine.JRGroup;)Lnet.sf.jasperreports.engine.JRGroup;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRGroup,Net.Sf.Jasperreports.Engine.JRGroup}" javaType="net.sf.jasperreports.engine.JRGroup"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRGroup,Net.Sf.Jasperreports.Engine.JRGroup}" javaType="net.sf.jasperreports.engine.JRGroup"/>
+		</method>
+		<method name="removeImport" description="removeImport" flags="external" signature="MremoveImport(Ljava.lang.String;)V">
+			<arg name="value" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="removeParameter" description="removeParameter" flags="external" signature="MremoveParameter(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JRParameter;">
+			<arg name="parameterName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRParameter,Net.Sf.Jasperreports.Engine.JRParameter}" javaType="net.sf.jasperreports.engine.JRParameter"/>
+		</method>
+		<method name="removeParameter" description="removeParameter" flags="external" signature="MremoveParameter(Lnet.sf.jasperreports.engine.JRParameter;)Lnet.sf.jasperreports.engine.JRParameter;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRParameter,Net.Sf.Jasperreports.Engine.JRParameter}" javaType="net.sf.jasperreports.engine.JRParameter"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRParameter,Net.Sf.Jasperreports.Engine.JRParameter}" javaType="net.sf.jasperreports.engine.JRParameter"/>
+		</method>
+		<method name="removePropertyChangeListener" description="removePropertyChangeListener" flags="external" signature="MremovePropertyChangeListener(Ljava.beans.PropertyChangeListener;)V">
+			<arg name="l" description="" flags="in external" type="Java.Beans.PropertyChangeListener" javaType="java.beans.PropertyChangeListener"/>
+		</method>
+		<method name="removeStyle" description="removeStyle" flags="external" signature="MremoveStyle(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JRStyle;">
+			<arg name="styleName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+		</method>
+		<method name="removeStyle" description="removeStyle" flags="external" signature="MremoveStyle(Lnet.sf.jasperreports.engine.JRStyle;)Lnet.sf.jasperreports.engine.JRStyle;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+		</method>
+		<method name="removeVariable" description="removeVariable" flags="external" signature="MremoveVariable(Lnet.sf.jasperreports.engine.JRVariable;)Lnet.sf.jasperreports.engine.JRVariable;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRVariable,Net.Sf.Jasperreports.Engine.JRVariable}" javaType="net.sf.jasperreports.engine.JRVariable"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRVariable,Net.Sf.Jasperreports.Engine.JRVariable}" javaType="net.sf.jasperreports.engine.JRVariable"/>
+		</method>
+		<method name="removeVariable" description="removeVariable" flags="external" signature="MremoveVariable(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JRVariable;">
+			<arg name="variableName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,net.sf.jasperreports.engine.JRVariable,Net.Sf.Jasperreports.Engine.JRVariable}" javaType="net.sf.jasperreports.engine.JRVariable"/>
+		</method>
+		<method name="setBackground" description="setBackground" flags="external hidden" signature="MsetBackground(Lnet.sf.jasperreports.engine.JRBand;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRBand,Net.Sf.Jasperreports.Engine.JRBand}" javaType="net.sf.jasperreports.engine.JRBand"/>
+		</method>
+		<method name="setBottomMargin" description="setBottomMargin" flags="external hidden" signature="MsetBottomMargin(I)V">
+			<arg name="bottomMargin" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setColumnCount" description="setColumnCount" flags="external hidden" signature="MsetColumnCount(I)V">
+			<arg name="columnCount" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setColumnFooter" description="setColumnFooter" flags="external hidden" signature="MsetColumnFooter(Lnet.sf.jasperreports.engine.JRBand;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRBand,Net.Sf.Jasperreports.Engine.JRBand}" javaType="net.sf.jasperreports.engine.JRBand"/>
+		</method>
+		<method name="setColumnHeader" description="setColumnHeader" flags="external hidden" signature="MsetColumnHeader(Lnet.sf.jasperreports.engine.JRBand;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRBand,Net.Sf.Jasperreports.Engine.JRBand}" javaType="net.sf.jasperreports.engine.JRBand"/>
+		</method>
+		<method name="setColumnSpacing" description="setColumnSpacing" flags="external hidden" signature="MsetColumnSpacing(I)V">
+			<arg name="columnSpacing" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setColumnWidth" description="setColumnWidth" flags="external hidden" signature="MsetColumnWidth(I)V">
+			<arg name="columnWidth" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setDefaultFont" description="setDefaultFont" flags="external hidden" signature="MsetDefaultFont(Lnet.sf.jasperreports.engine.JRReportFont;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRReportFont,Net.Sf.Jasperreports.Engine.JRReportFont}" javaType="net.sf.jasperreports.engine.JRReportFont"/>
+		</method>
+		<method name="setDefaultStyle" description="setDefaultStyle" flags="external hidden" signature="MsetDefaultStyle(Lnet.sf.jasperreports.engine.JRStyle;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRStyle,Net.Sf.Jasperreports.Engine.JRStyle}" javaType="net.sf.jasperreports.engine.JRStyle"/>
+		</method>
+		<method name="setDetail" description="setDetail" flags="external hidden" signature="MsetDetail(Lnet.sf.jasperreports.engine.JRBand;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRBand,Net.Sf.Jasperreports.Engine.JRBand}" javaType="net.sf.jasperreports.engine.JRBand"/>
+		</method>
+		<method name="setFloatColumnFooter" description="setFloatColumnFooter" flags="external hidden" signature="MsetFloatColumnFooter(Z)V">
+			<arg name="isFloatColumnFooter" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setIgnorePagination" description="setIgnorePagination" flags="external hidden" signature="MsetIgnorePagination(Z)V">
+			<arg name="ignorePagination" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setLanguage" description="setLanguage" flags="external hidden" signature="MsetLanguage(Ljava.lang.String;)V">
+			<arg name="language" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setLastPageFooter" description="setLastPageFooter" flags="external hidden" signature="MsetLastPageFooter(Lnet.sf.jasperreports.engine.JRBand;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRBand,Net.Sf.Jasperreports.Engine.JRBand}" javaType="net.sf.jasperreports.engine.JRBand"/>
+		</method>
+		<method name="setLeftMargin" description="setLeftMargin" flags="external hidden" signature="MsetLeftMargin(I)V">
+			<arg name="leftMargin" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setMainDataset" description="setMainDataset" flags="external" signature="MsetMainDataset(Lnet.sf.jasperreports.engine.design.JRDesignDataset;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.design.JRDesignDataset,Net.Sf.Jasperreports.Engine.Design.JRDesignDataset}" javaType="net.sf.jasperreports.engine.design.JRDesignDataset"/>
+		</method>
+		<method name="setName" description="setName" flags="external hidden" signature="MsetName(Ljava.lang.String;)V">
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setOrientation" description="setOrientation" flags="external hidden" signature="MsetOrientation(B)V">
+			<arg name="orientation" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+		</method>
+		<method name="setPageFooter" description="setPageFooter" flags="external hidden" signature="MsetPageFooter(Lnet.sf.jasperreports.engine.JRBand;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRBand,Net.Sf.Jasperreports.Engine.JRBand}" javaType="net.sf.jasperreports.engine.JRBand"/>
+		</method>
+		<method name="setPageHeader" description="setPageHeader" flags="external hidden" signature="MsetPageHeader(Lnet.sf.jasperreports.engine.JRBand;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRBand,Net.Sf.Jasperreports.Engine.JRBand}" javaType="net.sf.jasperreports.engine.JRBand"/>
+		</method>
+		<method name="setPageHeight" description="setPageHeight" flags="external hidden" signature="MsetPageHeight(I)V">
+			<arg name="pageHeight" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setPageWidth" description="setPageWidth" flags="external hidden" signature="MsetPageWidth(I)V">
+			<arg name="pageWidth" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setPrintOrder" description="setPrintOrder" flags="external hidden" signature="MsetPrintOrder(B)V">
+			<arg name="printOrder" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+		</method>
+		<method name="setQuery" description="setQuery" flags="external" signature="MsetQuery(Lnet.sf.jasperreports.engine.design.JRDesignQuery;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.design.JRDesignQuery,Net.Sf.Jasperreports.Engine.Design.JRDesignQuery}" javaType="net.sf.jasperreports.engine.design.JRDesignQuery"/>
+		</method>
+		<method name="setResourceBundle" description="setResourceBundle" flags="external hidden" signature="MsetResourceBundle(Ljava.lang.String;)V">
+			<arg name="resourceBundle" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setRightMargin" description="setRightMargin" flags="external hidden" signature="MsetRightMargin(I)V">
+			<arg name="rightMargin" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setScriptletClass" description="setScriptletClass" flags="external hidden" signature="MsetScriptletClass(Ljava.lang.String;)V">
+			<arg name="scriptletClass" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setSummary" description="setSummary" flags="external hidden" signature="MsetSummary(Lnet.sf.jasperreports.engine.JRBand;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRBand,Net.Sf.Jasperreports.Engine.JRBand}" javaType="net.sf.jasperreports.engine.JRBand"/>
+		</method>
+		<method name="setSummaryNewPage" description="setSummaryNewPage" flags="external hidden" signature="MsetSummaryNewPage(Z)V">
+			<arg name="isSummaryNewPage" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setTitle" description="setTitle" flags="external hidden" signature="MsetTitle(Lnet.sf.jasperreports.engine.JRBand;)V">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRBand,Net.Sf.Jasperreports.Engine.JRBand}" javaType="net.sf.jasperreports.engine.JRBand"/>
+		</method>
+		<method name="setTitleNewPage" description="setTitleNewPage" flags="external hidden" signature="MsetTitleNewPage(Z)V">
+			<arg name="isTitleNewPage" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setTopMargin" description="setTopMargin" flags="external hidden" signature="MsetTopMargin(I)V">
+			<arg name="topMargin" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

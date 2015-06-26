@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="Crypt" description="Crypt" versionID="Version 6.5 " flags="" signature="bpms.util.Crypt" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.util.Crypt"/>
+	<objectProperty name="package" value="bpms.util"/>
+	<objectProperty name="typeId" value="bpms.util.Crypt"/>
+	<attributes/>
+	<methods>
+		<method name="Crypt" flags="static hidden" signature="Kbpms.util.Crypt()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Crypt"/>
+		</method>
+		<method name="desencriptar" description="desencriptar" flags="static external" signature="Mdesencriptar(Ljava.lang.String;Ljava.lang.String;Z)Ljava.lang.String;">
+			<arg name="msg" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="clave" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="cadena" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="encriptar" description="encriptar" flags="static external" signature="Mencriptar(Ljava.lang.String;Ljava.lang.String;Z)Ljava.lang.String;">
+			<arg name="msg" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="clave" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="cadena" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="main" description="main" flags="static external hidden" signature="Mmain([Ljava.lang.String;)V">
+			<arg name="args" description="" flags="in external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+			<exception type="Java.Lang.Exception"/>
+		</method>
+	</methods>
+</component>

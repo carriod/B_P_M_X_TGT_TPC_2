@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableWorkbookImpl" description="WritableWorkbookImpl" versionID="Version 6.5 " flags="" signature="jxl.write.biff.WritableWorkbookImpl" type="java">
+	<inherit class="Utiles.Jxl.Write.WritableWorkbook" flags="public"/>
+	<inherit class="Utiles.Jxl.Biff.Formula.ExternalSheet" flags=""/>
+	<inherit class="Utiles.Jxl.Biff.WorkbookMethods" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.WritableWorkbookImpl"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.WritableWorkbookImpl"/>
+	<attributes>
+		<Int length="32" name="numberOfSheets" flags="hasgetter external" primitive="true" position="1" javaType="int" readSignature="MgetNumberOfSheets()I"/>
+		<object type="Java.Io.File" name="outputFile" flags="hassetter external" position="2" javaType="java.io.File" writeSignature="MsetOutputFile(Ljava.io.File;)V"/>
+		<Bool name="protected" flags="hassetter external" primitive="true" position="3" javaType="boolean" writeSignature="MsetProtected(Z)V"/>
+		<array type="String" name="rangeNames" flags="hasgetter external" primitive="true" position="4" javaType="java.lang.String[]" readSignature="MgetRangeNames()[Ljava.lang.String;"/>
+		<array type="String" name="sheetNames" flags="hasgetter external" primitive="true" position="5" javaType="java.lang.String[]" readSignature="MgetSheetNames()[Ljava.lang.String;"/>
+		<array type="Utiles.Jxl.Write.WritableSheet" name="sheets" flags="hasgetter external" primitive="true" position="6" javaType="jxl.write.WritableSheet[]" readSignature="MgetSheets()[Ljxl.write.WritableSheet;"/>
+		<object type="Utiles.Jxl.Read.Biff.BOFRecord" name="workbookBof" flags="hasgetter external" position="7" javaType="jxl.read.biff.BOFRecord" readSignature="MgetWorkbookBof()Ljxl.read.biff.BOFRecord;"/>
+	</attributes>
+	<methods>
+		<method name="WritableWorkbookImpl" flags="static" signature="Kjxl.write.biff.WritableWorkbookImpl(Ljava.io.OutputStream;ZLjxl.WorkbookSettings;)">
+			<arg name="os" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="cs" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Biff.WritableWorkbookImpl"/>
+		</method>
+		<method name="WritableWorkbookImpl" flags="static" signature="Kjxl.write.biff.WritableWorkbookImpl(Ljava.io.OutputStream;Ljxl.Workbook;ZLjxl.WorkbookSettings;)">
+			<arg name="os" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="w" description="" flags="in external" type="Utiles.Jxl.Workbook" javaType="jxl.Workbook"/>
+			<arg name="cs" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Biff.WritableWorkbookImpl"/>
+		</method>
+		<method name="addNameArea" description="addNameArea" flags="external" signature="MaddNameArea(Ljava.lang.String;Ljxl.write.WritableSheet;IIII)V">
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="sheet" description="" flags="in external" type="Utiles.Jxl.Write.WritableSheet" javaType="jxl.write.WritableSheet"/>
+			<arg name="firstCol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="firstRow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastCol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastRow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="close" description="close" flags="external" signature="Mclose()V">
+			<exception type="Java.Io.IOException"/>
+			<exception type="Utiles.Jxl.Write.Biff.JxlWriteException"/>
+		</method>
+		<method name="copySheet" description="copySheet" flags="external" signature="McopySheet(ILjava.lang.String;I)V">
+			<arg name="s" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="copySheet" description="copySheet" flags="external" signature="McopySheet(Ljava.lang.String;Ljava.lang.String;I)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="createSheet" description="createSheet" flags="external" signature="McreateSheet(Ljava.lang.String;I)Ljxl.write.WritableSheet;">
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableSheet" javaType="jxl.write.WritableSheet"/>
+		</method>
+		<method name="findByName" description="findByName" flags="external" signature="MfindByName(Ljava.lang.String;)[Ljxl.Range;">
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Range[]" javaType="jxl.Range[]"/>
+		</method>
+		<method name="findCellByName" description="findCellByName" flags="external" signature="MfindCellByName(Ljava.lang.String;)Ljxl.write.WritableCell;">
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+		</method>
+		<method name="getColourRGB" description="getColourRGB" flags="external" signature="MgetColourRGB(Ljxl.format.Colour;)Ljxl.format.RGB;">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.RGB" javaType="jxl.format.RGB"/>
+		</method>
+		<method name="getExternalSheetIndex" description="getExternalSheetIndex" flags="external" signature="MgetExternalSheetIndex(Ljava.lang.String;)I">
+			<arg name="sheetName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getExternalSheetIndex" description="getExternalSheetIndex" flags="external" signature="MgetExternalSheetIndex(I)I">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getExternalSheetName" description="getExternalSheetName" flags="external" signature="MgetExternalSheetName(I)Ljava.lang.String;">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getLastExternalSheetIndex" description="getLastExternalSheetIndex" flags="external" signature="MgetLastExternalSheetIndex(Ljava.lang.String;)I">
+			<arg name="sheetName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getLastExternalSheetIndex" description="getLastExternalSheetIndex" flags="external" signature="MgetLastExternalSheetIndex(I)I">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getLastExternalSheetName" description="getLastExternalSheetName" flags="external" signature="MgetLastExternalSheetName(I)Ljava.lang.String;">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getName" description="getName" flags="external" signature="MgetName(I)Ljava.lang.String;">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getNameIndex" description="getNameIndex" flags="external" signature="MgetNameIndex(Ljava.lang.String;)I">
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getNumberOfSheets" description="getNumberOfSheets" flags="external hidden" signature="MgetNumberOfSheets()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getRangeNames" description="getRangeNames" flags="external hidden" signature="MgetRangeNames()[Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+		</method>
+		<method name="getReadSheet" description="getReadSheet" flags="external" signature="MgetReadSheet(I)Ljxl.Sheet;">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Sheet" javaType="jxl.Sheet"/>
+		</method>
+		<method name="getSheet" description="getSheet" flags="external" signature="MgetSheet(Ljava.lang.String;)Ljxl.write.WritableSheet;">
+			<arg name="name" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableSheet" javaType="jxl.write.WritableSheet"/>
+		</method>
+		<method name="getSheet" description="getSheet" flags="external" signature="MgetSheet(I)Ljxl.write.WritableSheet;">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableSheet" javaType="jxl.write.WritableSheet"/>
+		</method>
+		<method name="getSheetNames" description="getSheetNames" flags="external hidden" signature="MgetSheetNames()[Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+		</method>
+		<method name="getSheets" description="getSheets" flags="external hidden" signature="MgetSheets()[Ljxl.write.WritableSheet;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Write.WritableSheet[]" javaType="jxl.write.WritableSheet[]"/>
+		</method>
+		<method name="getWorkbookBof" description="getWorkbookBof" flags="external hidden" signature="MgetWorkbookBof()Ljxl.read.biff.BOFRecord;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Read.Biff.BOFRecord" javaType="jxl.read.biff.BOFRecord"/>
+		</method>
+		<method name="moveSheet" description="moveSheet" flags="external" signature="MmoveSheet(II)Ljxl.write.WritableSheet;">
+			<arg name="fromIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="toIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableSheet" javaType="jxl.write.WritableSheet"/>
+		</method>
+		<method name="removeSheet" description="removeSheet" flags="external" signature="MremoveSheet(I)V">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setColourRGB" description="setColourRGB" flags="external" signature="MsetColourRGB(Ljxl.format.Colour;III)V">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="g" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="b" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setOutputFile" description="setOutputFile" flags="external hidden" signature="MsetOutputFile(Ljava.io.File;)V">
+			<arg name="fileName" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="setProtected" description="setProtected" flags="external hidden" signature="MsetProtected(Z)V">
+			<arg name="prot" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite()V">
+			<exception type="Java.Io.IOException"/>
+		</method>
+	</methods>
+</component>

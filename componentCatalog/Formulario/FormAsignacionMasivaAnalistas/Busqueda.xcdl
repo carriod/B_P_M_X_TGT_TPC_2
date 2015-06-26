@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="Busqueda" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="analista" flags="hassetter hasgetter public includeincheck" position="1">
+			<property name="validValuesDescriptionMethodName" value="obtenerAnalistas"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerAnalistas()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerAnalistas"/>
+		</String>
+		<object type="Negocio.NAsignacionMasivaAnalistas" name="resultado" flags="hassetter hasgetter public" position="2"/>
+	</attributes>
+	<methods>
+		<method name="Busqueda" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormAsignacionMasivaAnalistas.Busqueda"/>
+		</method>
+		<method name="analistaValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return obtenerAnalistas()
+</sourceCode>
+		</method>
+		<method name="botonVer" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_&quot; + this.resultado.idSolicitud);</sourceCode>
+		</method>
+		<method name="obtenerAnalistas" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Analista CdG&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] analistas = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        analistas[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return analistas;</sourceCode>
+		</method>
+	</methods>
+</component>

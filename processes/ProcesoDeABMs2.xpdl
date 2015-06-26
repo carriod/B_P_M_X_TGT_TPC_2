@@ -1,0 +1,1893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<xpdl:Package Name="ALBPMPackage-ProcesoDeABMs2" Id="ProcesoDeABMs2" xmlns:albpm="http://www.albpm.com/2007/albpm.XPDL2"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:xpdl="http://www.wfmc.org/2004/XPDL2.0alpha" >
+    <xpdl:PackageHeader>
+        <xpdl:XPDLVersion>
+            2.0</xpdl:XPDLVersion>
+        <xpdl:Vendor>
+            BEA Aqualogic BPM</xpdl:Vendor>
+        <xpdl:Created>
+            Jun 5, 2015 2:53:36 PM</xpdl:Created>
+        <xpdl:VendorExtensions>
+            <xpdl:VendorExtension ToolId="ALBPM" schemaLocation="http://www.albpm.com/2007/albpm.XPDL2 file:ALBPM_XPDL.xsd"/>
+        </xpdl:VendorExtensions>
+    </xpdl:PackageHeader>
+    <xpdl:ConformanceClass GraphConformance="NON_BLOCKED"/>
+    <xpdl:Pools>
+        <xpdl:Pool Id="ALBPMPool" BoundaryVisible="false" Orientation="VERTICAL">
+            <xpdl:Lanes>
+                <xpdl:Lane Name="Papi" Id="Papi">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" Width="140.0" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:BooleanFeature name="virtual" value="false"/>
+                            <albpm:StringFeature name="paramVar" value=""/>
+                            <albpm:BooleanFeature name="parametric" value="false"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationLabels>
+                                <albpm:LocalizedLabel language="en" label="TPC - Papi"/>
+                                <albpm:LocalizedLabel language="es" label="TPC - Papi"/>
+                            </albpm:LocalizationLabels>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="en">
+                                    Papi</albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Lane>
+                <xpdl:Lane Name="TPC2 - Administrador de ABM" Id="TPC2AdministradorDeABM">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" Width="285.0" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="140.0" YCoordinate="0.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:BooleanFeature name="virtual" value="false"/>
+                            <albpm:StringFeature name="paramVar" value=""/>
+                            <albpm:BooleanFeature name="parametric" value="false"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationLabels>
+                                <albpm:LocalizedLabel language="es" label="TPC2 - Administrador de ABM"/>
+                            </albpm:LocalizationLabels>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="en">
+                                    TPC2 - Administrador de ABM</albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Lane>
+            </xpdl:Lanes>
+        </xpdl:Pool>
+    </xpdl:Pools>
+    <xpdl:WorkflowProcesses>
+        <xpdl:WorkflowProcess Id="ProcesoDeABMs2" Name="ProcesoDeABMs2" DefaultStartActivityId="Begin">
+            <xpdl:ProcessHeader/>
+            <xpdl:RedefinableHeader>
+                <xpdl:Author>
+                    root</xpdl:Author>
+                <xpdl:Version>
+                    0</xpdl:Version>
+            </xpdl:RedefinableHeader>
+            <xpdl:Participants>
+                <xpdl:Participant Id="GestionErrores" Name="Gestion Errores">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="Papi" Name="Papi">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAdministradorABM" Name="TPC - Administrador ABM">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAdministradorSAGI" Name="TPC - Administrador SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAnalistaCdG" Name="TPC - Analista CdG">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAnalistaComite" Name="TPC - Analista Comite">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCCompradorGC" Name="TPC - Comprador GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCConsultasSAGI" Name="TPC - Consultas SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCControllerGC" Name="TPC - Controller GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGerenteCompras" Name="TPC - Gerente Compras">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGestionErrores" Name="TPC - Gestion Errores">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGestorEnlace" Name="TPC - Gestor Enlace">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCIntervencionGC" Name="TPC - Intervencion GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCJefeCompras" Name="TPC - Jefe Compras">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCSolicitanteSAGI" Name="TPC - Solicitante SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCSupervisorCdG" Name="TPC - Supervisor CdG">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPC2Administrador" Name="TPC2 - Administrador">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPC2AdministradorDeABM" Name="TPC2 - Administrador de ABM">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPC2Consulta" Name="TPC2 - Consulta">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPC2Director" Name="TPC2 - Director">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="solicitante" Name="solicitante">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        solicitante</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="papiuser" Name="papiuser">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        papiuser</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="analistaCDG" Name="analistaCDG">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        analistaCDG</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="abm" Name="abm">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        abm</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="jefe" Name="jefe">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        jefe</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="supervisor" Name="supervisor">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        supervisor</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="director" Name="director">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        director</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gestor" Name="gestor">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gestor</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="consultas" Name="consultas">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        consultas</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="comprador" Name="comprador">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        comprador</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="abm2" Name="abm2">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        abm2</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gerente" Name="gerente">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gerente</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="test" Name="test">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        test</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="admin" Name="admin">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        admin</xpdl:Description>
+                </xpdl:Participant>
+            </xpdl:Participants>
+            <xpdl:Applications>
+                <xpdl:Application Id="TPC2ABMDireccionSolicitante"/>
+                <xpdl:Application Id="TPC2ABMTipoPlanificacion"/>
+                <xpdl:Application Id="TPC2ABMTipoAmbito"/>
+                <xpdl:Application Id="TPC2ABMTipoCompra"/>
+                <xpdl:Application Id="TPC2ABMTipoCesta"/>
+                <xpdl:Application Id="TPC2ABMSociedad"/>
+                <xpdl:Application Id="TPC2ABMProveedor"/>
+                <xpdl:Application Id="TPC2ABMParametro"/>
+                <xpdl:Application Id="TPC2ABMMotivoRechazo"/>
+                <xpdl:Application Id="TPC2ABMMoneda"/>
+                <xpdl:Application Id="TPC2ABMCategoriaProducto"/>
+                <xpdl:Application Id="TPC2ABMComprador"/>
+                <xpdl:Application Id="TPC2ABMEstadosProceso"/>
+                <xpdl:Application Id="TPC2ABMGerencia"/>
+                <xpdl:Application Id="TPC2ABMJefatura"/>
+                <xpdl:Application Id="TPC2ABMLineaProducto"/>
+                <xpdl:Application Id="TPC2ABMMotivoProcesoTerminado"/>
+                <xpdl:Application Id="TPC2ABMMotivoReprogramacion"/>
+                <xpdl:Application Id="TPC2ABMFormaPago"/>
+            </xpdl:Applications>
+            <xpdl:ActivitySets/>
+            <xpdl:Activities>
+                <xpdl:Activity Name="Begin" Id="Begin">
+                    <xpdl:Event>
+                        <xpdl:StartEvent Trigger="None"/>
+                    </xpdl:Event>
+                    <xpdl:Performer>
+                        Papi</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="Papi" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="90.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="BEGIN"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:StringFeature name="targetForNonCreatedInstances" value="DO_NOT_CREATE"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="BeginIn" type="IN" language="Fuego"/>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Inicio"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ExceptionHandler" Id="ExceptionHandler">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskUser>
+                                <xpdl:Performers>
+                                    <xpdl:Performer>
+                                        Papi</xpdl:Performer>
+                                </xpdl:Performers>
+                                <xpdl:MessageIn Id="ExceptionHandler_in_message"/>
+                                <xpdl:MessageOut Id="ExceptionHandler_out_message"/>
+                            </xpdl:TaskUser>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        Papi</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="Papi" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="570.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="INTERACTIVE"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                                <albpm:BooleanFeature name="abortable" value="false"/>
+                                <albpm:BooleanFeature name="assignable" value="false"/>
+                                <albpm:BooleanFeature name="autocomplete" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="suspendable" value="false"/>
+                                <albpm:BooleanFeature name="userSelectsTransition" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Exception Handler"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Compensate" Id="Compensate">
+                    <xpdl:Event>
+                        <xpdl:IntermediateEvent Trigger="Compensation">
+                            <xpdl:ResultCompensation/>
+                        </xpdl:IntermediateEvent>
+                    </xpdl:Event>
+                    <xpdl:Performer>
+                        Papi</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="Papi" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="710.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="COMPENSATE"/>
+                                <albpm:StringFeature name="firstActivityInFlow" value="ExceptionHandler"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                            </albpm:FeatureSet>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Compensación"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMDireccionSolicitante" Id="ABMDireccionSolicitante">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMDireccionSolicitante"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="280.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMDireccionSolicitante" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMDireccionSolicitante"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMDireccionSolicitante"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMDireccionSolicitanteIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Direccion Solicitante"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Direccion Solicitante"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Direccion Solicitante"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Direccion Solicitante"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMTipoPlanificacion" Id="ABMTipoPlanificacion">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMTipoPlanificacion"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="1800.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMTipoPlanificacion" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMTipoPlanificacion"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMTipoPlanificacion"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMTipoPlanificacionIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Tipo Planificacion"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Tipo Planificacion"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Tipo Planificacion"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Tipo Planificacion"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMTipoAmbito" Id="ABMTipoAmbito">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMTipoAmbito"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="1480.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMTipoAmbito" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMTipoAmbito"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMTipoAmbito"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMTipoAmbitoIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Tipo Ambito"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Tipo Ambito"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Tipo Ambito"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Tipo Ambito"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMTipoCompra" Id="ABMTipoCompra">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMTipoCompra"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="1690.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMTipoCompra" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMTipoCompra"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMTipoCompra"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMTipoCompraIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Tipo Compra"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Tipo Compra"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Tipo Compra"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Tipo Compra"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMTipoCesta" Id="ABMTipoCesta">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMTipoCesta"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="1590.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMTipoCesta" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMTipoCesta"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMTipoCesta"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMTipoCestaIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Tipo Cesta"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Tipo Cesta"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Tipo Cesta"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Tipo Cesta"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMSociedad" Id="ABMSociedad">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMSociedad"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="1380.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABcZJREFUeNq0V2lsVFUU/t42U9rOdGba0pZWLPjDRIiIJEbAUgOYVMoPohBCLQWtssg2Gn5oBCMV/6ixBssm2jattgia1MoWEQENsljDIpRKWVxSSBFtStfpzHvXc++baTtLl0G4Mzdv5r775vvOOd8594wEQE0v2lfjk+RcxhhA73syJHpLElRm7G16c9YcWvHxZZXmCB/k3I2zH4NuGJCle4NvkGGKLGPdN6dyOSbNtgCBGJ0ZsFsVrN77F1RFwt3mwJ3q0xk25WaCY3HM/gQkzi7BqmJsYgws94hADxHgGAYLBMQcnACxAmItGtJssVBErO4yAdaHoYdozCRAXska1YOs2Ql+btKQgoraBZyFpUdghREQa0xG3bl6MEkeHJvcI8nRhUlkFwl80qPjEIJvEggMRaWvsiJM5GFgLNQMTkDGhV/PUCwZ3TdC9oSSNffz6/jxE8TC4AQU2qwoUFU1xIP0IvUYhvm4MykFs3KeGrYH9h44CFkjFpSG3bI8GAEFiqbhFbcb2dnZBGr01iVd1/Hs3LkUQx2OBFtUEnC57JApA+o3HMUVleGBgQjI5C4+t23bLmLNLeaTR9wgd3u9XnF1Op1REUgamQxP2VXYJz6Ejq5OnH5jd/PEd+ZZeXbKfSqlEFH8JXLR8uXLUL2zGlXVVeJW1c4qVH9RLe7xOLqiJHDo0BEcSr+M7ttd6GzrRFvSfTjlLvPQLUuwB0jdXLElm7f0qpd7YP78BYKhKNVEIinRNWzwzR+XYdqUyXAlO/BpRTly5Jno7vbA4uX4iFP79M1EenHB6bovWIIsUL6YEGrjlatijQ1UJGQN0GLRWjwOCVkVSHC5cPlSI1KdydjdVIP85kw8snXZ4+EiJOuMsAyXgmuAfw6YdwRuKLFofm8cpq4pxOSMMSip+hGKtx2N9RegxkgEvmQa7W6i2RESAtlfAyQTl4VWAS5UCefPnTVTU9QCP7bMU9hCJsUhcX8epq5cBIx6CTi+ASu9u+D+Yz1UerbE8QztLubgN7kIQ7JAIRK8DiiChAnQl/+BUNicich+YkpEJxxzZ2DKqgICX0LgbwOX9nDf4uEbO/BC6VVsL/qOb2vn4MEhYDy+EmQCX7p0CWbMmNmbhvn5+SgvLxdXXhtstviI4EdXpiF7zWK/5Ry8VvQdJSfSMa/4jPhsBOkrtA4oighDZeVnvcUnYHVhYaGoAzp9t9vCC9GRFal40k3gGdzyjQT+NRnlw6bjKZjzwWmwHjLaFycq6sAECJxXw4KCAkyfPh0LFy5EZUWFiC/3RF5eniDksNsHAF/qB68V4B/+NBLuyt/Q0toJD5EHM8KIBxEQQARQWlZmdjHc/UQmoAfuEa50h9MxBLhXWM7B+bDHW/F3lxSx31T7y5x0LM5rnem9a4YUnAqKrOLWv+2QtHg0rMuIDH4iFc9ta0DzrVYYvh6hL1WcsgMQEGlNGaipdBYM2hXLIs+ZJR71r6ebguuNuSm4LSfT8PyOi9C7Ouh3yRB+CpJhiqgR4d2WIKDxVpjUnxBnReQDXvI7QIFPGYG6tanIWh1QO4E3ErhioKIuHS+XnycX+sy2k1n6KohkYmghbTcnwKzdLcccbx2Z6jVYRHwq0mSbStOCSR2H8dVsKjKZaynvXiXwfeKHPz97PxZnfoLlRYeJgCdM7Ryfg3Os/iWO0+E5NZqfmqGijDC0H7YuqspaVuLUr+0HGr6E0vQ9Ss89iMKPjj1N971DPM+LwC2af/Zvy7v8CzeHaDfl9xePWTBhQrIT18nqlgac/70Tv1wU4IHa3j6M9rTbjxl1fzvitRdzWmNco7RVOTbU1hz0fPvzjU3Vx1tq+hnQcwf/2IY15KIVOatPXk8pHq1d88m3LxdvPnC91u/Of2i23gk4hhHzwLC2aWPXp0l1727ddWpPP2AeR0+gs7/D/6zDGvz0STELAW775/8CjpaAxr3Az6e7BRwY/wkwADllXHtJMyNuAAAAAElFTkSuQmCC</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMSociedad" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMSociedad"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMSociedad"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMSociedadIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Sociedad"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Sociedad"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Sociedad"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Sociedad"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMProveedor" Id="ABMProveedor">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMProveedor"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="1280.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMProveedor" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMProveedor"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMProveedor"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMProveedorIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Proveedor"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Proveedor"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Proveedor"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Proveedor"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMParametro" Id="ABMParametro">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMParametro"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="1180.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMParametro" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMParametro"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMParametro"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMParametroIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Parametro"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Parametro"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Parametro"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Parametro"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMMotivoRechazo" Id="ABMMotivoRechazo">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMMotivoRechazo"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="880.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMMotivoRechazo" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMMotivoRechazo"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMMotivoRechazo"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMMotivoRechazoIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Motivo Rechazo"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Motivo Rechazo"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Motivo Rechazo"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Motivo Rechazo"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMMoneda" Id="ABMMoneda">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMMoneda"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="780.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMMoneda" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMMoneda"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMMoneda"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMMonedaIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Moneda"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Moneda"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Moneda"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Moneda"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMCategoriaProducto" Id="ABMCategoriaProducto">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMCategoriaProducto"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="80.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMCategoriaProducto" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMCategoriaProducto"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMCategoriaProducto"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMCategoriaProductoIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Categoria Producto"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Categoria Producto"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Categoria Producto"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Categoria Producto"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMComprador" Id="ABMComprador">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMComprador"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="285.0" YCoordinate="186.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMComprador" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMComprador"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMComprador"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMCompradorIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Comprador"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Comprador"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Comprador"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Comprador"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMEstadosProceso" Id="ABMEstadosProceso">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMEstadosProceso"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="371.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMEstadosProceso" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMEstadosProceso"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMEstadosProceso"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMEstadosProcesoIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Estados del Proceso"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Estados del Proceso"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Estados del Proceso"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Estados del Proceso"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMGerencia" Id="ABMGerencia">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMGerencia"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="470.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMGerencia" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMGerencia"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMGerencia"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMGerenciaIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Gerencia"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Gerencia"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Gerencia"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Gerencia"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMJefatura" Id="ABMJefatura">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMJefatura"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="280.0" YCoordinate="570.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMJefatura" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMJefatura"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMJefatura"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMJefaturaIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Jefatura"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Jefatura"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Jefatura"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Jefatura"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMLineaProducto" Id="ABMLineaProducto">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMLineaProducto"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="282.0" YCoordinate="674.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMLineaProducto" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMLineaProducto"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMLineaProducto"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMLineaProductoIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Linea Producto"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Linea Producto"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Linea Producto"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Linea Producto"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMMotivoProcesoTerminado" Id="ABMMotivoProcesoTerminado">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMMotivoProcesoTerminado"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="298.0" YCoordinate="1081.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMMotivoProcesoTerminado" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMMotivoProcesoTerminado"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMMotivoProcesoTerminado"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMMotivoProcesoTerminadoIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Motivo Proceso Terminado"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Motivo Proceso Terminado"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Motivo Proceso Terminado"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Motivo Proceso Terminado"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMMotivoFechaReprogramada" Id="ABMMotivoFechaReprogramada">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMMotivoReprogramacion"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="980.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMMotivoFechaReprogramada" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMMotivoReprogramacion"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMMotivoReprogramacion"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMMotivoFechaReprogramadaIN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Motivo Fecha Reprogramada"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Motivo Fecha Reprogramada"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Motivo Fecha Reprogramada"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Motivo Fecha Reprogramada"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ProcessGroup" Id="ProcessGroup">
+                    <xpdl:Implementation>
+                        <xpdl:No/>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        Papi</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="Papi" IsVisible="false">
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="400.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GROUP"/>
+                                <albpm:BooleanFeature name="atomic" value="false"/>
+                                <albpm:BooleanFeature name="collapsed" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="mainGroup" value="true"/>
+                                <albpm:BooleanFeature name="enableLoop" value="false"/>
+                                <albpm:BooleanFeature name="before" value="true"/>
+                                <albpm:StringFeature name="condition" value=""/>
+                                <albpm:StringFeature name="codeLanguage" value="Fuego"/>
+                            </albpm:FeatureSet>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="Process Exceptions"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ABMDireccionSolicitante1" Id="ABMDireccionSolicitante1">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="TPC2ABMFormaPago"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:Performer>
+                        TPC2AdministradorDeABM</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="TPC2AdministradorDeABM" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="290.0" YCoordinate="1910.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="GLOBAL"/>
+                                <albpm:BooleanFeature name="displayInstance" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="instance" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:CustomImage>
+                                <albpm:FeatureSet>
+                                    <albpm:BooleanFeature name="use_Local_Image" value="true"/>
+                                    <albpm:BooleanFeature name="invert_palette_selected_image" value="false"/>
+                                </albpm:FeatureSet>
+                                <albpm:ImageData>
+                                    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</albpm:ImageData>
+                            </albpm:CustomImage>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="ABMDireccionSolicitante1" type="SCREENFLOW">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="targetModelPath" value="processes/Flujos/ABM/TPC2ABMFormaPago"/>
+                                        <albpm:StringFeature name="targetModelName" value="TPC2ABMFormaPago"/>
+                                        <albpm:StringFeature name="variation" value="Default"/>
+                                        <albpm:StringFeature name="targetMappingName" value=""/>
+                                        <albpm:BooleanFeature name="hasPreview" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="ABMDireccionSolicitante1IN" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="rolArg" type="String"/>
+                                            </albpm:Arguments>
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="rolArg" isExpression="false" source="Activity.role.name"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="en" label="ABM Forma Pago"/>
+                                            <albpm:LocalizedLabel language="es" label="ABM Forma Pago"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="en" label="ABM Forma Pago"/>
+                                    <albpm:LocalizedLabel language="es" label="ABM Forma Pago"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="End" Id="End">
+                    <xpdl:Event>
+                        <xpdl:EndEvent/>
+                    </xpdl:Event>
+                    <xpdl:Performer>
+                        Papi</xpdl:Performer>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="Papi" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="230.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="END"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="EndOut" type="OUT" language="Fuego"/>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Finalización"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+            </xpdl:Activities>
+            <xpdl:Transitions>
+                <xpdl:Transition Id="BeginToEnd" Name="BeginToEnd" From="Begin" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="90.0"/>
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="230.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ProcessGroupToExceptionHandler" Name="ProcessGroupToExceptionHandler" From="ProcessGroup" To="ExceptionHandler">
+                    <xpdl:Condition Type="EXCEPTION">
+                        <xpdl:Expression>
+                            Others</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="400.0"/>
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="570.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="EXCEPTION"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:StringFeature name="exception" value="Others"/>
+                            <albpm:StringFeature name="exceptionCauseHolderVariableName" value="exceptionHolder"/>
+                            <albpm:IntegerFeature name="exceptionOrder" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ExceptionHandlerToCompensate" Name="ExceptionHandlerToCompensate" From="ExceptionHandler" To="Compensate">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="570.0"/>
+                            <xpdl:Coordinates XCoordinate="70.0" YCoordinate="710.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+            </xpdl:Transitions>
+            <xpdl:Extensions>
+                <albpm:ALBPMExtensions>
+                    <albpm:Component>
+                        &lt;component name=&quot;Instance&quot;
+	description=&quot;&quot;
+	versionID=&quot;Version 6.5 &quot;
+	flags=&quot;cloneable&quot;
+	type=&quot;xobject&quot;&gt;
+	&lt;inherit
+		class=&quot;Fuego.Lib.ProcessInstance&quot;
+		flags=&quot;&quot;/&gt;
+	&lt;inherit
+		class=&quot;CurrentProject.Instance&quot;
+		flags=&quot;delegated&quot;/&gt;
+	&lt;objectProperty name=&quot;initAllFields&quot;
+		value=&quot;true&quot;/&gt;
+	&lt;objectProperty name=&quot;javaSerialId&quot;
+		value=&quot;4278124286&quot;/&gt;
+	&lt;objectProperty name=&quot;methodPrefix&quot;
+		value=&quot;CIL_&quot;/&gt;
+	&lt;objectProperty name=&quot;package&quot;
+		value=&quot;TGT_TPC_2.ProcesoDeABMs2.Default_1_0&quot;/&gt;
+	&lt;attributes&gt;
+		&lt;Any name=&quot;exceptionHolder&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;1&quot;/&gt;
+	&lt;/attributes&gt;
+	&lt;methods&gt;
+		&lt;method name=&quot;Instance&quot;
+			flags=&quot;static&quot;&gt;
+			&lt;outputArgument name=&quot;return&quot;
+				description=&quot;&quot;
+				flags=&quot;retval&quot;
+				type=&quot;Instance&quot;/&gt;
+		&lt;/method&gt;
+	&lt;/methods&gt;
+&lt;/component&gt;</albpm:Component>
+                    <albpm:CorrelationSets/>
+                    <albpm:Localization>
+                        <albpm:LocalizationLabels>
+                            <albpm:LocalizedLabel language="en" label="Proceso de ABMs"/>
+                            <albpm:LocalizedLabel language="es" label="Proceso de ABMs"/>
+                        </albpm:LocalizationLabels>
+                        <albpm:LocalizationDescriptions>
+                            <albpm:LocalizationDescription language="es">
+                            </albpm:LocalizationDescription>
+                        </albpm:LocalizationDescriptions>
+                    </albpm:Localization>
+                    <albpm:FeatureSet>
+                        <albpm:StringFeature name="GreedyExecutionMode" value="default"/>
+                        <albpm:BooleanFeature name="atomic" value="false"/>
+                        <albpm:StringFeature name="generatesEvents" value="GENERATE_INTERACTIVE_EVENTS"/>
+                        <albpm:BooleanFeature name="horizontal" value="false"/>
+                        <albpm:BooleanFeature name="instanceScreenflow" value="false"/>
+                        <albpm:BooleanFeature name="isInterface" value="false"/>
+                        <albpm:StringFeature name="scale" value="1.0"/>
+                        <albpm:BooleanFeature name="sharePredefineVariables" value="true"/>
+                        <albpm:BooleanFeature name="useExceptionOrder" value="true"/>
+                        <albpm:StringFeature name="variation" value="Default"/>
+                    </albpm:FeatureSet>
+                </albpm:ALBPMExtensions>
+            </xpdl:Extensions>
+        </xpdl:WorkflowProcess>
+    </xpdl:WorkflowProcesses>
+</xpdl:Package>

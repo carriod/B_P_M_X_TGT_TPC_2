@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="BorrarArchivoResponse" description="" versionID="Version 6.5 " flags="invokeable" signature="BorrarArchivoResponse;http://localhost/WS;elementsQualified;N" dynamic="true" type="xml">
+	<inherit class="Fuego.Xml.XMLObject" flags="public"/>
+	<objectProperty name="elementType" value="elementType"/>
+	<objectProperty name="invokeableClassName" value="fuego.xmlruntime.XMLObject"/>
+	<objectProperty name="namespace" value="http://localhost/WS"/>
+	<objectProperty name="nativeName" value="BorrarArchivoResponse"/>
+	<objectProperty name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+	<objectProperty name="xmlObjectVersion" value="2.0"/>
+	<attributes>
+		<object type="WebServices.WSEasyDoc.EDRespuesta" name="borrarArchivoResult" flags="hassetter hasgetter public" position="1" writeSignature="@0;EBorrarArchivoResult;XEDRespuesta;http://localhost/WS;http://localhost/WS;elementQualified" readSignature="@0;EBorrarArchivoResult;XEDRespuesta;http://localhost/WS;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="0"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="BorrarArchivoResult"/>
+			<property name="nativeNamespace" value="http://localhost/WS"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+		</object>
+	</attributes>
+	<methods>
+		<method name="BorrarArchivoResponse" flags="static public" signature="DBorrarArchivoResponse;http://localhost/WS;elementsQualified;N">
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.BorrarArchivoResponse"/>
+		</method>
+		<method name="BorrarArchivoResponse" flags="static public" signature="XBorrarArchivoResponse;http://localhost/WS;elementsQualified;N">
+			<arg name="xmlText" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.BorrarArchivoResponse"/>
+		</method>
+		<method name="BorrarArchivoResponse" flags="static public" signature="FBorrarArchivoResponse;http://localhost/WS;elementsQualified;N">
+			<arg name="name" description="" flags="in" type="String"/>
+			<arg name="attributes" description="" flags="in" type="String[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.BorrarArchivoResponse"/>
+		</method>
+	</methods>
+</component>

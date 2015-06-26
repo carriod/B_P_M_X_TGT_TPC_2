@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="BooleanCell" description="BooleanCell" versionID="Version 6.5 " flags="abstract interface" signature="jxl.BooleanCell" type="java">
+	<inherit class="Utiles.Jxl.Cell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.BooleanCell"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.BooleanCell"/>
+	<attributes>
+		<Bool name="value" flags="hasgetter external" primitive="true" position="1" javaType="boolean" readSignature="MgetValue()Z"/>
+	</attributes>
+	<methods>
+		<method name="getValue" description="getValue" flags="abstract external hidden" signature="MgetValue()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

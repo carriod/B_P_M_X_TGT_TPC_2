@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="FSolicitud" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SSolicitud" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FSolicitud" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FSolicitud"/>
+			<sourceCode language="Java1">this.servicio = new SSolicitud();</sourceCode>
+		</method>
+		<method name="buscarInstancia" flags="public server disableclient">
+			<arg name="idSolicitud" description="" flags="in" type="Int"/>
+			<arg name="actividades" description="" flags="in" type="String[]"/>
+			<arg name="proceso" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+BusinessProcess ppiProcess = BusinessProcess();
+String user = (String)BusinessParameter.getValue(name : &quot;PAPI_USER&quot;);
+String password = (String)BusinessParameter.getValue(name : &quot;PAPI_PASSWORD&quot;);
+String passwordDecode = FEncryptador.desencriptarCadena(cadena : password);
+
+if(password==passwordDecode){
+	String passwordEncode = FEncryptador.encriptarCadena(cadena : password);
+	BusinessParameter.updateValue(name : &quot;PAPI_PASSWORD&quot;, value : passwordEncode);
+}
+
+ppiProcess.connectTo(url : Fuego.Server.directoryURL, user : user, password : passwordDecode, process : arg.proceso);
+
+InstanceFilter filter;
+filter.create(processService : ppiProcess.processService);
+filter.searchScope.participantScope=ParticipantScope.ALL;
+filter.addAttributeTo(variable : &quot;idSolicitud&quot;, comparator : Comparison.IS, value : arg.idSolicitud);
+
+Fuego.Papi.Instance[] instancias = ppiProcess.getInstancesByFilter(filter : filter);
+int nroOperaciones = instancias.length();
+Utiles.Logger.logInfo(mensaje : &quot;nroOperaciones: &quot; + nroOperaciones );
+
+if(nroOperaciones&gt;0){
+	String[] instIds;
+	foreach(inst in instancias){
+		instIds[] = inst.id;
+	}
+	respuesta.resultado = OK;
+	respuesta.contenido = instIds;
+}else{
+	respuesta.resultado = ERROR;
+	respuesta.contenido = &quot;Solicitud &quot; + arg.idSolicitud + &quot;, no encontrada&quot;;
+}
+
+ppiProcess.disconnectFrom();
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;  
+/*
+try {
+	respuesta = this.servicio.deleteValue(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}*/
+return respuesta;</sourceCode>
+		</method>
+		<method name="getDatosComplementarios" flags="public server disableclient">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="cargoEstado" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	
+	if(solicitud.categoriaCesta.id != null){
+		respuesta = FCategoriaCesta.getValueForId(id : solicitud.categoriaCesta.id);
+		if (respuesta.resultado == OK) {
+			solicitud.categoriaCesta = ((NCategoriaCesta) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+		
+	if(solicitud.pedidoCesta.id != null){
+		respuesta = FPedidoCesta.getValueForId(id : solicitud.pedidoCesta.id);
+		if (respuesta.resultado == OK) {
+			solicitud.pedidoCesta = ((NPedidoCesta) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(solicitud.montoTotalOM.id != null){
+		respuesta = FMoneda.getValueForId(id : solicitud.montoTotalOM.id);
+		if (respuesta.resultado == OK) {
+			solicitud.montoTotalOM = ((NMoneda) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(solicitud.tipoCompra.id != null){
+		respuesta = FTipoCompra.getValueForId(id : solicitud.tipoCompra.id);
+		if (respuesta.resultado == OK) {
+			solicitud.tipoCompra = ((NTipoCompra) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(solicitud.destinoCompra.id != null){
+		respuesta = FDestinoCompra.getValueForId(id : solicitud.destinoCompra.id);
+		if (respuesta.resultado == OK) {
+			solicitud.destinoCompra = ((NDestinoCompra) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(solicitud.categoriaProducto.id != null){
+		respuesta = FCategoriaProducto.getValueForId(id : solicitud.categoriaProducto.id);
+		if (respuesta.resultado == OK) {
+			solicitud.categoriaProducto = ((NCategoriaProducto) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(solicitud.lineaProducto.id != null){
+		respuesta = FLineaProducto.getValueForId(id : solicitud.lineaProducto.id);
+		if (respuesta.resultado == OK) {
+			solicitud.lineaProducto = ((NLineaProducto) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(solicitud.subtipoProducto.id != null){
+		respuesta = FSubtipoProducto.getValueForId(id : solicitud.subtipoProducto.id);
+		if (respuesta.resultado == OK) {
+			solicitud.subtipoProducto = ((NSubtipoProducto) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(arg.cargoEstado){
+		respuesta = FSolicitudEstado.getValueForIdSolicitud(solId : solicitud.id);
+		if (respuesta.resultado == OK) {
+			solicitud.estado = ((NSolicitudEstado) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+
+	respuesta = FProveedor.getValueForId(id : solicitud.id);
+	if (respuesta.resultado == OK) {
+		solicitud.proveedor = ((NProveedor) respuesta.contenido);
+	}else{
+		return respuesta;
+	}
+	
+	
+	respuesta = FControlGestion.getValueForId(id : solicitud.id);
+	if (respuesta.resultado == OK) {
+		solicitud.controlGestion = ((NControlGestion) respuesta.contenido);
+	}else{
+		return respuesta;
+	}
+		
+	respuesta = FAntecedentes.getValueForId(idSolicitud : solicitud.id);
+	if (respuesta.resultado == OK) {
+		solicitud.antecedentes = ((NAntecedentes) respuesta.contenido);
+	}else{
+		return respuesta;
+	}
+	
+	respuesta = FProyectosAsociados.getValueForId(id : solicitud.id);
+	if (respuesta.resultado == OK) {
+		solicitud.proyectosAsociados = ((NProyectosAsociados) respuesta.contenido);
+	}else{
+		return respuesta;
+	}
+	
+	respuesta = FSituacionPresupuestaria.getValueForId(id : solicitud.id);
+	if (respuesta.resultado == OK) {
+		solicitud.situacionPresupuestaria = ((NSituacionPresupuestaria) respuesta.contenido);
+	}else{
+		return respuesta;
+	}
+	
+	respuesta = FValoracionNecesidad.getValueForId(id : solicitud.id);
+	if (respuesta.resultado == OK) {
+		solicitud.valoracionNecesidad = ((NValoracionNecesidad) respuesta.contenido);
+	}else{
+		return respuesta;
+	}
+	
+	respuesta = FComprasParticulares.getValueForId(idSol : solicitud.id);
+	if (respuesta.resultado == OK) {
+		solicitud.comprasParticulares = ((NComprasParticulares) respuesta.contenido);
+	}else{
+		return respuesta;
+	}
+	
+	respuesta = FAsignacionParticipante.getValueForId(idSol : solicitud.id);
+	if (respuesta.resultado == OK) {
+		solicitud.asignacionParticipante = ((NAsignacionParticipante) respuesta.contenido);
+	}else{
+		return respuesta;
+	}		
+	
+	solicitud.sociedades.clear();	
+	respuesta = FSolicitudSociedades.getListValuesForIdSolicitud(idSolicitud : solicitud.id);
+	if (respuesta.resultado == OK) {
+		foreach (sso in ((Any[])respuesta.contenido)) {
+			NSolicitudSociedades ssoAux = (NSolicitudSociedades)sso;
+			solicitud.sociedades.extend(sociedad : ssoAux);
+		}		
+	}else{
+		return respuesta;
+	}
+	
+	solicitud.documentos.clear();
+	respuesta = FSolicitudDocumentos.getListValuesForIdSolicitud(idSolicitud : solicitud.id);
+	if (respuesta.resultado == OK) {
+		foreach (doc in ((Any[])respuesta.contenido)) {
+			NSolicitudDocumentos docAux = (NSolicitudDocumentos)doc;
+			if(docAux.idTipoDocumento == 5){
+				solicitud.comentariosDocumentos.archivoPQ = docAux.comentarios;
+			}
+			else if(docAux.idTipoDocumento == 6){
+				solicitud.comentariosDocumentos.especificacionTecnica = docAux.comentarios;
+			}
+			else if(docAux.idTipoDocumento == 7){
+				solicitud.comentariosDocumentos.informacionAdicional = docAux.comentarios;
+			}
+			else if(docAux.idTipoDocumento == 8){
+				solicitud.comentariosDocumentos.planillaCatalogo = docAux.comentarios;
+			}
+			String token;
+			respuesta = FEasyDoc.getToken(nroReg : docAux.idSolicitud, 
+										  idDoc : docAux.idTipoDocumento, 	
+										  version : 1, 
+										  usuario : Participant.id);
+			if (respuesta.resultado == OK) {
+				token = String(respuesta.contenido);
+			}else{
+				Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+				docAux.cargado = false;
+				return respuesta;
+			}
+			respuesta = FEasyDoc.existFile(nroReg : docAux.idSolicitud, 
+										   idDoc : docAux.idTipoDocumento, 	
+										   version : 1, 
+										   token : token);
+			if (respuesta.resultado == OK) {
+				boolean existe = Java.Lang.Boolean(respuesta.contenido);
+			    docAux.cargado = existe;
+			}else{
+				Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+				return respuesta;
+			}	
+			solicitud.documentos.extend(documento : docAux);
+		}
+	}else{
+		return respuesta;
+	}
+	
+	solicitud.listaAntecedentes.clear();
+	respuesta = FListaAntecedentes.getListValuesForIdSolicitud(idSolicitud : solicitud.id);
+	if (respuesta.resultado == OK) {
+		foreach (lan in ((Any[])respuesta.contenido)) {
+			NListaAntecedentes lanAux = (NListaAntecedentes)lan;
+			if(lanAux.tipoCesta.id != null){
+			Respuesta respuesta2 = FTipoCesta.getValueForId(id : lanAux.tipoCesta.id);
+			if(respuesta2.resultado == OK){
+				lanAux.tipoCesta = (NTipoCesta)respuesta2.contenido;	
+			}
+			else{
+				throw Java.Lang.Exception((String)respuesta2.contenido);
+			}
+		}
+			solicitud.listaAntecedentes.extend(antecedente : lanAux);
+		}		
+	}else{
+		return respuesta;
+	}
+	
+	solicitud.proyectosMayores.clear();
+	respuesta = FProyectoMayor.getListValuesForIdSolicitud(idSolicitud : solicitud.id);
+	if (respuesta.resultado == OK) {
+		foreach (pma in ((Any[])respuesta.contenido)) {
+			NProyectoMayor pmaAux = (NProyectoMayor)pma;
+			Respuesta respuesta2 = Respuesta();
+			if(pmaAux.tipoProyecto.id != null){
+				respuesta2 = FTipoProyecto.getValueForId(id : pmaAux.tipoProyecto.id);
+				if(respuesta2.resultado == OK){
+					pmaAux.tipoProyecto = (NTipoProyecto)respuesta2.contenido;	
+				}
+				else{
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				} 
+			}
+			if(pmaAux.nombreProyecto.id != null){
+				respuesta2 = FNombreProyecto.getValueForId(id : pmaAux.nombreProyecto.id);
+				if(respuesta2.resultado == OK){
+					pmaAux.nombreProyecto = (NNombreProyecto)respuesta2.contenido;	
+				}
+				else{
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+			}
+			if(pmaAux.rubroProyecto.id != null){
+				respuesta2 = FRubroProyecto.getValueForId(id : pmaAux.rubroProyecto.id);
+				if(respuesta2.resultado == OK){
+					pmaAux.rubroProyecto = (NRubroProyecto)respuesta2.contenido;	
+				}
+				else{
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+			}
+			if(pmaAux.instanciaAproProyecto.id != null){
+				respuesta2 = FInstanciaAproProyecto.getValueForId(id : pmaAux.instanciaAproProyecto.id);
+				if(respuesta2.resultado == OK){
+					pmaAux.instanciaAproProyecto = (NInstanciaAproProyecto)respuesta2.contenido;	
+				}
+				else{
+					throw Java.Lang.Exception((String)respuesta2.contenido);
+				}
+			}
+			solicitud.proyectosMayores.extend(proyectoMayor : pmaAux);
+		}		
+	}else{
+		return respuesta;
+	}
+	
+	solicitud.historialAsignaciones.clear();
+	respuesta = FAsignacion.getListValuesForIdSolicitud(idSolicitud : solicitud.id);
+	if (respuesta.resultado == OK) {
+		foreach (hia in ((Any[])respuesta.contenido)) {
+			NAsignacion hiaAux = (NAsignacion)hia;
+			solicitud.historialAsignaciones.extend(asignacion : hiaAux);
+		}		
+	}else{
+		return respuesta;
+	}
+	
+	solicitud.historialComentarios.clear();
+	respuesta = FComentario.getListValuesForIdSolicitud(idSolicitud : solicitud.id);
+	if (respuesta.resultado == OK) {
+		foreach (hic in ((Any[])respuesta.contenido)) {
+			NComentario hicAux = (NComentario) hic;
+			solicitud.historialComentarios.extend(comentario : hicAux);
+		}		
+	}else{
+		return respuesta;
+	}
+	
+	solicitud.recomendacionesSAGI.clear();
+	respuesta = FRecomendacionSAGI.getListValuesForIdSolicitud(idSolicitud : solicitud.id);
+	if(respuesta.resultado == OK){
+		foreach (rec in ((Any[])respuesta.contenido)) {
+			NRecomendacionSAGI recAux = (NRecomendacionSAGI) rec;
+			solicitud.recomendacionesSAGI.extend(recomendacionSAGI : recAux);
+		}		
+	}else{
+		return respuesta;
+	}
+	
+	respuesta = FRecomendacionSAGI.getLastValueForRol(rol : &quot;TPC - Analista CdG&quot;, idSol : solicitud.id);
+	if (respuesta.resultado == OK) {
+		solicitud.recomendacionSAGI = (NRecomendacionSAGI)respuesta.contenido;	
+	}else if(respuesta.resultado == DATAERROR){
+	}else{		
+		logMessage(&quot;IF ELSE&quot;);
+		return respuesta;
+	}
+	
+	solicitud.resoluciones.clear();
+	respuesta = FResolucion.getListValuesForIdSolicitud(idSolicitud : solicitud.id);
+	if (respuesta.resultado == OK) {
+		foreach (res in ((Any[])respuesta.contenido)) {
+			NResolucion resAux = (NResolucion) res;
+			solicitud.resoluciones.extend(resolucion : resAux);
+		}		
+	}else{
+		return respuesta;
+	}
+	respuesta.contenido = solicitud;
+} 
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getDatosComplementarios(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues(vigencia : false);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+		NSolicitud solicitud = this.mapeoArrayToNegocio(objArray : objArray);
+    	respuesta = this.getDatosComplementarios(solicitud : solicitud, cargoEstado : true);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NSolicitud"/>
+			<sourceCode language="Java1">NSolicitud objNegocio = NSolicitud();
+
+objNegocio.id = (Integer)arg.objArray[&quot;ID&quot;];
+objNegocio.categoriaCesta.id = (Integer)arg.objArray[&quot;CCE_ID&quot;];
+objNegocio.pedidoCesta.id = (Integer)arg.objArray[&quot;PCE_ID&quot;];
+objNegocio.nroCesta = (Integer)arg.objArray[&quot;NROCESTA&quot;];
+objNegocio.nroPedido = (Long)arg.objArray[&quot;NROPEDIDO&quot;];
+objNegocio.nroCestaAsocPedido = (Integer)arg.objArray[&quot;NROCESTAASOCPEDIDO&quot;];
+objNegocio.nroCestaAnulada = (Integer)arg.objArray[&quot;NROCESTAANULADA&quot;];
+objNegocio.motivoReemplazo = (String)arg.objArray[&quot;MOTIVOREEMPLAZO&quot;];
+objNegocio.periodoFechaInicio = (Time)arg.objArray[&quot;PERIODOFECHAINICIO&quot;];
+objNegocio.periodoFechaFin = (Time)arg.objArray[&quot;PERIODOFECHAFIN&quot;];
+objNegocio.montoTotalPesos = (Decimal)arg.objArray[&quot;MONTOTOTALPESOS&quot;];
+objNegocio.montoTotalDolares = (Decimal)arg.objArray[&quot;MONTOTOTALDOLARES&quot;];
+objNegocio.montoTotalEuros = (Decimal)arg.objArray[&quot;MONTOTOTALEUROS&quot;];
+objNegocio.montoTotalOM.id = (Integer)arg.objArray[&quot;MON_ID_MONTOTOTAL&quot;];
+objNegocio.montoTotalOtro = (Decimal)arg.objArray[&quot;MONTOTOTALOTRO&quot;];
+objNegocio.gestorSolicitante = (String)arg.objArray[&quot;GESTORSOLICITANTE&quot;];
+objNegocio.areaSolicitante = (String)arg.objArray[&quot;AREASOLICITANTE&quot;];
+objNegocio.emailSolicitante = (String)arg.objArray[&quot;EMAILSOLICITANTE&quot;];
+objNegocio.centroCostos = (Integer)arg.objArray[&quot;CENTROCOSTOS&quot;];
+objNegocio.gestorEnlace = (String)arg.objArray[&quot;GESTORENLACE&quot;];
+objNegocio.emailEnlace = (String)arg.objArray[&quot;EMAILENLACE&quot;];
+objNegocio.tipoCompra.id = (Integer)arg.objArray[&quot;TCO_ID&quot;];
+objNegocio.destinoCompra.id = (Integer)arg.objArray[&quot;DCO_ID&quot;];
+objNegocio.categoriaProducto.id = (Integer)arg.objArray[&quot;CPR_ID&quot;];
+objNegocio.lineaProducto.id = (Integer)arg.objArray[&quot;LPR_ID&quot;];
+objNegocio.subtipoProducto.id = (Integer)arg.objArray[&quot;SPR_ID&quot;];
+objNegocio.descripcionNecesidad = (String)arg.objArray[&quot;DESCRIPCIONNECESIDAD&quot;];
+objNegocio.centroCostosImpContable = (Integer)arg.objArray[&quot;CENTROCOSTOSIMPCONTABLE&quot;];
+objNegocio.cuentaImpContable = (Long)arg.objArray[&quot;CUENTAIMPCONTABLE&quot;];
+objNegocio.actividadImpContable = (Integer)arg.objArray[&quot;ACTIVIDADIMPCONTABLE&quot;];
+objNegocio.pep = (String)arg.objArray[&quot;PEP&quot;];
+objNegocio.anulada = (Java.Lang.Boolean)arg.objArray[&quot;ANULADA&quot;];
+objNegocio.duplicada = (Java.Lang.Boolean)arg.objArray[&quot;DUPLICADA&quot;];
+objNegocio.reactivada = (Java.Lang.Boolean)arg.objArray[&quot;REACTIVADA&quot;];
+objNegocio.fechaEnvioEnlace = (Time)arg.objArray[&quot;FECHAENVIOENLACE&quot;];
+objNegocio.fechaEnvioAnalisis = (Time)arg.objArray[&quot;FECHAENVIOANALISIS&quot;];
+objNegocio.fechaPlanPreComite = (Time)arg.objArray[&quot;FECHAPLANPRECOMITE&quot;];
+objNegocio.fechaPlanComite = (Time)arg.objArray[&quot;FECHAPLANCOMITE&quot;];
+objNegocio.fechaRealPreComite = (Time)arg.objArray[&quot;FECHAREALPRECOMITE&quot;];
+objNegocio.fechaRealComite = (Time)arg.objArray[&quot;FECHAREALCOMITE&quot;];
+objNegocio.fechaProxPreComite = (Time)arg.objArray[&quot;FECHAPROXPRECOMITE&quot;];
+objNegocio.fechaProxComite = (Time)arg.objArray[&quot;FECHAPROXCOMITE&quot;];
+objNegocio.requiereCompras = (Java.Lang.Boolean)arg.objArray[&quot;REQUIERECOMPRAS&quot;];
+objNegocio.requiereIntervencion = (Java.Lang.Boolean)arg.objArray[&quot;REQUIEREINTERVENCION&quot;];
+objNegocio.usuarioAlta = (String)arg.objArray[&quot;USUARIOALTA&quot;];
+objNegocio.fechaAlta = (Time)arg.objArray[&quot;FECHAALTA&quot;];
+objNegocio.usuarioModificacion = (String)arg.objArray[&quot;USUARIOMODIFICACION&quot;];
+objNegocio.fechaModificacion = (Time)arg.objArray[&quot;FECHAMODIFICACION&quot;];
+
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="objNegocio" description="" flags="in" type="Negocio.NSolicitud"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.setValue(	id : arg.objNegocio.id,
+	                       				idCce : arg.objNegocio.categoriaCesta.id, 
+	                       				idPce : arg.objNegocio.pedidoCesta.id, 
+	                       				nroCesta : arg.objNegocio.nroCesta, 
+	                       				nroPedido : arg.objNegocio.nroPedido, 
+	                       				nroCestaAsocPedido : arg.objNegocio.nroCestaAsocPedido, 
+	                       				nroCestaAnulada : arg.objNegocio.nroCestaAnulada, 
+	                       				motivoReemplazo : arg.objNegocio.motivoReemplazo, 
+	                       				periodoFechaInicio : arg.objNegocio.periodoFechaInicio, 
+	                       				periodoFechaFin : arg.objNegocio.periodoFechaFin, 
+	                       				montoTotalPesos : arg.objNegocio.montoTotalPesos, 
+	                       				montoTotalDolares : arg.objNegocio.montoTotalDolares, 
+	                       				montoTotalEuros : arg.objNegocio.montoTotalEuros,
+	                       				montoTotalOM : arg.objNegocio.montoTotalOM.id,
+	                       				montoTotalOtro : arg.objNegocio.montoTotalOtro, 
+	                       				gestorSolicitante : arg.objNegocio.gestorSolicitante, 
+	                       				areaSolicitante : arg.objNegocio.areaSolicitante, 
+	                       				emailEnlace : arg.objNegocio.emailEnlace, 
+	                       				idTco : arg.objNegocio.tipoCompra.id, 
+	                       				idDco : arg.objNegocio.destinoCompra.id, 
+	                       				idCpr : arg.objNegocio.categoriaProducto.id, 
+	                       				idLpr : arg.objNegocio.lineaProducto.id, 
+	                    			 	idSpr : arg.objNegocio.subtipoProducto.id, 
+	                    			   	descripcionNecesidad : arg.objNegocio.descripcionNecesidad, 
+	                    			   	centroCostosImpContable : arg.objNegocio.centroCostosImpContable, 
+	                       				cuentaImpContable : arg.objNegocio.cuentaImpContable, 
+	                       				actividadImpContable : arg.objNegocio.actividadImpContable, 
+	                       				pep : arg.objNegocio.pep, 
+	                       				anulada : arg.objNegocio.anulada,
+	                       				duplicada : arg.objNegocio.duplicada,
+	                       				reactivada : arg.objNegocio.reactivada,
+	                       				fechaEnvioEnlace : arg.objNegocio.fechaEnvioEnlace,
+	                       				fechaEnvioAnalisis : arg.objNegocio.fechaEnvioAnalisis,
+   					                    fechaPlanPreComite : arg.objNegocio.fechaPlanPreComite,
+   					                    fechaPlanComite : arg.objNegocio.fechaPlanComite,
+   					                    fechaRealPreComite : arg.objNegocio.fechaRealPreComite,
+   					                    fechaRealComite : arg.objNegocio.fechaRealComite,
+   					                    fechaProxPreComite : arg.objNegocio.fechaProxPreComite,
+   					                    fechaProxComite : arg.objNegocio.fechaProxComite,
+	                       				requiereCompras : arg.objNegocio.requiereCompras,
+	                       				requiereIntervencion : arg.objNegocio.requiereIntervencion,
+										usuarioModificacion : arg.objNegocio.usuarioModificacion, 
+										usuarioAlta : arg.objNegocio.usuarioAlta, 
+	                    				emailSolicitante : arg.objNegocio.emailSolicitante, 
+	                    				centroCostos : arg.objNegocio.centroCostos, 
+	                    				gestorEnlace : arg.objNegocio.gestorEnlace);
+	
+	
+	if(respuesta.resultado != OK){
+		return respuesta;
+	}
+	Java.Lang.Boolean solicitudNueva = false;
+	if(arg.objNegocio.id == 0){
+		solicitudNueva = true;
+		arg.objNegocio.id = (Integer)respuesta.contenido;
+	}
+	
+	arg.objNegocio.proveedor.idSolicitud = arg.objNegocio.id;
+	respuesta = FProveedor.setValue(objNegocio : arg.objNegocio.proveedor, solicitudNueva : solicitudNueva);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}	
+		
+	arg.objNegocio.controlGestion.idSolicitud = arg.objNegocio.id;
+	respuesta = FControlGestion.setValue(objNegocio : arg.objNegocio.controlGestion, solicitudNueva : solicitudNueva);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	
+	arg.objNegocio.antecedentes.idSolicitud = arg.objNegocio.id;
+	respuesta = FAntecedentes.setValue(objNegocio : arg.objNegocio.antecedentes, solicitudNueva : solicitudNueva);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	
+	arg.objNegocio.proyectosAsociados.idSolicitud = arg.objNegocio.id;
+	respuesta = FProyectosAsociados.setValue(objNegocio : arg.objNegocio.proyectosAsociados, solicitudNueva : solicitudNueva);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	
+	arg.objNegocio.valoracionNecesidad.idSolicitud = arg.objNegocio.id;
+	respuesta = FValoracionNecesidad.setValue(objNegocio : arg.objNegocio.valoracionNecesidad, nuevaSolicitud : solicitudNueva);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	
+	arg.objNegocio.situacionPresupuestaria.idSolicitud = arg.objNegocio.id;
+	respuesta = FSituacionPresupuestaria.setValue(objNegocio : arg.objNegocio.situacionPresupuestaria, nuevaSolicitud : solicitudNueva);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	
+	arg.objNegocio.comprasParticulares.idSolicitud = arg.objNegocio.id;
+	respuesta = FComprasParticulares.setValue(objNegocio : arg.objNegocio.comprasParticulares, nuevaSolicitud : solicitudNueva);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	
+	arg.objNegocio.asignacionParticipante.idSolicitud = arg.objNegocio.id;
+	respuesta = FAsignacionParticipante.setValue(objNegocio : arg.objNegocio.asignacionParticipante, nuevaSolicitud : solicitudNueva);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+
+	respuesta = FSolicitudDocumentos.deleteValuesForIdSolicitud(idSolicitud : arg.objNegocio.id);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	for (int i = 0; i &lt; arg.objNegocio.documentos.length; i++) {	    
+	    arg.objNegocio.documentos[i].documento.idSolicitud = arg.objNegocio.id;
+	    respuesta = FSolicitudDocumentos.setValue(objNegocio : arg.objNegocio.documentos[i].documento);
+	    if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+		if(solicitudNueva &amp;&amp; arg.objNegocio.documentos[i].documento.cargado){
+			String token;
+			respuesta = FEasyDoc.getToken(nroReg : arg.objNegocio.id, 
+									  	  idDoc : arg.objNegocio.documentos[i].documento.idTipoDocumento, 	
+									  	  version : 1, 
+									  	  usuario : Participant.id);
+			if (respuesta.resultado == OK) {
+				token = String(respuesta.contenido);
+				Utiles.Logger.logDebug(mensaje : &quot;token: &quot; + token);
+			}
+			else{
+				Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+				throw Java.Lang.Exception((String)respuesta.contenido);
+			}
+			
+			respuesta = FEasyDoc.uploadFile(archivo : arg.objNegocio.documentos[i].documento.archivoBinario, 
+	    									token : token, 
+	    									tipoArchivo : arg.objNegocio.documentos[i].documento.extensionArchivo);
+		    if (respuesta.resultado != OK) {
+				Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+				throw Java.Lang.Exception((String)respuesta.contenido);
+			}
+		}
+	}
+
+	respuesta = FSolicitudSociedades.deleteValuesForIdSolicitud(idSolicitud : arg.objNegocio.id);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	for (int i=0;i&lt;arg.objNegocio.sociedades.length();i++){
+		arg.objNegocio.sociedades[i].sociedad.idSolicitud = arg.objNegocio.id;
+		respuesta = FSolicitudSociedades.setValue(objNegocio : arg.objNegocio.sociedades[i].sociedad);
+		if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+	}
+	
+	respuesta = FListaAntecedentes.deleteValuesForIdSolicitud(idSolicitud : arg.objNegocio.id);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	for (int i=0;i&lt;arg.objNegocio.listaAntecedentes.length();i++){
+		arg.objNegocio.listaAntecedentes[i].antecedente.idSolicitud = arg.objNegocio.id;
+		respuesta = FListaAntecedentes.setValue(objNegocio : arg.objNegocio.listaAntecedentes[i].antecedente);
+		if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+	}
+	
+	respuesta = FProyectoMayor.deleteValuesForIdSolicitud(idSolicitud : arg.objNegocio.id);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	for (int i=0;i&lt;arg.objNegocio.proyectosMayores.length();i++){
+		arg.objNegocio.proyectosMayores[i].proyectoMayor.idSolicitud = arg.objNegocio.id;
+		respuesta = FProyectoMayor.setValue(objNegocio : arg.objNegocio.proyectosMayores[i].proyectoMayor);
+		if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+	}
+	
+	if(arg.objNegocio.comentario != null){
+		if(arg.objNegocio.comentario.comentario != null &amp;&amp; arg.objNegocio.comentario.comentario.trim() != &quot;&quot;){
+			arg.objNegocio.comentario.idSolicitud = arg.objNegocio.id;
+			respuesta = FComentario.setValue(objNegocio : arg.objNegocio.comentario);
+			if (respuesta.resultado != OK) {
+				throw Java.Lang.Exception((String)respuesta.contenido);		
+			}
+		} 	
+	}
+	
+	if(arg.objNegocio.comentarioResolucion != null){
+		if(arg.objNegocio.comentarioResolucion != null &amp;&amp; arg.objNegocio.comentarioResolucion.trim() != &quot;&quot;){
+			arg.objNegocio.comentario.idSolicitud = arg.objNegocio.id;
+			arg.objNegocio.comentario.comentario = arg.objNegocio.comentarioResolucion;
+			respuesta = FComentario.setValue(objNegocio : arg.objNegocio.comentario);
+			if (respuesta.resultado != OK) {
+				throw Java.Lang.Exception((String)respuesta.contenido);		
+			}
+		} 	
+	}
+	
+	if(arg.objNegocio.recomendacionSAGI != null){
+		if(arg.objNegocio.recomendacionSAGI.recomendacion != null &amp;&amp; arg.objNegocio.recomendacionSAGI.recomendacion.trim() != &quot;&quot;){
+			respuesta = FRecomendacionSAGI.setValue(objNegocio : arg.objNegocio.recomendacionSAGI);
+			if (respuesta.resultado != OK) {
+				throw Java.Lang.Exception((String)respuesta.contenido);		
+			} 
+		}
+	}
+
+	for(int i = 0; arg.objNegocio.resoluciones.length()&gt;i; i++){
+		respuesta = FResolucionParticipantes.deleteValuesForIdResolucion(idResolucion : arg.objNegocio.resoluciones[i].resolucion.id);
+		if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+	}
+	
+	respuesta = FResolucion.deleteValuesForIdSolicitud(idSolicitud : arg.objNegocio.id);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	for (int i=0;i&lt;arg.objNegocio.resoluciones.length();i++){
+		arg.objNegocio.resoluciones[i].resolucion.idSolicitud = arg.objNegocio.id;
+		respuesta = FResolucion.setValue(objNegocio : arg.objNegocio.resoluciones[i].resolucion);
+		if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+	}
+
+	respuesta = FAsignacion.deleteValuesForIdSolicitud(idSolicitud : arg.objNegocio.id);
+	if (respuesta.resultado != OK) {
+		return respuesta;		
+	}
+	for (int i=0;i&lt;arg.objNegocio.historialAsignaciones.length();i++){
+		arg.objNegocio.historialAsignaciones[i].asignacion.idSolicitud = arg.objNegocio.id;
+		respuesta = FAsignacion.setValue(objNegocio : arg.objNegocio.historialAsignaciones[i].asignacion);
+		if (respuesta.resultado != OK) {
+			return respuesta;		
+		}
+	}
+	
+  	respuesta.contenido = (this.getDatosComplementarios(solicitud : arg.objNegocio, cargoEstado : false)).contenido;
+
+	//respuesta.contenido = arg.objNegocio;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarErrores" flags="clientavailable public">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="rol" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">String[] errores = {};
+
+if(arg.solicitud.pedidoCesta.id in {3,5}){
+	if(arg.solicitud.gestorEnlace == null || arg.solicitud.gestorEnlace == &quot;&quot;){
+		errores[] = &quot;&apos;Gestor Enlace&apos; es obligatorio&quot;;
+	}
+	if(arg.solicitud.tipoCompra.id == null){
+		errores[] = &quot;&apos;Tipo de Compra&apos; es obligatorio&quot;;
+	}
+	
+	if(arg.rol == &quot;TPC - Gestor Enlace&quot;){
+		if(arg.solicitud.categoriaProducto.id == null){
+			if(arg.solicitud.lineaProducto.id == null){
+				errores[] = &quot;&apos;Categoría de Producto&apos; es obligatorio&quot;;
+			}
+		}
+	}
+	if ((arg.solicitud.montoTotalPesosStr != null) &amp;&amp; (arg.solicitud.montoTotalPesosStr != &quot;&quot;)){
+		if(!arg.solicitud.montoTotalPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+			errores[] = &quot;&apos;Pesos&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+		}
+	}
+	if ((arg.solicitud.montoTotalDolaresStr != null) &amp;&amp; (arg.solicitud.montoTotalDolaresStr != &quot;&quot;)){
+		if(!arg.solicitud.montoTotalDolaresStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+			errores[] = &quot;&apos;Dolares&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+		}
+	}
+	if ((arg.solicitud.montoTotalEurosStr != null) &amp;&amp; (arg.solicitud.montoTotalEurosStr != &quot;&quot;)){
+		if(!arg.solicitud.montoTotalEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+			errores[] = &quot;&apos;Euros&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+		}
+	}
+	if ((arg.solicitud.montoTotalOtroStr != null) &amp;&amp; (arg.solicitud.montoTotalOtroStr != &quot;&quot;)){
+		if(!arg.solicitud.montoTotalOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+			errores[] = &quot;&apos;Otra&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+		}
+	}
+		
+		
+}
+else{
+	if(arg.rol == &quot;TPC - Solicitante SAGI&quot;){
+		if(arg.solicitud.pedidoCesta.id == null){
+			errores[] = &quot;&apos;Tipo de Pedido&apos; es obligatorio&quot;;	
+		}
+		else if(arg.solicitud.pedidoCesta.id == 4){
+			if(arg.solicitud.tipoCompra.id != null &amp;&amp; arg.solicitud.tipoCompra.id != 4 &amp;&amp; arg.solicitud.tipoCompra.id != 5){
+				errores[] = &quot;Para Tipo de Pedido &apos;Pedido Modifica Cesta No SAC&apos;, el Tipo de Compra debe ser siempre &apos;Cesta No MCT (ZNSA)&apos; o &apos;Pedido Modifica Cesta No MCT&apos;&quot;;
+			}
+		}
+		else if(solicitud.pedidoCesta.id == 2){
+			if(arg.solicitud.nroCestaAnulada == null){
+				errores[] = &quot;&apos;Nro de Cesta anulada&apos; es obligatorio&quot;;	
+			}
+			if(arg.solicitud.motivoReemplazo == null || arg.solicitud.motivoReemplazo == &quot;&quot;){
+				errores[] = &quot;&apos;Motivo de Reemplazo&apos; es obligatorio&quot;;	
+			}
+		}
+		if(arg.solicitud.periodoFechaInicio != null &amp;&amp; arg.solicitud.periodoFechaFin != null){
+			if(arg.solicitud.periodoFechaInicio &gt; arg.solicitud.periodoFechaFin){
+				errores[] = &quot;&apos;Período Fecha Inicio&apos; no puede ser mayor que &apos;Período Fecha Fin&apos;&quot;;
+			}
+		}
+		if(arg.solicitud.periodoFechaInicio == null){
+			errores[] = &quot;&apos;Período Fecha Inicio&apos; es obligatorio&quot;;	
+		}
+		if(arg.solicitud.periodoFechaFin == null){
+			errores[] = &quot;&apos;Período Fecha Fin&apos; es obligatorio&quot;;	
+		}
+		if(arg.solicitud.montoTotalPesos == null &amp;&amp;
+		   arg.solicitud.montoTotalDolares == null &amp;&amp;
+		   arg.solicitud.montoTotalEuros == null &amp;&amp;
+		   (arg.solicitud.montoTotalOM.id == null || arg.solicitud.montoTotalOtro == null)){
+		   errores[] = &quot;Debe cargar por lo menos uno de los Montos Totales de la Cesta&quot;;
+		}else{
+			if ((arg.solicitud.montoTotalPesosStr != null) &amp;&amp; (arg.solicitud.montoTotalPesosStr != &quot;&quot;)){
+				if(!arg.solicitud.montoTotalPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+					errores[] = &quot;&apos;Pesos&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+				}
+			}
+			if ((arg.solicitud.montoTotalDolaresStr != null) &amp;&amp; (arg.solicitud.montoTotalDolaresStr != &quot;&quot;)){
+				if(!arg.solicitud.montoTotalDolaresStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+					errores[] = &quot;&apos;Dolares&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+				}
+			}
+			if ((arg.solicitud.montoTotalEurosStr != null) &amp;&amp; (arg.solicitud.montoTotalEurosStr != &quot;&quot;)){
+				if(!arg.solicitud.montoTotalEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+					errores[] = &quot;&apos;Euros&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+				}
+			}
+			if ((arg.solicitud.montoTotalOtroStr != null) &amp;&amp; (arg.solicitud.montoTotalOtroStr != &quot;&quot;)){
+				if(!arg.solicitud.montoTotalOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+					errores[] = &quot;&apos;Otra&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+				}
+			}
+		}
+		if(arg.solicitud.gestorSolicitante == null || arg.solicitud.gestorSolicitante == &quot;&quot;){
+			errores[] = &quot;&apos;Solicitante&apos; es obligatorio&quot;;
+		}
+		if(arg.solicitud.emailSolicitante == null || arg.solicitud.emailSolicitante == &quot;&quot;){
+			errores[] = &quot;&apos;Dirección email Solicitante&apos; es obligatorio&quot;;
+		}
+		else if(!arg.solicitud.emailSolicitante.trim().toLowerCase().isMatch(regexp : &apos;/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/&apos;)){
+			errores[] = &quot;Formato de &apos;Dirección email Solicitante&apos; es incorrecto&quot;;
+		}
+		if(arg.solicitud.areaSolicitante == null || arg.solicitud.areaSolicitante == &quot;&quot;){
+			errores[] = &quot;&apos;Área Solicitante&apos; es obligatorio&quot;;
+		}
+		if(arg.solicitud.gestorEnlace == null || arg.solicitud.gestorEnlace == &quot;&quot;){
+			errores[] = &quot;&apos;Gestor Enlace&apos; es obligatorio&quot;;
+		}
+		if ((!arg.solicitud.emailEnlace == null) &amp;&amp; (!arg.solicitud.emailEnlace == &quot;&quot;)){
+			if(!arg.solicitud.emailEnlace.trim().toLowerCase().isMatch(regexp : &apos;/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/&apos;)){
+				errores[] = &quot;Formato de &apos;Dirección email Gestor Enlace&apos; es incorrecto&quot;;
+			}
+		}
+		if(arg.solicitud.tipoCompra.id == null){
+			errores[] = &quot;&apos;Tipo de Compra&apos; es obligatorio&quot;;
+		}
+		if(arg.solicitud.destinoCompra.id == null){
+			errores[] = &quot;&apos;Destino de la Compra&apos; es obligatorio&quot;;
+		}
+		boolean tieneSociedad = false;
+		for (int index = 0; index &lt; arg.solicitud.sociedades.length; index++) {
+		    if(arg.solicitud.sociedades[index].sociedad.idSociedad != null){
+		    	tieneSociedad = true;
+		    }
+		}
+		if(!tieneSociedad){
+			errores[] = &quot;Debe seleccionar por lo menos una de las sociedades&quot;;
+		}
+		if(arg.solicitud.descripcionNecesidad == null || arg.solicitud.descripcionNecesidad == &quot;&quot;){
+			errores[] = &quot;&apos;Descripción de la Necesidad&apos; es obligatorio&quot;;
+		}
+	}
+	else if(arg.rol == &quot;TPC - Gestor Enlace&quot;){
+		/*
+		if(arg.solicitud.tipoCompra.id != 4 &amp;&amp; arg.solicitud.tipoCompra.id != 5){
+			if(arg.solicitud.categoriaCesta.id == null){
+				//errores[] = &quot;&apos;Categoría&apos; es obligatorio&quot;;
+			}
+		}
+		*/
+		if(arg.solicitud.pedidoCesta.id != 4){
+			if(arg.solicitud.nroCesta == null){
+				errores[] = &quot;&apos;Nro de Cesta&apos; es obligatorio&quot;;
+			}
+		}
+		
+		if(arg.solicitud.pedidoCesta.id == null){
+			errores[] = &quot;&apos;Tipo de Pedido&apos; es obligatorio&quot;;	
+		}
+		else if(arg.solicitud.pedidoCesta.id == 4){
+			if(arg.solicitud.nroCesta == null){
+				//errores[] = &quot;&apos;Nro de Cesta&apos; es obligatorio&quot;;	
+			}
+			if(arg.solicitud.nroPedido == null){
+				errores[] = &quot;&apos;Nro de Pedido&apos; es obligatorio&quot;;	
+			}
+			if(arg.solicitud.nroCestaAsocPedido == null){
+				errores[] = &quot;&apos;Nro de Cesta asociada al pedido&apos; es obligatorio&quot;;	
+			}
+			if(arg.solicitud.tipoCompra.id != null &amp;&amp; arg.solicitud.tipoCompra.id != 4 &amp;&amp; arg.solicitud.tipoCompra.id != 5){
+				errores[] = &quot;Para Tipo de Pedido &apos;Pedido Modifica Cesta No SAC&apos;, el Tipo de Compra debe ser siempre &apos;Cesta No MCT (ZNSA)&apos; o &apos;Pedido Modifica Cesta No MCT&apos;&quot;;
+			}
+		}
+		else if(arg.solicitud.pedidoCesta.id == 2){
+			if(arg.solicitud.nroCestaAnulada == null){
+				errores[] = &quot;&apos;Nro de Cesta anulada&apos; es obligatorio&quot;;	
+			}
+			if(arg.solicitud.motivoReemplazo == null || arg.solicitud.motivoReemplazo == &quot;&quot;){
+				errores[] = &quot;&apos;Motivo de Reemplazo&apos; es obligatorio&quot;;	
+			}
+		}
+		if(arg.solicitud.periodoFechaInicio != null &amp;&amp; arg.solicitud.periodoFechaFin != null){
+			if(arg.solicitud.periodoFechaInicio &gt; arg.solicitud.periodoFechaFin){
+				errores[] = &quot;&apos;Período Fecha Inicio&apos; no puede ser mayor que &apos;Período Fecha Fin&apos;&quot;;
+			}
+		}
+		if(arg.solicitud.periodoFechaInicio == null){
+			errores[] = &quot;&apos;Período Fecha Inicio&apos; es obligatorio&quot;;	
+		}
+		if(arg.solicitud.periodoFechaFin == null){
+			errores[] = &quot;&apos;Período Fecha Fin&apos; es obligatorio&quot;;	
+		}
+		if(arg.solicitud.montoTotalPesos == null &amp;&amp;
+		   arg.solicitud.montoTotalDolares == null &amp;&amp;
+		   arg.solicitud.montoTotalEuros == null &amp;&amp;
+		   (arg.solicitud.montoTotalOM.id == null || arg.solicitud.montoTotalOtro == null)){
+		   errores[] = &quot;Debe cargar por lo menos uno de los Montos Totales de la Cesta&quot;;
+		}else{
+			if ((arg.solicitud.montoTotalPesosStr != null) &amp;&amp; (arg.solicitud.montoTotalPesosStr != &quot;&quot;)){
+				if(!arg.solicitud.montoTotalPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+					errores[] = &quot;&apos;Pesos&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+				}
+			}
+			if ((arg.solicitud.montoTotalDolaresStr != null) &amp;&amp; (arg.solicitud.montoTotalDolaresStr != &quot;&quot;)){
+				if(!arg.solicitud.montoTotalDolaresStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+					errores[] = &quot;&apos;Dolares&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+				}
+			}
+			if ((arg.solicitud.montoTotalEurosStr != null) &amp;&amp; (arg.solicitud.montoTotalEurosStr != &quot;&quot;)){
+				if(!arg.solicitud.montoTotalEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+					errores[] = &quot;&apos;Euros&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+				}
+			}
+			if ((arg.solicitud.montoTotalOtroStr != null) &amp;&amp; (arg.solicitud.montoTotalOtroStr != &quot;&quot;)){
+				if(!arg.solicitud.montoTotalOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+					errores[] = &quot;&apos;Otra&apos; en Montos Totales de la Cesta requiere el formato ###.###.###.###,##&quot;;
+				}
+			}
+		}
+		if(arg.solicitud.emailSolicitante == null || arg.solicitud.emailSolicitante == &quot;&quot;){
+			errores[] = &quot;&apos;Dirección email Solicitante&apos; es obligatorio&quot;;
+		}
+		else if(!arg.solicitud.emailSolicitante.trim().toLowerCase().isMatch(regexp : &apos;/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/&apos;)){
+			errores[] = &quot;Formato de &apos;Dirección email Solicitante&apos; es incorrecto&quot;;
+		}
+		if(arg.solicitud.areaSolicitante == null || arg.solicitud.areaSolicitante == &quot;&quot;){
+			errores[] = &quot;&apos;Área Solicitante&apos; es obligatorio&quot;;
+		}
+		if(arg.solicitud.centroCostos == null){
+			errores[] = &quot;&apos;Centro de Costos Solicitante&apos; es obligatorio&quot;;
+		}
+		if(arg.solicitud.gestorEnlace == null || arg.solicitud.gestorEnlace == &quot;&quot;){
+			errores[] = &quot;&apos;Gestor Enlace&apos; es obligatorio&quot;;
+		}
+		if(arg.solicitud.emailEnlace == null || arg.solicitud.emailEnlace == &quot;&quot;){
+			errores[] = &quot;&apos;Dirección email Gestor Enlace&apos; es obligatorio&quot;;
+		}
+		else if(!arg.solicitud.emailEnlace.trim().toLowerCase().isMatch(regexp : &apos;/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/&apos;)){
+			errores[] = &quot;Formato de &apos;Dirección email Gestor Enlace&apos; es incorrecto&quot;;
+		}
+		boolean tieneSociedad = false;
+		for (int index = 0; index &lt; arg.solicitud.sociedades.length; index++) {
+		    if(arg.solicitud.sociedades[index].sociedad.idSociedad != null){
+		    	tieneSociedad = true;
+		    }
+		}
+		if(!tieneSociedad){
+			errores[] = &quot;Debe seleccionar por lo menos una de las sociedades&quot;;
+		}
+		if(arg.solicitud.categoriaProducto.id == null){
+			if(arg.solicitud.lineaProducto.id == null){
+				errores[] = &quot;&apos;Categoría de Producto&apos; es obligatorio&quot;;
+			}
+		}
+		if(arg.solicitud.subtipoProducto.id == null){
+			errores[] = &quot;&apos;Tipo de Material / Subtipo de Producto&apos; es obligatorio&quot;;
+		}
+		if(arg.solicitud.descripcionNecesidad == null || arg.solicitud.descripcionNecesidad == &quot;&quot;){
+			errores[] = &quot;&apos;Descripción de la Necesidad&apos; es obligatorio&quot;;
+		}
+		if(arg.solicitud.tipoCompra.id == null){
+			errores[] = &quot;&apos;Tipo de Compra&apos; es obligatorio&quot;;
+		}
+		if(arg.solicitud.destinoCompra.id == null){
+			errores[] = &quot;&apos;Destino de la Compra&apos; es obligatorio&quot;;
+		}
+		else{
+			if((arg.solicitud.destinoCompra.id == 1 || arg.solicitud.destinoCompra.id == 3) &amp;&amp; solicitud.tipoCompra.id == 2){
+				if(arg.solicitud.centroCostosImpContable == null){
+					errores[] = &quot;&apos;Centro de Costos de Imputación Contable&apos; es obligatorio&quot;;
+				}
+				if(arg.solicitud.cuentaImpContable == null){
+					errores[] = &quot;&apos;Cuenta Imputación Contable&apos; es obligatorio&quot;;
+				}
+				if(arg.solicitud.actividadImpContable == null){
+					errores[] = &quot;&apos;Actividad Imputación Contable&apos; es obligatorio&quot;;
+				}
+			}
+		}
+		if(arg.solicitud.tipoCompra.id == 2 &amp;&amp; (arg.solicitud.destinoCompra.id == 2||arg.solicitud.destinoCompra.id ==3)){
+			if(arg.solicitud.pep == null || arg.solicitud.pep == &quot;&quot;){
+				errores[] = &quot;&apos;PEP&apos; es obligatorio&quot;;
+			}
+		}
+	}
+}
+return errores;</sourceCode>
+		</method>
+	</methods>
+</component>

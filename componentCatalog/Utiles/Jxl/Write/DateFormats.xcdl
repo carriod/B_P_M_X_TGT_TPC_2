@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DateFormats" description="DateFormats" versionID="Version 6.5 " flags="" signature="jxl.write.DateFormats" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.DateFormats"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.DateFormats"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="DEFAULT" flags="hasgetter attribute static external final" position="2" javaType="jxl.biff.DisplayFormat" writeSignature="ADEFAULT;Ljxl.biff.DisplayFormat;" readSignature="ADEFAULT;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT1" flags="hasgetter attribute static external final" position="1" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT1;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT1;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT10" flags="hasgetter attribute static external final" position="11" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT10;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT10;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT11" flags="hasgetter attribute static external final" position="12" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT11;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT11;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT12" flags="hasgetter attribute static external final" position="13" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT12;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT12;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT2" flags="hasgetter attribute static external final" position="3" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT2;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT2;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT3" flags="hasgetter attribute static external final" position="4" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT3;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT3;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT4" flags="hasgetter attribute static external final" position="5" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT4;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT4;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT5" flags="hasgetter attribute static external final" position="6" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT5;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT5;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT6" flags="hasgetter attribute static external final" position="7" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT6;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT6;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT7" flags="hasgetter attribute static external final" position="8" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT7;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT7;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT8" flags="hasgetter attribute static external final" position="9" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT8;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT8;Ljxl.biff.DisplayFormat;"/>
+		<object type="Utiles.Jxl.Biff.DisplayFormat" name="FORMAT9" flags="hasgetter attribute static external final" position="10" javaType="jxl.biff.DisplayFormat" writeSignature="AFORMAT9;Ljxl.biff.DisplayFormat;" readSignature="AFORMAT9;Ljxl.biff.DisplayFormat;"/>
+	</attributes>
+	<methods>
+		<method name="DateFormats" flags="static hidden" signature="Kjxl.write.DateFormats()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.DateFormats"/>
+		</method>
+	</methods>
+</component>

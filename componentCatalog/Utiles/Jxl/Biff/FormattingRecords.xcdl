@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="FormattingRecords" description="FormattingRecords" versionID="Version 6.5 " flags="" signature="jxl.biff.FormattingRecords" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.FormattingRecords"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.FormattingRecords"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.PaletteRecord" name="palette" flags="hassetter hasgetter external" position="1" javaType="jxl.biff.PaletteRecord" writeSignature="MsetPalette(Ljxl.biff.PaletteRecord;)V" readSignature="MgetPalette()Ljxl.biff.PaletteRecord;"/>
+	</attributes>
+	<methods>
+		<method name="FormattingRecords" flags="static" signature="Kjxl.biff.FormattingRecords(Ljxl.biff.Fonts;)">
+			<arg name="f" description="" flags="in external" type="Utiles.Jxl.Biff.Fonts" javaType="jxl.biff.Fonts"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.FormattingRecords"/>
+		</method>
+		<method name="addFormat" description="addFormat" flags="external final" signature="MaddFormat(Ljxl.biff.DisplayFormat;)V">
+			<arg name="fr" description="" flags="in external" type="Utiles.Jxl.Biff.DisplayFormat" javaType="jxl.biff.DisplayFormat"/>
+			<exception type="Utiles.Jxl.Biff.NumFormatRecordsException"/>
+		</method>
+		<method name="addStyle" description="addStyle" flags="external final" signature="MaddStyle(Ljxl.biff.XFRecord;)V">
+			<arg name="xf" description="" flags="in external" type="Utiles.Jxl.Biff.XFRecord" javaType="jxl.biff.XFRecord"/>
+			<exception type="Utiles.Jxl.Biff.NumFormatRecordsException"/>
+		</method>
+		<method name="getColourRGB" description="getColourRGB" flags="external" signature="MgetColourRGB(Ljxl.format.Colour;)Ljxl.format.RGB;">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.RGB" javaType="jxl.format.RGB"/>
+		</method>
+		<method name="getDateFormat" description="getDateFormat" flags="external final" signature="MgetDateFormat(I)Ljava.text.DateFormat;">
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Text.DateFormat" javaType="java.text.DateFormat"/>
+		</method>
+		<method name="getNumberFormat" description="getNumberFormat" flags="external final" signature="MgetNumberFormat(I)Ljava.text.NumberFormat;">
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Text.NumberFormat" javaType="java.text.NumberFormat"/>
+		</method>
+		<method name="getPalette" description="getPalette" flags="external hidden" signature="MgetPalette()Ljxl.biff.PaletteRecord;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.PaletteRecord" javaType="jxl.biff.PaletteRecord"/>
+		</method>
+		<method name="getXFRecord" description="getXFRecord" flags="external final" signature="MgetXFRecord(I)Ljxl.biff.XFRecord;">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.XFRecord" javaType="jxl.biff.XFRecord"/>
+		</method>
+		<method name="isDate" description="isDate" flags="external final" signature="MisDate(I)Z">
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="rationalize" description="rationalize" flags="external" signature="Mrationalize(Ljxl.biff.IndexMapping;Ljxl.biff.IndexMapping;)Ljxl.biff.IndexMapping;">
+			<arg name="fontMapping" description="" flags="in external" type="Utiles.Jxl.Biff.IndexMapping" javaType="jxl.biff.IndexMapping"/>
+			<arg name="formatMapping" description="" flags="in external" type="Utiles.Jxl.Biff.IndexMapping" javaType="jxl.biff.IndexMapping"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.IndexMapping" javaType="jxl.biff.IndexMapping"/>
+		</method>
+		<method name="rationalizeDisplayFormats" description="rationalizeDisplayFormats" flags="external" signature="MrationalizeDisplayFormats()Ljxl.biff.IndexMapping;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.IndexMapping" javaType="jxl.biff.IndexMapping"/>
+		</method>
+		<method name="rationalizeFonts" description="rationalizeFonts" flags="external" signature="MrationalizeFonts()Ljxl.biff.IndexMapping;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.IndexMapping" javaType="jxl.biff.IndexMapping"/>
+		</method>
+		<method name="setColourRGB" description="setColourRGB" flags="external" signature="MsetColourRGB(Ljxl.format.Colour;III)V">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="g" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="b" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setPalette" description="setPalette" flags="external hidden" signature="MsetPalette(Ljxl.biff.PaletteRecord;)V">
+			<arg name="pr" description="" flags="in external" type="Utiles.Jxl.Biff.PaletteRecord" javaType="jxl.biff.PaletteRecord"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite(Ljxl.write.biff.File;)V">
+			<arg name="outputFile" description="" flags="in external" type="Utiles.Jxl.Write.Biff.File" javaType="jxl.write.biff.File"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+	</methods>
+</component>

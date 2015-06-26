@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="SUsuario" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="SUsuario" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SUsuario"/>
+			<sourceCode language="Java1">/*
+rolesProceso[] = &quot;PNW Vendedor (P)&quot;;
+rolesProceso[] = &quot;PNW Vendedor&quot;;
+rolesProceso[] = &quot;PNW Analista Logistica&quot;;
+rolesProceso[] = &quot;PNW Gestion ABM&quot;;
+*/
+
+
+</sourceCode>
+		</method>
+		<method name="addRoleToParticipant" flags="public server disableclient">
+			<arg name="participantId" description="" flags="in" type="String"/>
+			<arg name="roleId" description="" flags="in" type="String"/>
+			<arg name="parameter" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="human" type="Fuego.Fdi.DirHumanParticipant"/>
+				<variable name="newrole" type="Fuego.Fdi.DirOrganizationalRole"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+				<variable name="rolAssgnmnt" type="Fuego.Fdi.RoleAssignment"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = Respuesta();
+try {
+	human = DirHumanParticipant.fetch(session : DirectorySession.currentEngineSession, id : arg.participantId);
+	newrole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : arg.roleId);
+
+	if(arg.parameter != null &amp;&amp; arg.parameter != &quot;&quot;){
+		rolAssgnmnt = RoleAssignment.create(role : newrole, parametricValue : arg.parameter, permissions : 95);
+	} else {
+		rolAssgnmnt = RoleAssignment.create(role : newrole, permissions : 95);
+	}
+	human.rolesAssignment[] = rolAssgnmnt;
+	human.update();
+
+} catch (Exception e) {
+    Utiles.Logger.logException(exception : e);
+	respuesta.resultado = ERROR;
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error(SRolUsuario): &quot;+ e.message;
+}
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="deleteRoleFromParticipant" flags="public server disableclient">
+			<arg name="participantId" description="" flags="in" type="String"/>
+			<arg name="roleId" description="" flags="in" type="String"/>
+			<arg name="parameter" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="human" type="Fuego.Fdi.DirHumanParticipant"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+				<variable name="rolAs" type="Fuego.Fdi.RoleAssignment"/>
+				<variable name="roleAssignmts" type="Fuego.Fdi.RoleAssignment[]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = Respuesta();
+roleAssignmts = {};
+try {
+	human = DirHumanParticipant.fetch(session : DirectorySession.currentEngineSession, id : arg.participantId);
+	roleAssignmts = human.rolesAssignment;
+	for (int index = 0; index &lt; roleAssignmts.length; index++) {
+		rolAs = roleAssignmts[index];
+	    if(rolAs.roleId == arg.roleId &amp;&amp; rolAs.parametricValue == arg.parameter){
+			roleAssignmts.delete(index : (index));
+		}
+	}
+	human.rolesAssignment = roleAssignmts;
+	human.update();
+} catch (Exception e) {
+    Utiles.Logger.logException(exception : e);
+	respuesta.resultado = ERROR;
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error(SRolUsuario): &quot;+ e.message;
+}
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="getAllRoleIds" flags="public server disableclient">
+			<variables>
+				<variable name="listado" type="String[]"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = new Respuesta();
+try {
+	listado = {};
+    foreach(role in DirOrganizationalRole.fetchAll(session : DirectorySession.currentEngineSession)){
+		listado[]=role.id;
+    }
+    MetodosGenericos.burbuja(array : listado, out array : listado);
+    respuesta.contenido = listado;
+
+} catch (Exception e) {
+    Utiles.Logger.logException(exception : e);
+	respuesta.resultado = ERROR;
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error(SRolUsuario): &quot;+ e.message;
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getDescForRoleParameter" flags="public server disableclient">
+			<arg name="roleId" description="" flags="in" type="String"/>
+			<arg name="parameter" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="query" type="String"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+				<variable name="result" type="Iterator(Any[Any])"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">//Utiles.Logger.logDebug(mensaje : &quot;arg.parameter: &apos;&quot;+ arg.parameter+ &quot;&apos;\narg.roleId: &apos;&quot;+ arg.roleId+ &quot;&apos;&quot;);
+
+respuesta = Respuesta();
+query = &quot;&quot;;
+try {
+	Any[] inParameters = {};
+    switch (arg.roleId) {
+    	case &quot;Back Office Agente (P)&quot;:
+    	case &quot;Escaneador CEC (P)&quot;:
+    	case &quot;Lider CEC (P)&quot;:
+    	case &quot;Administrador Canal (P)&quot;:
+	        query = &quot; SELECT CAN_DESCRIPCION FROM PAC_CANAL WHERE CAN_CODIGO = ? &quot;;
+	        inParameters[] = arg.parameter;
+	        break;
+	    case &quot;Vendedor Directo (P)&quot;:
+	        query = &quot; SELECT CVR_DESCRIPCION FROM PAC_CANAL_VENDEDOR WHERE CVR_CODIGO = ? &quot;;
+	        inParameters[] = arg.parameter;
+	    	break;
+	    case &quot;Vendedor Indirecto (P)&quot;:
+	        query = &quot;SELECT (CVR_DESCRIPCION || &apos; - &apos; ||  CSV_DESCRIPCION) DESCRIPCION &quot; +  
+					&quot;FROM PAC_CANAL_VENDEDOR &quot; + 
+					&quot;INNER JOIN PAC_CANAL_SUBVENDEDOR ON CVR_ID = CSV_CVR_ID &quot; +
+					&quot;WHERE CVR_CODIGO = ? AND CSV_CODIGO = ?  AND ROWNUM &lt; 2&quot;;
+			inParameters[] = arg.parameter.split(&quot;-&quot;)[0];
+			inParameters[] = arg.parameter.split(&quot;-&quot;)[1];
+	    	break;
+	    case &quot;PNW Vendedor (P)&quot;:
+	    	 query = &quot; SELECT TCA_DESCRIPCION FROM PNW_TIPO_CANAL WHERE TCA_CODIGO = ? &quot;;
+	    	 inParameters[] = arg.parameter;
+	    	break;
+	    default:
+	    	if( arg.parameter != null &amp;&amp; arg.parameter != &quot;&quot; ){
+		        throw Exception(&quot;El rol &apos;&quot;+ arg.roleId+ &quot;&apos; no tiene descrición de parámetros&quot;);
+		    }
+	        break;
+    }
+	Utiles.Logger.logDebug(mensaje : &quot;query11: &quot; + query);
+	Utiles.Logger.logDebug(mensaje : &quot;inParameters11:&quot; + inParameters);
+
+	if(query!=&quot;&quot;){
+		result = DynamicSQL.executeQuery(sentence : query, implname : &quot;PAC_DATOS&quot;, inParameters : inParameters);
+		foreach(it in result){
+			respuesta.contenido = (String)it[1];
+			//Utiles.Logger.logDebug(mensaje : &quot;&quot;+ respuesta.contenido);
+		}
+	}
+
+} catch (Exception e) {
+    Utiles.Logger.logException(exception : e);
+	respuesta.resultado= DBERROR;
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error(SRolUsuario): &quot;+ e.message;
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="getDescForRoleParameters" flags="public server disableclient">
+			<arg name="roleId" description="" flags="in" type="String"/>
+			<arg name="parameters" description="" flags="in" type="String[]"/>
+			<variables>
+				<variable name="result" type="Iterator(Any[Any])"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">//Utiles.Logger.logDebug(mensaje : &quot;arg.parameter: &apos;&quot;+ arg.parameter+ &quot;&apos;\narg.roleId: &apos;&quot;+ arg.roleId+ &quot;&apos;&quot;);
+
+Respuesta respuesta = Respuesta();
+String query = &quot;&quot;;
+try {
+    Any[] inParameters = {};
+    switch (arg.roleId) {
+    	case &quot;Back Office Agente (P)&quot;:
+    	case &quot;Escaneador CEC (P)&quot;:
+    	case &quot;Lider CEC (P)&quot;:
+    	case &quot;Administrador Canal (P)&quot;:    	
+	        query = &quot; SELECT CAN_CODIGO, CAN_DESCRIPCION FROM PAC_CANAL WHERE CAN_VIGENCIA = &apos;A&apos; AND (CAN_CODIGO IS NULL&quot;;
+	        for (String parameter : arg.parameters) {
+				query = query + &quot; OR CAN_CODIGO = ? &quot;;
+				inParameters[] = parameter;
+			}
+			query = query + &quot;) &quot;;
+			query = query + &quot;ORDER BY CAN_CODIGO&quot;;
+	        break;
+	    case &quot;Vendedor Directo (P)&quot;:
+	        query = &quot; SELECT CVR_CODIGO, CVR_DESCRIPCION FROM PAC_CANAL_VENDEDOR WHERE CVR_VIGENCIA = &apos;A&apos; AND (CVR_CODIGO IS NULL&quot;; 
+	        for (String parameter : arg.parameters) {
+				query = query + &quot; OR CVR_CODIGO = ? &quot;;
+				inParameters[] = parameter;
+			}
+			query = query + &quot;) &quot;;
+			query = query + &quot;ORDER BY CVR_CODIGO&quot;;		
+	    	break;
+	    case &quot;Vendedor Indirecto (P)&quot;:
+	        query = &quot;SELECT (CVR_CODIGO || &apos;-&apos; || CSV_CODIGO) CODIGO, &quot; +
+					&quot;       (CVR_DESCRIPCION || &apos; - &apos; ||  CSV_DESCRIPCION) DESCRIPCION &quot; +  
+					&quot;FROM PAC_CANAL_VENDEDOR &quot; + 
+					&quot;INNER JOIN PAC_CANAL_SUBVENDEDOR ON CVR_ID = CSV_CVR_ID &quot; +
+					&quot;WHERE CVR_VIGENCIA = &apos;A&apos; AND CSV_VIGENCIA = &apos;A&apos; AND (CVR_CODIGO IS NULL&quot;;
+	        for (String parameter : arg.parameters) {
+				query = query + &quot; OR (CVR_CODIGO = ? AND CSV_CODIGO = ?)&quot;;
+				inParameters[] = parameter.split(&quot;-&quot;)[0];
+				inParameters[] = parameter.split(&quot;-&quot;)[1];
+			}
+			query = query + &quot;) &quot;;
+			query = query + &quot;ORDER BY CVR_CODIGO, CSV_CODIGO&quot;;
+	    	break;
+	    case &quot;PNW Vendedor (P)&quot;:
+	    	query = &quot; SELECT TCA_CODIGO,TCA_DESCRIPCION FROM PNW_TIPO_CANAL WHERE TCA_VIGENCIA = &apos;A&apos; AND (TCA_CODIGO IS NULL&quot;;
+	    	for (String parameter : arg.parameters) {
+				query = query + &quot; OR TCA_CODIGO = &quot; + parameter + &quot; &quot;;
+				inParameters[] = parameter;
+		    }
+		    query = query + &quot;) &quot;;
+			query = query + &quot;ORDER BY TCA_CODIGO&quot;;		
+	    	break;
+	    default:
+	     	if( arg.parameters != null &amp;&amp; arg.parameters.length() &gt; 0){
+		       throw Exception(&quot;El rol &apos;&quot;+ arg.roleId+ &quot;&apos; no tiene descrición de parámetros&quot;);
+		    }
+	        break;
+    }
+
+	if(query!=&quot;&quot;){
+		//Utiles.Logger.logDebug(mensaje : &quot;query &quot;+ query);
+		result = DynamicSQL.executeQuery(sentence : query, implname : &quot;PAC_DATOS&quot;, inParameters : inParameters);
+		String[] parameters = {};
+		String[] descs = {};
+		foreach(it in result){
+			parameters[] = ((String)it[1]).trim();
+			descs[] = ((String)it[1]).trim() + &quot;: &quot; + ((String)it[2]).trim();
+		}
+		
+		Any[String] roleMap = (Any[String]){};
+		roleMap[&quot;parametricValues&quot;] = parameters;
+		roleMap[&quot;descripcionParametros&quot;] = descs;
+		Utiles.Logger.logDebug(mensaje : &quot;parameters &quot;+ parameters);
+		Utiles.Logger.logDebug(mensaje : &quot;descs &quot;+ descs);
+		Utiles.Logger.logDebug(mensaje : &quot;query: &quot; + query);
+		Utiles.Logger.logDebug(mensaje : &quot;inParameters: &quot; + inParameters);
+		respuesta.contenido = roleMap;
+	}
+
+} catch (Exception e) {
+    Utiles.Logger.logException(exception : e);
+	respuesta.resultado= DBERROR;
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error(SRolUsuario): &quot;+ e.message;
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getRoleById" flags="public server disableclient">
+			<arg name="roleId" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="dirOrgRole" type="Fuego.Fdi.DirOrganizationalRole"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+				<variable name="roleMap" type="Any[String]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = Respuesta();
+try {
+    dirOrgRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : arg.roleId);
+    roleMap = (Any[String]){};
+    roleMap[&quot;id&quot;] = dirOrgRole.id;
+    roleMap[&quot;parametric&quot;] = dirOrgRole.parametric;
+    if(dirOrgRole.parametric){
+		roleMap[&quot;parametricValues&quot;] = dirOrgRole.parametricValues;
+	}
+	respuesta.contenido = roleMap;
+}
+catch (Exception e) {
+    Utiles.Logger.logException(exception : e);
+	respuesta.resultado = ERROR;
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error(SRolUsuario): &quot;+ e.message;
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="searchParticipants" flags="public server disableclient">
+			<arg name="partialName" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="it" type="String[String]"/>
+				<variable name="listado" type="Any[]"/>
+				<variable name="part" type="Fuego.Fdi.DirHumanParticipant"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+				<variable name="resultadoConsulta" type="Fuego.Fdi.DirHumanParticipant[]"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = new Respuesta();
+try{
+	listado = {};
+	part = DirHumanParticipant.fetch(session : DirectorySession.currentEngineSession, id : arg.partialName.trim);
+	if(part != null){
+		it = {};
+		it[&quot;id&quot;]=part.id;
+		it[&quot;lastName&quot;]=part.lastName;
+		it[&quot;firstName&quot;]=part.firstName;
+		it[&quot;enabled&quot;] = part.enabled?&apos;Y&apos;:(!part.enabled?&apos;N&apos;:null);
+		it[&quot;mail&quot;]=part.mail;
+		it[&quot;administrator&quot;] = part.administrator?&apos;Y&apos;:(!part.administrator?&apos;N&apos;:null);
+		it[&quot;myOU&quot;] = part.ou;
+		listado[]=it;
+		
+	}
+
+	resultadoConsulta = DirHumanParticipant.fetchMatchingName(session : DirectorySession.currentEngineSession
+	                                                        , partialName : &quot;*&quot; + arg.partialName.trim + &quot;*&quot;);
+
+	foreach(human in resultadoConsulta){
+		if(human.id != arg.partialName){
+			it = {};
+			it[&quot;id&quot;]=human.id;
+			it[&quot;lastName&quot;]=human.lastName;
+			it[&quot;firstName&quot;]=human.firstName;
+			it[&quot;enabled&quot;] = human.enabled?&apos;Y&apos;:(!human.enabled?&apos;N&apos;:null);
+			it[&quot;mail&quot;]=human.mail;
+			it[&quot;administrator&quot;] = human.administrator?&apos;Y&apos;:(!human.administrator?&apos;N&apos;:null);
+			it[&quot;myOU&quot;] = human.ou;
+			listado[]=it;
+		}
+	}
+	respuesta.contenido = listado;
+
+} catch (Java.Lang.Exception e) {
+    respuesta.resultado = ERROR;
+    respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error(SRolUsuario): &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="searchRoleAssignForParticipant" flags="public server disableclient">
+			<arg name="partId" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="dirHumanPart" type="Fuego.Fdi.DirHumanParticipant"/>
+				<variable name="it" type="String[String]"/>
+				<variable name="listado" type="Any[]"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = new Respuesta();
+try{
+	dirHumanPart = DirHumanParticipant.fetch(session : DirectorySession.currentEngineSession, id : arg.partId);
+
+	listado = {};
+	foreach(role in dirHumanPart.rolesAssignment){
+			it = {};
+			it[&quot;roleId&quot;] = role.roleId;
+			it[&quot;parametricValue&quot;] = role.parametricValue;
+			listado[]=it;
+	}
+
+	respuesta.contenido = listado;
+
+}catch(Exception e){
+	Utiles.Logger.logException(exception : e);
+	respuesta.resultado =ERROR;
+	respuesta.contenido = Utiles.Logger.getStringObjeto()+ &quot;Error(SRolUsuario): &quot;+ e.message;
+}
+return respuesta;
+</sourceCode>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="NumberFormat" description="NumberFormat" versionID="Version 6.5 " flags="" signature="jxl.write.NumberFormat" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.NumberFormatRecord" flags="public"/>
+	<inherit class="Utiles.Jxl.Biff.DisplayFormat" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.NumberFormat"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.NumberFormat"/>
+	<attributes/>
+	<methods>
+		<method name="NumberFormat" flags="static" signature="Kjxl.write.NumberFormat(Ljava.lang.String;)">
+			<arg name="arg1" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.NumberFormat"/>
+		</method>
+	</methods>
+</component>

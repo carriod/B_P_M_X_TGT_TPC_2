@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableCellFormat" description="WritableCellFormat" versionID="Version 6.5 " flags="" signature="jxl.write.WritableCellFormat" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.CellXFRecord" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.WritableCellFormat"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.WritableCellFormat"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.Colour" name="background" flags="hassetter external" position="1" javaType="jxl.format.Colour" writeSignature="MsetBackground(Ljxl.format.Colour;)V"/>
+	</attributes>
+	<methods>
+		<method name="WritableCellFormat" flags="static hidden" signature="Kjxl.write.WritableCellFormat()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableCellFormat"/>
+		</method>
+		<method name="WritableCellFormat" flags="static" signature="Kjxl.write.WritableCellFormat(Ljxl.write.WritableFont;)">
+			<arg name="font" description="" flags="in external" type="Utiles.Jxl.Write.WritableFont" javaType="jxl.write.WritableFont"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableCellFormat"/>
+		</method>
+		<method name="WritableCellFormat" flags="static" signature="Kjxl.write.WritableCellFormat(Ljxl.biff.DisplayFormat;)">
+			<arg name="format" description="" flags="in external" type="Utiles.Jxl.Biff.DisplayFormat" javaType="jxl.biff.DisplayFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableCellFormat"/>
+		</method>
+		<method name="WritableCellFormat" flags="static" signature="Kjxl.write.WritableCellFormat(Ljxl.format.CellFormat;)">
+			<arg name="format" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableCellFormat"/>
+		</method>
+		<method name="WritableCellFormat" flags="static" signature="Kjxl.write.WritableCellFormat(Ljxl.write.WritableFont;Ljxl.biff.DisplayFormat;)">
+			<arg name="font" description="" flags="in external" type="Utiles.Jxl.Write.WritableFont" javaType="jxl.write.WritableFont"/>
+			<arg name="format" description="" flags="in external" type="Utiles.Jxl.Biff.DisplayFormat" javaType="jxl.biff.DisplayFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableCellFormat"/>
+		</method>
+		<method name="setAlignment" description="setAlignment" flags="external hidden" signature="MsetAlignment(Ljxl.format.Alignment;)V">
+			<arg name="a" description="" flags="in external" type="Utiles.Jxl.Format.Alignment" javaType="jxl.format.Alignment"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setBackground" description="setBackground" flags="external hidden" signature="MsetBackground(Ljxl.format.Colour;)V">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setBackground" description="setBackground" flags="external" signature="MsetBackground(Ljxl.format.Colour;Ljxl.format.Pattern;)V">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<arg name="p" description="" flags="in external" type="Utiles.Jxl.Format.Pattern" javaType="jxl.format.Pattern"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setBorder" description="setBorder" flags="external" signature="MsetBorder(Ljxl.format.Border;Ljxl.format.BorderLineStyle;)V">
+			<arg name="b" description="" flags="in external" type="Utiles.Jxl.Format.Border" javaType="jxl.format.Border"/>
+			<arg name="ls" description="" flags="in external" type="Utiles.Jxl.Format.BorderLineStyle" javaType="jxl.format.BorderLineStyle"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setBorder" description="setBorder" flags="external" signature="MsetBorder(Ljxl.format.Border;Ljxl.format.BorderLineStyle;Ljxl.format.Colour;)V">
+			<arg name="b" description="" flags="in external" type="Utiles.Jxl.Format.Border" javaType="jxl.format.Border"/>
+			<arg name="ls" description="" flags="in external" type="Utiles.Jxl.Format.BorderLineStyle" javaType="jxl.format.BorderLineStyle"/>
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setIndentation" description="setIndentation" flags="external hidden" signature="MsetIndentation(I)V">
+			<arg name="i" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setLocked" description="setLocked" flags="external hidden" signature="MsetLocked(Z)V">
+			<arg name="l" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setOrientation" description="setOrientation" flags="external hidden" signature="MsetOrientation(Ljxl.format.Orientation;)V">
+			<arg name="o" description="" flags="in external" type="Utiles.Jxl.Format.Orientation" javaType="jxl.format.Orientation"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setShrinkToFit" description="setShrinkToFit" flags="external hidden" signature="MsetShrinkToFit(Z)V">
+			<arg name="s" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setVerticalAlignment" description="setVerticalAlignment" flags="external hidden" signature="MsetVerticalAlignment(Ljxl.format.VerticalAlignment;)V">
+			<arg name="va" description="" flags="in external" type="Utiles.Jxl.Format.VerticalAlignment" javaType="jxl.format.VerticalAlignment"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setWrap" description="setWrap" flags="external hidden" signature="MsetWrap(Z)V">
+			<arg name="w" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="ObjRecord" description="ObjRecord" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.ObjRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.ObjRecord"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.ObjRecord"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="BUTTON" flags="hasgetter attribute static external final" position="8" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ABUTTON;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ABUTTON;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="CHART" flags="hasgetter attribute static external final" position="6" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ACHART;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ACHART;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="CHECKBOX" flags="hasgetter attribute static external final" position="10" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ACHECKBOX;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ACHECKBOX;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="COMBOBOX" flags="hasgetter attribute static external final" position="17" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ACOMBOBOX;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ACOMBOBOX;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="DIALOGUEBOX" flags="hasgetter attribute static external final" position="14" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ADIALOGUEBOX;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ADIALOGUEBOX;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="EDITBOX" flags="hasgetter attribute static external final" position="12" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="AEDITBOX;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="AEDITBOX;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="EXCELNOTE" flags="hasgetter attribute static external final" position="20" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="AEXCELNOTE;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="AEXCELNOTE;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="FORMCONTROL" flags="hasgetter attribute static external final" position="19" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="AFORMCONTROL;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="AFORMCONTROL;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="GROUPBOX" flags="hasgetter attribute static external final" position="16" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="AGROUPBOX;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="AGROUPBOX;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="LABEL" flags="hasgetter attribute static external final" position="13" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ALABEL;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ALABEL;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="LISTBOX" flags="hasgetter attribute static external final" position="15" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ALISTBOX;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ALISTBOX;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="MSOFFICEDRAWING" flags="hasgetter attribute static external final" position="18" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="AMSOFFICEDRAWING;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="AMSOFFICEDRAWING;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="OPTION" flags="hasgetter attribute static external final" position="11" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="AOPTION;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="AOPTION;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="PICTURE" flags="hasgetter attribute static external final" position="9" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="APICTURE;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="APICTURE;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="TBD" flags="hasgetter attribute static external final" position="5" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ATBD;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ATBD;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="TBD2" flags="hasgetter attribute static external final" position="4" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ATBD2;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ATBD2;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="TEXT" flags="hasgetter attribute static external final" position="7" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="ATEXT;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="ATEXT;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="UNKNOWN" flags="hasgetter attribute static external final" position="21" javaType="jxl.biff.drawing.ObjRecord$ObjType" writeSignature="AUNKNOWN;Ljxl.biff.drawing.ObjRecord$ObjType;" readSignature="AUNKNOWN;Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+		<Binary name="data" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetData()[B"/>
+		<object type="Utiles.Jxl.Read.Biff.Record" name="record" flags="hasgetter external" position="2" javaType="jxl.read.biff.Record" readSignature="MgetRecord()Ljxl.read.biff.Record;"/>
+		<object type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" name="type" flags="hasgetter external" position="3" javaType="jxl.biff.drawing.ObjRecord$ObjType" readSignature="MgetType()Ljxl.biff.drawing.ObjRecord$ObjType;"/>
+	</attributes>
+	<methods>
+		<method name="ObjRecord" flags="static" signature="Kjxl.biff.drawing.ObjRecord(Ljxl.read.biff.Record;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.ObjRecord"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getRecord" description="getRecord" flags="external hidden" signature="MgetRecord()Ljxl.read.biff.Record;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+		</method>
+		<method name="getType" description="getType" flags="external hidden" signature="MgetType()Ljxl.biff.drawing.ObjRecord$ObjType;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Drawing.ObjRecord.ObjType" javaType="jxl.biff.drawing.ObjRecord$ObjType"/>
+		</method>
+	</methods>
+</component>

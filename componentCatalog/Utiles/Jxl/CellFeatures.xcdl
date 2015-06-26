@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="CellFeatures" description="CellFeatures" versionID="Version 6.5 " flags="" signature="jxl.CellFeatures" type="java">
+	<inherit class="Utiles.Jxl.Biff.BaseCellFeatures" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.CellFeatures"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.CellFeatures"/>
+	<attributes>
+		<String name="comment" flags="hassetter hasgetter external" position="1" javaType="java.lang.String" writeSignature="MsetComment(Ljava.lang.String;)V" readSignature="MgetComment()Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="CellFeatures" flags="static hidden" signature="Kjxl.CellFeatures()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.CellFeatures"/>
+		</method>
+		<method name="getComment" description="getComment" flags="external hidden" signature="MgetComment()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

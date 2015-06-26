@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="NullOutputStream" description="JRPdfExporter$NullOutputStream" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.export.JRPdfExporter$NullOutputStream" type="java">
+	<inherit class="Java.Io.OutputStream" flags="public"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.export.JRPdfExporter$NullOutputStream"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.export"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.export.JRPdfExporter$NullOutputStream"/>
+	<attributes/>
+	<methods>
+		<method name="NullOutputStream" flags="static hidden" signature="Knet.sf.jasperreports.engine.export.JRPdfExporter$NullOutputStream()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Export.JRPdfExporter.NullOutputStream"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite([B)V">
+			<arg name="b" description="" flags="in external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite(I)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite([BII)V">
+			<arg name="b" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="off" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="len" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

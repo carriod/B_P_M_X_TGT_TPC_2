@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="IndexMapping" description="IndexMapping" versionID="Version 6.5 " flags="" signature="jxl.biff.IndexMapping" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.IndexMapping"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.IndexMapping"/>
+	<attributes/>
+	<methods>
+		<method name="getNewIndex" description="getNewIndex" flags="external" signature="MgetNewIndex(I)I">
+			<arg name="oldIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

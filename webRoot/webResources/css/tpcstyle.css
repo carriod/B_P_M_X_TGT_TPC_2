@@ -1,0 +1,510 @@
+/* Style of presentation*/
+.fo_presentation {
+	/*border-collapse: separate;
+	background: #d3d3d3;
+	width: 80%;
+	/*border: 1px solid #00517A;*/
+	font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;
+}
+
+.fo_presentation_table {
+	border: 2px solid #0B81A5;
+	padding-right:3px;
+	padding-left:3px;
+	padding-top:3px;
+}
+
+/* Style of table component*/
+.fo_table {
+	width: 100%;
+}
+
+.fo_header_table {
+	
+}
+
+.fo_footer_table {
+	border-top: 1px solid #0B81A5;
+}
+
+.fo_inner1_table {
+	border-bottom: 1px solid #000000;
+}
+
+.fo_inner2_table {
+	border-bottom: 2px solid #000000;
+}
+
+/* Style of iframe*/
+.fo_iframe {
+	width: 100%;
+	height: 600px; 
+}
+
+/* Style of table's cell components*/
+.fo_table_cell {
+
+}
+
+.fo_cell {
+
+}
+
+.fo_title_cell {
+	height:30px;
+	padding-left:20px;	
+	background: #002C53;	
+}
+
+.fo_title2_cell{
+	height:22px;
+	padding-left:20px;	
+	background: #005C84;	
+}
+
+.fo_main_cell {
+}
+
+.fo_footer_cell {
+	padding: 5px;
+	margin: 3px;
+}
+
+.fo_ocultar_cell {
+	height:0px;
+	background: #FFFFFF;	
+}
+
+.fo_border_cell {
+	border: 1px solid #000000;
+}
+
+.fo_border_white_cell {
+	border: 1px solid #FFFFFF;
+}
+
+.fo_disabled_component{
+	font-size: 12px;
+	font-family: Verdana;
+	text-align: left;
+	color: #3A3A3B; 
+	background-color: #DBDBDB; 
+}
+
+.fo_title_table {
+	font-family: Helvetica,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 11px;
+	color:#005594;
+	/*border: 1px solid #87b2db;
+	border: 1px solid #000000;*/
+	/*padding-left:10px;
+	padding-right:10px;
+	margin-left: 5px;
+	margin-right: 5px;*/
+	height:22px;
+	/*width: 150px;*/
+	background-image:url("../images/bpm_button_background_blue.gif");
+	background-repeat:repeat-x;	
+	cursor: pointer;
+	cursor: hand;
+}
+
+.fo_title_label {
+	color: #FFFFFF;
+	text-align: left;
+	font: bolder 13px Verdana, Arial, Helvetica, sans-serif;
+}
+
+.fo_title2_label{
+	color: #FFFFFF;
+	text-align: left;
+	font: bolder 11px Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* Style of label component*/
+.fo_label {
+	color: #515559;
+	font: bolder 12px Arial, Verdana, Helvetica, sans-serif;
+}
+
+/* Style of text component*/
+.fo_text {
+	color: #515559;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	text-align: left;
+	width: 100%;
+}
+
+.fo_disabled_text {
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	color: #3A3A3B;
+	background-color: #DBDBDB; 
+	text-align: left;
+	width: 100%;
+}
+
+/* Style of combo component*/
+.fo_combo {
+	color: #515559;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	text-align: left;
+	width: 100%;
+}
+
+/* Style of radio component*/
+.fo_radio {
+	color: #515559;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	text-align: left;
+}
+
+/* Style of date component*/
+.fo_date {
+	color: #515559;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	text-align: left;
+}
+
+/* Style of check component*/
+.fo_check {
+}
+/* Style of image component*/
+.fo_image {
+}
+/* Style of multiline component*/
+.fo_multiline {
+	color: #515559;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	text-align: left;
+	width: 100%;
+}
+
+.fo_multiline_error {
+	color: #515559;
+	background: #FF8E8E;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	text-align: left;
+	width: 100%;
+}
+
+/* Style of interval component*/
+.fo_interval {
+	font: bolder 22px Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* Style of button component*/
+.fo_button {
+	font-family: Helvetica,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 11px;
+	color:#005594;
+	border: 1px solid #87b2db;
+	/*
+	padding-left:10px;
+	padding-right:10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	*/
+	height:18px;
+	width: 130px;
+	background-image:url("../images/bpm_button_background_blue.gif");
+	background-repeat:repeat-x;	
+	cursor: pointer;
+	cursor: hand;
+}
+
+.fo_tab_button {
+	font-family: Helvetica,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 13px;
+	color:#005594;
+	border: 1px solid #87b2db;
+	/*
+	padding-left:10px;
+	padding-right:10px;
+	margin-left: 5px;
+	margin-right: 5px;*/
+	height:22px;
+	/*width: 150px;*/
+	background-image:url("../images/bpm_button_background_blue.gif");
+	background-repeat:repeat-x;	
+	cursor: pointer;
+	cursor: hand;
+}
+
+.fo_selected_tab_button {
+	font-family: Helvetica,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 13px;
+	color:#005594;
+	border: 1px solid #87b2db;
+	padding-left:15px;
+	padding-right:15px;
+	/*margin-left: 5px;
+	margin-right: 5px;*/
+	height:22px;
+	/*width: 150px;
+	background-image:url("../images/bpm_button_background_blue.gif");*/
+	background-color:#FFFFFF;
+	background-repeat:repeat-x;	
+	cursor: pointer;
+	cursor: hand;
+}
+
+.fo_inner_button {
+	font-family: Helvetica,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 11px;
+	color:#005594;
+	border: 1px solid #87b2db;
+	padding-left:10px;
+	padding-right:10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	height:18px;
+	/*width: 150px;*/
+	background-image:url("../images/bpm_button_background_blue.gif");
+	background-repeat:repeat-x;	
+	cursor: pointer;
+	cursor: hand;
+}
+
+.fo_inner_buttonNotEditable {
+	font-family: Helvetica,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 11px;
+	color:#999999;
+	border: 1px solid #87b2db;
+	padding-left:10px;
+	padding-right:10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	height:18px;
+	/*width: 150px;*/
+	background-image:url("../images/bpm_button_background_blue.gif");
+	background-repeat:repeat-x;
+}
+
+.fo_buttonNotEditable {
+	font-family: Helvetica,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 11px;
+	color:#999999;
+	border: 1px solid #87b2db;
+	/*
+	padding-left:10px;
+	padding-right:10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	*/
+	height:18px;
+	width: 130px;
+	background-image:url("../images/bpm_button_background_blue.gif");
+	background-repeat:repeat-x;	
+}
+
+/* Style of group component*/
+.fo_group {
+}
+
+.fo_group_color {
+	margin: 5px;
+	background: #005C84;
+}
+
+/* Style of group's header component*/
+.fo_group_header {
+	color: #515559;
+	font: bolder 12px Arial, Verdana, Helvetica, sans-serif;
+}
+
+.fo_group_header_color {
+	color: #FFFFFF;
+	background: #005C84;
+	text-align: left;
+	font: bolder 12px Arial, Verdana, Helvetica, sans-serif;
+	padding: 3px;
+}
+
+.talign_center {
+	text-align: center;
+}
+
+.talign_right {
+	text-align: right;
+}
+
+/* Style of group's index component*/
+.fo_group_index {
+	color: #515559;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+}
+
+/* Style of group's paging component*/
+.fo_group_paging {
+	color: #515559;
+	font: normal 11px Arial, Verdana, Helvetica, sans-serif;
+}
+
+/* Style of group's component even rows*/
+.fo_group_even_tr {
+	color: #515559;
+	background: #FFFFFF;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	padding: 3px;
+}
+
+/* Style of group's component odd rows*/
+.fo_group_odd_tr {
+	color: #515559;
+	background: #FFFFFF;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	padding: 3px;
+}
+
+/* Style of presentation errors*/
+.fo_presentation_error {
+	color: #ff0000;
+	font: normal 12px Arial, Verdana, Helvetica, sans-serif;
+	text-align: left;
+}
+
+.fo_button_ver {
+  background: transparent url('../images/lupa.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_scanear{
+  background: transparent url('../images/scaneo.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_cargar{
+  background: transparent url('../images/archivo.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_email{
+  background: transparent url('../images/email.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_borrar{
+  background: transparent url('../images/borrar.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_editar{
+  background: transparent url('../images/editar.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_agregar{
+  background: transparent url('../images/agregar.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_info{
+  background: transparent url('../images/info.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_excel {
+  background: transparent url('../images/excel.gif') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+  height: 50px;
+  width: 100px;
+  padding-left:10px;
+  padding-right:10px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+}
+
+.fo_button_excelNotEditable {
+   background: transparent url('../images/excelNoEditable.gif') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  height: 50px;
+  width: 100px;
+  padding-left:10px;
+  padding-right:10px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+}
+
+.fo_button_check_all {
+  background: transparent url('../images/check_all.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_uncheck_all {
+  background: transparent url('../images/uncheck_all.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.fo_button_ok{
+  background: transparent url('../images/ok.png') no-repeat 50% 50%;
+  border: 1px solid transparent;
+  color: #ffffff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.link_button {
+  font-family: Tahoma,Verdana, Arial, Sans-Serif;
+  font-size: 12px;
+  color:#0645AD;
+  text-decoration: none;
+  border: 0;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.link_button:hover {
+  font-family: Tahoma,Verdana, Arial, Sans-Serif;
+  font-size: 12px;
+  color:#0645AD;
+  text-decoration: underline;
+  border: 0;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.editable_false .fo_text {
+	background-color: transparent;
+}

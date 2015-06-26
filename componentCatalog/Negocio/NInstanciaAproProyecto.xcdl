@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NInstanciaAproProyecto" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="codigo" flags="hassetter hasgetter public" position="1"/>
+		<String name="descripcion" flags="hassetter hasgetter public" position="2"/>
+		<Time scale="2" precision="2" name="fechaAlta" flags="hassetter hasgetter public" position="3"/>
+		<Time scale="2" precision="2" name="fechaModificacion" flags="hassetter hasgetter public" position="4"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="5"/>
+		<String name="usuarioAlta" flags="hassetter hasgetter public" position="7"/>
+		<String name="usuarioModificacion" flags="hassetter hasgetter public" position="8"/>
+		<Bool name="vigencia" flags="hassetter hasgetter public includeincheck" position="9"/>
+	</attributes>
+	<methods>
+		<method name="NInstanciaAproProyecto" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NInstanciaAproProyecto"/>
+			<sourceCode language="Java1"/>
+		</method>
+	</methods>
+</component>

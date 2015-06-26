@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="CellView" description="CellView" versionID="Version 6.5 " flags="" signature="jxl.CellView" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.CellView"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.CellView"/>
+	<attributes>
+		<Int length="32" name="dimension" flags="hassetter hasgetter external" primitive="true" position="1" javaType="int" writeSignature="MsetDimension(I)V" readSignature="MgetDimension()I"/>
+		<object type="Utiles.Jxl.Format.CellFormat" name="format" flags="hassetter hasgetter external" position="2" javaType="jxl.format.CellFormat" writeSignature="MsetFormat(Ljxl.format.CellFormat;)V" readSignature="MgetFormat()Ljxl.format.CellFormat;"/>
+		<Bool name="hidden" flags="hassetter hasgetter external" primitive="true" position="3" javaType="boolean" writeSignature="MsetHidden(Z)V" readSignature="MisHidden()Z"/>
+		<Int length="32" name="size" flags="hassetter hasgetter external" primitive="true" position="4" javaType="int" writeSignature="MsetSize(I)V" readSignature="MgetSize()I"/>
+	</attributes>
+	<methods>
+		<method name="CellView" flags="static hidden" signature="Kjxl.CellView()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.CellView"/>
+		</method>
+		<method name="depUsed" description="depUsed" flags="external" signature="MdepUsed()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getDimension" description="getDimension" flags="external hidden" signature="MgetDimension()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getFormat" description="getFormat" flags="external hidden" signature="MgetFormat()Ljxl.format.CellFormat;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+		</method>
+		<method name="getSize" description="getSize" flags="external hidden" signature="MgetSize()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="isHidden" description="isHidden" flags="external hidden" signature="MisHidden()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setDimension" description="setDimension" flags="external hidden" signature="MsetDimension(I)V">
+			<arg name="d" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setFormat" description="setFormat" flags="external hidden" signature="MsetFormat(Ljxl.format.CellFormat;)V">
+			<arg name="cf" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+		</method>
+		<method name="setHidden" description="setHidden" flags="external hidden" signature="MsetHidden(Z)V">
+			<arg name="h" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setSize" description="setSize" flags="external hidden" signature="MsetSize(I)V">
+			<arg name="d" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

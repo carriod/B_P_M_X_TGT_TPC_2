@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableImage" description="WritableImage" versionID="Version 6.5 " flags="" signature="jxl.write.WritableImage" type="java">
+	<inherit class="Utiles.Jxl.Biff.Drawing.Drawing" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.WritableImage"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.WritableImage"/>
+	<attributes>
+		<Real length="64" name="column" flags="hassetter hasgetter external" primitive="true" position="1" javaType="double" writeSignature="MsetColumn(D)V" readSignature="MgetColumn()D"/>
+		<Real length="64" name="height" flags="hassetter hasgetter external" primitive="true" position="2" javaType="double" writeSignature="MsetHeight(D)V" readSignature="MgetHeight()D"/>
+		<Binary name="imageData" flags="hasgetter external" position="3" javaType="byte[]" readSignature="MgetImageData()[B"/>
+		<object type="Java.Io.File" name="imageFile" flags="hasgetter external" position="4" javaType="java.io.File" readSignature="MgetImageFile()Ljava.io.File;"/>
+		<Real length="64" name="row" flags="hassetter hasgetter external" primitive="true" position="5" javaType="double" writeSignature="MsetRow(D)V" readSignature="MgetRow()D"/>
+		<Real length="64" name="width" flags="hassetter hasgetter external" primitive="true" position="6" javaType="double" writeSignature="MsetWidth(D)V" readSignature="MgetWidth()D"/>
+	</attributes>
+	<methods>
+		<method name="WritableImage" flags="static" signature="Kjxl.write.WritableImage(Ljxl.biff.drawing.DrawingGroupObject;Ljxl.biff.drawing.DrawingGroup;)">
+			<arg name="d" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroupObject" javaType="jxl.biff.drawing.DrawingGroupObject"/>
+			<arg name="dg" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroup" javaType="jxl.biff.drawing.DrawingGroup"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableImage"/>
+		</method>
+		<method name="WritableImage" flags="static" signature="Kjxl.write.WritableImage(DDDD[B)">
+			<arg name="x" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="y" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="width" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="height" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="imageData" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableImage"/>
+		</method>
+		<method name="WritableImage" flags="static" signature="Kjxl.write.WritableImage(DDDDLjava.io.File;)">
+			<arg name="x" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="y" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="width" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="height" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<arg name="image" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableImage"/>
+		</method>
+		<method name="getColumn" description="getColumn" flags="external hidden" signature="MgetColumn()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getHeight" description="getHeight" flags="external hidden" signature="MgetHeight()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getImageData" description="getImageData" flags="external hidden" signature="MgetImageData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getImageFile" description="getImageFile" flags="external hidden" signature="MgetImageFile()Ljava.io.File;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.File" javaType="java.io.File"/>
+		</method>
+		<method name="getRow" description="getRow" flags="external hidden" signature="MgetRow()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="getWidth" description="getWidth" flags="external hidden" signature="MgetWidth()D">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setColumn" description="setColumn" flags="external hidden" signature="MsetColumn(D)V">
+			<arg name="c" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setHeight" description="setHeight" flags="external hidden" signature="MsetHeight(D)V">
+			<arg name="c" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setRow" description="setRow" flags="external hidden" signature="MsetRow(D)V">
+			<arg name="c" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+		<method name="setWidth" description="setWidth" flags="external hidden" signature="MsetWidth(D)V">
+			<arg name="c" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+		</method>
+	</methods>
+</component>

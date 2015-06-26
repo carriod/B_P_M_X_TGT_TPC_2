@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="Excel" description=" " versionID="Version 5.1 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="legacy" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<array type="Any" name="cabecera" flags="hassetter hasgetter public" position="1"/>
+		<array type="Int[]" name="combinarCeldas" flags="hassetter hasgetter public" position="7"/>
+		<Int length="32" defaultValue="1" name="lineasDeTitulos" flags="hassetter hasgetter public" position="2"/>
+		<String defaultValue="" name="nombreSheet" flags="hassetter hasgetter public" position="3"/>
+		<Int length="32" defaultValue="0" name="numeroSheet" flags="hassetter hasgetter public" position="4"/>
+		<array type="Utiles.Jxl.Write.WritableSheet" name="sheet" flags="hassetter hasgetter public" position="5"/>
+		<object type="Utiles.Jxl.Write.WritableWorkbook" name="workbook" flags="hassetter hasgetter public" position="6"/>
+	</attributes>
+	<methods>
+		<method name="Excel" flags="static">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Excel"/>
+		</method>
+		<method name="cargarDatos" description="" flags="clientavailable public server">
+			<arg name="datos" description="" flags="in" type="Any[][]"/>
+			<arg name="nroHoja" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="nombreHoja" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="color" type="Utiles.Jxl.Format.Colour"/>
+				<variable name="fila" type="Int"/>
+				<variable name="font" type="Utiles.Jxl.Write.WritableFont"/>
+				<variable name="max" type="Int"/>
+				<variable name="wrappedText" type="Utiles.Jxl.Write.WritableCellFormat"/>
+			</variables>
+			<sourceCode language="Java1">try {
+    font = WritableFont(WritableFont.VERDANA, 10);
+
+    for (int i = 0; i &lt; this.combinarCeldas.length; i++) {
+        this.sheet[arg.nroHoja].mergeCells(arg1 : this.combinarCeldas[i][0], arg2 : this.combinarCeldas[i][1], arg3 : this.combinarCeldas[i][2], arg4 : this.combinarCeldas[i][3]);
+    }
+
+    for (int i = 0; i &lt; this.cabecera.length; i++) {
+        this.sheet[arg.nroHoja].addCell(Label(0, i, ((String) this.cabecera[i]), wrappedText));
+    }
+
+    for (int i = 0; i &lt; arg.datos.length; i++) {
+        for (int j = 0; j &lt; arg.datos[i].length; j++) {
+            fila = this.cabecera.length + j;
+
+            if (j &lt; this.lineasDeTitulos) {
+				font = WritableFont(WritableFont.VERDANA,10,
+						  			WritableFont.BOLD,false,
+					                UnderlineStyle.NO_UNDERLINE,
+					                Utiles.Jxl.Write.Colour.WHITE,
+					                ScriptStyle.NORMAL_SCRIPT);
+                
+                color = Utiles.Jxl.Write.Colour.TABLE_TITLES;
+            }
+            else {
+                font = WritableFont(WritableFont.VERDANA, 10);
+                color = Utiles.Jxl.Write.Colour.TABLE_CELLS;
+            }
+
+            if (arg.datos[i][j] == null) {
+                wrappedText = WritableCellFormat(font);
+	            if (j &lt; this.lineasDeTitulos) {
+	            	wrappedText.setAlignment(Utiles.Jxl.Format.Alignment.centre);
+	            }
+                wrappedText.setBackground(color);
+
+                wrappedText.setBorder(Utiles.Jxl.Write.Border.ALL, 
+                                      Utiles.Jxl.Write.BorderLineStyle.THIN);
+
+                this.sheet[arg.nroHoja].addCell(Label(i, fila, &quot;&quot;, wrappedText));
+            }
+            else if (arg.datos[i][j].getClass().name == &quot;java.lang.Long&quot; || arg.datos[i][j].getClass().name == &quot;java.lang.Integer&quot;) {
+                wrappedText = WritableCellFormat(font, NumberFormats.INTEGER);
+	            if (j &lt; this.lineasDeTitulos) {
+	            	wrappedText.setAlignment(Utiles.Jxl.Format.Alignment.centre);
+	            }
+                wrappedText.setBackground(color);
+
+                wrappedText.setBorder(Utiles.Jxl.Write.Border.ALL, 
+                                      Utiles.Jxl.Write.BorderLineStyle.THIN);
+
+                this.sheet[arg.nroHoja].addCell(Utiles.Number(i, fila, ((long) arg.datos[i][j]), wrappedText));
+            }
+            else if (arg.datos[i][j].getClass().name == &quot;java.math.BigDecimal&quot;) {
+                wrappedText = WritableCellFormat(font, NumberFormats.FLOAT);
+	            if (j &lt; this.lineasDeTitulos) {
+	            	wrappedText.setAlignment(Utiles.Jxl.Format.Alignment.centre);
+	            }
+                wrappedText.setBackground(color);
+
+                wrappedText.setBorder(Utiles.Jxl.Write.Border.ALL, 
+                                      Utiles.Jxl.Write.BorderLineStyle.THIN);
+
+                this.sheet[arg.nroHoja].addCell(Utiles.Number(i, fila, ((Decimal) datos[i][j]), wrappedText));
+            }
+            else if (arg.datos[i][j].getClass().name == &quot;fuego.lang.Real&quot;) {
+                wrappedText = WritableCellFormat(font, NumberFormats.FLOAT);
+	            if (j &lt; this.lineasDeTitulos) {
+	            	wrappedText.setAlignment(Utiles.Jxl.Format.Alignment.centre);
+	            }
+                wrappedText.setBackground(color);
+
+                wrappedText.setBorder(Utiles.Jxl.Write.Border.ALL, 
+                                      Utiles.Jxl.Write.BorderLineStyle.THIN);
+
+                this.sheet[arg.nroHoja].addCell(Utiles.Number(i, fila, ((double) datos[i][j]), wrappedText));
+            }
+            else if (arg.datos[i][j].getClass().name == &quot;java.lang.String&quot;) {
+                wrappedText = WritableCellFormat(font);
+	            if (j &lt; this.lineasDeTitulos) {
+	            	wrappedText.setAlignment(Utiles.Jxl.Format.Alignment.centre);
+	            }
+                wrappedText.setBackground(color);
+
+                wrappedText.setBorder(Utiles.Jxl.Write.Border.ALL, 
+                                      Utiles.Jxl.Write.BorderLineStyle.THIN);
+
+                this.sheet[arg.nroHoja].addCell(Label(i, fila, ((String) datos[i][j]), wrappedText));
+            }
+            else if (arg.datos[i][j].getClass().name == &quot;java.lang.Boolean&quot;) {
+                wrappedText = WritableCellFormat(font);
+	            if (j &lt; this.lineasDeTitulos) {
+	            	wrappedText.setAlignment(Utiles.Jxl.Format.Alignment.centre);
+	            }
+                wrappedText.setBackground(color);
+
+                wrappedText.setBorder(Utiles.Jxl.Write.Border.ALL, 
+                                      Utiles.Jxl.Write.BorderLineStyle.THIN);
+
+                this.sheet[arg.nroHoja].addCell(Utiles.Boolean(i,fila,((boolean) datos[i][j]),wrappedText));
+                                                                                 
+            }
+            else if (arg.datos[i][j].getClass().name == &quot;fuego.lang.Time&quot;) {
+                wrappedText = WritableCellFormat(font,DateFormats.DEFAULT);
+	            if (j &lt; this.lineasDeTitulos) {
+	            	wrappedText.setAlignment(Utiles.Jxl.Format.Alignment.centre);
+	            }
+                wrappedText.setBackground(color);
+
+                wrappedText.setBorder(Utiles.Jxl.Write.Border.ALL, 
+                                      Utiles.Jxl.Write.BorderLineStyle.THIN);
+
+                this.sheet[arg.nroHoja].addCell(DateTime(i, fila, ((Time) datos[i][j]), wrappedText));
+            }
+        }
+    }
+
+    for (int i = 0; i &lt; this.sheet[arg.nroHoja].getColumns(); i++) {
+        max = 0;
+
+        for (int j = 0; j &lt; this.sheet[arg.nroHoja].getRows(); j++) {
+            if (max &lt; this.sheet[arg.nroHoja].getCell(i, j).contents.length()) {
+                max = this.sheet[arg.nroHoja].getCell(i, j).contents.length();
+            }
+        }
+        this.sheet[arg.nroHoja].setColumnView(i, max+2);
+    }
+
+    sheet[arg.nroHoja].name = arg.nombreHoja;
+}
+catch (Java.Lang.Exception e) {
+    logMessage(((String) e), severity : &quot;SEVERE&quot;);
+}
+</sourceCode>
+		</method>
+		<method name="crearCSV" flags="clientavailable public">
+			<arg name="fileName" description="" flags="in" type="String"/>
+			<arg name="datos" description="" flags="in" type="String[][]"/>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">String serverTempDir = MetodosFile.getServerTempDir();
+serverTempDir = serverTempDir.replace(from :&quot;\\&quot;, @to : &quot;/&quot;);
+
+DelimitedFile writer = DelimitedFile(encoding : &quot;ISO8859_1&quot;);
+writer.openForWriting(name : serverTempDir + &quot;/&quot; + arg.fileName, append : false, fieldSeparator : &quot;;&quot;, lineSeparator : &quot;\n&quot;, encoding : &quot;ISO8859_1&quot;);
+
+for (int i = 0; i &lt; datos.length(); i++) {
+	for (int j = 0; j &lt; datos[i].length; j++) {
+		if (datos[i][j] == null) {
+		    datos[i][j] = &quot;&quot;;
+		} else {
+			datos[i][j] = datos[i][j].replace(from : &quot;\n&quot;, @to : &quot;&quot;).trim();
+			datos[i][j] = datos[i][j].replace(from : &quot;\r&quot;, @to : &quot;&quot;).trim();
+			datos[i][j] = datos[i][j].replace(from : &quot;\t&quot;, @to : &quot;&quot;).trim();
+			datos[i][j] = datos[i][j].replace(from : &quot;;&quot;, @to : &quot;-&quot;).trim();
+		}
+	}
+	writer.writeLineTo(fields : datos[i], encoding : &quot;ISO8859_1&quot;);
+}
+writer.close();
+
+return serverTempDir + &quot;/&quot; + arg.fileName;</sourceCode>
+		</method>
+		<method name="crearExcel" description="" flags="clientavailable public server">
+			<arg name="path" description="" flags="in" type="String"/>
+			<arg name="cantidadDeHojas" description="" flags="in" primitive="true" type="Int"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="ws" type="Utiles.Jxl.WorkbookSettings"/>
+			</variables>
+			<sourceCode language="Java1">ws = WorkbookSettings();
+ws.setLocale(Java.Locale(&quot;en&quot;, &quot;EN&quot;));
+
+this.workbook = Workbook.createWorkbook(Java.File(arg.path), ws);
+i = 0;
+
+while (i &lt;= (arg.cantidadDeHojas - 1)) {
+    this.sheet[] = this.workbook.createSheet(&quot; &quot;, i);
+    i = i + 1;
+}
+</sourceCode>
+		</method>
+		<method name="crearExcelBinario" flags="clientavailable public">
+			<arg name="buffer" description="" flags="in" type="Java.Io.ByteArrayOutputStream"/>
+			<arg name="cantidadDeHojas" description="" flags="in" type="Int"/>
+			<variables>
+				<variable name="i" type="Int"/>
+				<variable name="ws" type="Utiles.Jxl.WorkbookSettings"/>
+			</variables>
+			<sourceCode language="Java1">ws = WorkbookSettings();
+ws.setLocale(Java.Locale(&quot;en&quot;, &quot;EN&quot;));
+
+this.workbook = Workbook.createWorkbook(arg.buffer, ws);
+i = 0;
+
+while (i &lt;= (arg.cantidadDeHojas - 1)) {
+    this.sheet[] = this.workbook.createSheet(&quot; &quot;, i);
+    i = i + 1;
+}
+</sourceCode>
+		</method>
+		<method name="grabar" description="" flags="clientavailable public server">
+			<sourceCode language="Java1">try {
+    // Modify the colour palette to bright red for the lime colour	
+    this.workbook.setColourRGB(arg1 : Utiles.Jxl.Write.Colour.LIME, arg2 : 255, 
+                               arg3 : 0, arg4 : 0);
+
+    this.workbook.write();
+
+    this.workbook.close();
+}
+catch (Java.Lang.Exception e) {
+    logMessage(((String) e), severity : &quot;SEVERE&quot;);
+}
+</sourceCode>
+		</method>
+		<method name="leerCSV" flags="clientavailable public">
+			<arg name="binario" description="" flags="in" type="Binary"/>
+			<arg name="delimitador" description="" flags="in" type="String"/>
+			<arg name="lineaDeTitulos" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Any[][] array = {};
+Any[][] arraySinTitulos = {};
+String[] filas = {};
+String[] fila = {};
+Respuesta respuesta;
+
+int q = 0;
+
+String archivoS = String(binario, &quot;ISO8859_1&quot;);
+filas = archivoS.split(delim : &quot;\n&quot;);
+
+for(int i=0;i &lt; filas.length();i++){
+	fila = filas[i].split(delim : delimitador);
+	for(int z=0;z &lt; fila.length();z++){
+		array[i][z] = fila[z].replace(from : &quot;\&quot;&quot;, @to : &quot;&quot;).trim;
+	}
+	q++;
+}
+if(lineaDeTitulos &gt;= 1){
+	array.delete(index : lineaDeTitulos-1);
+}
+
+respuesta.contenido = array;
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="leerColumnaFila" description="" flags="clientavailable public">
+			<arg name="columna" description="" flags="in" type="Int[]"/>
+			<arg name="fila" description="" flags="in" type="Int[]"/>
+			<arg name="datos" description="" flags="out" type="Any[]"/>
+			<arg name="archivoBinary" description="" flags="in" type="Binary"/>
+			<variables>
+				<variable name="BAIStream" type="Java.Io.ByteArrayInputStream"/>
+				<variable name="cantColumns" type="Int"/>
+				<variable name="cantRows" type="Int"/>
+				<variable name="i" type="Int"/>
+				<variable name="j" type="Int"/>
+				<variable name="vSheet" type="Utiles.Jxl.Sheet"/>
+				<variable name="vWorkbook" type="Utiles.Jxl.Workbook"/>
+				<variable name="vdate" type="Java.Util.Date"/>
+			</variables>
+			<sourceCode language="Java1">/*
+run FileChooser using 
+	currentDirectory = &quot;C:\\&quot; returning nombreArchivo
+
+readToBinaryFrom BinaryFile using 
+	name = nombreArchivo returning arg.archivoBinary
+
+arg.columna = [4]
+arg.fila = [3]
+this.nombreSheet = &quot;Baseline Fuego&quot;*/
+// Leo el binary y lo guador en un ByteArrayInputStream
+BAIStream = ByteArrayInputStream(arg.archivoBinary);
+
+// Cargo el Workbook del ByteArrayInputStream
+vWorkbook = Workbook.getWorkbook(BAIStream);
+
+// Obtengo el Sheet
+if (this.nombreSheet != &quot;&quot;) {
+    vSheet = vWorkbook.getSheet(this.nombreSheet);
+}
+else {
+    vSheet = vWorkbook.getSheet(this.numeroSheet);
+}
+
+// Guardo en dos variables el numero de Rows y de Columns
+if (vSheet != null) {
+    cantRows = vSheet.rows;
+    cantColumns = vSheet.columns;
+}
+
+if (arg.columna.length == arg.fila.length) {
+    for (int h = 0; h &lt; arg.columna.length; h++) {
+        i = arg.columna[h];
+        j = arg.fila[h];
+
+        if (i &lt; cantColumns &amp;&amp; j &lt; cantRows) {
+            if (vSheet.getCell(i, arg2 : j).type == CellType.EMPTY) {
+                arg.datos[] = &quot;&quot;;
+            }
+            else if (vSheet.getCell(i, arg2 : j).type == CellType.LABEL) {
+                arg.datos[] = ((LabelCell) vSheet.getCell(i, arg2 : j)).string;
+            }
+            else if (vSheet.getCell(i, arg2 : j).type == CellType.NUMBER) {
+                arg.datos[] = ((NumberCell) vSheet.getCell(i, arg2 : j)).value;
+            }
+            else if (vSheet.getCell(i, arg2 : j).type == CellType.BOOLEAN) {
+                arg.datos[] = ((BooleanCell) vSheet.getCell(i, arg2 : j)).value;
+            }
+            else if (vSheet.getCell(i, arg2 : j).type == CellType.ERROR) {
+                arg.datos[] = ((ErrorCell) vSheet.getCell(i, arg2 : j)).errorCode;
+            }
+            else if (vSheet.getCell(i, arg2 : j).type == CellType.NUMBER_FORMULA) {
+                arg.datos[] = ((NumberFormulaCell) vSheet.getCell(i, arg2 : j)).getValue();
+            }
+            else if (vSheet.getCell(i, arg2 : j).type == CellType.STRING_FORMULA) {
+                arg.datos[] = ((StringFormulaCell) vSheet.getCell(i, arg2 : j)).getString();
+            }
+            else if (vSheet.getCell(i, arg2 : j).type == CellType.BOOLEAN_FORMULA) {
+                arg.datos[] = ((BooleanFormulaCell) vSheet.getCell(i, arg2 : j)).getValue();
+            }
+            else if (vSheet.getCell(i, arg2 : j).type == CellType.FORMULA_ERROR) {
+                arg.datos[] = ((ErrorFormulaCell) vSheet.getCell(i, arg2 : j)).getErrorCode();
+            }
+            else if (vSheet.getCell(i, arg2 : j).type == CellType.DATE) {
+            	vdate = ((DateCell) vSheet.getCell(arg1 : i, arg2 : j)).date;
+            	vdate = vdate.add(interval : &apos;3h&apos;);
+                arg.datos[] = vdate;
+            }
+            else {
+                arg.datos[] = &quot;tipo nuevo:&quot; + vSheet.getCell(i, arg2 : j).type;
+            }
+        }
+    }
+}
+
+// Cierro el Woekbook
+vWorkbook.close();</sourceCode>
+		</method>
+		<method name="leerExcel" description="Lee la hoja sacando los blancos de la 1er columna" flags="clientavailable public">
+			<arg name="archivoBinary" description="" flags="in" type="Binary"/>
+			<arg name="datos" description="" flags="out" type="Any[][]"/>
+			<variables>
+				<variable name="BAIStream" type="Java.Io.ByteArrayInputStream"/>
+				<variable name="blancos" type="Int"/>
+				<variable name="cantColumns" type="Int"/>
+				<variable name="cantRows" type="Int"/>
+				<variable name="vSheet" type="Utiles.Jxl.Sheet"/>
+				<variable name="vWorkbook" type="Utiles.Jxl.Workbook"/>
+				<variable name="vdate" type="Java.Util.Date"/>
+			</variables>
+			<sourceCode language="Java1">/*
+run FileChooser using 
+	currentDirectory = &quot;C:\\&quot; returning nombreArchivo
+
+readToBinaryFrom BinaryFile using 
+	name = nombreArchivo returning arg.archivoBinary*/
+// Leo el binary y lo guador en un ByteArrayInputStream
+BAIStream = ByteArrayInputStream(arg.archivoBinary);
+
+// Cargo el Workbook del ByteArrayInputStream
+vWorkbook = Workbook.getWorkbook(BAIStream);
+
+// Obtengo el Sheet
+if (this.nombreSheet != &quot;&quot;) {
+    vSheet = vWorkbook.getSheet(this.nombreSheet);
+}
+else {
+    vSheet = vWorkbook.getSheet(this.numeroSheet);
+}
+
+// Guardo en dos variables el numero de Rows y de Columns
+if (vSheet != null) {
+    cantRows = vSheet.rows;
+    cantColumns = vSheet.columns;
+}
+
+// se lee la primera celda de cada fila para ver los blancos
+blancos = 1;
+for (int j = this.lineasDeTitulos; j &lt;= (cantRows - 1); j++) {
+    if (((String) vSheet.getCell(0, arg2 : j).contents) == &quot;&quot;) {
+        blancos = cantRows - (j - 1);
+        break;
+    }
+}
+
+// Cargo los datos en  String[][]
+for (int i = 0; i &lt;= (cantColumns - 1); i++) {
+    for (int j = this.lineasDeTitulos; j &lt;= (cantRows - blancos); j++) {
+        Cell cell = vSheet.getCell(i, arg2 : j);
+        
+        if (cell.type == CellType.EMPTY) {
+            arg.datos[i][j - this.lineasDeTitulos] = &quot;&quot;;
+        }
+        else if (cell.type == CellType.LABEL) {
+            arg.datos[i][j - this.lineasDeTitulos] = ((LabelCell) cell).string;
+        }
+        else if (cell.type == CellType.NUMBER) {
+            arg.datos[i][j - this.lineasDeTitulos] = ((NumberCell) cell).value;
+        }
+        else if (cell.type == CellType.BOOLEAN) {
+            arg.datos[i][j - this.lineasDeTitulos] = ((BooleanCell) cell).value;
+        }
+        else if (cell.type == CellType.ERROR) {
+            arg.datos[i][j - this.lineasDeTitulos] = ((ErrorCell) cell).errorCode;
+        }
+        else if (cell.type == CellType.NUMBER_FORMULA) {
+            arg.datos[i][j - this.lineasDeTitulos] = ((NumberFormulaCell) cell).getValue();
+        }
+        else if (cell.type == CellType.STRING_FORMULA) {
+            arg.datos[i][j - this.lineasDeTitulos] = ((StringFormulaCell) cell).getString();
+        }
+        else if (cell.type == CellType.BOOLEAN_FORMULA) {
+            arg.datos[i][j - this.lineasDeTitulos] = ((BooleanFormulaCell) cell).getValue();
+        }
+        else if (cell.type == CellType.FORMULA_ERROR) {
+            arg.datos[i][j - this.lineasDeTitulos] = ((ErrorFormulaCell) cell).getErrorCode();
+        }
+        else if (cell.type == CellType.DATE) {
+                vdate = ((DateCell) cell).date;
+            	vdate = vdate.add(interval : &apos;3h&apos;);
+            	arg.datos[i][j - this.lineasDeTitulos] = vdate;
+        }
+        else {
+            arg.datos[i][j - this.lineasDeTitulos] = &quot;tipo nuevo:&quot; + cell.type;
+        }
+    }
+}
+
+// Cierro el Woekbook
+vWorkbook.close();
+</sourceCode>
+		</method>
+		<method name="leerHoja" description="Lee la hoja completa" flags="clientavailable public">
+			<arg name="archivoBinary" description="" flags="in" type="Binary"/>
+			<arg name="datos" description="" flags="out" type="Any[][]"/>
+			<variables>
+				<variable name="BAIStream" type="Java.Io.ByteArrayInputStream"/>
+				<variable name="cantColumns" type="Int"/>
+				<variable name="cantRows" type="Int"/>
+				<variable name="cont" type="String"/>
+				<variable name="fila" type="Int"/>
+				<variable name="index" type="Int"/>
+				<variable name="nc" type="Utiles.Jxl.NumberCell"/>
+				<variable name="offset" type="Int"/>
+				<variable name="vSheet" type="Utiles.Jxl.Sheet"/>
+				<variable name="vWorkbook" type="Utiles.Jxl.Workbook"/>
+				<variable name="val" type="Real"/>
+				<variable name="vdate" type="Java.Util.Date"/>
+			</variables>
+			<sourceCode language="Java1">// Leo el binary y lo guador en un ByteArrayInputStream
+BAIStream = ByteArrayInputStream(arg.archivoBinary);
+
+// Cargo el Workbook del ByteArrayInputStream
+vWorkbook = Workbook.getWorkbook(BAIStream);
+
+// Obtengo el Sheet
+if (this.nombreSheet != &quot;&quot;) {
+    vSheet = vWorkbook.getSheet(this.nombreSheet);
+}
+else {
+    vSheet = vWorkbook.getSheet(this.numeroSheet);
+}
+
+if (vSheet == null) {
+    arg.datos[0][0] = &quot;&quot;;
+
+    break leerHoja;
+}
+
+// Guardo en dos variables el numero de Rows y de Columns
+cantRows = vSheet.rows;
+cantColumns = vSheet.columns;
+
+// Cargo los datos en  String[][]
+offset = this.cabecera.length + this.lineasDeTitulos;
+
+for (int i = 0; i &lt;= (cantColumns - 1); i++) {
+    for (int j = offset; j &lt;= (cantRows - 1); j++) {
+        fila = j - offset;
+
+        if (vSheet.getCell(i, arg2 : j).type == CellType.EMPTY) {
+            arg.datos[i][fila] = &quot;&quot;;
+        }
+        else if (vSheet.getCell(i, arg2 : j).type == CellType.LABEL) {
+            arg.datos[i][fila] = ((LabelCell) vSheet.getCell(i, arg2 : j)).string;
+        }
+        else if (vSheet.getCell(i, arg2 : j).type == CellType.NUMBER) {
+            nc = ((NumberCell) vSheet.getCell(i, arg2 : j));
+            val = nc.value;
+
+            if (val == ((int) val)) {
+                // display &quot;iguales  &quot;+val+&quot;  &quot;+Int(val)+&quot;  &quot;+nc.getContents()
+                cont = nc.getContents();
+                cont = cont.replace(from : &quot;,&quot;, @to : &quot;&quot;);
+                cont = cont.replace(from : &quot;(&quot;, @to : &quot;-&quot;);
+                index = cont.indexOf(text : &quot;.&quot;);
+                arg.datos[i][fila] = index == -1 ? cont : cont.substring(first : 0, 
+                                                                         last : cont.indexOf(text : &quot;.&quot;));
+            }
+            else {
+                // display &quot;distintos  &quot;+val+&quot;  &quot;+Int(val)+&quot;  &quot;+nc.getValue()
+                arg.datos[i][fila] = val;
+            }
+        }
+        else if (vSheet.getCell(i, arg2 : j).type == CellType.BOOLEAN) {
+            arg.datos[i][fila] = ((BooleanCell) vSheet.getCell(i, arg2 : j)).value;
+        }
+        else if (vSheet.getCell(i, arg2 : j).type == CellType.ERROR) {
+            arg.datos[i][fila] = ((ErrorCell) vSheet.getCell(i, arg2 : j)).errorCode;
+        }
+        else if (vSheet.getCell(i, arg2 : j).type == CellType.NUMBER_FORMULA) {
+            arg.datos[i][fila] = ((NumberFormulaCell) vSheet.getCell(i, arg2 : j)).getValue();
+        }
+        else if (vSheet.getCell(i, arg2 : j).type == CellType.STRING_FORMULA) {
+            arg.datos[i][fila] = ((StringFormulaCell) vSheet.getCell(i, arg2 : j)).getString();
+        }
+        else if (vSheet.getCell(i, arg2 : j).type == CellType.BOOLEAN_FORMULA) {
+            arg.datos[i][fila] = ((BooleanFormulaCell) vSheet.getCell(i, arg2 : j)).getValue();
+        }
+        else if (vSheet.getCell(i, arg2 : j).type == CellType.FORMULA_ERROR) {
+            arg.datos[i][fila] = ((ErrorFormulaCell) vSheet.getCell(i, arg2 : j)).getErrorCode();
+        }
+        else if (vSheet.getCell(i, arg2 : j).type == CellType.DATE) {
+        	vdate = ((DateCell) vSheet.getCell(arg1 : i, arg2 : j)).date;
+        	vdate = vdate.add(interval : &apos;3h&apos;);
+            arg.datos[i][fila] = vdate;
+        }
+        else {
+            arg.datos[i][fila] = &quot;tipo nuevo:&quot; + vSheet.getCell(i, arg2 : j).type;
+        }
+    }
+}
+
+// Cierro el Woekbook
+vWorkbook.close();</sourceCode>
+		</method>
+		<method name="leerTitulosCSV" flags="clientavailable public">
+			<arg name="binario" description="" flags="in" type="Binary"/>
+			<arg name="delimitador" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Any[][] array = {};
+Any[][] arraySinTitulos = {};
+String[] filas = {};
+String[] fila = {};
+Respuesta respuesta;
+
+
+String archivoS = String(binario, &quot;ISO8859_1&quot;);
+filas = archivoS.split(delim : &quot;\n&quot;);
+
+fila = filas[0].split(delim : delimitador);
+for(int z=0;z &lt; fila.length();z++){
+	array[0][z] = fila[z].replace(from : &quot;\&quot;&quot;, @to : &quot;&quot;).trim;
+}
+
+respuesta.contenido = array;
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="pruebaEscritura" description="" flags="clientavailable public">
+			<variables>
+				<variable name="datos" type="Any[][]"/>
+				<variable name="path" type="String"/>
+			</variables>
+			<sourceCode language="Java1">datos[0][] = &quot;Titulo1&quot;;
+datos[0][] = &quot;&quot;;
+datos[0][] = 1;
+datos[0][] = 2;
+datos[1][] = &quot;Titulo combinado 2&quot;;
+datos[1][] = &quot;Sub1&quot;;
+datos[1][] = &quot;sapo&quot;;
+datos[1][] = &quot;a&quot;;
+datos[2][] = &quot;&quot;;
+datos[2][] = &quot;Sub2&quot;;
+datos[2][] = &quot;c&quot;;
+datos[2][] = &quot;d&quot;;
+datos[3][] = &quot;Titulo3&quot;;
+datos[3][] = &quot;Sub3&quot;;
+datos[3][] = Long.valueOf(arg1 : &quot;2244668800&quot;);
+datos[3][] = 123;
+
+Time fecha = &apos;now&apos;;
+path = &quot;d:/xls_&quot; + fecha.format(mask : &quot;yyyyMMddhhmmsss&quot;) + &quot;.xls&quot;;
+
+Excel.combinarCeldas[] = {1,0,2,0}; 
+Excel.lineasDeTitulos = 2; 
+Excel.crearExcel(path : path, cantidadDeHojas : 1);
+Excel.cargarDatos(datos : datos, nroHoja : 0, nombreHoja : &quot;Mauricio&quot;);
+Excel.grabar();
+
+Binary binary = BinaryFile.readToBinaryFrom(name : path);
+
+
+</sourceCode>
+		</method>
+		<method name="pruebaLectura" description="" flags="clientavailable public">
+			<variables>
+				<variable name="archivoB" type="Binary"/>
+				<variable name="datos" type="Any[][]"/>
+			</variables>
+			<sourceCode language="Java1">archivoB = BinaryFile.readToBinaryFrom(name : &quot;C:\\pruebaExcel.xls&quot;);
+this.lineasDeTitulos = 0;
+this.leerExcel(archivoBinary : archivoB, out datos : datos);
+
+display(datos);
+</sourceCode>
+		</method>
+	</methods>
+</component>

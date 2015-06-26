@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="Serializer" description="Serializer" versionID="Version 6.5 " flags="" signature="bpms.util.Serializer" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.util.Serializer"/>
+	<objectProperty name="package" value="bpms.util"/>
+	<objectProperty name="typeId" value="bpms.util.Serializer"/>
+	<attributes/>
+	<methods>
+		<method name="Serializer" flags="static hidden" signature="Kbpms.util.Serializer()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.Serializer"/>
+		</method>
+		<method name="close" description="close" flags="external" signature="Mclose()V">
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="serialize" description="serialize" flags="static external" signature="Mserialize(Ljava.lang.Object;)[B">
+			<arg name="obj" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="toBinary" description="toBinary" flags="external" signature="MtoBinary()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeBinary" description="writeBinary" flags="external" signature="MwriteBinary([B)V">
+			<arg name="b" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeBoolean" description="writeBoolean" flags="external" signature="MwriteBoolean(Z)V">
+			<arg name="bool" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeByte" description="writeByte" flags="external" signature="MwriteByte(I)V">
+			<arg name="n" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeChar" description="writeChar" flags="external" signature="MwriteChar(I)V">
+			<arg name="n" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeDecimal" description="writeDecimal" flags="external" signature="MwriteDecimal(F)V">
+			<arg name="n" description="" flags="in external" primitive="true" type="Real(32)" javaType="float"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeDouble" description="writeDouble" flags="external" signature="MwriteDouble(D)V">
+			<arg name="n" description="" flags="in external" primitive="true" type="Real" javaType="double"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeInt" description="writeInt" flags="external" signature="MwriteInt(J)V">
+			<arg name="n" description="" flags="in external" primitive="true" type="Int(64)" javaType="long"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeObject" description="writeObject" flags="external" signature="MwriteObject(Ljava.lang.Object;)V">
+			<arg name="obj" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeReal" description="writeReal" flags="external" signature="MwriteReal(Ljava.math.BigDecimal;)V">
+			<arg name="real" description="" flags="in external" type="Decimal" javaType="java.math.BigDecimal"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeShort" description="writeShort" flags="external" signature="MwriteShort(I)V">
+			<arg name="n" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="writeString" description="writeString" flags="external" signature="MwriteString(Ljava.lang.String;)V">
+			<arg name="st" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+	</methods>
+</component>

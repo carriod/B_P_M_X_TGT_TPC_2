@@ -1,0 +1,157 @@
+
+/* @group Presentation */
+
+.fo_presentation {
+	font-family: Verdana;
+	background-color: #EEEEEE;
+}
+
+.fo_presentation_error {
+}
+
+/* @group Cells */
+
+.fo_main_cell .fo_cell {
+	text-align: left;
+}
+
+.fo_title_cell {
+	background-color: #5E7EB0;
+}
+
+.fo_main_cell, .fo_footer_cell {
+	background-color: #f6f6f8;
+}
+
+.fo_main_cell, .fo_title_cell, .fo_footer_cell {
+	border: 1px solid #D0D2D4;
+	text-align: center;
+}
+
+.fo_cell, .fo_main_cell, .fo_title_cell, .fo_footer_cell {
+	font-size: 18px;
+	vertical-align: middle;
+}
+
+/* @end */
+
+
+/* @group Labels */
+
+.fo_label {
+	font-size:10px;
+	font-weight:bold;
+}
+
+.fo_title_label {
+	font-size: 30px;
+	font-weight: bold;
+	color: #eef2fa;
+}
+
+/* @end */
+
+
+/* @group Inputs */
+
+.fo_text, .fo_multiline, .fo_date input, .fo_date select, .fo_combo, .fo_interval {
+	font-size: 12px;
+	font-family: Verdana;
+	text-align: left;
+	color: #3A3A3B; /*#4C4C4D; /*#000000; /*#5F666D;  /*868E98*/
+	border: 1px solid #5F666D;
+}
+
+.fo_image img {
+	max-height: 200px;
+	max-width: 200px;
+}
+
+.fo_radio {
+}
+
+/* @end */
+
+
+/* @group Buttons */
+
+.fo_button {
+
+}
+
+.fo_footer_submit_button {
+	background-color: #5E7EB0;
+}
+
+.fo_footer_cancel_button {
+	background-color: #868e98;
+}
+
+.fo_footer_submit_button, .fo_footer_cancel_button {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+/* @end */
+
+
+/* @group Tables */
+
+.fo_table {
+
+}
+
+.fo_table_cell {
+}
+
+/* @end */
+
+
+/* @group Groups */
+
+.fo_group {
+	background-color: #D2D5DA;
+}
+
+.fo_group_header {
+	text-align: center;
+	background-color: #7993BB;
+	color: #FFFFFF;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.fo_group_index {
+	background-color: #AAB1BD;
+	color: #000000;
+	font-size: 10px;
+}
+
+.fo_group_paging {
+	background-color: #7993BB;
+	color: #FFFFFF;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.fo_group_even_tr {
+	background-color: #D2D5DA;
+}
+
+.fo_group_odd_tr {
+	background-color: #EFF3F8;
+}
+
+/* @end */
+
+/* @end */
+
+
+
+
+
+
+
+
+

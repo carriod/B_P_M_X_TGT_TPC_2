@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="BotonesAccion" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="labelBoton" flags="hassetter hasgetter public"/>
+	</attributes>
+	<methods>
+		<method name="BotonesAccion" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormResolucion.BotonesAccion"/>
+		</method>
+		<method name="submitearboton" description="" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : labelBoton);
+</sourceCode>
+		</method>
+	</methods>
+</component>

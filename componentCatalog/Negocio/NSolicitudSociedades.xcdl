@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NSolicitudSociedades" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="descripcion" flags="hassetter hasgetter public" position="8"/>
+		<Time scale="2" precision="2" name="fechaAlta" flags="hassetter hasgetter public" position="5"/>
+		<Time scale="2" precision="2" name="fechaModificacion" flags="hassetter hasgetter public" position="4"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="3"/>
+		<Int length="32" name="idSociedad" flags="hassetter hasgetter public includeincheck" position="6"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="2"/>
+		<String length="50" name="usuarioAlta" flags="hassetter hasgetter public includeincheck" position="1"/>
+		<String length="50" name="usuarioModificacion" flags="hassetter hasgetter public includeincheck" position="7"/>
+	</attributes>
+	<methods>
+		<method name="NSolicitudSociedades" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NSolicitudSociedades"/>
+			<sourceCode language="Java1"/>
+		</method>
+	</methods>
+</component>

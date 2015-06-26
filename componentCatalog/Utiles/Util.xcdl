@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="Util" description="" versionID="Version 6.5 " flags="abstract module" signature="Util" type="java">
+	<objectProperty name="configName" value="Utiles"/>
+	<objectProperty name="isPackage" value="true"/>
+	<attributes/>
+	<methods/>
+</component>

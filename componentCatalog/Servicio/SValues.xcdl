@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<component name="SValues" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes/>
+	<methods>
+		<method name="SValues" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SValues"/>
+		</method>
+		<method name="getValue" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = Respuesta();
+    
+try {
+    String value = &quot;&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : &quot;SELECT VAL_value FROM BHCT_VALUES WITH (NOLOCK) WHERE VAL_Id = ?&quot;, 
+                           implname : &quot;Contratos_TC&quot;, inParameters : { arg.id }))
+    {
+        value = (String)row[&quot;VAL_Value&quot;];
+    }
+
+    if(value != &quot;&quot;)
+    {
+        respuesta.contenido = value;
+    } else {
+        respuesta.resultado = DATAERROR;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.id + &quot;\&quot; no encontrado en la tabla &quot; + &quot;BHCT_VALUES&quot;;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }    
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;SValues.getValue: Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="String"/>
+			<arg name="value" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">			
+			
+			
+				
+			
+			
+respuesta = Respuesta();
+try {
+  /*  UPDATE BHCT_VALUES
+       SET VAL_value = arg.value
+     WHERE BHCT_VALUES.VAL_id = arg.id;*/ //Catalogar Tabla una vez creada en DB DESA.
+
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;SValues.setValue: Error &quot; + e;
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+	</methods>
+</component>

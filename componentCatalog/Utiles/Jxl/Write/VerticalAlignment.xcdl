@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="VerticalAlignment" description="VerticalAlignment" versionID="Version 6.5 " flags="" signature="jxl.write.VerticalAlignment" type="java">
+	<inherit class="Utiles.Jxl.Format.VerticalAlignment" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.VerticalAlignment"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.VerticalAlignment"/>
+	<attributes/>
+	<methods/>
+</component>

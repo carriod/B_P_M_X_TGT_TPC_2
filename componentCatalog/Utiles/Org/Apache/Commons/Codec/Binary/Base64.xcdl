@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<component name="Base64" description="Base64" versionID="Version 6.5 " flags="" signature="org.apache.commons.codec.binary.Base64" type="java">
+	<inherit class="{java,org.apache.commons.codec.binary.BaseNCodec,Org.Apache.Commons.Codec.Binary.BaseNCodec}" flags="public"/>
+	<objectProperty name="javaClassName" value="org.apache.commons.codec.binary.Base64"/>
+	<objectProperty name="package" value="org.apache.commons.codec.binary"/>
+	<objectProperty name="typeId" value="org.apache.commons.codec.binary.Base64"/>
+	<attributes>
+		<Bool name="urlSafe" flags="hasgetter external" primitive="true" position="1" javaType="boolean" readSignature="MisUrlSafe()Z"/>
+	</attributes>
+	<methods>
+		<method name="Base64" flags="static hidden" signature="Korg.apache.commons.codec.binary.Base64()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Org.Apache.Commons.Codec.Binary.Base64"/>
+		</method>
+		<method name="Base64" flags="static" signature="Korg.apache.commons.codec.binary.Base64(Z)">
+			<arg name="urlSafe" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Org.Apache.Commons.Codec.Binary.Base64"/>
+		</method>
+		<method name="Base64" flags="static" signature="Korg.apache.commons.codec.binary.Base64(I)">
+			<arg name="lineLength" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Org.Apache.Commons.Codec.Binary.Base64"/>
+		</method>
+		<method name="Base64" flags="static" signature="Korg.apache.commons.codec.binary.Base64(I[B)">
+			<arg name="lineLength" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lineSeparator" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Org.Apache.Commons.Codec.Binary.Base64"/>
+		</method>
+		<method name="Base64" flags="static" signature="Korg.apache.commons.codec.binary.Base64(I[BZ)">
+			<arg name="lineLength" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lineSeparator" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="urlSafe" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Org.Apache.Commons.Codec.Binary.Base64"/>
+		</method>
+		<method name="decodeBase64" description="decodeBase64" flags="static external" signature="MdecodeBase64([B)[B">
+			<arg name="base64Data" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="decodeBase64" description="decodeBase64" flags="static external" signature="MdecodeBase64(Ljava.lang.String;)[B">
+			<arg name="base64String" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="decodeInteger" description="decodeInteger" flags="static external" signature="MdecodeInteger([B)Ljava.math.BigInteger;">
+			<arg name="pArray" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Math.BigInteger" javaType="java.math.BigInteger"/>
+		</method>
+		<method name="encodeBase64" description="encodeBase64" flags="static external" signature="MencodeBase64([B)[B">
+			<arg name="binaryData" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="encodeBase64" description="encodeBase64" flags="static external" signature="MencodeBase64([BZ)[B">
+			<arg name="binaryData" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="isChunked" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="encodeBase64" description="encodeBase64" flags="static external" signature="MencodeBase64([BZZ)[B">
+			<arg name="binaryData" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="isChunked" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="urlSafe" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="encodeBase64" description="encodeBase64" flags="static external" signature="MencodeBase64([BZZI)[B">
+			<arg name="binaryData" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<arg name="isChunked" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="urlSafe" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="maxResultSize" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="encodeBase64Chunked" description="encodeBase64Chunked" flags="static external" signature="MencodeBase64Chunked([B)[B">
+			<arg name="binaryData" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="encodeBase64String" description="encodeBase64String" flags="static external" signature="MencodeBase64String([B)Ljava.lang.String;">
+			<arg name="binaryData" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="encodeBase64URLSafe" description="encodeBase64URLSafe" flags="static external" signature="MencodeBase64URLSafe([B)[B">
+			<arg name="binaryData" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="encodeBase64URLSafeString" description="encodeBase64URLSafeString" flags="static external" signature="MencodeBase64URLSafeString([B)Ljava.lang.String;">
+			<arg name="binaryData" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="encodeInteger" description="encodeInteger" flags="static external" signature="MencodeInteger(Ljava.math.BigInteger;)[B">
+			<arg name="bigInt" description="" flags="in external" type="Java.Math.BigInteger" javaType="java.math.BigInteger"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="isArrayByteBase64" description="isArrayByteBase64" flags="static external" signature="MisArrayByteBase64([B)Z">
+			<arg name="arrayOctet" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isBase64" description="isBase64" flags="static external" signature="MisBase64([B)Z">
+			<arg name="arrayOctet" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isBase64" description="isBase64" flags="static external" signature="MisBase64(B)Z">
+			<arg name="octet" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isBase64" description="isBase64" flags="static external" signature="MisBase64(Ljava.lang.String;)Z">
+			<arg name="base64" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isUrlSafe" description="isUrlSafe" flags="external hidden" signature="MisUrlSafe()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="XFRecord" description="XFRecord" versionID="Version 6.5 " flags="" signature="jxl.biff.XFRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<inherit class="Utiles.Jxl.Format.CellFormat" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.XFRecord"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.XFRecord"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.Alignment" name="alignment" flags="hasgetter external" position="2" javaType="jxl.format.Alignment" readSignature="MgetAlignment()Ljxl.format.Alignment;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="backgroundColour" flags="hasgetter external" position="3" javaType="jxl.format.Colour" readSignature="MgetBackgroundColour()Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Biff.XFRecord.BiffType" name="biff7" flags="hasgetter attribute static external final" position="23" javaType="jxl.biff.XFRecord$BiffType" writeSignature="Abiff7;Ljxl.biff.XFRecord$BiffType;" readSignature="Abiff7;Ljxl.biff.XFRecord$BiffType;"/>
+		<object type="Utiles.Jxl.Biff.XFRecord.BiffType" name="biff8" flags="hasgetter attribute static external final" position="22" javaType="jxl.biff.XFRecord$BiffType" writeSignature="Abiff8;Ljxl.biff.XFRecord$BiffType;" readSignature="Abiff8;Ljxl.biff.XFRecord$BiffType;"/>
+		<Binary name="data" flags="hasgetter external" position="4" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Bool name="date" flags="hasgetter external" primitive="true" position="5" javaType="boolean" readSignature="MisDate()Z"/>
+		<object type="Java.Text.DateFormat" name="dateFormat" flags="hasgetter external" position="6" javaType="java.text.DateFormat" readSignature="MgetDateFormat()Ljava.text.DateFormat;"/>
+		<object type="Utiles.Jxl.Format.Font" name="font" flags="hasgetter external" position="7" javaType="jxl.format.Font" readSignature="MgetFont()Ljxl.format.Font;"/>
+		<object type="Utiles.Jxl.Format.Format" name="format" flags="hasgetter external" position="8" javaType="jxl.format.Format" readSignature="MgetFormat()Ljxl.format.Format;"/>
+		<Int length="32" name="formatIndex" flags="hassetter hasgetter attribute external" primitive="true" position="21" javaType="int" writeSignature="AformatIndex;I" readSignature="AformatIndex;I"/>
+		<Int length="32" name="formatRecord" flags="hasgetter external" primitive="true" position="9" javaType="int" readSignature="MgetFormatRecord()I"/>
+		<Int length="32" name="indentation" flags="hasgetter external" primitive="true" position="10" javaType="int" readSignature="MgetIndentation()I"/>
+		<Bool name="initialized" flags="hasgetter external" primitive="true" position="11" javaType="boolean" readSignature="MisInitialized()Z"/>
+		<Bool name="locked" flags="hasgetter external" primitive="true" position="12" javaType="boolean" readSignature="MisLocked()Z"/>
+		<Bool name="number" flags="hasgetter external" primitive="true" position="13" javaType="boolean" readSignature="MisNumber()Z"/>
+		<object type="Java.Text.NumberFormat" name="numberFormat" flags="hasgetter external" position="14" javaType="java.text.NumberFormat" readSignature="MgetNumberFormat()Ljava.text.NumberFormat;"/>
+		<object type="Utiles.Jxl.Format.Orientation" name="orientation" flags="hasgetter external" position="15" javaType="jxl.format.Orientation" readSignature="MgetOrientation()Ljxl.format.Orientation;"/>
+		<object type="Utiles.Jxl.Format.Pattern" name="pattern" flags="hasgetter external" position="16" javaType="jxl.format.Pattern" readSignature="MgetPattern()Ljxl.format.Pattern;"/>
+		<Bool name="read" flags="hasgetter external" primitive="true" position="17" javaType="boolean" readSignature="MisRead()Z"/>
+		<Bool name="shrinkToFit" flags="hasgetter external" primitive="true" position="18" javaType="boolean" readSignature="MisShrinkToFit()Z"/>
+		<object type="Utiles.Jxl.Format.VerticalAlignment" name="verticalAlignment" flags="hasgetter external" position="19" javaType="jxl.format.VerticalAlignment" readSignature="MgetVerticalAlignment()Ljxl.format.VerticalAlignment;"/>
+		<Bool name="wrap" flags="hasgetter external" primitive="true" position="20" javaType="boolean" readSignature="MgetWrap()Z"/>
+		<Int length="32" name="xfIndex" flags="hasgetter external" primitive="true" position="1" javaType="int" readSignature="MgetXFIndex()I"/>
+	</attributes>
+	<methods>
+		<method name="XFRecord" flags="static" signature="Kjxl.biff.XFRecord(Ljxl.biff.FontRecord;Ljxl.biff.DisplayFormat;)">
+			<arg name="fnt" description="" flags="in external" type="Utiles.Jxl.Biff.FontRecord" javaType="jxl.biff.FontRecord"/>
+			<arg name="form" description="" flags="in external" type="Utiles.Jxl.Biff.DisplayFormat" javaType="jxl.biff.DisplayFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.XFRecord"/>
+		</method>
+		<method name="XFRecord" flags="static" signature="Kjxl.biff.XFRecord(Ljxl.read.biff.Record;Ljxl.WorkbookSettings;Ljxl.biff.XFRecord$BiffType;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.WorkbookSettings" javaType="jxl.WorkbookSettings"/>
+			<arg name="bt" description="" flags="in external" type="Utiles.Jxl.Biff.XFRecord.BiffType" javaType="jxl.biff.XFRecord$BiffType"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.XFRecord"/>
+		</method>
+		<method name="equals" description="equals" flags="external hidden" signature="Mequals(Ljava.lang.Object;)Z">
+			<arg name="o" description="" flags="in external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getAlignment" description="getAlignment" flags="external hidden" signature="MgetAlignment()Ljxl.format.Alignment;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Alignment" javaType="jxl.format.Alignment"/>
+		</method>
+		<method name="getBackgroundColour" description="getBackgroundColour" flags="external hidden" signature="MgetBackgroundColour()Ljxl.format.Colour;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+		</method>
+		<method name="getBorder" description="getBorder" flags="external" signature="MgetBorder(Ljxl.format.Border;)Ljxl.format.BorderLineStyle;">
+			<arg name="border" description="" flags="in external" type="Utiles.Jxl.Format.Border" javaType="jxl.format.Border"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.BorderLineStyle" javaType="jxl.format.BorderLineStyle"/>
+		</method>
+		<method name="getBorderColour" description="getBorderColour" flags="external" signature="MgetBorderColour(Ljxl.format.Border;)Ljxl.format.Colour;">
+			<arg name="border" description="" flags="in external" type="Utiles.Jxl.Format.Border" javaType="jxl.format.Border"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+		</method>
+		<method name="getBorderLine" description="getBorderLine" flags="external" signature="MgetBorderLine(Ljxl.format.Border;)Ljxl.format.BorderLineStyle;">
+			<arg name="border" description="" flags="in external" type="Utiles.Jxl.Format.Border" javaType="jxl.format.Border"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.BorderLineStyle" javaType="jxl.format.BorderLineStyle"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getDateFormat" description="getDateFormat" flags="external hidden" signature="MgetDateFormat()Ljava.text.DateFormat;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Text.DateFormat" javaType="java.text.DateFormat"/>
+		</method>
+		<method name="getFont" description="getFont" flags="external hidden" signature="MgetFont()Ljxl.format.Font;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Font" javaType="jxl.format.Font"/>
+		</method>
+		<method name="getFormat" description="getFormat" flags="external hidden" signature="MgetFormat()Ljxl.format.Format;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Format" javaType="jxl.format.Format"/>
+		</method>
+		<method name="getFormatRecord" description="getFormatRecord" flags="external hidden" signature="MgetFormatRecord()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getIndentation" description="getIndentation" flags="external hidden" signature="MgetIndentation()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getNumberFormat" description="getNumberFormat" flags="external hidden" signature="MgetNumberFormat()Ljava.text.NumberFormat;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Text.NumberFormat" javaType="java.text.NumberFormat"/>
+		</method>
+		<method name="getOrientation" description="getOrientation" flags="external hidden" signature="MgetOrientation()Ljxl.format.Orientation;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Orientation" javaType="jxl.format.Orientation"/>
+		</method>
+		<method name="getPattern" description="getPattern" flags="external hidden" signature="MgetPattern()Ljxl.format.Pattern;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Pattern" javaType="jxl.format.Pattern"/>
+		</method>
+		<method name="getVerticalAlignment" description="getVerticalAlignment" flags="external hidden" signature="MgetVerticalAlignment()Ljxl.format.VerticalAlignment;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.VerticalAlignment" javaType="jxl.format.VerticalAlignment"/>
+		</method>
+		<method name="getWrap" description="getWrap" flags="external hidden" signature="MgetWrap()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getXFIndex" description="getXFIndex" flags="external final hidden" signature="MgetXFIndex()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="hasBorders" description="hasBorders" flags="external final" signature="MhasBorders()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="hashCode" description="hashCode" flags="external hidden" signature="MhashCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="initialize" description="initialize" flags="external final" signature="Minitialize(ILjxl.biff.FormattingRecords;Ljxl.biff.Fonts;)V">
+			<arg name="pos" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="fr" description="" flags="in external" type="Utiles.Jxl.Biff.FormattingRecords" javaType="jxl.biff.FormattingRecords"/>
+			<arg name="fonts" description="" flags="in external" type="Utiles.Jxl.Biff.Fonts" javaType="jxl.biff.Fonts"/>
+			<exception type="Utiles.Jxl.Biff.NumFormatRecordsException"/>
+		</method>
+		<method name="isDate" description="isDate" flags="external hidden" signature="MisDate()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isInitialized" description="isInitialized" flags="external final hidden" signature="MisInitialized()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isLocked" description="isLocked" flags="external hidden" signature="MisLocked()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isNumber" description="isNumber" flags="external hidden" signature="MisNumber()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isRead" description="isRead" flags="external final hidden" signature="MisRead()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isShrinkToFit" description="isShrinkToFit" flags="external hidden" signature="MisShrinkToFit()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setFont" description="setFont" flags="external" signature="MsetFont(Ljxl.biff.FontRecord;)V">
+			<arg name="f" description="" flags="in external" type="Utiles.Jxl.Biff.FontRecord" javaType="jxl.biff.FontRecord"/>
+		</method>
+		<method name="uninitialize" description="uninitialize" flags="external final" signature="Muninitialize()V"/>
+	</methods>
+</component>

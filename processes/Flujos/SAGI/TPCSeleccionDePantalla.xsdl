@@ -1,0 +1,1596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<xpdl:Package Name="ALBPMPackage-TPCSeleccionDePantalla" Id="TPCSeleccionDePantalla" xmlns:xpdl="http://www.wfmc.org/2004/XPDL2.0alpha"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:albpm="http://www.albpm.com/2007/albpm.XPDL2" >
+    <xpdl:PackageHeader>
+        <xpdl:XPDLVersion>
+            2.0</xpdl:XPDLVersion>
+        <xpdl:Vendor>
+            BEA Aqualogic BPM</xpdl:Vendor>
+        <xpdl:Created>
+            27/12/2013 15:22:45</xpdl:Created>
+        <xpdl:VendorExtensions>
+            <xpdl:VendorExtension ToolId="ALBPM" schemaLocation="http://www.albpm.com/2007/albpm.XPDL2 file:ALBPM_XPDL.xsd"/>
+        </xpdl:VendorExtensions>
+    </xpdl:PackageHeader>
+    <xpdl:ConformanceClass GraphConformance="NON_BLOCKED"/>
+    <xpdl:Pools>
+        <xpdl:Pool Id="ALBPMPool" BoundaryVisible="false" Orientation="VERTICAL">
+            <xpdl:Lanes>
+                <xpdl:Lane Name="AutomaticHandler" Id="AutomaticHandler">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" Width="200.0" IsVisible="false">
+                            <xpdl:Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:BooleanFeature name="virtual" value="true"/>
+                            <albpm:StringFeature name="paramVar" value=""/>
+                            <albpm:BooleanFeature name="parametric" value="false"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationLabels>
+                                <albpm:LocalizedLabel language="es" label="AutomaticHandler"/>
+                            </albpm:LocalizationLabels>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                    AutomaticHandler</albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Lane>
+            </xpdl:Lanes>
+        </xpdl:Pool>
+    </xpdl:Pools>
+    <xpdl:WorkflowProcesses>
+        <xpdl:WorkflowProcess Id="TPCSeleccionDePantalla" Name="TPCSeleccionDePantalla" DefaultStartActivityId="Begin">
+            <xpdl:ProcessHeader/>
+            <xpdl:RedefinableHeader>
+                <xpdl:Author>
+                    BPMX</xpdl:Author>
+                <xpdl:Version>
+                    0</xpdl:Version>
+            </xpdl:RedefinableHeader>
+            <xpdl:Participants>
+                <xpdl:Participant Id="Papi" Name="Papi">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAdministradorSAGI" Name="TPC - Administrador SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAnalistaCdG" Name="TPC - Analista CdG">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCAnalistaComite" Name="TPC - Analista Comite">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCCompradorGC" Name="TPC - Comprador GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCConsultasSAGI" Name="TPC - Consultas SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCControllerGC" Name="TPC - Controller GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGerenteCompras" Name="TPC - Gerente Compras">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGestionErrores" Name="TPC - Gestion Errores">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCGestorEnlace" Name="TPC - Gestor Enlace">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCIntervencionGC" Name="TPC - Intervencion GC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCJefeCompras" Name="TPC - Jefe Compras">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCSolicitanteSAGI" Name="TPC - Solicitante SAGI">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="TPCSupervisorCdG" Name="TPC - Supervisor CdG">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gestion" Name="gestion">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gestion</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gerente" Name="gerente">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gerente</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="consultas" Name="consultas">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        consultas</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="solicitante" Name="solicitante">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        solicitante</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="jefe" Name="jefe">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        jefe</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="intervencion" Name="intervencion">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        intervencion</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="analistaCDG" Name="analistaCDG">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        analistaCDG</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gestor" Name="gestor">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gestor</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="supervisor" Name="supervisor">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        supervisor</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="admin" Name="admin">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        admin</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="comprador" Name="comprador">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        comprador</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="controller" Name="controller">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        controller</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="analistaComite" Name="analistaComite">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        analistaComite</xpdl:Description>
+                </xpdl:Participant>
+            </xpdl:Participants>
+            <xpdl:Applications>
+                <xpdl:Application Id="automática" Name="automática">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+            </xpdl:Applications>
+            <xpdl:ActivitySets/>
+            <xpdl:Activities>
+                <xpdl:Activity Name="Begin" Id="Begin">
+                    <xpdl:Event>
+                        <xpdl:StartEvent Trigger="None"/>
+                    </xpdl:Event>
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Split Type="XOR">
+                                <xpdl:TransitionRefs>
+                                    <xpdl:TransitionRef Id="BeginToResolucion"/>
+                                    <xpdl:TransitionRef Id="BeginToDatosGenerales"/>
+                                </xpdl:TransitionRefs>
+                            </xpdl:Split>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="BEGIN"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:StringFeature name="targetForNonCreatedInstances" value="DO_NOT_CREATE"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="BeginIn" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Inicio"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Proveedor" Id="Proveedor">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="350.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCProveedor"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCProveedor"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Proveedor"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="SituacionPresupuestaria" Id="SituacionPresupuestaria">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="550.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCSituacionPresupuestaria"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCSituacionPresupuestaria"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="SituacionPresupuestariaOut" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="SituacionPresupuestariaIn" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Situacion Presupuestaria"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ComprasParticulares" Id="ComprasParticulares">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="650.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCComprasParticulares"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCComprasParticulares"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Compras Particulares"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="DocumentacionAdjunta" Id="DocumentacionAdjunta">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="750.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCDocumentacionAdjunta"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCDocumentacionAdjunta"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Documentacion Adjunta"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="HistorialDeComentarios" Id="HistorialDeComentarios">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="850.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCHistorialComentarios"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCHistorialComentarios"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Historial de Comentarios"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="DatosGenerales" Id="DatosGenerales">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="50.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCDatosGenerales"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCDatosGenerales"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Datos Generales"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Antecedentes" Id="Antecedentes">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="461.0" YCoordinate="449.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCAntecedentes"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCAntecedentes"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Antecedentes"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ValoracionNecesidad" Id="ValoracionNecesidad">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="150.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCValoracionNecesidad"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCValoracionNecesidad"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Valoracion Necesidad"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="AsignacionParticipantes" Id="AsignacionParticipantes">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="950.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCAsignacionParticipantes"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCAsignacionParticipantes"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Asignacion Participantes"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="RecomendacionSAGI" Id="RecomendacionSAGI">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="1050.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCRecomendacionSAGI"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCRecomendacionSAGI"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Recomendacion SAGI"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ProyectosAsociados" Id="ProyectosAsociados">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="250.0" YCoordinate="450.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCProyectosAsociados"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCProyectosAsociados"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Proyectos Asociados"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="ControlDeGestion" Id="ControlDeGestion">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="1155.0" YCoordinate="449.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCControlDeGestion"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCControlDeGestion"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Control de Gestion"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Resolucion" Id="Resolucion">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="1265.0" YCoordinate="449.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="SUBSCREENFLOW"/>
+                                <albpm:BooleanFeature name="attachmentsVisible" value="false"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:BooleanFeature name="invertMappingNames" value="true"/>
+                                <albpm:BooleanFeature name="sendNotificationImmediately" value="true"/>
+                                <albpm:StringFeature name="targetModelPath" value="processes/Flujos/TPCResolucion"/>
+                                <albpm:StringFeature name="targetModelName" value="TPCResolucion"/>
+                                <albpm:StringFeature name="variation" value="Default"/>
+                                <albpm:StringFeature name="targetMappingName" value="BeginIn"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="Out" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                                <albpm:ArgumentMapping name="In" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracion" isExpression="false" source="configuracionArg"/>
+                                        <albpm:ArgumentMap target="solicitud" isExpression="false" source="solicitudArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Resolucion"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="End" Id="End">
+                    <xpdl:Event>
+                        <xpdl:EndEvent/>
+                    </xpdl:Event>
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Join Type="XOR"/>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="END"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="EndOut" type="OUT" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="configuracionArg" type="Negocio.NConfiguracion"/>
+                                        <albpm:Argument name="solicitudArg" type="Negocio.NSolicitud"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="configuracionArg" isExpression="false" source="configuracion"/>
+                                        <albpm:ArgumentMap target="solicitudArg" isExpression="false" source="solicitud"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Finalización"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+            </xpdl:Activities>
+            <xpdl:Transitions>
+                <xpdl:Transition Id="BeginToDatosGenerales" Name="BeginToDatosGenerales" From="Begin" To="DatosGenerales">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="50.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="DatosGeneralesToEnd" Name="DatosGeneralesToEnd" From="DatosGenerales" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="50.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToProyectosAsociados" Name="BeginToProyectosAsociados" From="Begin" To="ProyectosAsociados">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;PROYECTOSASOCIADOS&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="250.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ProyectosAsociadosToEnd" Name="ProyectosAsociadosToEnd" From="ProyectosAsociados" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="250.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToValoracionNecesidad" Name="BeginToValoracionNecesidad" From="Begin" To="ValoracionNecesidad">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;VALORACIONNECESIDAD&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="145.0" YCoordinate="442.0"/>
+                            <xpdl:Coordinates XCoordinate="150.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="145,442"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ValoracionNecesidadToEnd" Name="ValoracionNecesidadToEnd" From="ValoracionNecesidad" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="150.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToProveedor" Name="BeginToProveedor" From="Begin" To="Proveedor">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;PROVEEDOR&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="350.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToSituacionPresupuestaria" Name="BeginToSituacionPresupuestaria" From="Begin" To="SituacionPresupuestaria">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;SITUACIONPRESUPUESTARIA&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="550.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToComprasParticulares" Name="BeginToComprasParticulares" From="Begin" To="ComprasParticulares">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;COMPRASPARTICULARES&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="650.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToDocumentacionAdjunta" Name="BeginToDocumentacionAdjunta" From="Begin" To="DocumentacionAdjunta">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;DOCUMENTACIONADJUNTA&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="750.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToHistorialDeComentarios" Name="BeginToHistorialDeComentarios" From="Begin" To="HistorialDeComentarios">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;HISTORIALCOMENTARIOS&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="850.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ProveedorToEnd" Name="ProveedorToEnd" From="Proveedor" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="350.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="SituacionPresupuestariaToEnd" Name="SituacionPresupuestariaToEnd" From="SituacionPresupuestaria" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="550.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ComprasParticularesToEnd" Name="ComprasParticularesToEnd" From="ComprasParticulares" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="650.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="DocumentacionAdjuntaToEnd" Name="DocumentacionAdjuntaToEnd" From="DocumentacionAdjunta" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="750.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="HistorialDeComentariosToEnd" Name="HistorialDeComentariosToEnd" From="HistorialDeComentarios" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="850.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToAntecedentes" Name="BeginToAntecedentes" From="Begin" To="Antecedentes">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;ANTECEDENTES&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="461.0" YCoordinate="449.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="AntecedentesToEnd" Name="AntecedentesToEnd" From="Antecedentes" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="461.0" YCoordinate="449.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToAsignacionParticipantes" Name="BeginToAsignacionParticipantes" From="Begin" To="AsignacionParticipantes">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;ASIGNARPARTICIPANTE&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="950.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="AsignacionParticipantesToEnd" Name="AsignacionParticipantesToEnd" From="AsignacionParticipantes" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="950.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToRecomendacionSAGI" Name="BeginToRecomendacionSAGI" From="Begin" To="RecomendacionSAGI">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;RECOMENDARSAGI&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="1050.0" YCoordinate="450.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="RecomendacionSAGIToEnd" Name="RecomendacionSAGIToEnd" From="RecomendacionSAGI" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="1050.0" YCoordinate="450.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToControlDeGestion" Name="BeginToControlDeGestion" From="Begin" To="ControlDeGestion">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;CONTROLGESTION&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="1086.0" YCoordinate="382.0"/>
+                            <xpdl:Coordinates XCoordinate="1155.0" YCoordinate="449.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="1086,382"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ControlDeGestionToEnd" Name="ControlDeGestionToEnd" From="ControlDeGestion" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="1155.0" YCoordinate="449.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="BeginToResolucion" Name="BeginToResolucion" From="Begin" To="Resolucion">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            configuracion.proximaPantalla == &quot;RESOLUCION&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="50.0"/>
+                            <xpdl:Coordinates XCoordinate="1265.0" YCoordinate="449.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="ResolucionToEnd" Name="ResolucionToEnd" From="Resolucion" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="1265.0" YCoordinate="449.0"/>
+                            <xpdl:Coordinates XCoordinate="600.0" YCoordinate="850.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+            </xpdl:Transitions>
+            <xpdl:Extensions>
+                <albpm:ALBPMExtensions>
+                    <albpm:Component>
+                        &lt;component name=&quot;TPCSeleccionDePantalla&quot;
+	description=&quot;&quot;
+	versionID=&quot;Version 6.5 &quot;
+	flags=&quot;cloneable&quot;
+	type=&quot;xobject&quot;&gt;
+	&lt;inherit
+		class=&quot;Fuego.Internal.ScreenFlow&quot;
+		flags=&quot;&quot;/&gt;
+	&lt;objectProperty name=&quot;initAllFields&quot;
+		value=&quot;true&quot;/&gt;
+	&lt;objectProperty name=&quot;javaClassName&quot;
+		value=&quot;xobject.Fuego__AutoGen__Screenflows__.__TPCSeleccionDePantalla&quot;/&gt;
+	&lt;objectProperty name=&quot;javaSerialId&quot;
+		value=&quot;4278124286&quot;/&gt;
+	&lt;objectProperty name=&quot;methodPrefix&quot;
+		value=&quot;CIL_&quot;/&gt;
+	&lt;objectProperty name=&quot;package&quot;
+		value=&quot;xobject.Fuego__AutoGen__Screenflows__&quot;/&gt;
+	&lt;attributes&gt;
+		&lt;object
+			type=&quot;Negocio.NConfiguracion&quot;
+			name=&quot;configuracion&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;1&quot;/&gt;
+		&lt;object
+			type=&quot;Negocio.NSolicitud&quot;
+			name=&quot;solicitud&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;2&quot;/&gt;
+	&lt;/attributes&gt;
+	&lt;methods&gt;
+		&lt;method name=&quot;TPCSeleccionDePantalla&quot;
+			flags=&quot;static&quot;&gt;
+			&lt;outputArgument name=&quot;return&quot;
+				description=&quot;&quot;
+				flags=&quot;retval&quot;
+				type=&quot;TPCSeleccionDePantalla&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;automática&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;Utiles.Logger.logFatal(mensaje : &amp;quot;PREANTEECE&amp;quot;);
+&lt;/sourceCode&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+	&lt;/methods&gt;
+&lt;/component&gt;</albpm:Component>
+                    <albpm:CorrelationSets/>
+                    <albpm:Localization>
+                        <albpm:LocalizationLabels>
+                            <albpm:LocalizedLabel language="es" label="TPC - Seleccion de Pantalla"/>
+                        </albpm:LocalizationLabels>
+                        <albpm:LocalizationDescriptions>
+                            <albpm:LocalizationDescription language="es">
+                            </albpm:LocalizationDescription>
+                        </albpm:LocalizationDescriptions>
+                    </albpm:Localization>
+                    <albpm:FeatureSet>
+                        <albpm:StringFeature name="GreedyExecutionMode" value="default"/>
+                        <albpm:BooleanFeature name="atomic" value="false"/>
+                        <albpm:StringFeature name="generatesEvents" value="GENERATE_INTERACTIVE_EVENTS"/>
+                        <albpm:BooleanFeature name="horizontal" value="true"/>
+                        <albpm:BooleanFeature name="instanceScreenflow" value="false"/>
+                        <albpm:StringFeature name="scale" value="0.5"/>
+                        <albpm:BooleanFeature name="sharePredefineVariables" value="true"/>
+                        <albpm:BooleanFeature name="useExceptionOrder" value="true"/>
+                        <albpm:StringFeature name="variation" value="Default"/>
+                    </albpm:FeatureSet>
+                </albpm:ALBPMExtensions>
+            </xpdl:Extensions>
+        </xpdl:WorkflowProcess>
+    </xpdl:WorkflowProcesses>
+</xpdl:Package>

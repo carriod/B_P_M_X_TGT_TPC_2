@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NConsultaDatos2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="areaSolicitante" flags="hassetter hasgetter public" position="1"/>
+		<object type="Negocio2.NComprador2" name="comprador" flags="hassetter hasgetter public includeincheck" position="2"/>
+		<Bool name="cta" flags="hassetter hasgetter public" position="3"/>
+		<Int length="32" name="diasCompra" flags="hassetter hasgetter public" position="4"/>
+		<Bool name="djai" flags="hassetter hasgetter public" position="5"/>
+		<String name="enlace" flags="hassetter hasgetter public" position="6"/>
+		<Int length="32" name="estadoId" flags="hassetter hasgetter public" position="16"/>
+		<String name="estadoProceso" flags="hassetter hasgetter public" position="7"/>
+		<Time scale="0" precision="0" name="fechaEstimadaFin" flags="hassetter hasgetter public includeincheck" position="8"/>
+		<Time scale="0" precision="0" name="fechaIngreso" flags="hassetter hasgetter public includeincheck" position="9"/>
+		<Time scale="0" precision="0" name="fechaObjetivo" flags="hassetter hasgetter public includeincheck" position="10"/>
+		<Time scale="0" precision="0" name="fechaReprogramada" flags="hassetter hasgetter public includeincheck" position="11"/>
+		<object type="Negocio2.NGerencia2" name="gerencia" flags="hassetter hasgetter public includeincheck" position="12"/>
+		<object type="Negocio2.NJefatura2" name="jefatura" flags="hassetter hasgetter public includeincheck" position="13"/>
+		<Bool name="rechazada" flags="hassetter hasgetter public includeincheck" position="18"/>
+		<String name="solicitante" flags="hassetter hasgetter public" position="17"/>
+		<String name="tipoCompra" flags="hassetter hasgetter public" position="14"/>
+		<String name="titulo" flags="hassetter hasgetter public" position="15"/>
+	</attributes>
+	<methods>
+		<method name="NConsultaDatos2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NConsultaDatos2"/>
+			<sourceCode language="Java1">comprador = NComprador2();
+gerencia = NGerencia2();
+jefatura = NJefatura2();</sourceCode>
+		</method>
+	</methods>
+</component>

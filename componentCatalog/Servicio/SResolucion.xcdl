@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="SResolucion" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="3"/>
+		<String name="prefijo" flags="hassetter hasgetter public" position="2"/>
+		<String name="tabla" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="SResolucion" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio.SResolucion"/>
+			<sourceCode language="Java1">this.prefijo = &quot;RES_&quot;;
+this.tabla = &quot;TPC_RESOLUCION&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;ID = ?&quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.id;
+
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteValuesForIdSolicitud" flags="public server disableclient">
+			<arg name="idSolicitud" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ?&quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.idSolicitud;
+		
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValuesForIdSolicitud(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+     				  &quot;WHERE &quot; + this.prefijo + &quot;ID = ( SELECT MAX(&quot; + this.prefijo + &quot;ID) FROM &quot; + this.tabla  + &quot; )&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;TIPO&quot;] = (String)row[this.prefijo + &quot;TIPO&quot;];
+		value[&quot;FECHAPLANIFICADA&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANIFICADA&quot;];
+		value[&quot;FECHAREAL&quot;] = (Time)row[this.prefijo + &quot;FECHAREAL&quot;];
+		value[&quot;RLT_ID&quot;] = (Integer)row[this.prefijo + &quot;RLT_ID&quot;];
+		value[&quot;MSB_ID&quot;] = (Integer)row[this.prefijo + &quot;MSB_ID&quot;];
+		value[&quot;FECHAPROXPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXPRECOMITE&quot;];
+		value[&quot;FECHAPROXCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXCOMITE&quot;];
+		value[&quot;MONTOAPROBADOPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOPESOS&quot;];
+		value[&quot;MONTOAPROBADODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADODOLARES&quot;];
+		value[&quot;MONTOAPROBADOEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOEUROS&quot;];
+		value[&quot;MON_ID_MONTOAPROBADO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOAPROBADO&quot;];
+    	value[&quot;MONTOAPROBADOOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOOTRO&quot;];
+		value[&quot;COMENTARIO&quot;] = (String)row[this.prefijo + &quot;COMENTARIO&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;REQUISITOCOMPRAS&quot;] = (String)row[this.prefijo + &quot;REQUISITOCOMPRAS&quot;];
+		value[&quot;CONDICIONAMIENTOPROV&quot;] = (String)row[this.prefijo + &quot;CONDICIONAMIENTOPROV&quot;];
+		value[&quot;FECHACIERRE&quot;] = (Time)row[this.prefijo + &quot;FECHACIERRE&quot;];
+		value[&quot;BORRADOR&quot;] = ((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValueForIdSol" flags="public server disableclient">
+			<arg name="idSol" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+     				  &quot;WHERE &quot;  + this.prefijo + &quot;SOL_ID = &quot; + arg.idSol +
+     				  &quot;AND &quot; + this.prefijo + &quot;ID = ( SELECT MAX(&quot; + this.prefijo + &quot;ID) FROM &quot; + this.tabla  + &quot; )&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;TIPO&quot;] = (String)row[this.prefijo + &quot;TIPO&quot;];
+		value[&quot;FECHAPLANIFICADA&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANIFICADA&quot;];
+		value[&quot;FECHAREAL&quot;] = (Time)row[this.prefijo + &quot;FECHAREAL&quot;];
+		value[&quot;RLT_ID&quot;] = (Integer)row[this.prefijo + &quot;RLT_ID&quot;];
+		value[&quot;MSB_ID&quot;] = (Integer)row[this.prefijo + &quot;MSB_ID&quot;];
+		value[&quot;FECHAPROXPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXPRECOMITE&quot;];
+		value[&quot;FECHAPROXCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXCOMITE&quot;];
+		value[&quot;MONTOAPROBADOPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOPESOS&quot;];
+		value[&quot;MONTOAPROBADODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADODOLARES&quot;];
+		value[&quot;MONTOAPROBADOEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOEUROS&quot;];
+		value[&quot;MON_ID_MONTOAPROBADO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOAPROBADO&quot;];
+    	value[&quot;MONTOAPROBADOOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOOTRO&quot;];
+		value[&quot;COMENTARIO&quot;] = (String)row[this.prefijo + &quot;COMENTARIO&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;REQUISITOCOMPRAS&quot;] = (String)row[this.prefijo + &quot;REQUISITOCOMPRAS&quot;];
+		value[&quot;CONDICIONAMIENTOPROV&quot;] = (String)row[this.prefijo + &quot;CONDICIONAMIENTOPROV&quot;];
+		value[&quot;FECHACIERRE&quot;] = (Time)row[this.prefijo + &quot;FECHACIERRE&quot;];
+		value[&quot;BORRADOR&quot;] = ((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    }
+    else {
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<arg name="vigencia" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;ID&quot;;
+    				  
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { }))
+    {
+		value = {};
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;TIPO&quot;] = (String)row[this.prefijo + &quot;TIPO&quot;];
+		value[&quot;FECHAPLANIFICADA&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANIFICADA&quot;];
+		value[&quot;FECHAREAL&quot;] = (Time)row[this.prefijo + &quot;FECHAREAL&quot;];
+		value[&quot;RLT_ID&quot;] = (Integer)row[this.prefijo + &quot;RLT_ID&quot;];
+		value[&quot;MSB_ID&quot;] = (Integer)row[this.prefijo + &quot;MSB_ID&quot;];
+		value[&quot;FECHAPROXPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXPRECOMITE&quot;];
+		value[&quot;FECHAPROXCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXCOMITE&quot;];
+		value[&quot;MONTOAPROBADOPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOPESOS&quot;];
+		value[&quot;MONTOAPROBADODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADODOLARES&quot;];
+		value[&quot;MONTOAPROBADOEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOEUROS&quot;];
+				value[&quot;MON_ID_MONTOAPROBADO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOAPROBADO&quot;];
+    	value[&quot;MONTOAPROBADOOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOOTRO&quot;];
+		value[&quot;COMENTARIO&quot;] = (String)row[this.prefijo + &quot;COMENTARIO&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;REQUISITOCOMPRAS&quot;] = (String)row[this.prefijo + &quot;REQUISITOCOMPRAS&quot;];
+		value[&quot;CONDICIONAMIENTOPROV&quot;] = (String)row[this.prefijo + &quot;CONDICIONAMIENTOPROV&quot;];
+		value[&quot;FECHACIERRE&quot;] = (Time)row[this.prefijo + &quot;FECHACIERRE&quot;];
+		value[&quot;BORRADOR&quot;] = ((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesForIdSolicitud" flags="public server disableclient">
+			<arg name="idSolicitud" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;SOL_ID = ? &quot; +
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;ID&quot;;  				  
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { arg.idSolicitud }))
+    {
+		value = {};
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;TIPO&quot;] = (String)row[this.prefijo + &quot;TIPO&quot;];
+		value[&quot;FECHAPLANIFICADA&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANIFICADA&quot;];
+		value[&quot;FECHAREAL&quot;] = (Time)row[this.prefijo + &quot;FECHAREAL&quot;];
+		value[&quot;RLT_ID&quot;] = (Integer)row[this.prefijo + &quot;RLT_ID&quot;];
+		value[&quot;MSB_ID&quot;] = (Integer)row[this.prefijo + &quot;MSB_ID&quot;];
+		value[&quot;FECHAPROXPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXPRECOMITE&quot;];
+		value[&quot;FECHAPROXCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXCOMITE&quot;];
+		value[&quot;MONTOAPROBADOPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOPESOS&quot;];
+		value[&quot;MONTOAPROBADODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADODOLARES&quot;];
+		value[&quot;MONTOAPROBADOEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOEUROS&quot;];
+		value[&quot;MON_ID_MONTOAPROBADO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOAPROBADO&quot;];
+    	value[&quot;MONTOAPROBADOOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOOTRO&quot;];
+		value[&quot;COMENTARIO&quot;] = (String)row[this.prefijo + &quot;COMENTARIO&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;REQUISITOCOMPRAS&quot;] = (String)row[this.prefijo + &quot;REQUISITOCOMPRAS&quot;];
+		value[&quot;CONDICIONAMIENTOPROV&quot;] = (String)row[this.prefijo + &quot;CONDICIONAMIENTOPROV&quot;];
+		value[&quot;FECHACIERRE&quot;] = (Time)row[this.prefijo + &quot;FECHACIERRE&quot;];
+		value[&quot;BORRADOR&quot;] = ((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValuesForIdSolicitud(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+    				  &quot;WHERE &quot; + this.prefijo + &quot;ID = ?&quot;;
+ 
+    foreach(row in DynamicSQL.executeQuery(sentence : sentence, 
+                           implname : this.implname, inParameters : { arg.id }))
+    {
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;SOL_ID&quot;] = (Integer)row[this.prefijo + &quot;SOL_ID&quot;];
+		value[&quot;TIPO&quot;] = (String)row[this.prefijo + &quot;TIPO&quot;];
+		value[&quot;FECHAPLANIFICADA&quot;] = (Time)row[this.prefijo + &quot;FECHAPLANIFICADA&quot;];
+		value[&quot;FECHAREAL&quot;] = (Time)row[this.prefijo + &quot;FECHAREAL&quot;];
+		value[&quot;RLT_ID&quot;] = (Integer)row[this.prefijo + &quot;RLT_ID&quot;];
+		value[&quot;MSB_ID&quot;] = (Integer)row[this.prefijo + &quot;MSB_ID&quot;];
+		value[&quot;FECHAPROXPRECOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXPRECOMITE&quot;];
+		value[&quot;FECHAPROXCOMITE&quot;] = (Time)row[this.prefijo + &quot;FECHAPROXCOMITE&quot;];
+		value[&quot;MONTOAPROBADOPESOS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOPESOS&quot;];
+		value[&quot;MONTOAPROBADODOLARES&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADODOLARES&quot;];
+		value[&quot;MONTOAPROBADOEUROS&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOEUROS&quot;];
+				value[&quot;MON_ID_MONTOAPROBADO&quot;] = (Integer)row[this.prefijo + &quot;MON_ID_MONTOAPROBADO&quot;];
+    	value[&quot;MONTOAPROBADOOTRO&quot;] = (Decimal)row[this.prefijo + &quot;MONTOAPROBADOOTRO&quot;];
+		value[&quot;COMENTARIO&quot;] = (String)row[this.prefijo + &quot;COMENTARIO&quot;];
+		value[&quot;FECHALIBERACION&quot;] = (Time)row[this.prefijo + &quot;FECHALIBERACION&quot;];
+		value[&quot;REQUISITOCOMPRAS&quot;] = (String)row[this.prefijo + &quot;REQUISITOCOMPRAS&quot;];
+		value[&quot;CONDICIONAMIENTOPROV&quot;] = (String)row[this.prefijo + &quot;CONDICIONAMIENTOPROV&quot;];
+		value[&quot;FECHACIERRE&quot;] = (Time)row[this.prefijo + &quot;FECHACIERRE&quot;];
+		value[&quot;BORRADOR&quot;] = ((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;S&apos;?Java.Boolean.TRUE:((String)row[this.prefijo + &quot;BORRADOR&quot;])==&apos;N&apos;?Java.Boolean.FALSE:null;
+    }
+
+    if(value.length()&gt;0)
+    {
+        respuesta.contenido = value;
+    } else {
+        respuesta.resultado = DATAERROR;
+        respuesta.contenido = &quot;Registro \&quot;&quot; + arg.id + &quot;\&quot; no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="idSolicitud" description="" flags="in" type="Int"/>
+			<arg name="fechaPlanificada" description="" flags="in" type="Time"/>
+			<arg name="fechaReal" description="" flags="in" type="Time"/>
+			<arg name="idResultadoResolucion" description="" flags="in" type="Int"/>
+			<arg name="idMotivoStandBy" description="" flags="in" type="Int"/>
+			<arg name="fechaProximoComite" description="" flags="in" type="Time"/>
+			<arg name="fechaProximoPreComite" description="" flags="in" type="Time"/>
+			<arg name="montoAprobadoPesos" description="" flags="in" type="Decimal"/>
+			<arg name="montoAprobadoDolares" description="" flags="in" type="Decimal"/>
+			<arg name="montoAprobadoEuros" description="" flags="in" type="Decimal"/>
+			<arg name="comentario" description="" flags="in" type="String"/>
+			<arg name="tipo" description="" flags="in" type="String"/>
+			<arg name="requisitoCompras" description="" flags="in" type="String"/>
+			<arg name="condicionamientoProv" description="" flags="in" type="String"/>
+			<arg name="fechaLiberacion" description="" flags="in" type="Time"/>
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="montoAprobadoOM" description="" flags="in" type="Int"/>
+			<arg name="montoAprobadoOtro" description="" flags="in" type="Decimal"/>
+			<arg name="borrador" description="" flags="in" type="Bool"/>
+			<arg name="fechaCierre" description="" flags="in" type="Time"/>
+			<arg name="fechaTratamiento" description="" flags="in" type="Time"/>
+			<variables>
+				<variable name="resultId" type="Iterator(Any[Any])"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	String sentenceId = &quot;&quot;;
+	sentence = &quot;INSERT INTO &quot; + this.tabla + &quot; (&quot; +
+					this.prefijo + &quot;SOL_ID, &quot; +
+					this.prefijo + &quot;TIPO, &quot; +	
+					this.prefijo + &quot;FECHAPLANIFICADA, &quot; +
+					this.prefijo + &quot;FECHAREAL, &quot; +
+					this.prefijo + &quot;RLT_ID, &quot; +
+					this.prefijo + &quot;MSB_ID, &quot; +
+					this.prefijo + &quot;FECHAPROXCOMITE, &quot; +
+					this.prefijo + &quot;FECHAPROXPRECOMITE, &quot; +	
+					this.prefijo + &quot;MONTOAPROBADOPESOS, &quot; +
+					this.prefijo + &quot;MONTOAPROBADODOLARES, &quot; +	
+					this.prefijo + &quot;MONTOAPROBADOEUROS, &quot; +	
+					this.prefijo + &quot;MON_ID_MONTOAPROBADO, &quot; +
+					this.prefijo + &quot;MONTOAPROBADOOTRO, &quot; +
+					this.prefijo + &quot;COMENTARIO, &quot; +	
+					this.prefijo + &quot;FECHALIBERACION, &quot; +
+					this.prefijo + &quot;REQUISITOCOMPRAS, &quot; +
+					this.prefijo + &quot;CONDICIONAMIENTOPROV,  &quot; +
+					this.prefijo + &quot;FECHATRATAMIENTO,  &quot; +
+					this.prefijo + &quot;FECHACIERRE,  &quot; +
+					this.prefijo + &quot;BORRADOR,   &quot; +
+					this.prefijo + &quot;ID) &quot; +
+				&quot;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)&quot;;
+	
+	Any[] inParameters = {};
+	inParameters[] = arg.idSolicitud;
+	inParameters[] = arg.tipo;
+	inParameters[] = arg.fechaPlanificada;
+	inParameters[] = arg.fechaReal;
+	inParameters[] = arg.idResultadoResolucion;
+	inParameters[] = arg.idMotivoStandBy;	
+	inParameters[] = arg.fechaProximoComite;
+	inParameters[] = arg.fechaProximoPreComite;
+	inParameters[] = arg.montoAprobadoPesos;
+	inParameters[] = arg.montoAprobadoDolares;
+	inParameters[] = arg.montoAprobadoEuros;
+	inParameters[] = arg.montoAprobadoOM;
+	inParameters[] = arg.montoAprobadoOtro;
+	inParameters[] = arg.comentario;
+	inParameters[] = arg.fechaLiberacion;
+	inParameters[] = arg.requisitoCompras;
+	inParameters[] = arg.condicionamientoProv;
+	inParameters[] = arg.fechaTratamiento;
+	inParameters[] = arg.fechaCierre;
+	inParameters[] = arg.borrador==null?null:arg.borrador?&apos;S&apos;:&apos;N&apos;;
+	
+	sentenceId = &quot;SELECT SEQ_TPC_RESOLUCION_RES_ID.NEXTVAL FROM DUAL&quot;; 
+	resultId = (DynamicSQL).executeQuery(sentence : sentenceId, implname : implname);
+	foreach (element in resultId) {
+		inParameters[] = (Long)element[1];
+	    id = (Long)element[1];
+	}
+	
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = id;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="WSTokenServiceListener" description="WSTokenService listener interface" versionID="Version 6.5 " flags="abstract invokeable" signature="listener" dynamic="true" type="web service">
+	<objectProperty name="SERVICE_NAME" value="WSTokenService"/>
+	<objectProperty name="binding" value="soap"/>
+	<objectProperty name="bindingName" value="WSTokenSoap"/>
+	<objectProperty name="location" value="http://ison/WSTokenCompras/WSToken.asmx"/>
+	<objectProperty name="nativeName" value="WSTokenSoap"/>
+	<objectProperty name="producerConfigName" value="WSTokenServiceProducer"/>
+	<objectProperty name="soapStyle" value="wrapped"/>
+	<objectProperty name="targetNamespace" value="http://localhost/WS"/>
+	<objectProperty name="transport" value="HTTPS"/>
+	<attributes/>
+	<methods>
+		<method name="WSTokenServiceListener" flags="static" signature="K">
+			<arg name="heir" description="" flags="in" type="Any"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.WSTokenServiceListener"/>
+		</method>
+		<method name="WSTokenServiceListener" flags="static" signature="Kconfiguration">
+			<arg name="configuration" description="" flags="in" type="Fuego.WebServices.Configuration"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.WSTokenServiceListener"/>
+		</method>
+		<method name="borrarArchivo" description="Borra archivo del repositorio" flags="abstract" signature="borrarArchivo">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="borrarArchivoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="borrarArchivoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="BorrarArchivoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="BorrarArchivoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="BorrarArchivo"/>
+			<property name="outputMessage" value="BorrarArchivoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/BorrarArchivo"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="BorrarArchivo"/>
+			<property name="soapOperationResponse" value="BorrarArchivoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="borrarArchivoIndividual" description="Permite Borrar Archivo de documentos en forma individual" flags="abstract" signature="borrarArchivoIndividual">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="ixArchivo" description="" flags="in" type="WebServices.WSEasyDoc.ArrayOfString">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ixArchivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:ArrayOfString"/>
+			</arg>
+			<arg name="borrarArchivoIndividualResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="borrarArchivoIndividualResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="BorrarArchivoIndividualResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="BorrarArchivoIndividualSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="BorrarArchivoIndividual"/>
+			<property name="outputMessage" value="BorrarArchivoIndividualSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/BorrarArchivoIndividual"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="BorrarArchivoIndividual"/>
+			<property name="soapOperationResponse" value="BorrarArchivoIndividualResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="existeArchivo" description="Verifica si existe un documento en el repositorio" flags="abstract" signature="existeArchivo">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="existeArchivoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="existeArchivoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ExisteArchivoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="ExisteArchivoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="ExisteArchivo"/>
+			<property name="outputMessage" value="ExisteArchivoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/ExisteArchivo"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="ExisteArchivo"/>
+			<property name="soapOperationResponse" value="ExisteArchivoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="ingresarArchivo" description="Ingresa un archivo al repositorio" flags="abstract" signature="ingresarArchivo">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="tipoarchivo" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="tipoarchivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="archivo" description="" flags="in" type="Binary">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="archivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:base64Binary"/>
+			</arg>
+			<arg name="ingresarArchivoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="ingresarArchivoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="IngresarArchivoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="IngresarArchivoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="IngresarArchivo"/>
+			<property name="outputMessage" value="IngresarArchivoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/IngresarArchivo"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="IngresarArchivo"/>
+			<property name="soapOperationResponse" value="IngresarArchivoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="ingresarArchivoDeImagen" description="(PARA USO DEL SCANNER) Ingresa un archivo al repositorio" flags="abstract" signature="ingresarArchivoDeImagen">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="tipoarchivo" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="tipoarchivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="archivo" description="" flags="in" type="Binary">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="archivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:base64Binary"/>
+			</arg>
+			<arg name="codLote" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="cod_lote"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="ingresarArchivoDeImagenResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="ingresarArchivoDeImagenResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="IngresarArchivoDeImagenResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="IngresarArchivoDeImagenSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="IngresarArchivoDeImagen"/>
+			<property name="outputMessage" value="IngresarArchivoDeImagenSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/IngresarArchivoDeImagen"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="IngresarArchivoDeImagen"/>
+			<property name="soapOperationResponse" value="IngresarArchivoDeImagenResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="ingresarRegistroDeImagen" description="(PARA USO DEL SCANNER) Ingresa el registro de la imagen escaneada a la base de datos" flags="abstract" signature="ingresarRegistroDeImagen">
+			<arg name="codLote" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="cod_lote"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="nroOrden" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="nro_orden"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="rotacion" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="rotacion"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="tipo" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="tipo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="tamano" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="tamano"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="indice" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="indice"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="ingresarRegistroDeImagenResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="ingresarRegistroDeImagenResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="IngresarRegistroDeImagenResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="IngresarRegistroDeImagenSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="IngresarRegistroDeImagen"/>
+			<property name="outputMessage" value="IngresarRegistroDeImagenSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/IngresarRegistroDeImagen"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="IngresarRegistroDeImagen"/>
+			<property name="soapOperationResponse" value="IngresarRegistroDeImagenResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivo" description="Devuelve un documento del repositorio en formato PDF" flags="abstract" signature="leerArchivo">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="leerArchivoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivo"/>
+			<property name="outputMessage" value="LeerArchivoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivo"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivo"/>
+			<property name="soapOperationResponse" value="LeerArchivoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivoConFormato" description="Devuelve un archivo con el formato indicado con los Archivos del documento" flags="abstract" signature="leerArchivoConFormato">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="formato" description="" flags="in" primitive="true" type="WebServices.WSEasyDoc.FormatoDocumento">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="formato"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:FormatoDocumento"/>
+			</arg>
+			<arg name="leerArchivoConFormatoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoConFormatoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoConFormatoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoConFormatoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivoConFormato"/>
+			<property name="outputMessage" value="LeerArchivoConFormatoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivoConFormato"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivoConFormato"/>
+			<property name="soapOperationResponse" value="LeerArchivoConFormatoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivoIndividual" description="Devuelve un PDF con un solo archivo de un documento" flags="abstract" signature="leerArchivoIndividual">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="ixArchivo" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ixArchivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="leerArchivoIndividualResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoIndividualResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoIndividualResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoIndividualSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivoIndividual"/>
+			<property name="outputMessage" value="LeerArchivoIndividualSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivoIndividual"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivoIndividual"/>
+			<property name="soapOperationResponse" value="LeerArchivoIndividualResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivoIndividualNativo" description="Devuelve un solo archivo de un documento en formato nativo" flags="abstract" signature="leerArchivoIndividualNativo">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="ixArchivo" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ixArchivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="leerArchivoIndividualNativoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoIndividualNativoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoIndividualNativoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoIndividualNativoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivoIndividualNativo"/>
+			<property name="outputMessage" value="LeerArchivoIndividualNativoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivoIndividualNativo"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivoIndividualNativo"/>
+			<property name="soapOperationResponse" value="LeerArchivoIndividualNativoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivoNativo" description="Devuelve un archivo con el formato nativo con los Archivos del documento" flags="abstract" signature="leerArchivoNativo">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="leerArchivoNativoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoNativoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoNativoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoNativoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivoNativo"/>
+			<property name="outputMessage" value="LeerArchivoNativoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivoNativo"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivoNativo"/>
+			<property name="soapOperationResponse" value="LeerArchivoNativoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivoPDFParcial" description="Devuelve un PDF con los Archivos indicados del documento" flags="abstract" signature="leerArchivoPDFParcial">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="ixArchivo" description="" flags="in" type="WebServices.WSEasyDoc.ArrayOfString">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ixArchivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:ArrayOfString"/>
+			</arg>
+			<arg name="leerArchivoPDFParcialResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoPDFParcialResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoPDFParcialResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoPDFParcialSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivoPDFParcial"/>
+			<property name="outputMessage" value="LeerArchivoPDFParcialSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivoPDFParcial"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivoPDFParcial"/>
+			<property name="soapOperationResponse" value="LeerArchivoPDFParcialResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivoParcialConFormato" description="Devuelve un archivo con el formato indicado con los Archivos seleccionados del documento" flags="abstract" signature="leerArchivoParcialConFormato">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="ixArchivo" description="" flags="in" type="WebServices.WSEasyDoc.ArrayOfString">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ixArchivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:ArrayOfString"/>
+			</arg>
+			<arg name="formato" description="" flags="in" primitive="true" type="WebServices.WSEasyDoc.FormatoDocumento">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="formato"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:FormatoDocumento"/>
+			</arg>
+			<arg name="leerArchivoParcialConFormatoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoParcialConFormatoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoParcialConFormatoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoParcialConFormatoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivoParcialConFormato"/>
+			<property name="outputMessage" value="LeerArchivoParcialConFormatoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivoParcialConFormato"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivoParcialConFormato"/>
+			<property name="soapOperationResponse" value="LeerArchivoParcialConFormatoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivoParcialNativo" description="Devuelve un archivo con el formato nativo con los Archivos seleccionados del documento" flags="abstract" signature="leerArchivoParcialNativo">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="ixArchivo" description="" flags="in" type="WebServices.WSEasyDoc.ArrayOfString">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ixArchivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:ArrayOfString"/>
+			</arg>
+			<arg name="leerArchivoParcialNativoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoParcialNativoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoParcialNativoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoParcialNativoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivoParcialNativo"/>
+			<property name="outputMessage" value="LeerArchivoParcialNativoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivoParcialNativo"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivoParcialNativo"/>
+			<property name="soapOperationResponse" value="LeerArchivoParcialNativoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivoZIPParcial" description="Devuelve un ZIP con los Archivos indicados del documento" flags="abstract" signature="leerArchivoZIPParcial">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="ixArchivo" description="" flags="in" type="WebServices.WSEasyDoc.ArrayOfString">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ixArchivo"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:ArrayOfString"/>
+			</arg>
+			<arg name="leerArchivoZIPParcialResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoZIPParcialResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoZIPParcialResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoZIPParcialSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivoZIPParcial"/>
+			<property name="outputMessage" value="LeerArchivoZIPParcialSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivoZIPParcial"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivoZIPParcial"/>
+			<property name="soapOperationResponse" value="LeerArchivoZIPParcialResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="leerArchivoZip" description="Devuelve un ZIP con los Archivos del documento" flags="abstract" signature="leerArchivoZip">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="leerArchivoZipResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="leerArchivoZipResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="LeerArchivoZipResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="LeerArchivoZipSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="LeerArchivoZip"/>
+			<property name="outputMessage" value="LeerArchivoZipSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/LeerArchivoZip"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="LeerArchivoZip"/>
+			<property name="soapOperationResponse" value="LeerArchivoZipResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="listarArchivos" description="Devuelve Lista de Archivos de un Documento." flags="abstract" signature="listarArchivos">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="listarArchivosResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="listarArchivosResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ListarArchivosResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="ListarArchivosSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="ListarArchivos"/>
+			<property name="outputMessage" value="ListarArchivosSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/ListarArchivos"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="ListarArchivos"/>
+			<property name="soapOperationResponse" value="ListarArchivosResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="migrarDocumento" description="Migra un documento desde el storage de disco al storage de base de datos" flags="abstract" signature="migrarDocumento">
+			<arg name="nroreg" description="" flags="in" primitive="true" type="Int(64)">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="nroreg"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:long"/>
+			</arg>
+			<arg name="migrarDocumentoResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="migrarDocumentoResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="MigrarDocumentoResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="MigrarDocumentoSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="MigrarDocumento"/>
+			<property name="outputMessage" value="MigrarDocumentoSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/MigrarDocumento"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="MigrarDocumento"/>
+			<property name="soapOperationResponse" value="MigrarDocumentoResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="obtenerToken" description="Devuelve un token especifico para cada sesion de escaneo" flags="abstract" signature="obtenerToken">
+			<arg name="nroreg" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="nroreg"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="docid" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="docid"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="version" description="" flags="in" primitive="true" type="Int">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="version"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+			</arg>
+			<arg name="usuario" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="usuario"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="obtenerTokenResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="obtenerTokenResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ObtenerTokenResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="ObtenerTokenSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="ObtenerToken"/>
+			<property name="outputMessage" value="ObtenerTokenSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/ObtenerToken"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="ObtenerToken"/>
+			<property name="soapOperationResponse" value="ObtenerTokenResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+		<method name="start" flags="" signature="start">
+			<arg name="url" description="" flags="out" type="String"/>
+		</method>
+		<method name="stop" flags="" signature="stop"/>
+		<method name="validarToken" description="Valida si la sesion del escaner esta dentro del limite de tiempo asignado" flags="abstract" signature="validarToken">
+			<arg name="token" description="" flags="in" type="String">
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="token"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+			</arg>
+			<arg name="validarTokenResult" description="" flags="out" type="WebServices.WSEasyDoc.EDRespuesta">
+				<property name="argumentName" value="validarTokenResult"/>
+				<property name="elementQualified" value="true"/>
+				<property name="nativeName" value="ValidarTokenResult"/>
+				<property name="nativeNamespace" value="http://localhost/WS"/>
+				<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:EDRespuesta"/>
+			</arg>
+			<property name="inputMessage" value="ValidarTokenSoapIn"/>
+			<property name="mep" value="REQUEST_RESPONSE"/>
+			<property name="messageNamespace" value="http://localhost/WS"/>
+			<property name="messageResponseNamespace" value="http://localhost/WS"/>
+			<property name="nativeName" value="ValidarToken"/>
+			<property name="outputMessage" value="ValidarTokenSoapOut"/>
+			<property name="soapAction" value="http://localhost/WS/ValidarToken"/>
+			<property name="soapEncoding" value="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<property name="soapNamespace" value="http://localhost/WS"/>
+			<property name="soapOperation" value="ValidarToken"/>
+			<property name="soapOperationResponse" value="ValidarTokenResponse"/>
+			<property name="soapStyle" value="wrapped"/>
+			<property name="soapUse" value="literal"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRDataSourceProvider" description="JRDataSourceProvider" versionID="Version 6.5 " flags="abstract interface" signature="net.sf.jasperreports.engine.JRDataSourceProvider" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.JRDataSourceProvider"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.JRDataSourceProvider"/>
+	<attributes/>
+	<methods>
+		<method name="create" description="create" flags="abstract external" signature="Mcreate(Lnet.sf.jasperreports.engine.JasperReport;)Lnet.sf.jasperreports.engine.JRDataSource;">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="dispose" description="dispose" flags="abstract external" signature="Mdispose(Lnet.sf.jasperreports.engine.JRDataSource;)V">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="getFields" description="getFields" flags="abstract external" signature="MgetFields(Lnet.sf.jasperreports.engine.JasperReport;)[Lnet.sf.jasperreports.engine.JRField;">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}[]" javaType="net.sf.jasperreports.engine.JRField[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+			<exception type="Java.Lang.UnsupportedOperationException"/>
+		</method>
+		<method name="supportsGetFieldsOperation" description="supportsGetFieldsOperation" flags="abstract external" signature="MsupportsGetFieldsOperation()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

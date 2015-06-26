@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="ParticipantSearchList" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Bool name="administrador" flags="hassetter hasgetter public" position="7"/>
+		<String name="apellido" flags="hassetter hasgetter public" position="1"/>
+		<String name="email" flags="hassetter hasgetter public" position="5"/>
+		<Bool name="enabled" flags="hassetter hasgetter public" position="6"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="2"/>
+		<String name="myOU" flags="hassetter hasgetter public" position="8"/>
+		<String name="nombre" flags="hassetter hasgetter public" position="3"/>
+		<String name="usuario" flags="hassetter hasgetter public" position="4"/>
+	</attributes>
+	<methods>
+		<method name="ParticipantSearchList" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.ABM.FormABMUsuario.ParticipantSearchList"/>
+			<sourceCode language="Java1">this.objeto = NUsuario();</sourceCode>
+		</method>
+		<method name="submitDetalle" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;detalle_&quot;+this.id);</sourceCode>
+		</method>
+	</methods>
+</component>

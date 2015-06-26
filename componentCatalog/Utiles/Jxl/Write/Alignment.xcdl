@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Alignment" description="Alignment" versionID="Version 6.5 " flags="" signature="jxl.write.Alignment" type="java">
+	<inherit class="Utiles.Jxl.Format.Alignment" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.Alignment"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.Alignment"/>
+	<attributes/>
+	<methods/>
+</component>

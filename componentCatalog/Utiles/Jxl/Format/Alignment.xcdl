@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Alignment" description="Alignment" versionID="Version 6.5 " flags="" signature="jxl.format.Alignment" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.Alignment"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.Alignment"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.Alignment" name="centre" flags="hassetter hasgetter attribute static external" position="5" javaType="jxl.format.Alignment" writeSignature="ACENTRE;Ljxl.format.Alignment;" readSignature="ACENTRE;Ljxl.format.Alignment;"/>
+		<String name="description" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetDescription()Ljava.lang.String;"/>
+		<object type="Utiles.Jxl.Format.Alignment" name="fill" flags="hassetter hasgetter attribute static external" position="7" javaType="jxl.format.Alignment" writeSignature="AFILL;Ljxl.format.Alignment;" readSignature="AFILL;Ljxl.format.Alignment;"/>
+		<object type="Utiles.Jxl.Format.Alignment" name="general" flags="hassetter hasgetter attribute static external" position="3" javaType="jxl.format.Alignment" writeSignature="AGENERAL;Ljxl.format.Alignment;" readSignature="AGENERAL;Ljxl.format.Alignment;"/>
+		<object type="Utiles.Jxl.Format.Alignment" name="justify" flags="hassetter hasgetter attribute static external" position="8" javaType="jxl.format.Alignment" writeSignature="AJUSTIFY;Ljxl.format.Alignment;" readSignature="AJUSTIFY;Ljxl.format.Alignment;"/>
+		<object type="Utiles.Jxl.Format.Alignment" name="left" flags="hassetter hasgetter attribute static external" position="4" javaType="jxl.format.Alignment" writeSignature="ALEFT;Ljxl.format.Alignment;" readSignature="ALEFT;Ljxl.format.Alignment;"/>
+		<object type="Utiles.Jxl.Format.Alignment" name="right" flags="hassetter hasgetter attribute static external" position="6" javaType="jxl.format.Alignment" writeSignature="ARIGHT;Ljxl.format.Alignment;" readSignature="ARIGHT;Ljxl.format.Alignment;"/>
+		<Int length="32" name="value" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetValue()I"/>
+	</attributes>
+	<methods>
+		<method name="getAlignment" description="getAlignment" flags="static external" signature="MgetAlignment(I)Ljxl.format.Alignment;">
+			<arg name="val" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Alignment" javaType="jxl.format.Alignment"/>
+		</method>
+		<method name="getDescription" description="getDescription" flags="external hidden" signature="MgetDescription()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

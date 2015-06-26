@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Range" description="Range" versionID="Version 6.5 " flags="abstract interface" signature="jxl.Range" type="java">
+	<inherit class="Java.Lang.Object" flags="public hidden"/>
+	<objectProperty name="javaClassName" value="jxl.Range"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.Range"/>
+	<attributes>
+		<object type="Utiles.Jxl.Cell" name="bottomRight" flags="hasgetter external" position="1" javaType="jxl.Cell" readSignature="MgetBottomRight()Ljxl.Cell;"/>
+		<Int length="32" name="firstSheetIndex" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetFirstSheetIndex()I"/>
+		<Int length="32" name="lastSheetIndex" flags="hasgetter external" primitive="true" position="3" javaType="int" readSignature="MgetLastSheetIndex()I"/>
+		<object type="Utiles.Jxl.Cell" name="topLeft" flags="hasgetter external" position="4" javaType="jxl.Cell" readSignature="MgetTopLeft()Ljxl.Cell;"/>
+	</attributes>
+	<methods>
+		<method name="getBottomRight" description="getBottomRight" flags="abstract external hidden" signature="MgetBottomRight()Ljxl.Cell;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Cell" javaType="jxl.Cell"/>
+		</method>
+		<method name="getFirstSheetIndex" description="getFirstSheetIndex" flags="abstract external hidden" signature="MgetFirstSheetIndex()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getLastSheetIndex" description="getLastSheetIndex" flags="abstract external hidden" signature="MgetLastSheetIndex()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getTopLeft" description="getTopLeft" flags="abstract external hidden" signature="MgetTopLeft()Ljxl.Cell;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Cell" javaType="jxl.Cell"/>
+		</method>
+	</methods>
+</component>

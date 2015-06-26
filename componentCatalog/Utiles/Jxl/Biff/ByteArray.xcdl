@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="ByteArray" description="ByteArray" versionID="Version 6.5 " flags="" signature="jxl.biff.ByteArray" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.ByteArray"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.ByteArray"/>
+	<attributes>
+		<Binary name="bytes" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetBytes()[B"/>
+	</attributes>
+	<methods>
+		<method name="ByteArray" flags="static hidden" signature="Kjxl.biff.ByteArray()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.ByteArray"/>
+		</method>
+		<method name="ByteArray" flags="static" signature="Kjxl.biff.ByteArray(I)">
+			<arg name="gs" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.ByteArray"/>
+		</method>
+		<method name="add" description="add" flags="external" signature="Madd(B)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Int(8)" javaType="byte"/>
+		</method>
+		<method name="add" description="add" flags="external" signature="Madd([B)V">
+			<arg name="b" description="" flags="in external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getBytes" description="getBytes" flags="external hidden" signature="MgetBytes()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+	</methods>
+</component>

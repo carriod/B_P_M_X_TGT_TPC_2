@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="SConfiguracion2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="SConfiguracion2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio2.SConfiguracion2"/>
+			<sourceCode language="Java1">this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="cargarResultRepEstacMensual" flags="clientavailable public">
+			<arg name="filtroArg" description="" flags="in" type="Formulario2.FormGenerarReporte"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try{
+    NResultadoReporte2 value = NResultadoReporte2();
+    NResultadoReporte2[] values = {};
+    String sentence = &quot;SELECT ces_id, &quot; +
+				      &quot;ces_codigoplanificacion, &quot; +
+				      &quot;ces_monto, &quot; +
+					  &quot;ces_fechaliberacion, &quot; +
+					  &quot;ces_tce_id, &quot; + 
+				      &quot;dso_descripcion , &quot; +
+				      &quot;tce_descripcion, &quot; +
+				      &quot;cpr_codigo, &quot; +
+				      &quot;cpr_descripcion, &quot; +
+				      &quot;mon_id, mon_descripcion, &quot; +
+					  &quot;pro_id, pro_edicion, &quot; +
+					  &quot;pro_fechaprocesoterminado, &quot; +
+					  &quot;pro_fechareprogramada, &quot; +
+					  &quot;pro_fechaobjetivo, &quot; +
+					  &quot;pro_titulo, &quot; +
+					  &quot;epr_descripcion, &quot; +
+					  &quot;cmp_comprador, &quot; +
+					  &quot;jef_descripcion, &quot; +
+					  &quot;ger_descripcion, &quot; +
+					  &quot;lpr_id, &quot; +
+					  &quot;lpr_descripcion, &quot; +
+					  &quot;tco_id, &quot; +
+					  &quot;tco_descripcion, &quot; +
+					  &quot;nvl(pro_fechaprocesoterminado,ces_fechaliberacion) AS fechaCalculada &quot; +
+					  &quot;FROM TPC2_CESTA &quot; +
+					  &quot;inner JOIN TPC2_PROCESO ON ces_pro_id = pro_id and ces_pro_edicion = pro_edicion &quot; +
+					  &quot;inner JOIN (select pro_id id2, MAX(pro_edicion) edicion2 from tpc2_proceso group by pro_id) proc_ed on ces_pro_id = proc_ed.id2 and ces_pro_edicion = proc_ed.edicion2 &quot; +
+					  &quot;inner JOIN TPC2_PROCESO_ESTADO ON ces_pro_id = pes_pro_id AND ces_pro_edicion = pes_pro_edicion &quot; +
+					  &quot;inner JOIN TPC2_ESTADOS_PROCESO ON pes_epr_id = epr_id &quot; +
+					  &quot;LEFT join tpc2_linea_producto lp on lpr_id = pro_lpr_id &quot; +
+					  &quot;LEFT JOIN TPC2_DIRECCION_SOLICITANTE ON ces_dso_id = dso_id &quot; +
+					  &quot;LEFT JOIN TPC2_TIPO_CESTA ON ces_tce_id = tce_id &quot; +
+					  &quot;LEFT JOIN TPC2_TIPO_COMPRA ON pro_tco_id = tco_id &quot; +
+					  &quot;LEFT JOIN TPC2_CATEGORIA_PRODUCTO ON ces_cpr_codigo = cpr_codigo &quot; +
+					  &quot;LEFT JOIN TPC2_MONEDA ON ces_mon_id = mon_id &quot; +
+					  &quot;LEFT JOIN TPC2_COMPRADOR ON pro_cmp_id = cmp_id &quot; +
+					  &quot;LEFT JOIN TPC2_JEFATURA ON pro_jef_id = jef_id &quot; +
+					  &quot;LEFT JOIN TPC2_GERENCIA ON pro_ger_id = ger_id &quot; +
+					  &quot;WHERE epr_id != 2 &quot; +
+					  &quot;AND nvl(pro_fechaprocesoterminado,ces_fechaliberacion) IS NOT NULL &quot;;
+    
+    Any[] parametros = {  };
+   
+    if(filtroArg.unidad == &quot;Comprador&quot;){
+	    if(filtroArg.nombre != null &amp;&amp; filtroArg.nombre != 0){
+	    	sentence = sentence + &quot;AND pro_cmp_id = ? &quot;;
+	    	parametros[parametros.length()] = filtroArg.nombre;
+	    }
+	}else if(filtroArg.unidad == &quot;Jefe&quot;){
+		if(filtroArg.nombre != null &amp;&amp; filtroArg.nombre != 0){
+			sentence = sentence + &quot;AND pro_jef_id = ? &quot;;
+			parametros[parametros.length()] = filtroArg.nombre;
+		}
+	}else if(filtroArg.unidad == &quot;Gerente&quot;){
+		if(filtroArg.nombre != null &amp;&amp; filtroArg.nombre != 0){
+			sentence = sentence + &quot;AND pro_ger_id = ? &quot;;
+			parametros[parametros.length()] = filtroArg.nombre;
+		}
+	}
+	
+    if(filtroArg.proyecto != null &amp;&amp; filtroArg.proyecto != &quot;&quot;){
+    	sentence = sentence + &quot;AND UPPER(pro_proyecto) LIKE ? &quot;;
+    	parametros[parametros.length()] = &quot;&apos;%&quot; + filtroArg.proyecto.toUpperCase() + &quot;%&apos;&quot;;;
+    }
+    
+    if(filtroArg.lineaProducto != null &amp;&amp; filtroArg.lineaProducto != 0){
+    	sentence = sentence + &quot;AND pro_lpr_id = ? &quot;;
+    	parametros[parametros.length()] = filtroArg.lineaProducto;
+    }
+    
+    if(filtroArg.direccionSolicitante != null &amp;&amp; filtroArg.direccionSolicitante != 0){
+    	sentence = sentence + &quot;AND ces_dso_id = ? &quot;;
+    	parametros[parametros.length()] = filtroArg.direccionSolicitante;
+    }
+    
+    if(filtroArg.fechaDesde != null){
+		sentence = sentence + &quot;AND ((TRUNC(nvl(pro_fechaprocesoterminado,ces_fechaliberacion))) &gt;= TRUNC(?)) &quot;;
+	    parametros[parametros.length()] = filtroArg.fechaDesde;
+	} 
+	
+	if(filtroArg.fechaHasta != null){
+		sentence = sentence + &quot;AND ((TRUNC(nvl(pro_fechaprocesoterminado,ces_fechaliberacion))) &lt;= TRUNC(?)) &quot;;
+	    parametros[parametros.length()] = filtroArg.fechaHasta;
+	} 
+    
+    logMessage(&quot;sentence : &quot; + sentence);
+ 	logMessage(&quot;parametros : &quot; + parametros);
+ 	
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: parametros)){
+		value = NResultadoReporte2();
+		value.idCesta = (Integer)row[&quot;CES_ID&quot;];
+		value.codigoPlanifCesta = (String)row[&quot;CES_CODIGOPLANIFICACION&quot;];
+		value.montoCesta = (String)(row[&quot;CES_MONTO&quot;]);
+		value.fechaLiberacion = (Time)row[&quot;CES_FECHALIBERACION&quot;];
+		value.tipoCestaId = (Integer)row[&quot;CES_TCE_ID&quot;];
+		value.direcSolicDesc = (String)row[&quot;DSO_DESCRIPCION&quot;];
+		value.tipoCestaDesc = (String)row[&quot;TCE_DESCRIPCION&quot;];
+		value.categoriaProductoCodigo = (String)row[&quot;CPR_CODIGO&quot;];
+		value.categoriaProductoDesc = (String)row[&quot;CPR_DESCRIPCION&quot;];
+		value.monedaId = (Integer)row[&quot;MON_ID&quot;];
+		value.monedaDesc = (String)row[&quot;MON_DESCRIPCION&quot;];
+		value.procesoId = (Integer)row[&quot;PRO_ID&quot;];
+		value.procesoEdicion = (Integer)row[&quot;PRO_EDICION&quot;];
+		value.fechaProcesoTerminado = (Time)row[&quot;PRO_FECHAPROCESOTERMINADO&quot;];
+		value.fechaReprogramada = (Time)row[&quot;PRO_FECHAREPROGRAMADA&quot;];
+		value.fechaObjetivo = (Time)row[&quot;PRO_FECHAOBJETIVO&quot;];
+		value.tituloProceso = (String)row[&quot;PRO_TITULO&quot;];
+		value.estadosProcesoDesc = (String)row[&quot;EPR_DESCRIPCION&quot;];
+		value.comprador = (String)row[&quot;CMP_COMPRADOR&quot;];
+		value.jefatura = (String)row[&quot;JEF_DESCRIPCION&quot;];
+		value.gerencia = (String)row[&quot;GER_DESCRIPCION&quot;];
+		value.lineaProductoId = (Integer)row[&quot;LPR_ID&quot;];
+		value.lineaProductoDesc = (String)row[&quot;LPR_DESCRIPCION&quot;];
+		value.tipoCompraId = (Integer)row[&quot;TCO_ID&quot;];
+		value.tipoCompraDesc = (String)row[&quot;TCO_DESCRIPCION&quot;];
+		value.fechaCalculada = (Time)row[&quot;fechaCalculada&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="cargarResultadoReporte" flags="clientavailable public">
+			<arg name="filtroArg" description="" flags="in" type="Formulario2.FormGenerarReporte"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try{
+    NResultadoReporte2 value = NResultadoReporte2();
+    NResultadoReporte2[] values = {};
+    String sentence = &quot;SELECT ces_id, &quot; +
+				      &quot;ces_codigoplanificacion, &quot; +
+				      &quot;ces_monto, &quot; +
+					  &quot;ces_fechaliberacion, &quot; +
+					  &quot;ces_tce_id, &quot; + 
+					  &quot;ces_dso_id , &quot; +
+				      &quot;dso_descripcion , &quot; +
+				      &quot;tce_descripcion, &quot; +
+				      &quot;cpr_codigo, &quot; +
+				      &quot;cpr_descripcion, &quot; +
+				      &quot;mon_id, mon_descripcion, &quot; +
+					  &quot;pro_id, pro_edicion, &quot; +
+					  &quot;pro_fechaprocesoterminado, &quot; +
+					  &quot;pro_fechareprogramada, &quot; +
+					  &quot;pro_fechaobjetivo, &quot; +
+					  &quot;pro_titulo, &quot; +
+					  &quot;epr_descripcion, &quot; +
+					  &quot;cmp_comprador, &quot; +
+					  &quot;jef_descripcion, &quot; +
+					  &quot;ger_descripcion, &quot; +
+					  &quot;lpr_id, &quot; +
+					  &quot;lpr_descripcion, &quot; +
+					  &quot;tco_id, &quot; +
+					  &quot;tco_descripcion, &quot; +
+					  &quot;nvl(pro_fechareprogramada,pro_fechaobjetivo) AS fechaCalculada &quot; +
+					  &quot;FROM TPC2_CESTA &quot; +
+					  &quot;inner JOIN TPC2_PROCESO ON ces_pro_id = pro_id and ces_pro_edicion = pro_edicion &quot; +
+					  &quot;inner JOIN (select pro_id id2, MAX(pro_edicion) edicion2 from tpc2_proceso group by pro_id) proc_ed on ces_pro_id = proc_ed.id2 and ces_pro_edicion = proc_ed.edicion2 &quot; +
+					  &quot;inner JOIN TPC2_PROCESO_ESTADO ON ces_pro_id = pes_pro_id AND ces_pro_edicion = pes_pro_edicion &quot; +
+					  &quot;inner JOIN TPC2_ESTADOS_PROCESO ON pes_epr_id = epr_id &quot; +
+					  &quot;LEFT join tpc2_linea_producto lp on lpr_id = pro_lpr_id &quot; +
+					  &quot;LEFT JOIN TPC2_DIRECCION_SOLICITANTE ON ces_dso_id = dso_id &quot; +
+					  &quot;LEFT JOIN TPC2_TIPO_CESTA ON ces_tce_id = tce_id &quot; +
+					  &quot;LEFT JOIN TPC2_TIPO_COMPRA ON pro_tco_id = tco_id &quot; +
+					  &quot;LEFT JOIN TPC2_CATEGORIA_PRODUCTO ON ces_cpr_codigo = cpr_codigo &quot; +
+					  &quot;LEFT JOIN TPC2_MONEDA ON ces_mon_id = mon_id &quot; +
+					  &quot;LEFT JOIN TPC2_COMPRADOR ON pro_cmp_id = cmp_id &quot; +
+					  &quot;LEFT JOIN TPC2_JEFATURA ON pro_jef_id = jef_id &quot; +
+					  &quot;LEFT JOIN TPC2_GERENCIA ON pro_ger_id = ger_id &quot; +
+					  &quot;WHERE epr_id != 2 &quot; +
+					  &quot;AND nvl(pro_fechareprogramada,pro_fechaobjetivo) IS NOT NULL &quot;;
+    
+    Any[] parametros = {  };
+    
+    if(filtroArg.unidad == &quot;Comprador&quot;){
+	    if(filtroArg.nombre != null &amp;&amp; filtroArg.nombre != 0){
+	    	sentence = sentence + &quot;AND pro_cmp_id = ? &quot;;
+	    	parametros[parametros.length()] = filtroArg.nombre;
+	    }
+	}else if(filtroArg.unidad == &quot;Jefe&quot;){
+		if(filtroArg.nombre != null &amp;&amp; filtroArg.nombre != 0){
+			sentence = sentence + &quot;AND pro_jef_id = ? &quot;;
+			parametros[parametros.length()] = filtroArg.nombre;
+		}
+	}else if(filtroArg.unidad == &quot;Gerente&quot;){
+		if(filtroArg.nombre != null &amp;&amp; filtroArg.nombre != 0){
+			sentence = sentence + &quot;AND pro_ger_id = ? &quot;;
+			parametros[parametros.length()] = filtroArg.nombre;
+		}
+	}
+	
+    if(filtroArg.proyecto != null &amp;&amp; filtroArg.proyecto != &quot;&quot;){
+    	sentence = sentence + &quot;AND UPPER(pro_proyecto) LIKE &apos;%&quot; + filtroArg.proyecto.toUpperCase() + &quot;%&apos;&quot;;
+    	//parametros[parametros.length()] = &quot;&apos;%&quot; + filtroArg.proyecto.toUpperCase() + &quot;%&apos;&quot;;
+    }
+    
+    if(filtroArg.lineaProducto != null &amp;&amp; filtroArg.lineaProducto != 0){
+    	sentence = sentence + &quot;AND pro_lpr_id = ? &quot;;
+    	parametros[parametros.length()] = filtroArg.lineaProducto;
+    }
+    
+    if(filtroArg.direccionSolicitante != null &amp;&amp; filtroArg.direccionSolicitante != 0){
+    	sentence = sentence + &quot;AND ces_dso_id = ? &quot;;
+    	parametros[parametros.length()] = filtroArg.direccionSolicitante;
+    }
+    
+    if(filtroArg.estado == &quot;Stock&quot;){
+	    if(filtroArg.fechaDesde != null){
+			sentence = sentence + &quot;AND ((TRUNC(ces_fechaliberacion)) &gt;= TRUNC(?)) &quot;;
+		    parametros[parametros.length()] = filtroArg.fechaDesde;
+		} 
+		if(filtroArg.fechaHasta != null){
+			sentence = sentence + &quot;AND ((TRUNC(ces_fechaliberacion)) &lt;= TRUNC(?)) &quot; +
+								  &quot;AND ((TRUNC(pro_fechaprocesoterminado)) &gt; TRUNC(?) &quot; +
+								  &quot;OR (TRUNC(pro_fechaprocesoterminado)) IS NULL) &quot;;
+		    parametros[parametros.length()] = filtroArg.fechaHasta;
+		 	parametros[parametros.length()] = filtroArg.fechaHasta;
+ 		}
+		
+    }else if(filtroArg.estado == &quot;Terminadas&quot;){
+	    	
+	    	sentence = sentence + &quot;AND ((TRUNC(pro_fechaprocesoterminado)) IS NOT NULL) &quot;;
+	    	if(filtroArg.fechaDesde != null){
+				sentence = sentence + &quot;AND ((TRUNC(pro_fechaprocesoterminado)) &gt;= TRUNC(?)) &quot;;
+			    parametros[parametros.length()] = filtroArg.fechaDesde;
+			} 
+			
+			if(filtroArg.fechaHasta != null){
+				sentence = sentence + &quot;AND ((TRUNC(pro_fechaprocesoterminado)) &lt;= TRUNC(?)) &quot;;
+			    parametros[parametros.length()] = filtroArg.fechaHasta;
+			}
+    }
+    
+    logMessage(&quot;sentence : &quot; + sentence + &quot;,estado: &quot; + filtroArg.estado);
+    logMessage(&quot;parametros: &quot; + parametros + &quot;,estado: &quot; + filtroArg.estado);
+ 	
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: parametros)){
+		value = NResultadoReporte2();
+		value.idCesta = (Integer)row[&quot;CES_ID&quot;];
+		value.codigoPlanifCesta = (String)row[&quot;CES_CODIGOPLANIFICACION&quot;];
+		value.montoCesta = (String)(row[&quot;CES_MONTO&quot;]);
+		value.fechaLiberacion = (Time)row[&quot;CES_FECHALIBERACION&quot;];
+		value.tipoCestaId = (Integer)row[&quot;CES_TCE_ID&quot;];
+		value.direcSolicId = (Integer)row[&quot;CES_DSO_ID&quot;];
+		value.direcSolicDesc = (String)row[&quot;DSO_DESCRIPCION&quot;];
+		value.tipoCestaDesc = (String)row[&quot;TCE_DESCRIPCION&quot;];
+		value.categoriaProductoCodigo = (String)row[&quot;CPR_CODIGO&quot;];
+		value.categoriaProductoDesc = (String)row[&quot;CPR_DESCRIPCION&quot;];
+		value.monedaId = (Integer)row[&quot;MON_ID&quot;];
+		value.monedaDesc = (String)row[&quot;MON_DESCRIPCION&quot;];
+		value.procesoId = (Integer)row[&quot;PRO_ID&quot;];
+		value.procesoEdicion = (Integer)row[&quot;PRO_EDICION&quot;];
+		value.fechaProcesoTerminado = (Time)row[&quot;PRO_FECHAPROCESOTERMINADO&quot;];
+		value.fechaReprogramada = (Time)row[&quot;PRO_FECHAREPROGRAMADA&quot;];
+		value.fechaObjetivo = (Time)row[&quot;PRO_FECHAOBJETIVO&quot;];
+		value.tituloProceso = (String)row[&quot;PRO_TITULO&quot;];
+		value.estadosProcesoDesc = (String)row[&quot;EPR_DESCRIPCION&quot;];
+		value.comprador = (String)row[&quot;CMP_COMPRADOR&quot;];
+		value.jefatura = (String)row[&quot;JEF_DESCRIPCION&quot;];
+		value.gerencia = (String)row[&quot;GER_DESCRIPCION&quot;];
+		value.lineaProductoId = (Integer)row[&quot;LPR_ID&quot;];
+		value.lineaProductoDesc = (String)row[&quot;LPR_DESCRIPCION&quot;];
+		value.tipoCompraId = (Integer)row[&quot;TCO_ID&quot;];
+		value.tipoCompraDesc = (String)row[&quot;TCO_DESCRIPCION&quot;];
+		value.fechaCalculada = (Time)row[&quot;fechaCalculada&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="cargarResultadoReporteMotDemo" flags="public server disableclient">
+			<arg name="filtroArg" description="" flags="in" type="Formulario2.FormGenerarReporte"/>
+			<arg name="reporte" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try{
+    NResultadoReporte2 value = NResultadoReporte2();
+    NResultadoReporte2[] values = {};
+	Any[] parametros = {};
+    
+    String sentence = &quot;SELECT ces_id, &quot; +
+				      &quot;ces_codigoplanificacion, &quot; +
+				      &quot;ces_monto, &quot; +
+					  &quot;ces_fechaliberacion, &quot; +
+					  &quot;ces_tce_id, &quot; + 
+					  &quot;ces_dso_id , &quot; +
+					  &quot;CES_FECHARECHAZO, &quot; +
+				      &quot;dso_descripcion , &quot; +
+				      &quot;tce_descripcion, &quot; +
+				      &quot;cpr_codigo, &quot; +
+				      &quot;cpr_descripcion, &quot; +
+				      &quot;mon_id, mon_descripcion, &quot; +
+					  &quot;pro_id, pro_edicion, &quot; +
+					  &quot;PRO_FECHAAPROBADOMESA, &quot; +
+					  &quot;pro_fechaprocesoterminado, &quot; +
+					  &quot;pro_fechareprogramada, &quot; +
+					  &quot;pro_fechaobjetivo, &quot; +
+					  &quot;pro_titulo, &quot; +
+					  &quot;epr_descripcion, &quot; +
+					  &quot;cmp_comprador, &quot; +
+					  &quot;jef_descripcion, &quot; +
+					  &quot;ger_descripcion, &quot; +
+					  &quot;lpr_id, &quot; +
+					  &quot;lpr_descripcion, &quot; +
+					  &quot;tco_id, &quot; +
+					  &quot;tco_descripcion, &quot; +
+					  &quot;mre_id, &quot; +
+					  &quot;mre_descripcion &quot; +
+					  &quot;FROM TPC2_CESTA &quot; +
+					  &quot;inner JOIN TPC2_PROCESO ON ces_pro_id = pro_id and ces_pro_edicion = pro_edicion &quot; +
+					  &quot;inner JOIN (select pro_id id2, MAX(pro_edicion) edicion2 from tpc2_proceso group by pro_id) proc_ed on ces_pro_id = proc_ed.id2 and ces_pro_edicion = proc_ed.edicion2 &quot; +
+					  &quot;inner JOIN TPC2_PROCESO_ESTADO ON ces_pro_id = pes_pro_id AND ces_pro_edicion = pes_pro_edicion &quot; +
+					  &quot;inner JOIN TPC2_ESTADOS_PROCESO ON pes_epr_id = epr_id &quot; +
+					  &quot;LEFT join tpc2_linea_producto lp on lpr_id = pro_lpr_id &quot; +
+					  &quot;LEFT JOIN TPC2_DIRECCION_SOLICITANTE ON ces_dso_id = dso_id &quot; +
+					  &quot;LEFT JOIN TPC2_TIPO_CESTA ON ces_tce_id = tce_id &quot; +
+					  &quot;LEFT JOIN TPC2_TIPO_COMPRA ON pro_tco_id = tco_id &quot; +
+					  &quot;LEFT JOIN TPC2_CATEGORIA_PRODUCTO ON ces_cpr_codigo = cpr_codigo &quot; +
+					  &quot;LEFT JOIN TPC2_MONEDA ON ces_mon_id = mon_id &quot; +
+					  &quot;LEFT JOIN TPC2_COMPRADOR ON pro_cmp_id = cmp_id &quot; +
+					  &quot;LEFT JOIN TPC2_JEFATURA ON pro_jef_id = jef_id &quot; +
+					  &quot;LEFT JOIN TPC2_GERENCIA ON pro_ger_id = ger_id &quot; +
+					  &quot;LEFT JOIN TPC2_MOTIVO_REPROGRAMACION ON pro_mre_id = mre_id &quot; +
+					  &quot;WHERE epr_id != 2 &quot;;
+					  if (arg.reporte == 11 || arg.reporte == 12){
+							sentence = sentence +
+							&quot;AND TRUNC(pro_fechareprogramada) &gt;= TRUNC(?) &quot; +
+							&quot;AND TRUNC(pro_fechareprogramada) &lt;= TRUNC(?) &quot; ;
+							parametros[] = filtroArg.fechaDesde;
+							parametros[] = filtroArg.fechaHasta;
+					  }else if (arg.reporte == 13){
+					  		sentence = sentence + 
+					  		&quot;AND PRO_FECHARECHAZO is NULL &quot;;
+					  }else if (arg.reporte == 14){
+					  		sentence = sentence + 
+					  		&quot;AND epr_id IN (8,9) &quot;;
+					  }else if (arg.reporte == 15){
+					  		sentence = sentence + 
+					  		&quot;AND PRO_FECHAAPROBADOMESA is NULL &quot;;
+					  }else if (arg.reporte == 17){
+					  		sentence = sentence + 
+					  		&quot;AND TRUNC(CES_FECHALIBERACION) &gt;= TRUNC(?) &quot; +
+							&quot;AND TRUNC(CES_FECHALIBERACION) &lt;= TRUNC(?) &quot; +
+							&quot;AND (TRUNC(PRO_FECHAPROCESOTERMINADO) is NULL OR TRUNC(PRO_FECHAPROCESOTERMINADO) &gt; TRUNC(?)) &quot;;
+							parametros[] = filtroArg.fechaDesde;
+							parametros[] = filtroArg.fechaHasta;
+							parametros[] = filtroArg.fechaHasta;
+					  }
+					  if (arg.reporte == 13 || arg.reporte == 14 || arg.reporte == 16){
+					  		sentence = sentence + 
+					  		&quot;AND TRUNC(PRO_FECHAAPROBADOMESA) &gt;= TRUNC(?) &quot; +
+							&quot;AND TRUNC(PRO_FECHAAPROBADOMESA) &lt;= TRUNC(?) &quot; ;
+							parametros[] = filtroArg.fechaDesde;
+							parametros[] = filtroArg.fechaHasta;
+					  }
+					  if (arg.reporte == 14 || arg.reporte == 15){
+					  	sentence = sentence +
+					  	&quot;AND CES_FECHARECHAZO is NULL &quot;; 
+					  }
+					  if (arg.reporte == 13 || arg.reporte == 15 || arg.reporte == 16){
+					  	sentence = sentence +
+					  	&quot;AND epr_id != 18 &quot;; 
+					  }
+					  if (arg.reporte == 13 || arg.reporte == 14 || arg.reporte == 15){
+							if (arg.filtroArg.unidad == &quot;Gerente&quot;){
+								if (arg.filtroArg.nombre != null &amp;&amp; arg.filtroArg.nombre &gt; 0){
+									sentence = sentence +
+									&quot;AND pro_ger_id = ? &quot;;
+									parametros[] = arg.filtroArg.nombre;
+								}else{
+									sentence = sentence +
+									&quot;AND pro_ger_id in (&quot;;
+									foreach (numero in arg.filtroArg.nombres.keys) {
+										sentence = sentence + &quot;?,&quot;;
+									    parametros[]=numero;
+									}
+									sentence = sentence.substring(first : 0, last : sentence.length()-1);
+									sentence = sentence+&quot;) &quot;;
+								}
+							}else if (arg.filtroArg.unidad == &quot;Jefe&quot;){
+								if (arg.filtroArg.nombre != null &amp;&amp; arg.filtroArg.nombre &gt; 0){
+									sentence = sentence +
+									&quot;AND pro_jef_id = ? &quot;;
+									parametros[] = arg.filtroArg.nombre;
+								}else{
+									sentence = sentence +
+									&quot;AND pro_jef_id in (&quot;;
+									foreach (numero in arg.filtroArg.nombres.keys) {
+										sentence = sentence + &quot;?,&quot;;
+									    parametros[]=numero;
+									}
+									sentence = sentence.substring(first : 0, last : sentence.length()-1);
+									sentence = sentence+&quot;) &quot;;
+								}
+							}else if (arg.filtroArg.unidad == &quot;Comprador&quot;){
+								if (arg.filtroArg.nombre != null &amp;&amp; arg.filtroArg.nombre &gt; 0){
+									sentence = sentence +
+									&quot;AND pro_cmp_id = ? &quot;;
+									parametros[] = arg.filtroArg.nombre;
+								}else{
+									sentence = sentence +
+									&quot;AND pro_cmp_id in (&quot;;
+									foreach (numero in arg.filtroArg.nombres.keys) {
+										sentence = sentence + &quot;?,&quot;;
+									    parametros[]=numero;
+									}
+									sentence = sentence.substring(first : 0, last : sentence.length()-1);
+									sentence = sentence+&quot;) &quot;;
+								}
+							}else if (arg.filtroArg.unidad == &quot;Director&quot;){
+								/*if (arg.filtroArg.nombre != null &amp;&amp; arg.filtroArg.nombre &gt; 0){
+									sentence = sentence +
+									&quot;AND CES_DSO_ID = ? &quot;;
+									parametros[] = arg.filtroArg.nombre;
+								}else{
+									sentence = sentence +
+									&quot;AND CES_DSO_ID in ( &quot;;
+									foreach (numero in arg.filtroArg.nombres.keys) {
+										sentence = sentence + &quot;?,&quot;;
+									    parametros[]=numero;
+									}
+									sentence = sentence.substring(first : 0, last : sentence.length()-1);
+									sentence = sentence+&quot;) &quot;;
+								}*/
+							}
+					  }
+					 
+    
+   
+    
+    
+    logMessage(&quot;sentence : &quot; + sentence + &quot;,estado: &quot; + filtroArg.estado);
+    logMessage(&quot;parametros: &quot; + parametros + &quot;,estado: &quot; + filtroArg.estado);
+ 	
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: parametros)){
+		value = NResultadoReporte2();
+		value.idCesta = (Integer)row[&quot;CES_ID&quot;];
+		value.codigoPlanifCesta = (String)row[&quot;CES_CODIGOPLANIFICACION&quot;];
+		value.montoCesta = (String)(row[&quot;CES_MONTO&quot;]);
+		value.fechaLiberacion = (Time)row[&quot;CES_FECHALIBERACION&quot;];
+		value.fechaRechazo = (Time)row[&quot;CES_FECHARECHAZO&quot;];
+		value.tipoCestaId = (Integer)row[&quot;CES_TCE_ID&quot;];
+		value.direcSolicId = (Integer)row[&quot;CES_DSO_ID&quot;];
+		value.direcSolicDesc = (String)row[&quot;DSO_DESCRIPCION&quot;];
+		value.tipoCestaDesc = (String)row[&quot;TCE_DESCRIPCION&quot;];
+		value.categoriaProductoCodigo = (String)row[&quot;CPR_CODIGO&quot;];
+		value.categoriaProductoDesc = (String)row[&quot;CPR_DESCRIPCION&quot;];
+		value.monedaId = (Integer)row[&quot;MON_ID&quot;];
+		value.monedaDesc = (String)row[&quot;MON_DESCRIPCION&quot;];
+		value.procesoId = (Integer)row[&quot;PRO_ID&quot;];
+		value.procesoEdicion = (Integer)row[&quot;PRO_EDICION&quot;];
+		value.fechaAprobadoMesa = (Time)row[&quot;PRO_FECHAAPROBADOMESA&quot;];
+		value.fechaProcesoTerminado = (Time)row[&quot;PRO_FECHAPROCESOTERMINADO&quot;];
+		value.fechaReprogramada = (Time)row[&quot;PRO_FECHAREPROGRAMADA&quot;];
+		value.fechaObjetivo = (Time)row[&quot;PRO_FECHAOBJETIVO&quot;];
+		value.tituloProceso = (String)row[&quot;PRO_TITULO&quot;];
+		value.estadosProcesoDesc = (String)row[&quot;EPR_DESCRIPCION&quot;];
+		value.comprador = (String)row[&quot;CMP_COMPRADOR&quot;];
+		value.jefatura = (String)row[&quot;JEF_DESCRIPCION&quot;];
+		value.gerencia = (String)row[&quot;GER_DESCRIPCION&quot;];
+		value.lineaProductoId = (Integer)row[&quot;LPR_ID&quot;];
+		value.lineaProductoDesc = (String)row[&quot;LPR_DESCRIPCION&quot;];
+		value.tipoCompraId = (Integer)row[&quot;TCO_ID&quot;];
+		value.tipoCompraDesc = (String)row[&quot;TCO_DESCRIPCION&quot;];
+		value.fechaCalculada = (Time)row[&quot;fechaCalculada&quot;];
+		value.motivoReprogId = (Integer)row[&quot;MRE_ID&quot;];
+		value.motivoReprogDesc = (String)row[&quot;MRE_DESCRIPCION&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

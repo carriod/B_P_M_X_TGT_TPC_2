@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="ListaCartas" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio2.NCarta2" name="carta" flags="hassetter hasgetter public" position="1"/>
+		<String name="moneda" flags="hassetter hasgetter public" position="2"/>
+	</attributes>
+	<methods>
+		<method name="ListaCartas" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormEdicionPedidos.ListaCartas"/>
+			<sourceCode language="Java1">carta = NCarta2();</sourceCode>
+		</method>
+		<method name="botonLink" flags="clientavailable public">
+			<sourceCode language="Java1"/>
+		</method>
+		<method name="eliminar" flags="clientavailable public">
+			<sourceCode language="Java1">Integer index = this.listaCartas.indexOf(element : this);
+this.listaCartas.delete(index : index);
+
+this.subTotal.monto=0;
+for (int i = 0; i&lt;this.listaCartas.length();i++){
+	this.listaCartas[i].moneda=this.listaMonedaValidValues()[listaMoneda];
+	this.subTotal.monto = this.subTotal.monto + this.listaCartas[i].carta.montoParcial.monto;
+}
+this.setEditable(componentId : &quot;requiereCarta&quot;, editable : (this.listaCartas.length()  &lt;= 0));
+this.setEditable(componentId : &quot;agregarCarta&quot;, editable : this.objeto.requiereCarta);
+
+if (this.listaCartas.length()==0){
+	this.objeto.ultimaCartaEnviada = false;
+	this.setVisible(componentId : &quot;ultimaCarta&quot;, visible : true, collapsed : true);
+	this.setVisible(componentId : &quot;ultimaCartaL&quot;, visible : true, collapsed : true);
+}</sourceCode>
+		</method>
+		<method name="onChangeMonto2" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Bool"/>
+			<sourceCode language="Java1">boolean ok = true;
+
+if ((this.carta.montoParcial.montoStr != null) &amp;&amp; (this.carta.montoParcial.montoStr != &quot;&quot;)){
+	if(!this.carta.montoParcial.montoStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+		this.showError(error : &quot;Lista Cartas: Monto Parcial requiere el formato ###.###.###.###,##&quot;);
+		ok = false;
+	}
+}
+
+this.onChangeMoneda();
+
+return ok;</sourceCode>
+		</method>
+	</methods>
+</component>

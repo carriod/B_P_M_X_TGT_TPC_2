@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<FDIObject>
+	<DirBusinessParameter>
+		<id>TAMANO_MAXIMO_ARCHIVO</id>
+		<type>Int</type>
+		<defaultValue><![CDATA[5120]]></defaultValue>
+		<valuesMap/>
+	</DirBusinessParameter>
+</FDIObject>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="FormulaException" description="FormulaException" versionID="Version 6.5 " flags="exception system_exception" signature="jxl.biff.formula.FormulaException" type="java">
+	<inherit class="Utiles.Jxl.JXLException" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.formula.FormulaException"/>
+	<objectProperty name="package" value="jxl.biff.formula"/>
+	<objectProperty name="typeId" value="jxl.biff.formula.FormulaException"/>
+	<attributes>
+		<object type="Utiles.Jxl.Biff.Formula.FormulaException.FormulaMessage" name="biff8Supported" flags="hassetter hasgetter attribute static external" position="1" javaType="jxl.biff.formula.FormulaException$FormulaMessage" writeSignature="Abiff8Supported;Ljxl.biff.formula.FormulaException$FormulaMessage;" readSignature="Abiff8Supported;Ljxl.biff.formula.FormulaException$FormulaMessage;"/>
+	</attributes>
+	<methods>
+		<method name="FormulaException" flags="static" signature="Kjxl.biff.formula.FormulaException(Ljxl.biff.formula.FormulaException$FormulaMessage;)">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Biff.Formula.FormulaException.FormulaMessage" javaType="jxl.biff.formula.FormulaException$FormulaMessage"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Formula.FormulaException"/>
+		</method>
+		<method name="FormulaException" flags="static" signature="Kjxl.biff.formula.FormulaException(Ljxl.biff.formula.FormulaException$FormulaMessage;I)">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Biff.Formula.FormulaException.FormulaMessage" javaType="jxl.biff.formula.FormulaException$FormulaMessage"/>
+			<arg name="arg2" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Formula.FormulaException"/>
+		</method>
+		<method name="FormulaException" flags="static" signature="Kjxl.biff.formula.FormulaException(Ljxl.biff.formula.FormulaException$FormulaMessage;Ljava.lang.String;)">
+			<arg name="arg1" description="" flags="in external" type="Utiles.Jxl.Biff.Formula.FormulaException.FormulaMessage" javaType="jxl.biff.formula.FormulaException$FormulaMessage"/>
+			<arg name="arg2" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Formula.FormulaException"/>
+		</method>
+	</methods>
+</component>

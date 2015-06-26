@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="StringUtil" description="StringUtil" versionID="Version 6.5 " flags="" signature="bpms.util.StringUtil" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.util.StringUtil"/>
+	<objectProperty name="package" value="bpms.util"/>
+	<objectProperty name="typeId" value="bpms.util.StringUtil"/>
+	<attributes/>
+	<methods>
+		<method name="StringUtil" flags="static hidden" signature="Kbpms.util.StringUtil()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.StringUtil"/>
+		</method>
+		<method name="main" description="main" flags="static external hidden" signature="Mmain([Ljava.lang.String;)V">
+			<arg name="arg" description="" flags="in external" primitive="true" type="String[]" javaType="java.lang.String[]"/>
+		</method>
+		<method name="parseChar" description="parseChar" flags="static external" signature="MparseChar(I)C">
+			<arg name="num" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="String(1)" javaType="char"/>
+		</method>
+		<method name="parseInt" description="parseInt" flags="static external" signature="MparseInt(Ljava.lang.String;Z)I">
+			<arg name="st" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="hexa" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="parseIntArrayToString" description="parseIntArrayToString" flags="static external" signature="MparseIntArrayToString(Ljava.util.ArrayList;)Ljava.lang.String;">
+			<arg name="values" description="" flags="in external" type="Any[]" javaType="java.util.ArrayList"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="parseStringToGet" description="parseStringToGet" flags="static external" signature="MparseStringToGet(Ljava.lang.String;)Ljava.lang.String;">
+			<arg name="textToParse" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="parseStringToHTML" description="parseStringToHTML" flags="static external" signature="MparseStringToHTML(Ljava.lang.String;)Ljava.lang.String;">
+			<arg name="textToParse" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="parseStringToIntArray" description="parseStringToIntArray" flags="static external" signature="MparseStringToIntArray(Ljava.lang.String;)[I">
+			<arg name="textToParse" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int[]" javaType="int[]"/>
+		</method>
+	</methods>
+</component>

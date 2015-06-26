@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="FJasper" description="" versionID="Version 5.5 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Java.Util.ArrayList" name="fields" flags="hassetter hasgetter public" position="1"/>
+		<object type="Java.Util.Vector" name="fieldsBeanCollection" flags="hassetter hasgetter public" position="2"/>
+		<String name="nombreFormulario" flags="hassetter hasgetter public" position="3"/>
+		<object type="Java.Util.Map" name="parameters" flags="hassetter hasgetter public" position="4"/>
+	</attributes>
+	<methods>
+		<method name="FJasper" description="" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FJasper"/>
+			<sourceCode language="Java1">			
+this.parameters = HashMap();
+this.fields = ArrayList();
+this.fieldsBeanCollection = Vector();
+</sourceCode>
+		</method>
+		<method name="crearPDF" description="" flags="clientavailable public">
+			<arg name="pathSalida" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="design" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign"/>
+				<variable name="inpt" type="Java.Io.FileInputStream"/>
+				<variable name="jasperPrint" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint"/>
+				<variable name="nombreFileCompleto" type="String"/>
+				<variable name="output" type="Java.Io.FileOutputStream"/>
+				<variable name="pathPortal" type="String"/>
+				<variable name="report" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">			
+			
+				
+				
+				
+				
+				
+				
+				
+				
+			
+			
+respuesta = FValues.getValue(id : &quot;PATH_JASPER_JRXML&quot;);
+
+if (respuesta.resultado == OK) {
+    pathPortal = ((String) respuesta.contenido);
+}
+else {
+    logMessage(&quot;Error en FJasper.crearPDF: No se ha podido cargar el value PATH_PORTAL&quot;, severity : Severity.SEVERE);
+}
+
+nombreFileCompleto = arg.pathSalida + this.nombreFormulario + &quot;.pdf&quot;;
+output = FileOutputStream(Java.File(nombreFileCompleto));
+Fuego.Io.File fileAux = Fuego.File(sourcePath : pathPortal + this.nombreFormulario + &quot;.bak&quot;);
+
+if (fileAux.exists()) {
+    // tomo el archivo compilado:
+    report = ((JasperReport) JRLoader.loadObject(pathPortal + this.nombreFormulario + &quot;.bak&quot;));
+}
+else {
+    // compilo el XML
+    inpt = FileInputStream(Java.File(pathPortal + this.nombreFormulario + &quot;.jrxml&quot;));
+    design = JRXmlLoader.load(inpt);
+    report = JasperCompileManager.compileReport(design);
+    JasperCompileManager.compileReportToFile(design, pathPortal + this.nombreFormulario + &quot;.bak&quot;);
+}
+
+jasperPrint = JasperFillManager.fillReport(report, this.parameters, 
+                                           this.getDataSource());
+JasperExportManager.exportReportToPdfStream(jasperPrint, output);
+
+// result = JasperManager.printReport(jasperPrint, true)
+output.close();
+
+return nombreFileCompleto;
+</sourceCode>
+		</method>
+		<method name="getDataSource" description="" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource"/>
+			<sourceCode language="Java1">			
+if ((this.fields.size() == 0)&amp;&amp;(this.fieldsBeanCollection.size() == 0)) {
+    return JREmptyDataSource();
+}else if ((this.fields.size() == 0)&amp;&amp;(this.fieldsBeanCollection.size() &gt; 0)) {
+    return JRBeanCollectionDataSource(this.fieldsBeanCollection);   
+}else {
+    return JRBeanCollectionDataSource(this.fields);
+}
+</sourceCode>
+		</method>
+		<method name="getPDFStream" description="" flags="clientavailable public">
+			<variables>
+				<variable name="byteArray" type="Binary"/>
+				<variable name="design" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign"/>
+				<variable name="inpt" type="Java.Io.FileInputStream"/>
+				<variable name="jasperPrint" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint"/>
+				<variable name="pathPortal" type="String"/>
+				<variable name="report" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Binary"/>
+			<sourceCode language="Java1">			
+				
+				
+				
+				
+				
+				
+				
+			
+			
+pathPortal = &quot;d:\\Neoris\\jasper\\&quot;;
+respuesta = FValues.getValue(id : &quot;PATH_JASPER_JRXML&quot;);
+
+if (respuesta.resultado == OK) {
+    pathPortal = ((String) respuesta.contenido);
+}
+else {
+    logMessage(&quot;Error FJasper.getPDFStream: Al cargar el path de archivos jasperReport - &quot; + respuesta.contenido, severity : SEVERE);
+}
+display(pathPortal);
+Fuego.Io.File fileAux = Fuego.File(sourcePath : pathPortal + this.nombreFormulario + &quot;.bak&quot;);
+
+if (fileAux.exists()) {
+    // tomo el archivo compilado:
+    report = ((JasperReport) JRLoader.loadObject(pathPortal + this.nombreFormulario + &quot;.bak&quot;));
+}
+else {
+    // compilo el XML
+    inpt = FileInputStream(Java.File(pathPortal + this.nombreFormulario + &quot;.jrxml&quot;));
+    design = JRXmlLoader.load(inpt);
+    report = JasperCompileManager.compileReport(design);
+    JasperCompileManager.compileReportToFile(design, pathPortal + this.nombreFormulario + &quot;.bak&quot;);
+}
+
+jasperPrint = JasperFillManager.fillReport(report, this.parameters, 
+                                           this.getDataSource());
+JRPdfExporter exporter = JRPdfExporter();
+exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+
+ByteArrayOutputStream baos = ByteArrayOutputStream();
+exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, baos);
+
+exporter.exportReport();
+
+byteArray = baos.toByteArray();
+baos.close();
+
+return byteArray;
+</sourceCode>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Formula" description="Formula" versionID="Version 6.5 " flags="" signature="jxl.write.Formula" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.FormulaRecord" flags="public"/>
+	<inherit class="Utiles.Jxl.Write.WritableCell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.Formula"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.Formula"/>
+	<attributes/>
+	<methods>
+		<method name="Formula" flags="static" signature="Kjxl.write.Formula(IILjava.lang.String;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="form" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Formula"/>
+		</method>
+		<method name="Formula" flags="static" signature="Kjxl.write.Formula(IILjava.lang.String;Ljxl.format.CellFormat;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="form" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="st" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Formula"/>
+		</method>
+		<method name="copyTo" description="copyTo" flags="external" signature="McopyTo(II)Ljxl.write.WritableCell;">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="ListaDJAI" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio2.NListaDJAI2" name="objetoDJAI" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ListaDJAI" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormEdicionProcesos.ListaDJAI"/>
+		</method>
+		<method name="eliminar" flags="clientavailable public">
+			<sourceCode language="Java1">Integer index = this.listaDJAI.indexOf(element : this);
+this.listaDJAI.delete(index : index);
+if(this.listaDJAI.length() &gt; 0){
+	this.setEditable(componentId : &quot;djai&quot;, editable : false);
+}
+else{
+	this.setEditable(componentId : &quot;djai&quot;, editable : true);
+}
+
+if(this.objeto.djai){
+	this.setEditable(componentId: &quot;agregarDJAI&quot;, editable: true);
+}
+else{
+	this.setEditable(componentId: &quot;agregarDJAI&quot;, editable: false);
+}</sourceCode>
+		</method>
+	</methods>
+</component>

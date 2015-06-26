@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FComprasParticulares" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SComprasParticulares" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FComprasParticulares" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FComprasParticulares"/>
+			<sourceCode language="Java1">this.servicio = new SComprasParticulares();</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="idSol" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteValue(idSol : arg.idSol);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getDatosComplementarios" flags="clientavailable public">
+			<arg name="comprasParticulares" description="" flags="in" type="Negocio.NComprasParticulares"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	if(comprasParticulares.listaComprasParticulares.id != null){
+		respuesta = FListaComprasParticulares.getValueForId(id : comprasParticulares.listaComprasParticulares.id);
+		if (respuesta.resultado == OK) {
+			comprasParticulares.listaComprasParticulares = ((NListaComprasParticulares) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	respuesta.contenido = comprasParticulares;
+} 
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getDatosComplementarios(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues(vigencia : false);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesCombo" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues(vigencia : true);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		String[Integer] comboItem;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    String codigo = (String)objArray[&quot;CODIGO&quot;];
+		    String descripcion = (String)objArray[&quot;DESCRIPCION&quot;];
+			//comboItem[(Integer)objArray[&quot;ID&quot;]] = (codigo!=null?codigo:&quot;&quot;) + (codigo!=null&amp;&amp;descripcion!=null?&quot; - &quot;:&quot;&quot;) + (descripcion!=null?descripcion:&quot;&quot;);
+			comboItem[(Integer)objArray[&quot;ID&quot;]] = (descripcion!=null?descripcion:&quot;&quot;);
+		}
+    	respuesta.contenido = comboItem;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="idSol" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(idSol : arg.idSol);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	NComprasParticulares comprasParticulares = this.mapeoArrayToNegocio(objArray : objArray);
+    	respuesta = this.getDatosComplementarios(comprasParticulares : comprasParticulares);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NComprasParticulares"/>
+			<sourceCode language="Java1">NComprasParticulares objNegocio = NComprasParticulares();
+
+objNegocio.idSolicitud = (Integer)arg.objArray[&quot;SOL_ID&quot;];
+objNegocio.listaComprasParticulares.id 	= (Integer)arg.objArray[&quot;LCP_ID&quot;];
+objNegocio.aproComitePatrocinadores 	= (Java.Lang.Boolean)arg.objArray[&quot;APROCOMITEPATROCINIOS&quot;];
+objNegocio.promotorGasto 	= (String)arg.objArray[&quot;PROMOTORGASTO&quot;];
+objNegocio.expCondPatrocinio= (String)arg.objArray[&quot;EXPCONDPATROCINIO&quot;];
+objNegocio.comentariosPatrocinio = (String)arg.objArray[&quot;COMENTARIOSPATROCINIO&quot;];
+objNegocio.aprobadoRRHH = (Java.Lang.Boolean)arg.objArray[&quot;APROBADORRHH&quot;];
+objNegocio.productoServicio 	= (String)arg.objArray[&quot;PRODUCTOSERVICIO&quot;];
+objNegocio.gastoPresupuestoPesos= (Decimal)arg.objArray[&quot;GASTOPRESUPUESTOPESOS&quot;];
+objNegocio.gastoPresupuestoDolares  = (Decimal)arg.objArray[&quot;GASTOPRESUPUESTODOLARES&quot;];
+objNegocio.gastoPresupuestoEuros 	= (Decimal)arg.objArray[&quot;GASTOPRESUPUESTOEUROS&quot;];
+objNegocio.gastoPresupuestoOM.id 	= (Integer)arg.objArray[&quot;MON_ID_GASTOPRESUPUESTO&quot;];
+objNegocio.gastoPresupuestoOtro 	= (Decimal)arg.objArray[&quot;GASTOPRESUPUESTOOTRO&quot;];
+objNegocio.ingresosPresupuestoPesos = (Decimal)arg.objArray[&quot;INGRESOSPRESUPUESTOPESOS&quot;];
+objNegocio.ingresosPresupuestoDolares= (Decimal)arg.objArray[&quot;INGRESOSPRESUPUESTODOLARES&quot;];
+objNegocio.ingresosPresupuestoEuros = (Decimal)arg.objArray[&quot;INGRESOSPRESUPUESTOEUROS&quot;];
+objNegocio.ingresosPresupuestoOM.id 	= (Integer)arg.objArray[&quot;MON_ID_INGRESOSPRESUPUESTO&quot;];
+objNegocio.ingresosPresupuestoOtro 	= (Decimal)arg.objArray[&quot;INGRESOSPRESUPUESTOOTRO&quot;];
+objNegocio.overBooking 	 = (String)arg.objArray[&quot;OVERBOOKING&quot;];
+objNegocio.margenProducto= (String)arg.objArray[&quot;MARGENPRODUCTO&quot;];
+objNegocio.mantieneMargenAnterior 	= (Java.Lang.Boolean)arg.objArray[&quot;MANTIENEMARGENANTERIOR&quot;];
+objNegocio.gastoEjAnteriorPesos = (Decimal)arg.objArray[&quot;GASTOEJANTERIORPESOS&quot;];
+objNegocio.gastoEjAnteriorDolares = (Decimal)arg.objArray[&quot;GASTOEJANTERIORDOLARES&quot;];
+objNegocio.gastoEjAnteriorEuros = (Decimal)arg.objArray[&quot;GASTOEJANTERIOREUROS&quot;];
+objNegocio.gastoEjAnteriorOM.id 	= (Integer)arg.objArray[&quot;MON_ID_GASTOEJANTERIOR&quot;];
+objNegocio.gastoEjAnteriorOtro 	= (Decimal)arg.objArray[&quot;GASTOEJANTERIOROTRO&quot;];
+objNegocio.ingresosEjAnteriorPesos = (Decimal)arg.objArray[&quot;INGRESOSEJANTERIORPESOS&quot;];
+objNegocio.ingresosEjAnteriorDolares = (Decimal)arg.objArray[&quot;INGRESOSEJANTERIORDOLARES&quot;];
+objNegocio.ingresosEjAnteriorEuros = (Decimal)arg.objArray[&quot;INGRESOSEJANTERIOREUROS&quot;];
+objNegocio.ingresosEjAnteriorOM.id 	= (Integer)arg.objArray[&quot;MON_ID_INGRESOSEJANTERIOR&quot;];
+objNegocio.ingresosEjAnteriorOtro 	= (Decimal)arg.objArray[&quot;INGRESOSEJANTERIOROTRO&quot;];
+objNegocio.comentariosReventa = (String)arg.objArray[&quot;COMENTARIOSREVENTA&quot;];
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="nuevaSolicitud" description="" flags="in" type="Bool"/>
+			<arg name="objNegocio" description="" flags="in" type="Negocio.NComprasParticulares"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.setValue( idSol : arg.objNegocio.idSolicitud,
+										idLcp : arg.objNegocio.listaComprasParticulares.id,
+										aproComitePatrocinions : arg.objNegocio.aproComitePatrocinadores,
+										promotorGasto : arg.objNegocio.promotorGasto, 
+	                       				expCondPatrocinio : arg.objNegocio.expCondPatrocinio,
+	                       				comentariosPatrocinio : arg.objNegocio.comentariosPatrocinio,
+	                       				aprobadaRrhh : arg.objNegocio.aprobadoRRHH, 
+					                    productoServicio : arg.objNegocio.productoServicio,
+					                    gastoPresupuestoPesos : arg.objNegocio.gastoPresupuestoPesos,
+					                    gastoPresupuestoDolares : arg.objNegocio.gastoPresupuestoDolares, 
+					                    gastoPresupuestoEuros : arg.objNegocio.gastoPresupuestoEuros,
+					                    gastoPresupuestoOM : arg.objNegocio.gastoPresupuestoOM.id,
+					                    gastoPresupuestoOtro : arg.objNegocio.gastoPresupuestoOtro,
+					                    ingresosPresupuestoPesos : arg.objNegocio.ingresosPresupuestoPesos, 
+					                    ingresosPresupuestoDolares : arg.objNegocio.ingresosPresupuestoDolares,
+					                    ingresosPresupuestoEuros : arg.objNegocio.ingresosPresupuestoEuros,
+					                    ingresosPresupuestoOM : arg.objNegocio.ingresosPresupuestoOM.id,
+					                    ingresosPresupuestoOtro : arg.objNegocio.ingresosPresupuestoOtro,
+					                    overBooking :	arg.objNegocio.overBooking,
+					                    margenProducto : arg.objNegocio.margenProducto,
+					                    mantieneMargenProducto : arg.objNegocio.mantieneMargenAnterior, 
+					                    gastoEjAnteriorPesos : arg.objNegocio.gastoEjAnteriorPesos,
+					                    gastoEjAnteriorDolares : arg.objNegocio.gastoEjAnteriorDolares, 
+					                    gastoEjAnteriorEuros : arg.objNegocio.gastoEjAnteriorEuros,
+					                    gastoEjAnteriorOM : arg.objNegocio.gastoEjAnteriorOM.id,
+					                    gastoEjAnteriorOtro : arg.objNegocio.gastoEjAnteriorOtro,
+					                    ingresosEjAnteriorPesos : arg.objNegocio.ingresosEjAnteriorPesos,
+					                    ingresosEjAnteriorDolares : arg.objNegocio.ingresosEjAnteriorDolares, 
+					                    ingresosEjAnteriorEuros : arg.objNegocio.ingresosEjAnteriorEuros,
+					                    ingresosEjAnteriorOM : arg.objNegocio.ingresosEjAnteriorOM.id, 
+                                        ingresosEjAnteriorOtro : arg.objNegocio.ingresosEjAnteriorOtro,
+					                    comentariosReventa : arg.objNegocio.comentariosReventa,
+					                    nuevaSolicitud : arg.nuevaSolicitud);
+
+}
+
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarErrores" flags="clientavailable public">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="rol" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">String[] errores = {};
+
+if(arg.rol == &quot;TPC - Solicitante SAGI&quot;){
+
+	if(arg.solicitud.comprasParticulares.listaComprasParticulares.id != null){
+		
+		if(arg.solicitud.comprasParticulares.listaComprasParticulares.id == 1){
+			
+			if((arg.solicitud.comprasParticulares.promotorGasto == &quot;&quot;) || (arg.solicitud.comprasParticulares.promotorGasto == null)){
+				errores[] = &quot;&apos;Promotor del Gasto &apos; es obligatorio&quot;;
+			}
+			if((arg.solicitud.comprasParticulares.expCondPatrocinio == &quot;&quot;) || (arg.solicitud.comprasParticulares.expCondPatrocinio == null)){
+				errores[] = &quot;&apos;Gastos de Explotación Condicionan Patrocinio&apos; es obligatorio&quot;;
+			}
+			
+		}else if(arg.solicitud.comprasParticulares.listaComprasParticulares.id == 2){
+				
+				if((arg.solicitud.comprasParticulares.productoServicio == &quot;&quot;) || (arg.solicitud.comprasParticulares.productoServicio == null)){
+					errores[] = &quot;&apos;Producto / Servicio&apos; es obligatorio&quot;;
+				}
+				
+				
+				if (arg.solicitud.comprasParticulares.gastoPresupuestoPesos == null	&amp;&amp; 
+				 arg.solicitud.comprasParticulares.gastoPresupuestoDolares == null	&amp;&amp; 
+				 arg.solicitud.comprasParticulares.gastoPresupuestoEuros == null	&amp;&amp; 
+				(arg.solicitud.comprasParticulares.gastoPresupuestoOM.id == null || arg.solicitud.comprasParticulares.gastoPresupuestoOtro == null)){
+		
+					errores[]= &quot;Debe cargar al menos uno de los montos totales de &apos;Gastos en Presupuesto&apos;&quot;;
+		
+				}
+				
+				if (arg.solicitud.comprasParticulares.ingresosPresupuestoPesos == null	&amp;&amp; 
+				 arg.solicitud.comprasParticulares.ingresosPresupuestoDolares == null	&amp;&amp; 
+				 arg.solicitud.comprasParticulares.ingresosPresupuestoEuros == null		&amp;&amp; 
+				(arg.solicitud.comprasParticulares.ingresosPresupuestoOM.id == null || arg.solicitud.comprasParticulares.ingresosPresupuestoOtro == null)){
+		
+					errores[]= &quot;Debe cargar al menos uno de los montos totales de &apos;Ingreso en Presupuesto&apos;&quot;;
+		
+				}
+				
+				
+				
+				
+				if ((arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Pesos&apos; en Gastos en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.gastoPresupuestoDolaresStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Dolares&apos; en Gastos en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.gastoPresupuestoEurosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoPresupuestoEurosStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.gastoPresupuestoEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Euros&apos; en Gastos en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.gastoPresupuestoOtroStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoPresupuestoOtroStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.gastoPresupuestoOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Otra&apos; en Gastos en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.ingresosPresupuestoPesosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosPresupuestoPesosStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.ingresosPresupuestoPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Pesos&apos; en Ingreso en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.ingresosPresupuestoDolaresStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosPresupuestoDolaresStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.ingresosPresupuestoDolaresStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Dolares&apos; en Ingreso en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.ingresosPresupuestoEurosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosPresupuestoEurosStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.ingresosPresupuestoEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Euros&apos; en Ingreso en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.ingresosPresupuestoOtroStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosPresupuestoOtroStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.ingresosPresupuestoOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Otra&apos; en Ingreso en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.gastoEjAnteriorPesosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoEjAnteriorPesosStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.gastoEjAnteriorPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Pesos&apos; en Gastos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.gastoEjAnteriorDolaresStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoEjAnteriorDolaresStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.gastoEjAnteriorDolaresStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Dolares&apos; en Gastos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.gastoEjAnteriorEurosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoEjAnteriorEurosStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.gastoEjAnteriorEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Euros&apos; en Gastos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.gastoEjAnteriorOtroStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoEjAnteriorOtroStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.gastoEjAnteriorOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Otra&apos; en Gastos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.ingresosEjAnteriorPesosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosEjAnteriorPesosStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.ingresosEjAnteriorPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Pesos&apos; en Ingresos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.ingresosEjAnteriorDolaresStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosEjAnteriorDolaresStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.ingresosEjAnteriorDolaresStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Dolares&apos; en Ingresos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.ingresosEjAnteriorEurosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosEjAnteriorEurosStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.ingresosEjAnteriorEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Euros&apos; en Ingresos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+				if ((arg.solicitud.comprasParticulares.ingresosEjAnteriorOtroStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosEjAnteriorOtroStr != &quot;&quot;)){
+					if(!arg.solicitud.comprasParticulares.ingresosEjAnteriorOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+						errores[]= &quot;&apos;Otra&apos; en Ingresos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+					}
+				}
+	
+				
+				
+				if((arg.solicitud.comprasParticulares.overBooking == null || arg.solicitud.comprasParticulares.overBooking == &quot;&quot;)){
+					errores[] = &quot;&apos;Overbooking&apos; es obligatorio&quot;;
+				}
+				if((arg.solicitud.comprasParticulares.margenProducto == &quot;&quot;) || (arg.solicitud.comprasParticulares.margenProducto == null)){
+					errores[] = &quot;&apos;Margen del Producto o Servicio&apos; es obligatorio&quot;;
+				}
+				if(arg.solicitud.comprasParticulares.mantieneMargenAnterior == null){
+					errores[] = &quot;&apos;Mantiene Margen Ejercicio Anterior&apos; es obligatorio&quot;;
+				}		
+		}
+		else if(arg.solicitud.comprasParticulares.listaComprasParticulares.id == 3){
+			Java.Lang.Boolean doc4Cargado = false;
+			ciclo:for (int index = 0; index &lt; arg.solicitud.documentos.length; index++) {
+			    if(arg.solicitud.documentos[index].documento.idTipoDocumento == 4 &amp;&amp; arg.solicitud.documentos[index].documento.cargado){
+			    	doc4Cargado = true;
+			    	break ciclo;
+			    }
+			}
+			if(!doc4Cargado){
+				errores[] = &quot;&apos;Documento Evidencia Aprobación&apos; es obligatorio&quot;;	
+			}
+		}
+	}
+
+}else if(arg.rol == &quot;TPC - Gestor Enlace&quot;){
+		
+	if(arg.solicitud.comprasParticulares.listaComprasParticulares.id != null){
+		
+		if(arg.solicitud.comprasParticulares.listaComprasParticulares.id == 1){
+			
+			if((arg.solicitud.comprasParticulares.promotorGasto == &quot;&quot;) || (arg.solicitud.comprasParticulares.promotorGasto == null)){
+				errores[] = &quot;&apos;Promotor del Gasto &apos; es obligatorio&quot;;
+			}
+			if((arg.solicitud.comprasParticulares.expCondPatrocinio == &quot;&quot;) || (arg.solicitud.comprasParticulares.expCondPatrocinio == null)){
+				errores[] = &quot;&apos;Gastos de Explotación Condicionan Patrocinio&apos; es obligatorio&quot;;
+			}
+			
+		}else if(arg.solicitud.comprasParticulares.listaComprasParticulares.id == 2){
+					
+					if((arg.solicitud.comprasParticulares.productoServicio == &quot;&quot;) || (arg.solicitud.comprasParticulares.productoServicio == null)){
+						errores[] = &quot;&apos;Producto / Servicio&apos; es obligatorio&quot;;
+					}
+					
+					
+					if (arg.solicitud.comprasParticulares.gastoPresupuestoPesos == null	&amp;&amp; 
+					 arg.solicitud.comprasParticulares.gastoPresupuestoDolares == null	&amp;&amp; 
+					 arg.solicitud.comprasParticulares.gastoPresupuestoEuros == null 	&amp;&amp; 
+					(arg.solicitud.comprasParticulares.gastoPresupuestoOM.id == null || arg.solicitud.comprasParticulares.gastoPresupuestoOtro == null)){
+						errores[]= &quot;Debe cargar al menos uno de los montos totales de &apos;Gastos en Presupuesto&apos;&quot;;
+			
+					}
+					
+					if (arg.solicitud.comprasParticulares.ingresosPresupuestoPesos == null	&amp;&amp; 
+					 arg.solicitud.comprasParticulares.ingresosPresupuestoDolares == null	&amp;&amp; 
+					 arg.solicitud.comprasParticulares.ingresosPresupuestoEuros == null		&amp;&amp; 
+					(arg.solicitud.comprasParticulares.ingresosPresupuestoOM.id == null || arg.solicitud.comprasParticulares.ingresosPresupuestoOtro == null)){
+			
+						errores[]= &quot;Debe cargar al menos uno de los montos totales de &apos;Ingreso en Presupuesto&apos;&quot;;
+			
+					}
+					
+					if((arg.solicitud.comprasParticulares.overBooking == null || arg.solicitud.comprasParticulares.overBooking == &quot;&quot;)){
+						errores[] = &quot;&apos;Overbooking&apos; es obligatorio&quot;;
+					}
+					if((arg.solicitud.comprasParticulares.margenProducto == &quot;&quot;) || (arg.solicitud.comprasParticulares.margenProducto == null)){
+						errores[] = &quot;&apos;Margen del Producto o Servicio&apos; es obligatorio&quot;;
+					}
+					if(arg.solicitud.comprasParticulares.mantieneMargenAnterior == null){
+						errores[] = &quot;&apos;Mantiene Margen Ejercicio Anterior&apos; es obligatorio&quot;;
+					}
+					
+					
+					if (arg.solicitud.comprasParticulares.gastoPresupuestoPesos == null	&amp;&amp; 
+					 arg.solicitud.comprasParticulares.gastoEjAnteriorDolares == null	&amp;&amp; 
+					 arg.solicitud.comprasParticulares.gastoEjAnteriorEuros == null		&amp;&amp; 
+					(arg.solicitud.comprasParticulares.gastoEjAnteriorOM.id == null || arg.solicitud.comprasParticulares.gastoEjAnteriorOtro == null)){
+			
+						errores[]= &quot;Debe cargar al menos uno de los montos totales de &apos;Gastos en Ejercicio Anterior&apos;&quot;;
+			
+					}
+					
+					if (arg.solicitud.comprasParticulares.ingresosEjAnteriorPesos == null	&amp;&amp; 
+					 arg.solicitud.comprasParticulares.ingresosEjAnteriorDolares == null	&amp;&amp; 
+					 arg.solicitud.comprasParticulares.ingresosEjAnteriorEuros == null		&amp;&amp; 
+					(arg.solicitud.comprasParticulares.ingresosEjAnteriorOM.id == null || arg.solicitud.comprasParticulares.ingresosEjAnteriorOtro == null)){
+			
+						errores[]= &quot;Debe cargar al menos uno de los montos totales de &apos;Ingresos en Ejercicio Anterior&apos;&quot;;
+			
+					}
+					
+					if ((arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Pesos&apos; en Gastos en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.gastoPresupuestoDolaresStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.gastoPresupuestoPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Dolares&apos; en Gastos en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.gastoPresupuestoEurosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoPresupuestoEurosStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.gastoPresupuestoEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Euros&apos; en Gastos en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.gastoPresupuestoOtroStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoPresupuestoOtroStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.gastoPresupuestoOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Otra&apos; en Gastos en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.ingresosPresupuestoPesosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosPresupuestoPesosStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.ingresosPresupuestoPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Pesos&apos; en Ingreso en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.ingresosPresupuestoDolaresStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosPresupuestoDolaresStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.ingresosPresupuestoDolaresStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Dolares&apos; en Ingreso en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.ingresosPresupuestoEurosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosPresupuestoEurosStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.ingresosPresupuestoEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Euros&apos; en Ingreso en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.ingresosPresupuestoOtroStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosPresupuestoOtroStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.ingresosPresupuestoOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Otra&apos; en Ingreso en Presupuesto requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.gastoEjAnteriorPesosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoEjAnteriorPesosStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.gastoEjAnteriorPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Pesos&apos; en Gastos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.gastoEjAnteriorDolaresStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoEjAnteriorDolaresStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.gastoEjAnteriorDolaresStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Dolares&apos; en Gastos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.gastoEjAnteriorEurosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoEjAnteriorEurosStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.gastoEjAnteriorEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Euros&apos; en Gastos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.gastoEjAnteriorOtroStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.gastoEjAnteriorOtroStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.gastoEjAnteriorOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Otra&apos; en Gastos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.ingresosEjAnteriorPesosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosEjAnteriorPesosStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.ingresosEjAnteriorPesosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Pesos&apos; en Ingresos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.ingresosEjAnteriorDolaresStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosEjAnteriorDolaresStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.ingresosEjAnteriorDolaresStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Dolares&apos; en Ingresos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.ingresosEjAnteriorEurosStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosEjAnteriorEurosStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.ingresosEjAnteriorEurosStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Euros&apos; en Ingresos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+					if ((arg.solicitud.comprasParticulares.ingresosEjAnteriorOtroStr != null) &amp;&amp; (arg.solicitud.comprasParticulares.ingresosEjAnteriorOtroStr != &quot;&quot;)){
+						if(!arg.solicitud.comprasParticulares.ingresosEjAnteriorOtroStr.trim().isMatch(regexp : &apos;/(^[0-9]{1,3}([.][0-9]{3})?([.][0-9]{3})?([.][0-9]{3})?([,][0-9]{1,2})?$)|(^[0-9]{1,12}([,][0-9]{1,2})?$)|^$/&apos;)){
+							errores[]= &quot;&apos;Otra&apos; en Ingresos en Ejercicio Anterior requiere el formato ###.###.###.###,##&quot;;
+						}
+					}
+						
+					
+			}else if(arg.solicitud.comprasParticulares.listaComprasParticulares.id == 3){
+				Java.Lang.Boolean doc4Cargado = false;
+				ciclo:for (int index = 0; index &lt; arg.solicitud.documentos.length; index++) {
+				    if(arg.solicitud.documentos[index].documento.idTipoDocumento == 4 &amp;&amp; arg.solicitud.documentos[index].documento.cargado){
+				    	doc4Cargado = true;
+				    	break ciclo;
+				    }
+				}
+				if(!doc4Cargado){
+					errores[] = &quot;&apos;Documento Evidencia Aprobación&apos; es obligatorio&quot;;	
+				}
+			}
+		}
+	}
+
+return errores;</sourceCode>
+		</method>
+	</methods>
+</component>

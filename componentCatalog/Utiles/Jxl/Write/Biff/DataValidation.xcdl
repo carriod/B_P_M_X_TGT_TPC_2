@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DataValidation" description="DataValidation" versionID="Version 6.5 " flags="" signature="jxl.write.biff.DataValidation" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.DataValidation"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.DataValidation"/>
+	<attributes/>
+	<methods>
+		<method name="insertColumn" description="insertColumn" flags="external" signature="MinsertColumn(I)V">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="insertRow" description="insertRow" flags="external" signature="MinsertRow(I)V">
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="removeColumn" description="removeColumn" flags="external" signature="MremoveColumn(I)V">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="removeRow" description="removeRow" flags="external" signature="MremoveRow(I)V">
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite(Ljxl.write.biff.File;)V">
+			<arg name="outputFile" description="" flags="in external" type="Utiles.Jxl.Write.Biff.File" javaType="jxl.write.biff.File"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+	</methods>
+</component>

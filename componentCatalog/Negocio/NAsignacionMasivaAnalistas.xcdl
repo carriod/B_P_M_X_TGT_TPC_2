@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NAsignacionMasivaAnalistas" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="areaSolicitante" flags="hassetter hasgetter public" position="4"/>
+		<String name="descripcionNecesidad" flags="hassetter hasgetter public" position="3"/>
+		<Time scale="0" precision="0" name="fechaEnvio" flags="hassetter hasgetter public includeincheck" position="5"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="1"/>
+		<Int length="32" name="nroCesta" flags="hassetter hasgetter public" position="2"/>
+	</attributes>
+	<methods>
+		<method name="NAsignacionMasivaAnalistas" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NAsignacionMasivaAnalistas"/>
+		</method>
+	</methods>
+</component>

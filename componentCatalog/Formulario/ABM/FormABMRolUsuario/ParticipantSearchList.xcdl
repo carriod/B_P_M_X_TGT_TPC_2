@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="ParticipantSearchList" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="firstName" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<String name="id" flags="hassetter hasgetter public" position="1"/>
+		<String name="lastName" flags="hassetter hasgetter public" position="2"/>
+	</attributes>
+	<methods>
+		<method name="ParticipantSearchList" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.ABM.FormABMRolUsuario.ParticipantSearchList"/>
+		</method>
+		<method name="submitDetalle" flags="clientavailable public">
+			<sourceCode language="Java1">this.selectedParticipantId = this.id;
+this.selectedParticipantFirstName = this.firstName;
+this.selectedParticipantLastName = this.lastName;
+this.submit(text : &quot;detalle&quot;);</sourceCode>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<externalResource name="WSTokenServiceProducer" type="web service" subtype="WSPRODUCER">
+	<property name="endpointIdentifier" value="WSTokenService"/>
+	<property name="project.basedir" value="C:\Users\Yago\OracleBPMWorkspace\TGT_TPC"/>
+</externalResource>

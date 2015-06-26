@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="ErrorFormulaCell" description="ErrorFormulaCell" versionID="Version 6.5 " flags="abstract interface" signature="jxl.ErrorFormulaCell" type="java">
+	<inherit class="Utiles.Jxl.ErrorCell" flags=""/>
+	<inherit class="Utiles.Jxl.FormulaCell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.ErrorFormulaCell"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.ErrorFormulaCell"/>
+	<attributes/>
+	<methods/>
+</component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WriteException" description="WriteException" versionID="Version 6.5 " flags="abstract exception system_exception" signature="jxl.write.WriteException" type="java">
+	<inherit class="Utiles.Jxl.JXLException" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.WriteException"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.WriteException"/>
+	<attributes/>
+	<methods/>
+</component>

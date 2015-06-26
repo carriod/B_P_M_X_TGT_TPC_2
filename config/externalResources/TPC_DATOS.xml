@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<externalResource name="TPC_DATOS" type="SQL" subtype="ORACLE">
+	<property name="jdbc.pool.maxopencursors" value="100"/>
+	<property name="password" value="&lt;encrypted&gt;LJHb8DsmVXk="/>
+	<property name="jdbc.pool.min" value="0"/>
+	<property name="jdbc.pool.max" value="10"/>
+	<property name="jdbc.pool.idle_timeout" value="5"/>
+	<property name="oracle.sid" value="XE"/>
+	<property name="oracle.dateEqualsTimestamp" value="false"/>
+	<property name="oracle.driver_type" value="thin"/>
+	<property name="jdbc.pool.entry.max" value="10"/>
+	<property name="jdbc.port" value="1521"/>
+	<property name="jdbc.schema" value="TPC"/>
+	<property name="jdbc.host" value="TPC_DB_HOST"/>
+	<property name="jdbc.xa" value="false"/>
+	<property name="user" value="TPC_EXP"/>
+</externalResource>

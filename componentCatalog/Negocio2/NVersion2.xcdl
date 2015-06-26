@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="NVersion2" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Time scale="2" precision="2" name="fechaUltimaImportacion" flags="hassetter hasgetter public" position="2"/>
+		<String name="version" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="NVersion2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio2.NVersion2"/>
+			<sourceCode language="Java1">this.version = &quot;TPC2v20150610&quot;;</sourceCode>
+		</method>
+	</methods>
+</component>

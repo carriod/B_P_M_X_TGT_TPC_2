@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableFont" description="WritableFont" versionID="Version 6.5 " flags="" signature="jxl.write.WritableFont" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.WritableFontRecord" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.WritableFont"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.WritableFont"/>
+	<attributes>
+		<object type="Utiles.Jxl.Write.WritableFont.FontName" name="ARIAL" flags="hasgetter attribute static external final" position="2" javaType="jxl.write.WritableFont$FontName" writeSignature="AARIAL;Ljxl.write.WritableFont$FontName;" readSignature="AARIAL;Ljxl.write.WritableFont$FontName;"/>
+		<object type="Utiles.Jxl.Write.BoldStyle" name="BOLD" flags="hasgetter attribute static external final" position="8" javaType="jxl.write.BoldStyle" writeSignature="ABOLD;Ljxl.write.BoldStyle;" readSignature="ABOLD;Ljxl.write.BoldStyle;"/>
+		<object type="Utiles.Jxl.Write.WritableFont.FontName" name="COURIER" flags="hasgetter attribute static external final" position="4" javaType="jxl.write.WritableFont$FontName" writeSignature="ACOURIER;Ljxl.write.WritableFont$FontName;" readSignature="ACOURIER;Ljxl.write.WritableFont$FontName;"/>
+		<Int length="32" name="DEFAULT_POINT_SIZE" flags="hasgetter attribute static external final" primitive="true" position="9" javaType="int" writeSignature="ADEFAULT_POINT_SIZE;I" readSignature="ADEFAULT_POINT_SIZE;I"/>
+		<object type="Utiles.Jxl.Write.BoldStyle" name="NO_BOLD" flags="hasgetter attribute static external final" position="7" javaType="jxl.write.BoldStyle" writeSignature="ANO_BOLD;Ljxl.write.BoldStyle;" readSignature="ANO_BOLD;Ljxl.write.BoldStyle;"/>
+		<object type="Utiles.Jxl.Write.WritableFont.FontName" name="TAHOMA" flags="hasgetter attribute static external final" position="5" javaType="jxl.write.WritableFont$FontName" writeSignature="ATAHOMA;Ljxl.write.WritableFont$FontName;" readSignature="ATAHOMA;Ljxl.write.WritableFont$FontName;"/>
+		<object type="Utiles.Jxl.Write.WritableFont.FontName" name="TIMES" flags="hasgetter attribute static external final" position="3" javaType="jxl.write.WritableFont$FontName" writeSignature="ATIMES;Ljxl.write.WritableFont$FontName;" readSignature="ATIMES;Ljxl.write.WritableFont$FontName;"/>
+		<object type="Utiles.Jxl.Write.WritableFont.FontName" name="VERDANA" flags="hasgetter attribute static external final" position="6" javaType="jxl.write.WritableFont$FontName" writeSignature="AVERDANA;Ljxl.write.WritableFont$FontName;" readSignature="AVERDANA;Ljxl.write.WritableFont$FontName;"/>
+		<object type="Utiles.Jxl.Write.BoldStyle" name="boldStyle" flags="hassetter external" position="1" javaType="jxl.write.BoldStyle" writeSignature="MsetBoldStyle(Ljxl.write.BoldStyle;)V"/>
+	</attributes>
+	<methods>
+		<method name="WritableFont" flags="static" signature="Kjxl.write.WritableFont(Ljxl.write.WritableFont$FontName;)">
+			<arg name="fn" description="" flags="in external" type="Utiles.Jxl.Write.WritableFont.FontName" javaType="jxl.write.WritableFont$FontName"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableFont"/>
+		</method>
+		<method name="WritableFont" flags="static" signature="Kjxl.write.WritableFont(Ljxl.format.Font;)">
+			<arg name="f" description="" flags="in external" type="Utiles.Jxl.Format.Font" javaType="jxl.format.Font"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableFont"/>
+		</method>
+		<method name="WritableFont" flags="static" signature="Kjxl.write.WritableFont(Ljxl.write.WritableFont$FontName;I)">
+			<arg name="fn" description="" flags="in external" type="Utiles.Jxl.Write.WritableFont.FontName" javaType="jxl.write.WritableFont$FontName"/>
+			<arg name="ps" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableFont"/>
+		</method>
+		<method name="WritableFont" flags="static" signature="Kjxl.write.WritableFont(Ljxl.write.WritableFont$FontName;ILjxl.write.BoldStyle;)">
+			<arg name="fn" description="" flags="in external" type="Utiles.Jxl.Write.WritableFont.FontName" javaType="jxl.write.WritableFont$FontName"/>
+			<arg name="ps" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="bs" description="" flags="in external" type="Utiles.Jxl.Write.BoldStyle" javaType="jxl.write.BoldStyle"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableFont"/>
+		</method>
+		<method name="WritableFont" flags="static" signature="Kjxl.write.WritableFont(Ljxl.write.WritableFont$FontName;ILjxl.write.BoldStyle;Z)">
+			<arg name="fn" description="" flags="in external" type="Utiles.Jxl.Write.WritableFont.FontName" javaType="jxl.write.WritableFont$FontName"/>
+			<arg name="ps" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="bs" description="" flags="in external" type="Utiles.Jxl.Write.BoldStyle" javaType="jxl.write.BoldStyle"/>
+			<arg name="italic" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableFont"/>
+		</method>
+		<method name="WritableFont" flags="static" signature="Kjxl.write.WritableFont(Ljxl.write.WritableFont$FontName;ILjxl.write.BoldStyle;ZLjxl.format.UnderlineStyle;)">
+			<arg name="fn" description="" flags="in external" type="Utiles.Jxl.Write.WritableFont.FontName" javaType="jxl.write.WritableFont$FontName"/>
+			<arg name="ps" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="bs" description="" flags="in external" type="Utiles.Jxl.Write.BoldStyle" javaType="jxl.write.BoldStyle"/>
+			<arg name="it" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="us" description="" flags="in external" type="Utiles.Jxl.Format.UnderlineStyle" javaType="jxl.format.UnderlineStyle"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableFont"/>
+		</method>
+		<method name="WritableFont" flags="static" signature="Kjxl.write.WritableFont(Ljxl.write.WritableFont$FontName;ILjxl.write.BoldStyle;ZLjxl.format.UnderlineStyle;Ljxl.format.Colour;)">
+			<arg name="fn" description="" flags="in external" type="Utiles.Jxl.Write.WritableFont.FontName" javaType="jxl.write.WritableFont$FontName"/>
+			<arg name="ps" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="bs" description="" flags="in external" type="Utiles.Jxl.Write.BoldStyle" javaType="jxl.write.BoldStyle"/>
+			<arg name="it" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="us" description="" flags="in external" type="Utiles.Jxl.Format.UnderlineStyle" javaType="jxl.format.UnderlineStyle"/>
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableFont"/>
+		</method>
+		<method name="WritableFont" flags="static" signature="Kjxl.write.WritableFont(Ljxl.write.WritableFont$FontName;ILjxl.write.BoldStyle;ZLjxl.format.UnderlineStyle;Ljxl.format.Colour;Ljxl.format.ScriptStyle;)">
+			<arg name="fn" description="" flags="in external" type="Utiles.Jxl.Write.WritableFont.FontName" javaType="jxl.write.WritableFont$FontName"/>
+			<arg name="ps" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="bs" description="" flags="in external" type="Utiles.Jxl.Write.BoldStyle" javaType="jxl.write.BoldStyle"/>
+			<arg name="it" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<arg name="us" description="" flags="in external" type="Utiles.Jxl.Format.UnderlineStyle" javaType="jxl.format.UnderlineStyle"/>
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<arg name="ss" description="" flags="in external" type="Utiles.Jxl.Format.ScriptStyle" javaType="jxl.format.ScriptStyle"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableFont"/>
+		</method>
+		<method name="createFont" description="createFont" flags="static external" signature="McreateFont(Ljava.lang.String;)Ljxl.write.WritableFont$FontName;">
+			<arg name="fontName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableFont.FontName" javaType="jxl.write.WritableFont$FontName"/>
+		</method>
+		<method name="setBoldStyle" description="setBoldStyle" flags="external hidden" signature="MsetBoldStyle(Ljxl.write.BoldStyle;)V">
+			<arg name="boldStyle" description="" flags="in external" type="Utiles.Jxl.Write.BoldStyle" javaType="jxl.write.BoldStyle"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setColour" description="setColour" flags="external hidden" signature="MsetColour(Ljxl.format.Colour;)V">
+			<arg name="colour" description="" flags="in external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setItalic" description="setItalic" flags="external hidden" signature="MsetItalic(Z)V">
+			<arg name="italic" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setPointSize" description="setPointSize" flags="external hidden" signature="MsetPointSize(I)V">
+			<arg name="pointSize" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setScriptStyle" description="setScriptStyle" flags="external hidden" signature="MsetScriptStyle(Ljxl.format.ScriptStyle;)V">
+			<arg name="scriptStyle" description="" flags="in external" type="Utiles.Jxl.Format.ScriptStyle" javaType="jxl.format.ScriptStyle"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+		<method name="setUnderlineStyle" description="setUnderlineStyle" flags="external hidden" signature="MsetUnderlineStyle(Ljxl.format.UnderlineStyle;)V">
+			<arg name="us" description="" flags="in external" type="Utiles.Jxl.Format.UnderlineStyle" javaType="jxl.format.UnderlineStyle"/>
+			<exception type="Utiles.Jxl.Write.WriteException"/>
+		</method>
+	</methods>
+</component>

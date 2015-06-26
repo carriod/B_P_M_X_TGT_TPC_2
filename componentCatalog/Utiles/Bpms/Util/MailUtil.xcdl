@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="MailUtil" description="MailUtil" versionID="Version 6.5 " flags="" signature="bpms.util.MailUtil" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.util.MailUtil"/>
+	<objectProperty name="package" value="bpms.util"/>
+	<objectProperty name="typeId" value="bpms.util.MailUtil"/>
+	<attributes/>
+	<methods>
+		<method name="MailUtil" flags="static hidden" signature="Kbpms.util.MailUtil()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Bpms.Util.MailUtil"/>
+		</method>
+		<method name="getHeaderValue" description="getHeaderValue" flags="static external" signature="MgetHeaderValue(Lfuego.components.Mail;Ljava.lang.String;)Ljava.lang.Object;">
+			<arg name="msg" description="" flags="in external" type="Fuego.Net.Mail" javaType="fuego.components.Mail"/>
+			<arg name="ind" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Fonts" description="Fonts" versionID="Version 6.5 " flags="" signature="jxl.biff.Fonts" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.Fonts"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.Fonts"/>
+	<attributes/>
+	<methods>
+		<method name="Fonts" flags="static hidden" signature="Kjxl.biff.Fonts()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Fonts"/>
+		</method>
+		<method name="addFont" description="addFont" flags="external" signature="MaddFont(Ljxl.biff.FontRecord;)V">
+			<arg name="f" description="" flags="in external" type="Utiles.Jxl.Biff.FontRecord" javaType="jxl.biff.FontRecord"/>
+		</method>
+		<method name="getFont" description="getFont" flags="external" signature="MgetFont(I)Ljxl.biff.FontRecord;">
+			<arg name="index" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.FontRecord" javaType="jxl.biff.FontRecord"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite(Ljxl.write.biff.File;)V">
+			<arg name="outputFile" description="" flags="in external" type="Utiles.Jxl.Write.Biff.File" javaType="jxl.write.biff.File"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+	</methods>
+</component>

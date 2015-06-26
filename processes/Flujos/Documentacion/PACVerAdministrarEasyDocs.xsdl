@@ -1,0 +1,1258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<xpdl:Package Name="ALBPMPackage-PACVerAdministrarEasyDocs" Id="PACVerAdministrarEasyDocs" xmlns:albpm="http://www.albpm.com/2007/albpm.XPDL2"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:xpdl="http://www.wfmc.org/2004/XPDL2.0alpha" >
+    <xpdl:PackageHeader>
+        <xpdl:XPDLVersion>
+            2.0</xpdl:XPDLVersion>
+        <xpdl:Vendor>
+            BEA Aqualogic BPM</xpdl:Vendor>
+        <xpdl:Created>
+            29/08/2012 11:58:11</xpdl:Created>
+        <xpdl:VendorExtensions>
+            <xpdl:VendorExtension ToolId="ALBPM" schemaLocation="http://www.albpm.com/2007/albpm.XPDL2 file:ALBPM_XPDL.xsd"/>
+        </xpdl:VendorExtensions>
+    </xpdl:PackageHeader>
+    <xpdl:ConformanceClass GraphConformance="NON_BLOCKED"/>
+    <xpdl:Pools>
+        <xpdl:Pool Id="ALBPMPool" BoundaryVisible="false" Orientation="VERTICAL">
+            <xpdl:Lanes>
+                <xpdl:Lane Name="AutomaticHandler" Id="AutomaticHandler">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" Width="220.0" IsVisible="false">
+                            <xpdl:Coordinates XCoordinate="0.0" YCoordinate="0.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:BooleanFeature name="virtual" value="true"/>
+                            <albpm:StringFeature name="paramVar" value=""/>
+                            <albpm:BooleanFeature name="parametric" value="false"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationLabels>
+                                <albpm:LocalizedLabel language="en" label="AutomaticHandler"/>
+                            </albpm:LocalizationLabels>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                    AutomaticHandler</albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Lane>
+            </xpdl:Lanes>
+        </xpdl:Pool>
+    </xpdl:Pools>
+    <xpdl:WorkflowProcesses>
+        <xpdl:WorkflowProcess Id="PACVerAdministrarEasyDocs" Name="PACVerAdministrarEasyDocs" DefaultStartActivityId="Begin">
+            <xpdl:ProcessHeader/>
+            <xpdl:RedefinableHeader>
+                <xpdl:Author>
+                    Brian</xpdl:Author>
+                <xpdl:Version>
+                    0</xpdl:Version>
+            </xpdl:RedefinableHeader>
+            <xpdl:Participants>
+                <xpdl:Participant Id="AdministradorCanal" Name="Administrador Canal">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="AdministradorCanalP" Name="Administrador Canal (P)">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="AdministradorMVS" Name="Administrador MVS">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="AdministradorTG" Name="Administrador TG">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="AdministradorWS" Name="Administrador WS">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="AnalistaGrupoSoportePortIn" Name="Analista Grupo Soporte PortIn">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="AnalistaGrupoSoportePortOut" Name="Analista Grupo Soporte PortOut">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="AnalistaDeAdministracionComercial" Name="Analista de Administracion Comercial">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="AnalistaDeAdministracionComercialG" Name="Analista de Administracion Comercial (G)">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="AnulacionMasiva" Name="Anulacion Masiva">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="BackOfficeAgente" Name="Back Office Agente">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="BackOfficeAgenteP" Name="Back Office Agente (P)">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="BackOfficeDirecto" Name="Back Office Directo">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="Consultas" Name="Consultas">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="EscaneadorCEC" Name="Escaneador CEC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="EscaneadorCECP" Name="Escaneador CEC (P)">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="GestionABM" Name="Gestion ABM">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="GestionErrores" Name="Gestion Errores">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="LiderCEC" Name="Lider CEC">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="LiderCECP" Name="Lider CEC (P)">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="LiderGrupoSoportePortIn" Name="Lider Grupo Soporte PortIn">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="LiderGrupoSoportePortOut" Name="Lider Grupo Soporte PortOut">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="LiderDeAdministracionComercial" Name="Lider de Administracion Comercial">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="Papi" Name="Papi">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="VendedorDirecto" Name="Vendedor Directo">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="VendedorDirectoP" Name="Vendedor Directo (P)">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="VendedorIndirecto" Name="Vendedor Indirecto">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="VendedorIndirectoP" Name="Vendedor Indirecto (P)">
+                    <xpdl:ParticipantType Type="ROLE"/>
+                </xpdl:Participant>
+                <xpdl:Participant Id="liderSPO" Name="liderSPO">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        liderSPO - PortIn</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="vendedor2" Name="vendedor2">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Vendedor Indirecto 0012-003</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="ws" Name="ws">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        ws</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="bo" Name="bo">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        BO  - Canal 3099999991</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="lider" Name="lider">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Lider</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="grupoSPI" Name="grupoSPI">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Grupo Soporte Port In</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="escaneador2" Name="escaneador2">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Escaneador CEC 0004</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="analista" Name="analista">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Analista  - Canal 3099999991</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="acanal" Name="acanal">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        acanal</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="vendedor4" Name="vendedor4">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Vendedor Directo CEC AMBA</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="consultas" Name="consultas">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Consultas</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="bo2" Name="bo2">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        BO 2  - Canal 3099999992</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="vendedor5" Name="vendedor5">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Vendedor Directo CEC INTERIOR</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="gerror" Name="gerror">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        gerror</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="escaneador" Name="escaneador">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Escaneador CEC 0003</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="bod" Name="bod">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Back Office Directo</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="admcanal" Name="admcanal">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        admcanal</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="test" Name="test">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Super User</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="grupoSPO" Name="grupoSPO">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Grupo Soporte Port Out</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="lidercec2" Name="lidercec2">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Lider CEC 004</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="papiuser" Name="papiuser">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        papiuser</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="abm" Name="abm">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Gestion de AMB</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="liderSPI" Name="liderSPI">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        liderSPI</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="amasiva" Name="amasiva">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        amasiva</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="grupoSPI1" Name="grupoSPI1">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Grupo Soporte Port In 1</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="lidercec" Name="lidercec">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Lider CEC 003</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="vendedor" Name="vendedor">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Vendedor Indirecto 0011-001</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="vendedor3" Name="vendedor3">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Vendedor Indirecto 0021-005</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="vendedor6" Name="vendedor6">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Vendedor Directo CORPORATIVO</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="amvs" Name="amvs">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        amvs</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="analista2" Name="analista2">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        Analista 2  - Canal 3099999992</xpdl:Description>
+                </xpdl:Participant>
+                <xpdl:Participant Id="atg" Name="atg">
+                    <xpdl:ParticipantType Type="HUMAN"/>
+                    <xpdl:Description>
+                        atg</xpdl:Description>
+                </xpdl:Participant>
+            </xpdl:Participants>
+            <xpdl:Applications>
+                <xpdl:Application Id="automatic" Name="automatic">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+                <xpdl:Application Id="borrar" Name="borrar">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+                <xpdl:Application Id="borrarArchivo" Name="borrarArchivo">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+                <xpdl:Application Id="generar" Name="generar">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+                <xpdl:Application Id="opciones" Name="opciones">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+                <xpdl:Application Id="ver" Name="ver">
+                    <xpdl:Type>
+                        <xpdl:Script/>
+                    </xpdl:Type>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="ALBPMType" value="REGULAR"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Application>
+            </xpdl:Applications>
+            <xpdl:ActivitySets/>
+            <xpdl:Activities>
+                <xpdl:Activity Name="Begin" Id="Begin">
+                    <xpdl:Event>
+                        <xpdl:StartEvent Trigger="None"/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="70.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="BEGIN"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="firstActivityInFlow" value="Begin"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:StringFeature name="level" value="Begin Level"/>
+                                <albpm:StringFeature name="targetForNonCreatedInstances" value="DO_NOT_CREATE"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="BeginIn" type="IN" language="Java">
+                                    <albpm:Arguments>
+                                        <albpm:Argument name="tokenArg" type="String"/>
+                                        <albpm:Argument name="tituloDocumentoArg" type="String"/>
+                                        <albpm:Argument name="permiteBorrarArg" type="Bool"/>
+                                    </albpm:Arguments>
+                                    <albpm:ArgumentMaps>
+                                        <albpm:ArgumentMap target="permiteBorrar" isExpression="false" source="permiteBorrarArg"/>
+                                        <albpm:ArgumentMap target="tituloDocumento" isExpression="false" source="tituloDocumentoArg"/>
+                                        <albpm:ArgumentMap target="token" isExpression="false" source="tokenArg"/>
+                                    </albpm:ArgumentMaps>
+                                </albpm:ArgumentMapping>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Inicio"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="GenerarZIP" Id="GenerarZIP">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="417.0" YCoordinate="340.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="INTERACTIVE_COMPONENT_CALL"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="userSelectsTransition" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="GenerarZIP" type="BPM_OBJECT_INTERACTIVE_CALL">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="component" value="PACVerAdministrarEasyDocs"/>
+                                        <albpm:StringFeature name="JSPName" value="Genericos/enlaceForwarder.jsp"/>
+                                        <albpm:BooleanFeature name="presentationDisplay" value="false"/>
+                                        <albpm:StringFeature name="instanceVariable" value="form"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="GenerarZIPIn" type="OUT" language="Java">
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="attributes" isExpression="false" source="{ &quot;binario&quot; : fileBinary, &quot;descripcion&quot; : this.fileDescripcion, &quot;extension&quot; : fileExtension, &quot;fileName&quot; : fileName, &quot;tamanio&quot; : fileLength }"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                        <albpm:ArgumentMapping name="GenerarZIPOut" type="IN" language="Java"/>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Generar ZIP"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Generar ZIP"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="GenerarPDF" Id="GenerarPDF">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="310.0" YCoordinate="340.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="INTERACTIVE_COMPONENT_CALL"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="firstActivityInFlow" value="Begin"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:StringFeature name="level" value="Begin Level"/>
+                                <albpm:BooleanFeature name="userSelectsTransition" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="GenerarPDF" type="BPM_OBJECT_INTERACTIVE_CALL">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="component" value="PACVerAdministrarEasyDocs"/>
+                                        <albpm:StringFeature name="JSPName" value="Genericos/enlaceForwarder.jsp"/>
+                                        <albpm:BooleanFeature name="presentationDisplay" value="false"/>
+                                        <albpm:StringFeature name="instanceVariable" value="form"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="GenerarPDFIn" type="OUT" language="Java">
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="attributes" isExpression="false" source="{ &quot;binario&quot; : fileBinary, &quot;descripcion&quot; : this.fileDescripcion, &quot;extension&quot; : fileExtension, &quot;fileName&quot; : fileName, &quot;tamanio&quot; : fileLength }"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                        <albpm:ArgumentMapping name="GenerarPDFOut" type="IN" language="Java"/>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Generar PDF"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Generar PDF"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Automatic" Id="Automatic">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="automatic"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Join Type="XOR"/>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="200.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="AUTOMATIC"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                                <albpm:StringFeature name="firstActivityInFlow" value="Begin"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:StringFeature name="level" value="Begin Level"/>
+                                <albpm:BooleanFeature name="enableLoop" value="false"/>
+                                <albpm:BooleanFeature name="before" value="true"/>
+                                <albpm:StringFeature name="condition" value=""/>
+                                <albpm:StringFeature name="codeLanguage" value="Fuego"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="Automatic" type="METHOD">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="true"/>
+                                        <albpm:StringFeature name="method" value="automatic"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Init"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Init"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="Opciones" Id="Opciones">
+                    <xpdl:Implementation>
+                        <xpdl:Task>
+                            <xpdl:TaskApplication Id="opciones"/>
+                        </xpdl:Task>
+                    </xpdl:Implementation>
+                    <xpdl:TransitionRestrictions>
+                        <xpdl:TransitionRestriction>
+                            <xpdl:Split Type="XOR">
+                                <xpdl:TransitionRefs>
+                                    <xpdl:TransitionRef Id="OpcionesToGenerarZIP"/>
+                                    <xpdl:TransitionRef Id="OpcionesToEnd"/>
+                                </xpdl:TransitionRefs>
+                            </xpdl:Split>
+                        </xpdl:TransitionRestriction>
+                    </xpdl:TransitionRestrictions>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="480.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="AUTOMATIC"/>
+                                <albpm:IntegerFeature name="maxInstances" value="100"/>
+                                <albpm:BooleanFeature name="unlimitedCopies" value="true"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="enableLoop" value="false"/>
+                                <albpm:BooleanFeature name="before" value="true"/>
+                                <albpm:StringFeature name="condition" value=""/>
+                                <albpm:StringFeature name="codeLanguage" value="Fuego"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="Opciones" type="METHOD">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="true"/>
+                                        <albpm:StringFeature name="method" value="opciones"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Opciones"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Opciones"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="VerArchivo" Id="VerArchivo">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="340.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="INTERACTIVE_COMPONENT_CALL"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="firstActivityInFlow" value="Begin"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:StringFeature name="level" value="Begin Level"/>
+                                <albpm:BooleanFeature name="userSelectsTransition" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="VerArchivo" type="BPM_OBJECT_INTERACTIVE_CALL">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="component" value="Formulario.FormVerAdmEasyDocs"/>
+                                        <albpm:StringFeature name="selectedPresentation" value="EditarArchivos"/>
+                                        <albpm:BooleanFeature name="presentationDisplay" value="false"/>
+                                        <albpm:StringFeature name="instanceVariable" value="form"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="VerArchivoIn" type="OUT" language="Java">
+                                            <albpm:Arguments>
+                                                <albpm:Argument name="titulo" type="String"/>
+                                                <albpm:Argument name="permiteBorrar" type="Bool"/>
+                                                <albpm:Argument name="rol" type="String"/>
+                                                <albpm:Argument name="error" type="String"/>
+                                            </albpm:Arguments>
+                                        </albpm:ArgumentMapping>
+                                        <albpm:ArgumentMapping name="VerArchivoOut" type="IN" language="Java">
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="botonInput" isExpression="false" source="selectedButton == null ? &quot;cancel&quot; : selectedButton"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Lista Archivos"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Lista Archivos"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="VerArchivo1" Id="VerArchivo1">
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="90.0" YCoordinate="340.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="INTERACTIVE_COMPONENT_CALL"/>
+                                <albpm:BooleanFeature name="autocomplete" value="true"/>
+                                <albpm:StringFeature name="firstActivityInFlow" value="Begin"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:StringFeature name="level" value="Begin Level"/>
+                                <albpm:BooleanFeature name="userSelectsTransition" value="false"/>
+                            </albpm:FeatureSet>
+                            <albpm:ActivityTasks>
+                                <albpm:ActivityTask name="VerArchivo1" type="BPM_OBJECT_INTERACTIVE_CALL">
+                                    <albpm:FeatureSet>
+                                        <albpm:BooleanFeature name="mandatory" value="false"/>
+                                        <albpm:BooleanFeature name="readOnly" value="false"/>
+                                        <albpm:BooleanFeature name="repeatable" value="false"/>
+                                        <albpm:StringFeature name="component" value="PACVerAdministrarEasyDocs"/>
+                                        <albpm:StringFeature name="JSPName" value="Genericos/enlaceForwarder.jsp"/>
+                                        <albpm:BooleanFeature name="presentationDisplay" value="false"/>
+                                        <albpm:StringFeature name="instanceVariable" value="form"/>
+                                    </albpm:FeatureSet>
+                                    <albpm:ArgumentMappings>
+                                        <albpm:ArgumentMapping name="VerArchivo1In" type="OUT" language="Java">
+                                            <albpm:ArgumentMaps>
+                                                <albpm:ArgumentMap target="attributes" isExpression="false" source="{ &quot;binario&quot; : fileBinary, &quot;descripcion&quot; : this.fileDescripcion, &quot;extension&quot; : fileExtension, &quot;fileName&quot; : fileName, &quot;tamanio&quot; : fileLength }"/>
+                                            </albpm:ArgumentMaps>
+                                        </albpm:ArgumentMapping>
+                                        <albpm:ArgumentMapping name="VerArchivo1Out" type="IN" language="Java"/>
+                                    </albpm:ArgumentMappings>
+                                    <albpm:Localization>
+                                        <albpm:LocalizationLabels>
+                                            <albpm:LocalizedLabel language="es" label="Ver Archivo"/>
+                                        </albpm:LocalizationLabels>
+                                    </albpm:Localization>
+                                </albpm:ActivityTask>
+                            </albpm:ActivityTasks>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Ver Archivo"/>
+                                </albpm:LocalizationLabels>
+                                <albpm:LocalizationDescriptions>
+                                    <albpm:LocalizationDescription language="es">
+                                    </albpm:LocalizationDescription>
+                                </albpm:LocalizationDescriptions>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+                <xpdl:Activity Name="End" Id="End">
+                    <xpdl:Event>
+                        <xpdl:EndEvent/>
+                    </xpdl:Event>
+                    <xpdl:NodeGraphicsInfos>
+                        <xpdl:NodeGraphicsInfo ToolId="ALBPM" LaneId="AutomaticHandler" IsVisible="true">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="640.0"/>
+                        </xpdl:NodeGraphicsInfo>
+                    </xpdl:NodeGraphicsInfos>
+                    <xpdl:Extensions>
+                        <albpm:ALBPMExtensions>
+                            <albpm:FeatureSet>
+                                <albpm:StringFeature name="type" value="END"/>
+                                <albpm:StringFeature name="firstActivityInFlow" value="Begin"/>
+                                <albpm:StringFeature name="generatesEvents" value="PROCESS_DEFAULT"/>
+                                <albpm:BooleanFeature name="handlesOutArguments" value="true"/>
+                                <albpm:StringFeature name="level" value="Begin Level"/>
+                            </albpm:FeatureSet>
+                            <albpm:ArgumentMappings>
+                                <albpm:ArgumentMapping name="EndOut" type="OUT" language="Fuego"/>
+                            </albpm:ArgumentMappings>
+                            <albpm:Localization>
+                                <albpm:LocalizationLabels>
+                                    <albpm:LocalizedLabel language="es" label="Finalización"/>
+                                </albpm:LocalizationLabels>
+                            </albpm:Localization>
+                        </albpm:ALBPMExtensions>
+                    </xpdl:Extensions>
+                </xpdl:Activity>
+            </xpdl:Activities>
+            <xpdl:Transitions>
+                <xpdl:Transition Id="BeginToAutomatic" Name="BeginToAutomatic" From="Begin" To="Automatic">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="70.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="123.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="200.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="200,123"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="VerArchivoToOpciones" Name="VerArchivoToOpciones" From="VerArchivo" To="Opciones">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="340.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="398.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="480.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="200,398"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="VerArchivo1ToAutomatic" Name="VerArchivo1ToAutomatic" From="VerArchivo1" To="Automatic">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="90.0" YCoordinate="340.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="200.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="GenerarPDFToAutomatic" Name="GenerarPDFToAutomatic" From="GenerarPDF" To="Automatic">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="310.0" YCoordinate="340.0"/>
+                            <xpdl:Coordinates XCoordinate="264.0" YCoordinate="289.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="200.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="264,289"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="AutomaticToVerArchivo" Name="AutomaticToVerArchivo" From="Automatic" To="VerArchivo">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="200.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="340.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="OpcionesToEnd" Name="OpcionesToEnd" From="Opciones" To="End">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="480.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="617.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="640.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="200,617"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="OpcionesToVerArchivo1" Name="OpcionesToVerArchivo1" From="Opciones" To="VerArchivo1">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            botonInput == &quot;ver&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="480.0"/>
+                            <xpdl:Coordinates XCoordinate="149.0" YCoordinate="406.0"/>
+                            <xpdl:Coordinates XCoordinate="90.0" YCoordinate="340.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="149,406"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value="ver"/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="OpcionesToGenerarPDF" Name="OpcionesToGenerarPDF" From="Opciones" To="GenerarPDF">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            botonInput == &quot;generar pdf&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="480.0"/>
+                            <xpdl:Coordinates XCoordinate="310.0" YCoordinate="340.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="OpcionesToAutomatic" Name="OpcionesToAutomatic" From="Opciones" To="Automatic">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            botonInput == &quot;borrar&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="480.0"/>
+                            <xpdl:Coordinates XCoordinate="-118.0" YCoordinate="362.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="200.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-118,362"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value="borrar"/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="OpcionesToGenerarZIP" Name="OpcionesToGenerarZIP" From="Opciones" To="GenerarZIP">
+                    <xpdl:Condition Type="CONDITION">
+                        <xpdl:Expression>
+                            botonInput == &quot;generar zip&quot;</xpdl:Expression>
+                    </xpdl:Condition>
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="480.0"/>
+                            <xpdl:Coordinates XCoordinate="417.0" YCoordinate="340.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="CONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                            <albpm:IntegerFeature name="order" value="0"/>
+                            <albpm:StringFeature name="userName" value=""/>
+                            <albpm:StringFeature name="codeLanguage" value="Java1"/>
+                        </albpm:FeatureSet>
+                        <albpm:Localization>
+                            <albpm:LocalizationDescriptions>
+                                <albpm:LocalizationDescription language="es">
+                                </albpm:LocalizationDescription>
+                            </albpm:LocalizationDescriptions>
+                        </albpm:Localization>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+                <xpdl:Transition Id="GenerarZIPToAutomatic" Name="GenerarZIPToAutomatic" From="GenerarZIP" To="Automatic">
+                    <xpdl:ConnectorGraphicsInfos>
+                        <xpdl:ConnectorGraphicsInfo ToolId="ALBPM">
+                            <xpdl:Coordinates XCoordinate="417.0" YCoordinate="340.0"/>
+                            <xpdl:Coordinates XCoordinate="200.0" YCoordinate="200.0"/>
+                        </xpdl:ConnectorGraphicsInfo>
+                    </xpdl:ConnectorGraphicsInfos>
+                    <albpm:ALBPMExtensions>
+                        <albpm:FeatureSet>
+                            <albpm:StringFeature name="albpmType" value="UNCONDITIONAL"/>
+                            <albpm:BooleanFeature name="collapseMessage" value="false"/>
+                            <albpm:StringFeature name="curve" value="-2147483648,-2147483648"/>
+                        </albpm:FeatureSet>
+                    </albpm:ALBPMExtensions>
+                </xpdl:Transition>
+            </xpdl:Transitions>
+            <xpdl:Extensions>
+                <albpm:ALBPMExtensions>
+                    <albpm:Component>
+                        &lt;component name=&quot;PACVerAdministrarEasyDocs&quot;
+	description=&quot;&quot;
+	versionID=&quot;Version 6.5 &quot;
+	flags=&quot;cloneable&quot;
+	type=&quot;xobject&quot;&gt;
+	&lt;inherit
+		class=&quot;Fuego.Internal.ScreenFlow&quot;
+		flags=&quot;&quot;/&gt;
+	&lt;objectProperty name=&quot;initAllFields&quot;
+		value=&quot;true&quot;/&gt;
+	&lt;objectProperty name=&quot;javaClassName&quot;
+		value=&quot;xobject.Fuego__AutoGen__Screenflows__.__PACVerAdministrarEasyDocs&quot;/&gt;
+	&lt;objectProperty name=&quot;javaSerialId&quot;
+		value=&quot;4278124286&quot;/&gt;
+	&lt;objectProperty name=&quot;methodPrefix&quot;
+		value=&quot;&quot;/&gt;
+	&lt;objectProperty name=&quot;package&quot;
+		value=&quot;xobject.Fuego__AutoGen__Screenflows__&quot;/&gt;
+	&lt;attributes&gt;
+		&lt;String name=&quot;botonInput&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;1&quot;/&gt;
+		&lt;Binary name=&quot;fileBinary&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;2&quot;/&gt;
+		&lt;String name=&quot;fileDescripcion&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;3&quot;/&gt;
+		&lt;String name=&quot;fileExtension&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;4&quot;/&gt;
+		&lt;Int
+			length=&quot;64&quot;
+			name=&quot;fileLength&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;5&quot;/&gt;
+		&lt;String name=&quot;fileName&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;6&quot;/&gt;
+		&lt;object
+			type=&quot;Formulario.FormVerAdmEasyDocs&quot;
+			name=&quot;form&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;7&quot;/&gt;
+		&lt;Bool name=&quot;permiteBorrar&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;8&quot;/&gt;
+		&lt;String name=&quot;tituloDocumento&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;9&quot;/&gt;
+		&lt;String name=&quot;token&quot;
+			flags=&quot;hassetter hasgetter public&quot;
+			position=&quot;10&quot;/&gt;
+	&lt;/attributes&gt;
+	&lt;methods&gt;
+		&lt;method name=&quot;PACVerAdministrarEasyDocs&quot;
+			flags=&quot;static&quot;&gt;
+			&lt;outputArgument name=&quot;return&quot;
+				description=&quot;&quot;
+				flags=&quot;retval&quot;
+				type=&quot;PACVerAdministrarEasyDocs&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;automatic&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;Respuesta respuesta;
+
+if(this.form == null){
+	this.form = FormVerAdmEasyDocs();
+}  
+this.form.titulo = &amp;quot;Administrar Documento: &amp;quot; + this.tituloDocumento;
+this.form.botones.clear();
+this.form.botones.extend(labelBoton : &amp;quot;Volver&amp;quot;);
+this.form.botones.extend(labelBoton : null);
+this.form.botones.extend(labelBoton : null);
+this.form.botones.extend(labelBoton : null);
+this.form.botones.extend(labelBoton : null);
+this.form.botones.extend(labelBoton : &amp;quot;Generar ZIP&amp;quot;);
+this.form.botones.extend(labelBoton : &amp;quot;Generar PDF&amp;quot;);
+this.form.botones.extend(labelBoton : &amp;quot;Borrar&amp;quot;);
+this.form.permiteBorrar = this.permiteBorrar;
+this.form.documentos.clear();
+try{
+	respuesta = FEasyDoc.listFiles(token : this.token);
+	if (respuesta.resultado == OK) {
+
+	Any[]archivos = Any[](respuesta.contenido);
+
+		for(int i = 0;i &amp;lt; archivos.length();i ++){
+			Any[String] fila = (Any[String])archivos[i]; 
+			this.form.documentos[i].nombreUsuario = (String)fila[&amp;quot;UsuarioCarga&amp;quot;];
+			this.form.documentos[i].nombreArchivo = (String)fila[&amp;quot;NombreArchivo&amp;quot;];
+			this.form.documentos[i].extension = ((String) fila[&amp;quot;Extension&amp;quot;]).substring(first : 1, last : ((String) fila[&amp;quot;Extension&amp;quot;]).length());
+			this.form.documentos[i].codigoLote = (String)fila[&amp;quot;CodigoLote&amp;quot;];
+			this.form.documentos[i].fechaCarga = (Time)fila[&amp;quot;FechaCarga&amp;quot;];
+		}
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &amp;quot;fachada.listFiles(): Error &amp;quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}&lt;/sourceCode&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;borrar&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;/&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;borrarArchivo&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;/&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;generar&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;if(this.botonInput == &amp;quot;Generar&amp;quot;){
+}&lt;/sourceCode&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;opciones&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;Respuesta respuesta;
+
+if(this.botonInput.indexOf(text : &amp;quot;ver&amp;quot;)==0){
+
+		String [] btn = this.botonInput.split(delim : &amp;quot;*&amp;quot;);
+		this.botonInput = btn[0];
+		String codigoLote = (String)btn[1];
+	
+		respuesta = FEasyDoc.getIndividualFile(token : this.token, codigoLote : codigoLote);
+		if (respuesta.resultado == OK) {
+			this.fileBinary = (Binary) respuesta.contenido;
+		}
+		else{
+			Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+			throw Java.Lang.Exception((String)respuesta.contenido);
+		}
+		this.fileExtension = &amp;quot;pdf&amp;quot;;
+		for(int i = 0;i &amp;lt; this.form.documentos.length();i ++){
+			if(this.form.documentos[i].codigoLote.trim() == codigoLote.trim()){
+				this.fileExtension = this.form.documentos[i].extension;
+			}
+		}
+
+	    this.fileDescripcion = &amp;quot;Archivo Adjunto&amp;quot;;
+	    this.fileName = &amp;quot;ArchivoAdjunto_&amp;quot; + &amp;apos;now&amp;apos;.format(mask : &amp;quot;yyyyMMddhhmmsss&amp;quot;) + &amp;quot;.&amp;quot; + this.fileExtension;
+	    this.fileLength = this.fileBinary.length();
+		
+} else if(this.botonInput == &amp;quot;generar pdf&amp;quot;){
+	String[] codigosLote = { };
+
+	for(int i=0;i &amp;lt; this.form.documentos.length();i ++){
+		if(this.form.documentos[i].check == true){
+			codigosLote[] = this.form.documentos[i].codigoLote;
+		}
+	}
+	
+	respuesta = FEasyDoc.generatePDF(token : this.token, codigosLote : codigosLote);
+	if (respuesta.resultado == OK) {
+			this.fileBinary = (Binary) respuesta.contenido;
+	}
+	else{
+		Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+		throw Java.Lang.Exception((String)respuesta.contenido);
+	}	
+	
+	this.fileExtension = &amp;quot;pdf&amp;quot;;
+	this.fileDescripcion = &amp;quot;Archivo Adjunto&amp;quot;;
+	this.fileName = &amp;quot;ArchivoAdjunto_&amp;quot; + &amp;apos;now&amp;apos;.format(mask : &amp;quot;yyyyMMddhhmmsss&amp;quot;) + &amp;quot;.pdf&amp;quot;;
+	this.fileLength = this.fileBinary.length();
+
+} else if(this.botonInput == &amp;quot;generar zip&amp;quot;){
+	String[] codigosLote = { };
+
+	for(int i=0;i &amp;lt; this.form.documentos.length();i ++){
+		if(this.form.documentos[i].check == true){
+			codigosLote[] = this.form.documentos[i].codigoLote;
+		}
+	}
+	
+	respuesta = FEasyDoc.generateZIP(token : this.token, codigosLote : codigosLote);
+	if (respuesta.resultado == OK) {
+			this.fileBinary = (Binary) respuesta.contenido;
+	}
+	else{
+		Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+		throw Java.Lang.Exception((String)respuesta.contenido);
+	}	
+	
+	this.fileExtension = &amp;quot;zip&amp;quot;;
+	this.fileDescripcion = &amp;quot;Archivo Adjunto&amp;quot;;
+	this.fileName = &amp;quot;ArchivoAdjunto_&amp;quot; + &amp;apos;now&amp;apos;.format(mask : &amp;quot;yyyyMMddhhmmsss&amp;quot;) + &amp;quot;.zip&amp;quot;;
+	this.fileLength = this.fileBinary.length();
+
+} else if(this.botonInput == &amp;quot;borrar&amp;quot;){
+	String codigoLote = &amp;quot;&amp;quot;;
+	for(int i=0;i &amp;lt; this.form.documentos.length();i ++){
+		if(this.form.documentos[i].check == true){
+			codigoLote = this.form.documentos[i].codigoLote;
+			respuesta = FEasyDoc.deleteIndividualFile(token : this.token, codigoLote : codigoLote);
+			if (respuesta.resultado != OK) {
+				Utiles.Logger.logFatal(mensaje : (String)respuesta.contenido);
+				throw Java.Lang.Exception((String)respuesta.contenido);
+			}
+		}
+	}		
+}&lt;/sourceCode&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+		&lt;method name=&quot;ver&quot;
+			flags=&quot;public server&quot;&gt;
+			&lt;sourceCode
+				language=&quot;Java1&quot;&gt;if (this.botonInput == &amp;quot;ver&amp;quot;) {
+}&lt;/sourceCode&gt;
+			&lt;property name=&quot;RelayToSupported&quot;
+				value=&quot;true&quot;/&gt;
+		&lt;/method&gt;
+	&lt;/methods&gt;
+&lt;/component&gt;</albpm:Component>
+                    <albpm:CorrelationSets/>
+                    <albpm:Localization>
+                        <albpm:LocalizationLabels>
+                            <albpm:LocalizedLabel language="es" label="PAC - Ver/Administrar Easy Docs"/>
+                        </albpm:LocalizationLabels>
+                        <albpm:LocalizationDescriptions>
+                            <albpm:LocalizationDescription language="es">
+                            </albpm:LocalizationDescription>
+                        </albpm:LocalizationDescriptions>
+                    </albpm:Localization>
+                    <albpm:FeatureSet>
+                        <albpm:StringFeature name="GreedyExecutionMode" value="default"/>
+                        <albpm:BooleanFeature name="atomic" value="false"/>
+                        <albpm:StringFeature name="generatesEvents" value="GENERATE_INTERACTIVE_EVENTS"/>
+                        <albpm:BooleanFeature name="horizontal" value="true"/>
+                        <albpm:BooleanFeature name="instanceScreenflow" value="false"/>
+                        <albpm:StringFeature name="scale" value="1.0"/>
+                        <albpm:BooleanFeature name="sharePredefineVariables" value="true"/>
+                        <albpm:BooleanFeature name="useExceptionOrder" value="true"/>
+                        <albpm:StringFeature name="variation" value="Default"/>
+                    </albpm:FeatureSet>
+                </albpm:ALBPMExtensions>
+            </xpdl:Extensions>
+        </xpdl:WorkflowProcess>
+    </xpdl:WorkflowProcesses>
+</xpdl:Package>

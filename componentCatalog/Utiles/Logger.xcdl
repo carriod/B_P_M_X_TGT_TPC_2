@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101054"?>
+<component name="Logger" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Bool defaultValue="true" name="logTiemposEnable" flags="hassetter hasgetter public includeincheck" position="1"/>
+		<Bool defaultValue="false" name="logTiemposSQLEnable" flags="hassetter hasgetter public includeincheck" position="2"/>
+	</attributes>
+	<methods>
+		<method name="Logger" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Logger"/>
+		</method>
+		<method name="getStringObjeto" description="" flags="clientavailable public">
+			<variables>
+				<variable name="context" type="Java.Lang.StackTraceElement"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="String"/>
+			<sourceCode language="Java1">context = Exception().stackTrace[1];
+
+return context.className.replace(from : &quot;xobject.&quot;, @to : &quot;&quot;).replace(from : &quot;BHSA.&quot;, 
+                                                                      @to : &quot;&quot;) + 
+&quot;.&quot; + context.methodName + &quot; - &quot;;
+</sourceCode>
+		</method>
+		<method name="logDebug" description="" flags="clientavailable public">
+			<arg name="mensaje" description="" flags="in" type="String"/>
+			<sourceCode language="Java1">StackTraceElement context;
+context = Exception().stackTrace[1];
+
+logMessage(context.className.replace(from : &quot;xobject.&quot;, @to : &quot;&quot;).replace(from : &quot;BHSA.&quot;, 
+                                                                          @to : &quot;&quot;) + 
+&quot;.&quot; + context.methodName + &quot;() --&gt; &quot; + arg.mensaje, severity : DEBUG);
+</sourceCode>
+		</method>
+		<method name="logException" description="" flags="clientavailable public">
+			<arg name="exception" description="" flags="in" type="Java.Lang.Exception"/>
+			<variables>
+				<variable name="detalle" type="String"/>
+			</variables>
+			<sourceCode language="Java1">StackTraceElement context;
+context = Java.Exception().stackTrace[1];
+
+detalle = &quot;&quot;;
+foreach (element in arg.exception.stackTrace) {
+    detalle = detalle + element+ &quot;\n&quot;;
+}
+
+logMessage(context.className.replace(from : &quot;xobject.&quot;, @to : &quot;&quot;).replace(from : &quot;BHSA.&quot;, @to : &quot;&quot;) + &quot;.&quot; + context.methodName + &quot;() --&gt; Excepcion: &quot; + arg.exception.message+ &quot;\nDetalles\n&quot;+ detalle, severity : WARNING);
+</sourceCode>
+		</method>
+		<method name="logFatal" description="" flags="clientavailable public">
+			<arg name="mensaje" description="" flags="in" type="String"/>
+			<sourceCode language="Java1">StackTraceElement context;
+context = Java.Exception().stackTrace[1];
+
+logMessage(context.className.replace(from : &quot;xobject.&quot;, @to : &quot;&quot;).replace(from : &quot;BHSA.&quot;, @to : &quot;&quot;) + &quot;.&quot; + context.methodName + &quot;() --&gt; &quot; + arg.mensaje, severity : FATAL);
+</sourceCode>
+		</method>
+		<method name="logInfo" description="" flags="clientavailable public">
+			<arg name="mensaje" description="" flags="in" type="String"/>
+			<sourceCode language="Java1">StackTraceElement context;
+context = Java.Exception().stackTrace[1];
+
+logMessage(context.className.replace(from : &quot;xobject.&quot;, @to : &quot;&quot;).replace(from : &quot;BHSA.&quot;, @to : &quot;&quot;) + &quot;.&quot; + context.methodName + &quot;() --&gt; &quot; + arg.mensaje, severity : INFO);
+</sourceCode>
+		</method>
+		<method name="logMsgAndException" description="" flags="clientavailable public">
+			<arg name="message" description="" flags="in" type="String"/>
+			<arg name="exception" description="" flags="in" type="Java.Lang.Exception"/>
+			<variables>
+				<variable name="detalle" type="String"/>
+			</variables>
+			<sourceCode language="Java1">StackTraceElement context;
+context = Java.Exception().stackTrace[1];
+
+detalle = &quot;&quot;;
+foreach (element in arg.exception.stackTrace) {
+    detalle = detalle + element+ &quot;\n&quot;;
+}
+
+logMessage(context.className.replace(from : &quot;xobject.&quot;, @to : &quot;&quot;).replace(from : &quot;BHSA.&quot;, @to : &quot;&quot;) + &quot;.&quot; + context.methodName + &quot;() --&gt; &quot;+ arg.message+ &quot;\nExcepcion: &quot; + arg.exception.message+ &quot;\nDetalles\n&quot;+ detalle, severity : WARNING);
+</sourceCode>
+		</method>
+		<method name="logSevere" description="" flags="clientavailable public">
+			<arg name="mensaje" description="" flags="in" type="String"/>
+			<sourceCode language="Java1">StackTraceElement context;
+context = Java.Exception().stackTrace[1];
+
+logMessage(context.className.replace(from : &quot;xobject.&quot;, @to : &quot;&quot;).replace(from : &quot;BHSA.&quot;, @to : &quot;&quot;) + &quot;.&quot; + context.methodName + &quot;() --&gt; &quot; + arg.mensaje, severity : SEVERE);
+</sourceCode>
+		</method>
+		<method name="logTiempo" description="" flags="public server disableclient">
+			<arg name="idSolicitud" description="" flags="in" primitive="true" type="Int"/>
+			<arg name="inicio" description="" flags="in" type="Time"/>
+			<arg name="fin" description="" flags="in" type="Time"/>
+			<variables>
+				<variable name="metodo" type="String"/>
+				<variable name="sql" type="String"/>
+				<variable name="tiempo" type="Decimal"/>
+			</variables>
+			<sourceCode language="Java1">if(logTiemposEnable){
+
+    StackTraceElement context;
+    context = Java.Exception().stackTrace[1];
+
+    metodo = context.className.replace(from : &quot;xobject.&quot;, @to : &quot;&quot;);
+    metodo = metodo.replace(from : &quot;BHSA.&quot;,@to : &quot;&quot;);
+    metodo = metodo.replace(from :&quot;Fuego__AutoGen__Screenflows__.__&quot;,@to : &quot;Screenflows.&quot;);
+    metodo = metodo + &quot;.&quot; + context.methodName;
+
+    tiempo = (arg.fin - arg.inicio).totalMicroseconds / 1000000.00;
+    tiempo = tiempo.round(scale : 2);
+ 
+    logMessage(
+                &quot;LOGTIEMPOS - \n&quot; + 
+                &quot;SOLICITUD &quot; + arg.idSolicitud + &quot; \n&quot; + 
+                &quot;METODO &quot; + metodo + &quot; \n&quot; + 
+                &quot;START &quot; + (arg.inicio != null?arg.inicio.format(mask : &quot;dd-MM-yy hh:mm:ss&quot;):&quot;&quot;) + &quot; \n&quot; + 
+                &quot;STOP &quot; + (arg.fin != null?arg.fin.format(mask : &quot;dd-MM-yy hh:mm:ss&quot;):&quot;&quot;) + &quot; \n&quot; + 
+                &quot;TIEMPO &quot; + tiempo + &quot; Seg&quot;
+    , severity : DEBUG);
+
+    if(logTiemposSQLEnable){
+
+        sql = &quot;INSERT INTO BH_Tiempos (SOLICITUD,METODO,START,STOP,TIEMPO) VALUES (?,?,?,?,?)&quot;;
+        (DynamicSQL).executeUpdate(sentence : sql, implname : &quot;Documentos&quot;, inParameters : {arg.idSolicitud,metodo,arg.inicio,arg.fin,tiempo});
+
+    }
+}
+</sourceCode>
+		</method>
+		<method name="logWarning" description="" flags="clientavailable public">
+			<arg name="mensaje" description="" flags="in" type="String"/>
+			<sourceCode language="Java1">StackTraceElement context;
+context = Java.Exception().stackTrace[1];
+
+logMessage(context.className.replace(from : &quot;xobject.&quot;, @to : &quot;&quot;).replace(from : &quot;BHSA.&quot;, @to : &quot;&quot;) + &quot;.&quot; + context.methodName + &quot;() --&gt; &quot; + arg.mensaje, severity : WARNING);
+</sourceCode>
+		</method>
+	</methods>
+</component>

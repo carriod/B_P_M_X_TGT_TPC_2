@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Label" description="Label" versionID="Version 6.5 " flags="" signature="jxl.write.Label" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.LabelRecord" flags="public"/>
+	<inherit class="Utiles.Jxl.Write.WritableCell" flags=""/>
+	<inherit class="Utiles.Jxl.LabelCell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.Label"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.Label"/>
+	<attributes/>
+	<methods>
+		<method name="Label" flags="static" signature="Kjxl.write.Label(Ljxl.LabelCell;)">
+			<arg name="lc" description="" flags="in external" type="Utiles.Jxl.LabelCell" javaType="jxl.LabelCell"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Label"/>
+		</method>
+		<method name="Label" flags="static" signature="Kjxl.write.Label(IILjava.lang.String;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="cont" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Label"/>
+		</method>
+		<method name="Label" flags="static" signature="Kjxl.write.Label(IILjava.lang.String;Ljxl.format.CellFormat;)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="cont" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="st" description="" flags="in external" type="Utiles.Jxl.Format.CellFormat" javaType="jxl.format.CellFormat"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.Label"/>
+		</method>
+		<method name="copyTo" description="copyTo" flags="external" signature="McopyTo(II)Ljxl.write.WritableCell;">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Write.WritableCell" javaType="jxl.write.WritableCell"/>
+		</method>
+		<method name="setString" description="setString" flags="external hidden" signature="MsetString(Ljava.lang.String;)V">
+			<arg name="s" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+	</methods>
+</component>

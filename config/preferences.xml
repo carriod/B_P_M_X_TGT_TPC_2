@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101276"?>
+<preferences>
+	<general J2EEMode="true"/>
+	<processes exceptionHandlingPolicy="HANDLE_EXCEPTIONS" generatesInteractiveRole="true" interactiveRole="Papi" lanesOrientation="HORIZONTAL"/>
+	<languages default="es" availables="es;en"/>
+</preferences>

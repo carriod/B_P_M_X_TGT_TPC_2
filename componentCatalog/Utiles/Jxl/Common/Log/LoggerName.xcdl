@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="LoggerName" description="LoggerName" versionID="Version 6.5 " flags="" signature="jxl.common.log.LoggerName" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.common.log.LoggerName"/>
+	<objectProperty name="package" value="jxl.common.log"/>
+	<objectProperty name="typeId" value="jxl.common.log.LoggerName"/>
+	<attributes>
+		<String name="NAME" flags="hasgetter attribute static external final" position="1" javaType="java.lang.String" writeSignature="ANAME;Ljava.lang.String;" readSignature="ANAME;Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="LoggerName" flags="static hidden" signature="Kjxl.common.log.LoggerName()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Common.Log.LoggerName"/>
+		</method>
+	</methods>
+</component>

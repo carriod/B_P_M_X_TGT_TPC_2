@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="IngresarRegistroDeImagen" description="" versionID="Version 6.5 " flags="invokeable" signature="IngresarRegistroDeImagen;http://localhost/WS;elementsQualified;N" dynamic="true" type="xml">
+	<inherit class="Fuego.Xml.XMLObject" flags="public"/>
+	<objectProperty name="elementType" value="elementType"/>
+	<objectProperty name="invokeableClassName" value="fuego.xmlruntime.XMLObject"/>
+	<objectProperty name="namespace" value="http://localhost/WS"/>
+	<objectProperty name="nativeName" value="IngresarRegistroDeImagen"/>
+	<objectProperty name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+	<objectProperty name="xmlObjectVersion" value="2.0"/>
+	<attributes>
+		<String name="codLote" flags="hassetter hasgetter public" position="1" writeSignature="@0;Vcod_lote;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@0;Vcod_lote;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="0"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="cod_lote"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+		</String>
+		<Int length="32" name="indice" flags="hassetter hasgetter public" primitive="true" position="6" writeSignature="@5;Vindice;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@5;Vindice;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="5"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="indice"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+		</Int>
+		<Int length="32" name="nroOrden" flags="hassetter hasgetter public" primitive="true" position="2" writeSignature="@1;Vnro_orden;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@1;Vnro_orden;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="1"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="nro_orden"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+		</Int>
+		<Int length="32" name="rotacion" flags="hassetter hasgetter public" primitive="true" position="3" writeSignature="@2;Vrotacion;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@2;Vrotacion;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="2"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="rotacion"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+		</Int>
+		<Int length="32" name="tamano" flags="hassetter hasgetter public" primitive="true" position="5" writeSignature="@4;Vtamano;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@4;Vtamano;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="4"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="tamano"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+		</Int>
+		<Int length="32" name="tipo" flags="hassetter hasgetter public" primitive="true" position="4" writeSignature="@3;Vtipo;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@3;Vtipo;I4;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="3"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="tipo"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:int"/>
+		</Int>
+		<String name="token" flags="hassetter hasgetter public" position="7" writeSignature="@6;Vtoken;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified" readSignature="@6;Vtoken;S;http://www.w3.org/2001/XMLSchema;http://localhost/WS;elementQualified">
+			<property name="elementNamespace" value="http://localhost/WS"/>
+			<property name="elementPosition" value="6"/>
+			<property name="elementType" value="elementType"/>
+			<property name="isNilable" value="false"/>
+			<property name="nativeName" value="token"/>
+			<property name="nativeNamespace" value="http://www.w3.org/2001/XMLSchema"/>
+			<property name="schemaLocationKey" value="a44023ddd76aeddda3cac0888ce95e7e"/>
+			<property name="xmlObjectVersion" value="2.0"/>
+			<property name="xsdType" value="http://www.w3.org/2001/XMLSchema:string"/>
+		</String>
+	</attributes>
+	<methods>
+		<method name="IngresarRegistroDeImagen" flags="static public" signature="DIngresarRegistroDeImagen;http://localhost/WS;elementsQualified;N">
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.IngresarRegistroDeImagen"/>
+		</method>
+		<method name="IngresarRegistroDeImagen" flags="static public" signature="XIngresarRegistroDeImagen;http://localhost/WS;elementsQualified;N">
+			<arg name="xmlText" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.IngresarRegistroDeImagen"/>
+		</method>
+		<method name="IngresarRegistroDeImagen" flags="static public" signature="FIngresarRegistroDeImagen;http://localhost/WS;elementsQualified;N">
+			<arg name="name" description="" flags="in" type="String"/>
+			<arg name="attributes" description="" flags="in" type="String[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="WebServices.WSEasyDoc.IngresarRegistroDeImagen"/>
+		</method>
+	</methods>
+</component>

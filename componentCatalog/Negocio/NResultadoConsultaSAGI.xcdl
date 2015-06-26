@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="NResultadoConsultaSAGI" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="analista" flags="hassetter hasgetter public" position="9"/>
+		<String name="enlace" flags="hassetter hasgetter public" position="7"/>
+		<String name="estado" flags="hassetter hasgetter public" position="13"/>
+		<Time scale="0" precision="0" name="fechaCreacion" flags="hassetter hasgetter public includeincheck" position="3"/>
+		<Time scale="0" precision="0" name="fechaEnvio" flags="hassetter hasgetter public includeincheck" position="8"/>
+		<Time scale="0" precision="0" name="fechaPlanComite" flags="hassetter hasgetter public includeincheck" position="10"/>
+		<Time scale="0" precision="0" name="fechaPlanPreComite" flags="hassetter hasgetter public includeincheck" position="11"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="1"/>
+		<String name="nombre" flags="hassetter hasgetter public" position="4"/>
+		<Int length="32" name="nroCesta" flags="hassetter hasgetter public" position="2"/>
+		<String name="resultado" flags="hassetter hasgetter public includeincheck" position="12"/>
+		<String name="solicitante" flags="hassetter hasgetter public" position="6"/>
+		<String name="tipoPedido" flags="hassetter hasgetter public includeincheck" position="5"/>
+		<String length="1" name="tipoResolucion" flags="hassetter hasgetter public includeincheck" position="14"/>
+	</attributes>
+	<methods>
+		<method name="NResultadoConsultaSAGI" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NResultadoConsultaSAGI"/>
+		</method>
+	</methods>
+</component>

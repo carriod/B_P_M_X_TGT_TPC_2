@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FProveedor" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SProveedor" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FProveedor" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FProveedor"/>
+			<sourceCode language="Java1">this.servicio = new SProveedor();</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteValue(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getDatosComplementarios" flags="public server disableclient">
+			<arg name="proveedor" description="" flags="in" type="Negocio.NProveedor"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	if(proveedor.motivoProveedorCond.id != null){
+		respuesta = FMotivoProveedorCond.getValueForId(id : proveedor.motivoProveedorCond.id);
+		if (respuesta.resultado == OK) {
+			proveedor.motivoProveedorCond = ((NMotivoProveedorCond) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+	
+	if(proveedor.tipoProveedor.id != null){
+		respuesta = FTipoProveedor.getValueForId(id : proveedor.tipoProveedor.id);
+		if (respuesta.resultado == OK) {
+			proveedor.tipoProveedor = ((NTipoProveedor) respuesta.contenido);
+		}else{
+			return respuesta;
+		}
+	}
+
+	
+	respuesta.contenido = proveedor;
+
+
+	
+} 
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getDatosComplementarios(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues(vigencia : false);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+		NProveedor proveedor = this.mapeoArrayToNegocio(objArray : objArray);
+    	respuesta = this.getDatosComplementarios(proveedor : proveedor);
+
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NProveedor"/>
+			<sourceCode language="Java1">NProveedor objNegocio = NProveedor();
+
+objNegocio.idSolicitud = (Integer)arg.objArray[&quot;SOL_ID&quot;];
+objNegocio.tipoProveedor.id = (Integer)arg.objArray[&quot;TPR_ID&quot;];
+objNegocio.nombreProveedorCond = (String)arg.objArray[&quot;NOMBREPROVEEDORCOND&quot;];
+objNegocio.motivoProveedorCond.id = (Integer)arg.objArray[&quot;MPC_ID&quot;];
+objNegocio.justificacionMotivo = (String)arg.objArray[&quot;JUSTIFICACIONMOTIVO&quot;];
+objNegocio.proveedoresSugeridos = (String)arg.objArray[&quot;PROVEEDORESSUGERIDOS&quot;];
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="objNegocio" description="" flags="in" type="Negocio.NProveedor"/>
+			<arg name="solicitudNueva" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.setValue(	idSolicitud : arg.objNegocio.idSolicitud,
+										idTipoProveedor : arg.objNegocio.tipoProveedor.id,
+										nombreProveedorCond : arg.objNegocio.nombreProveedorCond,
+	                       				idMotivoProveedorCond : arg.objNegocio.motivoProveedorCond.id,
+	                       				justificacionMotivo : arg.objNegocio.justificacionMotivo,
+	                       				proveedoresSugeridos : arg.objNegocio.proveedoresSugeridos, 
+	                       				solicitudNueva : arg.solicitudNueva);
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarErrores" flags="clientavailable public">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="rol" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">String[] errores = {};
+
+if(!arg.solicitud.pedidoCesta.id in {3,5}){
+	if(arg.rol == &quot;TPC - Solicitante SAGI&quot;){
+		
+		if(arg.solicitud.proveedor.tipoProveedor.id != null){
+			if(arg.solicitud.proveedor.tipoProveedor.id == 1){
+				if((arg.solicitud.proveedor.nombreProveedorCond == &quot;&quot;) || (arg.solicitud.proveedor.nombreProveedorCond == null)){
+					errores[] = &quot;&apos;Nombre Proveedor Condicionado&apos; es obligatorio&quot;;
+				}
+				if(arg.solicitud.proveedor.motivoProveedorCond.id == null){
+					errores[] = &quot;&apos;Clasif. Motivo Proveedor Condicionado&apos; es obligatorio&quot;;
+				}
+				if((arg.solicitud.proveedor.justificacionMotivo == &quot;&quot;) || (arg.solicitud.proveedor.justificacionMotivo == null)){
+					errores[] = &quot;&apos;Justificación Elección Motivo&apos; es obligatorio&quot;;
+				}
+			}else if(arg.solicitud.proveedor.tipoProveedor.id == 2){
+					if((arg.solicitud.proveedor.proveedoresSugeridos == &quot;&quot;) || (arg.solicitud.proveedor.proveedoresSugeridos == null)){
+						errores[] = &quot;&apos;Indicar Proveedores Sugeridos &apos; es obligatorio&quot;;	
+					}
+			}else if(arg.solicitud.proveedor.tipoProveedor.id == 3){
+				//Ninguno
+			}
+		}else errores[] = &quot;&apos;Tipo Proveedor&apos; es obligatorio&quot;;
+		
+	}else if(arg.rol == &quot;TPC - Gestor Enlace&quot;){
+		
+		if(arg.solicitud.proveedor.tipoProveedor.id != null){
+			if(arg.solicitud.proveedor.tipoProveedor.id == 1){
+				if((arg.solicitud.proveedor.nombreProveedorCond == &quot;&quot;) || (arg.solicitud.proveedor.nombreProveedorCond == null)){
+					errores[] = &quot;&apos;Nombre Proveedor Condicionado&apos; es obligatorio&quot;;
+				}
+				if(arg.solicitud.proveedor.motivoProveedorCond.id == null){
+					errores[] = &quot;&apos;Clasif. Motivo Proveedor Condicionado&apos; es obligatorio&quot;;
+				}
+				if((arg.solicitud.proveedor.justificacionMotivo == &quot;&quot;) || (arg.solicitud.proveedor.justificacionMotivo == null)){
+					errores[] = &quot;&apos;Justificación Elección Motivo&apos; es obligatorio&quot;;
+				}
+			}else if(arg.solicitud.proveedor.tipoProveedor.id == 2){
+					if((arg.solicitud.proveedor.proveedoresSugeridos == &quot;&quot;) || (arg.solicitud.proveedor.proveedoresSugeridos == null)){
+						errores[] = &quot;&apos;Indicar Proveedores Sugeridos &apos; es obligatorio&quot;;	
+					}
+			}else if(arg.solicitud.proveedor.tipoProveedor.id == 3){
+				//Ninguno
+			}
+		}else errores[] = &quot;&apos;Tipo Proveedor&apos; es obligatorio&quot;;
+		
+	}
+}
+
+return errores;</sourceCode>
+		</method>
+	</methods>
+</component>

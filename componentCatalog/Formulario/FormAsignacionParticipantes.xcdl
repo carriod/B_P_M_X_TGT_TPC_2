@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FormAsignacionParticipantes" description="" versionID="Version 5.7 GA" flags="cloneable presentable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Lang.Presentable" flags="public"/>
+	<inherit class="Fuego.Internal.PresentableDelegate" flags="public delegated hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="defaultPresentation" value="AsignacionParticipantes"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<objectProperty name="presentationNames" value="AsignacionParticipantes"/>
+	<attributes>
+		<String name="actividad" flags="hassetter hasgetter public" position="9"/>
+		<array type="Formulario.FormAsignacionParticipantes.BotonesAccion" name="botonesAccion" flags="hasgetter public" position="6" javaType="fuego.xobject.GroupArray"/>
+		<array type="Formulario.FormAsignacionParticipantes.BotonesSolapa" name="botonesSolapa" flags="hasgetter public" position="5" javaType="fuego.xobject.GroupArray"/>
+		<Bool name="editable" flags="hassetter hasgetter public" position="4"/>
+		<array type="String" name="errores" flags="hassetter hasgetter public" position="3"/>
+		<array type="Formulario.FormAsignacionParticipantes.HistorialDeAsignaciones" name="historialDeAsignaciones" flags="hasgetter public" position="17" javaType="fuego.xobject.GroupArray"/>
+		<String name="listaAnalista" flags="hassetter hasgetter public includeincheck" position="8">
+			<read language="Java1">return this.solicitud.asignacionParticipante.analista;</read>
+			<write language="Java1">this.solicitud.asignacionParticipante.analista = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerAnalistas"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerAnalistas()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerAnalistas"/>
+		</String>
+		<String name="listaCompradores" flags="hassetter hasgetter public includeincheck" position="14">
+			<read language="Java1">return this.solicitud.asignacionParticipante.comprador;</read>
+			<write language="Java1">this.solicitud.asignacionParticipante.comprador = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerCompradores"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerCompradores()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerCompradores"/>
+		</String>
+		<String name="listaController" flags="hassetter hasgetter public includeincheck" position="11">
+			<read language="Java1">return this.solicitud.asignacionParticipante.controller;</read>
+			<write language="Java1">this.solicitud.asignacionParticipante.controller = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerController"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerController()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerController"/>
+		</String>
+		<String name="listaGerenteCompras" flags="hassetter hasgetter public includeincheck" position="10">
+			<read language="Java1">return this.solicitud.asignacionParticipante.gerenteCompras;</read>
+			<write language="Java1">this.solicitud.asignacionParticipante.gerenteCompras = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerGerentesCompras"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerGerentesCompras()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerGerentesCompras"/>
+		</String>
+		<String name="listaGestorEnlace" flags="hassetter hasgetter public includeincheck" position="15">
+			<read language="Java1">return this.solicitud.gestorEnlace;</read>
+			<write language="Java1">this.solicitud.gestorEnlace = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerGestoresEnlace"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerGestoresEnlace()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerGestoresEnlace"/>
+		</String>
+		<String name="listaIntervencion" flags="hassetter hasgetter public includeincheck" position="12">
+			<read language="Java1">return this.solicitud.asignacionParticipante.intervencion;</read>
+			<write language="Java1">this.solicitud.asignacionParticipante.intervencion = value;</write>
+		</String>
+		<String name="listaJefeCompras" flags="hassetter hasgetter public includeincheck" position="13">
+			<read language="Java1">return this.solicitud.asignacionParticipante.jefeCompras;</read>
+			<write language="Java1">this.solicitud.asignacionParticipante.jefeCompras = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerJefeCompras"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerJefeCompras()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerJefeCompras"/>
+		</String>
+		<String name="listaSolicitante" flags="hassetter hasgetter public includeincheck" position="16">
+			<read language="Java1">return this.solicitud.gestorSolicitante;</read>
+			<write language="Java1">this.solicitud.gestorSolicitante = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerSolicitantes"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerSolicitantes()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerSolicitantes"/>
+		</String>
+		<String name="listaSupervisor" flags="hassetter hasgetter public includeincheck" position="19">
+			<read language="Java1">return this.solicitud.asignacionParticipante.supervisorCdG;</read>
+			<write language="Java1">this.solicitud.asignacionParticipante.supervisorCdG = value;</write>
+			<property name="validValuesDescriptionMethodName" value="obtenerSupervisor"/>
+			<property name="validValuesDescriptionMethodSignature" value="MobtenerSupervisor()Ljava.util.Map;"/>
+			<property name="validValuesMethodName" value="obtenerSupervisor"/>
+		</String>
+		<String name="rol" flags="hassetter hasgetter public" position="7"/>
+		<array type="String" name="roles" flags="hassetter hasgetter public" position="18"/>
+		<object type="Negocio.NSolicitud" name="solicitud" flags="hassetter hasgetter public" position="2"/>
+		<String name="titulo" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FormAsignacionParticipantes" description="" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Formulario.FormAsignacionParticipantes"/>
+			<sourceCode language="Java1"/>
+		</method>
+		<method name="actionButton0" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton0&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton1" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton1&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton2" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton2&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton3" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton3&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton4" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton4&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton5" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton5&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton6" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton6&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="actionButton7" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;actionButton7&quot;);
+resultado = resultado.toLowerCase().trim();
+
+if(this.actividad == &quot;CSAListadoDeSolicitudesSAGI&quot;){
+	ClientBusinessProcess tpcProcess = ClientBusinessProcess();
+	tpcProcess.connectTo(processId : &quot;/ProcesoDeTableroDePedidosYCompras&quot;);
+	InstanceFilter tpcFilter;
+	tpcFilter.create(processService : tpcProcess.processService);
+	tpcFilter.searchScope.participantScope = ParticipantScope.ALL;
+	tpcFilter.addAttributeTo(variable : &quot;idSolicitud&quot;, comparator : Comparison.IS, value : this.solicitud.id);
+	Instance[] tpcInstancias = tpcProcess.getInstancesByFilter(filter : tpcFilter);
+	Utiles.Logger.logInfo(mensaje : &quot;tpcInstancias.length() &quot; + tpcInstancias.length());
+	for (int index = 0; index &lt; tpcInstancias.length; index++) {
+	    Any[Any] args = {};
+		args[&quot;solicitante&quot;] = this.listaSolicitante;
+		args[&quot;gestorEnlace&quot;] = this.listaGestorEnlace;
+		args[&quot;analista&quot;] = this.listaAnalista;
+		args[&quot;gerenteCompras&quot;] = this.listaGerenteCompras;
+		args[&quot;jefeCompras&quot;] = this.listaJefeCompras;
+		args[&quot;supervisor&quot;] = this.listaSupervisor;
+		Utiles.Logger.logInfo(mensaje : &quot;tpcInstancias[index].activityName &quot; + tpcInstancias[index].activityName);
+		String activityName = tpcInstancias[index].activityName;
+		if(tpcInstancias[index].activityName == &quot;GCOAsignarParticipantesSAGI&quot; &amp;&amp; this.listaJefeCompras != null &amp;&amp; this.listaJefeCompras != &quot;&quot;){
+			activityName = &quot;Condicional1&quot;;
+		}
+		if(tpcInstancias[index].activityName == &quot;JCOAsignarParticipantesSAGI&quot; &amp;&amp; this.listaCompradores != null &amp;&amp; this.listaCompradores != &quot;&quot;){
+			activityName = &quot;RecomendacionComprador&quot;;
+		}
+		if(tpcInstancias[index].activityName == &quot;SCGAsignarParticipantesSAGI&quot; &amp;&amp; this.listaAnalista != null &amp;&amp; this.listaAnalista != &quot;&quot;){
+			activityName = &quot;Split2&quot;;
+			//GRABO EL ESTADO DE LA SOLICITUD
+			Respuesta respuesta = Respuesta();
+			this.solicitud.estado.idSolicitud = this.solicitud.id;
+			this.solicitud.estado.idEstadoSolicitud = 3;
+			respuesta = FSolicitudEstado.setValue(objNegocio : this.solicitud.estado);
+			if (respuesta.resultado == OK) {
+				this.solicitud.estado = (NSolicitudEstado)respuesta.contenido;
+			} else {
+				throw Java.Lang.Exception((String)respuesta.contenido);	
+			}
+		}
+		if(tpcInstancias[index].activityName == &quot;ACGAsignarParticipantesSAGI&quot; &amp;&amp; this.listaController != null &amp;&amp; this.listaController != &quot;&quot;){
+			activityName = &quot;RecomendacionController&quot;;
+		}
+		if(activityName != &quot;Incorporarse&quot; &amp;&amp; activityName != &quot;Inconporarse1&quot;){
+	    	tpcInstancias[index].grab(grabActivity : &quot;AsignacionParticipantes&quot;);
+	 		tpcInstancias[index].runTask(activity : &quot;AsignacionParticipantes&quot;, task : 1, args : args);	
+	 		tpcInstancias[index].route(activity : activityName);
+		}		 	
+	}
+	ClientBusinessProcess recProcess = ClientBusinessProcess();
+	recProcess.connectTo(processId : &quot;/ProcesoDeRecomendacionGestionDeCompras&quot;);
+	InstanceFilter recFilter;
+	recFilter.create(processService : recProcess.processService);
+	recFilter.searchScope.participantScope = ParticipantScope.ALL;
+	recFilter.addAttributeTo(variable : &quot;idSolicitud&quot;, comparator : Comparison.IS, value : this.solicitud.id);
+	Instance[] recInstancias = recProcess.getInstancesByFilter(filter : recFilter);
+	for (int index = 0; index &lt; recInstancias.length; index++) {
+	    Any[Any] args = {};
+		args[&quot;comprador&quot;] = this.listaCompradores;
+		args[&quot;controller&quot;] = this.listaController;
+		String activityName = recInstancias[index].activityName;
+	    recInstancias[index].grab(grabActivity : &quot;AsignacionParticipantes&quot;);	    
+	 	recInstancias[index].runTask(activity : &quot;AsignacionParticipantes&quot;, task : 1, args : args);	 	
+	 	recInstancias[index].route(activity : activityName);	 	
+	}
+}
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="initPres" description="" flags="clientavailable public">
+			<sourceCode language="Java1">this.setText(componentId : &quot;titulo&quot;, text : this.titulo);
+this.setVisible(componentId : &quot;buttonSubmit&quot;, visible : false, collapsed : true);
+this.setVisible(componentId : &quot;buttonCancel&quot;, visible : false, collapsed : true);
+
+for (int i = 0; i &lt; 7; i++) {
+   this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+}
+ 
+for (int i = 0; i &lt; botonesAccion.length; i++) {
+    if(botonesAccion[i].labelBoton != null){
+    	this.setVisible(componentId : &quot;actionButton&quot;+i, visible : true, collapsed : false);
+    	this.setText(componentId : &quot;actionButton&quot;+i, text : botonesAccion[i].labelBoton);          
+	}else{
+		this.setVisible(componentId : &quot;actionButton&quot;+i, visible : false, collapsed : false);
+	}
+}
+
+for (int i = 0; i &lt; 11; i++) {
+   this.setVisible(componentId : &quot;tabButton&quot;+i, visible : false, collapsed : false);
+}
+
+for (int i = 0; i &lt; botonesSolapa.length; i++) {
+    if(botonesSolapa[i].labelBoton != null){
+    	this.setVisible(componentId : &quot;tabButton&quot;+i, visible : true, collapsed : false);
+    	this.setText(componentId : &quot;tabButton&quot;+i, text : botonesSolapa[i].labelBoton);            
+	}else{
+		this.setVisible(componentId : &quot;tabButton&quot;+i, visible : false, collapsed : false);
+	}
+}
+
+if(this.solicitud.tipoCompra.id in {4,5}){
+	this.listaIntervencion = &quot;Todos&quot;;
+}else{
+	this.listaIntervencion = &quot;&quot;;
+}
+
+this.setearEditable();
+this.visual();
+
+if(errores != null &amp;&amp; errores.length() &gt; 0){
+	foreach (error in errores) {
+		this.showError(error : error);
+	}
+}</sourceCode>
+		</method>
+		<method name="listaAnalistaValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return obtenerAnalistas()
+</sourceCode>
+		</method>
+		<method name="listaCompradoresValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return obtenerCompradores()
+</sourceCode>
+		</method>
+		<method name="listaControllerValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return obtenerController()
+</sourceCode>
+		</method>
+		<method name="listaGerenteComprasValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return obtenerGerentesCompras()
+</sourceCode>
+		</method>
+		<method name="listaGestorEnlaceValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return obtenerGestoresEnlace()
+</sourceCode>
+		</method>
+		<method name="listaJefeComprasValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return obtenerJefeCompras()
+</sourceCode>
+		</method>
+		<method name="listaSolicitanteValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return obtenerSolicitantes()
+</sourceCode>
+		</method>
+		<method name="listaSupervisorValidValues" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Fuego">return obtenerSupervisor()
+</sourceCode>
+		</method>
+		<method name="obtenerAnalistas" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Analista CdG&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] analistas = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        analistas[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return analistas;
+</sourceCode>
+		</method>
+		<method name="obtenerCompradores" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Comprador GC&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] compradores = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        compradores[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return compradores;
+</sourceCode>
+		</method>
+		<method name="obtenerController" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Controller GC&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] controllers = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        controllers[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return controllers;
+</sourceCode>
+		</method>
+		<method name="obtenerGerentesCompras" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Gerente Compras&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] gerentes = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        gerentes[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return gerentes;
+</sourceCode>
+		</method>
+		<method name="obtenerGestoresEnlace" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Gestor Enlace&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] gestores = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        gestores[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return gestores;
+</sourceCode>
+		</method>
+		<method name="obtenerIntervencion" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Intervencion GC&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] intervencion = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        intervencion[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return intervencion;
+</sourceCode>
+		</method>
+		<method name="obtenerJefeCompras" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Jefe Compras&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] jefeCompras = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        jefeCompras[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return jefeCompras;
+</sourceCode>
+		</method>
+		<method name="obtenerSolicitantes" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Solicitante SAGI&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] solicitantes = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        solicitantes[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return solicitantes;
+</sourceCode>
+		</method>
+		<method name="obtenerSupervisor" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="String[String]"/>
+			<sourceCode language="Java1">DirOrganizationalRole dirOrganizationalRole = DirOrganizationalRole.fetch(session : DirectorySession.currentEngineSession, id : &quot;TPC - Supervisor CdG&quot;);
+DirHumanParticipant[] humanParticipants = dirOrganizationalRole.fetchAssignedParticipants();
+
+String[String] jefeCompras = { } ;
+for (DirHumanParticipant humanParticipant : humanParticipants) {
+    if (humanParticipant.enabled) {
+        jefeCompras[humanParticipant.id] = humanParticipant.displayName;
+    }
+}
+
+return jefeCompras;</sourceCode>
+		</method>
+		<method name="setearEditable" flags="clientavailable public">
+			<sourceCode language="Java1">this.setEditable(componentId : &quot;tabButton9&quot;, editable : false);
+this.setCssClassName(componentId : &quot;tabButton9&quot;, cssClass : &quot;fo_selected_tab_button&quot;);
+
+if(this.actividad == &quot;SCGAsignarParticipantesSAGI&quot; || this.actividad == &quot;ACGAsignarParticipantesSAGI&quot; ||
+	this.actividad == &quot;GCOAsignarParticipantesSAGI&quot; || this.actividad == &quot;JCOAsignarParticipantesSAGI&quot;)
+{
+
+	this.setEditable(componentId : &quot;analista&quot;, editable : true);
+	this.setEditable(componentId : &quot;gerenteCompras&quot;, editable : true);
+	this.setEditable(componentId : &quot;intervencion&quot;, editable : true);
+	this.setEditable(componentId : &quot;jefeCompras&quot;, editable : true);
+	this.setEditable(componentId : &quot;supervisor&quot;, editable : true);
+	this.setEditable(componentId : &quot;comprador&quot;, editable : true);
+	this.setEditable(componentId : &quot;gestorEnlace&quot;, editable : true);
+	this.setEditable(componentId : &quot;emailGestor&quot;, editable : true);
+	this.setEditable(componentId : &quot;solicitante&quot;, editable : true);
+	this.setEditable(componentId : &quot;emailSolicitante&quot;, editable : true);
+	
+	if(this.rol == &quot;TPC - Supervisor CdG&quot;){
+		this.setEditable(componentId : &quot;gerenteCompras&quot;, editable : false);
+		this.setEditable(componentId : &quot;intervencion&quot;, editable : false);
+		this.setEditable(componentId : &quot;jefeCompras&quot;, editable : false);
+		this.setEditable(componentId : &quot;comprador&quot;, editable : false);
+		this.setEditable(componentId : &quot;supervisor&quot;, editable : false);
+		this.setEditable(componentId : &quot;gestorEnlace&quot;, editable : false);
+		this.setEditable(componentId : &quot;emailGestor&quot;, editable : false);
+		this.setEditable(componentId : &quot;solicitante&quot;, editable : false);
+		this.setEditable(componentId : &quot;emailSolicitante&quot;, editable : false);
+	}else if(this.rol == &quot;TPC - Analista CdG&quot;){
+		this.setEditable(componentId : &quot;analista&quot;, editable : false);
+		this.setEditable(componentId : &quot;gerenteCompras&quot;, editable : false);
+		this.setEditable(componentId : &quot;intervencion&quot;, editable : false);
+		this.setEditable(componentId : &quot;jefeCompras&quot;, editable : false);
+		this.setEditable(componentId : &quot;comprador&quot;, editable : false);
+		this.setEditable(componentId : &quot;supervisor&quot;, editable : false);
+		this.setEditable(componentId : &quot;gestorEnlace&quot;, editable : false);
+		this.setEditable(componentId : &quot;emailGestor&quot;, editable : false);
+		this.setEditable(componentId : &quot;solicitante&quot;, editable : false);
+		this.setEditable(componentId : &quot;emailSolicitante&quot;, editable : false);
+	}else if (this.rol == &quot;TPC - Gerente Compras&quot;){
+		this.setEditable(componentId : &quot;analista&quot;, editable : false);
+		this.setEditable(componentId : &quot;gerenteCompras&quot;, editable : false);
+		this.setEditable(componentId : &quot;supervisor&quot;, editable : false);
+		this.setEditable(componentId : &quot;intervencion&quot;, editable : false);
+		this.setEditable(componentId : &quot;gestorEnlace&quot;, editable : false);
+		this.setEditable(componentId : &quot;emailGestor&quot;, editable : false);
+		this.setEditable(componentId : &quot;solicitante&quot;, editable : false);
+		this.setEditable(componentId : &quot;emailSolicitante&quot;, editable : false);
+	}else if (this.rol == &quot;TPC - Jefe Compras&quot;){
+		this.setEditable(componentId : &quot;analista&quot;, editable : false);
+		this.setEditable(componentId : &quot;gerenteCompras&quot;, editable : false);
+		this.setEditable(componentId : &quot;intervencion&quot;, editable : false);
+		this.setEditable(componentId : &quot;jefeCompras&quot;, editable : false);
+		this.setEditable(componentId : &quot;supervisor&quot;, editable : false);
+		this.setEditable(componentId : &quot;gestorEnlace&quot;, editable : false);
+		this.setEditable(componentId : &quot;emailGestor&quot;, editable : false);
+		this.setEditable(componentId : &quot;solicitante&quot;, editable : false);
+		this.setEditable(componentId : &quot;emailSolicitante&quot;, editable : false);
+	}
+	
+}else{
+	this.setEditable(componentId : &quot;analista&quot;, editable : false);
+	this.setEditable(componentId : &quot;gerenteCompras&quot;, editable : false);
+	this.setEditable(componentId : &quot;intervencion&quot;, editable : false);
+	this.setEditable(componentId : &quot;jefeCompras&quot;, editable : false);
+	this.setEditable(componentId : &quot;comprador&quot;, editable : false);
+	this.setEditable(componentId : &quot;supervisor&quot;, editable : false);
+	this.setEditable(componentId : &quot;gestorEnlace&quot;, editable : false);
+	this.setEditable(componentId : &quot;emailGestor&quot;, editable : false);
+	this.setEditable(componentId : &quot;solicitante&quot;, editable : false);
+	this.setEditable(componentId : &quot;emailSolicitante&quot;, editable : false);
+	if(this.solicitud.estado.idEstadoSolicitud != 7){
+		foreach (rolC in this.roles) {
+			if(rolC == &quot;TPC - Supervisor CdG&quot;){
+				this.setEditable(componentId : &quot;analista&quot;, editable : true);
+				this.setEditable(componentId : &quot;supervisor&quot;, editable : true);
+			}else if(rolC == &quot;TPC - Analista CdG&quot;){
+			}else if (rolC == &quot;TPC - Gerente Compras&quot;){
+				this.setEditable(componentId : &quot;jefeCompras&quot;, editable : true);
+				this.setEditable(componentId : &quot;comprador&quot;, editable : true);
+				this.setEditable(componentId : &quot;gerenteCompras&quot;, editable : true);
+			}else if (rolC == &quot;TPC - Jefe Compras&quot;){
+				this.setEditable(componentId : &quot;comprador&quot;, editable : true);
+			}else if (rolC == &quot;TPC - Administrador SAGI&quot;){
+				this.setEditable(componentId : &quot;gestorEnlace&quot;, editable : true);
+				this.setEditable(componentId : &quot;emailGestor&quot;, editable : true);
+				this.setEditable(componentId : &quot;solicitante&quot;, editable : true);
+				this.setEditable(componentId : &quot;emailSolicitante&quot;, editable : true);
+			}
+		}
+	}
+}</sourceCode>
+		</method>
+		<method name="tabButton0" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton0&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton1" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton1&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton10" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton10&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton11" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton11&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton2" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton2&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton3" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton3&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton4" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton4&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton5" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton5&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton6" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton6&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton7" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton7&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton8" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton8&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="tabButton9" flags="clientavailable public">
+			<sourceCode language="Java1">String resultado = this.getText(componentId : &quot;tabButton9&quot;);
+resultado = resultado.toLowerCase().trim();
+
+this.submit(text : resultado);</sourceCode>
+		</method>
+		<method name="visual" flags="clientavailable public">
+			<sourceCode language="Java1">if(this.actividad == &quot;SCGAsignarParticipantesSAGI&quot; || this.actividad == &quot;ACGAsignarParticipantesSAGI&quot; ||
+	this.actividad == &quot;GCOAsignarParticipantesSAGI&quot; || this.actividad == &quot;JCOAsignarParticipantesSAGI&quot;)
+{
+
+	this.setVisible(componentId : &quot;historialAsignacionesT&quot;, visible : false, collapsed : true);
+	this.setVisible(componentId : &quot;datosReAsignacionT&quot;, visible : false, collapsed : true);
+	this.setCssClassName(componentId : &quot;historialAsignacionesT&quot;, cssClass : &quot;fo_ocultar_cell&quot;);
+	this.setCssClassName(componentId : &quot;datosReAsignacionT&quot;, cssClass : &quot;fo_ocultar_cell&quot;);
+	this.setVisible(componentId : &quot;asignacionesT[6][0]&quot;, visible : false, collapsed : true);
+	this.setCssClassName(componentId : &quot;asignacionesT[6][0]&quot;, cssClass : &quot;fo_ocultar_cell&quot;);
+	this.setVisible(componentId : &quot;asignacionesT[7][0]&quot;, visible : false, collapsed : true);
+	this.setCssClassName(componentId : &quot;asignacionesT[7][0]&quot;, cssClass : &quot;fo_ocultar_cell&quot;);
+	this.setVisible(componentId : &quot;asignacionesT[8][0]&quot;, visible : false, collapsed : true);
+	this.setCssClassName(componentId : &quot;asignacionesT[8][0]&quot;, cssClass : &quot;fo_ocultar_cell&quot;);
+	this.setVisible(componentId : &quot;asignacionesT[9][0]&quot;, visible : false, collapsed : true);
+	this.setCssClassName(componentId : &quot;asignacionesT[9][0]&quot;, cssClass : &quot;fo_ocultar_cell&quot;);
+
+	
+}</sourceCode>
+		</method>
+	</methods>
+	<presentation bgcolor="#FFFFFF" checked="true" clienterroraspopup="true" cssfilename="webRoot/webResources/css/tpcstyle.css" errorcssclass="fo_presentation_error" errorfontface="PLAIN" errorfontsize="12" errorfonttype="Default" height="315" id="AsignacionParticipantes" initializationmethod="MinitPres()V" iscssenabled="true" isuxo="true" reference="FormAsignacionParticipantes" width="473" cssclass="fo_presentation" ismixedcss="false" tabindex="0">
+		<background imageattachment="fixed" imagelayout="no-repeat" imagexposition="center" imageyposition="center">
+			<image alignment="center" bordercolor="#000000" borderwidth="1" editable="true" fontface="PLAIN" fontsize="12" fonttype="Default" fullbrowser="false" required="false" cssclass="fo_image" ismixedcss="false" tabindex="0"/>
+		</background>
+		<table border="true" bottombordercolor="#000000" bottomborderstyle="SOLID" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,100%]" id="AsignacionParticipantesT" leftbordercolor="#000000" leftborderstyle="SOLID" leftborderwidth="1" rightbordercolor="#000000" rightborderstyle="SOLID" rightborderwidth="1" topbordercolor="#000000" topborderstyle="SOLID" topborderwidth="1" width="1200" cssclass="fo_presentation_table" ismixedcss="false" tabindex="0">
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,]" id="tabButtonT1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" cssclass="fo_header_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton0" methodinvocation="MtabButton0()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton1" methodinvocation="MtabButton1()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton2" methodinvocation="MtabButton2()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton3" methodinvocation="MtabButton3()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton4" methodinvocation="MtabButton4()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton5" methodinvocation="MtabButton5()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="0" cellspacing="0" columnwidth="[,]" id="tabButtonT2" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" cssclass="fo_header_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton6" methodinvocation="MtabButton6()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton7" methodinvocation="MtabButton7()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton8" methodinvocation="MtabButton8()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton9" methodinvocation="MtabButton9()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton10" methodinvocation="MtabButton10()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="tabButton11" methodinvocation="MtabButton11()V" transparent="true" cssclass="fo_tab_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="right" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title_cell" ismixedcss="false" tabindex="0">
+								<label fgcolor="#000000" fontface="BOLD" fontsize="26" fonttype="Verdana" fullbrowser="false" id="titulo" cssclass="fo_title_label" ismixedcss="false" tabindex="0">
+									<value>Titulo</value>
+								</label>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="left" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" id="asignacionesT" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title2_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="asignacionL" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Asignación</value>
+								</label>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,13%,20%,13%,13%,20%,20%]" id="datosAsignacionT1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="analistaL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Analista</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="analista" reference="listaAnalista" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="gerenteComprasL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Gerente de Compras</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="gerenteCompras" reference="listaGerenteCompras" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,13%,20%,13%,13%,20%,20%]" id="datosAsignacionT2" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="supervisorL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Supervisor</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="supervisor" reference="listaSupervisor" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="intervencionL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Intervención</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="intervencion" outputmasktype="0" passwordfield="false" reference="listaIntervencion" required="false" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,13%,20%,13%,13%,20%,20%]" id="datosAsignacionT3" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="jefeComprasL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Jefe de Compras</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="jefeCompras" reference="listaJefeCompras" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="compradorL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Comprador</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="comprador" reference="listaCompradores" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,13%,20%,13%,13%,20%,20%]" id="datosAsignacionT4" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner1_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="gestorEnlaceL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Gestor Enlace</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="gestorEnlace" reference="listaGestorEnlace" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="emailGestorL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Dirección Email
+Gestor Enlace</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="emailGestor" outputmasktype="0" passwordfield="false" reference="solicitud.emailEnlace" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,13%,20%,13%,13%,20%,20%]" id="datosAsignacionT5" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner2_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="solicitanteL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Solicitante</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<combo alignment="left" cache="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="solicitante" reference="listaSolicitante" required="false" transparent="true" cssclass="fo_combo" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+										<cell alignment="right" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="emailSolicitanteL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Dirección Email
+Solicitante</value>
+											</label>
+										</cell>
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="false" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="emailSolicitante" outputmasktype="0" passwordfield="false" reference="solicitud.emailSolicitante" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+										</cell>
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0"/>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="left" bgcolor="#ffffff" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title2_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="reAsignacionL" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Re Asignación</value>
+								</label>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="5" columnwidth="[,100%]" id="datosReAsignacionT" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_inner2_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="motivoReAsignacionL" cssclass="fo_label" ismixedcss="false" tabindex="0">
+												<value>Motivo de re asignación</value>
+											</label>
+										</cell>
+									</row>
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<multilinetext bordercolor="#D0D2D4" borderwidth="1" colqty="220" editable="true" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="motivoReAsignacion" lineqty="5" reference="solicitud.asignacionParticipante.motivoReAsignacion" required="false" cssclass="fo_multiline" ismixedcss="false" tabindex="0"/>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="left" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_title2_cell" ismixedcss="false" tabindex="0">
+								<label fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" fullbrowser="false" id="label3" cssclass="fo_title2_label" ismixedcss="false" tabindex="0">
+									<value>Historial de Asignaciones</value>
+								</label>
+							</cell>
+						</row>
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="historialAsignacionesT" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" width="100%" cssclass="fo_table" ismixedcss="false" tabindex="0">
+									<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+										<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+											<array headersortedbgcolor="#0A2F6F" headersortedfgcolor="#FFFFFF" sorted="false" alignment="center" automaticadd="false" bordercolor="#D0D2D4" borderwidth="1" cellpadding="3" cellspacing="1" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" headerbordercolor="#D0D2D4" headerborderwidth="1" headercssclass="fo_group_header_color" headerenabled="true" headerfontface="PLAIN" headerfontsize="12" headerfonttype="Times New Roman, Times, serif" headers="[,Fecha,Asignado,Asignador,Rol,Tipo,Motivo Re Asignación]" headerswidth="[,100,150,150,200,100,600]" id="historialDeAsignaciones" indexbgcolor="#ffffff" indexbordercolor="#D0D2D4" indexborderwidth="1" indexcssclass="fo_group_index" indexenabled="false" indexfgcolor="#ffffff" indexfontface="PLAIN" indexfontsize="10" indexfonttype="Times New Roman, Times, serif" indextabenabled="false" pagingbordercolor="#D0D2D4" pagingborderwidth="1" pagingcssclass="fo_group_paging" pagingfontface="PLAIN" pagingfontsize="12" pagingfonttype="Times New Roman, Times, serif" pagingshowall="false" reference="historialDeAsignaciones" rowevencssclass="fo_group_even_tr" rowoddcssclass="fo_group_odd_tr" rows="0" cssclass="fo_group_color" ismixedcss="false" tabindex="0">
+												<addbutton cssclass="fo_group_add" ismixedcss="false" tabindex="0"/>
+												<removebutton cssclass="fo_group_minus" ismixedcss="false" tabindex="0"/>
+												<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<datetimepiker bordercolor="#D0D2D4" borderwidth="1" calendartabenabled="true" dhtmlcalendar="false" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="fechaAsignacionArray" reference="historialDeAsignaciones[].fechaAsignacion" required="false" cssclass="fo_date" ismixedcss="false" tabindex="0"/>
+													</cell>
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="asignadoArray" outputmasktype="0" passwordfield="false" reference="historialDeAsignaciones[].asignacion.asignado" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+													</cell>
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="asignadorArray" outputmasktype="0" passwordfield="false" reference="historialDeAsignaciones[].asignacion.asignador" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+													</cell>
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="rolArray" outputmasktype="0" passwordfield="false" reference="historialDeAsignaciones[].asignacion.rol" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+													</cell>
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="tipoArray" outputmasktype="0" passwordfield="false" reference="historialDeAsignaciones[].asignacion.tipo" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+													</cell>
+													<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+														<text alignment="left" bordercolor="#D0D2D4" borderwidth="1" colqty="5" displayaslabel="true" editable="false" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" id="motivoReAsignacionArray" outputmasktype="0" passwordfield="false" reference="historialDeAsignaciones[].asignacion.motivoReAsignacion" required="false" cssclass="fo_text" ismixedcss="false" tabindex="0"/>
+													</cell>
+												</row>
+											</array>
+										</cell>
+									</row>
+								</table>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="right" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#000000" bottomborderwidth="1" cellpadding="7" cellspacing="0" columnwidth="[,10%,10%,10%,10%,10%,10%]" id="table6" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" width="100%" cssclass="fo_footer_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton0" methodinvocation="MactionButton0()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton1" methodinvocation="MactionButton1()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton2" methodinvocation="MactionButton2()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton3" methodinvocation="MactionButton3()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton4" methodinvocation="MactionButton4()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#000000" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="1" rightbordercolor="#000000" rightborderwidth="1" topbordercolor="#000000" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton5" methodinvocation="MactionButton5()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton6" methodinvocation="MactionButton6()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="action" bordercolor="#000000" borderwidth="1" display="action" fontface="PLAIN" fontsize="12" fonttype="Default" id="actionButton7" methodinvocation="MactionButton7()V" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+			<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+				<cell alignment="right" bottombordercolor="#000000" bottomborderwidth="0" fontface="PLAIN" fontsize="12" fonttype="Default" hexpand="1" leftbordercolor="#000000" leftborderwidth="0" rightbordercolor="#000000" rightborderwidth="0" topbordercolor="#000000" topborderwidth="0" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+					<table border="true" bottombordercolor="#D0D2D4" bottomborderwidth="1" cellpadding="0" cellspacing="0" id="table7" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" cssclass="fo_table" ismixedcss="false" tabindex="0">
+						<row cssclass="fo_cell" ismixedcss="false" tabindex="0">
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="submit" bordercolor="#000000" borderwidth="1" display="Submit" fontface="PLAIN" fontsize="12" fonttype="Default" id="buttonSubmit" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+							<cell alignment="center" bottombordercolor="#D0D2D4" bottomborderwidth="1" fontface="PLAIN" fontsize="12" fonttype="Times New Roman, Times, serif" hexpand="1" leftbordercolor="#D0D2D4" leftborderwidth="1" rightbordercolor="#D0D2D4" rightborderwidth="1" topbordercolor="#D0D2D4" topborderwidth="1" valignment="center" vexpand="1" cssclass="fo_cell" ismixedcss="false" tabindex="0">
+								<button action="cancel" bordercolor="#000000" borderwidth="1" display="Cancel" fontface="PLAIN" fontsize="12" fonttype="Default" id="buttonCancel" transparent="true" cssclass="fo_button" ismixedcss="false" tabindex="0"/>
+							</cell>
+						</row>
+					</table>
+				</cell>
+			</row>
+		</table>
+	</presentation>
+	<resources>
+		<resource default="Analista" type="1">
+			<label language="es">Analista</label>
+		</resource>
+		<resource default="Asignación" type="1">
+			<label language="es">Asignación</label>
+		</resource>
+		<resource default="Asignado">
+			<label language="es">Asignado</label>
+		</resource>
+		<resource default="Asignador">
+			<label language="es">Asignador</label>
+		</resource>
+		<resource default="Boton">
+			<label language="en">Boton</label>
+			<label language="es">Boton</label>
+		</resource>
+		<resource default="Botones" type="1">
+			<label language="en">Botones</label>
+			<label language="es">Botones</label>
+		</resource>
+		<resource default="Cancel">
+			<label language="en">Cancel</label>
+			<label language="es">Cancel</label>
+		</resource>
+		<resource default="Comprador" type="1">
+			<label language="es">Comprador</label>
+		</resource>
+		<resource default="Controller" type="1">
+			<label language="es">Controller</label>
+		</resource>
+		<resource default="Datos Generales" type="1">
+			<label language="es">Datos Generales</label>
+		</resource>
+		<resource default="Dejar Pendiente">
+			<label language="es">Pendiente</label>
+		</resource>
+		<resource default="Dirección Email Gestor Enlace" type="1">
+			<label language="es">Dirección Email
+Gestor Enlace</label>
+		</resource>
+		<resource default="Dirección Email Solicitante" type="1">
+			<label language="es">Dirección Email
+Solicitante</label>
+		</resource>
+		<resource default="Fecha">
+			<label language="es">Fecha</label>
+		</resource>
+		<resource default="Fecha  de Creación" type="1">
+			<label language="es">Fecha  de Creación</label>
+		</resource>
+		<resource default="Fecha Alta :">
+			<label language="es">Fecha Alta :</label>
+		</resource>
+		<resource default="Fecha Alta:">
+			<label language="es">Fecha Alta:</label>
+		</resource>
+		<resource default="FormularioGenerico" type="1">
+			<label language="en">FormularioGenerico</label>
+			<label language="es">FormularioGenerico</label>
+		</resource>
+		<resource default="Gerente de Compras" type="1">
+			<label language="es">Gerente de Compras</label>
+		</resource>
+		<resource default="Gestor Enlace" type="1">
+			<label language="es">Gestor Enlace</label>
+		</resource>
+		<resource default="Historial de Asignaciones" type="1">
+			<label language="es">Historial de Asignaciones</label>
+		</resource>
+		<resource default="Id Solicitud" type="1">
+			<label language="es">Id Solicitud</label>
+		</resource>
+		<resource default="Intervención" type="1">
+			<label language="es">Intervención</label>
+		</resource>
+		<resource default="Jefe de Compras" type="1">
+			<label language="es">Jefe de Compras</label>
+		</resource>
+		<resource default="Mensaje" type="1">
+			<label language="es">Mensaje</label>
+		</resource>
+		<resource default="Mensaje :" type="1">
+			<label language="es">Mensaje :</label>
+		</resource>
+		<resource default="Mensaje:" type="1">
+			<label language="es">Mensaje:</label>
+		</resource>
+		<resource default="Motivo Re Asignación">
+			<label language="es">Motivo Re Asignación</label>
+		</resource>
+		<resource default="Motivo de re asignación" type="1">
+			<label language="es">Motivo de re asignación</label>
+		</resource>
+		<resource default="Re Asignación" type="1">
+			<label language="es">Re Asignación</label>
+		</resource>
+		<resource default="Rol" type="1">
+			<label language="es">Rol</label>
+		</resource>
+		<resource default="Rol :" type="1">
+			<label language="es">Rol :</label>
+		</resource>
+		<resource default="Rol:" type="1">
+			<label language="es">Rol:</label>
+		</resource>
+		<resource default="Solicitud" type="1">
+			<label language="es">Solicitud</label>
+		</resource>
+		<resource default="Solicitud :" type="1">
+			<label language="es">Solicitud :</label>
+		</resource>
+		<resource default="Solicitud:" type="1">
+			<label language="es">Solicitud:</label>
+		</resource>
+		<resource default="Status Gral. Pedido" type="1">
+			<label language="es">Status Gral. Pedido</label>
+		</resource>
+		<resource default="Submit">
+			<label language="en">Submit</label>
+			<label language="es">Submit</label>
+		</resource>
+		<resource default="Supervisor">
+			<label language="es">Supervisor</label>
+		</resource>
+		<resource default="Tipo">
+			<label language="es">Tipo</label>
+		</resource>
+		<resource default="Titulo">
+			<label language="es">Titulo</label>
+		</resource>
+		<resource default="action">
+			<label language="es">action</label>
+		</resource>
+		<resource default="label" type="1">
+			<label language="es">label</label>
+		</resource>
+		<resource default="submit">
+			<label language="es">submit</label>
+		</resource>
+	</resources>
+</component>

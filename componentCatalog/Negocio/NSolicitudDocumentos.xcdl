@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<component name="NSolicitudDocumentos" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Binary name="archivoBinario" flags="hassetter hasgetter public" position="12"/>
+		<Bool name="cargado" flags="hassetter hasgetter public" position="9"/>
+		<String length="500" name="comentarios" flags="hassetter hasgetter public includeincheck" position="7"/>
+		<String name="extensionArchivo" flags="hassetter hasgetter public" position="11"/>
+		<Time scale="2" precision="2" name="fechaAlta" flags="hassetter hasgetter public" position="6"/>
+		<Time scale="2" precision="2" name="fechaModificacion" flags="hassetter hasgetter public" position="5"/>
+		<Int length="32" name="id" flags="hassetter hasgetter public" position="8"/>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="3"/>
+		<Int length="32" name="idTipoDocumento" flags="hassetter hasgetter public" position="4"/>
+		<String name="nombreArchivo" flags="hassetter hasgetter public" position="10"/>
+		<String length="50" name="usuarioAlta" flags="hassetter hasgetter public includeincheck" position="2"/>
+		<String length="50" name="usuarioModificacion" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="NSolicitudDocumentos" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NSolicitudDocumentos"/>
+			<sourceCode language="Java1"/>
+		</method>
+	</methods>
+</component>

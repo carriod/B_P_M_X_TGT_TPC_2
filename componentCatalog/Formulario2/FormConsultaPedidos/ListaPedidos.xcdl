@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="ListaPedidos" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.InnerFODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Negocio2.NPedido2" name="objeto" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="ListaPedidos" flags="static clientavailable private">
+			<outputArgument name="return" description="" flags="retval" type="Formulario2.FormConsultaPedidos.ListaPedidos"/>
+			<sourceCode language="Java1">this.objeto = NPedido2();</sourceCode>
+		</method>
+		<method name="pedidoButton" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_E_&quot; + this.objeto.procesoId + &quot;_&quot; + this.objeto.procesoEdicion + &quot;_&quot; + this.objeto.proveedor.codigo + &quot;_&quot; + this.objeto.moneda.id + &quot;_&quot; + this.objeto.sociedad.id + &quot;_&quot; + this.objeto.formaDePago.codigo);</sourceCode>
+		</method>
+		<method name="procesoButton" flags="clientavailable public">
+			<sourceCode language="Java1">this.submit(text : &quot;ver_P_&quot; + this.objeto.procesoId + &quot;_&quot; + this.objeto.procesoEdicion);
+</sourceCode>
+		</method>
+	</methods>
+</component>

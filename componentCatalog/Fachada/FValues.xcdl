@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="FValues" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SValues" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FValues" description="" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FValues"/>
+			<sourceCode language="Java1">			
+this.servicio = SValues();
+</sourceCode>
+		</method>
+		<method name="getDecryptedValue" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = this.servicio.getValue(id : arg.id);
+
+if (respuesta.resultado == OK) {
+    respuesta.contenido = FEncryptador.decode(password : (String)respuesta.contenido);
+}else{
+    Utiles.Logger.logWarning(mensaje : &quot;FValue.getValue -&gt; &quot; + respuesta.contenido);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="getValue" description="" flags="clientavailable public">
+			<arg name="id" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = this.servicio.getValue(id : arg.id);
+
+if (respuesta.resultado != OK) {
+    Utiles.Logger.logWarning(mensaje : &quot;FValue.getValue -&gt; &quot; + respuesta.contenido);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="intervalWorkdays" description="" flags="clientavailable public">
+			<arg name="id" description="" flags="in" type="String"/>
+			<variables>
+				<variable name="fechaInicio" type="Time"/>
+				<variable name="interval" type="Interval"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = getValue(FValues, id : arg.id);
+
+if (respuesta.resultado == OK){
+    interval = Interval(respuesta.contenido);
+    fechaInicio = &apos;now&apos;;
+    respuesta.contenido = OperacionesConTiempo.intervalWorkdays(fehaInicio : fechaInicio, intervalo : interval);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="clientavailable public">
+			<arg name="id" description="" flags="in" type="String"/>
+			<arg name="value" description="" flags="in" type="Any"/>
+			<variables>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = this.servicio.setValue(id : arg.id, value : String(arg.value));
+
+if (respuesta.resultado != OK) {
+    logMessage(&quot;FValue.setValue -&gt; &quot; + respuesta.contenido, severity : SEVERE);
+}
+
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="siNoToBoolean" description="" flags="clientavailable public">
+			<arg name="value" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" primitive="true" type="Bool"/>
+			<sourceCode language="Java1">			
+			
+if(value != null)
+    return value==&quot;S&quot;?true:false;
+else
+    return null;
+</sourceCode>
+		</method>
+		<method name="toSiNo" description="" flags="clientavailable public">
+			<arg name="value" description="" flags="in" primitive="true" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="String(1)"/>
+			<sourceCode language="Java1">if(value != null)
+    return value?&quot;S&quot;:&quot;N&quot;;
+else
+    return null;
+</sourceCode>
+		</method>
+		<method name="traducirIntervalo" description="" flags="clientavailable public">
+			<arg name="intervalo" description="" flags="in" type="Interval"/>
+			<variables>
+				<variable name="cantidad" type="String"/>
+				<variable name="interv" type="String"/>
+				<variable name="respuesta" type="Utiles.Respuesta"/>
+				<variable name="tiempo" type="String"/>
+				<variable name="venc" type="String"/>
+			</variables>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">respuesta = Respuesta();
+
+try 
+{
+    
+    venc = ((String) arg.intervalo);
+    interv = &quot;&quot;;
+    cantidad = &quot;&quot;;
+    tiempo = &quot;&quot;;
+    
+    if (venc.length() &gt; 1) {
+        switch (venc.substring(first : venc.length() - 1, last : venc.length())) {
+        case &quot;d&quot;:
+            interv = &quot;dias&quot;;
+            break;
+        case &quot;h&quot;:
+            interv = &quot;horas&quot;;
+            break;
+        case &quot;m&quot;:
+            interv = &quot;minutos&quot;;
+            break;
+        case &quot;s&quot;:
+            interv = &quot;segundos&quot;;
+            break;
+        case &quot;M&quot;:
+            interv = &quot;meses&quot;;
+            break;
+        }
+
+        cantidad = venc.substring(first : 0, last : venc.length() - 1);
+     
+        if (cantidad == &quot;1&quot; &amp;&amp; interv.length() &gt; 1) 
+        {
+            interv = interv.substring(first : 0, last : interv.length() - 1);
+        }
+
+        tiempo = cantidad + &quot; &quot; + interv;
+
+    }
+    else 
+    {
+        respuesta.resultado = ERROR;
+        respuesta.contenido = &quot;Error al traducir intervalo venc.length() &lt; 1&quot;;
+        Utiles.Logger.logWarning(mensaje : ((String) respuesta.contenido));
+        return respuesta;
+    }
+   
+}
+catch (Java.Lang.Exception ex) 
+{
+    respuesta.resultado = ERROR;
+    respuesta.contenido = &quot;Error al traducir intervalo &quot; + ex.message;
+    Utiles.Logger.logWarning(mensaje : ((String) respuesta.contenido));
+    return respuesta;
+}
+
+respuesta.contenido = tiempo;
+
+return respuesta;
+</sourceCode>
+		</method>
+	</methods>
+</component>

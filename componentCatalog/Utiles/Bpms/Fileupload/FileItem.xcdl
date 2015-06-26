@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="FileItem" description="FileItem" versionID="Version 6.5 " flags="" signature="bpms.fileupload.FileItem" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="bpms.fileupload.FileItem"/>
+	<objectProperty name="package" value="bpms.fileupload"/>
+	<objectProperty name="typeId" value="bpms.fileupload.FileItem"/>
+	<attributes>
+		<String name="contentType" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetContentType()Ljava.lang.String;"/>
+		<String name="fieldName" flags="hassetter hasgetter external" position="2" javaType="java.lang.String" writeSignature="MsetFieldName(Ljava.lang.String;)V" readSignature="MgetFieldName()Ljava.lang.String;"/>
+		<Bool name="formField" flags="hassetter hasgetter external" primitive="true" position="3" javaType="boolean" writeSignature="MsetFormField(Z)V" readSignature="MisFormField()Z"/>
+		<Bool name="inMemory" flags="hasgetter external" primitive="true" position="4" javaType="boolean" readSignature="MisInMemory()Z"/>
+		<object type="Java.Io.InputStream" name="inputStream" flags="hasgetter external" position="5" javaType="java.io.InputStream" readSignature="MgetInputStream()Ljava.io.InputStream;"/>
+		<String name="name" flags="hasgetter external" position="6" javaType="java.lang.String" readSignature="MgetName()Ljava.lang.String;"/>
+		<object type="Java.Io.OutputStream" name="outputStream" flags="hasgetter external" position="7" javaType="java.io.OutputStream" readSignature="MgetOutputStream()Ljava.io.OutputStream;"/>
+		<Int length="64" name="size" flags="hasgetter external" primitive="true" position="8" javaType="long" readSignature="MgetSize()J"/>
+		<object type="Java.Io.File" name="storeLocation" flags="hasgetter external" position="9" javaType="java.io.File" readSignature="MgetStoreLocation()Ljava.io.File;"/>
+		<String name="string" flags="hasgetter external" position="10" javaType="java.lang.String" readSignature="MgetString()Ljava.lang.String;"/>
+	</attributes>
+	<methods>
+		<method name="delete" description="delete" flags="external" signature="Mdelete()V"/>
+		<method name="get" description="get" flags="external" signature="Mget()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getContentType" description="getContentType" flags="external hidden" signature="MgetContentType()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getFieldName" description="getFieldName" flags="external hidden" signature="MgetFieldName()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getInputStream" description="getInputStream" flags="external hidden" signature="MgetInputStream()Ljava.io.InputStream;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="getName" description="getName" flags="external hidden" signature="MgetName()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getOutputStream" description="getOutputStream" flags="external hidden" signature="MgetOutputStream()Ljava.io.OutputStream;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+		<method name="getSize" description="getSize" flags="external hidden" signature="MgetSize()J">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int(64)" javaType="long"/>
+		</method>
+		<method name="getStoreLocation" description="getStoreLocation" flags="external hidden" signature="MgetStoreLocation()Ljava.io.File;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Io.File" javaType="java.io.File"/>
+		</method>
+		<method name="getString" description="getString" flags="external hidden" signature="MgetString()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getString" description="getString" flags="external" signature="MgetString(Ljava.lang.String;)Ljava.lang.String;">
+			<arg name="encoding" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+			<exception type="Java.Io.UnsupportedEncodingException"/>
+		</method>
+		<method name="isFormField" description="isFormField" flags="external hidden" signature="MisFormField()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="isInMemory" description="isInMemory" flags="external hidden" signature="MisInMemory()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setFieldName" description="setFieldName" flags="external hidden" signature="MsetFieldName(Ljava.lang.String;)V">
+			<arg name="fieldName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setFormField" description="setFormField" flags="external hidden" signature="MsetFormField(Z)V">
+			<arg name="state" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite(Ljava.io.File;)V">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<exception type="Java.Lang.Exception"/>
+		</method>
+	</methods>
+</component>

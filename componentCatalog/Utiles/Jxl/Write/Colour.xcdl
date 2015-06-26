@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Colour" description="Colour" versionID="Version 6.5 " flags="" signature="jxl.write.Colour" type="java">
+	<inherit class="Utiles.Jxl.Format.Colour" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.Colour"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.Colour"/>
+	<attributes/>
+	<methods/>
+</component>

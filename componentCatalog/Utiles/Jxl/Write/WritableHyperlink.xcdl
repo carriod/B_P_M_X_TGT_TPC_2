@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WritableHyperlink" description="WritableHyperlink" versionID="Version 6.5 " flags="" signature="jxl.write.WritableHyperlink" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.HyperlinkRecord" flags="public"/>
+	<inherit class="Utiles.Jxl.Hyperlink" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.write.WritableHyperlink"/>
+	<objectProperty name="package" value="jxl.write"/>
+	<objectProperty name="typeId" value="jxl.write.WritableHyperlink"/>
+	<attributes>
+		<String name="description" flags="hassetter external" position="1" javaType="java.lang.String" writeSignature="MsetDescription(Ljava.lang.String;)V"/>
+	</attributes>
+	<methods>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(Ljxl.Hyperlink;Ljxl.write.WritableSheet;)">
+			<arg name="h" description="" flags="in external" type="Utiles.Jxl.Hyperlink" javaType="jxl.Hyperlink"/>
+			<arg name="ws" description="" flags="in external" type="Utiles.Jxl.Write.WritableSheet" javaType="jxl.write.WritableSheet"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(IILjava.net.URL;)">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="url" description="" flags="in external" type="Java.Net.URL" javaType="java.net.URL"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(IILjava.io.File;)">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(IILjava.io.File;Ljava.lang.String;)">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<arg name="desc" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(IIIILjava.net.URL;)">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="url" description="" flags="in external" type="Java.Net.URL" javaType="java.net.URL"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(IIIILjava.io.File;)">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(IIIILjava.net.URL;Ljava.lang.String;)">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="url" description="" flags="in external" type="Java.Net.URL" javaType="java.net.URL"/>
+			<arg name="desc" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(IIIILjava.io.File;Ljava.lang.String;)">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+			<arg name="desc" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(IILjava.lang.String;Ljxl.write.WritableSheet;II)">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="desc" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="sheet" description="" flags="in external" type="Utiles.Jxl.Write.WritableSheet" javaType="jxl.write.WritableSheet"/>
+			<arg name="destcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="destrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="WritableHyperlink" flags="static" signature="Kjxl.write.WritableHyperlink(IIIILjava.lang.String;Ljxl.write.WritableSheet;IIII)">
+			<arg name="col" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="row" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="desc" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="sheet" description="" flags="in external" type="Utiles.Jxl.Write.WritableSheet" javaType="jxl.write.WritableSheet"/>
+			<arg name="destcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="destrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastdestcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastdestrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Write.WritableHyperlink"/>
+		</method>
+		<method name="setDescription" description="setDescription" flags="external hidden" signature="MsetDescription(Ljava.lang.String;)V">
+			<arg name="desc" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setFile" description="setFile" flags="external" signature="MsetFile(Ljava.io.File;)V">
+			<arg name="file" description="" flags="in external" type="Java.Io.File" javaType="java.io.File"/>
+		</method>
+		<method name="setLocation" description="setLocation" flags="external" signature="MsetLocation(Ljava.lang.String;Ljxl.write.WritableSheet;IIII)V">
+			<arg name="desc" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="sheet" description="" flags="in external" type="Utiles.Jxl.Write.WritableSheet" javaType="jxl.write.WritableSheet"/>
+			<arg name="destcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="destrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastdestcol" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastdestrow" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setURL" description="setURL" flags="external" signature="MsetURL(Ljava.net.URL;)V">
+			<arg name="url" description="" flags="in external" type="Java.Net.URL" javaType="java.net.URL"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="BorderLineStyle" description="BorderLineStyle" versionID="Version 6.5 " flags="" signature="jxl.format.BorderLineStyle" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.BorderLineStyle"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.BorderLineStyle"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="DASHED" flags="hasgetter attribute static external final" position="6" javaType="jxl.format.BorderLineStyle" writeSignature="ADASHED;Ljxl.format.BorderLineStyle;" readSignature="ADASHED;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="DASH_DOT" flags="hasgetter attribute static external final" position="12" javaType="jxl.format.BorderLineStyle" writeSignature="ADASH_DOT;Ljxl.format.BorderLineStyle;" readSignature="ADASH_DOT;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="DASH_DOT_DOT" flags="hasgetter attribute static external final" position="14" javaType="jxl.format.BorderLineStyle" writeSignature="ADASH_DOT_DOT;Ljxl.format.BorderLineStyle;" readSignature="ADASH_DOT_DOT;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="DOTTED" flags="hasgetter attribute static external final" position="7" javaType="jxl.format.BorderLineStyle" writeSignature="ADOTTED;Ljxl.format.BorderLineStyle;" readSignature="ADOTTED;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="DOUBLE" flags="hasgetter attribute static external final" position="9" javaType="jxl.format.BorderLineStyle" writeSignature="ADOUBLE;Ljxl.format.BorderLineStyle;" readSignature="ADOUBLE;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="HAIR" flags="hasgetter attribute static external final" position="10" javaType="jxl.format.BorderLineStyle" writeSignature="AHAIR;Ljxl.format.BorderLineStyle;" readSignature="AHAIR;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="MEDIUM" flags="hasgetter attribute static external final" position="5" javaType="jxl.format.BorderLineStyle" writeSignature="AMEDIUM;Ljxl.format.BorderLineStyle;" readSignature="AMEDIUM;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="MEDIUM_DASHED" flags="hasgetter attribute static external final" position="11" javaType="jxl.format.BorderLineStyle" writeSignature="AMEDIUM_DASHED;Ljxl.format.BorderLineStyle;" readSignature="AMEDIUM_DASHED;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="MEDIUM_DASH_DOT" flags="hasgetter attribute static external final" position="13" javaType="jxl.format.BorderLineStyle" writeSignature="AMEDIUM_DASH_DOT;Ljxl.format.BorderLineStyle;" readSignature="AMEDIUM_DASH_DOT;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="MEDIUM_DASH_DOT_DOT" flags="hasgetter attribute static external final" position="15" javaType="jxl.format.BorderLineStyle" writeSignature="AMEDIUM_DASH_DOT_DOT;Ljxl.format.BorderLineStyle;" readSignature="AMEDIUM_DASH_DOT_DOT;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="NONE" flags="hasgetter attribute static external final" position="3" javaType="jxl.format.BorderLineStyle" writeSignature="ANONE;Ljxl.format.BorderLineStyle;" readSignature="ANONE;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="SLANTED_DASH_DOT" flags="hasgetter attribute static external final" position="16" javaType="jxl.format.BorderLineStyle" writeSignature="ASLANTED_DASH_DOT;Ljxl.format.BorderLineStyle;" readSignature="ASLANTED_DASH_DOT;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="THICK" flags="hasgetter attribute static external final" position="8" javaType="jxl.format.BorderLineStyle" writeSignature="ATHICK;Ljxl.format.BorderLineStyle;" readSignature="ATHICK;Ljxl.format.BorderLineStyle;"/>
+		<object type="Utiles.Jxl.Format.BorderLineStyle" name="THIN" flags="hasgetter attribute static external final" position="4" javaType="jxl.format.BorderLineStyle" writeSignature="ATHIN;Ljxl.format.BorderLineStyle;" readSignature="ATHIN;Ljxl.format.BorderLineStyle;"/>
+		<String name="description" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetDescription()Ljava.lang.String;"/>
+		<Int length="32" name="value" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetValue()I"/>
+	</attributes>
+	<methods>
+		<method name="getDescription" description="getDescription" flags="external hidden" signature="MgetDescription()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getStyle" description="getStyle" flags="static external" signature="MgetStyle(I)Ljxl.format.BorderLineStyle;">
+			<arg name="val" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.BorderLineStyle" javaType="jxl.format.BorderLineStyle"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

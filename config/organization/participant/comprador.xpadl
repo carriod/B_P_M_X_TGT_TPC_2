@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<FDIObject>
+	<DirHumanParticipant>
+		<id>comprador</id>
+		<displayName>comprador</displayName>
+		<mail>comprador@telefonica.com.ar</mail>
+		<receivesMail>false</receivesMail>
+		<status>A</status>
+		<timezone>AGT</timezone>
+		<cost>0.0</cost>
+		<efficiency>80</efficiency>
+		<rolesAssignment>
+			<roleAssignment>
+				<roleId>TPC - Comprador GC</roleId>
+				<permissions>255</permissions>
+				<category>0</category>
+			</roleAssignment>
+		</rolesAssignment>
+	</DirHumanParticipant>
+</FDIObject>

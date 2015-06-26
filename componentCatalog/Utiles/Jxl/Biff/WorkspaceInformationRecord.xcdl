@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WorkspaceInformationRecord" description="WorkspaceInformationRecord" versionID="Version 6.5 " flags="" signature="jxl.biff.WorkspaceInformationRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.WorkspaceInformationRecord"/>
+	<objectProperty name="package" value="jxl.biff"/>
+	<objectProperty name="typeId" value="jxl.biff.WorkspaceInformationRecord"/>
+	<attributes>
+		<Binary name="data" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Bool name="fitToPages" flags="hassetter hasgetter external" primitive="true" position="2" javaType="boolean" writeSignature="MsetFitToPages(Z)V" readSignature="MgetFitToPages()Z"/>
+	</attributes>
+	<methods>
+		<method name="WorkspaceInformationRecord" flags="static hidden" signature="Kjxl.biff.WorkspaceInformationRecord()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.WorkspaceInformationRecord"/>
+		</method>
+		<method name="WorkspaceInformationRecord" flags="static" signature="Kjxl.biff.WorkspaceInformationRecord(Ljxl.read.biff.Record;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.WorkspaceInformationRecord"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getFitToPages" description="getFitToPages" flags="external hidden" signature="MgetFitToPages()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setFitToPages" description="setFitToPages" flags="external hidden" signature="MsetFitToPages(Z)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

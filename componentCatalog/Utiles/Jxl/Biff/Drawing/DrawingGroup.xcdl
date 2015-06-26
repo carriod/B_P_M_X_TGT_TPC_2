@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DrawingGroup" description="DrawingGroup" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.DrawingGroup" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Jxl.Biff.Drawing.EscherStream" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.DrawingGroup"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.DrawingGroup"/>
+	<attributes>
+		<Binary name="data" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetData()[B"/>
+	</attributes>
+	<methods>
+		<method name="DrawingGroup" flags="static" signature="Kjxl.biff.drawing.DrawingGroup(Ljxl.biff.drawing.Origin;)">
+			<arg name="o" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.Origin" javaType="jxl.biff.drawing.Origin"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.DrawingGroup"/>
+		</method>
+		<method name="DrawingGroup" flags="static" signature="Kjxl.biff.drawing.DrawingGroup(Ljxl.biff.drawing.DrawingGroup;)">
+			<arg name="dg" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroup" javaType="jxl.biff.drawing.DrawingGroup"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.DrawingGroup"/>
+		</method>
+		<method name="add" description="add" flags="external" signature="Madd(Ljxl.biff.drawing.DrawingGroupObject;)V">
+			<arg name="d" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroupObject" javaType="jxl.biff.drawing.DrawingGroupObject"/>
+		</method>
+		<method name="add" description="add" flags="external" signature="Madd(Ljxl.biff.drawing.MsoDrawingGroupRecord;)V">
+			<arg name="mso" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.MsoDrawingGroupRecord" javaType="jxl.biff.drawing.MsoDrawingGroupRecord"/>
+		</method>
+		<method name="add" description="add" flags="external" signature="Madd(Ljxl.read.biff.Record;)V">
+			<arg name="cont" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+		</method>
+		<method name="add" description="add" flags="external" signature="Madd(Ljxl.biff.drawing.Chart;)V">
+			<arg name="c" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.Chart" javaType="jxl.biff.drawing.Chart"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="hasDrawingsOmitted" description="hasDrawingsOmitted" flags="external" signature="MhasDrawingsOmitted()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="remove" description="remove" flags="external" signature="Mremove(Ljxl.biff.drawing.DrawingGroupObject;)V">
+			<arg name="d" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroupObject" javaType="jxl.biff.drawing.DrawingGroupObject"/>
+		</method>
+		<method name="setDrawingsOmitted" description="setDrawingsOmitted" flags="external" signature="MsetDrawingsOmitted(Ljxl.biff.drawing.MsoDrawingRecord;Ljxl.biff.drawing.ObjRecord;)V">
+			<arg name="mso" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.MsoDrawingRecord" javaType="jxl.biff.drawing.MsoDrawingRecord"/>
+			<arg name="obj" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.ObjRecord" javaType="jxl.biff.drawing.ObjRecord"/>
+		</method>
+		<method name="updateData" description="updateData" flags="external" signature="MupdateData(Ljxl.biff.drawing.DrawingGroup;)V">
+			<arg name="dg" description="" flags="in external" type="Utiles.Jxl.Biff.Drawing.DrawingGroup" javaType="jxl.biff.drawing.DrawingGroup"/>
+		</method>
+		<method name="write" description="write" flags="external" signature="Mwrite(Ljxl.write.biff.File;)V">
+			<arg name="outputFile" description="" flags="in external" type="Utiles.Jxl.Write.Biff.File" javaType="jxl.write.biff.File"/>
+			<exception type="Java.Io.IOException"/>
+		</method>
+	</methods>
+</component>

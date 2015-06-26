@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JREmptyDataSource" description="JREmptyDataSource" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.JREmptyDataSource" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Net.Sf.Jasperreports.Engine.JRRewindableDataSource" flags=""/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.JREmptyDataSource"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.JREmptyDataSource"/>
+	<attributes/>
+	<methods>
+		<method name="JREmptyDataSource" flags="static hidden" signature="Knet.sf.jasperreports.engine.JREmptyDataSource()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.JREmptyDataSource"/>
+		</method>
+		<method name="JREmptyDataSource" flags="static" signature="Knet.sf.jasperreports.engine.JREmptyDataSource(I)">
+			<arg name="count" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.JREmptyDataSource"/>
+		</method>
+		<method name="getFieldValue" description="getFieldValue" flags="external" signature="MgetFieldValue(Lnet.sf.jasperreports.engine.JRField;)Ljava.lang.Object;">
+			<arg name="arg1" description="" flags="in external" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}" javaType="net.sf.jasperreports.engine.JRField"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Lang.Object" javaType="java.lang.Object"/>
+		</method>
+		<method name="moveFirst" description="moveFirst" flags="external" signature="MmoveFirst()V"/>
+		<method name="next" description="next" flags="external" signature="Mnext()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

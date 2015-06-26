@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="NProveedor" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<Int length="32" name="idSolicitud" flags="hassetter hasgetter public" position="1"/>
+		<String length="1000" name="justificacionMotivo" flags="hassetter hasgetter public" position="5"/>
+		<object type="Negocio.NMotivoProveedorCond" name="motivoProveedorCond" flags="hassetter hasgetter public" position="4"/>
+		<String length="50" name="nombreProveedorCond" flags="hassetter hasgetter public" position="3"/>
+		<String length="1000" name="proveedoresSugeridos" flags="hassetter hasgetter public" position="6"/>
+		<object type="Negocio.NTipoProveedor" name="tipoProveedor" flags="hassetter hasgetter public" position="2"/>
+	</attributes>
+	<methods>
+		<method name="NProveedor" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NProveedor"/>
+			<sourceCode language="Java1">this.motivoProveedorCond = NMotivoProveedorCond();
+this.tipoProveedor = NTipoProveedor();</sourceCode>
+		</method>
+	</methods>
+</component>

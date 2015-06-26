@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="MetodosUtil" description="MetodosUtil" versionID="Version 6.5 " flags="" signature="util.MetodosUtil" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="util.MetodosUtil"/>
+	<objectProperty name="package" value="util"/>
+	<objectProperty name="typeId" value="util.MetodosUtil"/>
+	<attributes/>
+	<methods>
+		<method name="MetodosUtil" flags="static hidden" signature="Kutil.MetodosUtil()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Util.MetodosUtil"/>
+		</method>
+		<method name="extensionPermitida" description="extensionPermitida" flags="static external" signature="MextensionPermitida(Ljava.lang.String;)Z">
+			<arg name="extension" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getFileExtension" description="getFileExtension" flags="static external" signature="MgetFileExtension(Ljava.lang.String;)Ljava.lang.String;">
+			<arg name="file" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="parseLongToByteSize" description="parseLongToByteSize" flags="static external" signature="MparseLongToByteSize(I)Ljava.lang.String;">
+			<arg name="bytesToParse" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="selectionSort" description="selectionSort" flags="static external" signature="MselectionSort(Ljava.util.List;Ljava.lang.String;Z)V">
+			<arg name="a" description="" flags="in external" type="Any[]" javaType="java.util.List"/>
+			<arg name="attribute" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="asc" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="swap" description="swap" flags="static external" signature="Mswap(Ljava.util.List;II)V">
+			<arg name="a" description="" flags="in external" type="Any[]" javaType="java.util.List"/>
+			<arg name="i" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="j" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

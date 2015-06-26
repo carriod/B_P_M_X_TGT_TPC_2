@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="Rol" description="" versionID="Version 6.5 " flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<map type="Int" indexType="String" name="multiplicidadIRIS" description="" flags="hassetter hasgetter public" position="2"/>
+		<map type="Int" indexType="String" name="multiplicidadPNW" description="" flags="hassetter hasgetter public" position="4"/>
+		<map type="Int" indexType="String" name="multiplicidadTPC" flags="hassetter hasgetter public" position="5"/>
+		<array type="String" name="rolesIRIS" flags="hassetter hasgetter public" position="1"/>
+		<array type="String" name="rolesPNW" flags="hassetter hasgetter public" position="3"/>
+		<array type="String" name="rolesTPC" flags="hassetter hasgetter public includeincheck" position="6"/>
+	</attributes>
+	<methods>
+		<method name="Rol" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Rol"/>
+			<sourceCode language="Java1">this.rolesIRIS.clear();
+this.rolesPNW.clear();
+this.multiplicidadIRIS.clear();
+this.multiplicidadPNW.clear();
+
+// PNW
+this.rolesPNW[] = &quot;PNW Vendedor (P)&quot;;
+this.multiplicidadPNW[this.rolesPNW.last] = 1;
+	
+this.rolesPNW[] = &quot;PNW Vendedor&quot;;
+this.multiplicidadPNW[this.rolesPNW.last] = 0;
+
+this.rolesPNW[] = &quot;PNW Analista Logistica&quot;;
+this.multiplicidadPNW[this.rolesPNW.last] = 0;
+
+this.rolesPNW[] = &quot;PNW Reporte Logistica&quot;;
+this.multiplicidadPNW[this.rolesPNW.last] = 0;
+
+this.rolesPNW[] = &quot;PNW Gestion ABM&quot;;
+this.multiplicidadPNW[this.rolesPNW.last] = 0;
+
+this.rolesPNW[] = &quot;PNW Gestion Errores&quot;;
+this.multiplicidadPNW[this.rolesPNW.last] = 0;
+
+// IRIS
+this.rolesIRIS[] = &quot;Administrador Canal&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Administrador Canal (P)&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Administrador MVS&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Administrador TG&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Analista Grupo Soporte PortIn&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Analista Grupo Soporte PortOut&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Analista de Administracion Comercial&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Analista de Administracion Comercial (G)&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Anulacion Masiva&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Back Office Agente&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Back Office Agente (P)&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Back Office Directo&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Consultas&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Escaneador CEC&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Escaneador CEC (P)&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 1;
+
+this.rolesIRIS[] = &quot;Gestion ABM&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Gestion Errores&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Lider CEC&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Lider CEC (P)&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 1;
+
+this.rolesIRIS[] = &quot;Lider Grupo Soporte PortIn&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Lider Grupo Soporte PortOut&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Lider de Administracion Comercial&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Vendedor Directo&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Vendedor Directo (P)&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 1;
+
+this.rolesIRIS[] = &quot;Vendedor Indirecto&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 0;
+
+this.rolesIRIS[] = &quot;Vendedor Indirecto (P)&quot;;
+this.multiplicidadIRIS[this.rolesIRIS.last] = 1;
+
+//TPC
+
+this.rolesTPC[] = &quot;TPC - Papi&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+ 
+this.rolesTPC[] = &quot;TPC - Administrador ABM&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Administrador SAGI&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Analista CdG&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Analista Comite&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Comprador GC&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Consultas SAGI&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Controller GC&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Gerente Compras&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Gestion Errores&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Gestor Enlace&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Intervencion GC&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC -Jefe Compras &quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Solicitante SAGI&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+
+this.rolesTPC[] = &quot;TPC - Supervisor CdG&quot;;
+this.multiplicidadTPC[this.rolesTPC.last] = 0;
+</sourceCode>
+		</method>
+	</methods>
+</component>

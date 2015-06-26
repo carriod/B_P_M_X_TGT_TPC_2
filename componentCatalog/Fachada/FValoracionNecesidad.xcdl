@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="FValoracionNecesidad" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<object type="Servicio.SValoracionNecesidad" name="servicio" flags="hassetter hasgetter public includeincheck" position="1"/>
+	</attributes>
+	<methods>
+		<method name="FValoracionNecesidad" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Fachada.FValoracionNecesidad"/>
+			<sourceCode language="Java1">this.servicio = new SValoracionNecesidad();</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.deleteValue(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getLastValue();
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues(vigencia : false);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		Any[] objNegocioArray;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    objNegocioArray[] = this.mapeoArrayToNegocio(objArray : objArray);
+		}
+    	respuesta.contenido = objNegocioArray;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValuesCombo" flags="clientavailable public">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getListValues(vigencia : true);
+	if (respuesta.resultado == OK) {
+		Any[] valuesArray = (Any[])respuesta.contenido;	
+		String[Integer] comboItem;
+		for (Any valueArray : valuesArray) {
+		    Any[String] objArray = (Any[String])valueArray;
+		    String codigo = (String)objArray[&quot;CODIGO&quot;];
+		    String descripcion = (String)objArray[&quot;DESCRIPCION&quot;];
+			//comboItem[(Integer)objArray[&quot;ID&quot;]] = (codigo!=null?codigo:&quot;&quot;) + (codigo!=null&amp;&amp;descripcion!=null?&quot; - &quot;:&quot;&quot;) + (descripcion!=null?descripcion:&quot;&quot;);
+			comboItem[(Integer)objArray[&quot;ID&quot;]] = (descripcion!=null?descripcion:&quot;&quot;);
+		}
+    	respuesta.contenido = comboItem;
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;
+</sourceCode>
+		</method>
+		<method name="getValueForCodigo" flags="public server disableclient">
+			<arg name="codigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForCodigo(codigo : arg.codigo);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForCodigo(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+	respuesta = this.servicio.getValueForId(id : arg.id);
+	if (respuesta.resultado == OK) {
+		Any[String] objArray = (Any[String])respuesta.contenido;
+    	respuesta.contenido = this.mapeoArrayToNegocio(objArray : objArray);
+    }
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="mapeoArrayToNegocio" flags="clientavailable public">
+			<arg name="objArray" description="" flags="in" type="Any[String]"/>
+			<outputArgument name="return" description="" flags="retval" type="Negocio.NValoracionNecesidad"/>
+			<sourceCode language="Java1">NValoracionNecesidad objNegocio = NValoracionNecesidad();
+
+objNegocio.id 					= (Integer)arg.objArray[&quot;ID&quot;];
+objNegocio.idSolicitud 			= (Integer)arg.objArray[&quot;SOL_ID&quot;];
+objNegocio.beneficioCompra 		= (String)arg.objArray[&quot;BENEFICIOCOMPRA&quot;];
+objNegocio.recurrencia 			= (Java.Lang.Boolean)arg.objArray[&quot;RECURRENCIA&quot;];
+objNegocio.periodicidadCompra 	= (String)arg.objArray[&quot;PERIODICIDADCOMPRA&quot;];
+objNegocio.regularizacion 		= (Java.Lang.Boolean)arg.objArray[&quot;REGULARIZACION&quot;];
+objNegocio.motivoRegularizacion = (String)arg.objArray[&quot;MOTIVOREGULARIZACION&quot;];
+objNegocio.comentarioRegAdm 	= (String)arg.objArray[&quot;COMENTARIOREGADM&quot;];
+objNegocio.compraMargMod 		= (Java.Lang.Boolean)arg.objArray[&quot;COMPRAMARGMOD&quot;];
+objNegocio.motivoCompraMargMod 	= (String)arg.objArray[&quot;MOTIVOCOMPRAMARGMOD&quot;];
+objNegocio.gastosPedido 		= (Java.Lang.Boolean)arg.objArray[&quot;GASTOSPEDIDO&quot;];
+objNegocio.infoGastosPedido 	= (String)arg.objArray[&quot;INFOGASTOSPEDIDO&quot;];
+objNegocio.alcanceFijo 			= (Java.Lang.Boolean)arg.objArray[&quot;ALCANCEFIJO&quot;];
+objNegocio.alcanceMovil 		= (Java.Lang.Boolean)arg.objArray[&quot;ALCANCEMOVIL&quot;];
+objNegocio.descFijoMovil 		= (String)arg.objArray[&quot;DESCFIJOMOVIL&quot;];
+
+return objNegocio;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="objNegocio" description="" flags="in" type="Negocio.NValoracionNecesidad"/>
+			<arg name="nuevaSolicitud" description="" flags="in" type="Bool"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+
+try {
+
+respuesta = this.servicio.setValue(id : arg.objNegocio.id,
+									solId : arg.objNegocio.idSolicitud,
+									beneficioCompra : arg.objNegocio.beneficioCompra,
+									recurrencia : arg.objNegocio.recurrencia, 
+                                    periodicidadCompra : arg.objNegocio.periodicidadCompra,
+                                    regularizacion : arg.objNegocio.regularizacion, 
+                                    motivoRegularizacion : arg.objNegocio.motivoRegularizacion,
+                                    comentarioRegAdm : arg.objNegocio.comentarioRegAdm, 
+                                    compraMargMod : arg.objNegocio.compraMargMod,
+                                    motivoCompraMargMod : arg.objNegocio.motivoCompraMargMod, 
+                                    gastosPedido : arg.objNegocio.gastosPedido,
+                                    alcanceFijo : arg.objNegocio.alcanceFijo,
+                                    alcanceMovil : arg.objNegocio.alcanceMovil, 
+                                    descFijoMovil : arg.objNegocio.descFijoMovil,
+                                    infoGastosPedido : arg.objNegocio.infoGastosPedido,
+                                    nuevaSolicitud : arg.nuevaSolicitud);		
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;fachada.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+return respuesta;</sourceCode>
+		</method>
+		<method name="verificarErrores" flags="clientavailable public">
+			<arg name="solicitud" description="" flags="in" type="Negocio.NSolicitud"/>
+			<arg name="rol" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="String[]"/>
+			<sourceCode language="Java1">String[] errores = {};
+
+if(!arg.solicitud.pedidoCesta.id in {3,5}){
+	if(arg.rol == &quot;TPC - Solicitante SAGI&quot;){
+	
+		if((arg.solicitud.valoracionNecesidad.beneficioCompra == null) || (arg.solicitud.valoracionNecesidad.beneficioCompra == &quot;&quot;)){
+			errores[] = &quot;&apos;Beneficio Compra&apos; es obligatorio&quot;;
+		}
+		
+		if(arg.solicitud.valoracionNecesidad.recurrencia){
+			if((arg.solicitud.valoracionNecesidad.periodicidadCompra == null) || (arg.solicitud.valoracionNecesidad.periodicidadCompra == &quot;&quot;)){
+				errores[] = &quot;&apos;Periodicidad de la Compra&apos; es obligatorio&quot;;
+			}
+		}
+		
+		if(arg.solicitud.valoracionNecesidad.gastosPedido){
+			if((arg.solicitud.valoracionNecesidad.infoGastosPedido == null) || (arg.solicitud.valoracionNecesidad.infoGastosPedido == &quot;&quot;)){
+				errores[] = &quot;&apos;Información Gastos Asociados&apos; es obligatorio&quot;;
+			}
+		}
+		
+	}else if(arg.rol == &quot;TPC - Gestor Enlace&quot;){
+	
+			if((arg.solicitud.valoracionNecesidad.beneficioCompra == null) || (arg.solicitud.valoracionNecesidad.beneficioCompra == &quot;&quot;)){
+				errores[] = &quot;&apos;Beneficio Compra&apos; es obligatorio&quot;;
+			}
+			
+			if(arg.solicitud.valoracionNecesidad.recurrencia){
+				if((arg.solicitud.valoracionNecesidad.periodicidadCompra == null) || (arg.solicitud.valoracionNecesidad.periodicidadCompra == &quot;&quot;)){
+					errores[] = &quot;&apos;Periodicidad de la Compra&apos; es obligatorio&quot;;
+				}
+			}
+			
+			if(arg.solicitud.valoracionNecesidad.regularizacion){
+			
+				Java.Lang.Boolean doc1Cargado = false;
+				ciclo:for (int index = 0; index &lt; arg.solicitud.documentos.length; index++) {
+				    if(arg.solicitud.documentos[index].documento.idTipoDocumento == 1 &amp;&amp; arg.solicitud.documentos[index].documento.cargado){
+				    	doc1Cargado = true;
+				    	break ciclo;
+				    }
+				}
+				if(!doc1Cargado){
+					errores[] = &quot;&apos;Documento Nota Regularización Administrativa&apos; es obligatorio&quot;;	
+				}
+				if((arg.solicitud.valoracionNecesidad.motivoRegularizacion == null) || (arg.solicitud.valoracionNecesidad.motivoRegularizacion == &quot;&quot;)){
+					errores[] = &quot;&apos;Motivo Regularización&apos; es obligatorio&quot;;
+				}
+				if((arg.solicitud.valoracionNecesidad.comentarioRegAdm == null) || (arg.solicitud.valoracionNecesidad.comentarioRegAdm == &quot;&quot;)){
+					errores[] = &quot;&apos;Comentario Regularización Administrativa&apos; es obligatorio&quot;;
+				}
+				
+			}
+			
+			if(arg.solicitud.valoracionNecesidad.compraMargMod){
+				
+				Java.Lang.Boolean doc2Cargado = false;
+				ciclo:for (int index = 0; index &lt; arg.solicitud.documentos.length; index++) {
+				    if(arg.solicitud.documentos[index].documento.idTipoDocumento == 2 &amp;&amp; arg.solicitud.documentos[index].documento.cargado){
+				    	doc2Cargado = true;
+				    	break ciclo;
+				    }
+				}
+				if(!doc2Cargado){
+					errores[] = &quot;&apos;Documento Nota Compra al Margen del Modelo&apos; es obligatorio&quot;;	
+				}			
+				if((arg.solicitud.valoracionNecesidad.motivoCompraMargMod == null) || (arg.solicitud.valoracionNecesidad.motivoCompraMargMod == &quot;&quot;)){
+					errores[] = &quot;&apos;Motivo Compra al Margen del Modelo&apos; es obligatorio&quot;;
+				}
+				
+			}
+			
+			if(arg.solicitud.valoracionNecesidad.gastosPedido){
+				if((arg.solicitud.valoracionNecesidad.infoGastosPedido == null) || (arg.solicitud.valoracionNecesidad.infoGastosPedido == &quot;&quot;)){
+					errores[] = &quot;&apos;Información Gastos Asociados&apos; es obligatorio&quot;;
+				}
+			}
+	}
+}
+return errores;</sourceCode>
+		</method>
+	</methods>
+</component>

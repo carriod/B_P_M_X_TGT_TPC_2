@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JRAbstractBeanDataSourceProvider" description="JRAbstractBeanDataSourceProvider" versionID="Version 6.5 " flags="abstract" signature="net.sf.jasperreports.engine.data.JRAbstractBeanDataSourceProvider" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<inherit class="Utiles.Net.Sf.Jasperreports.Engine.JRDataSourceProvider" flags=""/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.data.JRAbstractBeanDataSourceProvider"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine.data"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.data.JRAbstractBeanDataSourceProvider"/>
+	<attributes/>
+	<methods>
+		<method name="JRAbstractBeanDataSourceProvider" flags="static" signature="Knet.sf.jasperreports.engine.data.JRAbstractBeanDataSourceProvider(Ljava.lang.Class;)">
+			<arg name="beanClass" description="" flags="in external" type="Java.Lang.Class" javaType="java.lang.Class"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.Data.JRAbstractBeanDataSourceProvider"/>
+		</method>
+		<method name="getFields" description="getFields" flags="external" signature="MgetFields(Lnet.sf.jasperreports.engine.JasperReport;)[Lnet.sf.jasperreports.engine.JRField;">
+			<arg name="report" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="{java,net.sf.jasperreports.engine.JRField,Net.Sf.Jasperreports.Engine.JRField}[]" javaType="net.sf.jasperreports.engine.JRField[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="supportsGetFieldsOperation" description="supportsGetFieldsOperation" flags="external" signature="MsupportsGetFieldsOperation()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

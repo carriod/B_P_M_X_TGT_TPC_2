@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<FDIObject>
+	<DirPresentation>
+		<id>TPC_COMITE</id>
+		<type>2</type>
+		<properties><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101122"?>
+<presentation id="TPC_COMITE" owner="custom" type="INSTANCES" version="1">
+	<readonly>false</readonly>
+	<columns>
+		<column size="25">PREDEFINE_DESCRIPTION</column>
+		<column size="15">PREDEFINE_ACTIVITY</column>
+		<column format_type="DEFAULT" size="12">PREDEFINE_RECEIVED TIME</column>
+		<column size="10">PREDEFINE_PARTICIPANT</column>
+		<column size="10">estadoAgenda</column>
+		<column size="10">tipoOrden</column>
+	</columns>
+</presentation>
+]]></properties>
+	</DirPresentation>
+</FDIObject>

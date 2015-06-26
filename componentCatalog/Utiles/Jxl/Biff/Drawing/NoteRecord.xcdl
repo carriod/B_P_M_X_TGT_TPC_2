@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="NoteRecord" description="NoteRecord" versionID="Version 6.5 " flags="" signature="jxl.biff.drawing.NoteRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.WritableRecordData" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.biff.drawing.NoteRecord"/>
+	<objectProperty name="package" value="jxl.biff.drawing"/>
+	<objectProperty name="typeId" value="jxl.biff.drawing.NoteRecord"/>
+	<attributes>
+		<Binary name="data" flags="hasgetter external" position="1" javaType="byte[]" readSignature="MgetData()[B"/>
+		<Int length="32" name="objectId" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetObjectId()I"/>
+	</attributes>
+	<methods>
+		<method name="NoteRecord" flags="static" signature="Kjxl.biff.drawing.NoteRecord([B)">
+			<arg name="d" description="" flags="in external" type="Binary" javaType="byte[]"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.NoteRecord"/>
+		</method>
+		<method name="NoteRecord" flags="static" signature="Kjxl.biff.drawing.NoteRecord(Ljxl.read.biff.Record;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.NoteRecord"/>
+		</method>
+		<method name="NoteRecord" flags="static" signature="Kjxl.biff.drawing.NoteRecord(III)">
+			<arg name="c" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="r" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="id" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Biff.Drawing.NoteRecord"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getObjectId" description="getObjectId" flags="external hidden" signature="MgetObjectId()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

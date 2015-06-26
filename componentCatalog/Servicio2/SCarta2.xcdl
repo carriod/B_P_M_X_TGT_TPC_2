@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100141"?>
+<component name="SCarta2" description="" versionID="Version 5.7 GA" flags="cloneable replaceable" type="xobject">
+	<inherit class="Any" flags="public"/>
+	<inherit class="Fuego.Internal.FuegoObject" flags="public hidden"/>
+	<inherit class="Fuego.Internal.XODelegate" flags="public delegated hidden"/>
+	<objectProperty name="generateBitSets" value="true"/>
+	<objectProperty name="generateStubs" value="true"/>
+	<objectProperty name="packagePrefix" value="xobject"/>
+	<attributes>
+		<String name="implname" flags="hassetter hasgetter public" position="3"/>
+		<String name="prefijo" flags="hassetter hasgetter public" position="2"/>
+		<String name="tabla" flags="hassetter hasgetter public" position="1"/>
+	</attributes>
+	<methods>
+		<method name="SCarta2" flags="static clientavailable">
+			<outputArgument name="return" description="" flags="retval" type="Servicio2.SCarta2"/>
+			<sourceCode language="Java1">this.prefijo = &quot;CAR_&quot;;
+this.tabla = &quot;TPC2_CARTA&quot;;
+this.implname = &quot;TPC_DATOS&quot;;</sourceCode>
+		</method>
+		<method name="deleteValue" flags="public server disableclient">
+			<arg name="cartaId" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;															
+				&quot;WHERE &quot; + this.prefijo + &quot;ID = ? &quot;;	
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.cartaId;
+		
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="deleteValuesForIdPedido" flags="public server disableclient">
+			<arg name="procesoId" description="" flags="in" type="Int"/>
+			<arg name="procesoEdicion" description="" flags="in" type="Int"/>
+			<arg name="monedaId" description="" flags="in" type="Int"/>
+			<arg name="sociedadId" description="" flags="in" type="Int"/>
+			<arg name="proveedorCodigo" description="" flags="in" type="String"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try {
+	String sentence = &quot;&quot;;
+	
+	sentence = &quot;DELETE FROM &quot; + this.tabla + &quot; &quot;
+			   &quot; WHERE &quot; + this.prefijo + &quot;PED_PRO_ID = ? AND &quot; +
+			               this.prefijo + &quot;PED_PRO_EDICION = ? AND &quot; +
+			               this.prefijo + &quot;PED_PRV_CODIGO = ? AND &quot; +
+    				  	   this.prefijo + &quot;PED_MON_ID = ? AND &quot; +
+    				  	   this.prefijo + &quot;PED_SOC_ID = ? AND &quot; +
+    				  	   this.prefijo + &quot;PED_FPA_CODIGO = ? &quot;;													
+	
+	Any[] inParameters = {};				
+	inParameters[] = arg.procesoId;
+	inParameters[] = arg.procesoEdicion;
+	inParameters[] = arg.proveedorCodigo;
+	inParameters[] = arg.monedaId;
+	inParameters[] = arg.sociedadId;
+	inParameters[] = arg.formaDePagoCodigo;
+		
+	int result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	
+	if (result == 1) {
+	    respuesta.resultado = OK;
+	    respuesta.contenido = result;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.deleteValuesForIdPedido(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception : e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="existeCarta" flags="public server disableclient">
+			<arg name="cartaId" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta;
+respuesta.contenido = false;
+
+try{
+	String sentence = 	&quot;SELECT * FROM &quot; + this.tabla + &quot; WHERE &quot; + 
+						this.prefijo + &quot;ID = ? &quot;;
+						
+	Any[] inParameters = {};				
+	inParameters[] = arg.cartaId;
+	
+	foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: inParameters)){
+	    respuesta.contenido = true;
+	}
+}
+catch (Java.Lang.Exception e) {
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;Registro no encontrado en la tabla &quot; + this.tabla;
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getLastValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; +
+     				  &quot;WHERE &quot; + this.prefijo + &quot;ID = ( SELECT MAX(&quot; + this.prefijo + &quot;ID) FROM &quot; + this.tabla  + &quot; ) &quot;;
+
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: {})){
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_EDICION&quot;];
+		value[&quot;PRV_CODIGO&quot;] = (String)row[this.prefijo + &quot;PED_PRV_CODIGO&quot;];
+		value[&quot;MON_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_MON_ID&quot;];
+		value[&quot;FPA_CODIGO&quot;] = (String)row[this.prefijo + &quot;PED_FPA_CODIGO&quot;];
+		value[&quot;SOC_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_SOC_ID&quot;];
+		value[&quot;LINK&quot;] = (String)row[this.prefijo + &quot;LINK&quot;];
+		value[&quot;FECHACREACION&quot;] = (Time)row[this.prefijo + &quot;FECHACREACION&quot;];
+		value[&quot;FECHAVISADOJEFATURA&quot;] = (Time)row[this.prefijo + &quot;FECHAVISADOJEFATURA&quot;];
+		value[&quot;FECHAFIRMAGERENCIA&quot;] = (Time)row[this.prefijo + &quot;FECHAFIRMAGERENCIA&quot;];		
+		value[&quot;FECHAENVIOCARTA&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOCARTA&quot;];
+		value[&quot;MONTOPARCIAL&quot;] = (Decimal)row[this.prefijo + &quot;MONTOPARCIAL&quot;];
+    }
+
+    if(value.length()&gt;0){
+        respuesta.contenido = value;
+    }
+    else{
+        respuesta.resultado = DATAERROR;
+    }
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getLastValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getListValues" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; &quot; + 
+    				  &quot;ORDER BY &quot; + this.prefijo + &quot;ID &quot;;
+
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: {})){
+		value = {};
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_EDICION&quot;];
+		value[&quot;PRV_CODIGO&quot;] = (String)row[this.prefijo + &quot;PED_PRV_CODIGO&quot;];
+		value[&quot;MON_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_MON_ID&quot;];
+		value[&quot;SOC_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_SOC_ID&quot;];
+		value[&quot;FPA_CODIGO&quot;] = (String)row[this.prefijo + &quot;PED_FPA_CODIGO&quot;];
+		value[&quot;LINK&quot;] = (String)row[this.prefijo + &quot;LINK&quot;];
+		value[&quot;FECHACREACION&quot;] = (Time)row[this.prefijo + &quot;FECHACREACION&quot;];
+		value[&quot;FECHAVISADOJEFATURA&quot;] = (Time)row[this.prefijo + &quot;FECHAVISADOJEFATURA&quot;];
+		value[&quot;FECHAFIRMAGERENCIA&quot;] = (Time)row[this.prefijo + &quot;FECHAFIRMAGERENCIA&quot;];		
+		value[&quot;FECHAENVIOCARTA&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOCARTA&quot;];
+		value[&quot;MONTOPARCIAL&quot;] = (Decimal)row[this.prefijo + &quot;MONTOPARCIAL&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;    
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getNextValue" flags="public server disableclient">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    String sentence = &quot;SELECT SEQ_TPC2_CARTA_CAR_ID.NEXTVAL FROM DUAL&quot;;
+
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: {})){
+		value = {};
+		value[&quot;NEXTVAL&quot;] = (Integer)row[&quot;NEXTVAL&quot;];
+    }
+    respuesta.contenido = value;
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;    
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValueForId" description="" flags="public server disableclient">
+			<arg name="cartaId" description="" flags="in" type="Int"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try{
+    Any[String] value = {};
+    String sentence = &quot;SELECT * FROM &quot; + this.tabla + &quot; WHERE &quot; +
+	    				this.prefijo + &quot;ID = ?&quot; ;
+	 
+	Any[] inParameters = {};				
+	inParameters[] = arg.cartaId;
+		
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: inParameters)){
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_EDICION&quot;];
+		value[&quot;PRV_CODIGO&quot;] = (String)row[this.prefijo + &quot;PED_PRV_CODIGO&quot;];
+		value[&quot;FPA_CODIGO&quot;] = (String)row[this.prefijo + &quot;PED_FPA_CODIGO&quot;];
+		value[&quot;MON_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_MON_ID&quot;];
+		value[&quot;SOC_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_SOC_ID&quot;];
+		value[&quot;LINK&quot;] = (String)row[this.prefijo + &quot;LINK&quot;];
+		value[&quot;FECHACREACION&quot;] = (Time)row[this.prefijo + &quot;FECHACREACION&quot;];
+		value[&quot;FECHAVISADOJEFATURA&quot;] = (Time)row[this.prefijo + &quot;FECHAVISADOJEFATURA&quot;];
+		value[&quot;FECHAFIRMAGERENCIA&quot;] = (Time)row[this.prefijo + &quot;FECHAFIRMAGERENCIA&quot;];		
+		value[&quot;FECHAENVIOCARTA&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOCARTA&quot;];
+		value[&quot;MONTOPARCIAL&quot;] = (Decimal)row[this.prefijo + &quot;MONTOPARCIAL&quot;];
+    }
+
+    if(value.length()&gt;0){
+        respuesta.contenido = value;
+    }else{
+        respuesta.resultado = DATAERROR;
+        respuesta.contenido = &quot;Registro no encontrado en la tabla &quot; + this.tabla;
+        Utiles.Logger.logDebug(mensaje : &quot;servicio.getValueForId(): Error &quot; + respuesta.contenido);
+    }
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.getValueForId(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValuesForCarta" flags="public server disableclient">
+			<arg name="proId" description="" flags="in" type="Int"/>
+			<arg name="proEdicion" description="" flags="in" type="Int"/>
+			<arg name="prvCodigo" description="" flags="in" type="String"/>
+			<arg name="monId" description="" flags="in" type="Int"/>
+			<arg name="socId" description="" flags="in" type="Int"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT CAR_ID,CAR_PED_PRO_ID, CAR_PED_PRO_EDICION, CAR_PED_PRV_CODIGO, CAR_PED_FPA_CODIGO, &quot; +
+    				  &quot;PRV_DESCRIPCION, CAR_PED_MON_ID, MON_DESCRIPCION, &quot;+
+    				  &quot;CAR_PED_SOC_ID, SOC_DESCRIPCIONLARGA, CAR_LINK, CAR_FECHACREACION, &quot; +
+    				  &quot;CAR_FECHAVISADOJEFATURA, CAR_FECHAFIRMAGERENCIA, CAR_FECHAENVIOCARTA, CAR_MONTOPARCIAL&quot; +
+					  &quot; FROM TPC2_CARTA CAR&quot; + 
+					  &quot; JOIN TPC2_PROVEEDOR PRO&quot; +
+					  &quot; ON CAR.CAR_PED_PRV_CODIGO=PRO.PRV_CODIGO&quot; +
+					  &quot; JOIN TPC2_PEDIDO PED&quot; + 
+					  &quot; ON CAR.CAR_PED_PRO_ID=PED.PED_PRO_ID&quot; +
+					  &quot; AND CAR.CAR_PED_PRO_EDICION=PED.PED_PRO_EDICION&quot; +
+					  &quot; AND CAR.CAR_PED_PRV_CODIGO=PED.PED_PRV_CODIGO&quot; +
+					  &quot; AND CAR.CAR_PED_MON_ID=PED.PED_MON_ID AND CAR.CAR_PED_SOC_ID=PED.PED_SOC_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_MONEDA MON&quot;  +
+					  &quot; ON CAR.CAR_PED_MON_ID=MON.MON_ID&quot; +
+					  &quot; JOIN TPC2_SOCIEDAD SOC&quot; +
+					  &quot; ON CAR.CAR_PED_SOC_ID=SOC.SOC_ID&quot; +
+					  &quot; WHERE CAR.CAR_PED_PRO_ID=?&quot; +   
+					  &quot; AND CAR.CAR_PED_PRO_EDICION=?&quot; + 
+					  &quot; AND CAR.CAR_PED_PRV_CODIGO=?&quot; + 
+					  &quot; AND CAR.CAR_PED_MON_ID=?&quot; + 
+					  &quot; AND CAR.CAR_PED_SOC_ID=?&quot; +
+					  &quot; AND CAR.CAR_PED_FPA_CODIGO=?&quot;;
+
+
+	Any[] inParameters = {};				
+	inParameters[] = arg.proId;
+	inParameters[] = arg.proEdicion;
+	inParameters[] = arg.prvCodigo;
+	inParameters[] = arg.monId;
+	inParameters[] = arg.socId;
+	inParameters[] = arg.formaDePagoCodigo;
+	
+
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: inParameters)){
+		value = {};
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_EDICION&quot;];
+		value[&quot;PRV_CODIGO&quot;] = (String)row[this.prefijo + &quot;PED_PRV_CODIGO&quot;];
+		value[&quot;PRV_DESCRIPCION&quot;] = (String)row[&quot;PRV_DESCRIPCION&quot;];
+		value[&quot;CAR_PED_MON_ID&quot;] = (Integer)row[&quot;CAR_PED_MON_ID&quot;];
+		value[&quot;MON_DESCRIPCION&quot;] = (String)row[&quot;MON_DESCRIPCION&quot;];
+		value[&quot;CAR_PED_SOC_ID&quot;] = (Integer)row[&quot;CAR_PED_SOC_ID&quot;];
+		value[&quot;SOC_DESCRIPCIONLARGA&quot;] = (String)row[&quot;SOC_DESCRIPCIONLARGA&quot;];
+		value[&quot;CAR_LINK&quot;] = (String)row[&quot;CAR_LINK&quot;];
+		value[&quot;CAR_FECHACREACION&quot;] = (Time)row[&quot;CAR_FECHACREACION&quot;];
+		value[&quot;CAR_FECHAVISADOJEFATURA&quot;] = (Time)row[&quot;CAR_FECHAVISADOJEFATURA&quot;];
+		value[&quot;FECHAFIRMAGERENCIA&quot;] = (Time)row[this.prefijo + &quot;FECHAFIRMAGERENCIA&quot;];		
+		value[&quot;FECHAENVIOCARTA&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOCARTA&quot;];
+		value[&quot;MONTOPARCIAL&quot;] = (String)row[this.prefijo + &quot;MONTOPARCIAL&quot;];
+		values[] = value;
+    }
+    respuesta.contenido = values;
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;    
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="getValuesForPedido" flags="public server disableclient">
+			<arg name="proId" description="" flags="in" type="Int"/>
+			<arg name="proEdicion" description="" flags="in" type="Int"/>
+			<arg name="prvCodigo" description="" flags="in" type="String"/>
+			<arg name="monId" description="" flags="in" type="Int"/>
+			<arg name="socId" description="" flags="in" type="Int"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+  
+    
+try {
+    Any[String] value;
+    Any[] values = {};
+    String sentence = &quot;SELECT CAR_ID, CAR_PED_PRO_ID, CAR_PED_PRO_EDICION, CAR_PED_PRV_CODIGO, PRV_DESCRIPCION, CAR_PED_FPA_CODIGO, &quot;+
+    				  &quot; CAR_PED_MON_ID, MON_DESCRIPCION, CAR_PED_SOC_ID, SOC_DESCRIPCIONLARGA, CAR_LINK, CAR_FECHACREACION, &quot;+
+    				  &quot; CAR_FECHAVISADOJEFATURA, CAR_FECHAFIRMAGERENCIA, CAR_FECHAENVIOCARTA, CAR_MONTOPARCIAL &quot;+
+    				  &quot; FROM &quot; + this.tabla + &quot; CAR &quot; +
+    				  &quot; JOIN TPC2_PROVEEDOR PRO ON CAR.CAR_PED_PRV_CODIGO = PRO.PRV_CODIGO&quot; +
+					  &quot; JOIN TPC2_PEDIDO PED ON CAR.CAR_PED_PRO_ID = PED.PED_PRO_ID&quot; +
+					  &quot; AND CAR.CAR_PED_PRO_EDICION = PED.PED_PRO_EDICION&quot; +
+					  &quot; AND CAR.CAR_PED_PRV_CODIGO = PED.PED_PRV_CODIGO&quot; +
+					  &quot; AND CAR.CAR_PED_MON_ID = PED.PED_MON_ID &quot; +
+					  &quot; AND CAR.CAR_PED_SOC_ID = PED.PED_SOC_ID&quot; +
+					  &quot; AND CAR.CAR_PED_FPA_CODIGO = PED.PED_FPA_CODIGO &quot; +
+					  &quot; LEFT OUTER JOIN TPC2_MONEDA MON ON CAR.CAR_PED_MON_ID = MON.MON_ID&quot; +
+					  &quot; LEFT OUTER JOIN TPC2_SOCIEDAD SOC ON CAR.CAR_PED_SOC_ID = SOC.SOC_ID&quot; +
+    				  &quot; WHERE &quot; +
+    				  this.prefijo + &quot;PED_PRO_ID = ? AND &quot; +
+    				  this.prefijo + &quot;PED_PRO_EDICION = ? AND &quot; +
+    				  this.prefijo + &quot;PED_PRV_CODIGO = ? AND &quot; +
+    				  this.prefijo + &quot;PED_MON_ID = ? AND &quot; +
+    				  this.prefijo + &quot;PED_SOC_ID = ? AND &quot; +
+    				  this.prefijo + &quot;PED_FPA_CODIGO = ? &quot; +
+    				  &quot; ORDER BY &quot; + this.prefijo + &quot;ID &quot;;
+    				  
+
+	Any[] inParameters = {};				
+	inParameters[] = arg.proId;
+	inParameters[] = arg.proEdicion;
+	inParameters[] = arg.prvCodigo;
+	inParameters[] = arg.monId;
+	inParameters[] = arg.socId;
+	inParameters[] = arg.formaDePagoCodigo;
+	
+	
+	
+	logMessage(&quot;Sentence: &quot; + sentence, Severity.INFO);
+	logMessage(&quot;Parameters: &quot; + inParameters, Severity.INFO);
+	
+
+    foreach(row in DynamicSQL.executeQuery(sentence: sentence, implname: this.implname, inParameters: inParameters)){
+		value = {};	
+		value[&quot;ID&quot;] = (Integer)row[this.prefijo + &quot;ID&quot;];
+		value[&quot;PRO_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_ID&quot;];
+		value[&quot;PRO_EDICION&quot;] = (Integer)row[this.prefijo + &quot;PED_PRO_EDICION&quot;];
+		value[&quot;PRV_CODIGO&quot;] = (String)row[this.prefijo + &quot;PED_PRV_CODIGO&quot;];
+		value[&quot;PRV_DESCRIPCION&quot;] = (String)row[&quot;PRV_DESCRIPCION&quot;];
+		value[&quot;FPA_CODIGO&quot;] = (String)row[this.prefijo + &quot;PED_FPA_CODIGO&quot;];
+		value[&quot;CAR_PED_MON_ID&quot;] = (Integer)row[&quot;CAR_PED_MON_ID&quot;];
+		value[&quot;MON_DESCRIPCION&quot;] = (String)row[&quot;MON_DESCRIPCION&quot;];
+		value[&quot;SOC_ID&quot;] = (Integer)row[this.prefijo + &quot;PED_SOC_ID&quot;];
+		value[&quot;SOC_DESCRIPCIONLARGA&quot;] = (String)row[&quot;SOC_DESCRIPCIONLARGA&quot;];
+		value[&quot;LINK&quot;] = (String)row[this.prefijo + &quot;LINK&quot;];
+		value[&quot;FECHACREACION&quot;] = (Time)row[this.prefijo + &quot;FECHACREACION&quot;];
+		value[&quot;FECHAVISADOJEFATURA&quot;] = (Time)row[this.prefijo + &quot;FECHAVISADOJEFATURA&quot;];
+		value[&quot;FECHAFIRMAGERENCIA&quot;] = (Time)row[this.prefijo + &quot;FECHAFIRMAGERENCIA&quot;];		
+		value[&quot;FECHAENVIOCARTA&quot;] = (Time)row[this.prefijo + &quot;FECHAENVIOCARTA&quot;];
+		value[&quot;MONTOPARCIAL&quot;] = (Decimal)row[this.prefijo + &quot;MONTOPARCIAL&quot;];
+		values[] = value;
+		
+    }
+    respuesta.contenido = values;
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;    
+    respuesta.contenido = &quot;servicio.getListValues(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+		<method name="setValue" description="" flags="public server disableclient">
+			<arg name="id" description="" flags="in" type="Int"/>
+			<arg name="proId" description="" flags="in" type="Int"/>
+			<arg name="proEdicion" description="" flags="in" type="Int"/>
+			<arg name="prvCodigo" description="" flags="in" type="String"/>
+			<arg name="monId" description="" flags="in" type="Int"/>
+			<arg name="socId" description="" flags="in" type="Int"/>
+			<arg name="link" description="" flags="in" type="String"/>
+			<arg name="fechaCreacion" description="" flags="in" type="Time"/>
+			<arg name="fechaVisadoJefatura" description="" flags="in" type="Time"/>
+			<arg name="fechaFirmaGerencia" description="" flags="in" type="Time"/>
+			<arg name="fechaEnvioCarta" description="" flags="in" type="Time"/>
+			<arg name="montoParcial" description="" flags="in" type="Decimal"/>
+			<arg name="existe" description="" flags="in" type="Bool"/>
+			<arg name="formaDePagoCodigo" description="" flags="in" type="String"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Respuesta"/>
+			<sourceCode language="Java1">Respuesta respuesta = Respuesta();
+
+try{
+	String sentence = &quot;&quot;;
+	if(arg.existe){
+		sentence = &quot;UPDATE &quot; + this.tabla + &quot; SET &quot;;
+		if (arg.link != &quot;&quot; &amp;&amp; arg.link != null)
+			sentence = sentence + this.prefijo + &quot;LINK = ? , &quot;;
+		if (arg.fechaCreacion != null)
+			sentence = sentence + this.prefijo + &quot;FECHACREACION = ? , &quot;;
+		if (arg.fechaVisadoJefatura != null)			
+			sentence = sentence + this.prefijo + &quot;FECHAVISADOJEFATURA = ? , &quot;;
+		if (arg.fechaFirmaGerencia != null)
+			sentence = sentence + this.prefijo + &quot;FECHAFIRMAGERENCIA = ? , &quot;;
+		if (arg.fechaEnvioCarta != null)			
+			sentence = sentence + this.prefijo + &quot;FECHAENVIOCARTA = ? , &quot;;
+		if (arg.montoParcial != null &amp;&amp; arg.montoParcial &gt; 0)			
+			sentence = sentence + this.prefijo + &quot;MONTOPARCIAL = ? , &quot;;
+		int a = sentence.lastIndexOf(text : &quot;,&quot;);
+		sentence = sentence.substring(first : 0, last : a-1);
+		sentence = sentence + &quot; WHERE &quot; + this.prefijo + &quot;ID = ? &quot;;	
+	}else{
+		sentence = &quot;INSERT INTO &quot; + this.tabla + &quot; (&quot; +
+						this.prefijo + &quot;ID, &quot; +
+						this.prefijo + &quot;PED_PRO_ID, &quot; +
+						this.prefijo + &quot;PED_PRO_EDICION, &quot; +
+						this.prefijo + &quot;PED_PRV_CODIGO, &quot; +
+						this.prefijo + &quot;PED_MON_ID, &quot; +
+						this.prefijo + &quot;PED_SOC_ID, &quot; +
+						this.prefijo + &quot;PED_FPA_CODIGO, &quot; +
+						this.prefijo + &quot;LINK, &quot; +
+						this.prefijo + &quot;FECHACREACION, &quot; +			
+						this.prefijo + &quot;FECHAVISADOJEFATURA, &quot; +		
+						this.prefijo + &quot;FECHAFIRMAGERENCIA, &quot; +			
+						this.prefijo + &quot;FECHAENVIOCARTA, &quot; +			
+						this.prefijo + &quot;MONTOPARCIAL) &quot;															
+					&quot;VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)&quot;;
+	}
+	Any[] inParameters = {};
+	
+	if (!arg.existe){
+		inParameters[] = arg.id;
+		inParameters[] = arg.proId;
+		inParameters[] = arg.proEdicion;
+		inParameters[] = arg.prvCodigo;
+		inParameters[] = arg.monId;
+		inParameters[] = arg.socId;
+		inParameters[] = arg.formaDePagoCodigo;
+		inParameters[] = arg.link;
+		inParameters[] = arg.fechaCreacion;
+		inParameters[] = arg.fechaVisadoJefatura;
+		inParameters[] = arg.fechaFirmaGerencia;
+		inParameters[] = arg.fechaEnvioCarta;
+		inParameters[] = arg.montoParcial;
+	}else{
+		if (arg.link != &quot;&quot; &amp;&amp; arg.link != null)
+			inParameters[] = arg.link;
+		if (arg.fechaCreacion != null)
+			inParameters[] = arg.fechaCreacion;
+		if (arg.fechaVisadoJefatura != null)			
+			inParameters[] = arg.fechaVisadoJefatura;
+		if (arg.fechaFirmaGerencia != null)
+			inParameters[] = arg.fechaFirmaGerencia;
+		if (arg.fechaEnvioCarta != null)			
+			inParameters[] = arg.fechaEnvioCarta;
+		if (arg.montoParcial != null &amp;&amp; arg.montoParcial &gt; 0)
+			inParameters[] = arg.montoParcial;
+		inParameters[] = arg.id;
+	}
+	
+	
+	logMessage(&quot;Sentence: &quot; + sentence, Severity.INFO);
+	logMessage(&quot;Parameters: &quot; + inParameters, Severity.INFO);
+	
+	int result;
+	
+	if (inParameters.length() &gt; 1){
+		result = (DynamicSQL).executeUpdate(sentence : sentence, implname : implname, inParameters : inParameters);
+	}else{
+		result = 1;
+	}
+	
+	if (result == 1) {
+		    respuesta.resultado = OK;
+		    respuesta.contenido = result;
+	}
+}
+catch(Java.Lang.Exception e){
+    respuesta.resultado = DBERROR;
+    respuesta.contenido = &quot;servicio.setValue(): Error &quot; + e.message;
+    Utiles.Logger.logException(exception: e);
+}
+
+return respuesta;</sourceCode>
+		</method>
+	</methods>
+</component>

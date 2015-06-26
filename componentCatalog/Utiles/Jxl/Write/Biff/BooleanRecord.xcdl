@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="BooleanRecord" description="BooleanRecord" versionID="Version 6.5 " flags="abstract" signature="jxl.write.biff.BooleanRecord" type="java">
+	<inherit class="Utiles.Jxl.Write.Biff.CellValue" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.write.biff.BooleanRecord"/>
+	<objectProperty name="package" value="jxl.write.biff"/>
+	<objectProperty name="typeId" value="jxl.write.biff.BooleanRecord"/>
+	<attributes>
+		<String name="contents" flags="hasgetter external" position="1" javaType="java.lang.String" readSignature="MgetContents()Ljava.lang.String;"/>
+		<Binary name="data" flags="hasgetter external" position="2" javaType="byte[]" readSignature="MgetData()[B"/>
+		<object type="Utiles.Jxl.CellType" name="type" flags="hasgetter external" position="3" javaType="jxl.CellType" readSignature="MgetType()Ljxl.CellType;"/>
+		<Bool name="value" flags="hasgetter external" primitive="true" position="4" javaType="boolean" readSignature="MgetValue()Z"/>
+	</attributes>
+	<methods>
+		<method name="getContents" description="getContents" flags="external hidden" signature="MgetContents()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getData" description="getData" flags="external hidden" signature="MgetData()[B">
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+		</method>
+		<method name="getType" description="getType" flags="external hidden" signature="MgetType()Ljxl.CellType;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.CellType" javaType="jxl.CellType"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

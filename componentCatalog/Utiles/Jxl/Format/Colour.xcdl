@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="Colour" description="Colour" versionID="Version 6.5 " flags="" signature="jxl.format.Colour" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.format.Colour"/>
+	<objectProperty name="package" value="jxl.format"/>
+	<objectProperty name="typeId" value="jxl.format.Colour"/>
+	<attributes>
+		<object type="Utiles.Jxl.Format.Colour" name="AQUA" flags="hasgetter attribute static external final" position="52" javaType="jxl.format.Colour" writeSignature="AAQUA;Ljxl.format.Colour;" readSignature="AAQUA;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="AUTOMATIC" flags="hasgetter attribute static external final" position="65" javaType="jxl.format.Colour" writeSignature="AAUTOMATIC;Ljxl.format.Colour;" readSignature="AAUTOMATIC;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="BLACK" flags="hasgetter attribute static external final" position="8" javaType="jxl.format.Colour" writeSignature="ABLACK;Ljxl.format.Colour;" readSignature="ABLACK;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="BLUE" flags="hasgetter attribute static external final" position="15" javaType="jxl.format.Colour" writeSignature="ABLUE;Ljxl.format.Colour;" readSignature="ABLUE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="BLUE2" flags="hasgetter attribute static external final" position="42" javaType="jxl.format.Colour" writeSignature="ABLUE2;Ljxl.format.Colour;" readSignature="ABLUE2;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="BLUE_GREY" flags="hasgetter attribute static external final" position="57" javaType="jxl.format.Colour" writeSignature="ABLUE_GREY;Ljxl.format.Colour;" readSignature="ABLUE_GREY;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="BRIGHT_GREEN" flags="hasgetter attribute static external final" position="14" javaType="jxl.format.Colour" writeSignature="ABRIGHT_GREEN;Ljxl.format.Colour;" readSignature="ABRIGHT_GREEN;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="BROWN" flags="hasgetter attribute static external final" position="63" javaType="jxl.format.Colour" writeSignature="ABROWN;Ljxl.format.Colour;" readSignature="ABROWN;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="CORAL" flags="hasgetter attribute static external final" position="32" javaType="jxl.format.Colour" writeSignature="ACORAL;Ljxl.format.Colour;" readSignature="ACORAL;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DARK_BLUE" flags="hasgetter attribute static external final" position="21" javaType="jxl.format.Colour" writeSignature="ADARK_BLUE;Ljxl.format.Colour;" readSignature="ADARK_BLUE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DARK_BLUE2" flags="hasgetter attribute static external final" position="35" javaType="jxl.format.Colour" writeSignature="ADARK_BLUE2;Ljxl.format.Colour;" readSignature="ADARK_BLUE2;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DARK_GREEN" flags="hasgetter attribute static external final" position="61" javaType="jxl.format.Colour" writeSignature="ADARK_GREEN;Ljxl.format.Colour;" readSignature="ADARK_GREEN;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DARK_PURPLE" flags="hasgetter attribute static external final" position="31" javaType="jxl.format.Colour" writeSignature="ADARK_PURPLE;Ljxl.format.Colour;" readSignature="ADARK_PURPLE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DARK_RED" flags="hasgetter attribute static external final" position="19" javaType="jxl.format.Colour" writeSignature="ADARK_RED;Ljxl.format.Colour;" readSignature="ADARK_RED;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DARK_RED2" flags="hasgetter attribute static external final" position="40" javaType="jxl.format.Colour" writeSignature="ADARK_RED2;Ljxl.format.Colour;" readSignature="ADARK_RED2;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DARK_TEAL" flags="hasgetter attribute static external final" position="59" javaType="jxl.format.Colour" writeSignature="ADARK_TEAL;Ljxl.format.Colour;" readSignature="ADARK_TEAL;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DARK_YELLOW" flags="hasgetter attribute static external final" position="22" javaType="jxl.format.Colour" writeSignature="ADARK_YELLOW;Ljxl.format.Colour;" readSignature="ADARK_YELLOW;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DEFAULT_BACKGROUND" flags="hasgetter attribute static external final" position="11" javaType="jxl.format.Colour" writeSignature="ADEFAULT_BACKGROUND;Ljxl.format.Colour;" readSignature="ADEFAULT_BACKGROUND;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="DEFAULT_BACKGROUND1" flags="hasgetter attribute static external final" position="10" javaType="jxl.format.Colour" writeSignature="ADEFAULT_BACKGROUND1;Ljxl.format.Colour;" readSignature="ADEFAULT_BACKGROUND1;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="GOLD" flags="hasgetter attribute static external final" position="54" javaType="jxl.format.Colour" writeSignature="AGOLD;Ljxl.format.Colour;" readSignature="AGOLD;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="GRAY_25" flags="hasgetter attribute static external final" position="70" javaType="jxl.format.Colour" writeSignature="AGRAY_25;Ljxl.format.Colour;" readSignature="AGRAY_25;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="GRAY_50" flags="hasgetter attribute static external final" position="69" javaType="jxl.format.Colour" writeSignature="AGRAY_50;Ljxl.format.Colour;" readSignature="AGRAY_50;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="GRAY_80" flags="hasgetter attribute static external final" position="68" javaType="jxl.format.Colour" writeSignature="AGRAY_80;Ljxl.format.Colour;" readSignature="AGRAY_80;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="GREEN" flags="hasgetter attribute static external final" position="20" javaType="jxl.format.Colour" writeSignature="AGREEN;Ljxl.format.Colour;" readSignature="AGREEN;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="GREY_25_PERCENT" flags="hasgetter attribute static external final" position="25" javaType="jxl.format.Colour" writeSignature="AGREY_25_PERCENT;Ljxl.format.Colour;" readSignature="AGREY_25_PERCENT;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="GREY_40_PERCENT" flags="hasgetter attribute static external final" position="58" javaType="jxl.format.Colour" writeSignature="AGREY_40_PERCENT;Ljxl.format.Colour;" readSignature="AGREY_40_PERCENT;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="GREY_50_PERCENT" flags="hasgetter attribute static external final" position="26" javaType="jxl.format.Colour" writeSignature="AGREY_50_PERCENT;Ljxl.format.Colour;" readSignature="AGREY_50_PERCENT;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="GREY_80_PERCENT" flags="hasgetter attribute static external final" position="64" javaType="jxl.format.Colour" writeSignature="AGREY_80_PERCENT;Ljxl.format.Colour;" readSignature="AGREY_80_PERCENT;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="ICE_BLUE" flags="hasgetter attribute static external final" position="34" javaType="jxl.format.Colour" writeSignature="AICE_BLUE;Ljxl.format.Colour;" readSignature="AICE_BLUE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="IVORY" flags="hasgetter attribute static external final" position="29" javaType="jxl.format.Colour" writeSignature="AIVORY;Ljxl.format.Colour;" readSignature="AIVORY;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="LAVENDER" flags="hasgetter attribute static external final" position="49" javaType="jxl.format.Colour" writeSignature="ALAVENDER;Ljxl.format.Colour;" readSignature="ALAVENDER;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="LIGHT_BLUE" flags="hasgetter attribute static external final" position="51" javaType="jxl.format.Colour" writeSignature="ALIGHT_BLUE;Ljxl.format.Colour;" readSignature="ALIGHT_BLUE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="LIGHT_GREEN" flags="hasgetter attribute static external final" position="45" javaType="jxl.format.Colour" writeSignature="ALIGHT_GREEN;Ljxl.format.Colour;" readSignature="ALIGHT_GREEN;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="LIGHT_ORANGE" flags="hasgetter attribute static external final" position="55" javaType="jxl.format.Colour" writeSignature="ALIGHT_ORANGE;Ljxl.format.Colour;" readSignature="ALIGHT_ORANGE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="LIGHT_TURQUOISE" flags="hasgetter attribute static external final" position="44" javaType="jxl.format.Colour" writeSignature="ALIGHT_TURQUOISE;Ljxl.format.Colour;" readSignature="ALIGHT_TURQUOISE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="LIGHT_TURQUOISE2" flags="hasgetter attribute static external final" position="30" javaType="jxl.format.Colour" writeSignature="ALIGHT_TURQUOISE2;Ljxl.format.Colour;" readSignature="ALIGHT_TURQUOISE2;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="LIME" flags="hasgetter attribute static external final" position="53" javaType="jxl.format.Colour" writeSignature="ALIME;Ljxl.format.Colour;" readSignature="ALIME;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="OCEAN_BLUE" flags="hasgetter attribute static external final" position="33" javaType="jxl.format.Colour" writeSignature="AOCEAN_BLUE;Ljxl.format.Colour;" readSignature="AOCEAN_BLUE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="OLIVE_GREEN" flags="hasgetter attribute static external final" position="62" javaType="jxl.format.Colour" writeSignature="AOLIVE_GREEN;Ljxl.format.Colour;" readSignature="AOLIVE_GREEN;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="ORANGE" flags="hasgetter attribute static external final" position="56" javaType="jxl.format.Colour" writeSignature="AORANGE;Ljxl.format.Colour;" readSignature="AORANGE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="PALETTE_BLACK" flags="hasgetter attribute static external final" position="12" javaType="jxl.format.Colour" writeSignature="APALETTE_BLACK;Ljxl.format.Colour;" readSignature="APALETTE_BLACK;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="PALE_BLUE" flags="hasgetter attribute static external final" position="47" javaType="jxl.format.Colour" writeSignature="APALE_BLUE;Ljxl.format.Colour;" readSignature="APALE_BLUE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="PERIWINKLE" flags="hasgetter attribute static external final" position="27" javaType="jxl.format.Colour" writeSignature="APERIWINKLE;Ljxl.format.Colour;" readSignature="APERIWINKLE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="PINK" flags="hasgetter attribute static external final" position="17" javaType="jxl.format.Colour" writeSignature="APINK;Ljxl.format.Colour;" readSignature="APINK;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="PINK2" flags="hasgetter attribute static external final" position="36" javaType="jxl.format.Colour" writeSignature="APINK2;Ljxl.format.Colour;" readSignature="APINK2;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="PLUM2" flags="hasgetter attribute static external final" position="28" javaType="jxl.format.Colour" writeSignature="APLUM2;Ljxl.format.Colour;" readSignature="APLUM2;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="RED" flags="hasgetter attribute static external final" position="13" javaType="jxl.format.Colour" writeSignature="ARED;Ljxl.format.Colour;" readSignature="ARED;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="ROSE" flags="hasgetter attribute static external final" position="48" javaType="jxl.format.Colour" writeSignature="AROSE;Ljxl.format.Colour;" readSignature="AROSE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="SEA_GREEN" flags="hasgetter attribute static external final" position="60" javaType="jxl.format.Colour" writeSignature="ASEA_GREEN;Ljxl.format.Colour;" readSignature="ASEA_GREEN;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="SKY_BLUE" flags="hasgetter attribute static external final" position="43" javaType="jxl.format.Colour" writeSignature="ASKY_BLUE;Ljxl.format.Colour;" readSignature="ASKY_BLUE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="TABLE_CELLS" flags="hasgetter attribute static external final" position="67" javaType="jxl.format.Colour" writeSignature="ATABLE_CELLS;Ljxl.format.Colour;" readSignature="ATABLE_CELLS;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="TABLE_TITLES" flags="hasgetter attribute static external final" position="66" javaType="jxl.format.Colour" writeSignature="ATABLE_TITLES;Ljxl.format.Colour;" readSignature="ATABLE_TITLES;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="TAN" flags="hasgetter attribute static external final" position="50" javaType="jxl.format.Colour" writeSignature="ATAN;Ljxl.format.Colour;" readSignature="ATAN;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="TEAL" flags="hasgetter attribute static external final" position="24" javaType="jxl.format.Colour" writeSignature="ATEAL;Ljxl.format.Colour;" readSignature="ATEAL;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="TEAL2" flags="hasgetter attribute static external final" position="41" javaType="jxl.format.Colour" writeSignature="ATEAL2;Ljxl.format.Colour;" readSignature="ATEAL2;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="TURQOISE2" flags="hasgetter attribute static external final" position="38" javaType="jxl.format.Colour" writeSignature="ATURQOISE2;Ljxl.format.Colour;" readSignature="ATURQOISE2;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="TURQUOISE" flags="hasgetter attribute static external final" position="18" javaType="jxl.format.Colour" writeSignature="ATURQUOISE;Ljxl.format.Colour;" readSignature="ATURQUOISE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="UNKNOWN" flags="hasgetter attribute static external final" position="7" javaType="jxl.format.Colour" writeSignature="AUNKNOWN;Ljxl.format.Colour;" readSignature="AUNKNOWN;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="VERY_LIGHT_YELLOW" flags="hasgetter attribute static external final" position="46" javaType="jxl.format.Colour" writeSignature="AVERY_LIGHT_YELLOW;Ljxl.format.Colour;" readSignature="AVERY_LIGHT_YELLOW;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="VIOLET" flags="hasgetter attribute static external final" position="23" javaType="jxl.format.Colour" writeSignature="AVIOLET;Ljxl.format.Colour;" readSignature="AVIOLET;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="VIOLET2" flags="hasgetter attribute static external final" position="39" javaType="jxl.format.Colour" writeSignature="AVIOLET2;Ljxl.format.Colour;" readSignature="AVIOLET2;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="WHITE" flags="hasgetter attribute static external final" position="9" javaType="jxl.format.Colour" writeSignature="AWHITE;Ljxl.format.Colour;" readSignature="AWHITE;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="YELLOW" flags="hasgetter attribute static external final" position="16" javaType="jxl.format.Colour" writeSignature="AYELLOW;Ljxl.format.Colour;" readSignature="AYELLOW;Ljxl.format.Colour;"/>
+		<object type="Utiles.Jxl.Format.Colour" name="YELLOW2" flags="hasgetter attribute static external final" position="37" javaType="jxl.format.Colour" writeSignature="AYELLOW2;Ljxl.format.Colour;" readSignature="AYELLOW2;Ljxl.format.Colour;"/>
+		<array type="Utiles.Jxl.Format.Colour" name="allColours" flags="hasgetter static external" primitive="true" position="71" javaType="jxl.format.Colour[]" readSignature="MgetAllColours()[Ljxl.format.Colour;"/>
+		<Int length="32" name="defaultBlue" flags="hasgetter external" primitive="true" position="1" javaType="int" readSignature="MgetDefaultBlue()I"/>
+		<Int length="32" name="defaultGreen" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetDefaultGreen()I"/>
+		<object type="Utiles.Jxl.Format.RGB" name="defaultRGB" flags="hasgetter external" position="3" javaType="jxl.format.RGB" readSignature="MgetDefaultRGB()Ljxl.format.RGB;"/>
+		<Int length="32" name="defaultRed" flags="hasgetter external" primitive="true" position="4" javaType="int" readSignature="MgetDefaultRed()I"/>
+		<String name="description" flags="hasgetter external" position="5" javaType="java.lang.String" readSignature="MgetDescription()Ljava.lang.String;"/>
+		<Int length="32" name="value" flags="hasgetter external" primitive="true" position="6" javaType="int" readSignature="MgetValue()I"/>
+	</attributes>
+	<methods>
+		<method name="getAllColours" description="getAllColours" flags="static external hidden" signature="MgetAllColours()[Ljxl.format.Colour;">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Utiles.Jxl.Format.Colour[]" javaType="jxl.format.Colour[]"/>
+		</method>
+		<method name="getDefaultBlue" description="getDefaultBlue" flags="external hidden" signature="MgetDefaultBlue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getDefaultGreen" description="getDefaultGreen" flags="external hidden" signature="MgetDefaultGreen()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getDefaultRGB" description="getDefaultRGB" flags="external hidden" signature="MgetDefaultRGB()Ljxl.format.RGB;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.RGB" javaType="jxl.format.RGB"/>
+		</method>
+		<method name="getDefaultRed" description="getDefaultRed" flags="external hidden" signature="MgetDefaultRed()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getDescription" description="getDescription" flags="external hidden" signature="MgetDescription()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getInternalColour" description="getInternalColour" flags="static external" signature="MgetInternalColour(I)Ljxl.format.Colour;">
+			<arg name="val" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Format.Colour" javaType="jxl.format.Colour"/>
+		</method>
+		<method name="getValue" description="getValue" flags="external hidden" signature="MgetValue()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

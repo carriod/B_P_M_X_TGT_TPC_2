@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="WorkbookSettings" description="WorkbookSettings" versionID="Version 6.5 " flags="" signature="jxl.WorkbookSettings" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.WorkbookSettings"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.WorkbookSettings"/>
+	<attributes>
+		<Int length="32" name="arrayGrowSize" flags="hassetter hasgetter external" primitive="true" position="2" javaType="int" writeSignature="MsetArrayGrowSize(I)V" readSignature="MgetArrayGrowSize()I"/>
+		<Int length="32" name="characterSet" flags="hassetter hasgetter external" primitive="true" position="3" javaType="int" writeSignature="MsetCharacterSet(I)V" readSignature="MgetCharacterSet()I"/>
+		<Bool name="drawingsDisabled" flags="hassetter hasgetter external" primitive="true" position="4" javaType="boolean" writeSignature="MsetDrawingsDisabled(Z)V" readSignature="MgetDrawingsDisabled()Z"/>
+		<String name="encoding" flags="hassetter hasgetter external" position="5" javaType="java.lang.String" writeSignature="MsetEncoding(Ljava.lang.String;)V" readSignature="MgetEncoding()Ljava.lang.String;"/>
+		<String name="excelDisplayLanguage" flags="hassetter hasgetter external" position="6" javaType="java.lang.String" writeSignature="MsetExcelDisplayLanguage(Ljava.lang.String;)V" readSignature="MgetExcelDisplayLanguage()Ljava.lang.String;"/>
+		<String name="excelRegionalSettings" flags="hassetter hasgetter external" position="7" javaType="java.lang.String" writeSignature="MsetExcelRegionalSettings(Ljava.lang.String;)V" readSignature="MgetExcelRegionalSettings()Ljava.lang.String;"/>
+		<Bool name="formulaAdjust" flags="hassetter hasgetter external" primitive="true" position="8" javaType="boolean" writeSignature="MsetFormulaAdjust(Z)V" readSignature="MgetFormulaAdjust()Z"/>
+		<object type="Utiles.Jxl.Biff.Formula.FunctionNames" name="functionNames" flags="hasgetter external" position="9" javaType="jxl.biff.formula.FunctionNames" readSignature="MgetFunctionNames()Ljxl.biff.formula.FunctionNames;"/>
+		<Bool name="gcDisabled" flags="hassetter hasgetter external" primitive="true" position="1" javaType="boolean" writeSignature="MsetGCDisabled(Z)V" readSignature="MgetGCDisabled()Z"/>
+		<Bool name="ignoreBlanks" flags="hassetter hasgetter external" primitive="true" position="10" javaType="boolean" writeSignature="MsetIgnoreBlanks(Z)V" readSignature="MgetIgnoreBlanks()Z"/>
+		<Int length="32" name="initialFileSize" flags="hassetter hasgetter external" primitive="true" position="11" javaType="int" writeSignature="MsetInitialFileSize(I)V" readSignature="MgetInitialFileSize()I"/>
+		<object type="Java.Util.Locale" name="locale" flags="hassetter hasgetter external" position="12" javaType="java.util.Locale" writeSignature="MsetLocale(Ljava.util.Locale;)V" readSignature="MgetLocale()Ljava.util.Locale;"/>
+		<Bool name="namesDisabled" flags="hassetter hasgetter external" primitive="true" position="13" javaType="boolean" writeSignature="MsetNamesDisabled(Z)V" readSignature="MgetNamesDisabled()Z"/>
+		<Bool name="propertySets" flags="hassetter external" primitive="true" position="14" javaType="boolean" writeSignature="MsetPropertySets(Z)V"/>
+		<Bool name="propertySetsDisabled" flags="hasgetter external" primitive="true" position="15" javaType="boolean" readSignature="MgetPropertySetsDisabled()Z"/>
+		<Bool name="rationalization" flags="hassetter external" primitive="true" position="16" javaType="boolean" writeSignature="MsetRationalization(Z)V"/>
+		<Bool name="rationalizationDisabled" flags="hasgetter external" primitive="true" position="17" javaType="boolean" readSignature="MgetRationalizationDisabled()Z"/>
+		<Bool name="suppressWarnings" flags="hassetter external" primitive="true" position="18" javaType="boolean" writeSignature="MsetSuppressWarnings(Z)V"/>
+	</attributes>
+	<methods>
+		<method name="WorkbookSettings" flags="static hidden" signature="Kjxl.WorkbookSettings()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.WorkbookSettings"/>
+		</method>
+		<method name="getArrayGrowSize" description="getArrayGrowSize" flags="external hidden" signature="MgetArrayGrowSize()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getCharacterSet" description="getCharacterSet" flags="external hidden" signature="MgetCharacterSet()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getDrawingsDisabled" description="getDrawingsDisabled" flags="external hidden" signature="MgetDrawingsDisabled()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getEncoding" description="getEncoding" flags="external hidden" signature="MgetEncoding()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getExcelDisplayLanguage" description="getExcelDisplayLanguage" flags="external hidden" signature="MgetExcelDisplayLanguage()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getExcelRegionalSettings" description="getExcelRegionalSettings" flags="external hidden" signature="MgetExcelRegionalSettings()Ljava.lang.String;">
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="getFormulaAdjust" description="getFormulaAdjust" flags="external hidden" signature="MgetFormulaAdjust()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getFunctionNames" description="getFunctionNames" flags="external hidden" signature="MgetFunctionNames()Ljxl.biff.formula.FunctionNames;">
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Jxl.Biff.Formula.FunctionNames" javaType="jxl.biff.formula.FunctionNames"/>
+		</method>
+		<method name="getGCDisabled" description="getGCDisabled" flags="external hidden" signature="MgetGCDisabled()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getIgnoreBlanks" description="getIgnoreBlanks" flags="external hidden" signature="MgetIgnoreBlanks()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getInitialFileSize" description="getInitialFileSize" flags="external hidden" signature="MgetInitialFileSize()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getLocale" description="getLocale" flags="external hidden" signature="MgetLocale()Ljava.util.Locale;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Util.Locale" javaType="java.util.Locale"/>
+		</method>
+		<method name="getNamesDisabled" description="getNamesDisabled" flags="external hidden" signature="MgetNamesDisabled()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getPropertySetsDisabled" description="getPropertySetsDisabled" flags="external hidden" signature="MgetPropertySetsDisabled()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="getRationalizationDisabled" description="getRationalizationDisabled" flags="external hidden" signature="MgetRationalizationDisabled()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setArrayGrowSize" description="setArrayGrowSize" flags="external hidden" signature="MsetArrayGrowSize(I)V">
+			<arg name="sz" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setCharacterSet" description="setCharacterSet" flags="external hidden" signature="MsetCharacterSet(I)V">
+			<arg name="cs" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setDrawingsDisabled" description="setDrawingsDisabled" flags="external hidden" signature="MsetDrawingsDisabled(Z)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setEncoding" description="setEncoding" flags="external hidden" signature="MsetEncoding(Ljava.lang.String;)V">
+			<arg name="enc" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setExcelDisplayLanguage" description="setExcelDisplayLanguage" flags="external hidden" signature="MsetExcelDisplayLanguage(Ljava.lang.String;)V">
+			<arg name="code" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setExcelRegionalSettings" description="setExcelRegionalSettings" flags="external hidden" signature="MsetExcelRegionalSettings(Ljava.lang.String;)V">
+			<arg name="code" description="" flags="in external" type="String" javaType="java.lang.String"/>
+		</method>
+		<method name="setFormulaAdjust" description="setFormulaAdjust" flags="external hidden" signature="MsetFormulaAdjust(Z)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setGCDisabled" description="setGCDisabled" flags="external hidden" signature="MsetGCDisabled(Z)V">
+			<arg name="disabled" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setIgnoreBlanks" description="setIgnoreBlanks" flags="external hidden" signature="MsetIgnoreBlanks(Z)V">
+			<arg name="ignoreBlanks" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setInitialFileSize" description="setInitialFileSize" flags="external hidden" signature="MsetInitialFileSize(I)V">
+			<arg name="sz" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="setLocale" description="setLocale" flags="external hidden" signature="MsetLocale(Ljava.util.Locale;)V">
+			<arg name="l" description="" flags="in external" type="Java.Util.Locale" javaType="java.util.Locale"/>
+		</method>
+		<method name="setNamesDisabled" description="setNamesDisabled" flags="external hidden" signature="MsetNamesDisabled(Z)V">
+			<arg name="b" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setPropertySets" description="setPropertySets" flags="external hidden" signature="MsetPropertySets(Z)V">
+			<arg name="r" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setRationalization" description="setRationalization" flags="external hidden" signature="MsetRationalization(Z)V">
+			<arg name="r" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+		<method name="setSuppressWarnings" description="setSuppressWarnings" flags="external hidden" signature="MsetSuppressWarnings(Z)V">
+			<arg name="w" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>

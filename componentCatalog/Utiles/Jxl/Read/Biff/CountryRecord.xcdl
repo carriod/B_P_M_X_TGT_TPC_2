@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="CountryRecord" description="CountryRecord" versionID="Version 6.5 " flags="" signature="jxl.read.biff.CountryRecord" type="java">
+	<inherit class="Utiles.Jxl.Biff.RecordData" flags="public"/>
+	<objectProperty name="javaClassName" value="jxl.read.biff.CountryRecord"/>
+	<objectProperty name="package" value="jxl.read.biff"/>
+	<objectProperty name="typeId" value="jxl.read.biff.CountryRecord"/>
+	<attributes>
+		<Int length="32" name="languageCode" flags="hasgetter external" primitive="true" position="1" javaType="int" readSignature="MgetLanguageCode()I"/>
+		<Int length="32" name="regionalSettingsCode" flags="hasgetter external" primitive="true" position="2" javaType="int" readSignature="MgetRegionalSettingsCode()I"/>
+	</attributes>
+	<methods>
+		<method name="CountryRecord" flags="static" signature="Kjxl.read.biff.CountryRecord(Ljxl.read.biff.Record;)">
+			<arg name="t" description="" flags="in external" type="Utiles.Jxl.Read.Biff.Record" javaType="jxl.read.biff.Record"/>
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Jxl.Read.Biff.CountryRecord"/>
+		</method>
+		<method name="getLanguageCode" description="getLanguageCode" flags="external hidden" signature="MgetLanguageCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+		<method name="getRegionalSettingsCode" description="getRegionalSettingsCode" flags="external hidden" signature="MgetRegionalSettingsCode()I">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Int" javaType="int"/>
+		</method>
+	</methods>
+</component>

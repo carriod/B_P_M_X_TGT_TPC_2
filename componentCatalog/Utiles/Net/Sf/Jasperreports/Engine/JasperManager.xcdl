@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="100981"?>
+<component name="JasperManager" description="JasperManager" versionID="Version 6.5 " flags="" signature="net.sf.jasperreports.engine.JasperManager" type="java">
+	<inherit class="Java.Lang.Object" flags="public"/>
+	<objectProperty name="javaClassName" value="net.sf.jasperreports.engine.JasperManager"/>
+	<objectProperty name="package" value="net.sf.jasperreports.engine"/>
+	<objectProperty name="typeId" value="net.sf.jasperreports.engine.JasperManager"/>
+	<attributes/>
+	<methods>
+		<method name="JasperManager" flags="static hidden" signature="Knet.sf.jasperreports.engine.JasperManager()">
+			<outputArgument name="return" description="" flags="retval" type="Utiles.Net.Sf.Jasperreports.Engine.JasperManager"/>
+		</method>
+		<method name="compileReport" description="compileReport" flags="static external" signature="McompileReport(Ljava.io.InputStream;)Lnet.sf.jasperreports.engine.JasperReport;">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="compileReport" description="compileReport" flags="static external" signature="McompileReport(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JasperReport;">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="compileReport" description="compileReport" flags="static external" signature="McompileReport(Lnet.sf.jasperreports.engine.design.JasperDesign;)Lnet.sf.jasperreports.engine.JasperReport;">
+			<arg name="jasperDesign" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="compileReportToFile" description="compileReportToFile" flags="static external" signature="McompileReportToFile(Ljava.lang.String;)Ljava.lang.String;">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="compileReportToFile" description="compileReportToFile" flags="static external" signature="McompileReportToFile(Lnet.sf.jasperreports.engine.design.JasperDesign;Ljava.lang.String;)V">
+			<arg name="jasperDesign" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="compileReportToFile" description="compileReportToFile" flags="static external" signature="McompileReportToFile(Ljava.lang.String;Ljava.lang.String;)V">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="compileReportToStream" description="compileReportToStream" flags="static external" signature="McompileReportToStream(Ljava.io.InputStream;Ljava.io.OutputStream;)V">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="compileReportToStream" description="compileReportToStream" flags="static external" signature="McompileReportToStream(Lnet.sf.jasperreports.engine.design.JasperDesign;Ljava.io.OutputStream;)V">
+			<arg name="jasperDesign" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReport" description="fillReport" flags="static external" signature="MfillReport(Ljava.io.InputStream;Ljava.util.Map;Ljava.sql.Connection;)Lnet.sf.jasperreports.engine.JasperPrint;">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReport" description="fillReport" flags="static external" signature="MfillReport(Ljava.lang.String;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)Lnet.sf.jasperreports.engine.JasperPrint;">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReport" description="fillReport" flags="static external" signature="MfillReport(Ljava.io.InputStream;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)Lnet.sf.jasperreports.engine.JasperPrint;">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReport" description="fillReport" flags="static external" signature="MfillReport(Ljava.lang.String;Ljava.util.Map;Ljava.sql.Connection;)Lnet.sf.jasperreports.engine.JasperPrint;">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReport" description="fillReport" flags="static external" signature="MfillReport(Lnet.sf.jasperreports.engine.JasperReport;Ljava.util.Map;Ljava.sql.Connection;)Lnet.sf.jasperreports.engine.JasperPrint;">
+			<arg name="jasperReport" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReport" description="fillReport" flags="static external" signature="MfillReport(Lnet.sf.jasperreports.engine.JasperReport;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)Lnet.sf.jasperreports.engine.JasperPrint;">
+			<arg name="jasperReport" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToFile" description="fillReportToFile" flags="static external" signature="MfillReportToFile(Ljava.lang.String;Ljava.util.Map;Ljava.sql.Connection;)Ljava.lang.String;">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToFile" description="fillReportToFile" flags="static external" signature="MfillReportToFile(Ljava.lang.String;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)Ljava.lang.String;">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToFile" description="fillReportToFile" flags="static external" signature="MfillReportToFile(Lnet.sf.jasperreports.engine.JasperReport;Ljava.lang.String;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)V">
+			<arg name="jasperReport" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToFile" description="fillReportToFile" flags="static external" signature="MfillReportToFile(Ljava.lang.String;Ljava.lang.String;Ljava.util.Map;Ljava.sql.Connection;)V">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToFile" description="fillReportToFile" flags="static external" signature="MfillReportToFile(Ljava.lang.String;Ljava.lang.String;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)V">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToFile" description="fillReportToFile" flags="static external" signature="MfillReportToFile(Lnet.sf.jasperreports.engine.JasperReport;Ljava.lang.String;Ljava.util.Map;Ljava.sql.Connection;)V">
+			<arg name="jasperReport" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToStream" description="fillReportToStream" flags="static external" signature="MfillReportToStream(Ljava.io.InputStream;Ljava.io.OutputStream;Ljava.util.Map;Ljava.sql.Connection;)V">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToStream" description="fillReportToStream" flags="static external" signature="MfillReportToStream(Lnet.sf.jasperreports.engine.JasperReport;Ljava.io.OutputStream;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)V">
+			<arg name="jasperReport" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToStream" description="fillReportToStream" flags="static external" signature="MfillReportToStream(Lnet.sf.jasperreports.engine.JasperReport;Ljava.io.OutputStream;Ljava.util.Map;Ljava.sql.Connection;)V">
+			<arg name="jasperReport" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="fillReportToStream" description="fillReportToStream" flags="static external" signature="MfillReportToStream(Ljava.io.InputStream;Ljava.io.OutputStream;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)V">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadDesign" description="loadDesign" flags="static external" signature="MloadDesign(Ljava.io.InputStream;)Lnet.sf.jasperreports.engine.design.JasperDesign;">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadDesign" description="loadDesign" flags="static external" signature="MloadDesign(Ljava.lang.String;)Lnet.sf.jasperreports.engine.design.JasperDesign;">
+			<arg name="fileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadPrint" description="loadPrint" flags="static external" signature="MloadPrint(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JasperPrint;">
+			<arg name="fileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadPrint" description="loadPrint" flags="static external" signature="MloadPrint(Ljava.io.InputStream;)Lnet.sf.jasperreports.engine.JasperPrint;">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadReport" description="loadReport" flags="static external" signature="MloadReport(Ljava.lang.String;)Lnet.sf.jasperreports.engine.JasperReport;">
+			<arg name="fileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadReport" description="loadReport" flags="static external" signature="MloadReport(Ljava.io.InputStream;)Lnet.sf.jasperreports.engine.JasperReport;">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadXmlDesign" description="loadXmlDesign" flags="static external" signature="MloadXmlDesign(Ljava.io.InputStream;)Lnet.sf.jasperreports.engine.design.JasperDesign;">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="loadXmlDesign" description="loadXmlDesign" flags="static external" signature="MloadXmlDesign(Ljava.lang.String;)Lnet.sf.jasperreports.engine.design.JasperDesign;">
+			<arg name="fileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printPage" description="printPage" flags="static external" signature="MprintPage(Ljava.lang.String;IZ)Z">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="pageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="withPrintDialog" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printPage" description="printPage" flags="static external" signature="MprintPage(Ljava.io.InputStream;IZ)Z">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="pageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="withPrintDialog" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printPage" description="printPage" flags="static external" signature="MprintPage(Lnet.sf.jasperreports.engine.JasperPrint;IZ)Z">
+			<arg name="jasperPrint" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<arg name="pageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="withPrintDialog" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printPageToImage" description="printPageToImage" flags="static external" signature="MprintPageToImage(Ljava.io.InputStream;IF)Ljava.awt.Image;">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="pageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="zoom" description="" flags="in external" primitive="true" type="Real(32)" javaType="float"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,java.awt.Image,Java.Awt.Image}" javaType="java.awt.Image"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printPageToImage" description="printPageToImage" flags="static external" signature="MprintPageToImage(Ljava.lang.String;IF)Ljava.awt.Image;">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="pageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="zoom" description="" flags="in external" primitive="true" type="Real(32)" javaType="float"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,java.awt.Image,Java.Awt.Image}" javaType="java.awt.Image"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printPageToImage" description="printPageToImage" flags="static external" signature="MprintPageToImage(Lnet.sf.jasperreports.engine.JasperPrint;IF)Ljava.awt.Image;">
+			<arg name="jasperPrint" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<arg name="pageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="zoom" description="" flags="in external" primitive="true" type="Real(32)" javaType="float"/>
+			<outputArgument name="return" description="" flags="retval external" type="{java,java.awt.Image,Java.Awt.Image}" javaType="java.awt.Image"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printPages" description="printPages" flags="static external" signature="MprintPages(Ljava.lang.String;IIZ)Z">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="firstPageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastPageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="withPrintDialog" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printPages" description="printPages" flags="static external" signature="MprintPages(Lnet.sf.jasperreports.engine.JasperPrint;IIZ)Z">
+			<arg name="jasperPrint" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<arg name="firstPageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastPageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="withPrintDialog" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printPages" description="printPages" flags="static external" signature="MprintPages(Ljava.io.InputStream;IIZ)Z">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="firstPageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="lastPageIndex" description="" flags="in external" primitive="true" type="Int" javaType="int"/>
+			<arg name="withPrintDialog" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printReport" description="printReport" flags="static external" signature="MprintReport(Lnet.sf.jasperreports.engine.JasperPrint;Z)Z">
+			<arg name="jasperPrint" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<arg name="withPrintDialog" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printReport" description="printReport" flags="static external" signature="MprintReport(Ljava.io.InputStream;Z)Z">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="withPrintDialog" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printReport" description="printReport" flags="static external" signature="MprintReport(Ljava.lang.String;Z)Z">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="withPrintDialog" description="" flags="in external" primitive="true" type="Bool" javaType="boolean"/>
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printReportToPdf" description="printReportToPdf" flags="static external" signature="MprintReportToPdf(Lnet.sf.jasperreports.engine.JasperPrint;)[B">
+			<arg name="jasperPrint" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printReportToPdfFile" description="printReportToPdfFile" flags="static external" signature="MprintReportToPdfFile(Ljava.lang.String;)Ljava.lang.String;">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<outputArgument name="return" description="" flags="retval external" type="String" javaType="java.lang.String"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printReportToPdfFile" description="printReportToPdfFile" flags="static external" signature="MprintReportToPdfFile(Ljava.lang.String;Ljava.lang.String;)V">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printReportToPdfFile" description="printReportToPdfFile" flags="static external" signature="MprintReportToPdfFile(Lnet.sf.jasperreports.engine.JasperPrint;Ljava.lang.String;)V">
+			<arg name="jasperPrint" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printReportToPdfStream" description="printReportToPdfStream" flags="static external" signature="MprintReportToPdfStream(Lnet.sf.jasperreports.engine.JasperPrint;Ljava.io.OutputStream;)V">
+			<arg name="jasperPrint" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperPrint" javaType="net.sf.jasperreports.engine.JasperPrint"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="printReportToPdfStream" description="printReportToPdfStream" flags="static external" signature="MprintReportToPdfStream(Ljava.io.InputStream;Ljava.io.OutputStream;)V">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdf" description="runReportToPdf" flags="static external" signature="MrunReportToPdf(Ljava.lang.String;Ljava.util.Map;Ljava.sql.Connection;)[B">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdf" description="runReportToPdf" flags="static external" signature="MrunReportToPdf(Ljava.io.InputStream;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)[B">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdf" description="runReportToPdf" flags="static external" signature="MrunReportToPdf(Lnet.sf.jasperreports.engine.JasperReport;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)[B">
+			<arg name="jasperReport" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdf" description="runReportToPdf" flags="static external" signature="MrunReportToPdf(Ljava.lang.String;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)[B">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdf" description="runReportToPdf" flags="static external" signature="MrunReportToPdf(Lnet.sf.jasperreports.engine.JasperReport;Ljava.util.Map;Ljava.sql.Connection;)[B">
+			<arg name="jasperReport" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JasperReport" javaType="net.sf.jasperreports.engine.JasperReport"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdf" description="runReportToPdf" flags="static external" signature="MrunReportToPdf(Ljava.io.InputStream;Ljava.util.Map;Ljava.sql.Connection;)[B">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<outputArgument name="return" description="" flags="retval external" type="Binary" javaType="byte[]"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdfFile" description="runReportToPdfFile" flags="static external" signature="MrunReportToPdfFile(Ljava.lang.String;Ljava.util.Map;Ljava.sql.Connection;)V">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdfFile" description="runReportToPdfFile" flags="static external" signature="MrunReportToPdfFile(Ljava.lang.String;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)V">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdfFile" description="runReportToPdfFile" flags="static external" signature="MrunReportToPdfFile(Ljava.lang.String;Ljava.lang.String;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)V">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdfFile" description="runReportToPdfFile" flags="static external" signature="MrunReportToPdfFile(Ljava.lang.String;Ljava.lang.String;Ljava.util.Map;Ljava.sql.Connection;)V">
+			<arg name="sourceFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="destFileName" description="" flags="in external" type="String" javaType="java.lang.String"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdfStream" description="runReportToPdfStream" flags="static external" signature="MrunReportToPdfStream(Ljava.io.InputStream;Ljava.io.OutputStream;Ljava.util.Map;Lnet.sf.jasperreports.engine.JRDataSource;)V">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="jrDataSource" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.JRDataSource" javaType="net.sf.jasperreports.engine.JRDataSource"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="runReportToPdfStream" description="runReportToPdfStream" flags="static external" signature="MrunReportToPdfStream(Ljava.io.InputStream;Ljava.io.OutputStream;Ljava.util.Map;Ljava.sql.Connection;)V">
+			<arg name="inputStream" description="" flags="in external" type="Java.Io.InputStream" javaType="java.io.InputStream"/>
+			<arg name="outputStream" description="" flags="in external" type="Java.Io.OutputStream" javaType="java.io.OutputStream"/>
+			<arg name="parameters" description="" flags="in external" type="Any[Any]" javaType="java.util.Map"/>
+			<arg name="conn" description="" flags="in external" type="Java.Sql.Connection" javaType="java.sql.Connection"/>
+			<exception type="{java,net.sf.jasperreports.engine.JRException,Net.Sf.Jasperreports.Engine.JRException}"/>
+		</method>
+		<method name="verifyDesign" description="verifyDesign" flags="static external" signature="MverifyDesign(Lnet.sf.jasperreports.engine.design.JasperDesign;)Ljava.util.Collection;">
+			<arg name="jasperDesign" description="" flags="in external" type="Utiles.Net.Sf.Jasperreports.Engine.Design.JasperDesign" javaType="net.sf.jasperreports.engine.design.JasperDesign"/>
+			<outputArgument name="return" description="" flags="retval external" type="Java.Util.Collection" javaType="java.util.Collection"/>
+		</method>
+	</methods>
+</component>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="6.5.2" build="101201"?>
+<component name="DateCell" description="DateCell" versionID="Version 6.5 " flags="abstract interface" signature="jxl.DateCell" type="java">
+	<inherit class="Utiles.Jxl.Cell" flags=""/>
+	<objectProperty name="javaClassName" value="jxl.DateCell"/>
+	<objectProperty name="package" value="jxl"/>
+	<objectProperty name="typeId" value="jxl.DateCell"/>
+	<attributes>
+		<object type="Java.Util.Date" name="date" flags="hasgetter external" position="1" javaType="java.util.Date" readSignature="MgetDate()Ljava.util.Date;"/>
+		<object type="Java.Text.DateFormat" name="dateFormat" flags="hasgetter external" position="2" javaType="java.text.DateFormat" readSignature="MgetDateFormat()Ljava.text.DateFormat;"/>
+		<Bool name="time" flags="hasgetter external" primitive="true" position="3" javaType="boolean" readSignature="MisTime()Z"/>
+	</attributes>
+	<methods>
+		<method name="getDate" description="getDate" flags="abstract external hidden" signature="MgetDate()Ljava.util.Date;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Util.Date" javaType="java.util.Date"/>
+		</method>
+		<method name="getDateFormat" description="getDateFormat" flags="abstract external hidden" signature="MgetDateFormat()Ljava.text.DateFormat;">
+			<outputArgument name="return" description="" flags="retval external" type="Java.Text.DateFormat" javaType="java.text.DateFormat"/>
+		</method>
+		<method name="isTime" description="isTime" flags="abstract external hidden" signature="MisTime()Z">
+			<outputArgument name="return" description="" flags="retval external" primitive="true" type="Bool" javaType="boolean"/>
+		</method>
+	</methods>
+</component>
